@@ -1,0 +1,362 @@
+
+const C='https://res.cloudinary.com/dtfq3xq3t/image/upload';
+const products=[
+  {id:1,name:'Baltic Sunrise Ring',cat:'rings',material:'Natural Baltic Amber · 925 Sterling Silver',price:185,badge:'bestseller',desc:'A radiant honey-amber cabochon set in hand-carved 925 sterling silver.',img:`${C}/IMG_1597_lyznwn.jpg`,props:{Stone:'Natural Baltic Amber',Metal:'925 Sterling Silver',Weight:'4.2g',Size:'XS–XL',Blessing:'Sacred Spring Ritual'}},
+  {id:2,name:'Golden Resin Ring',cat:'rings',material:'Natural Amber · 24k Gold-Plated Silver',price:210,badge:'new',desc:'Deep cognac amber in 24k gold-plated sterling silver. Each stone features unique natural inclusions.',img:`${C}/IMG_4193_heg3fr.jpg`,props:{Stone:'Natural Cognac Amber',Metal:'24k Gold-Plated 925',Weight:'3.8g',Size:'XS–XL',Blessing:'Sun & Moon Ritual'}},
+  {id:3,name:'Bali Moon Ring',cat:'rings',material:'Natural Amber · 925 Sterling Silver',price:165,badge:null,desc:'Slim silver band with a delicate oval amber — inspired by moonlit Balinese nights.',img:`${C}/IMG_4194_ocdadj.jpg`,props:{Stone:'Natural Honey Amber',Metal:'925 Sterling Silver',Weight:'2.9g',Size:'XS–XL',Blessing:'Sacred Spring Ritual'}},
+  {id:4,name:'Serpent Wrap Ring',cat:'rings',material:'Natural Amber · Oxidized Silver',price:245,badge:'limited',desc:'Bold serpentine band in oxidized silver with a drop of translucent cherry amber at the crown.',img:`${C}/IMG_1563_vwk4qt.jpg`,props:{Stone:'Natural Cherry Amber',Metal:'Oxidized 925 Silver',Weight:'6.1g',Size:'M–XL',Blessing:'Full Moon Ritual'}},
+  {id:5,name:'Honey Drop Ring',cat:'rings',material:'Natural Amber · 925 Sterling Silver',price:155,badge:null,desc:'A perfect honey drop of Baltic amber in a minimal bezel setting.',img:`${C}/IMG_1603_u1c7ol.jpg`,props:{Stone:'Natural Honey Amber',Metal:'925 Sterling Silver',Weight:'2.4g',Size:'XS–L',Blessing:'Sacred Spring Ritual'}},
+  {id:6,name:'Bali Dusk Drops',cat:'earrings',material:'Natural Amber · 925 Sterling Silver',price:145,badge:'bestseller',desc:'Graceful drop earrings with faceted honey amber stones in delicate sterling silver.',img:`${C}/IMG_1605_mailhc.jpg`,props:{Stone:'Natural Faceted Amber',Metal:'925 Sterling Silver',Weight:'3.2g pair',Closure:'Butterfly backs',Blessing:'Sacred Spring Ritual'}},
+  {id:7,name:'Ancient Light Studs',cat:'earrings',material:'Natural Amber · 24k Gold-Plated Silver',price:125,badge:'new',desc:'Compact oval studs in gold-plated silver. Each amber stone slightly different in tone.',img:`${C}/IMG_1601_xss6rv.jpg`,props:{Stone:'Natural Oval Amber',Metal:'24k Gold-Plated 925',Weight:'1.8g pair',Closure:'Screw backs',Blessing:'Sun Ritual'}},
+  {id:8,name:'Chandelier Amber',cat:'earrings',material:'Natural Amber · 925 Sterling Silver',price:195,badge:'limited',desc:'Long chandelier earrings with three tiers of amber drops in graduating sizes.',img:`${C}/IMG_1600_ohm5pj.jpg`,props:{Stone:'Natural Baltic Amber',Metal:'925 Sterling Silver',Weight:'5.4g pair',Closure:'Lever backs',Blessing:'Full Moon Ritual'}},
+  {id:9,name:'Minimalist Arc Earrings',cat:'earrings',material:'Natural Amber · 925 Sterling Silver',price:135,badge:null,desc:'Thin curved silver arcs with a single amber point — contemporary design.',img:`${C}/IMG_1599_pfi17q.jpg`,props:{Stone:'Natural Drop Amber',Metal:'925 Sterling Silver',Weight:'2.6g pair',Closure:'Push backs',Blessing:'Sacred Spring Ritual'}},
+  {id:10,name:'Sacred Drop Pendant',cat:'pendants',material:'Natural Amber · 925 Sterling Silver',price:165,badge:'bestseller',desc:'A teardrop of luminous Baltic amber suspended in a hand-forged silver setting. Includes 60cm chain.',img:`${C}/IMG_4680_fdqsg2.jpg`,props:{Stone:'Natural Teardrop Amber',Metal:'925 Sterling Silver',Weight:'5.8g',Chain:'60cm 925 Silver',Blessing:'Sacred Spring Ritual'}},
+  {id:11,name:'Bali Sun Pendant',cat:'pendants',material:'Natural Amber · 24k Gold-Plated Silver',price:188,badge:'new',desc:'A radiant round amber disc in 24k gold-plated silver — inspired by the Balinese sun disk.',img:`${C}/IMG_1604_nwnpi4.jpg`,props:{Stone:'Natural Round Amber',Metal:'24k Gold-Plated 925',Weight:'6.2g',Chain:'50cm Gold-Plated',Blessing:'Sun & Moon Ritual'}},
+  {id:12,name:'Forest Spirit Pendant',cat:'pendants',material:'Natural Amber · 925 Sterling Silver',price:155,badge:null,desc:'A raw amber slice preserved in its natural form, framed in sterling silver.',img:`${C}/IMG_4678_p9bv1u.jpg`,props:{Stone:'Natural Raw Amber Slice',Metal:'925 Sterling Silver',Weight:'7.1g',Chain:'55cm 925 Silver',Blessing:'Sacred Spring Ritual'}},
+  {id:13,name:'Lotus Amber Pendant',cat:'pendants',material:'Natural Amber · 925 Sterling Silver',price:172,badge:null,desc:'Amber within a lotus flower — the sacred Balinese symbol of purity.',img:`${C}/IMG_1596_osjyju.jpg`,props:{Stone:'Natural Honey Amber',Metal:'925 Sterling Silver',Weight:'5.3g',Chain:'50cm 925 Silver',Blessing:'Lotus Ritual'}},
+  {id:14,name:'Golden Chain Bracelet',cat:'bracelets',material:'Natural Amber · 925 Sterling Silver',price:195,badge:'bestseller',desc:'An elegant sterling silver chain with five amber stations, each hand-selected for colour harmony.',img:`${C}/IMG_4679_qsb3wr.jpg`,props:{Stone:'Natural Amber ×5',Metal:'925 Sterling Silver',Weight:'8.4g',Length:'16–19cm',Blessing:'Sacred Spring Ritual'}},
+  {id:15,name:'Beaded Amber Bracelet',cat:'bracelets',material:'Natural Amber · 925 Silver Clasp',price:148,badge:'new',desc:'Strung amber beads in graduating honey tones with a sterling silver lobster clasp.',img:`${C}/IMG_1602_gv1n4j.jpg`,props:{Stone:'Natural Amber Beads',Metal:'925 Silver Clasp',Weight:'11.2g',Length:'17cm',Blessing:'Sun Ritual'}},
+  {id:16,name:'Cuff of Light',cat:'bracelets',material:'Natural Amber · 925 Sterling Silver',price:285,badge:'limited',desc:'A wide sterling silver cuff set with three graduated amber cabochons.',img:`${C}/IMG_1588_xvhp3n.jpg`,props:{Stone:'Natural Amber ×3',Metal:'925 Sterling Silver',Weight:'22g',Size:'One size',Blessing:'Full Moon Ritual'}},
+  {id:17,name:'Whisper Bangle',cat:'bracelets',material:'Natural Amber · 24k Gold-Plated Silver',price:165,badge:null,desc:'A slender 24k gold-plated bangle with a single embedded amber teardrop. Stackable.',img:`${C}/IMG_1598_sj0k9g.jpg`,props:{Stone:'Natural Teardrop Amber',Metal:'24k Gold-Plated 925',Weight:'9.6g',Size:'18cm',Blessing:'Sacred Spring Ritual'}},
+  {id:18,name:'Amber Collar Necklace',cat:'necklaces',material:'Natural Amber · 925 Sterling Silver',price:325,badge:'new',desc:'A statement collar with seven matched amber cabochons in a graduated arc. The crown jewel.',img:`${C}/IMG_1592_rsurwj.jpg`,props:{Stone:'Natural Amber ×7',Metal:'925 Sterling Silver',Weight:'28g',Length:'40cm + 5cm',Blessing:'Full Moon Ritual'}},
+  {id:19,name:'Layering Chain',cat:'necklaces',material:'Natural Amber · 925 Sterling Silver',price:142,badge:null,desc:'A fine sterling silver chain with a single floating amber bead — perfect alone or layered.',img:`${C}/IMG_1589_bhh8td.jpg`,props:{Stone:'Natural Amber Bead',Metal:'925 Sterling Silver',Weight:'4.2g',Length:'45cm',Blessing:'Sacred Spring Ritual'}},
+  {id:20,name:'Bali Temple Necklace',cat:'necklaces',material:'Natural Amber · 24k Gold-Plated Silver',price:255,badge:'bestseller',desc:'Inspired by Balinese temples — cascading amber drops and gold-plated silver links.',img:`${C}/IMG_1595_c4tomi.jpg`,props:{Stone:'Natural Amber Drops ×5',Metal:'24k Gold-Plated 925',Weight:'14g',Length:'42cm',Blessing:'Sun & Moon Ritual'}},
+  {id:21,name:'Infinity Amber Rope',cat:'necklaces',material:'Natural Amber · 925 Sterling Silver',price:188,badge:null,desc:'A 90cm rope of hand-knotted silk with amber stations.',img:`${C}/IMG_1586_kll0hc.jpg`,props:{Stone:'Natural Amber ×8',Metal:'925 Silver Clasps',Weight:'18g',Length:'90cm',Blessing:'Sacred Spring Ritual'}},
+  {id:22,name:'Amber & Moonstone Ring',cat:'rings',material:'Natural Amber · Moonstone · 925 Silver',price:228,badge:'new',desc:'A rare pairing — warm Baltic amber meets cool blue moonstone in a 925 silver setting.',img:`${C}/IMG_1590_iiy4lq.jpg`,props:{Stone:'Amber + Moonstone',Metal:'925 Sterling Silver',Weight:'4.8g',Size:'XS–XL',Blessing:'Sun & Moon Ritual'}},
+  {id:23,name:'Ear Climbers',cat:'earrings',material:'Natural Amber · 925 Sterling Silver',price:158,badge:'new',desc:'Modern ear climbers tracing the curve of the ear with a trail of tiny amber points.',img:`${C}/IMG_1591_xxxk4h.jpg`,props:{Stone:'Natural Amber Points',Metal:'925 Sterling Silver',Weight:'2.1g pair',Closure:'Push backs',Blessing:'Sacred Spring Ritual'}},
+  {id:24,name:'Prayer Bead Bracelet',cat:'bracelets',material:'Natural Amber · 925 Sterling Silver',price:175,badge:null,desc:'108 micro amber beads on elastic silk — a meditation bracelet honouring Balinese tradition.',img:`${C}/IMG_1584_xaqoks.jpg`,props:{Stone:'Natural Amber Micro Beads',Metal:'925 Silver Spacers',Weight:'16g',Length:'Elastic one size',Blessing:'Ceremonial Blessing'}},
+];
+
+// ── TRANSLATIONS ──────────────────────────────────────────────────────────
+const TR={
+  en:{nav_collections:'Collections',nav_jewelry:'Jewelry',nav_journal:'Journal',nav_contact:'Contact',hero_tag:'Bali · New Collection 2026',hero_title:'Amber from<br>the <em>Ancient</em><br>World',hero_desc:'Natural Baltic amber, millions of years in the making. Handcrafted in Bali with sacred intention.',hero_cta:'Explore Collections',hero_cta2:'All Jewelry',tick1:'Natural Baltic Amber',tick2:'Handcrafted in Bali',tick3:'925 Sterling Silver',tick4:'Sacred Ritual Blessing',tick5:'Free Gift Wrapping',coll_lbl:'Our Universe',coll_title:'Collections',coll_all:'View all pieces',cat_rings:'Collection',cat_earrings:'Collection',cat_pendants:'Collection',cat_bracelets:'Collection',col_rings:'Rings',col_earrings:'Earrings',col_pendants:'Pendants',col_bracelets:'Bracelets',discover:'Discover',ed_lbl:'The Craft',ed_title:'Born from<br><em>Ancient Earth</em>',ed_body1:'Amber is not merely stone — it is time crystallised. Forty million years of forests, insects, light and rain preserved in a single stone.',ed_body2:'Our artisans in Bali spend lifetimes learning to honour it. Every piece passes through water, fire and prayer before it reaches you.',stat1:'Years of amber',stat2:'Unique pieces',stat3:'Languages',tryon_lbl:'New Feature',tryon_title:'Try On<br><em>Before You Buy</em>',tryon_desc:'Upload your photo and see how each AMBERRA piece looks on you.',tryon_cta:'Upload Your Photo',tryon_badge:'AR Try-On',tryon_hint:'Upload photo to begin',quiz_title:'Find My Amber',quiz_sub:'Answer 5 questions — discover your perfect piece',quiz_cta:'Start Quiz',cat_lbl:'The Collection',cat_title:'All Jewelry',f_all:'All',f_rings:'Rings',f_earrings:'Earrings',f_pendants:'Pendants',f_bracelets:'Bracelets',f_necklaces:'Necklaces',feat_lbl:'Piece of the Season',feat_title:'Amber<br><em>Collar Necklace</em>',f1:'Seven matched amber cabochons, graduated arc',f2:'Handcrafted 925 sterling silver',f3:'Full moon ritual blessing',f4:'Certificate of authenticity included',f5:'Free gift wrapping · Worldwide shipping',req_btn:'Request This Piece',details_btn:'View Details',j_lbl:'Insights',j_title:'The Amber <em>Journal</em>',j_all:'View all articles',j1_date:'March 2026',j1_title:'How Amber Carries Energy: A Balinese Perspective',j1_body:'In Bali, amber is believed to carry the stored light of the sun itself.',j2_date:'February 2026',j2_title:'Caring for Your Amber: A Guide to Eternal Beauty',j2_body:'Natural amber is a living material that responds to light, touch, and care.',j3_date:'January 2026',j3_title:'The Journey from Baltic Forests to the Shores of Bali',j3_body:'From the forests of Lithuania to the workshops of Ubud — the remarkable journey.',c_lbl:'Private Appointments',c_title:'Request a<br><em>Personal Consultation</em>',c_body:'Our team in Bali will personally guide you to the perfect piece.',fc_coll:'Collections',fc_srv:'Services',fc_contact:'Contact',req_title:'Request a Piece',f_piece:'Piece of Interest',f_name:'Your Name',f_email:'Email',f_phone:'WhatsApp (optional)',f_msg:'Message',req_send:'Send Request',req_thanks:'Thank you ✦',req_thanks_sub:'We will be in touch within 24 hours. Warm regards from Bali.',qm_title:'Find My Amber',qm_sub:'5 questions · 2 minutes · Perfect match',q_next:'Next',ep_title:'A Gift from Amberra',ep_sub:'Join our world — receive 10% off your first order',ep_ph:'Your email address',ep_btn:'Claim Offer',ep_note:'No spam, ever. Unsubscribe anytime.',ep_thanks:'✦ Welcome to Amberra ✦',ep_thanks_sub:'Your 10% code is on its way',chat_lbl:'Ask Us Anything',chat_status:'Online · Bali, Indonesia',chat_welcome:'Hello! I\'m your personal Amberra guide. How can I help you find the perfect piece today?',cq1:'Ring sizes',cq2:'Shipping info',cq3:'Care guide',cq4:'Gift ideas',chat_ph:'Ask anything...',cont_btn:'Continue Browsing'},
+  ru:{nav_collections:'Коллекции',nav_jewelry:'Украшения',nav_journal:'Журнал',nav_contact:'Контакт',hero_tag:'Бали · Новая коллекция 2026',hero_title:'Янтарь из<br><em>Древнего</em><br>Мира',hero_desc:'Натуральный балтийский янтарь, созданный миллионы лет назад. Изготовлен вручную на Бали.',hero_cta:'Смотреть коллекции',hero_cta2:'Все украшения',tick1:'Натуральный балтийский янтарь',tick2:'Изготовлено на Бали',tick3:'Серебро 925 пробы',tick4:'Балийское благословение',tick5:'Бесплатная подарочная упаковка',coll_lbl:'Наш мир',coll_title:'Коллекции',coll_all:'Все украшения',cat_rings:'Коллекция',col_rings:'Кольца',col_earrings:'Серьги',col_pendants:'Подвески',col_bracelets:'Браслеты',discover:'Открыть',ed_lbl:'Наше мастерство',ed_title:'Рождён из<br><em>Древней Земли</em>',ed_body1:'Янтарь — это не просто камень, это кристаллизованное время. Сорок миллионов лет лесов, насекомых, света и дождя в одном камне.',ed_body2:'Наши мастера на Бали всю жизнь учатся чтить его. Каждое украшение проходит через воду, огонь и молитву прежде чем попасть к вам.',stat1:'Лет янтаря',stat2:'Уникальных изделий',stat3:'Языков',tryon_lbl:'Новая функция',tryon_title:'Примерьте<br><em>до покупки</em>',tryon_desc:'Загрузите своё фото и посмотрите как каждое украшение AMBERRA выглядит на вас.',tryon_cta:'Загрузить фото',tryon_badge:'AR Примерка',tryon_hint:'Загрузите фото чтобы начать',quiz_title:'Найди свой янтарь',quiz_sub:'5 вопросов — идеальное украшение',quiz_cta:'Начать квиз',cat_lbl:'Коллекция',cat_title:'Все украшения',f_all:'Все',f_rings:'Кольца',f_earrings:'Серьги',f_pendants:'Подвески',f_bracelets:'Браслеты',f_necklaces:'Ожерелья',feat_lbl:'Украшение сезона',feat_title:'Янтарное<br><em>Колье-воротник</em>',f1:'Семь подобранных янтарных кабошонов в ступенчатой дуге',f2:'Серебро 925 пробы ручной работы',f3:'Ритуал полнолуния',f4:'Сертификат подлинности',f5:'Бесплатная подарочная упаковка · Доставка по всему миру',req_btn:'Запросить это украшение',details_btn:'Подробнее',j_lbl:'Вдохновение',j_title:'Янтарный <em>Журнал</em>',j_all:'Все статьи',j1_date:'Март 2026',j1_title:'Как янтарь несёт энергию: балийская перспектива',j1_body:'На Бали янтарь считается хранилищем солнечного света.',j2_date:'Февраль 2026',j2_title:'Уход за янтарём: руководство к вечной красоте',j2_body:'Натуральный янтарь — живой материал, реагирующий на свет и прикосновение.',j3_date:'Январь 2026',j3_title:'Путь от балтийских лесов до берегов Бали',j3_body:'От лесов Литвы до мастерских Убуда — удивительный путь каждого камня.',c_lbl:'Личные встречи',c_title:'Запросить<br><em>Консультацию</em>',c_body:'Наша команда на Бали лично поможет вам выбрать идеальное украшение.',fc_coll:'Коллекции',fc_srv:'Услуги',fc_contact:'Контакт',req_title:'Запрос украшения',f_piece:'Интересующее украшение',f_name:'Ваше имя',f_email:'Email',f_phone:'WhatsApp (необязательно)',f_msg:'Сообщение',req_send:'Отправить',req_thanks:'Благодарим вас ✦',req_thanks_sub:'Мы свяжемся с вами в течение 24 часов. С теплом из Бали.',qm_title:'Найди свой янтарь',qm_sub:'5 вопросов · 2 минуты · Идеальный выбор',q_next:'Далее',ep_title:'Подарок от Amberra',ep_sub:'Присоединяйтесь — 10% скидка на первый заказ',ep_ph:'Ваш email',ep_btn:'Получить скидку',ep_note:'Без спама. Отписка в любое время.',ep_thanks:'✦ Добро пожаловать в Amberra ✦',ep_thanks_sub:'Ваш промокод уже на пути',chat_lbl:'Задать вопрос',chat_status:'Онлайн · Бали, Индонезия',chat_welcome:'Здравствуйте! Я ваш личный гид по AMBERRA. Чем могу помочь?',cq1:'Размеры колец',cq2:'Доставка',cq3:'Уход',cq4:'Подарочные идеи',chat_ph:'Задайте вопрос...',cont_btn:'Продолжить покупки',cat_earrings:'Коллекция',cat_pendants:'Коллекция',cat_bracelets:'Коллекция'},
+  zh:{nav_collections:'系列',nav_jewelry:'珠宝',nav_journal:'日志',nav_contact:'联系',hero_tag:'巴厘岛 · 2026新系列',hero_title:'来自<br><em>远古</em><br>的琥珀',hero_desc:'天然波罗的海琥珀，历经数百万年。在巴厘岛以神圣之心手工制作。',hero_cta:'探索系列',hero_cta2:'全部珠宝',coll_lbl:'我们的世界',coll_title:'系列',coll_all:'查看全部',col_rings:'戒指',col_earrings:'耳环',col_pendants:'吊坠',col_bracelets:'手链',discover:'发现',tryon_lbl:'全新功能',tryon_title:'购买前<br><em>先试戴</em>',tryon_cta:'上传照片',tryon_badge:'AR试戴',cat_title:'全部珠宝',f_all:'全部',f_rings:'戒指',f_earrings:'耳环',f_pendants:'吊坠',f_bracelets:'手链',f_necklaces:'项链',req_btn:'申请此款',details_btn:'查看详情',chat_lbl:'咨询我们',chat_welcome:'您好！我是您的AMBERRA专属顾问。今天有什么可以帮助您？',ep_title:'Amberra的礼物',ep_sub:'加入我们 — 首单享九折优惠',ep_btn:'领取优惠',ep_ph:'您的邮箱'},
+  id:{nav_collections:'Koleksi',nav_jewelry:'Perhiasan',nav_journal:'Jurnal',nav_contact:'Kontak',hero_tag:'Bali · Koleksi Baru 2026',hero_title:'Amber dari<br><em>Dunia</em><br>Kuno',hero_desc:'Amber Baltik alami, terbentuk jutaan tahun. Dibuat dengan tangan di Bali dengan niat suci.',hero_cta:'Jelajahi Koleksi',hero_cta2:'Semua Perhiasan',coll_lbl:'Dunia Kami',coll_title:'Koleksi',coll_all:'Lihat semua',col_rings:'Cincin',col_earrings:'Anting',col_pendants:'Liontin',col_bracelets:'Gelang',discover:'Temukan',tryon_lbl:'Fitur Baru',tryon_title:'Coba<br><em>Sebelum Membeli</em>',tryon_cta:'Unggah Foto',tryon_badge:'AR Coba',cat_title:'Semua Perhiasan',f_all:'Semua',f_rings:'Cincin',f_earrings:'Anting',f_pendants:'Liontin',f_bracelets:'Gelang',f_necklaces:'Kalung',req_btn:'Minta Perhiasan Ini',details_btn:'Lihat Detail',chat_lbl:'Tanya Kami',chat_welcome:'Halo! Saya pemandu Amberra pribadi Anda. Ada yang bisa saya bantu?',ep_title:'Hadiah dari Amberra',ep_sub:'Bergabunglah — diskon 10% untuk pesanan pertama',ep_btn:'Klaim Penawaran',ep_ph:'Alamat email Anda'},
+  fr:{nav_collections:'Collections',nav_jewelry:'Bijoux',nav_journal:'Journal',nav_contact:'Contact',hero_tag:'Bali · Nouvelle Collection 2026',hero_title:'L\'Ambre de<br><em>l\'Ancien</em><br>Monde',hero_cta:'Explorer',hero_cta2:'Tous les Bijoux',col_rings:'Bagues',col_earrings:'Boucles d\'oreilles',col_pendants:'Pendentifs',col_bracelets:'Bracelets',discover:'Découvrir',tryon_lbl:'Nouvelle Fonctionnalité',tryon_title:'Essayez<br><em>Avant d\'Acheter</em>',tryon_cta:'Télécharger Photo',f_all:'Tout',f_rings:'Bagues',f_earrings:'Boucles',f_pendants:'Pendentifs',f_bracelets:'Bracelets',f_necklaces:'Colliers',req_btn:'Demander cette Pièce',details_btn:'Voir Détails',chat_lbl:'Nous Contacter',chat_welcome:'Bonjour! Je suis votre guide Amberra. Comment puis-je vous aider?',ep_title:'Un Cadeau d\'Amberra',ep_sub:'Rejoignez-nous — 10% de réduction sur votre première commande',ep_btn:'Obtenir l\'Offre',ep_ph:'Votre email'},
+  de:{col_rings:'Ringe',col_earrings:'Ohrringe',col_pendants:'Anhänger',col_bracelets:'Armbänder',discover:'Entdecken',f_all:'Alle',f_rings:'Ringe',f_earrings:'Ohrringe',f_pendants:'Anhänger',f_bracelets:'Armbänder',f_necklaces:'Halsketten',req_btn:'Dieses Stück Anfragen',chat_welcome:'Guten Tag! Ich bin Ihr Amberra-Guide. Wie kann ich Ihnen helfen?'},
+  es:{col_rings:'Anillos',col_earrings:'Pendientes',col_pendants:'Colgantes',col_bracelets:'Pulseras',discover:'Descubrir',f_all:'Todos',req_btn:'Solicitar Esta Pieza',chat_welcome:'¡Hola! Soy tu guía personal de Amberra. ¿En qué puedo ayudarte?'},
+  ja:{col_rings:'リング',col_earrings:'イヤリング',col_pendants:'ペンダント',col_bracelets:'ブレスレット',discover:'探索',f_all:'すべて',req_btn:'この作品をリクエスト',chat_welcome:'こんにちは！AMBERRAのパーソナルガイドです。何かお手伝いできますか？'},
+  ko:{col_rings:'반지',col_earrings:'귀걸이',col_pendants:'펜던트',col_bracelets:'팔찌',discover:'탐색',f_all:'전체',req_btn:'이 작품 문의',chat_welcome:'안녕하세요! AMBERRA 개인 가이드입니다. 도움이 필요하신가요?'},
+  ar:{col_rings:'خواتم',col_earrings:'أقراط',col_pendants:'قلائد',col_bracelets:'أساور',discover:'اكتشف',f_all:'الكل',req_btn:'طلب هذه القطعة',chat_welcome:'مرحباً! أنا مرشدك الشخصي في أمبيرا. كيف يمكنني مساعدتك؟'},
+};
+
+let currentLang='en';
+function setLang(lang){
+  currentLang=lang;
+  const t=TR[lang]||TR.en;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.dataset.i18n;
+    const v=t[k]||TR.en[k];
+    if(v!==undefined) el.innerHTML=v;
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
+    const k=el.dataset.i18nPh;
+    const v=t[k]||TR.en[k];
+    if(v!==undefined) el.placeholder=v;
+  });
+  document.querySelectorAll('.lb').forEach(b=>b.classList.toggle('al',b.dataset.lang===lang));
+  document.getElementById('lang-cur-txt').textContent=lang.toUpperCase();
+  document.documentElement.setAttribute('dir',lang==='ar'?'rtl':'ltr');
+  closeLang();
+  renderProducts();
+}
+function toggleLang(){document.getElementById('lang-drop').classList.toggle('open');}
+function closeLang(){document.getElementById('lang-drop').classList.remove('open');}
+document.addEventListener('click',e=>{if(!e.target.closest('#lang-sw'))closeLang();});
+
+
+// ── PRODUCT TRANSLATIONS ───────────────────────────────────────────────────
+const PROD_I18N={1:{name:{en:"Baltic Sunrise Ring",ru:"Кольцо Балтийский Рассвет",zh:"波罗的海日出戒指",id:"Cincin Fajar Baltik",fr:"Bague Lever de Soleil Baltique",de:"Baltischer Sonnenaufgang Ring",es:"Anillo Amanecer Báltico",ja:"バルティックサンライズリング",ko:"발틱 선라이즈 링",ar:"خاتم شروق البلطيق",it:"Anello Alba Baltica",tr:"Baltık Gündoğumu Yüzüğü",pt:"Anel Nascer do Sol Báltico",ka:"ბალტიური გარიჟრაჟი ბეჭედი"},desc:{en:"A radiant honey-amber cabochon set in hand-carved 925 sterling silver.",ru:"Сияющий кабошон из медового янтаря в оправе из серебра 925 пробы ручной работы.",zh:"在手工雕刻925纯银中镶嵌的辉煌蜂蜜琥珀凸圆形宝石。",id:"Kabochon amber madu yang bersinar dalam perak sterling 925 yang diukir tangan.",fr:"Un cabochon d'ambre miel radieux serti dans de l'argent sterling 925 sculpté à la main.",de:"Ein strahlender Honigbernstein-Cabochon in handgeschnitztem 925er Sterlingsilber.",es:"Un cabujón de ámbar miel radiante engastado en plata de ley 925 tallada a mano.",ja:"手彫り925スターリングシルバーにセットされた輝くハニーアンバーカボション。",ko:"수공예 925 스털링 실버에 세팅된 빛나는 허니 앰버 카보숑.",ar:"كابوشون من العنبر العسلي المتألق في إطار من الفضة الإسترليني 925 المنحوت يدويًا."},material:{en:"Natural Baltic Amber · 925 Sterling Silver",ru:"Натуральный балтийский янтарь · Серебро 925",zh:"天然波罗的海琥珀 · 925纯银",id:"Amber Baltik Alami · Perak 925",fr:"Ambre Baltique Naturel · Argent 925",de:"Natürlicher Baltischer Bernstein · 925 Silber",es:"Ámbar Báltico Natural · Plata 925",ja:"天然バルティック琥珀 · 925シルバー",ko:"천연 발틱 앰버 · 925 실버",ar:"عنبر بلطيقي طبيعي · فضة 925"}},2:{name:{en:"Golden Resin Ring",ru:"Кольцо Золотая Смола",zh:"金色树脂戒指",id:"Cincin Resin Emas",fr:"Bague Résine Dorée",de:"Goldener Harzring",es:"Anillo Resina Dorada",ja:"ゴールデンレジンリング",ko:"골든 레진 링",ar:"خاتم الراتنج الذهبي"},desc:{en:"Deep cognac amber in 24k gold-plated sterling silver.",ru:"Коньячный янтарь в оправе из позолоченного серебра 24к.",zh:"深邃干邑琥珀镶嵌在24k镀金纯银中。",id:"Amber cognac dalam perak sterling berlapis emas 24k.",fr:"Ambre cognac profond en argent sterling plaqué or 24k.",de:"Tiefer Cognacbernstein in 24k vergoldetem Sterlingsilber.",es:"Ámbar coñac profundo en plata de ley bañada en oro 24k."},material:{en:"Natural Amber · 24k Gold-Plated Silver",ru:"Натуральный янтарь · Позолота 24к",zh:"天然琥珀 · 24k镀金银"}},3:{name:{en:"Bali Moon Ring",ru:"Кольцо Балийская Луна",zh:"巴厘月亮戒指",id:"Cincin Bulan Bali",fr:"Bague Lune de Bali",de:"Bali Mondring",es:"Anillo Luna de Bali",ja:"バリムーンリング",ko:"발리 문 링",ar:"خاتم قمر بالي"},desc:{en:"Slim silver band with a delicate oval amber.",ru:"Тонкая серебряная шинка с нежным овальным янтарём.",zh:"细银圈配精致椭圆琥珀。",id:"Band perak ramping dengan amber oval.",fr:"Anneau en argent fin avec un ambre ovale délicat.",de:"Schlankes Silberband mit zartem ovalem Bernstein.",es:"Banda de plata fina con un delicado ámbar oval."},material:{en:"Natural Amber · 925 Sterling Silver",ru:"Натуральный янтарь · Серебро 925",zh:"天然琥珀 · 925纯银"}},4:{name:{en:"Serpent Wrap Ring",ru:"Кольцо Обвивающийся Змей",zh:"蛇缠戒指",id:"Cincin Ular Melilit",fr:"Bague Serpent Enroulé",de:"Schlangenwindungsring",es:"Anillo Serpiente Enrollada",ja:"サーペントラップリング",ko:"서펜트 랩 링",ar:"خاتم اللف الثعباني"},desc:{en:"Bold serpentine band in oxidized silver with translucent cherry amber.",ru:"Змеевидное кольцо из оксидированного серебра с вишнёвым янтарём.",zh:"大胆蛇形氧化银圈配透明樱桃琥珀。",id:"Band ular dalam perak teroksidasi dengan amber ceri.",fr:"Large anneau serpentin en argent oxydé avec ambre cerise translucide.",de:"Kühnes Schlangenband aus oxydiertem Silber mit Kirschbernstein.",es:"Banda serpentina en plata oxidada con ámbar cereza translúcido."},material:{en:"Natural Amber · Oxidized Silver",ru:"Натуральный янтарь · Оксидированное серебро",zh:"天然琥珀 · 氧化银"}},5:{name:{en:"Honey Drop Ring",ru:"Кольцо Медовая Капля",zh:"蜂蜜滴戒指",id:"Cincin Tetes Madu",fr:"Bague Goutte de Miel",de:"Honigtropfenring",es:"Anillo Gota de Miel",ja:"ハニードロップリング",ko:"허니 드롭 링",ar:"خاتم قطرة العسل"},desc:{en:"A perfect honey drop of Baltic amber in a minimal bezel setting.",ru:"Идеальная капля медового янтаря в минималистичной рубашке.",zh:"完美的蜂蜜波罗的海琥珀滴，简约镶嵌。",id:"Tetes madu amber Baltik dalam bezel minimal.",fr:"Une goutte parfaite d'ambre miel baltique dans un sertissage minimal.",de:"Ein perfekter Honigtropfen aus baltischem Bernstein in minimaler Fassung.",es:"Una perfecta gota de ámbar báltico miel en un engaste mínimo."},material:{en:"Natural Baltic Amber · 925 Sterling Silver",ru:"Натуральный балтийский янтарь · Серебро 925",zh:"天然波罗的海琥珀 · 925纯银"}},6:{name:{en:"Bali Dusk Drops",ru:"Серьги Балийские Сумерки",zh:"巴厘黄昏耳坠",id:"Anting Senja Bali",fr:"Boucles Crépuscule de Bali",de:"Bali Abenddämmerung Ohrringe",es:"Pendientes Crepúsculo de Bali",ja:"バリダスクドロップイヤリング",ko:"발리 황혼 드롭 귀걸이",ar:"أقراط غسق بالي"},desc:{en:"Graceful drop earrings with faceted honey amber in delicate sterling silver.",ru:"Изящные серьги-капли с гранёным медовым янтарём в нежном серебре.",zh:"优雅的滴形耳环，镶有刻面蜂蜜琥珀。",id:"Anting drop anggun dengan amber madu berfaset.",fr:"Élégantes boucles pendantes avec ambre miel facetté.",de:"Anmutige Ohrhänger mit facettiertem Honigbernstein.",es:"Elegantes pendientes de gota con ámbar miel facetado."},material:{en:"Natural Amber · 925 Sterling Silver",ru:"Натуральный янтарь · Серебро 925",zh:"天然琥珀 · 925纯银"}},7:{name:{en:"Ancient Light Studs",ru:"Пусеты Древний Свет",zh:"古光耳钉",id:"Anting Cahaya Kuno",fr:"Clous Lumière Ancienne",de:"Uraltes Licht Ohrstecker",es:"Pendientes Luz Antigua",ja:"エンシェントライトスタッド",ko:"고대 빛 스터드",ar:"أقراط الضوء القديم"},desc:{en:"Compact oval studs in gold-plated silver. Each amber slightly different in tone.",ru:"Компактные овальные пусеты в позолоченном серебре. Каждый янтарь уникален.",zh:"紧凑椭圆耳钉，镀金银，每块琥珀色调各异。"},material:{en:"Natural Amber · 24k Gold-Plated Silver",ru:"Натуральный янтарь · Позолота 24к",zh:"天然琥珀 · 24k镀金银"}},8:{name:{en:"Chandelier Amber",ru:"Серьги Янтарная Люстра",zh:"吊灯琥珀耳环",id:"Anting Chandelier Amber",fr:"Boucles Lustre en Ambre",de:"Kronleuchter Bernstein Ohrringe",es:"Pendientes Araña de Ámbar",ja:"シャンデリアアンバーイヤリング",ko:"샹들리에 앰버 귀걸이",ar:"أقراط ثريا العنبر"},desc:{en:"Long chandelier earrings with three tiers of amber drops in graduating sizes.",ru:"Длинные серьги-люстры с тремя ярусами янтарных капель.",zh:"长吊灯耳环，三层渐变大小的琥珀滴。"},material:{en:"Natural Amber · 925 Sterling Silver",ru:"Натуральный янтарь · Серебро 925",zh:"天然琥珀 · 925纯银"}},9:{name:{en:"Minimalist Arc Earrings",ru:"Серьги Минималистичная Дуга",zh:"极简弧形耳环",id:"Anting Busur Minimalis",fr:"Boucles Arc Minimaliste",de:"Minimalistischer Bogen Ohrringe",es:"Pendientes Arco Minimalista",ja:"ミニマリストアークイヤリング",ko:"미니멀리스트 아크 귀걸이",ar:"أقراط القوس البسيط"},desc:{en:"Thin curved silver arcs with a single amber point — contemporary design.",ru:"Тонкие изогнутые серебряные дуги с одной точкой янтаря.",zh:"细弯银弧，单颗琥珀点——现代设计。"},material:{en:"Natural Amber · 925 Sterling Silver",ru:"Натуральный янтарь · Серебро 925",zh:"天然琥珀 · 925纯银"}},10:{name:{en:"Sacred Drop Pendant",ru:"Кулон Священная Капля",zh:"圣洁滴形吊坠",id:"Liontin Tetes Suci",fr:"Pendentif Goutte Sacrée",de:"Heiliger Tropfen Anhänger",es:"Colgante Gota Sagrada",ja:"セイクリッドドロップペンダント",ko:"성스러운 드롭 펜던트",ar:"معلقة القطرة المقدسة"},desc:{en:"A teardrop of luminous Baltic amber in a hand-forged silver setting. Includes 60cm chain.",ru:"Слеза светящегося балтийского янтаря в оправе ручной ковки. Цепочка 60 см.",zh:"发光波罗的海琥珀泪滴，手工锻造银框，含60厘米链。"},material:{en:"Natural Amber · 925 Sterling Silver",ru:"Натуральный янтарь · Серебро 925",zh:"天然琥珀 · 925纯银"}},11:{name:{en:"Bali Sun Pendant",ru:"Кулон Балийское Солнце",zh:"巴厘太阳吊坠",id:"Liontin Matahari Bali",fr:"Pendentif Soleil de Bali",de:"Bali Sonnen Anhänger",es:"Colgante Sol de Bali",ja:"バリサンペンダント",ko:"발리 태양 펜던트",ar:"معلقة شمس بالي"},desc:{en:"A radiant round amber disc in 24k gold-plated silver.",ru:"Сияющий круглый янтарный диск в позолоченном серебре.",zh:"辉煌圆形琥珀盘，24k镀金银。"},material:{en:"Natural Amber · 24k Gold-Plated Silver",ru:"Натуральный янтарь · Позолота 24к",zh:"天然琥珀 · 24k镀金银"}},12:{name:{en:"Forest Spirit Pendant",ru:"Кулон Дух Леса",zh:"森林精灵吊坠",id:"Liontin Roh Hutan",fr:"Pendentif Esprit de la Forêt",de:"Waldgeist Anhänger",es:"Colgante Espíritu del Bosque",ja:"フォレストスピリットペンダント",ko:"숲의 정령 펜던트",ar:"معلقة روح الغابة"},desc:{en:"A raw amber slice preserved in its natural form, framed in sterling silver.",ru:"Срез необработанного янтаря в естественной форме, обрамлённый в серебро.",zh:"原始琥珀切片保留自然形态，纯银框架。"},material:{en:"Natural Amber · 925 Sterling Silver",ru:"Натуральный янтарь · Серебро 925",zh:"天然琥珀 · 925纯银"}},13:{name:{en:"Lotus Amber Pendant",ru:"Кулон Янтарный Лотос",zh:"莲花琥珀吊坠",id:"Liontin Amber Lotus",fr:"Pendentif Ambre Lotus",de:"Lotus Bernstein Anhänger",es:"Colgante Ámbar Loto",ja:"ロータスアンバーペンダント",ko:"로터스 앰버 펜던트",ar:"معلقة لوتس العنبر"},desc:{en:"Amber within a lotus flower — the sacred Balinese symbol of purity.",ru:"Янтарь в цветке лотоса — священный балийский символ чистоты.",zh:"琥珀镶嵌莲花——巴厘岛纯洁的神圣象征。"},material:{en:"Natural Amber · 925 Sterling Silver",ru:"Натуральный янтарь · Серебро 925",zh:"天然琥珀 · 925纯银"}},14:{name:{en:"Golden Chain Bracelet",ru:"Браслет Золотая Цепь",zh:"金链手链",id:"Gelang Rantai Emas",fr:"Bracelet Chaîne Dorée",de:"Goldketten Armband",es:"Pulsera Cadena Dorada",ja:"ゴールデンチェーンブレスレット",ko:"골든 체인 팔찌",ar:"سوار السلسلة الذهبية"},desc:{en:"An elegant sterling silver chain with five amber stations, each hand-selected.",ru:"Элегантная цепочка из серебра с пятью янтарными вставками, подобранными вручную.",zh:"优雅纯银链，五个琥珀站，每个手工挑选。"},material:{en:"Natural Amber · 925 Sterling Silver",ru:"Натуральный янтарь · Серебро 925",zh:"天然琥珀 · 925纯银"}},15:{name:{en:"Beaded Amber Bracelet",ru:"Браслет Янтарные Бусины",zh:"琥珀串珠手链",id:"Gelang Manik Amber",fr:"Bracelet Perles d'Ambre",de:"Bernstein Perlenarmband",es:"Pulsera de Perlas de Ámbar",ja:"ビーズアンバーブレスレット",ko:"비즈 앰버 팔찌",ar:"سوار خرز العنبر"},desc:{en:"Strung amber beads in graduating honey tones with a sterling silver clasp.",ru:"Нанизанные янтарные бусины в тонах мёда с серебряным карабином.",zh:"渐变蜂蜜色调琥珀串珠，纯银龙虾扣。"},material:{en:"Natural Amber · 925 Silver Clasp",ru:"Натуральный янтарь · Серебро 925",zh:"天然琥珀 · 925银扣"}},16:{name:{en:"Cuff of Light",ru:"Браслет Свет",zh:"光芒袖扣手镯",id:"Manset Cahaya",fr:"Manchette de Lumière",de:"Manschette des Lichts",es:"Pulsera de Luz",ja:"カフオブライト",ko:"빛의 커프",ar:"سوار الضوء"},desc:{en:"A wide sterling silver cuff set with three graduated amber cabochons.",ru:"Широкий серебряный браслет-манжет с тремя янтарными кабошонами.",zh:"宽纯银袖扣，镶有三块渐变琥珀凸圆宝石。"},material:{en:"Natural Amber · 925 Sterling Silver",ru:"Натуральный янтарь · Серебро 925",zh:"天然琥珀 · 925纯银"}},17:{name:{en:"Whisper Bangle",ru:"Браслет Шёпот",zh:"低语手镯",id:"Gelang Bisikan",fr:"Jonc Murmure",de:"Flüsterndes Armreif",es:"Brazalete Susurro",ja:"ウィスパーバングル",ko:"위스퍼 뱅글",ar:"سوار الهمس"},desc:{en:"A slender 24k gold-plated bangle with a single embedded amber teardrop.",ru:"Тонкий позолоченный браслет с янтарной каплей.",zh:"细24k镀金手镯，单颗镶嵌琥珀泪滴。"},material:{en:"Natural Amber · 24k Gold-Plated Silver",ru:"Натуральный янтарь · Позолота 24к",zh:"天然琥珀 · 24k镀金银"}},18:{name:{en:"Amber Collar Necklace",ru:"Ожерелье-Воротник",zh:"琥珀领圈项链",id:"Kalung Kerah Amber",fr:"Collier Col en Ambre",de:"Bernstein Kragenhalskette",es:"Collar Cuello de Ámbar",ja:"アンバーカラーネックレス",ko:"앰버 칼라 목걸이",ar:"عقد طوق العنبر"},desc:{en:"A statement collar with seven matched amber cabochons. The crown jewel.",ru:"Эффектное колье-воротник с семью подобранными янтарными кабошонами. Королевское украшение.",zh:"声明领圈，七颗相匹配的琥珀凸圆宝石。皇冠珠宝。"},material:{en:"Natural Amber · 925 Sterling Silver",ru:"Натуральный янтарь · Серебро 925",zh:"天然琥珀 · 925纯银"}},19:{name:{en:"Layering Chain",ru:"Цепочка для Наслоения",zh:"叠搭链",id:"Rantai Layering",fr:"Chaîne Superposition",de:"Layering Kette",es:"Cadena para Combinar",ja:"レイヤリングチェーン",ko:"레이어링 체인",ar:"سلسلة التطبيق"},desc:{en:"A fine sterling silver chain with a single floating amber bead.",ru:"Тонкая серебряная цепочка с плавающей янтарной бусиной.",zh:"细纯银链，单颗浮动琥珀珠。"},material:{en:"Natural Amber · 925 Sterling Silver",ru:"Натуральный янтарь · Серебро 925",zh:"天然琥珀 · 925纯银"}},20:{name:{en:"Bali Temple Necklace",ru:"Ожерелье Балийский Храм",zh:"巴厘庙宇项链",id:"Kalung Pura Bali",fr:"Collier Temple de Bali",de:"Bali Tempel Halskette",es:"Collar Templo de Bali",ja:"バリテンプルネックレス",ko:"발리 사원 목걸이",ar:"عقد معبد بالي"},desc:{en:"Inspired by Balinese temples — cascading amber drops and gold-plated silver links.",ru:"Вдохновлено балийскими храмами — каскад янтарных капель и позолоченные звенья.",zh:"灵感来自巴厘岛寺庙——层叠琥珀滴和镀金银链。"},material:{en:"Natural Amber · 24k Gold-Plated Silver",ru:"Натуральный янтарь · Позолота 24к",zh:"天然琥珀 · 24k镀金银"}},21:{name:{en:"Infinity Amber Rope",ru:"Верёвочное Ожерелье Инфинити",zh:"无限琥珀绳项链",id:"Tali Amber Infinity",fr:"Corde Ambre Infinie",de:"Infinity Bernstein Seil",es:"Cuerda de Ámbar Infinita",ja:"インフィニティアンバーロープ",ko:"인피니티 앰버 로프",ar:"حبل عنبر الأبدية"},desc:{en:"A 90cm rope of hand-knotted silk with amber stations.",ru:"Шёлковый шнур 90 см с узлами вручную и янтарными вставками.",zh:"90厘米手打结丝绳，配有琥珀站。"},material:{en:"Natural Amber · 925 Sterling Silver",ru:"Натуральный янтарь · Серебро 925",zh:"天然琥珀 · 925纯银"}},22:{name:{en:"Amber & Moonstone Ring",ru:"Кольцо Янтарь и Лунный Камень",zh:"琥珀月光石戒指",id:"Cincin Amber & Moonstone",fr:"Bague Ambre & Pierre de Lune",de:"Bernstein & Mondstein Ring",es:"Anillo Ámbar y Piedra Luna",ja:"アンバー＆ムーンストーンリング",ko:"앰버 & 문스톤 링",ar:"خاتم العنبر وحجر القمر"},desc:{en:"A rare pairing — warm Baltic amber meets cool blue moonstone in 925 silver.",ru:"Редкое сочетание — тёплый балтийский янтарь и прохладный лунный камень.",zh:"罕见搭配——温暖波罗的海琥珀遇上清凉蓝色月光石，925银镶嵌。"},material:{en:"Natural Amber · Moonstone · 925 Silver",ru:"Янтарь · Лунный Камень · Серебро 925",zh:"天然琥珀 · 月光石 · 925银"}},23:{name:{en:"Ear Climbers",ru:"Серьги Клаймберы",zh:"爬耳耳环",id:"Anting Climber",fr:"Boucles Grimpantes",de:"Ear Climber Ohrringe",es:"Pendientes Trepadores",ja:"イヤークライマー",ko:"이어 클라이머",ar:"أقراط متسلقة"},desc:{en:"Modern ear climbers tracing the curve of the ear with tiny amber points.",ru:"Современные клаймберы с дорожкой янтарных точек.",zh:"现代耳爬，沿耳廓曲线排列细小琥珀点。"},material:{en:"Natural Amber · 925 Sterling Silver",ru:"Натуральный янтарь · Серебро 925",zh:"天然琥珀 · 925纯银"}},24:{name:{en:"Prayer Bead Bracelet",ru:"Браслет Чётки",zh:"祈祷珠手链",id:"Gelang Manik Doa",fr:"Bracelet Chapelet",de:"Gebetsperlen Armband",es:"Pulsera de Cuentas de Oración",ja:"プレヤービーズブレスレット",ko:"기도 구슬 팔찌",ar:"سوار خرز الصلاة"},desc:{en:"108 micro amber beads on elastic silk — a meditation bracelet honouring Balinese tradition.",ru:"108 микро янтарных бусин на эластичном шёлке — медитативный браслет балийской традиции.",zh:"108颗微型琥珀珠，弹力丝线——冥想手链，致敬巴厘传统。"},material:{en:"Natural Amber · 925 Sterling Silver",ru:"Натуральный янтарь · Серебро 925",zh:"天然琥珀 · 925纯银"}}};
+
+// Apply to products array
+products.forEach(p=>{if(PROD_I18N[p.id])p.i18n=PROD_I18N[p.id];});
+
+// Get translated product field
+function tp(p,field){
+  const lang=typeof currentLang!=='undefined'?currentLang:'en';
+  if(p.i18n&&p.i18n[field]){
+    if(p.i18n[field][lang])return p.i18n[field][lang];
+    if(p.i18n[field]['en'])return p.i18n[field]['en'];
+  }
+  return p[field]||'';
+}
+
+// ── PRODUCTS ──────────────────────────────────────────────────────────────
+let activeFilter='all';
+function renderProducts(){
+  const t=TR[currentLang]||TR.en;
+  const grid=document.getElementById('prod-grid');
+  const list=activeFilter==='all'?products:products.filter(p=>p.cat===activeFilter);
+  grid.innerHTML=list.map((p,i)=>{
+    const b=p.badge?`<div class="pbadge ${p.badge}">${p.badge==='bestseller'?'Best Seller':p.badge==='limited'?'Limited Edition':'New'}</div>`:'';
+    return `<div class="pc reveal" style="transition-delay:${(i%4)*.07}s" onclick="openDrawer(products.find(x=>x.id===${p.id}))" onmouseenter="showHoverDetail(${p.id})" onmouseleave="hideHoverDetail()">
+      <div class="pc-img"><img src="${p.img}" alt="${p.name}" loading="lazy">${b}</div>
+      <div class="pc-body">
+        <span class="pcat">${p.cat}</span>
+        <h3 class="pname">${tp(p,"name")}</h3>
+        <p class="pmaterial">${tp(p,"material")}</p>
+        <div class="pfoot"><span class="pprice">$${p.price}</span><span class="pview">View →</span></div>
+      </div>
+    </div>`;
+  }).join('');
+  initReveal();
+}
+function sf(cat,el){
+  activeFilter=cat;
+  document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('act'));
+  el.classList.add('act');
+  renderProducts();
+}
+function fac(cat){
+  activeFilter=cat;
+  document.querySelectorAll('.ftab').forEach((t,i)=>{
+    const cats=['all','rings','earrings','pendants','bracelets','necklaces'];
+    t.classList.toggle('act',cats[i]===cat);
+  });
+  goTo('catalog');
+  setTimeout(renderProducts,300);
+}
+
+// ── DRAWER ────────────────────────────────────────────────────────────────
+function openDrawer(p){
+  if(!p)return;
+  document.getElementById('d-img').src=p.img;
+  document.getElementById('d-cat').textContent=p.cat.toUpperCase();
+  document.getElementById('d-name').textContent=p.name;
+  document.getElementById('d-mat').textContent=p.material;
+  document.getElementById('d-price').textContent='$'+p.price;
+  document.getElementById('d-desc').textContent=p.desc;
+  document.getElementById('d-props').innerHTML=Object.entries(p.props).map(([k,v])=>`<div class="d-prop"><span class="d-pk">${k}</span><span class="d-pv">${v}</span></div>`).join('');
+  document.getElementById('d-req').onclick=()=>{closeDrawer();openReq(p.name,'$'+p.price);};
+  document.getElementById('drawer').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.body.style.overflow='';}
+
+// ── REQUEST ───────────────────────────────────────────────────────────────
+function openReq(piece,price){
+  document.getElementById('f-piece').value=piece||'';
+  ['f-name','f-email','f-phone','f-msg'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('req-form').style.display='block';
+  document.getElementById('req-ok').style.display='none';
+  document.getElementById('req-modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeReq(){document.getElementById('req-modal').classList.remove('open');document.body.style.overflow='';}
+function submitReq(){
+  const n=document.getElementById('f-name').value.trim();
+  const e=document.getElementById('f-email').value.trim();
+  if(!n||!e){alert('Please fill in your name and email.');return;}
+  document.getElementById('req-form').style.display='none';
+  document.getElementById('req-ok').style.display='block';
+  setTimeout(closeReq,4000);
+}
+
+// ── QUIZ ──────────────────────────────────────────────────────────────────
+const quizData=[
+  {q:'What draws you most to amber jewelry?',opts:['The ancient history','The warm golden colour','The spiritual energy','The uniqueness of each stone']},
+  {q:'How would you describe your personal style?',opts:['Minimalist & refined','Bold & expressive','Earthy & natural','Classic & timeless']},
+  {q:'When do you most often wear jewelry?',opts:['Every day, always','Special occasions only','Work & professional settings','Meditation & wellness moments']},
+  {q:'Which metal feels most like you?',opts:['Pure sterling silver','Gold-plated glamour','Oxidized & rustic','Mixed metals']},
+  {q:'What is this piece for?',opts:['A gift for someone special','Treating myself','A meaningful occasion','Building my collection']},
+];
+const quizRecs=[
+  {id:6,reason:'Your love of warm tones and timeless style makes the Bali Dusk Drop Earrings your perfect match.'},
+  {id:18,reason:'Your bold, expressive personality calls for the statement Amber Collar Necklace.'},
+  {id:10,reason:'The Sacred Drop Pendant — ancient energy in a minimal form — is made for you.'},
+  {id:14,reason:'The Golden Chain Bracelet brings classic everyday elegance to your wrist.'},
+];
+let qStep=0;const qAnswers=[];
+function openQuiz(){qStep=0;qAnswers.length=0;renderQ();document.getElementById('quiz-modal').classList.add('open');document.body.style.overflow='hidden';}
+function closeQuiz(){document.getElementById('quiz-modal').classList.remove('open');document.body.style.overflow='';}
+function renderQ(){
+  if(qStep>=quizData.length){showQuizResult();return;}
+  const q=quizData[qStep];
+  document.getElementById('q-question').textContent=q.q;
+  document.getElementById('q-opts').innerHTML=q.opts.map((o,i)=>`<div class="q-opt" onclick="selectOpt(this,${i})"><div class="q-dot"></div>${o}</div>`).join('');
+  document.getElementById('q-step').textContent=`${qStep+1} / ${quizData.length}`;
+  document.getElementById('q-prog').style.width=((qStep/quizData.length)*100)+'%';
+  document.getElementById('q-next').textContent=qStep===quizData.length-1?'See My Match →':'Next';
+}
+function selectOpt(el,i){document.querySelectorAll('.q-opt').forEach(o=>o.classList.remove('ch'));el.classList.add('ch');qAnswers[qStep]=i;}
+function nextQ(){if(qAnswers[qStep]===undefined)qAnswers[qStep]=0;qStep++;renderQ();}
+function showQuizResult(){
+  const rec=quizRecs[qStep%quizRecs.length]||quizRecs[0];
+  const p=products.find(x=>x.id===rec.id)||products[0];
+  document.getElementById('quiz-modal').innerHTML=`
+    <div class="qbdrop" onclick="closeQuiz()"></div>
+    <div class="qbox">
+      <div class="q-head"><h2 style="font-style:italic">Your Perfect Match</h2><p>Based on your answers</p></div>
+      <div class="q-body">
+        <img src="${p.img}" style="width:100%;aspect-ratio:1;object-fit:cover;margin-bottom:20px" alt="${p.name}">
+        <div class="pcat">${p.cat}</div>
+        <h3 style="font-family:var(--serif);font-size:22px;margin-bottom:8px">${tp(p,"name")}</h3>
+        <p style="font-size:12px;color:var(--gray);line-height:1.7;margin-bottom:20px">${rec.reason}</p>
+        <div style="display:flex;gap:10px">
+          <button class="btn-s" style="flex:1;padding:12px" onclick="closeQuiz();openDrawer(products.find(x=>x.id===${p.id}))">View Details</button>
+          <button class="btn-o" style="padding:12px 16px" onclick="closeQuiz()">Close</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+// ── VIRTUAL TRY-ON ────────────────────────────────────────────────────────
+let selectedTryonProduct=null;
+function initTryonItems(){
+  const tryonProds=products.slice(0,8);
+  document.getElementById('tryon-items').innerHTML=tryonProds.map((p,i)=>`
+    <div class="tryon-item${i===0?' sel':''}" onclick="selectTryonItem(${p.id},this)">
+      <img src="${p.img}" alt="${p.name}" loading="lazy">
+      <div class="tryon-item-name">${tp(p,"name")}</div>
+    </div>`).join('');
+  selectedTryonProduct=tryonProds[0];
+}
+function selectTryonItem(id,el){
+  document.querySelectorAll('.tryon-item').forEach(t=>t.classList.remove('sel'));
+  el.classList.add('sel');
+  selectedTryonProduct=products.find(p=>p.id===id);
+  updateTryonOverlay();
+}
+function handleTryonUpload(e){
+  const file=e.target.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=ev=>{
+    const prev=document.getElementById('tryon-preview');
+    prev.style.backgroundImage=`url(${ev.target.result})`;
+    prev.style.display='block';
+    document.getElementById('tryon-icon').style.display='none';
+    document.getElementById('tryon-mock-lbl').style.display='none';
+    updateTryonOverlay();
+  };
+  reader.readAsDataURL(file);
+}
+function updateTryonOverlay(){
+  if(!selectedTryonProduct)return;
+  const overlay=document.getElementById('tryon-overlay');
+  const svgs={
+    rings:`<svg viewBox="0 0 80 80" width="60" height="60" fill="none" opacity="0.85"><circle cx="40" cy="40" r="28" stroke="#A8894A" stroke-width="2"/><circle cx="40" cy="40" r="18" stroke="#A8894A" stroke-width="1" stroke-dasharray="3 3"/><ellipse cx="40" cy="14" rx="8" ry="6" fill="#C9A96E" opacity="0.8"/></svg>`,
+    earrings:`<svg viewBox="0 0 80 80" width="60" height="60" fill="none" opacity="0.85"><circle cx="24" cy="18" r="8" stroke="#A8894A" stroke-width="1.5"/><line x1="24" y1="26" x2="24" y2="42" stroke="#A8894A" stroke-width="1.2"/><ellipse cx="24" cy="52" rx="7" ry="10" stroke="#A8894A" stroke-width="1.2" fill="#C9A96E" opacity="0.5"/><circle cx="56" cy="18" r="8" stroke="#A8894A" stroke-width="1.5"/><line x1="56" y1="26" x2="56" y2="42" stroke="#A8894A" stroke-width="1.2"/><ellipse cx="56" cy="52" rx="7" ry="10" stroke="#A8894A" stroke-width="1.2" fill="#C9A96E" opacity="0.5"/></svg>`,
+    pendants:`<svg viewBox="0 0 80 80" width="60" height="60" fill="none" opacity="0.85"><path d="M40 8 Q45 8 45 14 L45 24" stroke="#A8894A" stroke-width="1.5"/><ellipse cx="40" cy="52" rx="18" ry="24" stroke="#A8894A" stroke-width="1.5" fill="#C9A96E" opacity="0.3"/></svg>`,
+    bracelets:`<svg viewBox="0 0 80 80" width="70" height="70" fill="none" opacity="0.85"><ellipse cx="40" cy="40" rx="32" ry="16" stroke="#A8894A" stroke-width="1.5"/><ellipse cx="40" cy="25" rx="6" ry="5" fill="#C9A96E" opacity="0.8"/></svg>`,
+    necklaces:`<svg viewBox="0 0 80 80" width="70" height="70" fill="none" opacity="0.85"><path d="M8 24 Q40 56 72 24" stroke="#A8894A" stroke-width="1.5"/><ellipse cx="40" cy="62" rx="12" ry="15" stroke="#A8894A" stroke-width="1.2" fill="#C9A96E" opacity="0.4"/></svg>`,
+  };
+  const cat=selectedTryonProduct?selectedTryonProduct.cat:'rings';
+  overlay.innerHTML=svgs[cat]||svgs.pendants;
+}
+
+// ── EMAIL POPUP ───────────────────────────────────────────────────────────
+let popupShown=false;
+function showEpop(){if(popupShown||sessionStorage.getItem('amb_pop'))return;popupShown=true;document.getElementById('epop').classList.add('open');}
+function closeEpop(){document.getElementById('epop').classList.remove('open');sessionStorage.setItem('amb_pop','1');}
+function submitEpop(){
+  const inp=document.getElementById('epop-email');
+  if(!inp.value||!inp.value.includes('@'))return;
+  document.getElementById('epop-form').style.display='none';
+  document.getElementById('epop-thanks').style.display='block';
+  sessionStorage.setItem('amb_pop','1');
+  setTimeout(closeEpop,2800);
+}
+setTimeout(showEpop,18000);
+window.addEventListener('scroll',()=>{if(window.scrollY>window.innerHeight*.6)showEpop();});
+
+// ── CHAT ──────────────────────────────────────────────────────────────────
+let chatOpen=false;
+const chatAnswers={
+  'ring sizes':'We offer sizes XS (14mm) through XL (19mm). For best fit, measure your finger with a string. Our team can also help you find the right size.',
+  'shipping info':'We ship worldwide from Bali, Indonesia. Standard shipping takes 7–14 days. Express shipping (3–5 days) available. Free shipping on orders over $200.',
+  'care guide':'Keep amber away from perfume, chemicals and prolonged sunlight. Clean with a soft dry cloth. Store separately to avoid scratches. Amber loves to be worn.',
+  'gift ideas':'Popular gifts include the Sacred Drop Pendant ($165), Honey Drop Ring ($155), and Bali Dusk Drops earrings ($145). We include free gift wrapping with every order.',
+  'размеры колец':'Предлагаем размеры от XS (14мм) до XL (19мм). Измерьте палец ниткой для точного размера. Наша команда также поможет.',
+  'доставка':'Отправляем по всему миру с Бали. Стандарт 7–14 дней. Экспресс 3–5 дней. Бесплатно при заказе от $200.',
+  'уход':'Избегайте парфюма и химикатов. Протирайте мягкой тканью. Храните отдельно. Янтарь любит, когда его носят.',
+  'подарочные идеи':'Популярные подарки: подвеска Sacred Drop ($165), кольцо Honey Drop ($155), серьги Bali Dusk Drops ($145). Бесплатная упаковка с каждым заказом.',
+};
+function toggleChat(){
+  chatOpen=!chatOpen;
+  document.getElementById('chat-pop').classList.toggle('open',chatOpen);
+  const btn=document.getElementById('chat-btn');
+  btn.querySelector('.chat-msg').style.display=chatOpen?'none':'block';
+  btn.querySelector('.chat-x').style.display=chatOpen?'block':'none';
+}
+function chatSend(text){
+  const inp=document.getElementById('chat-input');
+  const msg=(text||inp.value).trim();
+  if(!msg)return;
+  inp.value='';
+  addMsg(msg,'user');
+  document.getElementById('chat-quick').style.display='none';
+  const typing=document.getElementById('chat-typing');
+  typing.style.display='flex';
+  setTimeout(()=>{
+    typing.style.display='none';
+    const key=Object.keys(chatAnswers).find(k=>msg.toLowerCase().includes(k));
+    const reply=key?chatAnswers[key]:`Thank you for your question! For personalized assistance, our team in Bali is happy to help. Please send us an email at amberrajewelry@gmail.com or request a consultation above.`;
+    addMsg(reply,'bot');
+  },1200);
+}
+function addMsg(text,type){
+  const msgs=document.getElementById('chat-msgs');
+  const div=document.createElement('div');
+  div.className=`chat-msg chat-${type}`;
+  div.textContent=text;
+  msgs.appendChild(div);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+
+// ── NAV + UTILS ───────────────────────────────────────────────────────────
+);}
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('sc',scrollY>60));
+function initReveal(){
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.07,rootMargin:'0px 0px -32px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+}
+
+// ── CUSTOM CURSOR ─────────────────────────────────────────────────────────
+// ── GOLD PARTICLE TRAIL ──────────────────────────────────────────────────
+let lastX=0,lastY=0,lastT=0;
+function spawnGoldParticle(x,y){
+  const p=document.createElement('div');
+  p.className='gp';
+  const size=Math.random()*5+2;
+  const ox=(Math.random()-0.5)*14;
+  const oy=(Math.random()-0.5)*14;
+  p.style.cssText=`left:${x+ox}px;top:${y+oy}px;width:${size}px;height:${size}px;opacity:${Math.random()*.7+.3}`;
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),600);
+}
+document.addEventListener('mousemove',e=>{
+  const now=Date.now();
+  const dx=e.clientX-lastX,dy=e.clientY-lastY;
+  const dist=Math.sqrt(dx*dx+dy*dy);
+  if(dist>8&&now-lastT>30){
+    const count=Math.min(3,Math.floor(dist/12)+1);
+    for(let i=0;i<count;i++) spawnGoldParticle(e.clientX,e.clientY);
+    lastX=e.clientX;lastY=e.clientY;lastT=now;
+  }
+});
+
+// ── INIT ──────────────────────────────────────────────────────────────────
+
+// ── HOVER DETAIL ──────────────────────────────────────────────────────────
+let hoverTimer=null;
+function showHoverDetail(id){
+  clearTimeout(hoverTimer);
+  const p=products.find(x=>x.id===id);
+  if(!p)return;
+  document.getElementById('hd-img').src=p.img;
+  document.getElementById('hd-cat').textContent=p.cat.toUpperCase();
+  document.getElementById('hd-name').textContent=p.name;
+  document.getElementById('hd-material').textContent=p.material;
+  document.getElementById('hd-desc').textContent=p.desc;
+  document.getElementById('hd-price').textContent='$'+p.price;
+  document.getElementById('hd-props').innerHTML=Object.entries(p.props).slice(0,4).map(([k,v])=>`<div class="hd-prop"><span class="hd-pk">${k}</span><span class="hd-pv">${v}</span></div>`).join('');
+  document.getElementById('hover-detail').classList.add('show');
+}
+function hideHoverDetail(){
+  hoverTimer=setTimeout(()=>document.getElementById('hover-detail').classList.remove('show'),180);
+}
+
+renderProducts();
+initReveal();
+initTryonItems();
