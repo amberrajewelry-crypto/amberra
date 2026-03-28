@@ -92,9 +92,16 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .h-rule{width:44px;height:1px;background:var(--amber);margin-bottom:28px;opacity:0;animation:up 1s .55s forwards}
 .h-desc{font-size:12.5px;line-height:1.9;color:var(--gray);max-width:400px;margin-bottom:48px;opacity:0;animation:up 1s .65s forwards}
 .h-acts{display:flex;gap:14px;align-items:center;opacity:0;animation:up 1s .8s forwards}
-.hero-r{position:relative;overflow:hidden;background:var(--silk)}
-.hero-r img{width:100%;height:100%;object-fit:cover;transition:transform 8s ease}
-.hero-r:hover img{transform:scale(1.04)}
+.hero-r{position:relative;overflow:hidden;background:var(--silk);perspective:1400px}
+.hero-slides{position:relative;width:100%;height:100%;transform-style:preserve-3d}
+.h-slide{position:absolute;inset:0;transition:transform .95s cubic-bezier(.4,0,.2,1),opacity .7s;opacity:0;pointer-events:none}
+.h-slide img{width:100%;height:100%;object-fit:cover}
+.h-slide.active{transform:rotateY(0deg) scale(1);opacity:1;pointer-events:auto;z-index:2}
+.h-slide.from-right{transform:rotateY(25deg) scale(.96);opacity:0}
+.h-slide.to-left{transform:rotateY(-25deg) scale(.96);opacity:0}
+.hero-dots{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:10}
+.hero-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.4);border:none;cursor:pointer;transition:all .35s;padding:0}
+.hero-dot.act{background:var(--white);width:18px;border-radius:3px}
 @media(max-width:900px){#hero{grid-template-columns:1fr}.hero-r{display:none}.hero-l{padding:60px 24px}}
 
 /* ═══ TICKER ════════════════════════════════════════════════════════════ */
@@ -220,18 +227,18 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,255,255,.04)}
 .ft{display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:56px;margin-bottom:60px}
 .fb{font-family:var(--serif);font-size:26px;letter-spacing:.4em;color:var(--white);margin-bottom:14px}
-.fd{font-size:11px;color:rgba(255,255,255,.3);line-height:1.85;margin-bottom:24px}
+.fd{font-size:11px;color:rgba(255,255,255,.72);line-height:1.85;margin-bottom:24px}
 .fs{display:flex;gap:24px}
-.fs a{font-size:9px;letter-spacing:.15em;color:rgba(255,255,255,.25);transition:color .3s}
+.fs a{font-size:9px;letter-spacing:.15em;color:rgba(255,255,255,.6);transition:color .3s}
 .fs a:hover{color:var(--amber3)}
 .fc-t{font-size:8.5px;letter-spacing:.25em;text-transform:uppercase;color:var(--amber);margin-bottom:22px;display:block}
 .fc-l{list-style:none;display:flex;flex-direction:column;gap:11px}
-.fc-l li a,.fc-l li button{font-size:11px;color:rgba(255,255,255,.3);transition:color .3s;display:block;cursor:pointer;background:none;border:none;font-family:var(--sans);text-align:left;padding:0}
+.fc-l li a,.fc-l li button{font-size:11px;color:rgba(255,255,255,.72);transition:color .3s;display:block;cursor:pointer;background:none;border:none;font-family:var(--sans);text-align:left;padding:0}
 .fc-l li a:hover,.fc-l li button:hover{color:rgba(255,255,255,.7)}
 .fb-bot{display:flex;justify-content:space-between;padding-top:36px;border-top:1px solid rgba(255,255,255,.05);flex-wrap:wrap;gap:16px}
-.fcp{font-size:10px;color:rgba(255,255,255,.18)}
+.fcp{font-size:10px;color:rgba(255,255,255,.5)}
 .fleg{display:flex;gap:24px}
-.fleg a{font-size:10px;color:rgba(255,255,255,.18);transition:color .3s}
+.fleg a{font-size:10px;color:rgba(255,255,255,.5);transition:color .3s}
 .fleg a:hover{color:rgba(255,255,255,.45)}
 @media(max-width:900px){footer{padding:60px 24px 40px}.ft{grid-template-columns:1fr 1fr;gap:36px}}
 
@@ -473,7 +480,18 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
     </div>
   </div>
   <div class="hero-r">
-    <img src="https://res.cloudinary.com/dtfq3xq3t/image/upload/IMG_4193_heg3fr.jpg" alt="AMBERRA Jewelry">
+    <div class="hero-slides" id="hero-slides">
+      <div class="h-slide active"><img src="https://res.cloudinary.com/dtfq3xq3t/image/upload/IMG_4193_heg3fr.jpg" alt="AMBERRA"></div>
+      <div class="h-slide from-right"><img src="https://res.cloudinary.com/dtfq3xq3t/image/upload/IMG_4194_ocdadj.jpg" alt="AMBERRA" loading="lazy"></div>
+      <div class="h-slide from-right"><img src="https://res.cloudinary.com/dtfq3xq3t/image/upload/IMG_4678_p9bv1u.jpg" alt="AMBERRA" loading="lazy"></div>
+      <div class="h-slide from-right"><img src="https://res.cloudinary.com/dtfq3xq3t/image/upload/IMG_1597_lyznwn.jpg" alt="AMBERRA" loading="lazy"></div>
+    </div>
+    <div class="hero-dots" id="hero-dots">
+      <button class="hero-dot act"></button>
+      <button class="hero-dot"></button>
+      <button class="hero-dot"></button>
+      <button class="hero-dot"></button>
+    </div>
   </div>
 </section>
 
@@ -1264,6 +1282,34 @@ function initReveal(){
   }),{threshold:.07,rootMargin:'0px 0px -32px 0px'});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 }
+
+// ── HERO 3D SLIDER ────────────────────────────────────────────────────────
+(function(){
+  const slides=document.querySelectorAll('.h-slide');
+  const dots=document.querySelectorAll('.hero-dot');
+  let cur=0,animating=false;
+  function goTo(n){
+    if(animating||n===cur)return;
+    animating=true;
+    const dir=n>cur?'from-right':'to-left';
+    const outDir=n>cur?'to-left':'from-right';
+    slides[cur].classList.remove('active');
+    slides[cur].classList.add(outDir);
+    slides[n].classList.remove('from-right','to-left');
+    slides[n].classList.add('active');
+    dots[cur].classList.remove('act');
+    dots[n].classList.add('act');
+    cur=n;
+    setTimeout(()=>{
+      slides.forEach((s,i)=>{if(i!==cur){s.classList.remove('to-left');s.classList.add('from-right');}});
+      animating=false;
+    },1000);
+  }
+  dots.forEach((d,i)=>d.addEventListener('click',()=>goTo(i)));
+  let timer=setInterval(()=>goTo((cur+1)%slides.length),5000);
+  document.getElementById('hero-slides').addEventListener('mouseenter',()=>clearInterval(timer));
+  document.getElementById('hero-slides').addEventListener('mouseleave',()=>{timer=setInterval(()=>goTo((cur+1)%slides.length),5000);});
+})();
 
 // ── SPARKLE PARTICLES ─────────────────────────────────────────────────────
 const sparkColors=['#D4A832','#E8C84A','#C9A832','#F0D870','#B8941E'];
