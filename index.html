@@ -463,6 +463,7 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
     <button class="nl" onclick="fac('earrings')" data-i18n="nav_earrings">Earrings</button>
     <button class="nl" onclick="fac('pendants')" data-i18n="nav_pendants">Pendants</button>
     <button class="nl" onclick="fac('bracelets')" data-i18n="nav_bracelets">Bracelets</button>
+    <button class="nl" onclick="fac('chains')" data-i18n="nav_chains">Chains</button>
     <span class="nav-divider"></span>
     <button class="nl" onclick="s('journal')" data-i18n="nav_journal">Journal</button>
     <button class="nl" onclick="s('contact')" data-i18n="nav_about">Our Story</button>
@@ -636,6 +637,7 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
       <button class="ftab" onclick="sf('earrings',this)" data-i18n="f_earrings">Earrings</button>
       <button class="ftab" onclick="sf('pendants',this)" data-i18n="f_pendants">Pendants</button>
       <button class="ftab" onclick="sf('bracelets',this)" data-i18n="f_bracelets">Bracelets</button>
+      <button class="ftab" onclick="sf('chains',this)" data-i18n="f_chains">Chains</button>
     </div>
   </div>
   <div class="prod-grid" id="prod-grid"></div>
@@ -708,6 +710,7 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
         <li><button onclick="fac('earrings')" data-i18n="f_earrings">Earrings</button></li>
         <li><button onclick="fac('pendants')" data-i18n="f_pendants">Pendants</button></li>
         <li><button onclick="fac('bracelets')" data-i18n="f_bracelets">Bracelets</button></li>
+        <li><button onclick="fac('chains')" data-i18n="f_chains">Chains</button></li>
       </ul>
     </div>
     <div>
@@ -892,6 +895,7 @@ const C='https://res.cloudinary.com/dtfq3xq3t/image/upload';
 const R='images/rings';
 const E='images/earrings';
 const P='images/pendants';
+const CH='images/chains';
 
 // ── 94 PRODUCTS ──────────────────────────────────────────────────────────
 const products=[
@@ -970,6 +974,10 @@ const products=[
   {id:84,name:'Ocean Tide Bracelet',cat:'bracelets',price:155,badge:null,img:'images/bracelets/99j9gb8itoiexjp7ew768rcbhyhh6rjs.JPG',material:'Natural Blue Amber · 925 Sterling Silver',desc:'Rare blue amber beads rolling like ocean waves.',props:{Stone:'Natural Blue Amber Beads',Metal:'925 Sterling Silver',Length:'17cm',Blessing:'Ocean Ritual'}},
   {id:85,name:'Twin Flames Bracelet',cat:'bracelets',price:185,badge:'bestseller',img:'images/bracelets/IMG_9636.JPG',material:'Natural Amber · 24k Gold-Plated Silver',desc:'Two amber stations flanking a central cognac gem.',props:{Stone:'Natural Amber x3',Metal:'24k Gold-Plated 925',Length:'16–19cm',Blessing:'Love Ritual'}},
 
+  // CHAINS (2)
+  {id:86,name:'Sterling Silver Cable Chain',cat:'chains',price:89,badge:'bestseller',img:`${CH}/IMG_9799.jpg`,imgs:[`${CH}/IMG_9799.jpg`,`${CH}/IMG_9801.JPG`],material:'925 Sterling Silver',desc:'A classic cable chain in polished sterling silver. Shown in three wearable lengths — 40, 45 and 50 cm. Perfect for any pendant.',props:{Metal:'925 Sterling Silver',Lengths:'40 / 45 / 50 cm',Width:'1.5 mm',Clasp:'Lobster claw'}},
+  {id:87,name:'Gold-Plated Cable Chain',cat:'chains',price:99,badge:'new',img:`${CH}/IMG_9801.JPG`,imgs:[`${CH}/IMG_9801.JPG`,`${CH}/IMG_9799.jpg`],material:'18k Gold-Plated Silver',desc:'The same elegant cable chain finished in warm 18k gold plating. Three lengths available — 40, 45 and 50 cm.',props:{Metal:'18k Gold-Plated 925 Silver',Lengths:'40 / 45 / 50 cm',Width:'1.5 mm',Clasp:'Lobster claw'}},
+
 ];
 
 // ── TRANSLATIONS ──────────────────────────────────────────────────────────
@@ -1035,7 +1043,7 @@ function sf(cat,el){
 function fac(cat){
   activeFilter=cat;
   document.querySelectorAll('.ftab').forEach((t,i)=>{
-    const cats=['all','rings','earrings','pendants','bracelets'];
+    const cats=['all','rings','earrings','pendants','bracelets','chains'];
     t.classList.toggle('act',cats[i]===cat);
   });
   s('catalog');
