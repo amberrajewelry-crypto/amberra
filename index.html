@@ -195,26 +195,40 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .ftab{padding:10px 20px;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);border:1px solid var(--mist);background:var(--white);font-family:var(--sans);transition:all .25s;cursor:pointer}
 .ftab.act{background:var(--charcoal);color:var(--white);border-color:var(--charcoal)}
 .ftab:hover:not(.act){color:var(--charcoal);border-color:var(--charcoal)}
-.prod-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
-.pc{background:var(--white);position:relative;overflow:hidden;border-radius:14px;transition:box-shadow .4s,transform .35s;cursor:pointer}
-.pc:hover{box-shadow:0 8px 28px rgba(12,12,12,.12);transform:translateY(-3px)}
-.pc-img{aspect-ratio:3/4;overflow:hidden;position:relative;background:var(--white)}
-.pc-img img{width:100%;height:100%;object-fit:contain;object-position:center 80%;transition:transform .8s cubic-bezier(.25,.46,.45,.94)}
-.pc:hover .pc-img img{transform:scale(1.06)}
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.pc{background:var(--white);position:relative;overflow:hidden;border-radius:14px;box-shadow:0 1px 6px rgba(12,12,12,.06);transition:box-shadow .35s,grid-column 0s;cursor:pointer;display:flex;flex-direction:column}
+.pc.hx{grid-column:span 2;flex-direction:row;box-shadow:0 8px 32px rgba(12,12,12,.12);z-index:10}
+.pc-img{flex-shrink:0;width:100%;aspect-ratio:3/4;overflow:hidden;position:relative;background:var(--white);transition:width .35s cubic-bezier(.4,0,.2,1)}
+.pc.hx .pc-img{width:52%;aspect-ratio:auto}
+.pc-img img{width:100%;height:100%;object-fit:contain;object-position:center 80%;transition:transform .6s cubic-bezier(.25,.46,.45,.94)}
+.pc.hx .pc-img img{transform:scale(1.03)}
 .pbadge{position:absolute;top:8px;left:8px;padding:3px 7px;font-size:6.5px;letter-spacing:.15em;text-transform:uppercase;z-index:2;border-radius:3px}
 .pbadge.bestseller{background:var(--charcoal);color:var(--white)}
 .pbadge.new{background:var(--white);color:var(--charcoal);border:1px solid var(--mist)}
 .pbadge.limited{background:transparent;color:var(--amber);border:1px solid var(--amber)}
 .pc-cnt{position:absolute;bottom:8px;left:8px;background:rgba(26,23,20,.65);color:#fff;font-size:8px;padding:3px 8px;border-radius:20px;backdrop-filter:blur(4px)}
-.pc-body{padding:10px 12px 10px}
+/* Normal card label (hidden when expanded) */
+.pc-label{padding:10px 12px 10px;display:flex;flex-direction:column}
+.pc.hx .pc-label{display:none}
 .pcat{font-size:7px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:3px;display:block}
 .pname{font-family:var(--serif);font-size:13px;font-weight:400;margin-bottom:2px;line-height:1.2}
 .pmaterial{font-size:9px;color:var(--gray);margin-bottom:6px;line-height:1.4}
-.pfoot{display:flex;align-items:center;margin-bottom:0}
+.pfoot{display:flex;align-items:center}
 .pprice{font-family:var(--serif);font-size:13px}
-.pview{display:none}
-@media(max-width:1200px){.prod-grid{grid-template-columns:repeat(4,1fr)}}
-@media(max-width:700px){.prod-grid{grid-template-columns:repeat(2,1fr)}#catalog{padding:40px 16px}.cat-head{margin-bottom:24px}}
+/* Expanded info panel (slides in from right) */
+.pc-xpanel{display:none;flex-direction:column;justify-content:center;padding:24px 22px;flex:1;overflow:hidden}
+.pc.hx .pc-xpanel{display:flex;animation:xpIn .32s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes xpIn{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:translateX(0)}}
+.pc-xcat{font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
+.pc-xname{font-family:var(--serif);font-size:19px;font-weight:400;line-height:1.15;margin-bottom:4px}
+.pc-xmat{font-size:10px;color:var(--gray);margin-bottom:10px;line-height:1.5}
+.pc-xdesc{font-size:11px;color:var(--gray);line-height:1.75;margin-bottom:14px}
+.pc-xprop{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;border-bottom:1px solid var(--silk)}
+.pc-xpk{font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone)}
+.pc-xpv{font-size:10px;color:var(--charcoal);text-align:right}
+.pc-xprice{font-family:var(--serif);font-size:21px;font-weight:300;font-style:italic;margin-top:auto;padding-top:12px}
+@media(max-width:1100px){.prod-grid{grid-template-columns:repeat(3,1fr)}.pc.hx{grid-column:span 2}}
+@media(max-width:700px){.prod-grid{grid-template-columns:repeat(2,1fr)}.pc.hx{grid-column:span 1;flex-direction:column}.pc.hx .pc-img{width:100%}.pc.hx .pc-xpanel{display:none}.pc.hx .pc-label{display:flex}#catalog{padding:40px 16px}.cat-head{margin-bottom:24px}}
 
 /* ═══ JOURNAL ═══════════════════════════════════════════════════════════ */
 #journal{padding:96px 56px;background:var(--white)}
@@ -377,7 +391,7 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 .chat-send svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5}
 
 /* ═══ HOVER DETAIL ═══════════════════════════════════════════════════════ */
-#hover-detail{position:fixed;right:0;top:0;bottom:0;width:360px;background:var(--white);border-left:1px solid var(--mist);z-index:400;transform:translateX(100%);transition:transform .4s cubic-bezier(.25,.46,.45,.94);pointer-events:none;display:flex;flex-direction:column;box-shadow:-8px 0 32px rgba(12,12,12,.06)}
+#hover-detail{display:none}
 #hover-detail.show{transform:none;pointer-events:auto}
 .hd-img{height:260px;overflow:hidden;flex-shrink:0;background:var(--white);display:flex;align-items:flex-end;justify-content:center}
 .hd-img img{width:100%;height:100%;object-fit:contain;object-position:center bottom;padding:8px 12px 0}
@@ -1031,16 +1045,27 @@ function renderProducts(){
   const list=activeFilter==='all'?products:products.filter(p=>p.cat===activeFilter);
   grid.innerHTML=list.map((p,i)=>{
     const b=p.badge?`<div class="pbadge ${p.badge}">${p.badge==='bestseller'?'Best Seller':p.badge==='limited'?'Limited':'New'}</div>`:'';
-    return `<div class="pc reveal" style="transition-delay:${(i%4)*.07}s"
+    const cnt=p.imgs&&p.imgs.length>1?`<span class="pc-cnt">${p.imgs.length} colors</span>`:'';
+    const props=Object.entries(p.props||{}).slice(0,3).map(([k,v])=>
+      `<div class="pc-xprop"><span class="pc-xpk">${k}</span><span class="pc-xpv">${v}</span></div>`).join('');
+    return `<div class="pc reveal" style="transition-delay:${(i%4)*.06}s"
       onclick="openDrawer(${p.id})"
-      onmouseenter="showHD(${p.id})"
-      onmouseleave="hideHD()">
-      <div class="pc-img"><img src="${p.img}" alt="${p.name}" loading="lazy">${b}${p.imgs&&p.imgs.length>1?`<span class="pc-cnt">${p.imgs.length} colors</span>`:''}</div>
-      <div class="pc-body">
-        <span class="pcat">${p.cat}</span>
+      onmouseenter="hxOn(this)"
+      onmouseleave="hxOff(this)">
+      <div class="pc-img">${b}${cnt}<img src="${p.img}" alt="${p.name}" loading="lazy"></div>
+      <div class="pc-label">
+        <span class="pcat">${p.cat.toUpperCase()}</span>
         <h3 class="pname">${p.name}</h3>
         <p class="pmaterial">${p.material}</p>
-        <div class="pfoot"><span class="pprice">$${p.price}</span><span class="pview">View →</span></div>
+        <div class="pfoot"><span class="pprice">$${p.price}</span></div>
+      </div>
+      <div class="pc-xpanel">
+        <span class="pc-xcat">${p.cat.toUpperCase()}</span>
+        <h3 class="pc-xname">${p.name}</h3>
+        <p class="pc-xmat">${p.material}</p>
+        ${p.desc?`<p class="pc-xdesc">${p.desc}</p>`:''}
+        <div>${props}</div>
+        <div class="pc-xprice">$${p.price}</div>
       </div>
     </div>`;
   }).join('');
@@ -1205,6 +1230,12 @@ function updateTryonOverlay(){
 
 // ── HOVER DETAIL ──────────────────────────────────────────────────────────
 let hdTimer=null;
+function hxOn(el){
+  document.querySelectorAll('.pc.hx').forEach(c=>c.classList.remove('hx'));
+  el.classList.add('hx');
+}
+function hxOff(el){el.classList.remove('hx');}
+
 function showHD(id){
   clearTimeout(hdTimer);
   const p=products.find(x=>x.id===id);if(!p)return;
