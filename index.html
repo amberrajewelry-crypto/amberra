@@ -84,7 +84,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .btn-o:hover{border-color:var(--amber);color:var(--amber);transform:translateY(-2px)}
 
 /* ═══ HERO ══════════════════════════════════════════════════════════════ */
-#hero{height:100vh;min-height:680px;position:relative;overflow:hidden}
+#hero{height:100vh;min-height:680px;position:relative;overflow:hidden;background:var(--black)}
 .hfs-wrap{position:absolute;inset:0}
 .hfs{position:absolute;inset:0;transition:transform .95s cubic-bezier(.4,0,.2,1),opacity .7s;opacity:0;pointer-events:none}
 .hfs.active{opacity:1;pointer-events:auto;z-index:2;transform:none}
@@ -496,7 +496,7 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
   <div class="hfs-wrap">
     <!-- Slide 1: Video -->
     <div class="hfs active">
-      <video autoplay muted loop playsinline class="hero-vid">
+      <video autoplay muted loop playsinline class="hero-vid" poster="images/hero-poster.jpg">
         <source src="images/hero.mp4" type="video/mp4">
       </video>
     </div>
