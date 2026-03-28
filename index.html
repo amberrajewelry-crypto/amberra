@@ -191,7 +191,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .ftab:hover:not(.act){color:var(--charcoal);border-color:var(--charcoal)}
 .prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;align-items:start}
 .pc{background:var(--white);position:relative;border-radius:14px;box-shadow:0 1px 6px rgba(12,12,12,.06);transition:box-shadow .5s cubic-bezier(.25,.46,.45,.94),transform .5s cubic-bezier(.25,.46,.45,.94);cursor:pointer;display:flex;flex-direction:column;overflow:visible}
-.pc.hx{box-shadow:0 10px 40px rgba(12,12,12,.14);z-index:10;transform:translateY(-2px)}
+.pc.hx{box-shadow:0 10px 40px rgba(12,12,12,.14);z-index:100;transform:translateY(-2px)}
 .pc-inner{border-radius:14px;overflow:hidden;display:flex;flex-direction:column;background:var(--white);position:relative;transition:border .4s}
 .pc.hx .pc-inner{border:1px solid var(--mist)}
 .pc-img{flex-shrink:0;width:100%;aspect-ratio:3/4;overflow:hidden;position:relative;background:var(--white)}
@@ -1217,10 +1217,16 @@ function updateTryonOverlay(){
 // ── HOVER DETAIL ──────────────────────────────────────────────────────────
 let hdTimer=null;
 function hxOn(el){
-  document.querySelectorAll('.pc.hx').forEach(c=>c.classList.remove('hx'));
+  document.querySelectorAll('.pc').forEach(c=>{
+    c.classList.remove('hx');
+    c.style.pointerEvents=c===el?'':'none';
+  });
   el.classList.add('hx');
 }
-function hxOff(el){el.classList.remove('hx');}
+function hxOff(el){
+  el.classList.remove('hx');
+  document.querySelectorAll('.pc').forEach(c=>c.style.pointerEvents='');
+}
 
 function showHD(id){
   clearTimeout(hdTimer);
