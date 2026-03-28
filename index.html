@@ -84,7 +84,17 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .btn-o:hover{border-color:var(--amber);color:var(--amber);transform:translateY(-2px)}
 
 /* ═══ HERO ══════════════════════════════════════════════════════════════ */
-#hero{height:100vh;min-height:680px;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+#hero{height:100vh;min-height:680px;position:relative;overflow:hidden}
+.hfs-wrap{position:absolute;inset:0}
+.hfs{position:absolute;inset:0;transition:transform .95s cubic-bezier(.4,0,.2,1),opacity .7s;opacity:0;pointer-events:none}
+.hfs.active{opacity:1;pointer-events:auto;z-index:2;transform:none}
+.hfs.from-right{transform:translateX(100%)}
+.hfs.to-left{transform:translateX(-100%)}
+.hfs-inner{display:grid;grid-template-columns:1fr 1fr;height:100%}
+.hero-vid{width:100%;height:100%;object-fit:cover;display:block}
+.hfs-dots{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:10}
+.hfs-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.5);border:none;cursor:pointer;transition:all .35s;padding:0}
+.hfs-dot.act{background:#fff;width:18px;border-radius:3px}
 .hero-l{display:flex;flex-direction:column;justify-content:center;padding:80px 72px 80px 56px}
 .h-tag{font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:var(--amber3);margin-bottom:32px;opacity:0;animation:up 1s .2s forwards}
 .h-title{font-family:var(--serif);font-size:clamp(62px,6.2vw,96px);font-weight:400;color:#1A1714;line-height:1.02;margin-bottom:32px;opacity:0;animation:up 1s .4s forwards}
@@ -102,7 +112,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .hero-dots{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:10}
 .hero-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.4);border:none;cursor:pointer;transition:all .35s;padding:0}
 .hero-dot.act{background:var(--white);width:18px;border-radius:3px}
-@media(max-width:900px){#hero{grid-template-columns:1fr}.hero-r{display:none}.hero-l{padding:60px 24px}}
+@media(max-width:900px){.hfs-inner{grid-template-columns:1fr}.hero-r{display:none}.hero-l{padding:60px 24px}}
 
 /* ═══ TICKER ════════════════════════════════════════════════════════════ */
 .ticker{overflow:hidden;background:var(--black);padding:13px 0;white-space:nowrap}
@@ -475,29 +485,46 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 
 <!-- ══ HERO ══════════════════════════════════════════════════════════════ -->
 <section id="hero">
-  <div class="hero-l">
-    <span class="h-tag" data-i18n="hero_tag">Bali · New Collection 2026</span>
-    <h1 class="h-title" data-i18n="hero_title">Amber from<br>the <em>Ancient</em><br>World</h1>
-    <div class="h-rule"></div>
-    <p class="h-desc" data-i18n="hero_desc">Natural Baltic amber, millions of years in the making. Handcrafted in Bali with sacred intention. Each piece is singular — like the person who wears it.</p>
-    <div class="h-acts">
-      <button class="btn-s" onclick="s('colls')" data-i18n="hero_cta">Explore Collections</button>
-      <button class="btn-o" onclick="s('catalog')" data-i18n="hero_cta2">All Jewelry</button>
+  <div class="hfs-wrap">
+    <!-- Slide 1: Video -->
+    <div class="hfs active">
+      <video autoplay muted loop playsinline class="hero-vid">
+        <source src="images/hero.mp4" type="video/mp4">
+      </video>
+    </div>
+    <!-- Slide 2: Amber text + images -->
+    <div class="hfs from-right">
+      <div class="hfs-inner">
+        <div class="hero-l">
+          <span class="h-tag" data-i18n="hero_tag">Bali · New Collection 2026</span>
+          <h1 class="h-title" data-i18n="hero_title">Amber from<br>the <em>Ancient</em><br>World</h1>
+          <div class="h-rule"></div>
+          <p class="h-desc" data-i18n="hero_desc">Natural Baltic amber, millions of years in the making. Handcrafted in Bali with sacred intention. Each piece is singular — like the person who wears it.</p>
+          <div class="h-acts">
+            <button class="btn-s" onclick="s('colls')" data-i18n="hero_cta">Explore Collections</button>
+            <button class="btn-o" onclick="s('catalog')" data-i18n="hero_cta2">All Jewelry</button>
+          </div>
+        </div>
+        <div class="hero-r">
+          <div class="hero-slides" id="hero-slides">
+            <div class="h-slide active"><img src="images/rings/IMG_1542.JPG" alt="AMBERRA"></div>
+            <div class="h-slide from-right"><img src="images/earrings/IMG_1550.JPG" alt="AMBERRA" loading="lazy"></div>
+            <div class="h-slide from-right"><img src="images/pendants/IMG_1399.WEBP" alt="AMBERRA" loading="lazy"></div>
+            <div class="h-slide from-right"><img src="images/bracelets/IMG_1595.JPG" alt="AMBERRA" loading="lazy"></div>
+          </div>
+          <div class="hero-dots" id="hero-dots">
+            <button class="hero-dot act"></button>
+            <button class="hero-dot"></button>
+            <button class="hero-dot"></button>
+            <button class="hero-dot"></button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="hero-r">
-    <div class="hero-slides" id="hero-slides">
-      <div class="h-slide active"><img src="https://res.cloudinary.com/dtfq3xq3t/image/upload/IMG_4193_heg3fr.jpg" alt="AMBERRA"></div>
-      <div class="h-slide from-right"><img src="https://res.cloudinary.com/dtfq3xq3t/image/upload/IMG_4194_ocdadj.jpg" alt="AMBERRA" loading="lazy"></div>
-      <div class="h-slide from-right"><img src="https://res.cloudinary.com/dtfq3xq3t/image/upload/IMG_4678_p9bv1u.jpg" alt="AMBERRA" loading="lazy"></div>
-      <div class="h-slide from-right"><img src="https://res.cloudinary.com/dtfq3xq3t/image/upload/IMG_1597_lyznwn.jpg" alt="AMBERRA" loading="lazy"></div>
-    </div>
-    <div class="hero-dots" id="hero-dots">
-      <button class="hero-dot act"></button>
-      <button class="hero-dot"></button>
-      <button class="hero-dot"></button>
-      <button class="hero-dot"></button>
-    </div>
+  <div class="hfs-dots" id="hfs-dots">
+    <button class="hfs-dot act"></button>
+    <button class="hfs-dot"></button>
   </div>
 </section>
 
@@ -548,22 +575,6 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
       <div class="cc-info">
         <span class="cc-cat" data-i18n="cat_pendants">Collection</span>
         <h3 class="cc-name" data-i18n="col_pendants">Pendants</h3>
-        <span class="cc-cta" data-i18n="discover">Discover</span>
-      </div>
-    </div>
-    <div class="cc" onclick="fac('bracelets')">
-      <img src="images/bracelets/IMG_1595.JPG" alt="Bracelets" loading="lazy">
-      <div class="cc-info">
-        <span class="cc-cat" data-i18n="cat_bracelets">Collection</span>
-        <h3 class="cc-name" data-i18n="col_bracelets">Bracelets</h3>
-        <span class="cc-cta" data-i18n="discover">Discover</span>
-      </div>
-    </div>
-    <div class="cc" onclick="fac('chains')">
-      <img src="images/chains/IMG_9799.jpg" alt="Chains" loading="lazy">
-      <div class="cc-info">
-        <span class="cc-cat" data-i18n="cat_chains">Collection</span>
-        <h3 class="cc-name" data-i18n="col_chains">Chains</h3>
         <span class="cc-cta" data-i18n="discover">Discover</span>
       </div>
     </div>
@@ -1292,6 +1303,32 @@ function initReveal(){
   }),{threshold:.07,rootMargin:'0px 0px -32px 0px'});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 }
+
+// ── HERO FULL-PAGE SLIDER (video ↔ text) ─────────────────────────────────
+(function(){
+  const slides=document.querySelectorAll('.hfs');
+  const dots=document.querySelectorAll('.hfs-dot');
+  let cur=0,anim=false;
+  function goTo(n){
+    if(anim||n===cur)return;
+    anim=true;
+    const fwd=n>cur;
+    slides[cur].classList.remove('active');
+    slides[cur].classList.add(fwd?'to-left':'from-right');
+    slides[n].classList.remove('from-right','to-left');
+    slides[n].classList.add('active');
+    dots[cur].classList.remove('act');
+    dots[n].classList.add('act');
+    cur=n;
+    setTimeout(()=>{
+      slides.forEach((s,i)=>{if(i!==cur){s.classList.remove('to-left');s.classList.add('from-right');}});
+      anim=false;
+    },1000);
+  }
+  dots.forEach((d,i)=>d.addEventListener('click',()=>goTo(i)));
+  // Auto-advance to text slide after 8s
+  setTimeout(()=>goTo(1),8000);
+})();
 
 // ── HERO 3D SLIDER ────────────────────────────────────────────────────────
 (function(){
