@@ -211,6 +211,8 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .pprice{font-family:var(--serif);font-size:13px}
 /* Expanded info panel — slides out to the right as overlay */
 .pc-xpanel{position:absolute;top:0;left:calc(100% + 10px);width:100%;height:100%;background:var(--white);border-radius:14px;border:1px solid var(--mist);box-shadow:0 10px 40px rgba(12,12,12,.12);display:flex;flex-direction:column;justify-content:center;padding:24px 22px;opacity:0;transform:translateX(-12px);transition:opacity .4s cubic-bezier(.25,.46,.45,.94),transform .4s cubic-bezier(.25,.46,.45,.94);pointer-events:none;z-index:11}
+.pc.hx-l .pc-xpanel{left:auto;right:calc(100% + 10px);transform:translateX(12px)}
+.pc.hx-l.hx .pc-xpanel{transform:translateX(0)}
 .pc.hx .pc-xpanel{opacity:1;transform:translateX(0);pointer-events:auto}
 .pc-xcat{font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
 .pc-xname{font-family:var(--serif);font-size:19px;font-weight:400;line-height:1.15;margin-bottom:4px}
@@ -1218,13 +1220,17 @@ function updateTryonOverlay(){
 let hdTimer=null;
 function hxOn(el){
   document.querySelectorAll('.pc').forEach(c=>{
-    c.classList.remove('hx');
+    c.classList.remove('hx','hx-l');
     c.style.pointerEvents=c===el?'':'none';
   });
+  // Determine if panel would overflow right edge → show left instead
+  const rect=el.getBoundingClientRect();
+  const panelW=rect.width;
   el.classList.add('hx');
+  if(rect.right+panelW+10>window.innerWidth) el.classList.add('hx-l');
 }
 function hxOff(el){
-  el.classList.remove('hx');
+  el.classList.remove('hx','hx-l');
   document.querySelectorAll('.pc').forEach(c=>c.style.pointerEvents='');
 }
 
