@@ -262,6 +262,12 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 .d-pk{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone)}
 .d-pv{font-size:11px}
 .d-btns{display:flex;flex-direction:column;gap:10px}
+.d-gallery{display:flex;gap:6px;padding:10px 24px;overflow-x:auto;background:var(--silk);flex-shrink:0;scrollbar-width:none}
+.d-gallery::-webkit-scrollbar{display:none}
+.d-thumb{width:60px;height:60px;object-fit:cover;cursor:pointer;opacity:.45;transition:opacity .2s,outline .2s;flex-shrink:0;outline:1.5px solid transparent}
+.d-thumb.act{opacity:1;outline-color:var(--amber)}
+.d-thumb:hover{opacity:.85}
+.pc-cnt{position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,.5);color:#fff;font-size:9px;letter-spacing:.08em;padding:2px 7px;border-radius:10px}
 
 /* ═══ REQUEST MODAL ══════════════════════════════════════════════════════ */
 #req-modal{position:fixed;inset:0;z-index:900;display:none;align-items:center;justify-content:center;background:rgba(12,12,12,.7);backdrop-filter:blur(8px)}
@@ -738,6 +744,7 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
       <button class="d-close" onclick="closeDrawer()">✕</button>
       <img id="d-img" src="" alt="">
     </div>
+    <div class="d-gallery" id="d-gallery" style="display:none"></div>
     <div class="d-body">
       <span class="d-cat" id="d-cat"></span>
       <h2 class="d-name" id="d-name"></h2>
@@ -883,34 +890,31 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 // AMBERRA — Full JS
 // ═══════════════════════════════════════════════════════════════════════════
 const C='https://res.cloudinary.com/dtfq3xq3t/image/upload';
+const R='images/rings';
 
 // ── 94 PRODUCTS ──────────────────────────────────────────────────────────
 const products=[
-  // RINGS (24)
-  {id:1,name:'Sacred Yoni Ring',cat:'rings',price:139,badge:'bestseller',img:`${C}/IMG_1597_lyznwn.jpg`,material:'Natural Baltic Amber · 925 Silver',desc:'Feminine sacred energy captured in honey amber.',props:{Stone:'Natural Baltic Amber',Metal:'925 Sterling Silver',Size:'XS–XL',Blessing:'Sacred Spring Ritual'}},
-  {id:2,name:'Solar Thread Ring',cat:'rings',price:99,badge:'new',img:`${C}/IMG_4193_heg3fr.jpg`,material:'Natural Amber · 24k Gold-Plated Silver',desc:'Delicate thread of gold holding a sun-kissed amber stone.',props:{Stone:'Natural Honey Amber',Metal:'24k Gold-Plated 925',Size:'XS–XL',Blessing:'Sun Ritual'}},
-  {id:3,name:'Solar Serpent Ring',cat:'rings',price:69,badge:null,img:`${C}/IMG_4194_ocdadj.jpg`,material:'Natural Amber · 925 Sterling Silver',desc:'A serpent of silver coils around a drop of ancient amber.',props:{Stone:'Natural Cognac Amber',Metal:'925 Sterling Silver',Size:'XS–XL',Blessing:'Moon Ritual'}},
-  {id:4,name:'All-Seeing Eye Ring',cat:'rings',price:119,badge:'limited',img:`${C}/IMG_1563_vwk4qt.jpg`,material:'Natural Amber · Oxidized Silver',desc:'The eye of wisdom set with a luminous amber cabochon.',props:{Stone:'Natural Cherry Amber',Metal:'Oxidized 925 Silver',Size:'M–XL',Blessing:'Full Moon Ritual'}},
-  {id:5,name:'Amber Blossom Ring',cat:'rings',price:69,badge:null,img:`${C}/IMG_1603_u1c7ol.jpg`,material:'Natural Amber · 925 Sterling Silver',desc:'Petals of silver cradling a perfect amber bloom.',props:{Stone:'Natural Honey Amber',Metal:'925 Sterling Silver',Size:'XS–L',Blessing:'Sacred Spring Ritual'}},
-  {id:6,name:"Ocean's Soul Ring",cat:'rings',price:169,badge:'bestseller',img:`${C}/IMG_1604_nwnpi4.jpg`,material:'Natural Blue Amber · 925 Sterling Silver',desc:'Rare blue-toned Baltic amber set in sculptural silver.',props:{Stone:'Natural Blue Amber',Metal:'925 Sterling Silver',Size:'XS–XL',Blessing:'Ocean Ritual'}},
-  {id:7,name:'Multicolor Code Ring',cat:'rings',price:89,badge:'new',img:`${C}/IMG_1596_osjyju.jpg`,material:'Natural Multi-Amber · 925 Sterling Silver',desc:'Three stones of different amber tones in one ring.',props:{Stone:'Multi-color Baltic Amber',Metal:'925 Sterling Silver',Size:'XS–XL',Blessing:'Sacred Spring Ritual'}},
-  {id:8,name:'Solar Eclipse Ring',cat:'rings',price:129,badge:null,img:`${C}/IMG_1584_xaqoks.jpg`,material:'Natural Amber · 24k Gold-Plated Silver',desc:'Two arcs of gold frame a deep cognac eclipse of amber.',props:{Stone:'Natural Cognac Amber',Metal:'24k Gold-Plated 925',Size:'XS–XL',Blessing:'Eclipse Ritual'}},
-  {id:9,name:'Divine Lotus Ring',cat:'rings',price:129,badge:null,img:`${C}/IMG_1590_iiy4lq.jpg`,material:'Natural Amber · 925 Sterling Silver',desc:'Lotus petals embrace the amber — Bali\'s sacred flower.',props:{Stone:'Natural Honey Amber',Metal:'925 Sterling Silver',Size:'XS–XL',Blessing:'Lotus Ritual'}},
-  {id:10,name:'Rainbow Code Ring',cat:'rings',price:89,badge:'limited',img:`${C}/IMG_1591_xxxk4h.jpg`,material:'Natural Amber · 925 Sterling Silver',desc:'A spectrum of amber tones captured in a single setting.',props:{Stone:'Rainbow Baltic Amber',Metal:'925 Sterling Silver',Size:'XS–XL',Blessing:'Full Moon Ritual'}},
-  {id:11,name:'Eternal Circle Ring',cat:'rings',price:74,badge:null,img:`${C}/IMG_1592_rsurwj.jpg`,material:'Natural Amber · 925 Sterling Silver',desc:'A perfect circle — the symbol of eternity in amber.',props:{Stone:'Natural Honey Amber',Metal:'925 Sterling Silver',Size:'XS–XL',Blessing:'Sacred Spring Ritual'}},
-  {id:12,name:'Empire of the Sun Ring',cat:'rings',price:95,badge:'bestseller',img:`${C}/IMG_4679_qsb3wr.jpg`,material:'Natural Amber · 24k Gold-Plated Silver',desc:'Imperial golden amber commanding the sun\'s power.',props:{Stone:'Natural Cognac Amber',Metal:'24k Gold-Plated 925',Size:'XS–XL',Blessing:'Sun Ritual'}},
-  {id:13,name:'Baltic Sunrise Ring',cat:'rings',price:115,badge:null,img:`${C}/IMG_1595_c4tomi.jpg`,material:'Natural Baltic Amber · 925 Sterling Silver',desc:'The first light of dawn captured in ancient Baltic amber.',props:{Stone:'Natural Baltic Amber',Metal:'925 Sterling Silver',Size:'XS–XL',Blessing:'Dawn Ritual'}},
-  {id:14,name:'Bali Moon Ring',cat:'rings',price:88,badge:'new',img:`${C}/IMG_1598_sj0k9g.jpg`,material:'Natural Amber · 925 Sterling Silver',desc:'Moonlit Bali nights distilled into a silver and amber ring.',props:{Stone:'Natural Cream Amber',Metal:'925 Sterling Silver',Size:'XS–XL',Blessing:'Moon Ritual'}},
-  {id:15,name:'Serpent Wrap Ring',cat:'rings',price:145,badge:'limited',img:`${C}/IMG_1599_pfi17q.jpg`,material:'Natural Amber · Oxidized Silver',desc:'A serpent winds twice around the finger, amber at its crown.',props:{Stone:'Natural Cherry Amber',Metal:'Oxidized 925 Silver',Size:'M–XL',Blessing:'Full Moon Ritual'}},
-  {id:16,name:'Honey Drop Ring',cat:'rings',price:79,badge:null,img:`${C}/IMG_1600_ohm5pj.jpg`,material:'Natural Baltic Amber · 925 Sterling Silver',desc:'A single perfect drop of Baltic honey amber.',props:{Stone:'Natural Honey Amber',Metal:'925 Sterling Silver',Size:'XS–L',Blessing:'Sacred Spring Ritual'}},
-  {id:17,name:'Amber & Moonstone Ring',cat:'rings',price:168,badge:'new',img:`${C}/IMG_1601_xss6rv.jpg`,material:'Amber · Moonstone · 925 Silver',desc:'Warm amber meets cool moonstone — fire and water in silver.',props:{Stone:'Amber + Moonstone',Metal:'925 Sterling Silver',Size:'XS–XL',Blessing:'Sun & Moon Ritual'}},
-  {id:18,name:'Ancient Light Ring',cat:'rings',price:105,badge:null,img:`${C}/IMG_1602_gv1n4j.jpg`,material:'Natural Baltic Amber · 925 Sterling Silver',desc:'Forty million years of trapped sunlight on your finger.',props:{Stone:'Natural Baltic Amber',Metal:'925 Sterling Silver',Size:'XS–XL',Blessing:'Sacred Spring Ritual'}},
-  {id:19,name:'Temple Fire Ring',cat:'rings',price:135,badge:'limited',img:`${C}/IMG_1586_kll0hc.jpg`,material:'Natural Cherry Amber · 24k Gold-Plated Silver',desc:'The flames of Balinese temple fires in deep cherry amber.',props:{Stone:'Natural Cherry Amber',Metal:'24k Gold-Plated 925',Size:'XS–XL',Blessing:'Fire Ritual'}},
-  {id:20,name:'Meditation Ring',cat:'rings',price:69,badge:null,img:`${C}/IMG_1589_bhh8td.jpg`,material:'Natural Amber · 925 Sterling Silver',desc:'Simple, meditative, perfect. A daily reminder of stillness.',props:{Stone:'Natural Honey Amber',Metal:'925 Sterling Silver',Size:'XS–XL',Blessing:'Meditation Ritual'}},
-  {id:21,name:'Sacred Geometry Ring',cat:'rings',price:125,badge:'new',img:`${C}/IMG_1588_xvhp3n.jpg`,material:'Natural Amber · 925 Sterling Silver',desc:'Sacred geometric patterns frame a central amber cabochon.',props:{Stone:'Natural Cognac Amber',Metal:'925 Sterling Silver',Size:'XS–XL',Blessing:'Sacred Spring Ritual'}},
-  {id:22,name:'Volcano Ring',cat:'rings',price:149,badge:'limited',img:`${C}/IMG_4678_p9bv1u.jpg`,material:'Natural Amber · Oxidized Silver',desc:'Molten amber rising from dark oxidized silver like lava.',props:{Stone:'Natural Dark Amber',Metal:'Oxidized 925 Silver',Size:'M–XL',Blessing:'Volcano Ritual'}},
-  {id:23,name:'Morning Dew Ring',cat:'rings',price:85,badge:null,img:`${C}/IMG_4680_fdqsg2.jpg`,material:'Natural Amber · 925 Sterling Silver',desc:'A dewdrop of translucent honey amber on a slender band.',props:{Stone:'Natural Translucent Amber',Metal:'925 Sterling Silver',Size:'XS–L',Blessing:'Dawn Ritual'}},
-  {id:24,name:'Crown of Bali Ring',cat:'rings',price:195,badge:'bestseller',img:`${C}/IMG_4679_qsb3wr.jpg`,material:'Natural Amber · 24k Gold-Plated Silver',desc:'A micro crown of gold cradling the finest Baltic amber.',props:{Stone:'Natural Baltic Amber',Metal:'24k Gold-Plated 925',Size:'XS–XL',Blessing:'Full Moon Ritual'}},
+  // RINGS (20)
+  {id:1,name:'Filigree Petal Ring',cat:'rings',price:129,badge:'bestseller',img:`${R}/IMG_1542.JPG`,imgs:[`${R}/IMG_1542.JPG`,`${R}/IMG_1546.JPG`,`${R}/IMG_1547.JPG`,`${R}/IMG_1549.JPG`,`${R}/IMG_1553.JPG`,`${R}/IMG_1545.JPG`],material:'Natural Baltic Amber · 925 Silver & Gold',desc:'Exquisite filigree petals of silver and gold cradling natural amber. Available in 6 hues.',props:{Stone:'Natural Baltic Amber',Metal:'925 Silver + 18k Gold',Size:'XS–XL',Collection:'Bloom'}},
+  {id:2,name:'Filigree Crown Ring',cat:'rings',price:119,badge:'new',img:`${R}/starburst_cognac.png`,imgs:[`${R}/starburst_cognac.png`,`${R}/starburst_butter.png`,`${R}/starburst_green.png`,`${R}/starburst_blue.png`],material:'Natural Baltic Amber · 925 Silver & Gold',desc:'A starburst crown of intricate filigree adorned with a faceted amber stone.',props:{Stone:'Natural Baltic Amber',Metal:'925 Silver + 18k Gold',Size:'XS–XL',Collection:'Crown'}},
+  {id:3,name:'Enamel Butterfly Ring',cat:'rings',price:155,badge:'limited',img:`${R}/IMG_1569.JPG`,imgs:[`${R}/IMG_1569.JPG`,`${R}/IMG_1591.JPG`,`${R}/IMG_1596.JPG`,`${R}/enamel_blue_gold.jpg`,`${R}/enamel_green_rg.jpg`],material:'Natural Amber · Enamel · 18k Gold',desc:'Butterfly wings in vivid cloisonné enamel around a central amber stone.',props:{Stone:'Natural Baltic Amber',Metal:'18k Gold-Plated Silver',Technique:'Cloisonné Enamel',Collection:'Wings'}},
+  {id:4,name:'Fan Crown Ring',cat:'rings',price:145,badge:null,img:`${R}/IMG_1561.JPG`,imgs:[`${R}/IMG_1561.JPG`,`${R}/IMG_1562.JPG`],material:'Natural Amber · Silver & Gold',desc:'A fan crown of silver embraces the amber — a statement of Baltic royalty.',props:{Stone:'Natural Baltic Amber',Metal:'925 Silver + 18k Gold',Size:'XS–XL',Collection:'Crown'}},
+  {id:5,name:'Dragon Scale Ring',cat:'rings',price:139,badge:null,img:`${R}/IMG_1571.JPG`,imgs:[`${R}/IMG_1571.JPG`,`${R}/IMG_1593.JPG`],material:'Natural Amber · Oxidized Silver',desc:'Scale-textured oxidized silver shields the amber — Baltic warrior armour.',props:{Stone:'Natural Baltic Amber',Metal:'Oxidized 925 Silver',Size:'XS–XL',Collection:'Warrior'}},
+  {id:6,name:'Marquise Eye Ring',cat:'rings',price:149,badge:'bestseller',img:`${R}/IMG_1580.JPG`,imgs:[`${R}/IMG_1580.JPG`,`${R}/IMG_1594.JPG`,`${R}/IMG_9649.JPG`],material:'Natural Amber · Oxidized Silver & Gold',desc:'The all-seeing eye — marquise amber set in oxidized silver with a golden halo.',props:{Stone:'Natural Baltic Amber',Metal:'Oxidized Silver + 18k Gold',Size:'XS–XL',Collection:'Sacred'}},
+  {id:7,name:'Mosaic Band Ring',cat:'rings',price:99,badge:null,img:`${R}/IMG_1584.JPG`,imgs:[`${R}/IMG_1584.JPG`,`${R}/IMG_1602.JPG`,`${R}/IMG_9656.JPG`],material:'Natural Amber · 925 Sterling Silver',desc:'A mosaic of amber tiles set into a sterling silver band — wearable art.',props:{Stone:'Natural Baltic Amber',Metal:'925 Sterling Silver',Size:'XS–XL',Collection:'Mosaic'}},
+  {id:8,name:'Rose Gold Mosaic Ring',cat:'rings',price:119,badge:'new',img:`${R}/mosaic_cognac_rg.jpg`,imgs:[`${R}/mosaic_cognac_rg.jpg`,`${R}/mosaic_butter_rg.jpg`,`${R}/mosaic_green_rg.jpg`,`${R}/mosaic_multi_rg.jpg`],material:'Natural Amber · Rose Gold-Plated Silver',desc:'Amber tiles in a rose gold frame — warm, modern, utterly luxurious.',props:{Stone:'Natural Baltic Amber',Metal:'Rose Gold-Plated 925',Size:'XS–XL',Collection:'Mosaic'}},
+  {id:9,name:'Greek Key Ring',cat:'rings',price:125,badge:null,img:`${R}/IMG_1577.JPG`,imgs:[`${R}/IMG_1577.JPG`,`${R}/IMG_4679.JPG`,`${R}/greek_butter.jpg`],material:'Natural Amber · 18k Gold-Plated Silver',desc:'Ancient Greek meander pattern frames a round amber stone in gleaming gold.',props:{Stone:'Natural Baltic Amber',Metal:'18k Gold-Plated 925',Size:'XS–XL',Collection:'Olympus'}},
+  {id:10,name:'Triple Stones Ring',cat:'rings',price:89,badge:null,img:`${R}/triple_blue.jpg`,imgs:[`${R}/triple_blue.jpg`,`${R}/triple_green.jpg`],material:'Natural Baltic Amber · 925 Sterling Silver',desc:'Three tumbled amber stones clustered on a silver chain-band — nature\'s perfect trio.',props:{Stone:'Natural Baltic Amber',Metal:'925 Sterling Silver',Size:'XS–XL',Collection:'Trio'}},
+  {id:11,name:'Simple Round Ring',cat:'rings',price:75,badge:null,img:`${R}/round_cognac_rg.png`,imgs:[`${R}/round_cognac_rg.png`,`${R}/round_green_rg.png`,`${R}/IMG_1558.JPG`,`${R}/IMG_1590.JPG`],material:'Natural Amber · Rose Gold-Plated Silver',desc:'A perfect round amber in a delicate band — minimal, timeless, pure.',props:{Stone:'Natural Baltic Amber',Metal:'Rose Gold or Silver',Size:'XS–XL',Collection:'Essentials'}},
+  {id:12,name:'Sunburst Ring',cat:'rings',price:135,badge:'bestseller',img:`${R}/IMG_1538.JPG`,imgs:[`${R}/IMG_1538.JPG`,`${R}/sunburst2.jpg`],material:'Natural Amber · 925 Silver & Gold',desc:'Radiating silver rays around a honey amber center — wearable sunrise.',props:{Stone:'Natural Honey Amber',Metal:'925 Silver + 18k Gold',Size:'XS–XL',Collection:'Solar'}},
+  {id:13,name:'Iris Flower Ring',cat:'rings',price:159,badge:'limited',img:`${R}/iris_silver.jpg`,imgs:[`${R}/iris_silver.jpg`,`${R}/iris_oxidized.jpg`],material:'Natural Amber · 925 Silver & Gold',desc:'A blooming iris of filigree silver frames a central butter amber stone.',props:{Stone:'Natural Butter Amber',Metal:'925 Silver + 18k Gold',Size:'XS–XL',Collection:'Bloom'}},
+  {id:14,name:'Raw Amber Oval Ring',cat:'rings',price:189,badge:'limited',img:`${R}/IMG_9645.JPG`,imgs:[`${R}/IMG_9645.JPG`,`${R}/raw_oval_gold.jpg`],material:'Raw Natural Amber · Sterling Silver',desc:'Unpolished raw Baltic amber in a long oval frame — nature exactly as found.',props:{Stone:'Raw Natural Amber',Metal:'925 Silver or 18k Gold',Size:'XS–XL',Collection:'Raw Nature'}},
+  {id:15,name:'Cosmic Swirl Ring',cat:'rings',price:135,badge:'new',img:`${R}/IMG_9643.JPG`,material:'Natural Green Amber · Silver & Gold',desc:'Oxidized silver swirls orbit a green amber center like ancient galaxies.',props:{Stone:'Natural Green Amber',Metal:'Oxidized Silver + 18k Gold',Size:'XS–XL',Collection:'Cosmos'}},
+  {id:16,name:'Teardrop Leaf Ring',cat:'rings',price:95,badge:null,img:`${R}/IMG_9647.JPG`,material:'Natural Amber · Silver & Gold',desc:'A teardrop of hammered silver cradles cognac amber on a sculptural band.',props:{Stone:'Natural Cognac Amber',Metal:'925 Silver + 18k Gold',Size:'XS–XL',Collection:'Nature'}},
+  {id:17,name:'Raw Triangle Ring',cat:'rings',price:175,badge:'limited',img:`${R}/IMG_1587.JPG`,imgs:[`${R}/IMG_1587.JPG`,`${R}/IMG_9651.JPG`],material:'Raw Natural Amber · Sterling Silver',desc:'A bold triangle of raw amber revealing forty million years of Baltic forest.',props:{Stone:'Raw Natural Amber',Metal:'Sterling Silver or 18k Gold',Size:'XS–XL',Collection:'Raw Nature'}},
+  {id:18,name:'Lotus Butterfly Ring',cat:'rings',price:145,badge:null,img:`${R}/IMG_9633.JPG`,material:'Natural Butter Amber · 925 Silver & Gold',desc:'Wings of filigree silver, heart of butter amber — the sacred lotus butterfly.',props:{Stone:'Natural Butter Amber',Metal:'925 Silver + 18k Gold',Size:'XS–XL',Collection:'Wings'}},
+  {id:19,name:'Blue Shell Ring',cat:'rings',price:119,badge:null,img:`${R}/IMG_1597.JPG`,imgs:[`${R}/IMG_1597.JPG`,`${R}/IMG_1601.jpg`],material:'Natural Blue Amber · 925 Sterling Silver',desc:'Blue Baltic amber in a sculptural silver bezel — rare ocean energy.',props:{Stone:'Natural Blue Amber',Metal:'925 Sterling Silver',Size:'XS–XL',Collection:'Ocean'}},
+  {id:20,name:'Amber Clover Ring',cat:'rings',price:89,badge:'new',img:`${R}/clover_amber.png`,material:'Natural Honey Amber · 18k Gold',desc:'A lucky clover carved entirely from honey amber on a golden band.',props:{Stone:'Natural Honey Amber',Metal:'18k Gold-Plated Silver',Size:'XS–XL',Collection:'Lucky'}},
 
   // EARRINGS (24)
   {id:25,name:'Eternal Circle Earrings',cat:'earrings',price:119,badge:'bestseller',img:`${C}/IMG_1605_mailhc.jpg`,material:'Natural Amber · 925 Sterling Silver',desc:'Matching circles of amber that frame the face beautifully.',props:{Stone:'Natural Honey Amber',Metal:'925 Sterling Silver',Closure:'Butterfly backs',Blessing:'Sacred Spring Ritual'}},
@@ -1032,7 +1036,7 @@ function renderProducts(){
       onclick="openDrawer(${p.id})"
       onmouseenter="showHD(${p.id})"
       onmouseleave="hideHD()">
-      <div class="pc-img"><img src="${p.img}" alt="${p.name}" loading="lazy">${b}</div>
+      <div class="pc-img"><img src="${p.img}" alt="${p.name}" loading="lazy">${b}${p.imgs&&p.imgs.length>1?`<span class="pc-cnt">${p.imgs.length} colors</span>`:''}</div>
       <div class="pc-body">
         <span class="pcat">${p.cat}</span>
         <h3 class="pname">${p.name}</h3>
@@ -1064,7 +1068,8 @@ function fac(cat){
 // ── DRAWER ────────────────────────────────────────────────────────────────
 function openDrawer(id){
   const p=products.find(x=>x.id===id);if(!p)return;
-  document.getElementById('d-img').src=p.img;
+  const imgs=p.imgs||[p.img];
+  document.getElementById('d-img').src=imgs[0];
   document.getElementById('d-cat').textContent=p.cat.toUpperCase();
   document.getElementById('d-name').textContent=p.name;
   document.getElementById('d-mat').textContent=p.material;
@@ -1073,8 +1078,23 @@ function openDrawer(id){
   document.getElementById('d-props').innerHTML=Object.entries(p.props).map(([k,v])=>
     `<div class="d-prop"><span class="d-pk">${k}</span><span class="d-pv">${v}</span></div>`).join('');
   document.getElementById('d-req').onclick=()=>{closeDrawer();openReq(p.name)};
+  const gallery=document.getElementById('d-gallery');
+  if(imgs.length>1){
+    gallery.innerHTML=imgs.map((src,i)=>
+      `<img class="d-thumb${i===0?' act':''}" src="${src}" onclick="setDImg(this,'${src}')" alt="">`
+    ).join('');
+    gallery.style.display='flex';
+  } else {
+    gallery.innerHTML='';
+    gallery.style.display='none';
+  }
   document.getElementById('drawer').classList.add('open');
   document.body.style.overflow='hidden';
+}
+function setDImg(el,src){
+  document.getElementById('d-img').src=src;
+  document.querySelectorAll('.d-thumb').forEach(t=>t.classList.remove('act'));
+  el.classList.add('act');
 }
 function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.body.style.overflow=''}
 
