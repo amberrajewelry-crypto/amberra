@@ -120,9 +120,10 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .s-title em{font-style:italic}
 .s-rule{width:36px;height:1px;background:var(--amber);margin-bottom:28px}
 .s-body{font-size:12.5px;line-height:1.9;color:var(--gray)}
-.reveal{opacity:0;transform:translateY(32px);transition:opacity .85s,transform .85s}
+.reveal{transition:opacity .7s,transform .7s}
+.reveal.pre{opacity:0;transform:translateY(24px)}
 .reveal.on{opacity:1;transform:none}
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
 
 /* ═══ COLLECTIONS ═══════════════════════════════════════════════════════ */
 #colls{background:var(--white)}
@@ -1324,10 +1325,16 @@ function s(id){const el=document.getElementById(id);if(el)el.scrollIntoView({beh
 
 // ── REVEAL ────────────────────────────────────────────────────────────────
 function initReveal(){
+  const vph=window.innerHeight;
   const obs=new IntersectionObserver(es=>es.forEach(e=>{
-    if(e.isIntersecting)e.target.classList.add('on')
-  }),{threshold:0,rootMargin:'0px 0px 120px 0px'});
-  document.querySelectorAll('.reveal:not(.on)').forEach(el=>obs.observe(el));
+    if(e.isIntersecting){e.target.classList.remove('pre');e.target.classList.add('on')}
+  }),{threshold:0,rootMargin:'200px 0px 200px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>{
+    const r=el.getBoundingClientRect();
+    if(r.top>vph+50){el.classList.add('pre')}
+    else{el.classList.add('on')}
+    obs.observe(el);
+  });
 }
 
 // ── HERO FULL-PAGE SLIDER (video ↔ text) ─────────────────────────────────
@@ -1450,17 +1457,12 @@ document.addEventListener('DOMContentLoaded',()=>{
   renderProducts();
   initReveal();
   initTryonItems();
-  // Immediately show all .reveal elements already in/near viewport
-  requestAnimationFrame(()=>{
-    document.querySelectorAll('.reveal').forEach(el=>{
-      const r=el.getBoundingClientRect();
-      if(r.top<window.innerHeight+200)el.classList.add('on');
-    });
-  });
-  // Fallback: force-show everything after 1.5s if still hidden
+  // Hard fallback: after 2s make absolutely everything visible
   setTimeout(()=>{
-    document.querySelectorAll('.reveal:not(.on)').forEach(el=>el.classList.add('on'));
-  },1500);
+    document.querySelectorAll('.reveal').forEach(el=>{
+      el.classList.remove('pre');el.classList.add('on');
+    });
+  },2000);
 });
 </script>
 </body>
