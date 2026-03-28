@@ -1326,8 +1326,8 @@ function s(id){const el=document.getElementById(id);if(el)el.scrollIntoView({beh
 function initReveal(){
   const obs=new IntersectionObserver(es=>es.forEach(e=>{
     if(e.isIntersecting)e.target.classList.add('on')
-  }),{threshold:.07,rootMargin:'0px 0px -32px 0px'});
-  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  }),{threshold:0,rootMargin:'0px 0px 120px 0px'});
+  document.querySelectorAll('.reveal:not(.on)').forEach(el=>obs.observe(el));
 }
 
 // ── HERO FULL-PAGE SLIDER (video ↔ text) ─────────────────────────────────
@@ -1450,6 +1450,13 @@ document.addEventListener('DOMContentLoaded',()=>{
   renderProducts();
   initReveal();
   initTryonItems();
+  // Immediately show all .reveal elements already in viewport
+  requestAnimationFrame(()=>{
+    document.querySelectorAll('.reveal').forEach(el=>{
+      const r=el.getBoundingClientRect();
+      if(r.top<window.innerHeight+120)el.classList.add('on');
+    });
+  });
 });
 </script>
 </body>
