@@ -90,29 +90,23 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .hfs.active{opacity:1;pointer-events:auto;z-index:2;transform:none}
 .hfs.from-right{transform:translateX(100%)}
 .hfs.to-left{transform:translateX(-100%)}
-.hfs-inner{display:grid;grid-template-columns:1fr 1fr;height:100%}
 .hero-vid{width:100%;height:100%;object-fit:cover;display:block}
 .hfs-dots{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:10}
 .hfs-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.5);border:none;cursor:pointer;transition:all .35s;padding:0}
 .hfs-dot.act{background:#fff;width:18px;border-radius:3px}
-.hero-l{display:flex;flex-direction:column;justify-content:center;padding:80px 72px 80px 56px}
-.h-tag{font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:var(--amber3);margin-bottom:32px;opacity:0;animation:up 1s .2s forwards}
-.h-title{font-family:var(--serif);font-size:clamp(62px,6.2vw,96px);font-weight:400;color:#1A1714;line-height:1.02;margin-bottom:32px;opacity:0;animation:up 1s .4s forwards}
+/* Slide 2 — horizontal "в строчку" layout */
+.hfs-inline{display:flex;align-items:center;height:100%;background:var(--cream);padding:0 80px;gap:0}
+.hi-left{flex:0 0 auto;padding-right:64px;border-right:1px solid var(--mist)}
+.h-tag{font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:var(--amber3);margin-bottom:20px;display:block;opacity:0;animation:up 1s .2s forwards}
+.h-title{font-family:var(--serif);font-size:clamp(52px,5.2vw,82px);font-weight:400;color:#1A1714;line-height:1.02;opacity:0;animation:up 1s .4s forwards}
 .h-title em{font-style:italic}
-.h-rule{width:44px;height:1px;background:var(--amber);margin-bottom:28px;opacity:0;animation:up 1s .55s forwards}
-.h-desc{font-size:12.5px;line-height:1.9;color:var(--gray);max-width:400px;margin-bottom:48px;opacity:0;animation:up 1s .65s forwards}
-.h-acts{display:flex;gap:14px;align-items:center;opacity:0;animation:up 1s .8s forwards}
-.hero-r{position:relative;overflow:hidden;background:var(--silk);perspective:1400px}
-.hero-slides{position:relative;width:100%;height:100%;transform-style:preserve-3d}
-.h-slide{position:absolute;inset:0;transition:transform .95s cubic-bezier(.4,0,.2,1),opacity .7s;opacity:0;pointer-events:none}
-.h-slide img{width:100%;height:100%;object-fit:cover}
-.h-slide.active{transform:rotateY(0deg) scale(1);opacity:1;pointer-events:auto;z-index:2}
-.h-slide.from-right{transform:rotateY(25deg) scale(.96);opacity:0}
-.h-slide.to-left{transform:rotateY(-25deg) scale(.96);opacity:0}
-.hero-dots{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:10}
-.hero-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.4);border:none;cursor:pointer;transition:all .35s;padding:0}
-.hero-dot.act{background:var(--white);width:18px;border-radius:3px}
-@media(max-width:900px){.hfs-inner{grid-template-columns:1fr}.hero-r{display:none}.hero-l{padding:60px 24px}}
+.hi-center{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:12px;padding:0 64px}
+.hi-orn{font-family:var(--serif);font-size:28px;color:var(--amber);opacity:.5}
+.h-rule{width:1px;height:80px;background:var(--amber);opacity:0;animation:up 1s .55s forwards}
+.hi-right{flex:1;padding-left:0}
+.h-desc{font-size:12.5px;line-height:1.9;color:var(--gray);max-width:340px;margin-bottom:36px;opacity:0;animation:up 1s .65s forwards}
+.h-acts{display:flex;gap:14px;align-items:center;flex-wrap:wrap;opacity:0;animation:up 1s .8s forwards}
+@media(max-width:900px){.hfs-inline{flex-direction:column;padding:60px 24px;gap:32px;justify-content:center}.hi-left{border-right:none;border-bottom:1px solid var(--mist);padding-right:0;padding-bottom:32px}.hi-center{display:none}.hi-right{padding-left:0}}
 
 /* ═══ TICKER ════════════════════════════════════════════════════════════ */
 .ticker{overflow:hidden;background:var(--black);padding:13px 0;white-space:nowrap}
@@ -132,22 +126,22 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 
 /* ═══ COLLECTIONS ═══════════════════════════════════════════════════════ */
 #colls{background:var(--white)}
-.c-head{padding:96px 56px 56px;display:flex;justify-content:space-between;align-items:flex-end}
+.c-head{padding:48px 40px 24px;display:flex;justify-content:space-between;align-items:flex-end}
 .c-link{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--charcoal);border-bottom:1px solid var(--charcoal);padding-bottom:2px;transition:all .3s;background:none;font-family:var(--sans);cursor:pointer}
 .c-link:hover{color:var(--amber);border-color:var(--amber)}
-.c-grid{display:grid;grid-template-columns:3fr 2fr;grid-template-rows:56vh 44vh;gap:3px}
-.cc{position:relative;overflow:hidden;cursor:pointer}
-.cc:nth-child(1){grid-row:1/3}
+.c-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.cc{position:relative;overflow:hidden;cursor:pointer;height:320px;border-radius:10px}
+.cc:nth-child(1){grid-row:auto}
 .cc img{width:100%;height:100%;object-fit:cover;transition:transform .9s}
-.cc:hover img{transform:scale(1.05)}
-.cc-info{position:absolute;bottom:0;left:0;right:0;padding:36px 32px;background:linear-gradient(to top,rgba(12,12,12,.72),transparent)}
-.cc-cat{font-size:8.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--amber3);margin-bottom:8px;display:block}
-.cc-name{font-family:var(--serif);font-size:clamp(22px,2.2vw,34px);font-weight:300;color:var(--white);line-height:1.1;margin-bottom:12px}
-.cc-cta{font-size:8.5px;letter-spacing:.22em;color:rgba(255,255,255,.6);text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;transition:color .3s}
-.cc-cta::after{content:'';width:20px;height:1px;background:currentColor;transition:width .3s}
+.cc:hover img{transform:scale(1.04)}
+.cc-info{position:absolute;bottom:0;left:0;right:0;padding:20px 20px;background:linear-gradient(to top,rgba(12,12,12,.7),transparent)}
+.cc-cat{font-size:7.5px;letter-spacing:.25em;text-transform:uppercase;color:var(--amber3);margin-bottom:5px;display:block}
+.cc-name{font-family:var(--serif);font-size:clamp(18px,1.8vw,26px);font-weight:300;color:var(--white);line-height:1.1;margin-bottom:8px}
+.cc-cta{font-size:8px;letter-spacing:.2em;color:rgba(255,255,255,.6);text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;transition:color .3s}
+.cc-cta::after{content:'';width:16px;height:1px;background:currentColor;transition:width .3s}
 .cc:hover .cc-cta{color:var(--amber3)}
-.cc:hover .cc-cta::after{width:36px}
-@media(max-width:900px){.c-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}.cc:nth-child(1){grid-row:auto}.c-head{padding:60px 24px 40px}}
+.cc:hover .cc-cta::after{width:28px}
+@media(max-width:900px){.c-grid{grid-template-columns:1fr 1fr}.cc{height:220px}.c-head{padding:40px 24px 24px}}
 
 /* ═══ EDITORIAL ═════════════════════════════════════════════════════════ */
 #ed{padding:96px 56px;background:var(--white)}
@@ -195,11 +189,11 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .ftab{padding:10px 20px;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);border:1px solid var(--mist);background:var(--white);font-family:var(--sans);transition:all .25s;cursor:pointer}
 .ftab.act{background:var(--charcoal);color:var(--white);border-color:var(--charcoal)}
 .ftab:hover:not(.act){color:var(--charcoal);border-color:var(--charcoal)}
-.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.pc{background:var(--white);position:relative;overflow:hidden;border-radius:14px;box-shadow:0 1px 6px rgba(12,12,12,.06);transition:box-shadow .35s,grid-column 0s;cursor:pointer;display:flex;flex-direction:column}
-.pc.hx{grid-column:span 2;flex-direction:row;box-shadow:0 8px 32px rgba(12,12,12,.12);z-index:10}
-.pc-img{flex-shrink:0;width:100%;aspect-ratio:3/4;overflow:hidden;position:relative;background:var(--white);transition:width .35s cubic-bezier(.4,0,.2,1)}
-.pc.hx .pc-img{width:52%;aspect-ratio:auto}
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;align-items:start}
+.pc{background:var(--white);position:relative;overflow:hidden;border-radius:14px;box-shadow:0 1px 6px rgba(12,12,12,.06);transition:box-shadow .35s;cursor:pointer;display:flex;flex-direction:column}
+.pc.hx{grid-column:span 2;flex-direction:row;min-height:300px;box-shadow:0 10px 40px rgba(12,12,12,.14);z-index:10;border:1px solid var(--mist)}
+.pc-img{flex-shrink:0;width:100%;aspect-ratio:3/4;overflow:hidden;position:relative;background:var(--white)}
+.pc.hx .pc-img{width:50%;aspect-ratio:auto;height:100%}
 .pc-img img{width:100%;height:100%;object-fit:contain;object-position:center 80%;transition:transform .6s cubic-bezier(.25,.46,.45,.94)}
 .pc.hx .pc-img img{transform:scale(1.03)}
 .pbadge{position:absolute;top:8px;left:8px;padding:3px 7px;font-size:6.5px;letter-spacing:.15em;text-transform:uppercase;z-index:2;border-radius:3px}
@@ -505,31 +499,23 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
         <source src="images/hero.mp4" type="video/mp4">
       </video>
     </div>
-    <!-- Slide 2: Amber text + images -->
+    <!-- Slide 2: Amber text — horizontal inline layout -->
     <div class="hfs from-right">
-      <div class="hfs-inner">
-        <div class="hero-l">
+      <div class="hfs-inline">
+        <div class="hi-left">
           <span class="h-tag" data-i18n="hero_tag">Bali · New Collection 2026</span>
           <h1 class="h-title" data-i18n="hero_title">Amber from<br>the <em>Ancient</em><br>World</h1>
+        </div>
+        <div class="hi-center">
+          <span class="hi-orn">✦</span>
           <div class="h-rule"></div>
+          <span class="hi-orn">✦</span>
+        </div>
+        <div class="hi-right">
           <p class="h-desc" data-i18n="hero_desc">Natural Baltic amber, millions of years in the making. Handcrafted in Bali with sacred intention. Each piece is singular — like the person who wears it.</p>
           <div class="h-acts">
             <button class="btn-s" onclick="s('colls')" data-i18n="hero_cta">Explore Collections</button>
             <button class="btn-o" onclick="s('catalog')" data-i18n="hero_cta2">All Jewelry</button>
-          </div>
-        </div>
-        <div class="hero-r">
-          <div class="hero-slides" id="hero-slides">
-            <div class="h-slide active"><img src="images/rings/IMG_1542.JPG" alt="AMBERRA"></div>
-            <div class="h-slide from-right"><img src="images/earrings/IMG_1550.JPG" alt="AMBERRA" loading="lazy"></div>
-            <div class="h-slide from-right"><img src="images/pendants/IMG_1399.WEBP" alt="AMBERRA" loading="lazy"></div>
-            <div class="h-slide from-right"><img src="images/bracelets/IMG_1595.JPG" alt="AMBERRA" loading="lazy"></div>
-          </div>
-          <div class="hero-dots" id="hero-dots">
-            <button class="hero-dot act"></button>
-            <button class="hero-dot"></button>
-            <button class="hero-dot"></button>
-            <button class="hero-dot"></button>
           </div>
         </div>
       </div>
