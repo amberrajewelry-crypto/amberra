@@ -98,7 +98,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .hfs-inline{display:flex;align-items:center;height:100%;background:var(--cream);padding:0 80px;gap:0}
 .hi-left{flex:0 0 auto;padding-right:64px;border-right:1px solid var(--mist)}
 .h-tag{font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:var(--amber3);margin-bottom:20px;display:block;opacity:0;animation:up 1s .2s forwards}
-.h-title{font-family:var(--serif);font-size:clamp(52px,5.2vw,82px);font-weight:400;color:#1A1714;line-height:1.02;opacity:0;animation:up 1s .4s forwards}
+.h-title{font-family:var(--serif);font-size:clamp(30px,3.2vw,50px);font-weight:400;color:#1A1714;line-height:1.1;white-space:nowrap;opacity:0;animation:up 1s .4s forwards}
 .h-title em{font-style:italic}
 .hi-center{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:12px;padding:0 64px}
 .hi-orn{font-family:var(--serif);font-size:28px;color:var(--amber);opacity:.5}
@@ -506,7 +506,7 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
       <div class="hfs-inline">
         <div class="hi-left">
           <span class="h-tag" data-i18n="hero_tag">Bali · New Collection 2026</span>
-          <h1 class="h-title" data-i18n="hero_title">Amber from<br>the <em>Ancient</em><br>World</h1>
+          <h1 class="h-title" data-i18n="hero_title">Amber from the <em>Ancient</em> World</h1>
         </div>
         <div class="hi-center">
           <span class="hi-orn">✦</span>
@@ -1359,8 +1359,6 @@ function initReveal(){
     },1000);
   }
   dots.forEach((d,i)=>d.addEventListener('click',()=>goTo(i)));
-  // Auto-advance to text slide after 8s
-  setTimeout(()=>goTo(1),8000);
 })();
 
 // ── HERO 3D SLIDER ────────────────────────────────────────────────────────
