@@ -18,14 +18,13 @@
   --nav-h:144px;
 }
 html{scroll-behavior:smooth}
-body{padding-top:var(--nav-h);background:var(--white);color:var(--black);font-family:var(--sans);font-weight:300;overflow-x:hidden;opacity:0;transition:opacity .3s;cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='28'%3E%3Cpath d='M0 0L0 24L5 19L9 28L12 27L8 18L15 18Z' fill='%23A8894A' stroke='white' stroke-width='1'/%3E%3C/svg%3E") 0 0,auto}
+body{padding-top:var(--nav-h);background:var(--white);color:var(--black);font-family:var(--sans);font-weight:300;overflow-x:hidden;opacity:0;transition:opacity .3s;cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='28'%3E%3Cpath d='M0 0L0 24L5 19L9 28L12 27L8 18L15 18Z' fill='%23D4A832' stroke='%23FFF8E0' stroke-width='1'/%3E%3C/svg%3E") 0 0,auto}
 a{text-decoration:none;color:inherit}
 img{display:block;width:100%;height:auto}
 button{cursor:pointer;border:none;background:none;font-family:inherit}
 ::-webkit-scrollbar{width:2px}
 ::-webkit-scrollbar-thumb{background:var(--amber)}
-.gp{position:fixed;pointer-events:none;z-index:9999;border-radius:50%;background:var(--amber);transform:translate(-50%,-50%);animation:gpFade .6s ease forwards}
-#cursor-glow{position:fixed;pointer-events:none;z-index:9998;width:24px;height:24px;border-radius:50%;background:rgba(201,168,50,.2);transform:translate(-50%,-50%);transition:transform .1s;mix-blend-mode:multiply}
+.gp{position:fixed;pointer-events:none;z-index:9999;clip-path:polygon(50% 0%,53% 47%,100% 50%,53% 53%,50% 100%,47% 53%,0% 50%,47% 47%);animation:gpFade .75s ease-out forwards}
 #particles-canvas{position:fixed;pointer-events:none;top:0;left:0;width:100%;height:100%;z-index:1;opacity:.3}
 
 /* ═══ NAV — BULGARI 3-TIER ═══════════════════════════════════════════════ */
@@ -374,14 +373,13 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 
 /* ═══ ANIMATIONS ════════════════════════════════════════════════════════ */
 @keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-@keyframes gpFade{0%{opacity:.9;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) scale(0)}}
+@keyframes gpFade{0%{opacity:1;transform:translate(-50%,-50%) scale(0) rotate(0deg)}30%{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(45deg)}100%{opacity:0;transform:translate(-50%,-80%) scale(.4) rotate(90deg)}}
 @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes cDot{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1)}}
 @keyframes floatParticle{0%{opacity:0;transform:translateY(20px) scale(0)}20%{opacity:.7}80%{opacity:.3}100%{opacity:0;transform:translateY(-80px) scale(1.2)}}
 </style>
 </head>
 <body>
-<div id="cursor-glow"></div>
 <canvas id="particles-canvas"></canvas>
 
 <!-- ══ NAV ══════════════════════════════════════════════════════════════ -->
@@ -1266,27 +1264,27 @@ function initReveal(){
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 }
 
-// ── GOLD PARTICLES ────────────────────────────────────────────────────────
+// ── SPARKLE PARTICLES ─────────────────────────────────────────────────────
+const sparkColors=['#D4A832','#E8C84A','#C9A832','#F0D870','#B8941E'];
 let lastX=0,lastY=0,lastT=0;
-function spawnParticle(x,y){
+function spawnSparkle(x,y){
   const p=document.createElement('div');p.className='gp';
-  const size=Math.random()*5+2;
-  const ox=(Math.random()-.5)*14,oy=(Math.random()-.5)*14;
-  p.style.cssText=`left:${x+ox}px;top:${y+oy}px;width:${size}px;height:${size}px;opacity:${Math.random()*.7+.3}`;
+  const size=Math.random()*10+6;
+  const ox=(Math.random()-.5)*18,oy=(Math.random()-.5)*18;
+  const color=sparkColors[Math.floor(Math.random()*sparkColors.length)];
+  p.style.cssText=`left:${x+ox}px;top:${y+oy}px;width:${size}px;height:${size}px;background:${color};animation-duration:${Math.random()*.3+.55}s`;
   document.body.appendChild(p);
-  setTimeout(()=>p.remove(),600);
+  setTimeout(()=>p.remove(),850);
 }
 document.addEventListener('mousemove',e=>{
   const now=Date.now();
   const dx=e.clientX-lastX,dy=e.clientY-lastY;
   const dist=Math.sqrt(dx*dx+dy*dy);
-  if(dist>10&&now-lastT>30){
-    for(let i=0;i<Math.min(3,Math.floor(dist/14)+1);i++)spawnParticle(e.clientX,e.clientY);
+  if(dist>8&&now-lastT>25){
+    const count=Math.min(3,Math.floor(dist/12)+1);
+    for(let i=0;i<count;i++)spawnSparkle(e.clientX,e.clientY);
     lastX=e.clientX;lastY=e.clientY;lastT=now;
   }
-  // Cursor glow
-  document.getElementById('cursor-glow').style.left=e.clientX+'px';
-  document.getElementById('cursor-glow').style.top=e.clientY+'px';
 });
 
 // ── CANVAS PARTICLES ──────────────────────────────────────────────────────
