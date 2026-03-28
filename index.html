@@ -90,7 +90,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .hfs.active{opacity:1;pointer-events:auto;z-index:2;transform:none}
 .hfs.from-right{transform:translateX(100%)}
 .hfs.to-left{transform:translateX(-100%)}
-.hero-vid{width:100%;height:100%;object-fit:cover;display:block}
+.hero-vid{width:100%;height:100%;object-fit:cover;display:block;background:var(--black)}
 .hfs-dots{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:10}
 .hfs-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.5);border:none;cursor:pointer;transition:all .35s;padding:0}
 .hfs-dot.act{background:#fff;width:18px;border-radius:3px}
@@ -546,7 +546,7 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 
 <!-- ══ COLLECTIONS ════════════════════════════════════════════════════════ -->
 <div id="colls">
-  <div class="c-head reveal">
+  <div class="c-head">
     <div>
       <span class="s-lbl" data-i18n="coll_lbl">Our Universe</span>
       <h2 class="s-title" data-i18n="coll_title">Collections</h2>
@@ -584,11 +584,11 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 <!-- ══ EDITORIAL ══════════════════════════════════════════════════════════ -->
 <section id="ed">
   <div class="ed-wrap">
-    <div class="ed-imgs reveal">
+    <div class="ed-imgs">
       <div class="ed-img"><img src="images/earrings/IMG_1550.JPG" alt="" loading="lazy"></div>
       <div class="ed-img"><img src="images/rings/IMG_1569.JPG" alt="" loading="lazy"></div>
     </div>
-    <div class="reveal d2">
+    <div class="d2">
       <span class="s-lbl" data-i18n="ed_lbl">The Craft</span>
       <div class="s-rule"></div>
       <h2 class="s-title" data-i18n="ed_title">Born from<br><em>Ancient Earth</em></h2>
@@ -606,7 +606,7 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 <!-- ══ VIRTUAL TRY-ON ════════════════════════════════════════════════════ -->
 <section id="tryon-sec">
   <div class="tryon-wrap">
-    <div class="reveal">
+    <div>
       <span class="s-lbl" data-i18n="tryon_lbl">New Feature</span>
       <div class="s-rule"></div>
       <h2 class="s-title" data-i18n="tryon_title">Try On<br><em>Before You Buy</em></h2>
@@ -630,7 +630,7 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 </section>
 
 <!-- ══ QUIZ STRIP ════════════════════════════════════════════════════════ -->
-<div class="quiz-strip reveal" style="margin-top:3px">
+<div class="quiz-strip" style="margin-top:3px">
   <div class="quiz-strip-l">
     <div class="quiz-strip-icon">
       <svg viewBox="0 0 24 24"><path d="M12 2l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
@@ -645,7 +645,7 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 
 <!-- ══ CATALOG ════════════════════════════════════════════════════════════ -->
 <section id="catalog">
-  <div class="cat-head reveal">
+  <div class="cat-head">
     <div>
       <span class="s-lbl" data-i18n="cat_lbl">The Collection</span>
       <h2 class="s-title" data-i18n="cat_title">All Jewelry</h2>
@@ -664,7 +664,7 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 
 <!-- ══ JOURNAL ════════════════════════════════════════════════════════════ -->
 <section id="journal">
-  <div class="j-head reveal">
+  <div class="j-head">
     <div>
       <span class="s-lbl" data-i18n="j_lbl">Insights</span>
       <h2 class="s-title" data-i18n="j_title">The Amber <em>Journal</em></h2>
@@ -701,10 +701,10 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 
 <!-- ══ CONTACT ════════════════════════════════════════════════════════════ -->
 <section id="contact">
-  <span class="s-lbl reveal" data-i18n="c_lbl">Private Appointments</span>
-  <h2 class="s-title reveal d1" data-i18n="c_title">Request a<br><em>Personal Consultation</em></h2>
-  <p class="s-body reveal d2" style="max-width:480px;margin:0 auto" data-i18n="c_body">Our team in Bali will personally guide you to the perfect piece. Every stone is chosen with intention.</p>
-  <div class="c-btns reveal d3">
+  <span class="s-lbl" data-i18n="c_lbl">Private Appointments</span>
+  <h2 class="s-title" data-i18n="c_title">Request a<br><em>Personal Consultation</em></h2>
+  <p class="s-body" style="max-width:480px;margin:0 auto" data-i18n="c_body">Our team in Bali will personally guide you to the perfect piece. Every stone is chosen with intention.</p>
+  <div class="c-btns">
     <button class="btn-s" onclick="openReq()" data-i18n="req_btn">Request a Piece</button>
     <a class="btn-o" href="https://instagram.com/amberra.jewelry" target="_blank">Instagram</a>
   </div>
@@ -1450,13 +1450,17 @@ document.addEventListener('DOMContentLoaded',()=>{
   renderProducts();
   initReveal();
   initTryonItems();
-  // Immediately show all .reveal elements already in viewport
+  // Immediately show all .reveal elements already in/near viewport
   requestAnimationFrame(()=>{
     document.querySelectorAll('.reveal').forEach(el=>{
       const r=el.getBoundingClientRect();
-      if(r.top<window.innerHeight+120)el.classList.add('on');
+      if(r.top<window.innerHeight+200)el.classList.add('on');
     });
   });
+  // Fallback: force-show everything after 1.5s if still hidden
+  setTimeout(()=>{
+    document.querySelectorAll('.reveal:not(.on)').forEach(el=>el.classList.add('on'));
+  },1500);
 });
 </script>
 </body>
