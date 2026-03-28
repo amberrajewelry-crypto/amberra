@@ -322,9 +322,9 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 .tryon-fab:hover .tryon-fab-label{opacity:1;transform:translateX(0)}
 
 /* ═══ CHAT ══════════════════════════════════════════════════════════════ */
-.chat-btn{position:fixed;bottom:28px;right:28px;z-index:700;width:56px;height:56px;background:linear-gradient(135deg,var(--amber),var(--amber2));border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .35s cubic-bezier(.34,1.56,.64,1);box-shadow:0 4px 20px rgba(201,168,50,.4);cursor:pointer}
-.chat-btn:hover{transform:scale(1.12) rotate(-8deg);box-shadow:0 8px 32px rgba(201,168,50,.55)}
-.chat-btn svg{width:24px;height:24px;fill:var(--white);stroke:none}
+.chat-btn{position:fixed;bottom:28px;right:28px;z-index:700;width:56px;height:56px;background:var(--white);border:1.5px solid var(--mist);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .35s cubic-bezier(.34,1.56,.64,1);box-shadow:0 4px 20px rgba(0,0,0,.12);cursor:pointer}
+.chat-btn:hover{transform:scale(1.12) rotate(-8deg);box-shadow:0 8px 32px rgba(0,0,0,.18);border-color:var(--stone)}
+.chat-btn svg{width:24px;height:24px;fill:var(--charcoal);stroke:none}
 .chat-label{position:absolute;right:68px;background:var(--charcoal);color:var(--white);font-size:9px;letter-spacing:.14em;text-transform:uppercase;padding:7px 12px;white-space:nowrap;opacity:0;transform:translateX(8px);transition:all .28s;pointer-events:none;border-radius:2px}
 .chat-btn:hover .chat-label{opacity:1;transform:translateX(0)}
 .chat-pop{position:fixed;bottom:92px;right:28px;z-index:699;width:330px;background:var(--white);border:1px solid var(--mist);box-shadow:0 16px 50px rgba(12,12,12,.1);display:flex;flex-direction:column;opacity:0;transform:translateY(10px) scale(.97);pointer-events:none;transition:all .32s;transform-origin:bottom right}
@@ -810,7 +810,7 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 
 <button class="chat-btn" id="chat-btn" onclick="toggleChat()">
   <span class="chat-label" data-i18n="chat_lbl">Ask Us Anything</span>
-  <svg class="chat-msg" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 2C8.27 2 2 7.71 2 14.73c0 3.9 1.9 7.38 4.9 9.77L6 28l4.8-2.4A15.4 15.4 0 0016 26.47C23.73 26.47 30 20.76 30 13.73S23.73 2 16 2zm-4.5 13.5a2 2 0 110-4 2 2 0 010 4zm4.5 0a2 2 0 110-4 2 2 0 010 4zm4.5 0a2 2 0 110-4 2 2 0 010 4z"/></svg>
+  <svg class="chat-msg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 1c-4.97 0-9 4.03-9 9v7c0 1.1.9 2 2 2h1v-8H4v-1c0-4.42 3.58-8 8-8s8 3.58 8 8v1h-2v8h1c1.1 0 2-.9 2-2v-7c0-4.97-4.03-9-9-9z"/></svg>
   <svg class="chat-x" style="display:none" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M25 9.41L22.59 7 16 13.59 9.41 7 7 9.41 13.59 16 7 22.59 9.41 25 16 18.41 22.59 25 25 22.59 18.41 16z"/></svg>
 </button>
 
