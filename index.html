@@ -720,7 +720,7 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
       <div class="fs">
         <a href="https://instagram.com/amberra.jewelry" target="_blank">Instagram</a>
         <a href="https://wa.me/6287853867120" target="_blank">WhatsApp</a>
-        <a href="#">Pinterest</a>
+        <a href="https://www.pinterest.com/amberra_jewelry/" target="_blank">Pinterest</a>
       </div>
     </div>
     <div>
@@ -736,11 +736,11 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
     <div>
       <span class="fc-t" data-i18n="fc_srv">Services</span>
       <ul class="fc-l">
-        <li><a href="#">Consultation</a></li>
-        <li><a href="#">Gift Wrapping</a></li>
-        <li><a href="#">Custom Orders</a></li>
+        <li><a href="https://wa.me/6287853867120" target="_blank">Consultation</a></li>
+        <li><a href="https://wa.me/6287853867120" target="_blank">Gift Wrapping</a></li>
+        <li><a href="https://wa.me/6287853867120" target="_blank">Custom Orders</a></li>
         <li><button onclick="s('tryon-sec')" data-i18n="nav_tryon">Try On</button></li>
-        <li><a href="#">Wholesale</a></li>
+        <li><a href="mailto:amberrajewelry@gmail.com">Wholesale</a></li>
       </ul>
     </div>
     <div>
@@ -754,7 +754,7 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
   </div>
   <div class="fb-bot">
     <span class="fcp">© 2026 AMBERRA. All rights reserved. Bali, Indonesia.</span>
-    <div class="fleg"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
+    <div class="fleg"><a href="mailto:amberrajewelry@gmail.com">Privacy</a><a href="mailto:amberrajewelry@gmail.com">Terms</a><a href="mailto:amberrajewelry@gmail.com">Cookies</a></div>
   </div>
 </footer>
 
@@ -1328,33 +1328,6 @@ function initReveal(){
   dots.forEach((d,i)=>d.addEventListener('click',()=>goTo(i)));
 })();
 
-// ── HERO 3D SLIDER ────────────────────────────────────────────────────────
-(function(){
-  const slides=document.querySelectorAll('.h-slide');
-  const dots=document.querySelectorAll('.hero-dot');
-  let cur=0,animating=false;
-  function goTo(n){
-    if(animating||n===cur)return;
-    animating=true;
-    const dir=n>cur?'from-right':'to-left';
-    const outDir=n>cur?'to-left':'from-right';
-    slides[cur].classList.remove('active');
-    slides[cur].classList.add(outDir);
-    slides[n].classList.remove('from-right','to-left');
-    slides[n].classList.add('active');
-    dots[cur].classList.remove('act');
-    dots[n].classList.add('act');
-    cur=n;
-    setTimeout(()=>{
-      slides.forEach((s,i)=>{if(i!==cur){s.classList.remove('to-left');s.classList.add('from-right');}});
-      animating=false;
-    },1000);
-  }
-  dots.forEach((d,i)=>d.addEventListener('click',()=>goTo(i)));
-  let timer=setInterval(()=>goTo((cur+1)%slides.length),5000);
-  document.getElementById('hero-slides').addEventListener('mouseenter',()=>clearInterval(timer));
-  document.getElementById('hero-slides').addEventListener('mouseleave',()=>{timer=setInterval(()=>goTo((cur+1)%slides.length),5000);});
-})();
 
 // ── SPARKLE PARTICLES ─────────────────────────────────────────────────────
 const sparkColors=['#D4A832','#E8C84A','#C9A832','#F0D870','#B8941E'];
