@@ -353,7 +353,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 #journal{padding:96px 56px;background:var(--white)}
 .j-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px}
 .j-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
-.jc-img{aspect-ratio:4/3;overflow:hidden;background:var(--silk);display:flex;align-items:center;justify-content:center}
+.jc-img{aspect-ratio:4/3;overflow:hidden;background:var(--white)}
 .jc-img img{width:100%;height:100%;object-fit:contain;padding:8%;transition:transform .7s}
 .jc:hover .jc-img img{transform:scale(1.04)}
 .jc-body{padding:22px 0 0}
