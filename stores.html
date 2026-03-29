@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMBERRA — Find a Store | Boutique Locations</title>
+<meta name="description" content="Find your nearest AMBERRA boutique or studio. Discover our handcrafted Balinese amber jewelry in person.">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://www.amberrajewelry.com/stores">
+
+<!-- ══ OPEN GRAPH ══════════════════════════════════════════════════════════ -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AMBERRA">
+<meta property="og:title" content="AMBERRA — Find a Store">
+<meta property="og:description" content="Find your nearest AMBERRA boutique or studio. Discover our handcrafted Balinese amber jewelry in person.">
+<meta property="og:url" content="https://www.amberrajewelry.com/stores">
+<meta property="og:image" content="https://www.amberrajewelry.com/images/og-cover.jpg">
+
+<!-- ══ SENTRY ══════════════════════════════════════════════════════════════ -->
+<script
+  src="https://js-de.sentry-cdn.com/4685202527800b7a5362a10c52b9ba1b.min.js"
+  crossorigin="anonymous"
+></script>
+<script>
+  window.sentryOnLoad=function(){
+    Sentry.init({
+      environment:'production',
+      release:'amberra@1.0.0',
+      tracesSampleRate:0.2,
+    });
+  };
+</script>
+
+<!-- ══ POSTHOG ════════════════════════════════════════════════════════════ -->
+<script>
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]);t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"},o="capture identify alias people.set people.set_once set register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init('phc_UqL7ychAdg6sU0vOBr2z8ACypL6NgvRUKQ9u9If99Il', {
+    api_host: 'https://app.posthog.com',
+    autocapture: true,
+    capture_pageview: true,
+    session_recording: { maskAllInputs: true }
+  });
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+
+<style>
+/* ═══ STORES PAGE ════════════════════════════════════════════════════════ */
+.stores-hero{background:var(--charcoal);padding:36px 56px 32px;text-align:center;position:relative;overflow:hidden}
+.stores-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center top, rgba(196,156,84,.1) 0%, transparent 70%);pointer-events:none}
+.stores-hero-orn{font-family:var(--serif);font-size:14px;color:var(--amber);opacity:.6;display:block;margin-bottom:10px;letter-spacing:.3em}
+.stores-hero h1{font-family:var(--serif);font-size:clamp(24px,3.5vw,44px);font-weight:300;color:var(--white);letter-spacing:.25em;text-transform:uppercase;margin-bottom:8px;line-height:1}
+.stores-hero p{font-size:10px;color:rgba(255,255,255,.45);letter-spacing:.2em;text-transform:uppercase;margin:0 auto}
+
+.stores-main{display:flex;height:calc(100vh - var(--nav-h) - 200px);min-height:520px}
+
+/* Left panel */
+.stores-panel{width:360px;flex-shrink:0;background:var(--white);border-right:1px solid var(--mist);display:flex;flex-direction:column;overflow:hidden}
+.stores-panel-head{padding:24px 24px 16px;border-bottom:1px solid var(--mist);flex-shrink:0}
+.stores-panel-head h2{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--charcoal);margin-bottom:14px}
+.stores-search-row{display:flex;border:1px solid var(--mist);background:var(--white);transition:border-color .2s}
+.stores-search-row:focus-within{border-color:var(--charcoal)}
+.stores-search-row svg{width:16px;height:16px;stroke:var(--stone);fill:none;stroke-width:1.5;flex-shrink:0;margin:11px 10px 11px 12px}
+.stores-search-inp{flex:1;border:none;outline:none;font-family:var(--sans);font-size:10px;letter-spacing:.08em;color:var(--charcoal);background:transparent;padding:11px 0}
+.stores-search-inp::placeholder{color:var(--stone)}
+.stores-loc-btn{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);background:none;border:none;cursor:pointer;font-family:var(--sans);padding:0;transition:color .2s}
+.stores-loc-btn:hover{color:var(--amber)}
+.stores-loc-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.5}
+
+.stores-list{flex:1;overflow-y:auto;padding:8px 0}
+.stores-list::-webkit-scrollbar{width:2px}
+.stores-list::-webkit-scrollbar-thumb{background:var(--amber)}
+
+.store-card{padding:20px 24px;border-bottom:1px solid var(--silk);cursor:pointer;transition:background .2s;position:relative}
+.store-card:hover,.store-card.active{background:var(--cream)}
+.store-card.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--amber)}
+.store-card-type{font-size:7.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--amber);margin-bottom:6px;display:block}
+.store-card h3{font-family:var(--serif);font-size:15px;font-weight:400;color:var(--charcoal);margin-bottom:6px;line-height:1.2}
+.store-card-addr{font-size:10px;color:var(--gray);line-height:1.6;margin-bottom:6px}
+.store-card-hours{font-size:9.5px;color:var(--stone);margin-bottom:10px}
+.store-card-footer{display:flex;align-items:center;gap:12px}
+.store-card-phone{font-size:9.5px;color:var(--charcoal);letter-spacing:.04em}
+.store-card-dir{font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);border-bottom:1px solid var(--amber);padding-bottom:1px;transition:color .2s,border-color .2s;text-decoration:none;margin-left:auto}
+.store-card-dir:hover{color:var(--amber2);border-color:var(--amber2)}
+
+.stores-empty{padding:48px 24px;text-align:center;color:var(--stone)}
+.stores-empty svg{width:36px;height:36px;stroke:var(--mist);fill:none;stroke-width:1;margin:0 auto 14px;display:block}
+.stores-empty p{font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+
+/* Map */
+#stores-map{flex:1;background:var(--silk);z-index:1}
+
+/* Leaflet overrides for luxury feel */
+.leaflet-popup-content-wrapper{border-radius:0;box-shadow:0 8px 32px rgba(0,0,0,.12);border:none;font-family:'Montserrat',Arial,sans-serif}
+.leaflet-popup-content{margin:18px 22px;font-size:11px;line-height:1.7;color:#3C3830}
+.leaflet-popup-content strong{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:400;display:block;margin-bottom:4px;color:#2A2520}
+.leaflet-popup-tip-container{display:none}
+.leaflet-popup-close-button{font-size:16px;color:#8C8880;top:8px;right:10px}
+.leaflet-attribution-flag{display:none!important}
+.leaflet-control-attribution{font-size:9px;color:var(--stone)}
+.leaflet-control-zoom a{font-size:14px;color:var(--charcoal);border-color:var(--mist)}
+.leaflet-control-zoom a:hover{color:var(--amber)}
+
+/* Responsive */
+@media(max-width:900px){
+  .stores-hero{padding:48px 24px 40px}
+  .stores-main{flex-direction:column;height:auto}
+  .stores-panel{width:100%;border-right:none;border-bottom:1px solid var(--mist);max-height:360px}
+  #stores-map{height:400px;flex:none}
+}
+@media(max-width:768px){
+  .stores-hero{padding:40px 16px 32px}
+  .stores-hero h1{letter-spacing:.1em}
+}
+</style>
+</head>
+<body>
+<canvas id="particles-canvas"></canvas>
+
+<!-- ══ MOBILE NAV ════════════════════════════════════════════════════════ -->
+<div class="mob-nav-overlay" id="mob-nav-overlay" onclick="closeMobNav()"></div>
+<div class="mob-nav-drawer" id="mob-nav-drawer">
+  <div class="mob-nav-head">
+    <span class="mob-nav-logo">AMBERRA</span>
+    <button class="mob-nav-close" onclick="closeMobNav()">✕</button>
+  </div>
+  <div class="mob-nav-links">
+    <a class="mob-nav-link" href="/">Home</a>
+    <a class="mob-nav-link" href="/shop">Shop All</a>
+    <a class="mob-nav-link" href="/shop?cat=rings">Rings</a>
+    <a class="mob-nav-link" href="/shop?cat=earrings">Earrings</a>
+    <a class="mob-nav-link" href="/shop?cat=pendants">Pendants</a>
+    <a class="mob-nav-link" href="/shop?cat=bracelets">Bracelets</a>
+    <a class="mob-nav-link" href="/journal">Journal</a>
+    <a class="mob-nav-link" href="/our-story">Our Story</a>
+    <a class="mob-nav-link" href="/shop#tryon">Try On</a>
+    <a class="mob-nav-link amber" href="/our-story#wholesale">Wholesale</a>
+  </div>
+  <div class="mob-nav-foot">
+    <div class="mob-nav-utils">
+      <button class="mob-nav-util" onclick="closeMobNav();openAcc()">My Account</button>
+      <button class="mob-nav-util" onclick="closeMobNav();openSrv()">Services</button>
+      <button class="mob-nav-util" onclick="closeMobNav();openReq()">Contact</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ NAV ════════════════════════════════════════════════════════════════ -->
+<div id="nav-shell">
+  <div class="nav-logo-bar">
+    <div class="nav-lb-l">
+      <button class="mob-menu-btn" onclick="openMobNav()">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <button class="nav-util-link keep" onclick="openSrv()">
+        <span data-i18n="util_services">Services</span>
+      </button>
+      <button class="nav-util-link" onclick="openReq()">
+        <span data-i18n="util_contact">Contact Us</span>
+      </button>
+    </div>
+    <a class="nav-logo" href="/">AMBERRA</a>
+    <div class="nav-lb-r">
+      <div class="nav-search-wrap">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input class="nav-search-inp" type="text" placeholder="Search" data-i18n-ph="search_ph">
+      </div>
+      <button class="nav-ico-btn" onclick="toggleWishView()">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        <span class="nav-badge" id="wish-badge">0</span>
+      </button>
+      <button class="nav-ico-btn" onclick="openAcc()">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </button>
+      <a class="nav-ico-btn act" href="/stores">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </a>
+      <button class="nav-ico-btn" onclick="openCart()">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="nav-badge" id="cart-badge">0</span>
+      </button>
+      <div id="lang-sw">
+        <button class="lang-cur" onclick="toggleLang()">
+          <span id="lang-cur-txt">EN</span>
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="lang-drop">
+          <button class="lb al" data-lang="en" onclick="setLang('en')">English</button>
+          <button class="lb" data-lang="ru" onclick="setLang('ru')">Русский</button>
+          <button class="lb" data-lang="id" onclick="setLang('id')">Bahasa Indonesia</button>
+          <button class="lb" data-lang="zh" onclick="setLang('zh')">中文</button>
+          <button class="lb" data-lang="fr" onclick="setLang('fr')">Français</button>
+          <button class="lb" data-lang="de" onclick="setLang('de')">Deutsch</button>
+          <button class="lb" data-lang="es" onclick="setLang('es')">Español</button>
+          <button class="lb" data-lang="pt" onclick="setLang('pt')">Português</button>
+          <button class="lb" data-lang="ar" onclick="setLang('ar')">العربية</button>
+          <button class="lb" data-lang="ja" onclick="setLang('ja')">日本語</button>
+          <button class="lb" data-lang="ko" onclick="setLang('ko')">한국어</button>
+          <button class="lb" data-lang="it" onclick="setLang('it')">Italiano</button>
+          <button class="lb" data-lang="tr" onclick="setLang('tr')">Türkçe</button>
+          <button class="lb" data-lang="hi" onclick="setLang('hi')">हिन्दी</button>
+          <button class="lb" data-lang="ka" onclick="setLang('ka')">ქართული</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-main">
+    <a class="nl" href="/" data-i18n="nav_collections">Collections</a>
+    <a class="nl" href="/shop?cat=rings" data-i18n="nav_rings">Rings</a>
+    <a class="nl" href="/shop?cat=earrings" data-i18n="nav_earrings">Earrings</a>
+    <a class="nl" href="/shop?cat=pendants" data-i18n="nav_pendants">Pendants</a>
+    <a class="nl" href="/shop?cat=bracelets" data-i18n="nav_bracelets">Bracelets</a>
+    <a class="nl" href="/shop?cat=chains" data-i18n="nav_chains">Chains</a>
+    <span class="nav-divider"></span>
+    <a class="nl" href="/journal" data-i18n="nav_journal">Journal</a>
+    <a class="nl" href="/our-story" data-i18n="nav_about">Our Story</a>
+    <span class="nav-divider"></span>
+    <a class="nl" href="/shop#tryon" data-i18n="nav_tryon">Try On</a>
+    <a class="nl" href="/our-story#wholesale" data-i18n="nav_wholesale">Wholesale</a>
+  </div>
+</div>
+
+<!-- ══ HERO ════════════════════════════════════════════════════════════════ -->
+<div class="stores-hero">
+  <span class="stores-hero-orn">✦</span>
+  <h1>Find a Store</h1>
+  <p>Discover AMBERRA in person</p>
+</div>
+
+<!-- ══ MAIN LAYOUT ════════════════════════════════════════════════════════ -->
+<div class="stores-main">
+
+  <!-- Left Panel -->
+  <div class="stores-panel">
+    <div class="stores-panel-head">
+      <h2>Our Locations</h2>
+      <div class="stores-search-row">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input class="stores-search-inp" id="stores-search" type="text" placeholder="Enter a city or country" oninput="filterStores(this.value)">
+      </div>
+      <button class="stores-loc-btn" onclick="useMyLocation()">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Use My Location
+      </button>
+    </div>
+    <div class="stores-list" id="stores-list"></div>
+  </div>
+
+  <!-- Map -->
+  <div id="stores-map"></div>
+
+</div>
+
+<!-- ══ FOOTER ════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="ft">
+    <div>
+      <div class="fb">AMBERRA</div>
+      <p class="fd">Natural Balinese amber jewelry,<br>handcrafted in Bali with sacred intention.<br>Each piece is unique — like its wearer.</p>
+      <div class="fs">
+        <a href="https://instagram.com/amberra.jewelry" target="_blank">Instagram</a>
+        <a href="https://wa.me/6287853867120" target="_blank">WhatsApp</a>
+        <a href="https://www.pinterest.com/amberra_jewelry/" target="_blank">Pinterest</a>
+      </div>
+    </div>
+    <div>
+      <span class="fc-t">Collections</span>
+      <ul class="fc-l">
+        <li><a href="/shop?cat=rings">Rings</a></li>
+        <li><a href="/shop?cat=earrings">Earrings</a></li>
+        <li><a href="/shop?cat=pendants">Pendants</a></li>
+        <li><a href="/shop?cat=bracelets">Bracelets</a></li>
+        <li><a href="/shop?cat=chains">Chains</a></li>
+      </ul>
+    </div>
+    <div>
+      <span class="fc-t">Services</span>
+      <ul class="fc-l">
+        <li><a href="https://wa.me/6287853867120" target="_blank">Consultation</a></li>
+        <li><a href="https://wa.me/6287853867120" target="_blank">Gift Wrapping</a></li>
+        <li><a href="https://wa.me/6287853867120" target="_blank">Custom Orders</a></li>
+        <li><a href="/shop#tryon">Try On</a></li>
+        <li><a href="/our-story#wholesale">Wholesale</a></li>
+      </ul>
+    </div>
+    <div>
+      <span class="fc-t">Contact</span>
+      <ul class="fc-l">
+        <li><a href="mailto:amberrajewelry@gmail.com">amberrajewelry@gmail.com</a></li>
+        <li><a href="https://wa.me/6287853867120" target="_blank">WhatsApp Bali</a></li>
+        <li><a href="https://instagram.com/amberra.jewelry" target="_blank">Instagram DM</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fb-bot">
+    <span class="fcp">© 2026 AMBERRA. All rights reserved. Bali, Indonesia.</span>
+    <div class="fleg"><a href="#" onclick="openLegal('privacy');return false">Privacy</a><a href="#" onclick="openLegal('terms');return false">Terms</a><a href="#" onclick="openLegal('cookies');return false">Cookies</a></div>
+  </div>
+</footer>
+
+<!-- ══ MODALS (shared) ═══════════════════════════════════════════════════ -->
+<!-- Services Modal -->
+<div id="srv-modal">
+  <div class="srv-head">
+    <span class="srv-head-title">Services</span>
+    <button class="srv-close" onclick="closeSrv()">✕</button>
+  </div>
+  <div class="srv-grid">
+    <div class="srv-card" onclick="openReq('Consultation')">
+      <div class="srv-card-title">Book a Consultation</div>
+      <img class="srv-card-img" src="images/rings/IMG_1542.JPG" alt="Consultation" loading="lazy">
+      <span class="srv-card-link">Discover More</span>
+    </div>
+    <div class="srv-card">
+      <div class="srv-card-title">Gift Wrapping</div>
+      <img class="srv-card-img" src="images/earrings/IMG_1550.JPG" alt="Gift Wrapping" loading="lazy">
+      <span class="srv-card-link">Discover More</span>
+    </div>
+    <div class="srv-card" onclick="openReq('Custom')">
+      <div class="srv-card-title">Custom Orders</div>
+      <img class="srv-card-img" src="images/rings/IMG_1569.JPG" alt="Custom Orders" loading="lazy">
+      <span class="srv-card-link">Discover More</span>
+    </div>
+    <div class="srv-card" onclick="location.href='/our-story#wholesale'">
+      <div class="srv-card-title">Wholesale</div>
+      <img class="srv-card-img" src="images/bracelets/IMG_1595.JPG" alt="Wholesale" loading="lazy">
+      <span class="srv-card-link">Discover More</span>
+    </div>
+  </div>
+</div>
+
+<!-- Account Modal -->
+<div id="acc-modal">
+  <div class="acc-box">
+    <button class="req-close" onclick="document.getElementById('acc-modal').classList.remove('open')">✕</button>
+    <div class="acc-tabs">
+      <button class="acc-tab act" onclick="accTab('login',this)">Sign In</button>
+      <button class="acc-tab" onclick="accTab('register',this)">Create Account</button>
+    </div>
+    <div id="acc-login">
+      <div class="fg"><label>Email</label><input type="email" id="acc-email"></div>
+      <div class="fg"><label>Password</label><input type="password" id="acc-pw"></div>
+      <button class="btn-s" style="width:100%" onclick="accLogin()">Sign In</button>
+    </div>
+    <div id="acc-register" style="display:none">
+      <div class="fg"><label>Full Name</label><input type="text" id="acc-name"></div>
+      <div class="fg"><label>Email</label><input type="email" id="acc-remail"></div>
+      <div class="fg"><label>Password</label><input type="password" id="acc-rpw"></div>
+      <button class="btn-s" style="width:100%" onclick="accRegister()">Create Account</button>
+    </div>
+  </div>
+</div>
+
+<!-- Request Modal -->
+<div id="req-modal">
+  <div class="req-box">
+    <button class="req-close" onclick="closeReq()">✕</button>
+    <h2>Request a Piece</h2>
+    <p>Tell us which piece caught your eye and we'll be in touch from Bali within 24 hours.</p>
+    <div id="req-form">
+      <div class="fg"><label>Piece of Interest</label><input type="text" id="f-piece"></div>
+      <div class="fg"><label>Your Name</label><input type="text" id="f-name"></div>
+      <div class="fg"><label>Email</label><input type="email" id="f-email"></div>
+      <div class="fg"><label>WhatsApp (optional)</label><input type="text" id="f-phone"></div>
+      <div class="fg"><label>Message</label><textarea id="f-msg"></textarea></div>
+      <button class="btn-s" style="width:100%" onclick="submitReq()">Send Request</button>
+    </div>
+    <div class="req-ok" id="req-ok">
+      <p>Thank you ✦</p>
+      <small>We will be in touch within 24 hours. Warm regards from Bali.</small>
+    </div>
+  </div>
+</div>
+
+<!-- Cart Panel -->
+<div id="cart-drop" onclick="closeCart()"></div>
+<div id="cart-panel">
+  <div class="cart-head">
+    <h3>Your Cart</h3>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-body" id="cart-body">
+    <div class="cart-empty">Your cart is empty</div>
+  </div>
+  <div class="cart-foot" id="cart-foot" style="display:none">
+    <div class="cart-total-row">
+      <span class="cart-total-lbl">Total</span>
+      <span class="cart-total-val" id="cart-total">$0</span>
+    </div>
+    <button class="cart-checkout" onclick="alert('Checkout coming soon')">Proceed to Checkout</button>
+  </div>
+</div>
+
+<!-- Wishlist Panel -->
+<div id="wish-drop" onclick="closeWishView()"></div>
+<div id="wish-panel">
+  <div class="cart-head">
+    <h3>Wishlist</h3>
+    <button class="cart-close" onclick="closeWishView()">✕</button>
+  </div>
+  <div class="cart-body" id="wish-body">
+    <div class="cart-empty">Your wishlist is empty</div>
+  </div>
+</div>
+
+<!-- Legal Modal -->
+<div id="legal-modal" onclick="if(event.target===this)closeLegal()">
+  <div class="legal-box">
+    <button class="legal-close" onclick="closeLegal()">✕</button>
+    <div class="legal-head">
+      <span class="legal-logo">AMBERRA</span>
+      <div class="legal-tabs">
+        <button class="legal-tab act" onclick="legalTab('privacy')">Privacy Policy</button>
+        <button class="legal-tab" onclick="legalTab('terms')">Terms of Use</button>
+        <button class="legal-tab" onclick="legalTab('cookies')">Cookie Policy</button>
+      </div>
+    </div>
+    <div class="legal-body" id="legal-body"></div>
+  </div>
+</div>
+
+<!-- Cookie Banner -->
+<div id="cookie-overlay" style="display:none">
+  <div id="cookie-box">
+    <span class="ck-logo">AMBERRA</span>
+    <div class="ck-rule"></div>
+    <h2 class="ck-title">Your privacy <em>matters</em> to us.</h2>
+    <p class="ck-body">Our website uses cookies, including third-party cookies, to measure performance and offer you a personalised experience in accordance with your preferences.</p>
+    <p class="ck-body">For more information please see our <a class="ck-link" href="#" onclick="openLegal('cookies');return false">Cookie Policy</a>.</p>
+    <div class="ck-btns">
+      <button class="ck-btn-accept" onclick="ckAccept()">Accept All Cookies</button>
+      <button class="ck-btn-reject" onclick="ckReject()">Reject All Cookies</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MOBILE BOTTOM BAR ══════════════════════════════════════════════════ -->
+<div class="mob-bar">
+  <button class="mob-bar-btn" onclick="location.href='/'">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>Home</span>
+  </button>
+  <button class="mob-bar-btn" onclick="location.href='/shop'">
+    <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 001.95-1.57l1.65-8.42H6"/></svg>
+    <span>Shop</span>
+    <span class="mob-bar-badge" id="mob-cart-badge">0</span>
+  </button>
+  <button class="mob-bar-btn act" onclick="location.href='/stores'">
+    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    <span>Stores</span>
+  </button>
+  <button class="mob-bar-btn" onclick="toggleWishView()">
+    <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+    <span>Wishlist</span>
+    <span class="mob-bar-badge" id="mob-wish-badge">0</span>
+  </button>
+  <button class="mob-bar-btn" onclick="openMobNav()">
+    <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    <span>Menu</span>
+  </button>
+</div>
+
+<!-- ══ STORES DATA & MAP INIT ════════════════════════════════════════════ -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+// ── Store Data ─────────────────────────────────────────────────────────────
+const STORES = [
+  {
+    id: 1,
+    name: "AMBERRA at Onyx Park Resort",
+    address: "Onyx Park Resort Ubud, Ubud, Bali, Indonesia",
+    phone: "+62 878 5386 7120",
+    hours: "Mon–Sun: 10:00 – 19:00",
+    lat: -8.4838052,
+    lng: 115.2683399,
+    type: "boutique"
+  },
+  {
+    id: 2,
+    name: "AMBERRA at Awakened Dreamers",
+    address: "Awakened Dreamers Boutique, Canggu, Bali, Indonesia",
+    phone: "+62 878 5386 7120",
+    hours: "Mon–Sun: 10:00 – 20:00",
+    lat: -8.6513743,
+    lng: 115.134288,
+    type: "partner"
+  }
+];
+
+let map, markers = [], activeIdx = null;
+
+// ── Custom marker icon ─────────────────────────────────────────────────────
+function makeIcon(active){
+  const fill = active ? '#C49C54' : '#3C3830';
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 42" width="32" height="42">
+    <path d="M16 0C8.27 0 2 6.27 2 14c0 9.63 12 26 14 28 2-2 14-18.37 14-28C30 6.27 23.73 0 16 0z" fill="${fill}"/>
+    <circle cx="16" cy="14" r="6" fill="#fff" opacity=".9"/>
+  </svg>`;
+  return L.divIcon({
+    html: svg,
+    className: '',
+    iconSize: [32, 42],
+    iconAnchor: [16, 42],
+    popupAnchor: [0, -44]
+  });
+}
+
+// ── Init map ───────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function(){
+  map = L.map('stores-map', {
+    center: [-8.5069, 115.2625],
+    zoom: 12,
+    zoomControl: true
+  });
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 20
+  }).addTo(map);
+
+  renderList(STORES);
+
+  STORES.forEach(function(store, i){
+    const marker = L.marker([store.lat, store.lng], { icon: makeIcon(false) }).addTo(map);
+    marker.bindPopup(
+      '<strong>' + store.name + '</strong>' +
+      store.address + '<br>' +
+      '<span style="color:#8C8880">' + store.hours + '</span>'
+    );
+    marker.on('click', function(){ selectStore(i); });
+    markers.push(marker);
+  });
+
+  // Auto-select first store
+  if(STORES.length > 0) selectStore(0);
+});
+
+// ── Render store list ──────────────────────────────────────────────────────
+function renderList(list){
+  const el = document.getElementById('stores-list');
+  if(!list.length){
+    el.innerHTML = '<div class="stores-empty"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><p>No stores found</p></div>';
+    return;
+  }
+  el.innerHTML = list.map(function(store, i){
+    const realIdx = STORES.indexOf(store);
+    const mapsUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(store.address);
+    return '<div class="store-card" id="sc-' + realIdx + '" onclick="selectStore(' + realIdx + ')">' +
+      '<span class="store-card-type">' + store.type.toUpperCase() + '</span>' +
+      '<h3>' + store.name + '</h3>' +
+      '<p class="store-card-addr">' + store.address + '</p>' +
+      '<p class="store-card-hours">' + store.hours + '</p>' +
+      '<div class="store-card-footer">' +
+        '<span class="store-card-phone">' + store.phone + '</span>' +
+        '<a class="store-card-dir" href="' + mapsUrl + '" target="_blank" onclick="event.stopPropagation()">Get Directions</a>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+// ── Select a store ─────────────────────────────────────────────────────────
+function selectStore(idx){
+  // Deactivate previous
+  if(activeIdx !== null){
+    const prev = document.getElementById('sc-' + activeIdx);
+    if(prev) prev.classList.remove('active');
+    if(markers[activeIdx]) markers[activeIdx].setIcon(makeIcon(false));
+  }
+  activeIdx = idx;
+  const store = STORES[idx];
+  const card = document.getElementById('sc-' + idx);
+  if(card){
+    card.classList.add('active');
+    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  if(markers[idx]){
+    markers[idx].setIcon(makeIcon(true));
+    markers[idx].openPopup();
+  }
+  map.flyTo([store.lat, store.lng], 15, { duration: 1.2 });
+}
+
+// ── Filter stores ──────────────────────────────────────────────────────────
+function filterStores(q){
+  const lower = q.toLowerCase().trim();
+  if(!lower){ renderList(STORES); return; }
+  const filtered = STORES.filter(function(s){
+    return s.name.toLowerCase().includes(lower) ||
+           s.address.toLowerCase().includes(lower);
+  });
+  renderList(filtered);
+}
+
+// ── Use my location ────────────────────────────────────────────────────────
+function useMyLocation(){
+  if(!navigator.geolocation){ alert('Geolocation is not supported by your browser.'); return; }
+  navigator.geolocation.getCurrentPosition(function(pos){
+    const lat = pos.coords.latitude;
+    const lng = pos.coords.longitude;
+    map.flyTo([lat, lng], 10, { duration: 1.5 });
+    L.circleMarker([lat, lng], {
+      radius: 8,
+      fillColor: '#C49C54',
+      color: '#fff',
+      weight: 2,
+      fillOpacity: 0.9
+    }).addTo(map).bindPopup('You are here').openPopup();
+
+    // Sort stores by distance
+    function dist(s){ return Math.sqrt(Math.pow(s.lat-lat,2)+Math.pow(s.lng-lng,2)); }
+    const sorted = STORES.slice().sort(function(a,b){ return dist(a)-dist(b); });
+    renderList(sorted);
+  }, function(){
+    alert('Unable to retrieve your location.');
+  });
+}
+
+// ── Stub: accTab ───────────────────────────────────────────────────────────
+function accTab(tab, btn){
+  document.querySelectorAll('.acc-tab').forEach(function(b){ b.classList.remove('act'); });
+  btn.classList.add('act');
+  document.getElementById('acc-login').style.display = tab==='login' ? '' : 'none';
+  document.getElementById('acc-register').style.display = tab==='register' ? '' : 'none';
+}
+function accLogin(){ alert('Sign in coming soon.'); }
+function accRegister(){ alert('Registration coming soon.'); }
+</script>
+
+<script src="/app.js"></script>
+</body>
+</html>
