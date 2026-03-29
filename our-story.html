@@ -757,7 +757,10 @@ document.addEventListener('DOMContentLoaded',()=>{
   if(window.location.hash==='#wholesale'){
     setTimeout(()=>{
       const el=document.getElementById('wholesale');
-      if(el)el.scrollIntoView({behavior:'smooth'});
+      if(el){
+        const y=el.getBoundingClientRect().top+window.pageYOffset-120;
+        window.scrollTo({top:y,behavior:'smooth'});
+      }
     },300);
   }
 });
