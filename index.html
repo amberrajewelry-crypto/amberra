@@ -116,6 +116,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preload" href="/images/hero.mp4" as="video" type="video/mp4">
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
@@ -138,7 +139,7 @@
     <a class="mob-nav-link" href="/journal">Journal</a>
     <a class="mob-nav-link" href="/our-story">Our Story</a>
     <a class="mob-nav-link" href="/shop#tryon">Try On</a>
-    <a class="mob-nav-link amber" href="/our-story#wholesale">Wholesale</a>
+    <a class="mob-nav-link amber" href="#wholesale">Wholesale</a>
   </div>
   <div class="mob-nav-foot">
     <div class="mob-nav-utils">
@@ -162,13 +163,13 @@
       <button class="nav-util-link" onclick="openReq()">
         <span data-i18n="util_contact">Contact Us</span>
       </button>
-    </div>
-    <a class="nav-logo" href="/">AMBERRA</a>
-    <div class="nav-lb-r">
       <div class="nav-search-wrap">
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
         <input class="nav-search-inp" type="text" placeholder="Search" data-i18n-ph="search_ph">
       </div>
+    </div>
+    <a class="nav-logo" href="/">AMBERRA</a>
+    <div class="nav-lb-r">
       <button class="nav-ico-btn" onclick="toggleWishView()">
         <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
         <span class="nav-badge" id="wish-badge">0</span>
@@ -220,7 +221,7 @@
     <a class="nl" href="/our-story" data-i18n="nav_about">Our Story</a>
     <span class="nav-divider"></span>
     <a class="nl" href="/shop#tryon" data-i18n="nav_tryon">Try On</a>
-    <a class="nl" href="/our-story#wholesale" data-i18n="nav_wholesale">Wholesale</a>
+    <a class="nl" href="#wholesale" data-i18n="nav_wholesale">Wholesale</a>
   </div>
 </div>
 
@@ -228,7 +229,7 @@
 <section id="hero">
   <div class="hfs-wrap">
     <div class="hfs active" id="hero-vid-slide">
-      <video autoplay muted loop playsinline class="hero-vid" id="hero-video" preload="auto">
+      <video autoplay muted loop playsinline class="hero-vid" id="hero-video" preload="auto" poster="images/hero-poster.jpg">
         <source src="images/hero.mp4" type="video/mp4">
       </video>
     </div>

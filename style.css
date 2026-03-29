@@ -6,7 +6,7 @@
   --serif:'Cormorant Garamond',serif;--sans:'Montserrat',Arial,sans-serif;
   --nav-h:110px;
 }
-html{scroll-behavior:smooth;overflow-x:hidden}
+html{scroll-behavior:smooth;overflow-x:hidden;scroll-padding-top:var(--nav-h)}
 body{padding-top:var(--nav-h);background:var(--white);color:var(--black);font-family:var(--sans);font-weight:300;overflow-x:hidden;opacity:1;cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='28'%3E%3Cpath d='M0 0L0 24L5 19L9 28L12 27L8 18L15 18Z' fill='%23D4A832' stroke='%23FFF8E0' stroke-width='1'/%3E%3C/svg%3E") 0 0,auto}
 a{text-decoration:none;color:inherit}
 img{display:block;width:100%;height:auto}
@@ -674,9 +674,9 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
   .nav-search-inp{width:0;overflow:hidden;transition:width .3s}
   .nav-search-inp:focus{width:80px}
   /* On mobile show only cart in right nav — other actions in mob-bar */
+  .nav-lb-r > :nth-child(1),
   .nav-lb-r > :nth-child(2),
   .nav-lb-r > :nth-child(3),
-  .nav-lb-r > :nth-child(4),
   #lang-sw{display:none}
 
   /* Add bottom padding so content isn't hidden behind mob bar */

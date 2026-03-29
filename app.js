@@ -714,6 +714,17 @@ function updateMobBadges(){
 }
 
 // ── INIT ──────────────────────────────────────────────────────────────────
+window.addEventListener('load',()=>{
+  if(location.hash){
+    const el=document.querySelector(location.hash);
+    if(el){
+      const nav=document.getElementById('nav-shell');
+      const navH=nav?nav.offsetHeight:110;
+      window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-navH,behavior:'instant'});
+    }
+  }
+});
+
 document.addEventListener('DOMContentLoaded',()=>{
   const savedLang=localStorage.getItem('amb_lang')||'en';
   setLang(savedLang);
