@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+<defs>
+  <radialGradient id="g" cx="50%" cy="46%" r="38%">
+    <stop offset="0%" stop-color="#C9A832" stop-opacity=".25"/>
+    <stop offset="100%" stop-color="#C9A832" stop-opacity="0"/>
+  </radialGradient>
+</defs>
+<rect width="400" height="300" fill="#F5F0E8"/>
+<ellipse cx="200" cy="138" rx="88" ry="68" fill="url(#g)"/>
+<polygon points="200,86 228,97 240,126 228,155 200,166 172,155 160,126 172,97" fill="none" stroke="#C9A832" stroke-width="1.5"/>
+<polygon points="200,96 220,104 229,126 220,148 200,156 180,148 171,126 180,104" fill="#C9A832" opacity=".1"/>
+<line x1="200" y1="86" x2="200" y2="166" stroke="#D4B84A" stroke-width="0.6" opacity=".25"/>
+<line x1="160" y1="126" x2="240" y2="126" stroke="#D4B84A" stroke-width="0.6" opacity=".25"/>
+<line x1="172" y1="97" x2="228" y2="155" stroke="#D4B84A" stroke-width="0.5" opacity=".18"/>
+<line x1="228" y1="97" x2="172" y2="155" stroke="#D4B84A" stroke-width="0.5" opacity=".18"/>
+<circle cx="200" cy="126" r="8" fill="#C9A832" opacity=".7"/>
+<circle cx="200" cy="126" r="4" fill="#E8D080"/>
+<circle cx="197" cy="123" r="2" fill="#FAF8F5" opacity=".5"/>
+<line x1="200" y1="72" x2="200" y2="64" stroke="#D4B84A" stroke-width="1.3" stroke-linecap="round"/>
+<line x1="196" y1="68" x2="204" y2="68" stroke="#D4B84A" stroke-width="0.9" stroke-linecap="round"/>
+<line x1="241" y1="89" x2="248" y2="82" stroke="#D4B84A" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="159" y1="89" x2="152" y2="82" stroke="#D4B84A" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="254" y1="126" x2="262" y2="126" stroke="#D4B84A" stroke-width="1.3" stroke-linecap="round"/>
+<line x1="258" y1="122" x2="258" y2="130" stroke="#D4B84A" stroke-width="0.9" stroke-linecap="round"/>
+<line x1="146" y1="126" x2="138" y2="126" stroke="#D4B84A" stroke-width="1.3" stroke-linecap="round"/>
+<line x1="241" y1="163" x2="246" y2="168" stroke="#D4B84A" stroke-width="0.9" stroke-linecap="round" opacity=".7"/>
+<line x1="159" y1="163" x2="154" y2="168" stroke="#D4B84A" stroke-width="0.9" stroke-linecap="round" opacity=".7"/>
+<path d="M 188 174 L 188 194 Q 188 207 200 213 Q 212 207 212 194 L 212 174 Z" fill="none" stroke="#C9A832" stroke-width="1.1" opacity=".65"/>
+<path d="M 193 193 L 198 199 L 209 183" fill="none" stroke="#C9A832" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity=".65"/>
+<text x="200" y="250" font-family="Montserrat,Arial,sans-serif" font-size="7.5" fill="#3C3830" text-anchor="middle" letter-spacing="3.5" opacity=".62">CARE &amp; WARRANTY</text>
+<line x1="155" y1="256" x2="245" y2="256" stroke="#C9A832" stroke-width="0.5" opacity=".3"/>
+</svg>

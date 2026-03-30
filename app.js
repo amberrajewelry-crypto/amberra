@@ -84,7 +84,7 @@ function renderWishlist(){
         <div class="wish-item-name">${p.name}</div>
         <div class="wish-item-mat">${p.material||p.cat}</div>
         <div class="wish-item-bot">
-          <span class="wish-item-price">$${p.price}</span>
+          <span class="wish-item-price">${window.formatPrice?window.formatPrice(p.price):'$'+p.price}</span>
           <button class="wish-item-rm" onclick="event.stopPropagation();toggleWish(${p.id},event);renderWishlist()" title="Remove">
             <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" fill="var(--amber)" stroke="var(--amber)"/></svg>
           </button>
@@ -193,7 +193,7 @@ function renderCart(){
         <div class="cart-item-name">${p.name}</div>
         <div class="cart-item-mat">${p.material}</div>
         <div class="cart-item-bot">
-          <span class="cart-item-price">$${(p.price*(p.qty||1))}</span>
+          <span class="cart-item-price">${window.formatPrice?window.formatPrice(p.price*(p.qty||1)):'$'+(p.price*(p.qty||1))}</span>
           <div class="cart-qty">
             <button class="cart-qty-btn" onclick="changeQty(${p.id},-1)">−</button>
             <span class="cart-qty-num">${p.qty||1}</span>
@@ -204,7 +204,7 @@ function renderCart(){
       </div>
     </div>`).join('');
   const total=cart.reduce((s,p)=>s+(p.price*(p.qty||1)),0);
-  document.getElementById('cart-total').textContent='$'+total;
+  document.getElementById('cart-total').textContent=window.formatPrice?window.formatPrice(total):'$'+total;
   foot.style.display='block';
 }
 function checkoutCart(){
@@ -300,6 +300,224 @@ function closeSrv(){
   document.getElementById('nav-shell').classList.remove('nav-hidden');
   document.body.style.overflow='';
   document.body.style.paddingRight='';
+  const sg=document.getElementById('size-guide');
+  if(sg) sg.classList.remove('open');
+}
+// ── SERVICE DETAIL PANEL ─────────────────────────────────────────────────────
+const SVC={
+consultation:{title:'Book a Consultation',body:`
+<div class="sg-section">
+<div class="sg-section-title">Your Personal Jewellery Appointment</div>
+<p class="sg-intro">Every great piece of jewellery begins with a conversation. Our specialists in Bali are available for private one-on-one consultations — by WhatsApp, video call, or in our Ubud atelier.</p>
+<div class="sg-method">
+<div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>Choose Your Format</b>WhatsApp consultation (instant) · Video call via Zoom or FaceTime · In-person visit to our Ubud studio by appointment. All consultations are complimentary and carry no obligation.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">02</span><div class="sg-method-text"><b>What to Expect</b>Share your occasion, style references, and budget. Our specialist will guide you through the collection, recommend pieces that suit your proportions and skin tone, and explain the story behind each amber stone.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">03</span><div class="sg-method-text"><b>After Your Consultation</b>We will send you a curated selection with high-resolution images and pricing. Reserved pieces are held for 48 hours. Full bespoke proposals are available within 5–7 business days.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">04</span><div class="sg-method-text"><b>Book Now</b>Contact us on WhatsApp at +62 878 5386 7120 or email <a href="mailto:hello@amberrajewelry.com" style="color:var(--amber)">hello@amberrajewelry.com</a>. We respond within 4 hours during Bali business hours (08:00–20:00 WITA).</div></div>
+</div>
+<div class="sg-warranty-box" style="margin-top:32px">
+<div class="sg-warranty-seal" style="background:var(--cream);border:1px solid var(--mist)"><svg viewBox="0 0 24 24" stroke="var(--amber)" fill="none" stroke-width="1.2"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2z"/><path d="M16 2v4M8 2v4M2 10h20"/></svg></div>
+<div class="sg-warranty-body"><h4>COMPLIMENTARY SERVICE</h4><p>All consultations at AMBERRA are free of charge, regardless of format. Our philosophy is that exceptional service begins before the purchase — and continues long after.</p></div>
+</div>
+</div>`},
+
+giftwrap:{title:'Gift Wrapping',body:`
+<div class="sg-section">
+<div class="sg-section-title">The Art of the Gift</div>
+<p class="sg-intro">Every AMBERRA piece is presented in our signature packaging — handcrafted in Bali using materials that honour the natural world from which amber itself comes.</p>
+<div class="sg-method">
+<div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>Signature AMBERRA Box</b>Matte black rigid box with gold foil stamping. Interior lined with cream-coloured velvet. Each box is sealed with our amber-toned wax stamp — a ritual in itself.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">02</span><div class="sg-method-text"><b>Luxury Ribbon & Tissue</b>Hand-tied satin ribbon in ivory or deep charcoal. Acid-free tissue paper with the AMBERRA emblem. All packaging is recyclable and plastic-free.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">03</span><div class="sg-method-text"><b>Personalised Message Card</b>Include a handwritten message on our cream-laid card stock — engraved with the AMBERRA monogram. Available in English, Russian, Arabic, Indonesian, and French. No extra charge.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">04</span><div class="sg-method-text"><b>Bali Gift Set Upgrade</b>Add a hand-painted batik pouch, artisan incense from Ubud, and a small raw amber specimen for $28. A gift that carries the spirit of Bali.</div></div>
+</div>
+<p class="sg-note">Gift wrapping is complimentary on all orders. Upgrade options available at checkout. For corporate gifting (10+ pieces), contact our team directly for bespoke solutions.</p>
+</div>`},
+
+size:{title:'Size Guide',body:`
+<div class="sg-section">
+<div class="sg-section-title">Ring Size Guide</div>
+<p class="sg-intro">Our rings are crafted in Bali to international sizing standards. If you are between sizes, we recommend sizing up. For wide-band rings, consider one half-size larger.</p>
+<div class="sg-method">
+<div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>String Method</b>Wrap a strip of paper or thin string around the base of your finger. Mark where it overlaps and measure the length in millimetres. Use the table below to find your size.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">02</span><div class="sg-method-text"><b>Existing Ring Method</b>Place a ring you already wear flat on a ruler. Measure the inner diameter in millimetres (across the widest inner point). Match to the diameter column below.</div></div>
+</div>
+<table class="sg-table">
+<thead><tr><th>Inner Ø mm</th><th>Circumference mm</th><th>US / CA</th><th>EU / RU</th><th>UK</th><th>FR / IT</th><th>JP</th></tr></thead>
+<tbody>
+<tr><td>14.1</td><td>44.2</td><td>3</td><td>44</td><td>F</td><td>44</td><td>4</td></tr>
+<tr><td>14.9</td><td>46.8</td><td>4</td><td>47</td><td>H</td><td>47</td><td>7</td></tr>
+<tr><td>15.3</td><td>48.0</td><td>4½</td><td>48</td><td>I½</td><td>48</td><td>8</td></tr>
+<tr><td>15.7</td><td>49.3</td><td>5</td><td>49</td><td>J½</td><td>49</td><td>9</td></tr>
+<tr><td>16.1</td><td>50.6</td><td>5½</td><td>51</td><td>K½</td><td>51</td><td>10</td></tr>
+<tr class="sg-highlight"><td>16.5</td><td>51.9</td><td>6</td><td>52</td><td>L½</td><td>52</td><td>12</td></tr>
+<tr class="sg-highlight"><td>16.9</td><td>53.2</td><td>6½</td><td>53</td><td>M½</td><td>53</td><td>13</td></tr>
+<tr class="sg-highlight"><td>17.3</td><td>54.4</td><td>7</td><td>55</td><td>N½</td><td>55</td><td>14</td></tr>
+<tr class="sg-highlight"><td>17.7</td><td>55.7</td><td>7½</td><td>56</td><td>O</td><td>56</td><td>15</td></tr>
+<tr class="sg-highlight"><td>18.1</td><td>57.0</td><td>8</td><td>57</td><td>P½</td><td>57</td><td>16</td></tr>
+<tr><td>18.5</td><td>58.3</td><td>8½</td><td>59</td><td>Q</td><td>59</td><td>17</td></tr>
+<tr><td>19.0</td><td>59.5</td><td>9</td><td>60</td><td>R½</td><td>60</td><td>18</td></tr>
+<tr><td>19.4</td><td>61.0</td><td>9½</td><td>61</td><td>S</td><td>61</td><td>20</td></tr>
+<tr><td>19.8</td><td>62.1</td><td>10</td><td>62</td><td>T½</td><td>62</td><td>22</td></tr>
+</tbody></table>
+<p class="sg-note">Highlighted rows (US 6–8) are our most requested sizes and are available from stock. Other sizes are made to order — allow 7–10 extra days. Measure in the evening when fingers are slightly larger. Knuckles larger than the finger base? Size up.</p>
+</div>
+<div class="sg-section">
+<div class="sg-section-title">Bracelet Size Guide</div>
+<p class="sg-intro">Measure your wrist with a soft tape measure or a strip of paper, keeping it snug but not tight. Add the preferred ease (loose or close fit) to find your bracelet length.</p>
+<table class="sg-table">
+<thead><tr><th>Size</th><th>Wrist Circumference</th><th>Bracelet Length</th><th>Fit Style</th><th>Best For</th></tr></thead>
+<tbody>
+<tr><td>XS</td><td>13–14 cm</td><td>15 cm</td><td>Snug · close to skin</td><td>Delicate chain styles</td></tr>
+<tr><td>S</td><td>14–15 cm</td><td>16 cm</td><td>Fitted · slight movement</td><td>Beaded &amp; link bracelets</td></tr>
+<tr class="sg-highlight"><td>M</td><td>15–16.5 cm</td><td>17 cm</td><td>Classic · relaxed drape</td><td>All bracelet styles</td></tr>
+<tr class="sg-highlight"><td>M/L</td><td>16–17 cm</td><td>18 cm</td><td>Comfortable · natural hang</td><td>Chunky &amp; statement</td></tr>
+<tr><td>L</td><td>17–18 cm</td><td>19 cm</td><td>Relaxed · generous</td><td>Layering looks</td></tr>
+<tr><td>XL</td><td>18+ cm</td><td>20 cm</td><td>Loose · stacked</td><td>Multiple bangles</td></tr>
+</tbody></table>
+<p class="sg-note">Most AMBERRA bracelets come with a 3-link extender (adds up to 1.5 cm). If your wrist measurement falls between two sizes, choose the larger. Custom lengths are available at no extra charge — contact us on WhatsApp.</p>
+</div>
+<div class="sg-section">
+<div class="sg-section-title">Necklace &amp; Chain Length Guide</div>
+<p class="sg-intro">Chain length determines where a pendant falls on the body. Below are the standard positions used by all major jewellery houses, including where our pieces naturally sit.</p>
+<table class="sg-table">
+<thead><tr><th>Length</th><th>Style Name</th><th>Sits At</th><th>Best Worn With</th></tr></thead>
+<tbody>
+<tr><td>35–38 cm</td><td>Choker</td><td>Base of neck</td><td>Open necklines, strapless, evening</td></tr>
+<tr class="sg-highlight"><td>40–42 cm</td><td>Collarbone</td><td>Collarbone</td><td>V-necks, everyday wear — our default length</td></tr>
+<tr class="sg-highlight"><td>45 cm</td><td>Princess</td><td>Just below collarbone</td><td>Crew necks, casual &amp; professional</td></tr>
+<tr><td>50 cm</td><td>Matinée</td><td>Upper chest</td><td>High necks, layering over blouse</td></tr>
+<tr><td>55–60 cm</td><td>Opera</td><td>Bust line</td><td>Long pendants, evening gowns, layering</td></tr>
+<tr><td>70+ cm</td><td>Rope / Lariat</td><td>Below bust</td><td>Can be doubled or knotted</td></tr>
+</tbody></table>
+<p class="sg-note">All AMBERRA pendant chains are 45 cm as standard. Alternative lengths (40 cm, 50 cm, 60 cm) are available. Chain thickness: 1.2 mm fine chain · 1.8 mm standard · 2.4 mm statement. Specify at checkout or via WhatsApp.</p>
+</div>
+<div class="sg-section">
+<div class="sg-section-title">Earring Guide</div>
+<p class="sg-intro">Our earrings are designed to complement different face shapes and ear types. All posts are standard 0.8 mm diameter and fit universal ear piercing gauges.</p>
+<div class="sg-care-grid">
+<div class="sg-care-item"><span class="sg-care-icon">◎</span><span class="sg-care-title">Stud Earrings</span><p class="sg-care-text">Diameter: 6–14 mm. Post length: 10 mm. Butterfly closure. Suitable for first and second piercings. Our amber studs range from 8 mm (everyday) to 12 mm (statement).</p></div>
+<div class="sg-care-item"><span class="sg-care-icon">◡</span><span class="sg-care-title">Drop &amp; Dangle</span><p class="sg-care-text">Total length from lobe: 2–5 cm. Hook wire gauge: 0.7 mm. All hooks are nickel-free 925 silver. Lever-back option available on request for added security.</p></div>
+<div class="sg-care-item"><span class="sg-care-icon">○</span><span class="sg-care-title">Hoop Earrings</span><p class="sg-care-text">Inner diameter: 15–40 mm. Wire thickness: 1 mm. Hinged closure for easy wear. Our amber hoop collection uses 20 mm (small), 30 mm (medium), and 40 mm (large) inner diameter.</p></div>
+<div class="sg-care-item"><span class="sg-care-icon">✦</span><span class="sg-care-title">Clip-On Option</span><p class="sg-care-text">Available on select styles for non-pierced ears. Adjustable tension clip with silicone comfort pad. Suitable for 2–3 hours of continuous wear. Add to any order note or contact us.</p></div>
+<div class="sg-care-item"><span class="sg-care-icon">◈</span><span class="sg-care-title">Face Shape Guide</span><p class="sg-care-text">Round face → long drops and angular shapes. Oval face → any style. Square face → soft curves and hoops. Heart face → wider at the bottom (teardrops). Oblong face → short drops and studs.</p></div>
+<div class="sg-care-item"><span class="sg-care-icon">◇</span><span class="sg-care-title">Hypoallergenic</span><p class="sg-care-text">All AMBERRA earring posts and wires are 925 sterling silver — hypoallergenic and nickel-free. Gold vermeil options (18k gold over silver) are available across the collection.</p></div>
+</div>
+</div>`},
+
+care:{title:'Care & Warranty',body:`
+<div class="sg-section">
+<div class="sg-section-title">Caring for Your Amber</div>
+<p class="sg-intro">Balinese amber is an organic gemstone formed over 40 million years. It is warm, light, and alive — and with the right attention, it will remain luminous for generations.</p>
+<div class="sg-care-grid">
+<div class="sg-care-item"><span class="sg-care-icon">✦</span><span class="sg-care-title">Daily Wear</span><p class="sg-care-text">Remove before swimming, bathing, exercising, or using cleaning products. Apply perfume, hairspray, and lotions before putting on your jewellery — not after. Amber absorbs chemicals.</p></div>
+<div class="sg-care-item"><span class="sg-care-icon">◌</span><span class="sg-care-title">Cleaning</span><p class="sg-care-text">Wipe gently with a soft, slightly damp cloth. Dry immediately with a dry cloth. For deeper cleaning: lukewarm water + a drop of pH-neutral soap, then rinse and dry thoroughly. No ultrasonic cleaners. No steam.</p></div>
+<div class="sg-care-item"><span class="sg-care-icon">◇</span><span class="sg-care-title">Storage</span><p class="sg-care-text">Store in the provided velvet-lined AMBERRA pouch or box. Keep away from direct sunlight, heat sources, and humidity. Store pieces separately to prevent scratching. Amber's Mohs hardness is 2–2.5 — it scratches easily.</p></div>
+<div class="sg-care-item"><span class="sg-care-icon">○</span><span class="sg-care-title">Sterling Silver</span><p class="sg-care-text">Silver naturally oxidises — this is not a defect but a characteristic. Polish gently with a silver polishing cloth (never paper tissue). Avoid chlorine, bleach, rubber bands, and latex gloves, which accelerate tarnish.</p></div>
+<div class="sg-care-item"><span class="sg-care-icon">◈</span><span class="sg-care-title">Gold Vermeil</span><p class="sg-care-text">18k gold plated over 925 sterling silver (2.5 microns minimum). Wipe with a dry, soft cloth after each wear. Avoid prolonged water exposure. Do not use abrasive polishes. Gold vermeil will gradually reveal the silver base with heavy daily wear — this is natural.</p></div>
+<div class="sg-care-item"><span class="sg-care-icon">✧</span><span class="sg-care-title">Restoring Amber</span><p class="sg-care-text">If your amber has lost its lustre, apply one small drop of food-grade olive oil to a soft cloth and buff gently in circular motions. Wipe off any excess. Never use acetone, alcohol, or commercial jewellery dips on amber — they will permanently cloud the surface.</p></div>
+</div>
+</div>
+<div class="sg-section">
+<div class="sg-section-title">1-Year Limited Warranty</div>
+<div class="sg-warranty-box">
+<div class="sg-warranty-seal"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 4.8L20 8l-4 4 .9 5.5L12 15l-4.9 2.5L8 12 4 8l5.6-1.2L12 2z" stroke="#fff" stroke-width="1.2" fill="none"/></svg></div>
+<div class="sg-warranty-body">
+<h4>AMBERRA LIMITED WARRANTY — 12 MONTHS</h4>
+<p>Every AMBERRA piece is covered by a <strong>12-month limited warranty</strong> from the date of purchase. We stand behind the integrity of every amber stone and the skill of every Balinese craftsman we work with.</p>
+<p><strong>Covered under warranty:</strong></p>
+<ul>
+<li>Manufacturing defects in clasps, settings, and closures</li>
+<li>Stone loss caused by a defective setting (not by impact, force, or misuse)</li>
+<li>Premature and abnormal discolouration of sterling silver components</li>
+<li>Separation of gold vermeil in less than 6 months of normal use</li>
+<li>One complimentary professional inspection and clean within the warranty period</li>
+</ul>
+<p><strong>Not covered:</strong> normal wear and ageing, scratches, dents, accidental damage, loss or theft, chemical damage, or modifications made by third parties.</p>
+<p>To make a claim: email <a href="mailto:hello@amberrajewelry.com" style="color:var(--amber)">hello@amberrajewelry.com</a> with your order number and clear photographs of the item and defect. We will respond within 48 hours with a resolution — repair, replacement, or credit.</p>
+</div>
+</div>
+</div>`},
+
+custom:{title:'Custom Orders',body:`
+<div class="sg-section">
+<div class="sg-section-title">Your Bespoke Piece</div>
+<p class="sg-intro">Every amber stone is unique — no two are alike. Our Bali atelier accepts fully bespoke commissions: from a ring made to your exact size and stone preference, to a multi-piece set designed for a special occasion.</p>
+<div class="sg-method">
+<div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>Initial Consultation</b>Share your vision via WhatsApp or email. Reference images, stone colours, metal preferences (sterling silver, gold vermeil, solid 18k), occasion, and budget. No brief is too simple or too ambitious.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">02</span><div class="sg-method-text"><b>Stone Selection</b>We will present 3–5 amber specimens matching your specifications — photographed on white and on skin. You select the stone you feel drawn to. This is your piece, beginning with your choice.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">03</span><div class="sg-method-text"><b>Design Proposal</b>Our artisan prepares a hand-drawn sketch and, for complex pieces, a 3D render. You review and approve before any metal is touched. One round of revisions is included at no extra cost.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">04</span><div class="sg-method-text"><b>Crafting in Bali</b>Your piece is made by hand in our Ubud workshop. Standard completion: 2–3 weeks. Complex or engraved pieces: 4–5 weeks. You will receive progress photographs at each stage.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">05</span><div class="sg-method-text"><b>Delivery &amp; Ceremony</b>Shipped in our signature box with a personalised certificate of authenticity. Each custom piece is individually blessed in the Balinese tradition before it leaves the atelier.</div></div>
+</div>
+<div class="sg-warranty-box" style="margin-top:32px">
+<div class="sg-warranty-seal" style="background:var(--cream);border:1px solid var(--mist)"><svg viewBox="0 0 24 24" stroke="var(--amber)" fill="none" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+<div class="sg-warranty-body"><h4>PRICING &amp; TIMELINE</h4><p>Custom pieces start from $180 (simple stone reset) to $2,400+ (full bespoke with solid gold). A 50% deposit is required to begin. The balance is due on approval of the finished piece photograph, before shipping.</p><p>Engraving (Latin script, Arabic, Balinese script) is available on most metal surfaces for $25–$45 depending on complexity.</p></div>
+</div>
+</div>`},
+
+tryon:{title:'Virtual Try On',body:`
+<div class="sg-section">
+<div class="sg-section-title">Try Before You Buy</div>
+<p class="sg-intro">Our Virtual Try On feature lets you see any AMBERRA piece on your own photo — before you commit. Powered by our augmented reality overlay system, available directly in the browser.</p>
+<div class="sg-method">
+<div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>Upload Your Photo</b>Go to the Try On section on our Shop page. Upload a clear front-facing photo (good lighting, neutral background works best). Your photo is processed locally — it is never stored on our servers.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">02</span><div class="sg-method-text"><b>Select a Piece</b>Browse rings, earrings, pendants, and bracelets. Tap any piece to overlay it on your photo. The system automatically positions earrings at the ear, rings on the finger, and pendants at the collarbone.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">03</span><div class="sg-method-text"><b>Adjust &amp; Compare</b>Drag to reposition. Use pinch-to-zoom to scale. Compare up to three pieces side by side. Save your look as an image to share with friends or revisit later.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">04</span><div class="sg-method-text"><b>Order with Confidence</b>Once you have found your piece, add it directly to your cart from the Try On view. Not sure? Save it to your Wishlist or send us the image on WhatsApp for a personal stylist opinion.</div></div>
+</div>
+<p class="sg-note">Best results on desktop or tablet. Works on all modern browsers without installation. For the most accurate colour rendering, use natural daylight when taking your source photo. Camera live mode coming soon.</p>
+</div>`},
+
+blessing:{title:'The Bali Blessing',body:`
+<div class="sg-section">
+<div class="sg-section-title">A Sacred Ritual Before Every Piece Leaves Bali</div>
+<p class="sg-intro">In Balinese Hindu tradition, objects crafted with intention carry energy — and that energy can be consecrated. Every AMBERRA piece undergoes a blessing ceremony in the Ubud tradition before it is shipped to you.</p>
+<div class="sg-method">
+<div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>The Ceremony</b>Performed by a local Balinese priest (Pemangku) in our atelier courtyard, each piece is laid on a woven offering tray (gebogan) with fresh flowers, incense (dupa), and holy water from the Tirta Empul temple spring in Tampaksiring.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">02</span><div class="sg-method-text"><b>The Intention</b>The ceremony calls for protection, clarity, and alignment for the wearer. In Balinese belief, amber — as a stone of ancient light — amplifies positive intention and shields against disharmony.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">03</span><div class="sg-method-text"><b>What You Receive</b>Your piece arrives with a small card describing the blessing, the date it was performed, and the name of the priest. A dried frangipani petal from the ceremony is enclosed in a wax-sealed envelope.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">04</span><div class="sg-method-text"><b>Wearing Your Blessed Piece</b>Balinese tradition suggests wearing a newly blessed piece for the first time on an auspicious day. We include a short guide with your order on Balinese calendar days most aligned with new beginnings.</div></div>
+</div>
+<div class="sg-warranty-box" style="margin-top:32px">
+<div class="sg-warranty-seal" style="background:var(--cream);border:1px solid var(--mist)"><svg viewBox="0 0 24 24" stroke="var(--amber)" fill="none" stroke-width="1.2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div>
+<div class="sg-warranty-body"><h4>INCLUDED WITH EVERY ORDER</h4><p>The Bali Blessing is not an optional add-on. It is part of what AMBERRA is. Every piece — from a $45 stud to a $2,400 bespoke commission — is blessed with the same care and the same ceremony. This is not marketing. It is our practice.</p></div>
+</div>
+</div>`},
+
+certificate:{title:'Certificate of Authenticity',body:`
+<div class="sg-section">
+<div class="sg-section-title">Your Guarantee of Origin &amp; Authenticity</div>
+<p class="sg-intro">Every AMBERRA piece is accompanied by a Certificate of Authenticity — a document that records the origin, composition, and individual character of your amber stone and its setting.</p>
+<div class="sg-method">
+<div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>What Is Certified</b>Balinese amber origin (Bali, Indonesia) · Succinic acid content (2–8%) confirming genuine resinite amber · Metal purity (925 sterling silver or 18k gold vermeil) · Stone colour classification and inclusion description.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">02</span><div class="sg-method-text"><b>The Physical Certificate</b>Printed on heavyweight 300gsm cream cotton paper. Bears the AMBERRA embossed seal, the artisan's signature, the date of completion, and a unique piece reference number. Presented in a protective archival sleeve.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">03</span><div class="sg-method-text"><b>Digital Verification</b>Each certificate includes a QR code linking to your piece's unique digital record — including high-resolution photography, stone provenance documentation, and the Bali Blessing date. Permanently hosted and accessible at any time.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">04</span><div class="sg-method-text"><b>Resale &amp; Inheritance Value</b>AMBERRA certificates are transferable. Should your piece be gifted, inherited, or resold, the certificate travels with it. A re-authentication service is available for $35, updating the certificate with a new owner name and date.</div></div>
+</div>
+<div class="sg-warranty-box" style="margin-top:32px">
+<div class="sg-warranty-seal"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 4.8L20 8l-4 4 .9 5.5L12 15l-4.9 2.5L8 12 4 8l5.6-1.2L12 2z" stroke="#fff" stroke-width="1.2" fill="none"/></svg></div>
+<div class="sg-warranty-body"><h4>HOW TO IDENTIFY AUTHENTIC AMBERRA</h4><ul><li>Certificate reference number matches the QR code in the digital record</li><li>The amber passes the saltwater float test (genuine amber floats in saturated saltwater)</li><li>Under UV light, natural Balinese amber fluoresces blue-white or blue-green</li><li>Each piece has a unique amber grain — no two are identical. If yours looks mass-produced, contact us.</li></ul><p>Concerned about authenticity? Email us a photograph of your piece and certificate at <a href="mailto:hello@amberrajewelry.com" style="color:var(--amber)">hello@amberrajewelry.com</a>. Verification is always free.</p></div>
+</div>
+</div>`}
+};
+
+function openService(slug){
+  const data=SVC[slug];
+  if(!data)return;
+  const sg=document.getElementById('size-guide');
+  if(!sg)return;
+  const titleEl=sg.querySelector('.sg-head-title');
+  const bodyEl=sg.querySelector('.sg-body');
+  if(titleEl)titleEl.textContent=data.title;
+  if(bodyEl)bodyEl.innerHTML=data.body;
+  sg.classList.add('open');
+  sg.scrollTop=0;
+}
+function openSizeGuide(){openService('size');}
+function closeSizeGuide(){
+  const sg=document.getElementById('size-guide');
+  if(sg) sg.classList.remove('open');
 }
 
 // ── SMOOTH SCROLL ──────────────────────────────────────────────────────────
@@ -309,13 +527,26 @@ function s(id){const el=document.getElementById(id);if(el)el.scrollIntoView({beh
 function initReveal(){
   const vph=window.innerHeight;
   const obs=new IntersectionObserver(es=>es.forEach(e=>{
-    if(e.isIntersecting){e.target.classList.remove('pre');e.target.classList.add('on')}
-  }),{threshold:0,rootMargin:'200px 0px 200px 0px'});
-  document.querySelectorAll('.reveal').forEach(el=>{
+    if(!e.isIntersecting)return;
+    const el=e.target;
+    el.classList.remove('pre');
+    el.classList.add('on','vis');
+    obs.unobserve(el);
+  }),{threshold:0,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal,.rv,.rv-line').forEach(el=>{
     const r=el.getBoundingClientRect();
-    if(r.top>vph+50){el.classList.add('pre')}
-    else{el.classList.add('on')}
+    if(r.bottom<0||r.top>vph-40){
+      if(el.classList.contains('reveal'))el.classList.add('pre');
+    }else{
+      el.classList.add('on','vis');
+      return;
+    }
     obs.observe(el);
+  });
+  // auto-stagger: children of [data-stagger] get sequential delays
+  document.querySelectorAll('[data-stagger]').forEach(wrap=>{
+    const kids=[...wrap.children].filter(c=>c.classList.contains('rv'));
+    kids.forEach((c,i)=>{c.style.transitionDelay=(i*0.1)+'s'});
   });
 }
 
@@ -390,10 +621,22 @@ document.addEventListener('mousemove',e=>{
   const dots=document.querySelectorAll('.hfs-dot');
   if(!slides.length||!dots.length)return;
   let cur=0,anim=false;
+  function resetToFirst(){
+    slides.forEach(s=>s.style.transition='none');
+    slides.forEach((s,i)=>{
+      s.classList.remove('active','to-left','from-right');
+      if(i!==0)s.classList.add('from-right');
+      else s.classList.add('active');
+    });
+    dots.forEach((d,i)=>d.classList.toggle('act',i===0));
+    cur=0;anim=false;
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{slides.forEach(s=>s.style.transition='');}));
+  }
   function goTo(n){
     if(anim||n===cur)return;
     anim=true;
     const fwd=n>cur;
+    slides[n].classList.add('animating');
     slides[cur].classList.remove('active');
     slides[cur].classList.add(fwd?'to-left':'from-right');
     slides[n].classList.remove('from-right','to-left');
@@ -402,10 +645,15 @@ document.addEventListener('mousemove',e=>{
     dots[n].classList.add('act');
     cur=n;
     setTimeout(()=>{
-      slides.forEach((s,i)=>{if(i!==cur){s.classList.remove('to-left');s.classList.add('from-right');}});
+      slides.forEach((s,i)=>{
+        if(i!==cur){s.classList.remove('to-left','animating');s.classList.add('from-right');}
+        else{s.classList.remove('animating');}
+      });
       anim=false;
     },1000);
   }
+  // Fix bfcache: back-button restores last slide state — always reset to slide 1
+  window.addEventListener('pageshow',e=>{if(e.persisted)resetToFirst();});
   dots.forEach((d,i)=>d.addEventListener('click',()=>goTo(i)));
 })();
 
@@ -429,8 +677,15 @@ const TR={
 };
 
 let currentLang='en';
+const I18N_LANGS=['en','ru','zh','ar','id','fr','de','es','pt','ja','ko','it','tr','hi','ka'];
+const I18N_NON_EN=['ru','zh','ar','id','fr','de','es','pt','ja','ko','it','tr','hi','ka'];
+function getLangFromPath(){const seg=location.pathname.split('/')[1];return I18N_NON_EN.includes(seg)?seg:null;}
+function getBasePath(){const seg=location.pathname.split('/')[1];if(I18N_NON_EN.includes(seg)){const rest='/'+location.pathname.split('/').slice(2).join('/');return rest==='/'?'/':rest.replace(/\/$/,'')||'/';}return location.pathname||'/';}
+function navTo(path){location.href=currentLang!=='en'?'/'+currentLang+path:path;}
+function updateLinks(lang){document.querySelectorAll('a[href]').forEach(a=>{let h=a.getAttribute('href');if(!h||!h.startsWith('/')||h.startsWith('//'))return;const cur=I18N_NON_EN.find(l=>h.startsWith('/'+l+'/')||h==='/'+l);if(cur)h=h==='/'+cur?'/':h.slice('/'.length+cur.length);if(!h.startsWith('/'))h='/'+h;if(lang!=='en')h='/'+lang+(h==='/'?'':h);a.setAttribute('href',h);});}
+function injectHreflang(){const canon=document.querySelector('link[rel="canonical"]');const base='https://www.amberrajewelry.com';const path=(getBasePath().replace(/\/$/,'')||'/');if(canon)canon.href=currentLang==='en'?base+path:base+'/'+currentLang+path;}
 function t(k){return(TR[currentLang]||TR.en)[k]||TR.en[k]||k}
-function setLang(lang){
+function setLang(lang,pushUrl=true){
   currentLang=lang;
   const tr=TR[lang]||TR.en;
   document.querySelectorAll('[data-i18n]').forEach(el=>{
@@ -449,6 +704,12 @@ function setLang(lang){
   closeLang();
   if(typeof renderProducts==='function') renderProducts();
   localStorage.setItem('amb_lang',lang);
+  const base=getBasePath().replace(/\/$/,'')||'/';
+  const newPath=lang==='en'?base:'/'+lang+base;
+  if(location.pathname!==newPath){if(pushUrl)history.pushState({lang},'',newPath+location.search);else history.replaceState({lang},'',newPath+location.search);}
+  updateLinks(lang);
+  injectHreflang();
+  if(window.initCurrency) window.initCurrency(lang).then(function(){if(typeof renderProducts==='function')renderProducts();});
 }
 function toggleLang(){document.getElementById('lang-drop').classList.toggle('open')}
 function closeLang(){
@@ -540,8 +801,9 @@ async function submitEpop(){
     });
   }catch(e){}
 }
-setTimeout(showEpop,18000);
-window.addEventListener('scroll',()=>{if(window.scrollY>window.innerHeight*.65)showEpop()});
+// Email popup disabled
+// setTimeout(showEpop,18000);
+// window.addEventListener('scroll',()=>{if(window.scrollY>window.innerHeight*.65)showEpop()});
 
 // ── CHAT ──────────────────────────────────────────────────────────────────
 let chatOpen=false;
@@ -726,8 +988,11 @@ window.addEventListener('load',()=>{
 });
 
 document.addEventListener('DOMContentLoaded',()=>{
-  const savedLang=localStorage.getItem('amb_lang')||'en';
-  setLang(savedLang);
+  const urlLang=getLangFromPath();
+  const storedLang=localStorage.getItem('amb_lang');
+  const navLang=navigator.language.split('-')[0];
+  const initLang=urlLang||(storedLang&&I18N_LANGS.includes(storedLang)?storedLang:null)||(I18N_LANGS.includes(navLang)?navLang:'en');
+  setLang(initLang,false);
   initReveal();
   updateWishBadge();
   updateCartBadge();
@@ -737,7 +1002,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   if(si&&typeof renderProducts==='undefined'){
     si.addEventListener('keydown',e=>{
       if(e.key==='Enter'&&si.value.trim()){
-        window.location.href='/shop?q='+encodeURIComponent(si.value.trim());
+        navTo('/shop?q='+encodeURIComponent(si.value.trim()));
       }
     });
   }

@@ -1,4 +1,27 @@
 User-agent: *
 Allow: /
 
+# AI Search Crawlers — explicitly permitted
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: GoogleOther-Extended
+Allow: /
+
+# AI Training Crawlers — blocked
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
 Sitemap: https://www.amberrajewelry.com/sitemap.xml

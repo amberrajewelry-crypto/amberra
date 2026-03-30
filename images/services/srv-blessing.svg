@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+<defs>
+  <radialGradient id="g" cx="50%" cy="48%" r="42%">
+    <stop offset="0%" stop-color="#C9A832" stop-opacity=".28"/>
+    <stop offset="100%" stop-color="#C9A832" stop-opacity="0"/>
+  </radialGradient>
+</defs>
+<rect width="400" height="300" fill="#F5F0E8"/>
+<ellipse cx="200" cy="146" rx="100" ry="80" fill="url(#g)"/>
+
+<!-- 8-petal lotus — each petal is an ellipse rotated around center (200,146) -->
+<!-- Petal centered at (200,100) = 46px above center, rx=11 ry=28 -->
+<ellipse cx="200" cy="100" rx="11" ry="28" fill="none" stroke="#C9A832" stroke-width="1.2" transform="rotate(0 200 146)"/>
+<ellipse cx="200" cy="100" rx="11" ry="28" fill="none" stroke="#C9A832" stroke-width="1.2" transform="rotate(45 200 146)"/>
+<ellipse cx="200" cy="100" rx="11" ry="28" fill="none" stroke="#C9A832" stroke-width="1.2" transform="rotate(90 200 146)"/>
+<ellipse cx="200" cy="100" rx="11" ry="28" fill="none" stroke="#C9A832" stroke-width="1.2" transform="rotate(135 200 146)"/>
+<ellipse cx="200" cy="100" rx="11" ry="28" fill="none" stroke="#C9A832" stroke-width="1.2" transform="rotate(180 200 146)"/>
+<ellipse cx="200" cy="100" rx="11" ry="28" fill="none" stroke="#C9A832" stroke-width="1.2" transform="rotate(225 200 146)"/>
+<ellipse cx="200" cy="100" rx="11" ry="28" fill="none" stroke="#C9A832" stroke-width="1.2" transform="rotate(270 200 146)"/>
+<ellipse cx="200" cy="100" rx="11" ry="28" fill="none" stroke="#C9A832" stroke-width="1.2" transform="rotate(315 200 146)"/>
+
+<!-- Outer dotted ring -->
+<circle cx="200" cy="146" r="64" fill="none" stroke="#C9A832" stroke-width="0.6" stroke-dasharray="2,9" opacity=".4"/>
+
+<!-- Center amber orb -->
+<circle cx="200" cy="146" r="16" fill="#C9A832"/>
+<circle cx="200" cy="146" r="10" fill="#D4B84A"/>
+<circle cx="200" cy="146" r="5" fill="#E8D080"/>
+<circle cx="196" cy="142" r="2.5" fill="#FAF8F5" opacity=".55"/>
+
+<!-- 4 light rays from center -->
+<line x1="200" y1="76" x2="200" y2="68" stroke="#D4B84A" stroke-width="1.4" stroke-linecap="round"/>
+<line x1="200" y1="216" x2="200" y2="224" stroke="#D4B84A" stroke-width="1.4" stroke-linecap="round"/>
+<line x1="130" y1="146" x2="122" y2="146" stroke="#D4B84A" stroke-width="1.4" stroke-linecap="round"/>
+<line x1="270" y1="146" x2="278" y2="146" stroke="#D4B84A" stroke-width="1.4" stroke-linecap="round"/>
+<!-- 4 diagonal rays (smaller) -->
+<line x1="155" y1="101" x2="150" y2="96" stroke="#D4B84A" stroke-width="1" stroke-linecap="round" opacity=".7"/>
+<line x1="245" y1="101" x2="250" y2="96" stroke="#D4B84A" stroke-width="1" stroke-linecap="round" opacity=".7"/>
+<line x1="155" y1="191" x2="150" y2="196" stroke="#D4B84A" stroke-width="1" stroke-linecap="round" opacity=".7"/>
+<line x1="245" y1="191" x2="250" y2="196" stroke="#D4B84A" stroke-width="1" stroke-linecap="round" opacity=".7"/>
+
+<text x="200" y="252" font-family="Montserrat,Arial,sans-serif" font-size="7.5" fill="#3C3830" text-anchor="middle" letter-spacing="3.5" opacity=".62">BALI BLESSING</text>
+<line x1="163" y1="258" x2="237" y2="258" stroke="#C9A832" stroke-width="0.5" opacity=".3"/>
+</svg>

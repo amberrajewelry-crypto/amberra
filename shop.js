@@ -63,7 +63,7 @@ function renderProducts(){
           <span class="pcat">${p.cat.toUpperCase()}</span>
           <h3 class="pname">${p.name}</h3>
           <p class="pmaterial">${p.material}</p>
-          <div class="pfoot"><span class="pprice">$${p.price}</span></div>
+          <div class="pfoot"><span class="pprice">${window.formatPrice?window.formatPrice(p.price):'$'+p.price}</span></div>
         </div>
       </div>
       <div class="pc-xpanel" onclick="openDrawer(${p.id})">
@@ -72,7 +72,7 @@ function renderProducts(){
         <p class="pc-xmat">${p.material}</p>
         ${p.desc?`<p class="pc-xdesc">${p.desc}</p>`:''}
         <div>${props}</div>
-        <div class="pc-xprice">$${p.price}</div>
+        <div class="pc-xprice">${window.formatPrice?window.formatPrice(p.price):'$'+p.price}</div>
       </div>
     </div>`;
   }).join('');
@@ -180,7 +180,7 @@ function openDrawer(id){
   document.getElementById('d-cat').textContent=p.cat.toUpperCase();
   document.getElementById('d-name').textContent=p.name;
   document.getElementById('d-mat').textContent=p.material;
-  document.getElementById('d-price').textContent='$'+p.price;
+  document.getElementById('d-price').textContent=window.formatPrice?window.formatPrice(p.price):'$'+p.price;
   document.getElementById('d-desc').textContent=p.desc;
   document.getElementById('d-props').innerHTML=Object.entries(p.props||{}).map(([k,v])=>
     `<div class="d-prop"><span class="d-pk">${k}</span><span class="d-pv">${v}</span></div>`).join('');
@@ -243,7 +243,7 @@ function showHD(id){
   mat.textContent=p.material||'';mat.style.display=p.material?'':'none';
   const desc=document.getElementById('hd-desc');
   desc.textContent=p.desc||'';desc.style.display=p.desc?'':'none';
-  document.getElementById('hd-price').textContent='$'+p.price;
+  document.getElementById('hd-price').textContent=window.formatPrice?window.formatPrice(p.price):'$'+p.price;
   document.getElementById('hd-props').innerHTML=Object.entries(p.props||{}).slice(0,4).map(([k,v])=>
     `<div class="hd-prop"><span class="hd-pk">${k}</span><span class="hd-pv">${v}</span></div>`).join('');
   document.getElementById('hover-detail').classList.add('show');

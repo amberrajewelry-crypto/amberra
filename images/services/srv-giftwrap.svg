@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+<defs>
+  <radialGradient id="g" cx="50%" cy="52%" r="38%">
+    <stop offset="0%" stop-color="#C9A832" stop-opacity=".2"/>
+    <stop offset="100%" stop-color="#C9A832" stop-opacity="0"/>
+  </radialGradient>
+</defs>
+<rect width="400" height="300" fill="#F5F0E8"/>
+<ellipse cx="200" cy="158" rx="88" ry="65" fill="url(#g)"/>
+
+<!-- Box front face -->
+<rect x="148" y="166" width="104" height="72" fill="#3C3830" stroke="#C9A832" stroke-width="1.2"/>
+<rect x="149" y="167" width="102" height="70" fill="#C9A832" opacity=".05"/>
+<!-- Box lid (slightly raised) -->
+<rect x="144" y="148" width="112" height="22" fill="#3C3830" stroke="#C9A832" stroke-width="1.2"/>
+<rect x="145" y="149" width="110" height="20" fill="#C9A832" opacity=".1"/>
+<!-- Lid-to-box shadow line -->
+<line x1="148" y1="170" x2="252" y2="170" stroke="#C9A832" stroke-width="0.5" opacity=".3"/>
+
+<!-- Ribbon vertical -->
+<rect x="196" y="148" width="8" height="90" fill="#C9A832" opacity=".75"/>
+<!-- Ribbon horizontal on lid -->
+<rect x="144" y="156" width="112" height="7" fill="#C9A832" opacity=".75"/>
+
+<!-- Bow — left loop -->
+<path d="M 200 148 C 185 133 165 134 162 144 C 159 154 176 154 200 148" fill="none" stroke="#C9A832" stroke-width="1.5" stroke-linecap="round"/>
+<!-- Bow — right loop -->
+<path d="M 200 148 C 215 133 235 134 238 144 C 241 154 224 154 200 148" fill="none" stroke="#C9A832" stroke-width="1.5" stroke-linecap="round"/>
+<!-- Bow center -->
+<circle cx="200" cy="148" r="5" fill="#D4B84A"/>
+<!-- Ribbon tails -->
+<path d="M 196 238 Q 190 248 186 252" fill="none" stroke="#C9A832" stroke-width="1" stroke-linecap="round" opacity=".5"/>
+<path d="M 204 238 Q 210 248 214 252" fill="none" stroke="#C9A832" stroke-width="1" stroke-linecap="round" opacity=".5"/>
+
+<!-- AMBERRA tag -->
+<rect x="162" y="192" width="36" height="18" rx="1" fill="none" stroke="#C9A832" stroke-width="0.7" opacity=".5"/>
+<text x="180" y="204" font-family="Montserrat,Arial,sans-serif" font-size="5" fill="#C9A832" text-anchor="middle" letter-spacing="2" opacity=".7">AMBERRA</text>
+
+<!-- Subtle box corner dots -->
+<circle cx="148" cy="166" r="1.5" fill="#C9A832" opacity=".5"/>
+<circle cx="252" cy="166" r="1.5" fill="#C9A832" opacity=".5"/>
+<circle cx="148" cy="238" r="1.5" fill="#C9A832" opacity=".5"/>
+<circle cx="252" cy="238" r="1.5" fill="#C9A832" opacity=".5"/>
+
+<text x="200" y="272" font-family="Montserrat,Arial,sans-serif" font-size="7.5" fill="#3C3830" text-anchor="middle" letter-spacing="3.5" opacity=".62">GIFT WRAPPING</text>
+<line x1="165" y1="278" x2="235" y2="278" stroke="#C9A832" stroke-width="0.5" opacity=".3"/>
+</svg>

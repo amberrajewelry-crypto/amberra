@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+<defs>
+  <radialGradient id="g" cx="50%" cy="52%" r="40%">
+    <stop offset="0%" stop-color="#C9A832" stop-opacity=".18"/>
+    <stop offset="100%" stop-color="#C9A832" stop-opacity="0"/>
+  </radialGradient>
+</defs>
+<rect width="400" height="300" fill="#F5F0E8"/>
+<ellipse cx="200" cy="156" rx="92" ry="68" fill="url(#g)"/>
+
+<!-- Document outer border -->
+<rect x="128" y="86" width="144" height="118" rx="1" fill="none" stroke="#C9A832" stroke-width="1.2"/>
+<rect x="129" y="87" width="142" height="116" fill="#C9A832" opacity=".04"/>
+
+<!-- Header band -->
+<rect x="128" y="86" width="144" height="26" fill="#C9A832" opacity=".1"/>
+<!-- AMBERRA heading -->
+<text x="200" y="102" font-family="Montserrat,Arial,sans-serif" font-size="7.5" fill="#C9A832" text-anchor="middle" letter-spacing="4.5">AMBERRA</text>
+<!-- Subtitle -->
+<text x="200" y="114" font-family="Montserrat,Arial,sans-serif" font-size="5.5" fill="#C9A832" text-anchor="middle" letter-spacing="2" opacity=".65">CERTIFICATE OF AUTHENTICITY</text>
+<!-- Divider -->
+<line x1="140" y1="117" x2="260" y2="117" stroke="#C9A832" stroke-width="0.5" opacity=".45"/>
+
+<!-- Body text lines -->
+<line x1="146" y1="130" x2="254" y2="130" stroke="#C8C4BC" stroke-width="0.9" opacity=".18"/>
+<line x1="146" y1="139" x2="254" y2="139" stroke="#C8C4BC" stroke-width="0.9" opacity=".18"/>
+<line x1="146" y1="148" x2="222" y2="148" stroke="#C8C4BC" stroke-width="0.9" opacity=".14"/>
+
+<!-- Stone specimen box -->
+<rect x="146" y="156" width="46" height="34" rx="1" fill="none" stroke="#C9A832" stroke-width="0.8" opacity=".5"/>
+<!-- Amber stone inside -->
+<ellipse cx="169" cy="173" rx="15" ry="11" fill="#C9A832" opacity=".45"/>
+<ellipse cx="169" cy="173" rx="7" ry="5" fill="#D4B84A" opacity=".65"/>
+<circle cx="166" cy="170" r="2" fill="#E8D080" opacity=".5"/>
+
+<!-- Right text lines next to specimen -->
+<line x1="200" y1="163" x2="254" y2="163" stroke="#C8C4BC" stroke-width="0.9" opacity=".18"/>
+<line x1="200" y1="171" x2="254" y2="171" stroke="#C8C4BC" stroke-width="0.9" opacity=".18"/>
+<line x1="200" y1="179" x2="238" y2="179" stroke="#C8C4BC" stroke-width="0.9" opacity=".12"/>
+
+<!-- Signature line -->
+<line x1="146" y1="197" x2="195" y2="197" stroke="#C9A832" stroke-width="0.8" opacity=".45"/>
+<text x="170" y="194" font-family="Georgia,serif" font-size="7" fill="#C9A832" text-anchor="middle" opacity=".4" font-style="italic">signature</text>
+
+<!-- Wax seal (circle with A) -->
+<circle cx="238" cy="191" r="18" fill="#C9A832" opacity=".88"/>
+<circle cx="238" cy="191" r="14" fill="none" stroke="#191410" stroke-width="1.2"/>
+<circle cx="238" cy="191" r="10" fill="none" stroke="#191410" stroke-width="0.6" opacity=".4"/>
+<text x="238" y="196" font-family="Georgia,serif" font-size="14" fill="#3C3830" text-anchor="middle" font-weight="600">A</text>
+
+<!-- Decorative corner ornaments -->
+<path d="M 128 86 L 128 92 M 128 86 L 134 86" fill="none" stroke="#D4B84A" stroke-width="1" opacity=".5"/>
+<path d="M 272 86 L 272 92 M 272 86 L 266 86" fill="none" stroke="#D4B84A" stroke-width="1" opacity=".5"/>
+<path d="M 128 204 L 128 198 M 128 204 L 134 204" fill="none" stroke="#D4B84A" stroke-width="1" opacity=".5"/>
+<path d="M 272 204 L 272 198 M 272 204 L 266 204" fill="none" stroke="#D4B84A" stroke-width="1" opacity=".5"/>
+
+<text x="200" y="248" font-family="Montserrat,Arial,sans-serif" font-size="7.5" fill="#3C3830" text-anchor="middle" letter-spacing="3.5" opacity=".62">CERTIFICATE OF AUTHENTICITY</text>
+<line x1="130" y1="254" x2="270" y2="254" stroke="#C9A832" stroke-width="0.5" opacity=".3"/>
+</svg>
