@@ -58,7 +58,7 @@ function renderProducts(){
       onmouseenter="hxOn(this)"
       onmouseleave="hxOff(this)">
       <div class="pc-inner" onclick="openDrawer(${p.id})">
-        <div class="pc-img" style="position:relative">${b}${cnt}${wish}${cam}<img src="${p.img}" alt="${p.name}" loading="lazy"></div>
+        <div class="pc-img" style="position:relative">${b}${cnt}${wish}${cam}<img src="${p.img}" alt="${p.name} — handcrafted bali jewelry — AMBERRA" loading="lazy"></div>
         <div class="pc-label">
           <span class="pcat">${p.cat.toUpperCase()}</span>
           <h3 class="pname">${p.name}</h3>
@@ -177,6 +177,7 @@ function openDrawer(id){
   }
   const imgs=p.imgs||[p.img];
   document.getElementById('d-img').src=imgs[0];
+  document.getElementById('d-img').alt=p.name+' — handcrafted bali jewelry — AMBERRA';
   document.getElementById('d-cat').textContent=p.cat.toUpperCase();
   document.getElementById('d-name').textContent=p.name;
   document.getElementById('d-mat').textContent=p.material;
@@ -188,7 +189,7 @@ function openDrawer(id){
   const gallery=document.getElementById('d-gallery');
   if(imgs.length>1){
     gallery.innerHTML=imgs.map((src,i)=>
-      `<img class="d-thumb${i===0?' act':''}" src="${src}" onclick="setDImg(this,'${src}')" alt="">`
+      `<img class="d-thumb${i===0?' act':''}" src="${src}" onclick="setDImg(this,'${src}')" alt="${p.name} — handcrafted bali jewelry — AMBERRA">`
     ).join('');
     gallery.style.display='flex';
   } else {
@@ -237,6 +238,7 @@ function showHD(id){
   clearTimeout(hdTimer);
   const p=products.find(x=>x.id===id);if(!p)return;
   document.getElementById('hd-img').src=p.img;
+  document.getElementById('hd-img').alt=p.name+' — handcrafted bali jewelry — AMBERRA';
   document.getElementById('hd-cat').textContent=p.cat.toUpperCase();
   document.getElementById('hd-name').textContent=p.name;
   const mat=document.getElementById('hd-material');
@@ -263,7 +265,7 @@ function initTryonItems(){
   const list=products.slice(0,8);
   container.innerHTML=list.map((p,i)=>
     `<div class="tryon-item${i===0?' sel':''}" data-tid="${p.id}" onclick="selectTryonItem(${p.id},this)">
-      <img src="${p.img}" alt="${p.name}" loading="lazy">
+      <img src="${p.img}" alt="${p.name} — handcrafted bali jewelry — AMBERRA" loading="lazy">
       <div class="tryon-item-name">${p.name.substring(0,18)}</div>
     </div>`).join('');
   selectedTryonProduct=list[0]||null;
@@ -291,7 +293,7 @@ function quickTryon(id,ev){
       const list=[p,...products.filter(q=>q.id!==id).slice(0,7)];
       container.innerHTML=list.map((item,i)=>
         `<div class="tryon-item${i===0?' sel':''}" data-tid="${item.id}" onclick="selectTryonItem(${item.id},this)">
-          <img src="${item.img}" alt="${item.name}" loading="lazy">
+          <img src="${item.img}" alt="${item.name} — handcrafted bali jewelry — AMBERRA" loading="lazy">
           <div class="tryon-item-name">${item.name.substring(0,18)}</div>
         </div>`).join('');
     }

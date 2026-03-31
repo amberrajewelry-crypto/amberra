@@ -63,27 +63,39 @@ function productHTML(p, slug) {
 
   const schema = JSON.stringify({
     '@context': 'https://schema.org',
-    '@type':    'Product',
-    name,
-    description: desc,
-    image:       img ? [img] : [],
-    brand:       { '@type': 'Brand', name: 'AMBERRA' },
-    material,
-    category:    catLabel,
-    offers: {
-      '@type':        'Offer',
-      price:          String(price),
-      priceCurrency:  'USD',
-      availability:   'https://schema.org/InStock',
-      url:            canonical,
-      priceValidUntil: String(new Date().getFullYear() + 1) + '-12-31',
-      hasMerchantReturnPolicy: {
-        '@type': 'MerchantReturnPolicy',
-        applicableCountry: 'US',
-        returnPolicyCategory: 'https://schema.org/MerchantReturnFineSale'
+    '@graph': [
+      {
+        '@type':    'Product',
+        name,
+        description: desc,
+        image:       img ? [img] : [],
+        brand:       { '@type': 'Brand', name: 'AMBERRA' },
+        material,
+        category:    catLabel,
+        offers: {
+          '@type':        'Offer',
+          price:          String(price),
+          priceCurrency:  'USD',
+          availability:   'https://schema.org/InStock',
+          url:            canonical,
+          priceValidUntil: String(new Date().getFullYear() + 1) + '-12-31',
+          hasMerchantReturnPolicy: {
+            '@type': 'MerchantReturnPolicy',
+            applicableCountry: 'US',
+            returnPolicyCategory: 'https://schema.org/MerchantReturnFineSale'
+          },
+          seller: { '@type': 'Organization', name: 'AMBERRA', url: SITE }
+        }
       },
-      seller: { '@type': 'Organization', name: 'AMBERRA', url: SITE }
-    }
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+          { '@type': 'ListItem', position: 2, name: catLabel, item: `${SITE}/shop?cat=${cat}` },
+          { '@type': 'ListItem', position: 3, name, item: canonical }
+        ]
+      }
+    ]
   }, null, 2);
 
   const badgeHTML = badge
@@ -170,7 +182,7 @@ ${schema}
 
 <main class="pp-wrap">
   <div class="pp-img-wrap">
-    <img src="${esc(img || '')}" alt="${esc(name)} — AMBERRA handcrafted amber jewelry" loading="eager" width="600" height="800">
+    <img src="${esc(img || '')}" alt="${esc(name)} — handcrafted bali jewelry — AMBERRA" loading="eager" width="600" height="800">
   </div>
 
   <div class="pp-info">

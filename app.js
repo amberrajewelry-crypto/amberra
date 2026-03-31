@@ -79,7 +79,7 @@ function renderWishlist(){
   }
   body.innerHTML=list.map(p=>`
     <div class="wish-item" onclick="closeWishPanel();if(typeof openDrawer==='function')openDrawer(${p.id})">
-      <img src="${p.img}" alt="${p.name}">
+      <img src="${p.img}" alt="${p.name} — handcrafted bali jewelry — AMBERRA">
       <div class="wish-item-info">
         <div class="wish-item-name">${p.name}</div>
         <div class="wish-item-mat">${p.material||p.cat}</div>
@@ -188,7 +188,7 @@ function renderCart(){
   }
   body.innerHTML=cart.map(p=>`
     <div class="cart-item">
-      <img src="${p.img}" alt="${p.name}">
+      <img src="${p.img}" alt="${p.name} — handcrafted bali jewelry — AMBERRA">
       <div class="cart-item-info">
         <div class="cart-item-name">${p.name}</div>
         <div class="cart-item-mat">${p.material}</div>
@@ -766,7 +766,7 @@ function showQuizResult(){
     <div class="qbox">
       <div class="q-head"><h2 style="font-style:italic">Your Perfect Match</h2><p>Based on your answers</p></div>
       <div class="q-body">
-        <img src="${p.img}" style="width:100%;aspect-ratio:1;object-fit:cover;margin-bottom:20px" alt="${p.name}">
+        <img src="${p.img}" style="width:100%;aspect-ratio:1;object-fit:cover;margin-bottom:20px" alt="${p.name} — handcrafted bali jewelry — AMBERRA">
         <div class="pcat">${p.cat}</div>
         <h3 style="font-family:var(--serif);font-size:22px;margin-bottom:8px">${p.name}</h3>
         <p style="font-size:12px;color:var(--gray);line-height:1.7;margin-bottom:20px">${p.desc}</p>

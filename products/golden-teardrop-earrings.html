@@ -36,36 +36,63 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Golden Teardrop Earrings",
-  "description": "Warm amber teardrops in a gold bezel setting — the essence of Balinese luxury.",
-  "image": [
-    "images/earrings/IMG_9627.JPG"
-  ],
-  "brand": {
-    "@type": "Brand",
-    "name": "AMBERRA"
-  },
-  "material": "Natural Amber · 18k Gold",
-  "category": "Earrings",
-  "offers": {
-    "@type": "Offer",
-    "price": "135",
-    "priceCurrency": "USD",
-    "availability": "https://schema.org/InStock",
-    "url": "https://www.amberrajewelry.com/products/golden-teardrop-earrings",
-    "priceValidUntil": "2027-12-31",
-    "hasMerchantReturnPolicy": {
-      "@type": "MerchantReturnPolicy",
-      "applicableCountry": "US",
-      "returnPolicyCategory": "https://schema.org/MerchantReturnFineSale"
+  "@graph": [
+    {
+      "@type": "Product",
+      "name": "Golden Teardrop Earrings",
+      "description": "Warm amber teardrops in a gold bezel setting \u2014 the essence of Balinese luxury.",
+      "image": [
+        "images/earrings/IMG_9627.JPG"
+      ],
+      "brand": {
+        "@type": "Brand",
+        "name": "AMBERRA"
+      },
+      "material": "Natural Amber \u00b7 18k Gold",
+      "category": "Earrings",
+      "offers": {
+        "@type": "Offer",
+        "price": "135",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.amberrajewelry.com/products/golden-teardrop-earrings",
+        "priceValidUntil": "2027-12-31",
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "US",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFineSale"
+        },
+        "seller": {
+          "@type": "Organization",
+          "name": "AMBERRA",
+          "url": "https://www.amberrajewelry.com"
+        }
+      }
     },
-    "seller": {
-      "@type": "Organization",
-      "name": "AMBERRA",
-      "url": "https://www.amberrajewelry.com"
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.amberrajewelry.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Earrings",
+          "item": "https://www.amberrajewelry.com/shop?cat=earrings"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Golden Teardrop Earrings",
+          "item": "https://www.amberrajewelry.com/products/golden-teardrop-earrings"
+        }
+      ]
     }
-  }
+  ]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -118,7 +145,7 @@
 
 <main class="pp-wrap">
   <div class="pp-img-wrap">
-    <img src="images/earrings/IMG_9627.JPG" alt="Golden Teardrop Earrings — AMBERRA handcrafted amber jewelry" loading="eager" width="600" height="800">
+    <img src="images/earrings/IMG_9627.JPG" alt="Golden Teardrop Earrings — handcrafted bali jewelry — AMBERRA" loading="eager" width="600" height="800">
   </div>
 
   <div class="pp-info">

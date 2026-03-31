@@ -36,36 +36,63 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Butterfly Filigree Earrings",
-  "description": "Spread filigree wings of silver and gold surround a marquise amber center.",
-  "image": [
-    "images/earrings/IMG_9632.JPG"
-  ],
-  "brand": {
-    "@type": "Brand",
-    "name": "AMBERRA"
-  },
-  "material": "Natural Butter Amber · Silver & Gold Filigree",
-  "category": "Earrings",
-  "offers": {
-    "@type": "Offer",
-    "price": "169",
-    "priceCurrency": "USD",
-    "availability": "https://schema.org/InStock",
-    "url": "https://www.amberrajewelry.com/products/butterfly-filigree-earrings",
-    "priceValidUntil": "2027-12-31",
-    "hasMerchantReturnPolicy": {
-      "@type": "MerchantReturnPolicy",
-      "applicableCountry": "US",
-      "returnPolicyCategory": "https://schema.org/MerchantReturnFineSale"
+  "@graph": [
+    {
+      "@type": "Product",
+      "name": "Butterfly Filigree Earrings",
+      "description": "Spread filigree wings of silver and gold surround a marquise amber center.",
+      "image": [
+        "images/earrings/IMG_9632.JPG"
+      ],
+      "brand": {
+        "@type": "Brand",
+        "name": "AMBERRA"
+      },
+      "material": "Natural Butter Amber \u00b7 Silver & Gold Filigree",
+      "category": "Earrings",
+      "offers": {
+        "@type": "Offer",
+        "price": "169",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.amberrajewelry.com/products/butterfly-filigree-earrings",
+        "priceValidUntil": "2027-12-31",
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "US",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFineSale"
+        },
+        "seller": {
+          "@type": "Organization",
+          "name": "AMBERRA",
+          "url": "https://www.amberrajewelry.com"
+        }
+      }
     },
-    "seller": {
-      "@type": "Organization",
-      "name": "AMBERRA",
-      "url": "https://www.amberrajewelry.com"
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.amberrajewelry.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Earrings",
+          "item": "https://www.amberrajewelry.com/shop?cat=earrings"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Butterfly Filigree Earrings",
+          "item": "https://www.amberrajewelry.com/products/butterfly-filigree-earrings"
+        }
+      ]
     }
-  }
+  ]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -118,7 +145,7 @@
 
 <main class="pp-wrap">
   <div class="pp-img-wrap">
-    <img src="images/earrings/IMG_9632.JPG" alt="Butterfly Filigree Earrings — AMBERRA handcrafted amber jewelry" loading="eager" width="600" height="800">
+    <img src="images/earrings/IMG_9632.JPG" alt="Butterfly Filigree Earrings — handcrafted bali jewelry — AMBERRA" loading="eager" width="600" height="800">
   </div>
 
   <div class="pp-info">

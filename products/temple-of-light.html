@@ -36,36 +36,63 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Temple of Light",
-  "description": "Inspired by the temples of Bali — ornate silver architecture surrounding a glowing amber core.",
-  "image": [
-    "https://amberra-jewelry.com/img/48121931.jpg"
-  ],
-  "brand": {
-    "@type": "Brand",
-    "name": "AMBERRA"
-  },
-  "material": "Natural Baltic Amber · 925 Silver",
-  "category": "Pendants",
-  "offers": {
-    "@type": "Offer",
-    "price": "129",
-    "priceCurrency": "USD",
-    "availability": "https://schema.org/InStock",
-    "url": "https://www.amberrajewelry.com/products/temple-of-light",
-    "priceValidUntil": "2027-12-31",
-    "hasMerchantReturnPolicy": {
-      "@type": "MerchantReturnPolicy",
-      "applicableCountry": "US",
-      "returnPolicyCategory": "https://schema.org/MerchantReturnFineSale"
+  "@graph": [
+    {
+      "@type": "Product",
+      "name": "Temple of Light",
+      "description": "Inspired by the temples of Bali \u2014 ornate silver architecture surrounding a glowing amber core.",
+      "image": [
+        "https://amberra-jewelry.com/img/48121931.jpg"
+      ],
+      "brand": {
+        "@type": "Brand",
+        "name": "AMBERRA"
+      },
+      "material": "Natural Baltic Amber \u00b7 925 Silver",
+      "category": "Pendants",
+      "offers": {
+        "@type": "Offer",
+        "price": "129",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.amberrajewelry.com/products/temple-of-light",
+        "priceValidUntil": "2027-12-31",
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "US",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFineSale"
+        },
+        "seller": {
+          "@type": "Organization",
+          "name": "AMBERRA",
+          "url": "https://www.amberrajewelry.com"
+        }
+      }
     },
-    "seller": {
-      "@type": "Organization",
-      "name": "AMBERRA",
-      "url": "https://www.amberrajewelry.com"
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.amberrajewelry.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Pendants",
+          "item": "https://www.amberrajewelry.com/shop?cat=pendants"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Temple of Light",
+          "item": "https://www.amberrajewelry.com/products/temple-of-light"
+        }
+      ]
     }
-  }
+  ]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -118,7 +145,7 @@
 
 <main class="pp-wrap">
   <div class="pp-img-wrap">
-    <img src="https://amberra-jewelry.com/img/48121931.jpg" alt="Temple of Light — AMBERRA handcrafted amber jewelry" loading="eager" width="600" height="800">
+    <img src="https://amberra-jewelry.com/img/48121931.jpg" alt="Temple of Light — handcrafted bali jewelry — AMBERRA" loading="eager" width="600" height="800">
   </div>
 
   <div class="pp-info">

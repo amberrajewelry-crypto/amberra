@@ -36,36 +36,63 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Leaf Eye Drop Earrings",
-  "description": "An enamelled eye-shaped clasp releases a glowing amber sphere — mystical and feminine.",
-  "image": [
-    "images/earrings/leaf_eye_butter_rg.jpg"
-  ],
-  "brand": {
-    "@type": "Brand",
-    "name": "AMBERRA"
-  },
-  "material": "Natural Amber · Enamel · Rose Gold",
-  "category": "Earrings",
-  "offers": {
-    "@type": "Offer",
-    "price": "169",
-    "priceCurrency": "USD",
-    "availability": "https://schema.org/InStock",
-    "url": "https://www.amberrajewelry.com/products/leaf-eye-drop-earrings",
-    "priceValidUntil": "2027-12-31",
-    "hasMerchantReturnPolicy": {
-      "@type": "MerchantReturnPolicy",
-      "applicableCountry": "US",
-      "returnPolicyCategory": "https://schema.org/MerchantReturnFineSale"
+  "@graph": [
+    {
+      "@type": "Product",
+      "name": "Leaf Eye Drop Earrings",
+      "description": "An enamelled eye-shaped clasp releases a glowing amber sphere \u2014 mystical and feminine.",
+      "image": [
+        "images/earrings/leaf_eye_butter_rg.jpg"
+      ],
+      "brand": {
+        "@type": "Brand",
+        "name": "AMBERRA"
+      },
+      "material": "Natural Amber \u00b7 Enamel \u00b7 Rose Gold",
+      "category": "Earrings",
+      "offers": {
+        "@type": "Offer",
+        "price": "169",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.amberrajewelry.com/products/leaf-eye-drop-earrings",
+        "priceValidUntil": "2027-12-31",
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "US",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFineSale"
+        },
+        "seller": {
+          "@type": "Organization",
+          "name": "AMBERRA",
+          "url": "https://www.amberrajewelry.com"
+        }
+      }
     },
-    "seller": {
-      "@type": "Organization",
-      "name": "AMBERRA",
-      "url": "https://www.amberrajewelry.com"
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.amberrajewelry.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Earrings",
+          "item": "https://www.amberrajewelry.com/shop?cat=earrings"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Leaf Eye Drop Earrings",
+          "item": "https://www.amberrajewelry.com/products/leaf-eye-drop-earrings"
+        }
+      ]
     }
-  }
+  ]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -118,7 +145,7 @@
 
 <main class="pp-wrap">
   <div class="pp-img-wrap">
-    <img src="images/earrings/leaf_eye_butter_rg.jpg" alt="Leaf Eye Drop Earrings — AMBERRA handcrafted amber jewelry" loading="eager" width="600" height="800">
+    <img src="images/earrings/leaf_eye_butter_rg.jpg" alt="Leaf Eye Drop Earrings — handcrafted bali jewelry — AMBERRA" loading="eager" width="600" height="800">
   </div>
 
   <div class="pp-info">

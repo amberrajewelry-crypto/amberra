@@ -111,7 +111,7 @@ function renderProducts(){
   grid.innerHTML=list.map((p,i)=>{
     const b=p.badge?`<div class="pbadge ${p.badge}">${p.badge==='bestseller'?'Best Seller':p.badge==='limited'?'Limited Edition':'New'}</div>`:'';
     return `<div class="pc reveal" style="transition-delay:${(i%4)*.07}s" onclick="openDrawer(products.find(x=>x.id===${p.id}))" onmouseenter="showHoverDetail(${p.id})" onmouseleave="hideHoverDetail()">
-      <div class="pc-img"><img src="${p.img}" alt="${p.name}" loading="lazy">${b}</div>
+      <div class="pc-img"><img src="${p.img}" alt="${p.name} — handcrafted bali jewelry — AMBERRA" loading="lazy">${b}</div>
       <div class="pc-body">
         <span class="pcat">${p.cat}</span>
         <h3 class="pname">${tp(p,"name")}</h3>
@@ -142,6 +142,7 @@ function fac(cat){
 function openDrawer(p){
   if(!p)return;
   document.getElementById('d-img').src=p.img;
+  document.getElementById('d-img').alt=p.name+' — handcrafted bali jewelry — AMBERRA';
   document.getElementById('d-cat').textContent=p.cat.toUpperCase();
   document.getElementById('d-name').textContent=p.name;
   document.getElementById('d-mat').textContent=p.material;
@@ -209,7 +210,7 @@ function showQuizResult(){
     <div class="qbox">
       <div class="q-head"><h2 style="font-style:italic">Your Perfect Match</h2><p>Based on your answers</p></div>
       <div class="q-body">
-        <img src="${p.img}" style="width:100%;aspect-ratio:1;object-fit:cover;margin-bottom:20px" alt="${p.name}">
+        <img src="${p.img}" style="width:100%;aspect-ratio:1;object-fit:cover;margin-bottom:20px" alt="${p.name} — handcrafted bali jewelry — AMBERRA">
         <div class="pcat">${p.cat}</div>
         <h3 style="font-family:var(--serif);font-size:22px;margin-bottom:8px">${tp(p,"name")}</h3>
         <p style="font-size:12px;color:var(--gray);line-height:1.7;margin-bottom:20px">${rec.reason}</p>
@@ -227,7 +228,7 @@ function initTryonItems(){
   const tryonProds=products.slice(0,8);
   document.getElementById('tryon-items').innerHTML=tryonProds.map((p,i)=>`
     <div class="tryon-item${i===0?' sel':''}" onclick="selectTryonItem(${p.id},this)">
-      <img src="${p.img}" alt="${p.name}" loading="lazy">
+      <img src="${p.img}" alt="${p.name} — handcrafted bali jewelry — AMBERRA" loading="lazy">
       <div class="tryon-item-name">${tp(p,"name")}</div>
     </div>`).join('');
   selectedTryonProduct=tryonProds[0];
@@ -364,6 +365,7 @@ function showHoverDetail(id){
   const p=products.find(x=>x.id===id);
   if(!p)return;
   document.getElementById('hd-img').src=p.img;
+  document.getElementById('hd-img').alt=p.name+' — handcrafted bali jewelry — AMBERRA';
   document.getElementById('hd-cat').textContent=p.cat.toUpperCase();
   document.getElementById('hd-name').textContent=p.name;
   document.getElementById('hd-material').textContent=p.material;
