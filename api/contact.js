@@ -14,6 +14,7 @@ export default async function handler(req, res) {
 
   const RESEND_KEY = process.env.RESEND_API_KEY;
   const TO_EMAIL   = process.env.CONTACT_EMAIL || 'hello@amberrajewelry.com';
+  const TS_SECRET  = process.env.TURNSTILE_SECRET;
 
   if (!RESEND_KEY) {
     return res.status(500).json({ error: 'RESEND_API_KEY not configured' });
@@ -21,6 +22,27 @@ export default async function handler(req, res) {
 
   const body = req.body || {};
   const { type } = body;
+
+  // ── Turnstile bot verification ──
+  if (TS_SECRET) {
+    const tsToken = body.turnstile || '';
+    if (!tsToken) {
+      return res.status(403).json({ error: 'Security check required' });
+    }
+    try {
+      const tsRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `secret=${encodeURIComponent(TS_SECRET)}&response=${encodeURIComponent(tsToken)}`
+      });
+      const tsData = await tsRes.json();
+      if (!tsData.success) {
+        return res.status(403).json({ error: 'Bot detected' });
+      }
+    } catch (e) {
+      // If Turnstile API is down, allow through to not block real users
+    }
+  }
 
   function escHtml(s) {
     if (s == null) return '';

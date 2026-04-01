@@ -9,6 +9,18 @@ function esc(s){
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 }
 
+// ── TURNSTILE (bot protection) ────────────────────────────────────────────
+let tsTokenReq='',tsTokenWs='',tsTokenEpop='';
+function onTurnstileReq(t){tsTokenReq=t;}
+function onTurnstileWs(t){tsTokenWs=t;}
+function onTurnstileEpop(t){tsTokenEpop=t;}
+function resetTurnstile(id){
+  if(typeof turnstile!=='undefined'){
+    const el=document.getElementById(id);
+    if(el)turnstile.reset(el);
+  }
+}
+
 // ── ACCOUNT MODAL ─────────────────────────────────────────────────────────
 function openAcc(){
   document.getElementById('acc-modal').classList.add('open');
@@ -242,17 +254,19 @@ async function submitWholesale(){
   if(!name||!email||!company||!country||!partnerType){
     alert('Please fill in all required fields.');return;
   }
+  if(!tsTokenWs){alert('Please wait for security check to complete.');return;}
   const btn=document.querySelector('#ws-form-wrap .btn-s');
   if(btn){btn.disabled=true;btn.textContent='Sending…';}
   try{
     const r=await fetch('/api/contact',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({type:'wholesale',name,email,company,country,partnerType,volume,message})
+      body:JSON.stringify({type:'wholesale',name,email,company,country,partnerType,volume,message,turnstile:tsTokenWs})
     });
     if(!r.ok)throw new Error('send failed');
   }catch(e){
     if(btn){btn.disabled=false;btn.textContent='Send Application';}
+    resetTurnstile('ts-ws');tsTokenWs='';
     alert('Could not send your request. Please try again or contact us on WhatsApp.');
     return;
   }
@@ -284,17 +298,19 @@ async function submitReq(){
   const phone=document.getElementById('f-phone').value.trim();
   const message=document.getElementById('f-msg').value.trim();
   if(!name||!email){alert('Please fill in your name and email.');return}
+  if(!tsTokenReq){alert('Please wait for security check to complete.');return;}
   const btn=document.querySelector('#req-form .btn-s');
   if(btn){btn.disabled=true;btn.textContent='Sending…';}
   try{
     const r=await fetch('/api/contact',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({type:'request',piece,name,email,phone,message})
+      body:JSON.stringify({type:'request',piece,name,email,phone,message,turnstile:tsTokenReq})
     });
     if(!r.ok)throw new Error('send failed');
   }catch(e){
     if(btn){btn.disabled=false;btn.textContent='Send Request';}
+    resetTurnstile('ts-req');tsTokenReq='';
     alert('Could not send your request. Please try again or contact us on WhatsApp.');
     return;
   }
@@ -812,6 +828,7 @@ function closeEpop(){document.getElementById('epop').classList.remove('open');se
 async function submitEpop(){
   const inp=document.getElementById('epop-email');
   if(!inp.value||!inp.value.includes('@'))return;
+  if(!tsTokenEpop){alert('Please wait for security check to complete.');return;}
   document.getElementById('epop-form').style.display='none';
   document.getElementById('epop-thanks').style.display='block';
   sessionStorage.setItem('amb_pop','1');
@@ -820,7 +837,7 @@ async function submitEpop(){
     await fetch('/api/contact',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({type:'request',piece:'Newsletter subscription',name:'Subscriber',email:inp.value,phone:'',message:'New newsletter subscriber from popup.'})
+      body:JSON.stringify({type:'request',piece:'Newsletter subscription',name:'Subscriber',email:inp.value,phone:'',message:'New newsletter subscriber from popup.',turnstile:tsTokenEpop})
     });
   }catch(e){}
 }
