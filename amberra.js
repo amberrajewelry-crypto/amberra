@@ -1,4 +1,5 @@
 
+function esc(s){if(s==null)return '';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 const C='https://res.cloudinary.com/dtfq3xq3t/image/upload';
 const products=[
   {id:1,name:'Balinese Sunrise Ring',cat:'rings',material:'Natural Balinese Amber · 925 Sterling Silver',price:185,badge:'bestseller',desc:'A radiant honey-amber cabochon set in hand-carved 925 sterling silver.',img:`${C}/IMG_1597_lyznwn.jpg`,props:{Stone:'Natural Balinese Amber',Metal:'925 Sterling Silver',Weight:'4.2g',Size:'XS–XL',Blessing:'Sacred Spring Ritual'}},
@@ -147,7 +148,7 @@ function openDrawer(p){
   document.getElementById('d-mat').textContent=p.material;
   document.getElementById('d-price').textContent=window.formatPrice?window.formatPrice(p.price):'$'+p.price;
   document.getElementById('d-desc').textContent=p.desc;
-  document.getElementById('d-props').innerHTML=Object.entries(p.props).map(([k,v])=>`<div class="d-prop"><span class="d-pk">${k}</span><span class="d-pv">${v}</span></div>`).join('');
+  document.getElementById('d-props').innerHTML=Object.entries(p.props).map(([k,v])=>`<div class="d-prop"><span class="d-pk">${esc(k)}</span><span class="d-pv">${esc(v)}</span></div>`).join('');
   document.getElementById('d-req').onclick=()=>{closeDrawer();openReq(p.name,'$'+p.price);};
   document.getElementById('drawer').classList.add('open');
   document.body.style.overflow='hidden';
@@ -369,7 +370,7 @@ function showHoverDetail(id){
   document.getElementById('hd-material').textContent=p.material;
   document.getElementById('hd-desc').textContent=p.desc;
   document.getElementById('hd-price').textContent=window.formatPrice?window.formatPrice(p.price):'$'+p.price;
-  document.getElementById('hd-props').innerHTML=Object.entries(p.props).slice(0,4).map(([k,v])=>`<div class="hd-prop"><span class="hd-pk">${k}</span><span class="hd-pv">${v}</span></div>`).join('');
+  document.getElementById('hd-props').innerHTML=Object.entries(p.props).slice(0,4).map(([k,v])=>`<div class="hd-prop"><span class="hd-pk">${esc(k)}</span><span class="hd-pv">${esc(v)}</span></div>`).join('');
   document.getElementById('hover-detail').classList.add('show');
 }
 function hideHoverDetail(){

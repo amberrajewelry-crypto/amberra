@@ -48,29 +48,29 @@ function renderProducts(){
     return;
   }
   grid.innerHTML=list.map((p,i)=>{
-    const b=p.badge?`<div class="pbadge ${p.badge}">${p.badge==='bestseller'?'Best Seller':p.badge==='limited'?'Limited':'New'}</div>`:'';
+    const b=p.badge?`<div class="pbadge ${esc(p.badge)}">${p.badge==='bestseller'?'Best Seller':p.badge==='limited'?'Limited':'New'}</div>`:'';
     const cnt=p.imgs&&p.imgs.length>1?`<span class="pc-cnt">${p.imgs.length} colors</span>`:'';
     const wish=`<button class="pc-wish${isWished(p.id)?' on':''}" data-id="${p.id}" onclick="toggleWish(${p.id},event)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>`;
     const cam=`<button class="pc-cam" onclick="quickTryon(${p.id},event)" title="Try On"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></button>`;
     const props=Object.entries(p.props||{}).slice(0,3).map(([k,v])=>
-      `<div class="pc-xprop"><span class="pc-xpk">${k}</span><span class="pc-xpv">${v}</span></div>`).join('');
+      `<div class="pc-xprop"><span class="pc-xpk">${esc(k)}</span><span class="pc-xpv">${esc(v)}</span></div>`).join('');
     return `<div class="pc reveal" style="transition-delay:${(i%4)*.06}s"
       onmouseenter="hxOn(this)"
       onmouseleave="hxOff(this)">
       <div class="pc-inner" onclick="openDrawer(${p.id})">
-        <div class="pc-img" style="position:relative">${b}${cnt}${wish}${cam}<img src="${p.img}" alt="${p.name}" loading="lazy"></div>
+        <div class="pc-img" style="position:relative">${b}${cnt}${wish}${cam}<img src="${esc(p.img)}" alt="${esc(p.name)}" loading="lazy"></div>
         <div class="pc-label">
-          <span class="pcat">${p.cat.toUpperCase()}</span>
-          <h3 class="pname">${p.name}</h3>
-          <p class="pmaterial">${p.material}</p>
+          <span class="pcat">${esc(p.cat.toUpperCase())}</span>
+          <h3 class="pname">${esc(p.name)}</h3>
+          <p class="pmaterial">${esc(p.material)}</p>
           <div class="pfoot"><span class="pprice">${window.formatPrice?window.formatPrice(p.price):'$'+p.price}</span></div>
         </div>
       </div>
       <div class="pc-xpanel" onclick="openDrawer(${p.id})">
-        <span class="pc-xcat">${p.cat.toUpperCase()}</span>
-        <h3 class="pc-xname">${p.name}</h3>
-        <p class="pc-xmat">${p.material}</p>
-        ${p.desc?`<p class="pc-xdesc">${p.desc}</p>`:''}
+        <span class="pc-xcat">${esc(p.cat.toUpperCase())}</span>
+        <h3 class="pc-xname">${esc(p.name)}</h3>
+        <p class="pc-xmat">${esc(p.material)}</p>
+        ${p.desc?`<p class="pc-xdesc">${esc(p.desc)}</p>`:''}
         <div>${props}</div>
         <div class="pc-xprice">${window.formatPrice?window.formatPrice(p.price):'$'+p.price}</div>
       </div>
@@ -183,7 +183,7 @@ function openDrawer(id){
   document.getElementById('d-price').textContent=window.formatPrice?window.formatPrice(p.price):'$'+p.price;
   document.getElementById('d-desc').textContent=p.desc;
   document.getElementById('d-props').innerHTML=Object.entries(p.props||{}).map(([k,v])=>
-    `<div class="d-prop"><span class="d-pk">${k}</span><span class="d-pv">${v}</span></div>`).join('');
+    `<div class="d-prop"><span class="d-pk">${esc(k)}</span><span class="d-pv">${esc(v)}</span></div>`).join('');
   document.getElementById('d-req').onclick=()=>{closeDrawer();openReq(p.name)};
   const gallery=document.getElementById('d-gallery');
   if(imgs.length>1){
@@ -245,7 +245,7 @@ function showHD(id){
   desc.textContent=p.desc||'';desc.style.display=p.desc?'':'none';
   document.getElementById('hd-price').textContent=window.formatPrice?window.formatPrice(p.price):'$'+p.price;
   document.getElementById('hd-props').innerHTML=Object.entries(p.props||{}).slice(0,4).map(([k,v])=>
-    `<div class="hd-prop"><span class="hd-pk">${k}</span><span class="hd-pv">${v}</span></div>`).join('');
+    `<div class="hd-prop"><span class="hd-pk">${esc(k)}</span><span class="hd-pv">${esc(v)}</span></div>`).join('');
   document.getElementById('hover-detail').classList.add('show');
 }
 function hideHD(){
@@ -263,8 +263,8 @@ function initTryonItems(){
   const list=products.slice(0,8);
   container.innerHTML=list.map((p,i)=>
     `<div class="tryon-item${i===0?' sel':''}" data-tid="${p.id}" onclick="selectTryonItem(${p.id},this)">
-      <img src="${p.img}" alt="${p.name}" loading="lazy">
-      <div class="tryon-item-name">${p.name.substring(0,18)}</div>
+      <img src="${esc(p.img)}" alt="${esc(p.name)}" loading="lazy">
+      <div class="tryon-item-name">${esc(p.name.substring(0,18))}</div>
     </div>`).join('');
   selectedTryonProduct=list[0]||null;
 }
@@ -291,8 +291,8 @@ function quickTryon(id,ev){
       const list=[p,...products.filter(q=>q.id!==id).slice(0,7)];
       container.innerHTML=list.map((item,i)=>
         `<div class="tryon-item${i===0?' sel':''}" data-tid="${item.id}" onclick="selectTryonItem(${item.id},this)">
-          <img src="${item.img}" alt="${item.name}" loading="lazy">
-          <div class="tryon-item-name">${item.name.substring(0,18)}</div>
+          <img src="${esc(item.img)}" alt="${esc(item.name)}" loading="lazy">
+          <div class="tryon-item-name">${esc(item.name.substring(0,18))}</div>
         </div>`).join('');
     }
   }

@@ -93,8 +93,8 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .hfs.animating{visibility:visible}
 .hero-vid{width:100%;height:100%;object-fit:cover;display:block;background:#1a0c02}
 .hfs-dots{display:flex;position:absolute;bottom:32px;left:50%;transform:translateX(-50%);gap:10px;z-index:10;align-items:center}
-.hfs-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.45);border:none;cursor:pointer;transition:all .35s;padding:0}
-.hfs-dot.act{background:var(--amber);width:22px;border-radius:3px}
+.hfs-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.45);border:none;cursor:pointer;transition:all .35s;padding:12px;background-clip:content-box;box-sizing:content-box}
+.hfs-dot.act{background:var(--amber);width:22px;border-radius:3px;background-clip:content-box}
 /* Slide 2 — model portrait */
 #hero-model-slide{background:#1a0a02}
 .hm-bg{position:absolute;inset:0;overflow:hidden}

@@ -119,7 +119,7 @@
 <div class="mob-nav-drawer" id="mob-nav-drawer">
   <div class="mob-nav-head">
     <span class="mob-nav-logo">AMBERRA</span>
-    <button class="mob-nav-close" onclick="closeMobNav()">✕</button>
+    <button class="mob-nav-close" onclick="closeMobNav()" aria-label="Close menu">✕</button>
   </div>
   <div class="mob-nav-links">
     <a class="mob-nav-link" href="/">Home</a>
@@ -522,7 +522,7 @@
   <div class="d-bg" onclick="closeDrawer()"></div>
   <div class="d-panel">
     <div class="d-img" style="position:relative">
-      <button class="d-close" onclick="closeDrawer()">✕</button>
+      <button class="d-close" onclick="closeDrawer()" aria-label="Close product detail">✕</button>
       <img id="d-img" src="" alt="">
     </div>
     <div class="d-gallery" id="d-gallery" style="display:none"></div>
@@ -548,7 +548,7 @@
 <div id="wish-panel">
   <div class="cart-head">
     <h3>Wishlist</h3>
-    <button class="cart-close" onclick="closeWishPanel()">✕</button>
+    <button class="cart-close" onclick="closeWishPanel()" aria-label="Close wishlist">✕</button>
   </div>
   <div class="cart-body" id="wish-body"></div>
 </div>
@@ -558,7 +558,7 @@
 <div id="cart-panel">
   <div class="cart-head">
     <h3>Your Cart</h3>
-    <button class="cart-close" onclick="closeCart()">✕</button>
+    <button class="cart-close" onclick="closeCart()" aria-label="Close cart">✕</button>
   </div>
   <div class="cart-body" id="cart-body"></div>
   <div class="cart-foot" id="cart-foot" style="display:none">
@@ -573,7 +573,7 @@
 <!-- Account Modal -->
 <div id="acc-modal" onclick="if(event.target===this)closeAcc()">
   <div class="acc-box" onclick="event.stopPropagation()">
-    <button class="req-close" onclick="closeAcc()">✕</button>
+    <button class="req-close" onclick="closeAcc()" aria-label="Close account">✕</button>
     <div style="text-align:center;margin-bottom:28px">
       <div style="font-family:var(--serif);font-size:11px;letter-spacing:.25em;color:var(--amber)">AMBERRA</div>
     </div>
@@ -607,7 +607,7 @@
 <!-- Wholesale Modal -->
 <div id="ws-modal-wrap" onclick="if(event.target===this)closeWholesale()">
   <div class="req-box" style="max-width:600px;max-height:90vh;overflow-y:auto" onclick="event.stopPropagation()">
-    <button class="req-close" onclick="closeWholesale()">✕</button>
+    <button class="req-close" onclick="closeWholesale()" aria-label="Close wholesale form">✕</button>
     <h2 style="font-family:var(--serif);font-size:26px;font-weight:400;margin-bottom:8px">Partner With Amberra</h2>
     <p style="font-size:11px;color:var(--gray);margin-bottom:28px;line-height:1.7">Tell us about your business — we will be in touch within 48 hours.</p>
     <div id="ws-form-wrap">
@@ -666,7 +666,7 @@
 <!-- Request Modal -->
 <div id="req-modal">
   <div class="req-box">
-    <button class="req-close" onclick="closeReq()">✕</button>
+    <button class="req-close" onclick="closeReq()" aria-label="Close request form">✕</button>
     <h2 data-i18n="req_title">Request a Piece</h2>
     <p data-i18n="req_sub">Tell us which piece caught your eye and we'll be in touch from Bali within 24 hours.</p>
     <div id="req-form">
@@ -707,7 +707,7 @@
 <!-- Email Popup -->
 <div class="epop" id="epop">
   <div class="epop-box">
-    <button class="epop-close" onclick="closeEpop()">✕</button>
+    <button class="epop-close" onclick="closeEpop()" aria-label="Close popup">✕</button>
     <div class="epop-top">
       <span class="epop-orn">✦</span>
       <h2 data-i18n="ep_title">A Gift from Amberra</h2>
@@ -749,7 +749,7 @@
       <h4>Amber Guide</h4>
       <p data-i18n="chat_status">Online · Bali, Indonesia</p>
     </div>
-    <button class="chat-hc" onclick="toggleChat()">✕</button>
+    <button class="chat-hc" onclick="toggleChat()" aria-label="Close chat">✕</button>
   </div>
   <div class="chat-msgs" id="chat-msgs">
     <div class="chat-msg chat-bot" data-i18n="chat_welcome">Hello! I'm your personal Amberra guide. How can I help you find the perfect piece today?</div>
@@ -786,7 +786,7 @@
 <!-- Legal Modal -->
 <div id="legal-modal" onclick="if(event.target===this)closeLegal()">
   <div class="legal-box">
-    <button class="legal-close" onclick="closeLegal()">✕</button>
+    <button class="legal-close" onclick="closeLegal()" aria-label="Close legal">✕</button>
     <div class="legal-head">
       <span class="legal-logo">AMBERRA</span>
       <div class="legal-tabs">

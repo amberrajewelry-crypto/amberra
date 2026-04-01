@@ -3,6 +3,12 @@
 // Used on every page: nav, translations, cart, wishlist, modals, chat, cookie
 // ═══════════════════════════════════════════════════════════════════════════
 
+// ── HTML ESCAPE (XSS protection) ──────────────────────────────────────────
+function esc(s){
+  if(s==null)return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
 // ── ACCOUNT MODAL ─────────────────────────────────────────────────────────
 function openAcc(){
   document.getElementById('acc-modal').classList.add('open');
@@ -79,10 +85,10 @@ function renderWishlist(){
   }
   body.innerHTML=list.map(p=>`
     <div class="wish-item" onclick="closeWishPanel();if(typeof openDrawer==='function')openDrawer(${p.id})">
-      <img src="${p.img}" alt="${p.name}">
+      <img src="${esc(p.img)}" alt="${esc(p.name)}">
       <div class="wish-item-info">
-        <div class="wish-item-name">${p.name}</div>
-        <div class="wish-item-mat">${p.material||p.cat}</div>
+        <div class="wish-item-name">${esc(p.name)}</div>
+        <div class="wish-item-mat">${esc(p.material||p.cat)}</div>
         <div class="wish-item-bot">
           <span class="wish-item-price">${window.formatPrice?window.formatPrice(p.price):'$'+p.price}</span>
           <button class="wish-item-rm" onclick="event.stopPropagation();toggleWish(${p.id},event);renderWishlist()" title="Remove">
@@ -188,10 +194,10 @@ function renderCart(){
   }
   body.innerHTML=cart.map(p=>`
     <div class="cart-item">
-      <img src="${p.img}" alt="${p.name}">
+      <img src="${esc(p.img)}" alt="${esc(p.name)}">
       <div class="cart-item-info">
-        <div class="cart-item-name">${p.name}</div>
-        <div class="cart-item-mat">${p.material}</div>
+        <div class="cart-item-name">${esc(p.name)}</div>
+        <div class="cart-item-mat">${esc(p.material)}</div>
         <div class="cart-item-bot">
           <span class="cart-item-price">${window.formatPrice?window.formatPrice(p.price*(p.qty||1)):'$'+(p.price*(p.qty||1))}</span>
           <div class="cart-qty">
@@ -239,12 +245,17 @@ async function submitWholesale(){
   const btn=document.querySelector('#ws-form-wrap .btn-s');
   if(btn){btn.disabled=true;btn.textContent='Sending…';}
   try{
-    await fetch('/api/contact',{
+    const r=await fetch('/api/contact',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({type:'wholesale',name,email,company,country,partnerType,volume,message})
     });
-  }catch(e){}
+    if(!r.ok)throw new Error('send failed');
+  }catch(e){
+    if(btn){btn.disabled=false;btn.textContent='Send Application';}
+    alert('Could not send your request. Please try again or contact us on WhatsApp.');
+    return;
+  }
   document.getElementById('ws-form-wrap').style.display='none';
   document.getElementById('ws-thanks').style.display='block';
 }
@@ -276,12 +287,17 @@ async function submitReq(){
   const btn=document.querySelector('#req-form .btn-s');
   if(btn){btn.disabled=true;btn.textContent='Sending…';}
   try{
-    await fetch('/api/contact',{
+    const r=await fetch('/api/contact',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({type:'request',piece,name,email,phone,message})
     });
-  }catch(e){}
+    if(!r.ok)throw new Error('send failed');
+  }catch(e){
+    if(btn){btn.disabled=false;btn.textContent='Send Request';}
+    alert('Could not send your request. Please try again or contact us on WhatsApp.');
+    return;
+  }
   document.getElementById('req-form').style.display='none';
   document.getElementById('req-ok').style.display='block';
   setTimeout(closeReq,4000);
@@ -550,10 +566,15 @@ function initReveal(){
   });
 }
 
-// ── NAV SCROLL ────────────────────────────────────────────────────────────
+// ── NAV SCROLL (throttled) ────────────────────────────────────────────────
+let _scrollRAF=0;
 window.addEventListener('scroll',()=>{
-  document.getElementById('nav-shell').classList.toggle('sc',scrollY>60);
-  document.querySelectorAll('.nl').forEach(n=>n.classList.remove('act'));
+  if(_scrollRAF)return;
+  _scrollRAF=requestAnimationFrame(()=>{
+    document.getElementById('nav-shell').classList.toggle('sc',scrollY>60);
+    document.querySelectorAll('.nl').forEach(n=>n.classList.remove('act'));
+    _scrollRAF=0;
+  });
 });
 
 // ── SPARKLE PARTICLES ─────────────────────────────────────────────────────
@@ -676,6 +697,8 @@ const TR={
   ka:{util_store:"მაღაზიის პოვნა",util_services:"სერვისები",util_contact:"კონტაქტი",util_account:"ჩემი ანგარიში",util_wishlist:"სასურველი",search_ph:"ძებნა",nav_collections:"კოლექციები",nav_rings:"ბეჭდები",nav_earrings:"საყურეები",nav_pendants:"გულსაკიდები",nav_bracelets:"სამაჯურები",nav_journal:"ჟურნალი",nav_about:"ჩვენი ისტორია",nav_tryon:"ვირტუალური მოსინჯვა",nav_wholesale:"საბითუმო",hero_tag:"ბალი · ახალი კოლექცია 2026",hero_title:"ქარვა<br><em>უძველესი</em><br>სამყაროდან",hero_desc:"ბუნებრივი ბალტიისპირეთის ქარვა, მილიონობით წლის განმავლობაში ჩამოყალიბებული. ხელნაკეთი ბალიში, წმინდა განზრახვით.",hero_cta:"კოლექციების დათვალიერება",hero_cta2:"ყველა სამკაული",tick1:"ბუნებრივი ბალტიისპირეთის ქარვა",tick2:"ხელნაკეთი ბალიში",tick3:"925 სტერლინგის ვერცხლი",tick4:"წმინდა რიტუალური კურთხევა",tick5:"უფასო სასაჩუქრე შეფუთვა",coll_lbl:"ჩვენი სამყარო",coll_title:"კოლექციები",coll_all:"ყველა ნამუშევრის ნახვა",cat_rings:"კოლექცია",cat_earrings:"კოლექცია",cat_pendants:"კოლექცია",cat_bracelets:"კოლექცია",cat_chains:"კოლექცია",col_rings:"ბეჭდები",col_earrings:"საყურეები",col_pendants:"გულსაკიდები",col_bracelets:"სამაჯურები",col_chains:"ჯაჭვები",nav_chains:"ჯაჭვები",f_chains:"ჯაჭვები",discover:"აღმოჩენა",ed_lbl:"ხელოსნობა",ed_title:"დაბადებული<em>უძველეს დედამიწაზე</em>",ed_body1:"ქარვა მხოლოდ ქვა არ არის — ეს არის კრისტალიზებული დრო. ორმოცი მილიონი წლის ტყეები, მწერები, სინათლე და წვიმა შენახულია ერთ ქვაში.",ed_body2:"ჩვენი ხელოსნები ბალიში მთელ სიცოცხლეს უძღვნიან მის პატივისცემას. ყოველი ნამუშევარი გადის წყალს, ცეცხლსა და ლოცვას, სანამ თქვენამდე მიაღწევს.",stat1:"ქარვის წლები",stat2:"უნიკალური ნამუშევრები",stat3:"ენები",tryon_lbl:"ახალი ფუნქცია",tryon_title:"სცადე<br><em>ყიდვამდე</em>",tryon_desc:"ატვირთეთ თქვენი ფოტო და ნახეთ, როგორ გამოიყურება AMBERRA-ს ყოველი ნამუშევარი თქვენზე.",tryon_cta:"ატვირთეთ თქვენი ფოტო",tryon_badge:"AR მოსინჯვა",tryon_hint:"დაწყებისთვის ატვირთეთ ფოტო",quiz_title:"ჩემი ქარვის პოვნა",quiz_sub:"უპასუხეთ 5 კითხვას — აღმოაჩინეთ თქვენი სრულყოფილი ნამუშევარი",quiz_cta:"ვიქტორინის დაწყება",cat_lbl:"კოლექცია",cat_title:"ყველა სამკაული",f_all:"ყველა",f_rings:"ბეჭდები",f_earrings:"საყურეები",f_pendants:"გულსაკიდები",f_bracelets:"სამაჯურები",j_lbl:"შეხედულებები",j_title:"ქარვის <em>ჟურნალი</em>",j_all:"ყველა სტატიის ნახვა",j1_date:"მარტი 2026",j1_title:"როგორ ატარებს ქარვა ენერგიას: ბალიური პერსპექტივა",j1_body:"ბალიში სჯერათ, რომ ქარვა თავად მზის შენახულ სინათლეს ატარებს.",j2_date:"თებერვალი 2026",j2_title:"თქვენი ქარვის მოვლა: მარადიული სილამაზის სახელმძღვანელო",j2_body:"ბუნებრივი ქარვა ცოცხალი მასალაა, რომელიც სინათლეს, შეხებას და მოვლას პასუხობს.",j3_date:"იანვარი 2026",j3_title:"მოგზაურობა ბალტიის ტყეებიდან ბალის სანაპიროებამდე",j3_body:"ლიტვის ტყეებიდან უბუდის სახელოსნოებამდე — განსაცვიფრებელი მოგზაურობა.",j4_date:"დეკემბერი 2025",j4_title:"ნამდვილი ბალიური ქარვა ყალბისგან გასარჩევად: 5 მარტივი ტესტი",j4_body:"მარილიანი წყალი, UV შუქი და სუნის ტესტი მყისიერად ავლენს ავთენტურობას.",j5_date:"ნოემბერი 2025",j5_title:"ქარვის სამკაულების 5 სტაილი ამ სეზონში",j5_body:"ოქროს ჯაჭვებიდან მინიმალისტურ ბეჭდებამდე — ბუნებრივი ქარვა ყველა სტილს ემთხვევა.",j6_date:"ოქტომბერი 2025",j6_title:"ოქროს სპექტრი: ქარვის ფერების გაგება",j6_body:"კონიაკიდან ალუბლამდე, ბალიური ქარვის თითოეული ელფერი განსხვავებულ გეოლოგიურ ამბავს ყვება.",j7_date:"სექტემბერი 2025",j7_title:"რატომ არის ბალიური ქარვა მსოფლიოს უძველესი ძვირფასი ქვა",j7_body:"განსხვავებით ბრილიანტებისაგან, ქარვა ორგანულია — 40 მილიონი წლის წინ გაქრობილი ტყეების გაქვავებული ფისი.",j8_date:"აგვისტო 2025",j8_title:"უბუდის ოსტატები: თითოეული AMBERRA ნაჭრის მიღმა",j8_body:"უბუდის სახელოსნოებში ბალიელი ოქრომჭედლები წლობით სრულყოფენ ქარვის ჩასმის ხელოვნებას.",j9_date:"ივლისი 2025",j9_title:"ქარვა და ქალის ენერგია: უძველესი სულიერი კავშირი",j9_body:"ბალტიური კულტურები ქარვას ზღვის ქალღმერთთან აკავშირებდნენ. ბალიზე მას ეცვამთ დაცვისა და სიფხიზლისათვის.",c_lbl:"პირადი შეხვედრები",c_title:"<em>პერსონალური კონსულტაციის</em><br>მოთხოვნა",c_body:"ჩვენი გუნდი ბალიში პირადად გაგიძღვებათ სრულყოფილი ნამუშევრისკენ.",fc_coll:"კოლექციები",fc_srv:"სერვისები",fc_contact:"კონტაქტი",req_btn:"ნამუშევრის მოთხოვნა",req_title:"ნამუშევრის მოთხოვნა",req_sub:"მოგვიყევით, რომელი ნივთი მოგეწონათ და ჩვენ 24 საათის განმავლობაში დაგიკავშირდებით ბალიდან.",f_piece:"საინტერესო ნამუშევარი",f_name:"თქვენი სახელი",f_email:"ელ.ფოსტა",f_phone:"WhatsApp (არასავალდებულო)",f_msg:"შეტყობინება",req_send:"მოთხოვნის გაგზავნა",req_thanks:"გმადლობთ ✦",req_thanks_sub:"24 საათში დაგიკავშირდებით. გულთბილი მისალმებები ბალიდან.",qm_title:"ჩემი ქარვის პოვნა",qm_sub:"5 კითხვა · 2 წუთი · სრულყოფილი შესაბამისობა",q_next:"შემდეგი",ep_title:"საჩუქარი Amberra-სგან",ep_sub:"შემოგვიერთდით — მიიღეთ 10% ფასდაკლება პირველ შეკვეთაზე",ep_ph:"თქვენი ელ.ფოსტის მისამართი",ep_btn:"შეთავაზების მიღება",ep_note:"სპამი არასოდეს. გამოწერის გაუქმება ნებისმიერ დროს.",ep_thanks:"✦ კეთილი იყოს თქვენი მობრძანება Amberra-ში ✦",ep_thanks_sub:"თქვენი 10%-იანი კოდი გზაშია",chat_lbl:"გვკითხეთ ნებისმიერი კითხვა",chat_status:"ონლაინ · ბალი, ინდონეზია",chat_welcome:"გამარჯობა! მე ვარ თქვენი პირადი AMBERRA გიდი. როგორ შემიძლია დაგეხმაროთ სრულყოფილი ნამუშევრის პოვნაში დღეს?",cq1:"ბეჭდის ზომები",cq2:"მიწოდების ინფო",cq3:"მოვლის სახელმძღვანელო",cq4:"საჩუქრის იდეები",chat_ph:"კითხეთ ნებისმიერი...",cont_btn:"დათვალიერების გაგრძელება"},
 };
 
+// Map hero slide 2 keys to editorial keys for all languages
+Object.keys(TR).forEach(l=>{TR[l].hero2_lbl=TR[l].ed_lbl;TR[l].hero2_title=TR[l].ed_title;TR[l].hero2_desc=TR[l].ed_body1;});
 let currentLang='en';
 const I18N_LANGS=['en','ru','zh','ar','id','fr','de','es','pt','ja','ko','it','tr','hi','ka'];
 const I18N_NON_EN=['ru','zh','ar','id','fr','de','es','pt','ja','ko','it','tr','hi','ka'];
