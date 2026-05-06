@@ -344,6 +344,8 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .wish-item-rm svg{width:13px;height:13px;stroke:var(--stone);fill:none;stroke-width:1.8;transition:stroke .15s}
 .wish-add-cart{display:block;width:100%;margin-top:16px;padding:10px;background:var(--charcoal);color:var(--white);border:none;font-size:9px;letter-spacing:.15em;cursor:pointer;text-transform:uppercase;font-family:var(--sans);transition:background .2s}
 .wish-add-cart:hover{background:var(--amber)}
+.wish-share-btn{display:block;width:100%;margin-bottom:16px;padding:10px;background:transparent;color:var(--amber);border:1px solid var(--amber);font-size:9px;letter-spacing:.18em;cursor:pointer;text-transform:uppercase;font-family:var(--sans);transition:all .2s}
+.wish-share-btn:hover{background:var(--amber);color:var(--white)}
 .cart-head{padding:20px;border-bottom:1px solid var(--mist);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
 .cart-head h3{font-family:var(--serif);font-size:17px;letter-spacing:.05em;font-weight:400}
 .cart-close{background:none;border:none;font-size:16px;cursor:pointer;color:var(--stone);padding:4px}
