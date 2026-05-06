@@ -28,6 +28,12 @@ if(catParam){activeFilter=catParam;}
 const qParam=urlParams.get('q');
 if(qParam){searchQuery=qParam.toLowerCase();}
 
+// Highlight nav item matching current category
+document.querySelectorAll('.nav-main .nl').forEach(a=>{
+  a.classList.remove('act');
+  if(catParam&&a.href.includes('cat='+catParam))a.classList.add('act');
+});
+
 // ── RENDER PRODUCTS ────────────────────────────────────────────────────────
 function renderProducts(){
   const grid=document.getElementById('prod-grid');
