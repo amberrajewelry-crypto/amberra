@@ -434,7 +434,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 
 /* ═══ JOURNAL FULL-SLIDE CAROUSEL (journal.html) ═════════════════════════ */
 #journal.js-page{padding:0;background:var(--black)}
-.js-header{padding:72px 64px 48px;background:var(--white)}
+.js-header{padding:72px 64px 48px;background:var(--white);text-align:center}
 .js-header .s-lbl{display:block;margin-bottom:8px}
 .js-wrap{position:relative;overflow:hidden;height:auto;min-height:0;background:var(--cream);cursor:grab;-webkit-user-select:none;user-select:none;touch-action:pan-y}
 .js-wrap.grabbing{cursor:grabbing}
