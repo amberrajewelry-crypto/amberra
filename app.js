@@ -612,35 +612,18 @@ function initReveal(){
 }
 
 // ── NAV SCROLL ────────────────────────────────────────────────────────────
+function updateNavSolid(){
+  const heroH=(document.getElementById('hero')?.offsetHeight||innerHeight)*0.85;
+  document.getElementById('nav-shell').classList.toggle('solid',scrollY>heroH);
+}
+updateNavSolid();
 window.addEventListener('scroll',()=>{
   document.getElementById('nav-shell').classList.toggle('sc',scrollY>60);
+  updateNavSolid();
   document.querySelectorAll('.nl').forEach(n=>n.classList.remove('act'));
   closeLang();
 },{passive:true});
 
-// ── SPARKLE PARTICLES ─────────────────────────────────────────────────────
-const sparkColors=['#D4A832','#E8C84A','#C9A832','#F0D870','#B8941E'];
-let lastX=0,lastY=0,lastT=0;
-function spawnSparkle(x,y){
-  const p=document.createElement('div');p.className='gp';
-  const size=Math.random()*10+6;
-  const ox=(Math.random()-.5)*18,oy=(Math.random()-.5)*18;
-  const color=sparkColors[Math.floor(Math.random()*sparkColors.length)];
-  p.style.cssText=`left:${x+ox}px;top:${y+oy}px;width:${size}px;height:${size}px;background:${color};animation-duration:${Math.random()*.3+.55}s`;
-  document.body.appendChild(p);
-  setTimeout(()=>p.remove(),850);
-}
-document.addEventListener('mousemove',e=>{
-  const now=Date.now();
-  const dx=e.clientX-lastX,dy=e.clientY-lastY;
-  const dist=Math.sqrt(dx*dx+dy*dy);
-  if(dist>8&&now-lastT>50){
-    const cx=e.clientX,cy=e.clientY;
-    const count=Math.min(3,Math.floor(dist/12)+1);
-    lastX=cx;lastY=cy;lastT=now;
-    requestAnimationFrame(()=>{for(let i=0;i<count;i++)spawnSparkle(cx,cy);});
-  }
-},{passive:true});
 
 // ── CANVAS PARTICLES ──────────────────────────────────────────────────────
 (function(){try{
