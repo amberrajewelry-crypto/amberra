@@ -31,9 +31,9 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .nav-util-link:hover{opacity:.55}
 .nav-util-link svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.4;flex-shrink:0}
 .nav-search-wrap{display:flex;align-items:center;gap:6px}
-.nav-search-wrap svg{width:19px;height:19px;stroke:var(--charcoal);fill:none;stroke-width:1.4}
-.nav-search-inp{border:none;outline:none;background:transparent;font-family:var(--sans);font-size:13px;letter-spacing:.03em;color:#000;width:120px;transition:width .3s}
-.nav-search-inp::placeholder{color:#666;font-size:13px}
+.nav-search-wrap svg{width:19px;height:19px;stroke:var(--white);fill:none;stroke-width:1.4}
+.nav-search-inp{border:none;outline:none;background:transparent;font-family:var(--sans);font-size:13px;letter-spacing:.03em;color:var(--white);width:120px;transition:width .3s}
+.nav-search-inp::placeholder{color:rgba(255,255,255,0.55);font-size:13px}
 .nav-search-inp:focus{width:150px;border-bottom:1px solid var(--mist)}
 #lang-sw{position:relative}
 .lang-cur{display:flex;align-items:center;gap:4px;font-size:10px;letter-spacing:.1em;color:var(--gray);cursor:pointer;transition:color .2s}
