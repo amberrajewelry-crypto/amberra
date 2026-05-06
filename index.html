@@ -296,8 +296,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="nav-main">
-    <a class="nl act" href="/#colls" data-i18n="nav_collections">Collections</a>
-    <a class="nl" href="/shop?cat=rings" data-i18n="nav_rings">Rings</a>
+    <a class="nl act" href="/shop?cat=rings" data-i18n="nav_rings">Rings</a>
     <a class="nl" href="/shop?cat=earrings" data-i18n="nav_earrings">Earrings</a>
     <a class="nl" href="/shop?cat=pendants" data-i18n="nav_pendants">Pendants</a>
     <a class="nl" href="/shop?cat=bracelets" data-i18n="nav_bracelets">Bracelets</a>
@@ -312,9 +311,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ══ HERO ══════════════════════════════════════════════════════════════ -->
 <section id="hero" style="position:relative;overflow:hidden">
-  <canvas id="fluid-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;display:block"></canvas>
-  <!-- Hidden h1 for SEO -->
-  <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">Handcrafted Baltic Amber Jewelry — Rings, Earrings, Pendants &amp; Bracelets</h1>
+  <canvas id="fluid-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;display:block;z-index:0"></canvas>
+
+  <!-- Slide 1 — fluid only -->
+  <div class="h-slide h-slide-1 h-act" id="h-s1">
+    <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">Handcrafted Baltic Amber Jewelry — Rings, Earrings, Pendants &amp; Bracelets</h1>
+  </div>
+
+  <!-- Slide 2 — editorial overlay -->
+  <div class="h-slide h-slide-2" id="h-s2">
+    <div class="h-s2-wrap">
+      <div class="h-s2-text">
+        <span class="h-s2-lbl" data-i18n="ed_lbl">The Craft</span>
+        <div class="h-s2-rule"></div>
+        <h2 class="h-s2-title" data-i18n="ed_title">Born from <em>Ancient Earth</em></h2>
+        <p class="h-s2-body" data-i18n="ed_body1">Amber is not merely stone — it is time crystallised. Forty million years of forests, insects, light and rain preserved in a single stone.</p>
+        <p class="h-s2-body" style="margin-top:12px" data-i18n="ed_body2">Our artisans in Bali spend lifetimes learning to honour it. Every piece passes through water, fire and prayer before it reaches you.</p>
+      </div>
+      <div class="h-s2-model">
+        <picture>
+          <source srcset="images/model-opt.webp" type="image/webp">
+          <img src="images/model-opt.jpg" alt="AMBERRA amber jewelry" loading="eager">
+        </picture>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dots -->
+  <div class="hfs-dots" id="hero-dots">
+    <button class="hfs-dot act" data-slide="0" aria-label="Slide 1"></button>
+    <button class="hfs-dot" data-slide="1" aria-label="Slide 2"></button>
+  </div>
 </section>
 <script type="module" src="/fluid-bg.js"></script>
 

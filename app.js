@@ -612,8 +612,13 @@ function initReveal(){
 }
 
 // ── NAV SCROLL ────────────────────────────────────────────────────────────
+const HAS_HERO=!!document.getElementById('hero');
 function updateNavSolid(){
-  const heroH=(document.getElementById('hero')?.offsetHeight||innerHeight)*0.85;
+  if(!HAS_HERO){
+    document.getElementById('nav-shell').classList.add('solid');
+    return;
+  }
+  const heroH=(document.getElementById('hero').offsetHeight||innerHeight)*0.85;
   document.getElementById('nav-shell').classList.toggle('solid',scrollY>heroH);
 }
 updateNavSolid();
@@ -668,60 +673,18 @@ window.addEventListener('scroll',()=>{
 
 // ── HERO FULL-PAGE SLIDER ─────────────────────────────────────────────────────────────────────────────
 (function(){
-  const slides=document.querySelectorAll('.hfs');
+  const slides=document.querySelectorAll('.h-slide');
   const dots=document.querySelectorAll('.hfs-dot');
-  const shimmer=document.getElementById('hfs-shimmer');
   if(!slides.length||!dots.length)return;
-  let cur=0,anim=false;
-  const DUR=1150;
-
-  function resetToFirst(){
-    slides.forEach((s,i)=>{
-      s.className='hfs'+(i===0?' active':'');
-      s.style.cssText='';
-    });
-    dots.forEach((d,i)=>d.classList.toggle('act',i===0));
-    cur=0;anim=false;
-  }
-
+  let cur=0;
   function goTo(n){
-    if(anim||n===cur)return;
-    anim=true;
-    const outEl=slides[cur],inEl=slides[n];
-
-    // incoming: start clipped, then sweep open
-    inEl.className='hfs active';
-    inEl.style.cssText='z-index:3;visibility:visible;clip-path:polygon(0 0,4% 0,0 100%,0 100%)';
-    void inEl.offsetWidth;
-    inEl.style.transition='clip-path '+DUR+'ms cubic-bezier(.65,0,.2,1)';
-    inEl.style.clipPath='polygon(0 0,104% 0,100% 100%,0 100%)';
-
-    // outgoing: zoom+blur dissolve
-    outEl.className='hfs';
-    outEl.style.cssText='z-index:1;visibility:visible;transition:transform '+DUR+'ms cubic-bezier(.65,0,.2,1),opacity '+DUR+'ms cubic-bezier(.65,0,.2,1),filter '+DUR+'ms cubic-bezier(.65,0,.2,1)';
-    void outEl.offsetWidth;
-    outEl.style.transform='scale(1.06)';
-    outEl.style.opacity='0';
-    outEl.style.filter='blur(8px)';
-
-    // shimmer line
-    if(shimmer){shimmer.classList.remove('run');void shimmer.offsetWidth;shimmer.classList.add('run');}
-
+    if(n===cur)return;
+    slides[cur].classList.remove('h-act');
     dots[cur].classList.remove('act');
-    dots[n].classList.add('act');
     cur=n;
-
-    setTimeout(()=>{
-      slides.forEach((s,i)=>{
-        s.style.cssText='';
-        s.className='hfs'+(i===cur?' active':'');
-      });
-      if(shimmer)shimmer.classList.remove('run');
-      anim=false;
-    },DUR+60);
+    slides[cur].classList.add('h-act');
+    dots[cur].classList.add('act');
   }
-
-  window.addEventListener('pageshow',e=>{if(e.persisted)resetToFirst();});
   dots.forEach((d,i)=>d.addEventListener('click',()=>goTo(i)));
 })();
 
