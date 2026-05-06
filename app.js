@@ -746,14 +746,28 @@ document.addEventListener('mousemove',e=>{
 const TR={nav_home:'Home',nav_shop:'Shop All',util_store:'Find a Store',util_services:'Services',util_contact:'Contact Us',util_account:'My Account',util_wishlist:'Wishlist',search_ph:'Search',nav_collections:'Collections',nav_rings:'Rings',nav_earrings:'Earrings',nav_pendants:'Pendants',nav_bracelets:'Bracelets',nav_journal:'Journal',nav_about:'Our Story',nav_tryon:'Try On',nav_wholesale:'Wholesale',hero_tag:'Bali · New Collection 2026',hero_title:'Amber from the <em>Ancient</em> World',hero_desc:'Natural Baltic amber, millions of years in the making. Handcrafted in Bali with sacred intention.',hero_cta:'Explore Collections',hero_cta2:'All Jewelry',tick1:'Natural Baltic Amber',tick2:'Handcrafted in Bali',tick3:'925 Sterling Silver',tick4:'Sacred Ritual Blessing',tick5:'Free Gift Wrapping',coll_lbl:'Our Universe',coll_title:'Collections',coll_all:'View all pieces',cat_rings:'Collection',cat_earrings:'Collection',cat_pendants:'Collection',cat_bracelets:'Collection',cat_chains:'Collection',col_rings:'Rings',col_earrings:'Earrings',col_pendants:'Pendants',col_bracelets:'Bracelets',col_chains:'Chains',nav_chains:'Chains',f_chains:'Chains',discover:'Discover',ed_lbl:'The Craft',ed_title:'Born from <em>Ancient Earth</em>',ed_body1:'Amber is not merely stone — it is time crystallised. Forty million years of forests, insects, light and rain preserved in a single stone.',ed_body2:'Our artisans in Bali spend lifetimes learning to honour it. Every piece passes through water, fire and prayer before it reaches you.',stat1:'Years of amber',stat2:'Unique pieces',stat3:'Countries',tryon_lbl:'New Feature',tryon_title:'Try On<br><em>Before You Buy</em>',tryon_desc:'Upload your photo and see how each AMBERRA piece looks on you.',tryon_cta:'Upload Your Photo',tryon_badge:'AR Try-On',tryon_hint:'Upload photo to begin',quiz_title:'Find My Amber',quiz_sub:'Answer 5 questions — discover your perfect piece',quiz_cta:'Start Quiz',cat_lbl:'The Collection',cat_title:'All Jewelry',f_all:'All',f_rings:'Rings',f_earrings:'Earrings',f_pendants:'Pendants',f_bracelets:'Bracelets',j_lbl:'Insights',j_title:'The Amber <em>Journal</em>',j_all:'View all articles',j1_date:'March 2026',j1_title:'Baltic Amber Healing Properties: The Science of Succinic Acid',j1_body:'Baltic amber contains up to 8% succinic acid — a natural compound studied for its anti-inflammatory and immune-supporting effects when worn against the skin.',j2_date:'February 2026',j2_title:'How to Clean Amber Jewelry: The Complete Care Guide',j2_body:'Natural amber is softer than most gemstones. Warm water, mild soap, and a soft cloth are all you need to keep it radiant for generations. Avoid chemicals and ultrasound cleaners.',j3_date:'January 2026',j3_title:'From Balinese Forests to Bali: The Journey of Every AMBERRA Stone',j3_body:'Forty million years beneath ancient forests, then a world away in the sacred workshops of Ubud — the remarkable story of each Baltic amber stone.',j4_date:'December 2025',j4_title:'How to Tell Real Baltic Amber from Fake: 5 Simple Tests',j4_body:'With replicas flooding the market, knowing how to identify authentic Baltic amber is essential. Salt water, UV light, and the scent test reveal the truth instantly.',j5_date:'November 2025',j5_title:'5 Ways to Style Amber Jewelry This Season',j5_body:'From layered gold chains to minimalist rings, discover how natural amber complements every aesthetic — from Balinese sunsets to city evenings.',j6_date:'October 2025',j6_title:'The Golden Spectrum: Understanding Amber Colors and Their Meaning',j6_body:'From cognac to cherry, green to milky white — every shade of Baltic amber tells a different geological story and carries its own energy signature.',j7_date:'September 2025',j7_title:'Why Baltic Amber Is the World\'s Most Ancient Gemstone',j7_body:'Unlike diamonds or sapphires, Baltic amber is organic — fossilized resin from forests that disappeared 40 million years ago. Its rarity lies not in hardness, but in time.',j8_date:'August 2025',j8_title:'The Ubud Artisans: Hands Behind Every AMBERRA Piece',j8_body:'In the rice-field studios of Ubud, Balinese silversmiths spend years perfecting the art of setting Baltic amber in sacred geometric forms passed down through generations.',j9_date:'July 2025',j9_title:'Amber and Feminine Energy: The Ancient Spiritual Connection',j9_body:'Baltic cultures associated amber with the goddess of the sea. In Bali it is worn for protection, warmth, and the awakening of feminine power.',c_lbl:'Private Appointments',c_title:'Request a Personal Consultation',c_body:'Our team in Bali will personally guide you to the perfect piece.',fc_coll:'Collections',fc_srv:'Services',fc_contact:'Contact',req_btn:'Request This Piece',req_title:'Request a Piece',req_sub:'Tell us which piece caught your eye.',f_piece:'Piece of Interest',f_name:'Your Name',f_email:'Email',f_phone:'WhatsApp (optional)',f_msg:'Message',req_send:'Send Request',req_thanks:'Thank you ✦',req_thanks_sub:'We will be in touch within 24 hours. Warm regards from Bali.',qm_title:'Find My Amber',qm_sub:'5 questions · 2 minutes · Perfect match',q_next:'Next',ep_title:'A Gift from Amberra',ep_sub:'Join our world — receive 10% off your first order',ep_ph:'Your email address',ep_btn:'Claim Offer',ep_note:'No spam, ever. Unsubscribe anytime.',ep_thanks:'✦ Welcome to Amberra ✦',ep_thanks_sub:'Your 10% code is on its way',chat_lbl:'Ask Us Anything',chat_status:'Online · Bali, Indonesia',chat_welcome:"Hello! I'm your personal Amberra guide. How can I help you find the perfect piece today?",cq1:'Ring sizes',cq2:'Shipping info',cq3:'Care guide',cq4:'Gift ideas',chat_ph:'Ask anything...',cont_btn:'Continue Browsing',to_lbl:'Virtual Try‑On',to_title:'Try On at Home',to_body:'Upload your photo and see how our jewelry looks on you.',to_cam_btn:'Start Camera',to_choose:'Choose a Piece',to_save:'Save Look',to_reset:'Reset',};
 
 function navTo(path){location.href=path;}
-function t(k){return TR[k]||k}
+// Active translation table — starts as EN, replaced by setLang()
+let TR_ACTIVE=TR;
+function t(k){return TR_ACTIVE[k]||TR[k]||k}
+function detectLang(){
+  const saved=localStorage.getItem('amb_lang');
+  if(saved&&typeof TRANSLATIONS!=='undefined'&&TRANSLATIONS[saved])return saved;
+  const nav=(navigator.language||navigator.userLanguage||'en').split('-')[0].toLowerCase();
+  if(typeof TRANSLATIONS!=='undefined'&&TRANSLATIONS[nav])return nav;
+  return 'en';
+}
 function setLang(lang){
+  const dict=(typeof TRANSLATIONS!=='undefined'&&TRANSLATIONS[lang])||TR;
+  TR_ACTIVE=dict;
+  document.documentElement.lang=lang;
+  document.dir=(lang==='ar')?'rtl':'ltr';
+  localStorage.setItem('amb_lang',lang);
   document.querySelectorAll('[data-i18n]').forEach(el=>{
-    const k=el.dataset.i18n;const v=TR[k];
+    const k=el.dataset.i18n;const v=dict[k];
     if(v!==undefined)el.innerHTML=v;
   });
   document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
-    const k=el.dataset.i18nPh;const v=TR[k];
+    const k=el.dataset.i18nPh;const v=dict[k];
     if(v!==undefined)el.placeholder=v;
   });
   if(typeof renderProducts==='function') renderProducts();
@@ -1151,7 +1165,7 @@ window.addEventListener('load',()=>{
 })();
 
 document.addEventListener('DOMContentLoaded',()=>{
-  setLang('en');
+  setLang(detectLang());
   initReveal();
   updateWishBadge();
   updateCartBadge();
