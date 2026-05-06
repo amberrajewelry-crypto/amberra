@@ -281,7 +281,10 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 @media(max-width:900px){.quiz-strip{padding:8px 16px 8px 8px;gap:10px}}
 
 /* ═══ CATALOG ═══════════════════════════════════════════════════════════ */
-#catalog{padding:100px 40px;background:var(--white)}
+#catalog{padding:80px 40px 100px;background:var(--white)}
+.breadcrumb{padding:20px 40px 0;font-size:11px;letter-spacing:.1em;color:var(--gray);font-family:var(--sans)}
+.breadcrumb a{color:var(--gray);text-decoration:none;transition:color .2s}.breadcrumb a:hover{color:var(--amber)}
+.breadcrumb span{margin:0 8px;color:var(--stone)}
 .cat-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:32px;flex-wrap:wrap;gap:16px}
 .f-row{display:flex;flex-wrap:wrap;gap:3px}
 .ftab{padding:10px 20px;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#000;border:1px solid #000;background:var(--white);font-family:var(--sans);transition:all .25s;cursor:pointer}
@@ -399,7 +402,9 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .pc-label{padding:10px 12px;display:flex;flex-direction:column}
 .pcat{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#000;margin-bottom:5px;display:block}
 .pname{font-family:var(--serif);font-size:16px;font-weight:400;margin-bottom:3px;line-height:1.25;color:var(--black)}
-.pmaterial{font-size:13px;color:#000;margin-bottom:6px;line-height:1.4}
+.pmaterial{font-size:13px;color:#000;margin-bottom:4px;line-height:1.4}
+.pstars{font-size:11px;color:var(--amber);margin-bottom:5px;letter-spacing:.05em}
+.pstars-count{font-size:10px;color:var(--gray);font-family:var(--sans);margin-left:3px}
 .pfoot{display:flex;align-items:center}
 .pprice{font-family:var(--serif);font-size:16px;color:#000}
 /* Expanded info panel */
