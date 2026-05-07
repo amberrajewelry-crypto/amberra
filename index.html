@@ -230,7 +230,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJ5682RJ"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<canvas id="particles-canvas"></canvas>
 
 <!-- ══ MOBILE NAV ════════════════════════════════════════════════════════ -->
 <div class="mob-nav-overlay" id="mob-nav-overlay" onclick="closeMobNav()"></div>
@@ -277,7 +276,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <input class="nav-search-inp" type="text" placeholder="Search" data-i18n-ph="search_ph">
       </div>
     </div>
-    <a class="nav-logo" href="/">AMBERRA</a>
+    <a class="nav-logo" href="/"><span class="nav-logo-main">AMBERRA</span><span class="nav-logo-sub">Jewelry</span></a>
     <div class="nav-lb-r">
       <button class="nav-ico-btn" onclick="toggleWishView()">
         <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
@@ -337,59 +336,61 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 
-  <!-- Dots -->
-  <div class="hfs-dots" id="hero-dots">
-    <button class="hfs-dot act" data-slide="0" aria-label="Slide 1"></button>
-    <button class="hfs-dot" data-slide="1" aria-label="Slide 2"></button>
-  </div>
 </section>
 <script type="module" src="/fluid-bg.js"></script>
 
 
-<!-- ══ COLLECTIONS ════════════════════════════════════════════════════════ -->
-<div id="colls">
-  <div class="c-head rv">
-    <div>
-      <span class="s-lbl" data-i18n="coll_lbl">Our Universe</span>
-      <h2 class="s-title" data-i18n="coll_title">Collections</h2>
+
+
+<!-- ══ ABOUT TEASER ═══════════════════════════════════════════════════════ -->
+<section id="about">
+  <div class="ab-inner">
+    <div class="ab-text">
+      <span class="s-lbl rv">Our Story</span>
+      <h2 class="s-title rv d1" style="font-size:clamp(22px,2.8vw,38px)">Amber Alive for <em>Forty Million Years</em></h2>
+      <div class="s-rule rv-line d2" style="background:rgba(201,168,50,.5);margin-bottom:28px"></div>
+      <p class="s-body">Jane Sakhvadze — designer and artist — founded AMBERRA with one conviction: to bring life to a material that has existed for millions of years. Silver and gold, precious and semi-precious stones, and sun-warm amber — in the hands of our craftsmen they become something more than jewellery.</p>
+      <p class="s-body" style="margin-top:16px">Working from Bali, Jane brings together ancestral craftsmanship and contemporary vision. Every AMBERRA piece carries the memory of forty million years and the living spirit of the island.</p>
+      <p style="margin-top:24px;font-family:var(--serif);font-size:16px;font-style:italic;color:var(--amber3)">"Amber has been alive for forty million years. AMBERRA gives it a new form."</p>
+      <p style="font-family:var(--sans);font-size:10px;letter-spacing:.15em;color:var(--stone);margin-top:6px">— Jane Sakhvadze, Founder</p>
+      <div class="ab-pillars">
+        <div class="ab-pillar">
+          <span class="ab-pillar-num">40M+</span>
+          <span class="ab-pillar-lbl">Years of amber</span>
+        </div>
+        <div class="ab-pillar">
+          <span class="ab-pillar-num">94</span>
+          <span class="ab-pillar-lbl">Unique pieces</span>
+        </div>
+        <div class="ab-pillar">
+          <span class="ab-pillar-num">3</span>
+          <span class="ab-pillar-lbl">Countries &amp; growing</span>
+        </div>
+      </div>
     </div>
-    <a class="c-link rv d3" href="/shop" data-i18n="coll_all">View all pieces</a>
+    <div class="ab-img">
+      <div class="ab-video-wrap">
+        <video class="ab-video" muted loop playsinline preload="none" data-src="images/about-video.mp4">
+        </video>
+      </div>
+    </div>
   </div>
-  <div class="c-grid" data-stagger>
-    <a class="cc rv d1" data-rv="scale" href="/shop?cat=rings">
-      <div class="cc-img-wrap"><img src="images/rings/IMG_1542.JPG" alt="Handcrafted Baltic amber rings set in 925 sterling silver" loading="lazy" width="600" height="750"></div>
-      <div class="cc-info">
-        <span class="cc-cat" data-i18n="cat_rings">Collection</span>
-        <h3 class="cc-name" data-i18n="col_rings">Rings</h3>
-        <span class="cc-cta" data-i18n="discover">Discover</span>
-      </div>
-    </a>
-    <a class="cc rv d2" data-rv="scale" href="/shop?cat=earrings">
-      <div class="cc-img-wrap"><img src="images/earrings/IMG_1550.JPG" alt="Natural Baltic amber earrings handcrafted in Ubud, Bali" loading="lazy" width="600" height="750"></div>
-      <div class="cc-info">
-        <span class="cc-cat" data-i18n="cat_earrings">Collection</span>
-        <h3 class="cc-name" data-i18n="col_earrings">Earrings</h3>
-        <span class="cc-cta" data-i18n="discover">Discover</span>
-      </div>
-    </a>
-    <a class="cc rv d3" data-rv="scale" href="/shop?cat=pendants">
-      <div class="cc-img-wrap"><img src="images/pendants/IMG_1399.WEBP" alt="Baltic amber pendants and necklaces in sterling silver, handcrafted in Bali" loading="lazy" width="600" height="750"></div>
-      <div class="cc-info">
-        <span class="cc-cat" data-i18n="cat_pendants">Collection</span>
-        <h3 class="cc-name" data-i18n="col_pendants">Pendants</h3>
-        <span class="cc-cta" data-i18n="discover">Discover</span>
-      </div>
-    </a>
-    <a class="cc rv d4" data-rv="scale" href="/shop?cat=bracelets">
-      <div class="cc-img-wrap"><img src="images/bracelets/IMG_1531.JPG" alt="Handcrafted Baltic amber bracelets with sacred ritual blessing" loading="lazy" width="600" height="750"></div>
-      <div class="cc-info">
-        <span class="cc-cat" data-i18n="cat_bracelets">Collection</span>
-        <h3 class="cc-name" data-i18n="col_bracelets">Bracelets</h3>
-        <span class="cc-cta" data-i18n="discover">Discover</span>
-      </div>
-    </a>
+</section>
+
+<!-- ══ FOUNDER STRIP ══════════════════════════════════════════════════════ -->
+<section style="background:var(--cream);padding:48px 56px">
+  <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:32px;flex-wrap:wrap">
+    <div style="width:80px;height:80px;border-radius:50%;overflow:hidden;border:1.5px solid var(--amber);flex-shrink:0">
+      <img src="images/founder-jane.jpg" alt="Jane Sakhvadze" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 10%">
+    </div>
+    <div style="flex:1;min-width:200px">
+      <p style="font-family:var(--sans);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin:0 0 4px">The Founder</p>
+      <p style="font-family:var(--serif);font-size:18px;color:var(--charcoal);margin:0 0 4px">Jane Sakhvadze <span style="font-size:11px;font-style:normal;font-family:var(--sans);letter-spacing:.12em;color:var(--gray)">· Founder &amp; Creative Director, Bali</span></p>
+      <p style="font-family:var(--serif);font-size:14px;font-style:italic;color:var(--gray);margin:0">"Amber has been alive for forty million years. AMBERRA gives it a new form."</p>
+    </div>
+    <a href="/our-story#founder" style="font-family:var(--sans);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--charcoal);text-decoration:none;border-bottom:1px solid var(--charcoal);padding-bottom:2px;white-space:nowrap;flex-shrink:0">Meet Jane</a>
   </div>
-</div>
+</section>
 
 
 <!-- ══ EDITORIAL ══════════════════════════════════════════════════════════ -->
@@ -414,6 +415,56 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </picture>
       <div class="ed-model-tag">✦ Sacred · Ancient · Eternal ✦</div>
     </div>
+  </div>
+</section>
+
+
+<!-- ══ TICKER ════════════════════════════════════════════════════════════ -->
+<div class="ticker">
+  <div class="ticker-i">
+    <span class="t-item" data-i18n="tick1">Natural Baltic Amber</span><span class="t-dot">✦</span>
+    <span class="t-item" data-i18n="tick2">Handcrafted in Bali</span><span class="t-dot">✦</span>
+    <span class="t-item" data-i18n="tick3">925 Sterling Silver</span><span class="t-dot">✦</span>
+    <span class="t-item" data-i18n="tick4">Sacred Ritual Blessing</span><span class="t-dot">✦</span>
+    <span class="t-item" data-i18n="tick5">Free Gift Wrapping</span><span class="t-dot">✦</span>
+    <span class="t-item" data-i18n="tick1">Natural Baltic Amber</span><span class="t-dot">✦</span>
+    <span class="t-item" data-i18n="tick2">Handcrafted in Bali</span><span class="t-dot">✦</span>
+    <span class="t-item" data-i18n="tick3">925 Sterling Silver</span><span class="t-dot">✦</span>
+    <span class="t-item" data-i18n="tick4">Sacred Ritual Blessing</span><span class="t-dot">✦</span>
+    <span class="t-item" data-i18n="tick5">Free Gift Wrapping</span><span class="t-dot">✦</span>
+  </div>
+</div>
+
+<!-- ══ WHOLESALE TEASER ═══════════════════════════════════════════════════ -->
+<section id="wholesale">
+  <div class="ws-intro rv">
+    <span class="s-lbl" data-i18n="ws_lbl">B2B Program</span>
+    <h2 class="s-title" data-i18n="ws_title">Partner With <em>Amberra</em></h2>
+    <p class="s-body" data-i18n="ws_body">We welcome boutiques, concept stores, and jewelry retailers worldwide. Our wholesale program offers exclusive pricing, full product range access, and dedicated account support from Bali.</p>
+  </div>
+  <div class="ws-tiers" data-stagger>
+    <div class="ws-tier rv d1">
+      <span class="ws-tier-min" data-i18n="ws_t1">Starter</span>
+      <span class="ws-tier-qty">10+</span>
+      <span class="ws-tier-disc" data-i18n="ws_ppo">pieces per order</span>
+      <p class="ws-tier-note" data-i18n="ws_n1">Access to full catalog<br>Standard wholesale pricing<br>WhatsApp support</p>
+    </div>
+    <div class="ws-tier ws-feat rv d2">
+      <span class="ws-tier-min" data-i18n="ws_t2">Partner</span>
+      <span class="ws-tier-qty">30+</span>
+      <span class="ws-tier-disc" data-i18n="ws_ppo">pieces per order</span>
+      <p class="ws-tier-note" data-i18n="ws_n2">Priority access to new drops<br>Enhanced pricing tiers<br>Dedicated account manager</p>
+    </div>
+    <div class="ws-tier rv d3">
+      <span class="ws-tier-min" data-i18n="ws_t3">Exclusive</span>
+      <span class="ws-tier-qty">100+</span>
+      <span class="ws-tier-disc" data-i18n="ws_ppo">pieces per order</span>
+      <p class="ws-tier-note" data-i18n="ws_n3">Custom packaging options<br>Best pricing available<br>Co-branding opportunities</p>
+    </div>
+  </div>
+  <div class="c-btns rv d4">
+    <a class="btn-s" href="/#wholesale">Learn More About Partnership</a>
+    <a class="btn-o" href="https://wa.me/6287853867120" target="_blank" rel="noopener noreferrer">Contact via WhatsApp</a>
   </div>
 </section>
 
@@ -646,91 +697,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 
-<!-- ══ ABOUT TEASER ═══════════════════════════════════════════════════════ -->
-<section id="about">
-  <div class="ab-inner">
-    <div class="ab-text">
-      <span class="s-lbl rv">Our Story</span>
-      <h2 class="s-title rv d1" style="font-size:clamp(22px,2.8vw,38px)">Amber Alive for <em>Forty Million Years</em></h2>
-      <div class="s-rule rv-line d2" style="background:rgba(201,168,50,.5);margin-bottom:28px"></div>
-      <p class="s-body">Jane Sakhvadze — designer and artist — founded AMBERRA with one conviction: to bring life to a material that has existed for millions of years. Silver and gold, precious and semi-precious stones, and sun-warm amber — in the hands of our craftsmen they become something more than jewellery.</p>
-      <p class="s-body" style="margin-top:16px">Working from Bali, Jane brings together ancestral craftsmanship and contemporary vision. Every AMBERRA piece carries the memory of forty million years and the living spirit of the island.</p>
-      <p style="margin-top:24px;font-family:var(--serif);font-size:16px;font-style:italic;color:var(--amber3)">"Amber has been alive for forty million years. AMBERRA gives it a new form."</p>
-      <p style="font-family:var(--sans);font-size:10px;letter-spacing:.15em;color:var(--stone);margin-top:6px">— Jane Sakhvadze, Founder</p>
-      <div class="ab-pillars">
-        <div class="ab-pillar">
-          <span class="ab-pillar-num">40M+</span>
-          <span class="ab-pillar-lbl">Years of amber</span>
-        </div>
-        <div class="ab-pillar">
-          <span class="ab-pillar-num">94</span>
-          <span class="ab-pillar-lbl">Unique pieces</span>
-        </div>
-        <div class="ab-pillar">
-          <span class="ab-pillar-num">3</span>
-          <span class="ab-pillar-lbl">Countries &amp; growing</span>
-        </div>
-      </div>
-    </div>
-    <div class="ab-img">
-      <div class="ab-video-wrap">
-        <video class="ab-video" muted loop playsinline preload="none" data-src="images/about-video.mp4">
-        </video>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ FOUNDER STRIP ══════════════════════════════════════════════════════ -->
-<section style="background:var(--cream);padding:48px 56px">
-  <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:32px;flex-wrap:wrap">
-    <div style="width:80px;height:80px;border-radius:50%;overflow:hidden;border:1.5px solid var(--amber);flex-shrink:0">
-      <img src="images/founder-jane.jpg" alt="Jane Sakhvadze" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 10%">
-    </div>
-    <div style="flex:1;min-width:200px">
-      <p style="font-family:var(--sans);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin:0 0 4px">The Founder</p>
-      <p style="font-family:var(--serif);font-size:18px;color:var(--charcoal);margin:0 0 4px">Jane Sakhvadze <span style="font-size:11px;font-style:normal;font-family:var(--sans);letter-spacing:.12em;color:var(--gray)">· Founder &amp; Creative Director, Bali</span></p>
-      <p style="font-family:var(--serif);font-size:14px;font-style:italic;color:var(--gray);margin:0">"Amber has been alive for forty million years. AMBERRA gives it a new form."</p>
-    </div>
-    <a href="/our-story#founder" style="font-family:var(--sans);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--charcoal);text-decoration:none;border-bottom:1px solid var(--charcoal);padding-bottom:2px;white-space:nowrap;flex-shrink:0">Meet Jane</a>
-  </div>
-</section>
-
-
-<!-- ══ WHOLESALE TEASER ═══════════════════════════════════════════════════ -->
-<section id="wholesale">
-  <div class="ws-intro rv">
-    <span class="s-lbl" data-i18n="ws_lbl">B2B Program</span>
-    <h2 class="s-title" data-i18n="ws_title">Partner With <em>Amberra</em></h2>
-    <p class="s-body" data-i18n="ws_body">We welcome boutiques, concept stores, and jewelry retailers worldwide. Our wholesale program offers exclusive pricing, full product range access, and dedicated account support from Bali.</p>
-  </div>
-  <div class="ws-tiers" data-stagger>
-    <div class="ws-tier rv d1">
-      <span class="ws-tier-min" data-i18n="ws_t1">Starter</span>
-      <span class="ws-tier-qty">10+</span>
-      <span class="ws-tier-disc" data-i18n="ws_ppo">pieces per order</span>
-      <p class="ws-tier-note" data-i18n="ws_n1">Access to full catalog<br>Standard wholesale pricing<br>WhatsApp support</p>
-    </div>
-    <div class="ws-tier ws-feat rv d2">
-      <span class="ws-tier-min" data-i18n="ws_t2">Partner</span>
-      <span class="ws-tier-qty">30+</span>
-      <span class="ws-tier-disc" data-i18n="ws_ppo">pieces per order</span>
-      <p class="ws-tier-note" data-i18n="ws_n2">Priority access to new drops<br>Enhanced pricing tiers<br>Dedicated account manager</p>
-    </div>
-    <div class="ws-tier rv d3">
-      <span class="ws-tier-min" data-i18n="ws_t3">Exclusive</span>
-      <span class="ws-tier-qty">100+</span>
-      <span class="ws-tier-disc" data-i18n="ws_ppo">pieces per order</span>
-      <p class="ws-tier-note" data-i18n="ws_n3">Custom packaging options<br>Best pricing available<br>Co-branding opportunities</p>
-    </div>
-  </div>
-  <div class="c-btns rv d4">
-    <a class="btn-s" href="/#wholesale">Learn More About Partnership</a>
-    <a class="btn-o" href="https://wa.me/6287853867120" target="_blank" rel="noopener noreferrer">Contact via WhatsApp</a>
-  </div>
-</section>
-
-
 <!-- ══ CONTACT ════════════════════════════════════════════════════════════ -->
 <section id="contact">
   <span class="s-lbl rv" data-i18n="c_lbl">Private Appointments</span>
@@ -741,22 +707,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a class="btn-o" href="https://instagram.com/amberra.jewelry" target="_blank" rel="noopener noreferrer">Instagram</a>
   </div>
 </section>
-
-<!-- ══ TICKER ════════════════════════════════════════════════════════════ -->
-<div class="ticker">
-  <div class="ticker-i">
-    <span class="t-item" data-i18n="tick1">Natural Baltic Amber</span><span class="t-dot">✦</span>
-    <span class="t-item" data-i18n="tick2">Handcrafted in Bali</span><span class="t-dot">✦</span>
-    <span class="t-item" data-i18n="tick3">925 Sterling Silver</span><span class="t-dot">✦</span>
-    <span class="t-item" data-i18n="tick4">Sacred Ritual Blessing</span><span class="t-dot">✦</span>
-    <span class="t-item" data-i18n="tick5">Free Gift Wrapping</span><span class="t-dot">✦</span>
-    <span class="t-item" data-i18n="tick1">Natural Baltic Amber</span><span class="t-dot">✦</span>
-    <span class="t-item" data-i18n="tick2">Handcrafted in Bali</span><span class="t-dot">✦</span>
-    <span class="t-item" data-i18n="tick3">925 Sterling Silver</span><span class="t-dot">✦</span>
-    <span class="t-item" data-i18n="tick4">Sacred Ritual Blessing</span><span class="t-dot">✦</span>
-    <span class="t-item" data-i18n="tick5">Free Gift Wrapping</span><span class="t-dot">✦</span>
-  </div>
-</div>
 
 <!-- ══ FOOTER ════════════════════════════════════════════════════════════ -->
 <footer>
@@ -1305,17 +1255,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Cookie Banner -->
 <div id="cookie-overlay" style="display:none">
-  <div id="cookie-box">
-    <span class="ck-logo">AMBERRA</span>
-    <div class="ck-rule"></div>
-    <h2 class="ck-title">Your privacy <em>matters</em> to us.</h2>
-    <p class="ck-body">Our website uses cookies, including third-party cookies, to measure performance and offer you a personalised experience in accordance with your preferences.</p>
-    <p class="ck-body">This allows us to show you jewellery that inspires you and to continually improve our service. You may change these settings at any time. By remaining on this site, you consent to the use of cookies.</p>
-    <p class="ck-body" style="margin-top:4px">For more information please see our <a class="ck-link" href="#" onclick="openLegal('cookies');return false">Cookie Policy</a>.</p>
-    <div class="ck-btns">
-      <button class="ck-btn-accept" onclick="ckAccept()">Accept All Cookies</button>
-      <button class="ck-btn-reject" onclick="ckReject()">Reject All Cookies</button>
-    </div>
+  <span class="ck-text">We use cookies to personalise your experience. <a class="ck-link" href="#" onclick="openLegal('cookies');return false">Cookie Policy</a></span>
+  <div class="ck-btns">
+    <button class="ck-btn-accept" onclick="ckAccept()">Accept</button>
+    <button class="ck-btn-reject" onclick="ckReject()">Decline</button>
   </div>
 </div>
 
