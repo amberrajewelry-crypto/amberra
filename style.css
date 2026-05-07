@@ -1143,10 +1143,7 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 
 /* === HERO VIDEO === */
 #hero-video{width:100%;overflow:hidden;background:#060200}
-#hero-video video{width:100%;height:100vh;object-fit:cover;display:block}
-@media(max-width:768px){
-  #hero-video video{height:56vw;min-height:240px}
-}
+#hero-video video{width:100%;height:auto;display:block}
 
 /* === NAV: тёмный backdrop при скролле (читаемо и на fluid, и на белом) === */
 #nav-shell.solid{background:rgba(6,2,0,0.82)!important;backdrop-filter:blur(14px)!important;-webkit-backdrop-filter:blur(14px)!important}
