@@ -67,9 +67,8 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .nav-ico-btn .nav-badge.show{display:flex}
 
 /* Tier 3 — Main Nav */
-.nav-main{height:0;display:flex;align-items:center;justify-content:center;border-top:1px solid transparent;overflow:hidden;transition:height .35s cubic-bezier(.4,0,.2,1),border-color .4s,opacity .3s;opacity:0}
-#nav-shell:hover .nav-main,#nav-shell.nav-open .nav-main{height:44px;opacity:1;border-top:1px solid transparent}
-#nav-shell.solid:hover .nav-main,#nav-shell.solid.nav-open .nav-main{border-top:1px solid var(--mist)}
+.nav-main{height:44px;display:flex;align-items:center;justify-content:center;border-top:1px solid rgba(255,255,255,.12);overflow:hidden;opacity:1}
+#nav-shell.solid .nav-main{border-top:1px solid var(--mist)}
 .nl{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#FFFFFF;background:none;border:none;font-family:var(--sans);font-weight:500;padding:0 14px;height:100%;cursor:pointer;position:relative;white-space:nowrap;transition:opacity .3s,color .4s;display:flex;align-items:center}
 #nav-shell.solid .nl{color:#000}
 .nl::after{content:'';position:absolute;bottom:0;left:50%;right:50%;height:2px;background:#FFFFFF;transition:left .3s,right .3s,background .4s}
