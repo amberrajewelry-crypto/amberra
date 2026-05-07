@@ -1148,6 +1148,16 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 .hv-btn{font-family:var(--sans);font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.65);padding:14px 40px;text-decoration:none;display:inline-block;pointer-events:auto;transition:background .25s,color .25s;backdrop-filter:blur(4px);background:rgba(0,0,0,.18)}
 .hv-btn:hover{background:#fff;color:#1a0c02}
 
+/* === CATEGORY PAGES === */
+#cat-hero{padding:80px 56px 48px;text-align:center;background:var(--cream)}
+.cat-h1{font-family:var(--serif);font-size:clamp(32px,4vw,56px);font-weight:300;margin:8px 0 16px;color:var(--charcoal)}
+.cat-sub{font-family:var(--sans);font-size:13px;color:var(--gray);max-width:520px;margin:0 auto 12px;line-height:1.7}
+.cat-count{font-family:var(--sans);font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--stone)}
+.cat-breadcrumb{padding:14px 56px;font-family:var(--sans);font-size:10px;letter-spacing:.12em;color:var(--gray);background:var(--cream);border-top:1px solid var(--mist)}
+.cat-breadcrumb a{color:var(--gray);text-decoration:none}.cat-breadcrumb a:hover{color:var(--charcoal)}
+.cat-breadcrumb span{margin:0 6px}
+@media(max-width:768px){#cat-hero{padding:56px 24px 32px}.cat-breadcrumb{padding:12px 24px}}
+
 /* === BESTSELLERS === */
 #bestsellers{padding:80px 56px;background:var(--cream)}
 .bs-head{text-align:center;margin-bottom:48px}
