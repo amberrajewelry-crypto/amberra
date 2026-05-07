@@ -618,16 +618,25 @@ const nav=document.getElementById('nav-shell');
 const LIGHT_SECTIONS=['journal'];
 function updateNavColor(){
   if(!nav)return;
-  // Services modal is fixed z-index:950 (above nav 900) — check directly
   const srvModal=document.getElementById('srv-modal');
   if(srvModal&&srvModal.classList.contains('open')){
     nav.classList.add('nav-over-light');return;
   }
   const navBottom=nav.getBoundingClientRect().bottom;
-  const el=document.elementFromPoint(innerWidth/2,navBottom+4);
-  // .js-wrap/.js-slide = cream bg (light). .js-header = dark rgba bg — skip it
-  const isLight=el&&(el.closest('.js-slide')||el.closest('.js-wrap'));
-  nav.classList.toggle('nav-over-light',!!isLight);
+  let el=document.elementFromPoint(innerWidth/2,navBottom+4);
+  // Walk up DOM to find first element with a real background color
+  let isLight=false;
+  let cur=el;
+  while(cur&&cur!==document.documentElement){
+    const bg=getComputedStyle(cur).backgroundColor;
+    if(bg&&bg!=='rgba(0, 0, 0, 0)'&&bg!=='transparent'){
+      const m=bg.match(/\d+/g);
+      if(m){const r=+m[0],g=+m[1],b=+m[2];isLight=(r*299+g*587+b*114)/1000>160;}
+      break;
+    }
+    cur=cur.parentElement;
+  }
+  nav.classList.toggle('nav-over-light',isLight);
 }
 function updateNavSolid(){
   if(!HAS_HERO){nav&&nav.classList.add('solid');return;}
