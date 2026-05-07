@@ -53,8 +53,9 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .nav-logo{font-family:var(--serif);letter-spacing:.5em;text-transform:uppercase;color:#FFFFFF;cursor:pointer;transition:opacity .4s,color .4s;display:inline-flex;flex-direction:column;align-items:center;gap:2px;-webkit-font-smoothing:antialiased}
 #nav-shell.solid .nav-logo{color:#000}
 .nav-logo-main{font-size:clamp(22px,3vw,42px);font-weight:600;line-height:1;display:block;margin-right:-.5em}
-.nav-logo-sub{font-family:var(--sans);font-size:clamp(8px,0.7vw,10px);font-weight:400;letter-spacing:.45em;text-transform:uppercase;color:inherit;opacity:.75;display:block;margin-right:-.45em}
-.nav-logo:hover{opacity:.7}
+.nav-logo-sub{font-family:var(--sans);font-size:clamp(10px,0.9vw,13px);font-weight:400;letter-spacing:.45em;text-transform:uppercase;color:#FFFFFF;opacity:1;display:block;margin-right:-.45em;transition:text-shadow .3s,opacity .3s}
+.nav-logo:hover{opacity:1}
+.nav-logo:hover .nav-logo-sub{text-shadow:0 0 12px rgba(255,255,255,.9),0 0 24px rgba(255,255,255,.5);opacity:1}
 .nav-ico-btn{position:relative;display:flex;align-items:center;justify-content:center;color:#FFFFFF;transition:opacity .3s,color .4s;background:none;border:none;cursor:pointer;padding:4px}
 #nav-shell.solid .nav-ico-btn{color:var(--charcoal)}
 #nav-shell.solid .nav-search-wrap svg{stroke:var(--charcoal)}
