@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AMBERRA — К-1 Particle Effect</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:100%; height:100%; overflow:hidden; background:#050300; }
+
+/* Hero video — 30% opacity — full viewport */
+#hero-video {
+  position:fixed; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  opacity:0.12;
+  z-index:0;
+}
+
+/* WebGL canvas over video */
+#c {
+  position:fixed; inset:0;
+  width:100%; height:100%;
+  z-index:1;
+}
+
+/* Custom cursor ring */
+#cursor {
+  position:fixed;
+  width:48px; height:48px;
+  border:1px solid rgba(201,168,50,0.55);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:100;
+  transform:translate(-50%,-50%);
+  transition:width 0.15s, height 0.15s, border-color 0.15s;
+  mix-blend-mode:normal;
+}
+#cursor.active {
+  width:80px; height:80px;
+  border-color:rgba(201,168,50,0.9);
+}
+
+/* Nav */
+#nav {
+  position:fixed; top:0; left:0; right:0;
+  z-index:50;
+  padding:36px 52px;
+  display:flex; align-items:center; justify-content:space-between;
+  pointer-events:none;
+}
+.nav-links {
+  display:flex; gap:40px;
+  font-family:'Montserrat',sans-serif;
+  font-size:10px; letter-spacing:0.22em;
+  color:rgba(250,230,160,0.45);
+  text-transform:uppercase;
+}
+.nav-logo {
+  font-family:'Cormorant Garamond',serif;
+  font-size:24px; font-weight:300;
+  letter-spacing:0.5em;
+  color:rgba(255,242,200,0.88);
+  text-transform:uppercase;
+}
+
+/* Hero text center */
+#hero-text {
+  position:fixed;
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  text-align:center;
+  pointer-events:none;
+  z-index:50;
+}
+#hero-text h1 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(40px,5.5vw,92px);
+  font-weight:300; letter-spacing:0.48em;
+  color:rgba(255,242,205,0.9);
+  text-transform:uppercase;
+}
+#hero-text .tagline {
+  font-family:'Montserrat',sans-serif;
+  font-size:clamp(8px,0.75vw,11px);
+  letter-spacing:0.32em;
+  color:rgba(220,185,100,0.5);
+  text-transform:uppercase;
+  margin-top:22px;
+}
+#hero-text .cta {
+  display:inline-block;
+  margin-top:52px;
+  font-family:'Montserrat',sans-serif;
+  font-size:10px; letter-spacing:0.28em;
+  color:rgba(210,172,80,0.65);
+  text-transform:uppercase;
+  border-bottom:1px solid rgba(201,168,50,0.35);
+  padding-bottom:5px;
+}
+
+/* Chapter label — bottom left like Symphony of Vines */
+#chapter {
+  position:fixed; bottom:36px; left:52px;
+  z-index:50; pointer-events:none;
+  display:flex; align-items:center; gap:20px;
+}
+#chapter-num {
+  width:44px; height:44px;
+  border:1px solid rgba(201,168,50,0.4);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px; color:rgba(220,185,100,0.7);
+}
+#chapter-name {
+  font-family:'Montserrat',sans-serif;
+  font-size:10px; letter-spacing:0.2em;
+  color:rgba(200,160,70,0.55);
+  text-transform:uppercase;
+}
+
+/* Skip */
+#skip {
+  position:fixed; bottom:36px; left:50%;
+  transform:translateX(-50%);
+  font-family:'Montserrat',sans-serif;
+  font-size:10px; letter-spacing:0.25em;
+  color:rgba(200,160,70,0.35);
+  text-transform:uppercase;
+  z-index:50; pointer-events:none;
+}
+</style>
+</head>
+<body>
+
+<video id="hero-video" autoplay muted loop playsinline>
+  <source src="images/hero.mp4" type="video/mp4">
+</video>
+
+<canvas id="c"></canvas>
+
+<div id="cursor"></div>
+
+<nav id="nav">
+  <div class="nav-links">
+    <span>Collections</span><span>Rings</span><span>Earrings</span>
+  </div>
+  <div class="nav-logo">A M B E R R A</div>
+  <div class="nav-links">
+    <span>Journal</span><span>Our Story</span><span>Contact</span>
+  </div>
+</nav>
+
+<div id="hero-text">
+  <h1>A M B E R R A</h1>
+  <div class="tagline">Natural Baltic Amber &nbsp;·&nbsp; Handcrafted in Bali</div>
+  <div class="cta">Explore the Collection</div>
+</div>
+
+<div id="chapter">
+  <div id="chapter-num">1</div>
+  <div id="chapter-name">The Amber Ritual</div>
+</div>
+
+<div id="skip">Move to sculpt</div>
+
+<script>
+/* ================================================================
+   AMBERRA — WebGL Particle Displacement
+   50 000 amber particles, cursor repulsion + spring return
+   Matches: symphonyofvines.unseen.co visual style
+   ================================================================ */
+(function(){
+'use strict';
+
+const canvas = document.getElementById('c');
+const gl = canvas.getContext('webgl', {
+  alpha:true, premultipliedAlpha:false,
+  depth:false, stencil:false, antialias:false
+});
+if(!gl){ console.error('WebGL n/a'); return; }
+
+/* ── Particle count ──────────────────────────────────── */
+const N = 18000;
+
+/* ── Shaders ─────────────────────────────────────────── */
+const VS = `
+precision highp float;
+
+attribute vec2  aHome;    // [0..1] home position
+attribute float aPhase;   // random phase
+attribute float aSize;    // base point size
+
+uniform vec2  uMouse;     // [0..1] normalized
+uniform float uTime;
+uniform float uAspect;    // width / height
+uniform float uRadius;    // repulsion radius in [0..1] space
+uniform float uForce;     // repulsion strength
+
+varying float vBright;
+
+void main(){
+  // Ambient drift — slow organic breathing
+  float t = uTime * 0.25;
+  vec2 drift = vec2(
+    sin(t + aPhase) * 0.004,
+    cos(t * 0.73 + aPhase * 1.4) * 0.003
+  );
+  vec2 pos = aHome + drift;
+
+  // Mouse repulsion
+  vec2 toMouse = pos - uMouse;
+  toMouse.x *= uAspect;            // correct for aspect ratio
+  float dist = length(toMouse);
+  float strength = max(0.0, uRadius - dist) / uRadius;
+  strength = strength * strength;  // quadratic falloff
+  vec2 repel = normalize(toMouse + vec2(0.0001)) * strength * uForce;
+  pos += repel;
+
+  // NDC
+  gl_Position = vec4(pos * 2.0 - 1.0, 0.0, 1.0);
+  gl_PointSize = aSize * (1.0 + strength * 5.0);
+
+  vBright = 0.90 + strength * 3.0;
+}`;
+
+const FS = `
+precision highp float;
+varying float vBright;
+
+void main(){
+  vec2 coord = gl_PointCoord - 0.5;
+  float r = length(coord);
+  if(r > 0.5) discard;
+
+  float alpha = smoothstep(0.5, 0.0, r);
+
+  // Amber particle: bright warm dots, dark center → glowing edge
+  // Bright amber-to-white particles — clearly visible on dark bg
+  vec3 amber = vec3(0.97, 0.78, 0.35);   // bright amber
+  vec3 gold  = vec3(1.00, 0.92, 0.60);   // pale gold
+  vec3 white = vec3(1.00, 0.98, 0.90);   // near white
+
+  vec3 col = amber;
+  col = mix(col, gold,  smoothstep(0.88, 1.8,  vBright));
+  col = mix(col, white, smoothstep(1.8,  3.5,  vBright));
+
+  // soft glow: brighter center
+  float glow = 1.0 - smoothstep(0.0, 0.4, r);
+  col = mix(col, white, glow * 0.3);
+
+  gl_FragColor = vec4(col, alpha);
+}`;
+
+/* ── Compile ─────────────────────────────────────────── */
+function compileShader(type, src){
+  const s = gl.createShader(type);
+  gl.shaderSource(s, src);
+  gl.compileShader(s);
+  if(!gl.getShaderParameter(s, gl.COMPILE_STATUS))
+    console.error(gl.getShaderInfoLog(s));
+  return s;
+}
+const prog = gl.createProgram();
+gl.attachShader(prog, compileShader(gl.VERTEX_SHADER, VS));
+gl.attachShader(prog, compileShader(gl.FRAGMENT_SHADER, FS));
+gl.linkProgram(prog);
+gl.useProgram(prog);
+
+const U = {
+  mouse:  gl.getUniformLocation(prog,'uMouse'),
+  time:   gl.getUniformLocation(prog,'uTime'),
+  aspect: gl.getUniformLocation(prog,'uAspect'),
+  radius: gl.getUniformLocation(prog,'uRadius'),
+  force:  gl.getUniformLocation(prog,'uForce'),
+};
+
+/* ── Generate particles ──────────────────────────────── */
+const home  = new Float32Array(N * 2);
+const phase = new Float32Array(N);
+const sizes = new Float32Array(N);
+
+// Poisson-disc-like: cluster slightly toward center for organic density
+for(let i=0;i<N;i++){
+  // distribute across full canvas, slightly more dense center
+  const rx = Math.random();
+  const ry = Math.random();
+  home[i*2]   = rx;
+  home[i*2+1] = ry;
+  phase[i] = Math.random() * Math.PI * 2;
+  // size variation: most tiny (0.5-1.5px), few larger (up to 2.5px)
+  const t = Math.random();
+  sizes[i] = t < 0.50 ? 2.5 + Math.random() * 1.5
+           : t < 0.82 ? 4.0 + Math.random() * 2.0
+           : 6.0 + Math.random() * 3.0;
+}
+
+/* ── Buffers ─────────────────────────────────────────── */
+function makeAttr(data, name, size){
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
+  const loc = gl.getAttribLocation(prog, name);
+  gl.enableVertexAttribArray(loc);
+  gl.vertexAttribPointer(loc, size, gl.FLOAT, false, 0, 0);
+}
+makeAttr(home,  'aHome',  2);
+makeAttr(phase, 'aPhase', 1);
+makeAttr(sizes, 'aSize',  1);
+
+/* ── Resize ──────────────────────────────────────────── */
+function resize(){
+  canvas.width  = window.innerWidth;
+  canvas.height = window.innerHeight;
+  gl.viewport(0, 0, canvas.width, canvas.height);
+}
+window.addEventListener('resize', resize);
+resize();
+
+/* ── Mouse ───────────────────────────────────────────── */
+let mx = -1, my = -1;
+const cursorEl = document.getElementById('cursor');
+
+window.addEventListener('mousemove', e=>{
+  mx = e.clientX / canvas.width;
+  my = 1 - e.clientY / canvas.height;
+  cursorEl.style.left = e.clientX + 'px';
+  cursorEl.style.top  = e.clientY + 'px';
+  cursorEl.classList.add('active');
+  clearTimeout(cursorEl._t);
+  cursorEl._t = setTimeout(()=>cursorEl.classList.remove('active'), 200);
+});
+
+window.addEventListener('mouseleave',()=>{ mx=-1; my=-1; });
+
+canvas.addEventListener('touchmove', e=>{
+  e.preventDefault();
+  mx = e.touches[0].clientX / canvas.width;
+  my = 1 - e.touches[0].clientY / canvas.height;
+},{passive:false});
+canvas.addEventListener('touchend',()=>{ mx=-1; my=-1; });
+
+/* ── Render loop ─────────────────────────────────────── */
+gl.enable(gl.BLEND);
+gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA); // normal blend — частицы видны
+
+const start = performance.now();
+
+function frame(now){
+  const t = (now - start) / 1000;
+
+  gl.clearColor(0, 0, 0, 0);
+  gl.clear(gl.COLOR_BUFFER_BIT);
+
+  const aspect = canvas.width / canvas.height;
+
+  gl.uniform2f(U.mouse,  mx < 0 ? -9 : mx, my < 0 ? -9 : my);
+  gl.uniform1f(U.time,   t);
+  gl.uniform1f(U.aspect, aspect);
+  gl.uniform1f(U.radius, 0.22);   // repulsion radius (% of height)
+  gl.uniform1f(U.force,  0.20);   // push strength
+
+  gl.drawArrays(gl.POINTS, 0, N);
+
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+
+})();
+</script>
+</body>
+</html>
