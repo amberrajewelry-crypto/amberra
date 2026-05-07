@@ -68,7 +68,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 /* Tier 3 — Main Nav */
 .nav-main{height:44px;display:flex;align-items:center;justify-content:center;border-top:1px solid transparent;transition:border-color .4s;overflow:hidden}
 #nav-shell.solid .nav-main{border-top:1px solid var(--mist)}
-.nl{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#FFFFFF;background:none;border:none;font-family:var(--serif);font-weight:700;padding:0 16px;height:100%;cursor:pointer;position:relative;white-space:nowrap;transition:opacity .3s,color .4s;display:flex;align-items:center}
+.nl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#FFFFFF;background:none;border:none;font-family:var(--sans);font-weight:500;padding:0 14px;height:100%;cursor:pointer;position:relative;white-space:nowrap;transition:opacity .3s,color .4s;display:flex;align-items:center}
 #nav-shell.solid .nl{color:#000}
 .nl::after{content:'';position:absolute;bottom:0;left:50%;right:50%;height:2px;background:#FFFFFF;transition:left .3s,right .3s,background .4s}
 #nav-shell.solid .nl::after{background:var(--black)}
