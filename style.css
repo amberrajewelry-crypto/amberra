@@ -1133,11 +1133,7 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 .ws-perk{background:rgba(6,2,0,0.55)}
 .ws-perk-title{color:var(--white)}
 .ws-perk-body{color:rgba(255,255,255,.7)}
-#journal.js-page{background:transparent}
-.js-header{background:rgba(6,2,0,0.7)}
-.js-header .s-lbl{color:var(--amber)}
-.js-header .s-title{color:var(--white)}
-.js-header .c-link{color:rgba(255,255,255,.6)}
+#journal.js-page{background:var(--black)}
 #contact{background:transparent}
 #contact .s-lbl{color:var(--amber)}
 #contact .s-title{color:var(--white)}
