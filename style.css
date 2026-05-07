@@ -46,8 +46,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .lb:hover,.lb.al{background:var(--cream);color:var(--charcoal)}
 
 /* Tier 2 — Logo Bar (merged with utility) */
-.nav-logo-bar{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;padding:0 40px;height:auto;min-height:90px;padding-top:16px;padding-bottom:0;border-bottom:1px solid transparent;transition:border-color .4s}
-.nav-center{display:flex;flex-direction:column;align-items:center;gap:0}
+.nav-logo-bar{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;padding:0 40px;height:90px;border-bottom:1px solid transparent;transition:border-color .4s}
 #nav-shell.solid .nav-logo-bar{border-bottom:1px solid var(--mist)}
 .nav-lb-l{display:flex;align-items:center;gap:20px}
 .nav-lb-r{display:flex;align-items:center;gap:16px;justify-content:flex-end}
@@ -70,7 +69,8 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 /* Tier 3 — Main Nav */
 .nav-main-wrap{border-top:none}
 #nav-shell.solid .nav-main-wrap{border-top:none}
-.nav-main{height:40px;display:flex;align-items:center;justify-content:center;overflow:visible;opacity:1;width:max-content;padding-right:0}
+.nav-main-wrap{display:flex;justify-content:center;width:100%}
+.nav-main{height:44px;display:flex;align-items:center;justify-content:center;overflow:visible;opacity:1}
 .nl{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#FFFFFF;background:none;border:none;font-family:var(--sans);font-weight:500;padding:0 14px;height:100%;cursor:pointer;position:relative;white-space:nowrap;transition:opacity .3s,color .4s;display:flex;align-items:center}
 #nav-shell.solid .nl{color:#fff}
 .nl::after{content:'';position:absolute;bottom:0;left:50%;right:50%;height:2px;background:#FFFFFF;transition:left .3s,right .3s,background .4s}
