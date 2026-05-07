@@ -85,7 +85,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   .nav-lb-l{gap:10px}
   .nav-lb-r{gap:10px}
   .nav-lb-l .nav-util-link{display:none}
-  .nav-main{overflow-x:auto;justify-content:flex-start;padding:0 12px;scrollbar-width:none}
+  .nav-main{overflow-x:auto;justify-content:center;padding:0 12px;scrollbar-width:none}
   .nav-main::-webkit-scrollbar{display:none}
   .nl{padding:0 10px;font-size:9px}
 }
