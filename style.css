@@ -520,7 +520,9 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 
 /* ═══ CONTACT ═══════════════════════════════════════════════════════════ */
 #contact{padding:160px 56px;background:var(--white);text-align:center}
-.c-btns{display:flex;gap:16px;justify-content:center;margin-top:52px;flex-wrap:wrap}
+.c-btns{display:flex;gap:16px;align-items:center;justify-content:center;margin-top:52px;flex-wrap:wrap}
+.ws-wa-link{font-family:var(--sans);font-size:9px;letter-spacing:.12em;color:var(--gray);text-decoration:none;border-bottom:1px solid transparent;transition:color .3s,border-color .3s}
+.ws-wa-link:hover{color:var(--charcoal);border-bottom-color:var(--stone)}
 
 /* ═══ FOOTER ════════════════════════════════════════════════════════════ */
 footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,255,255,.04)}

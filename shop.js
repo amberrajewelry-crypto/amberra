@@ -196,7 +196,14 @@ function openDrawer(id){
   document.getElementById('d-desc').textContent=p.desc;
   document.getElementById('d-props').innerHTML=Object.entries(p.props||{}).map(([k,v])=>
     `<div class="d-prop"><span class="d-pk">${k}</span><span class="d-pv">${v}</span></div>`).join('');
-  document.getElementById('d-req').onclick=()=>{closeDrawer();openReq(p.name)};
+  // Show "Request This Piece" only for sold-out / made-to-order items
+  const reqBtn=document.getElementById('d-req');
+  const soldOut=p.badge==='sold-out'||p.badge==='made-to-order';
+  if(reqBtn){
+    reqBtn.style.display=soldOut?'':'none';
+    reqBtn.onclick=()=>{closeDrawer();openReq(p.name)};
+  }
+  if(cartBtn) cartBtn.style.display=soldOut?'none':'';
   const gallery=document.getElementById('d-gallery');
   if(imgs.length>1){
     gallery.innerHTML=imgs.map((src,i)=>
