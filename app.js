@@ -612,8 +612,11 @@ function initReveal(){
 }
 
 // ── NAV SCROLL ────────────────────────────────────────────────────────────
+const HAS_HERO=!!document.getElementById('hero');
 function updateNavSolid(){
-  document.getElementById('nav-shell').classList.add('solid');
+  if(!HAS_HERO){document.getElementById('nav-shell').classList.add('solid');return;}
+  const heroH=(document.getElementById('hero').offsetHeight||innerHeight)*0.85;
+  document.getElementById('nav-shell').classList.toggle('solid',scrollY>heroH);
 }
 updateNavSolid();
 window.addEventListener('scroll',()=>{
