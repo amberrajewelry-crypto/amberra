@@ -1122,7 +1122,7 @@ footer{background:transparent;padding:80px 56px 48px;border-top:1px solid rgba(2
 .ed-num{color:var(--amber3)}
 .ed-lbl{color:rgba(255,255,255,.6)}
 .ticker{background:rgba(6,2,0,0.7)}
-#wholesale{background:rgba(6,2,0,0.78)}
+#wholesale{background:transparent}
 #wholesale .s-lbl{color:var(--amber)}
 #wholesale .s-title{color:var(--white)}
 #wholesale .s-body{color:rgba(255,255,255,.8)}
