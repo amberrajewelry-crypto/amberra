@@ -1142,8 +1142,11 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 }
 
 /* === HERO VIDEO === */
-#hero-video{width:100%;overflow:hidden;background:#060200}
+#hero-video{position:relative;width:100%;overflow:hidden;background:#060200}
 #hero-video video{width:100%;height:auto;display:block}
+.hv-cta{position:absolute;bottom:10%;left:50%;transform:translateX(-50%);text-align:center;pointer-events:none}
+.hv-btn{font-family:var(--sans);font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.65);padding:14px 40px;text-decoration:none;display:inline-block;pointer-events:auto;transition:background .25s,color .25s;backdrop-filter:blur(4px);background:rgba(0,0,0,.18)}
+.hv-btn:hover{background:#fff;color:#1a0c02}
 
 /* === NAV: тёмный backdrop при скролле (читаемо и на fluid, и на белом) === */
 #nav-shell.solid{background:rgba(6,2,0,0.82)!important;backdrop-filter:blur(14px)!important;-webkit-backdrop-filter:blur(14px)!important}
