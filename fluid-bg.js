@@ -193,26 +193,51 @@ composer.addPass(new EffectPass(dispCamera, new BloomEffect({
 })))
 
 const mouseUV=new THREE.Vector2(-1,-1), prevUV=new THREE.Vector2(-1,-1), delta=new THREE.Vector2(0,0)
-let active=false
+let active=false, lastUserMove=0
 function onMove(cx,cy){
   const rect=canvas.getBoundingClientRect()
   const x=(cx-rect.left)/rect.width, y=1-(cy-rect.top)/rect.height
-  delta.set(x-prevUV.x,y-prevUV.y); prevUV.copy(mouseUV); mouseUV.set(x,y); active=true
+  delta.set(x-prevUV.x,y-prevUV.y); prevUV.copy(mouseUV); mouseUV.set(x,y)
+  active=true; lastUserMove=performance.now()
 }
 window.addEventListener('mousemove',e=>onMove(e.clientX,e.clientY))
 window.addEventListener('mouseleave',()=>{active=false})
 window.addEventListener('touchmove',e=>onMove(e.touches[0].clientX,e.touches[0].clientY),{passive:true})
 window.addEventListener('touchend',()=>{active=false})
 
+// Auto-animation: slow Lissajous cursor
+const autoPrev=new THREE.Vector2(0.5,0.5), autoCur=new THREE.Vector2(0.5,0.5)
+const autoDelta=new THREE.Vector2(0,0)
+function getAutoPos(t){
+  // Slow Lissajous: a=2, b=3, slightly offset phase for organic feel
+  const x=0.5+0.38*Math.sin(t*0.11+0.5)
+  const y=0.5+0.32*Math.sin(t*0.17+1.2)
+  return {x,y}
+}
+
 const ITERS=32, DT=1/30, VEL_DECAY=0.0005, COL_DECAY=0.003
 
-function simStep(){
+function simStep(t){
   advMat.uniforms.uInput.value=velA.texture; advMat.uniforms.uVel.value=velA.texture
   advMat.uniforms.uDt.value=DT; advMat.uniforms.uDecay.value=VEL_DECAY
   renderTo(advMat,velB); [velA,velB]=[velB,velA]
 
+  // Use real mouse if recently active, else auto-animation
+  const userIdle = performance.now()-lastUserMove > 1200
+  let touchX, touchY, touchDX, touchDY, doForce=false
+
   if(active && delta.lengthSq()>1e-8){
-    forceMat.uniforms.uTouch.value.set(mouseUV.x,mouseUV.y,delta.x,delta.y)
+    touchX=mouseUV.x; touchY=mouseUV.y; touchDX=delta.x; touchDY=delta.y; doForce=true
+  } else if(userIdle){
+    const p=getAutoPos(t), pp=getAutoPos(t-0.016)
+    autoDelta.set(p.x-pp.x, p.y-pp.y)
+    if(autoDelta.lengthSq()>1e-10){
+      touchX=p.x; touchY=p.y; touchDX=autoDelta.x*0.55; touchDY=autoDelta.y*0.55; doForce=true
+    }
+  }
+
+  if(doForce){
+    forceMat.uniforms.uTouch.value.set(touchX,touchY,touchDX,touchDY)
     forceMat.uniforms.uVel.value=velA.texture
     renderTo(forceMat,velB); [velA,velB]=[velB,velA]
   }
@@ -232,8 +257,8 @@ function simStep(){
   advMat.uniforms.uDecay.value=COL_DECAY
   renderTo(advMat,colB); [colA,colB]=[colB,colA]
 
-  if(active && delta.lengthSq()>1e-8){
-    injectMat.uniforms.uTouch.value.set(mouseUV.x,mouseUV.y,delta.x,delta.y)
+  if(doForce){
+    injectMat.uniforms.uTouch.value.set(touchX,touchY,touchDX,touchDY)
     injectMat.uniforms.uColor.value=colA.texture
     renderTo(injectMat,colB); [colA,colB]=[colB,colA]
   }
@@ -242,7 +267,8 @@ function simStep(){
 const clock=new THREE.Clock()
 function animate(){
   requestAnimationFrame(animate)
-  simStep(); delta.set(0,0)
+  const t=clock.getElapsedTime()
+  simStep(t); delta.set(0,0)
   compMat.uniforms.uColor.value=colA.texture
   compMat.uniforms.uTime.value=clock.getElapsedTime()
   renderTo(compMat,dispRT)
