@@ -175,7 +175,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 /* Map fade-in */
 #stores-map{animation:stMapIn 1s .3s both}
 
-.stores-main{display:block;height:calc(100vh - var(--nav-h));min-height:520px}
+.stores-main{display:block;height:calc(100vh - var(--nav-h));min-height:520px;overflow:hidden}
 
 /* Left panel */
 .stores-panel{width:360px;flex-shrink:0;background:var(--white);border-right:1px solid var(--mist);display:flex;flex-direction:column;overflow:hidden}
@@ -212,7 +212,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 /* Map */
 .stores-panel{display:none}
-#stores-map{width:100%;height:100%;background:var(--silk);z-index:1}
+#stores-map{width:100%;height:calc(100vh - var(--nav-h));background:var(--silk);z-index:1;display:block}
 
 /* Leaflet overrides for luxury feel */
 .leaflet-popup-content-wrapper{border-radius:0;box-shadow:0 8px 32px rgba(0,0,0,.12);border:none;font-family:'Montserrat',Arial,sans-serif}
@@ -676,6 +676,7 @@ document.addEventListener('DOMContentLoaded', function(){
     maxZoom: 20
   }).addTo(map);
 
+  setTimeout(function(){ map.invalidateSize(); }, 100);
   renderList(STORES);
 
   STORES.forEach(function(store, i){
