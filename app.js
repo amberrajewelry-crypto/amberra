@@ -622,6 +622,10 @@ function updateNavColor(){
   if(srvModal&&srvModal.classList.contains('open')){
     nav.classList.add('nav-over-light');return;
   }
+  // While nav is over hero (dark media) — force white text
+  if(HAS_HERO&&!nav.classList.contains('solid')){
+    nav.classList.remove('nav-over-light');return;
+  }
   const navBottom=nav.getBoundingClientRect().bottom;
   let el=document.elementFromPoint(innerWidth/2,navBottom+4);
   // Walk up DOM to find first element with a real background color
