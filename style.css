@@ -475,28 +475,28 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 @media(max-width:900px){#journal{padding:60px 24px}.j-grid{grid-template-columns:1fr}}
 
 /* ═══ JOURNAL FULL-SLIDE CAROUSEL (journal.html) ═════════════════════════ */
-#journal.js-page{padding:0;background:var(--black)}
-.js-header{padding:72px 64px 48px;background:var(--white);text-align:center}
+#journal.js-page{padding:0;background:transparent}
+.js-header{padding:72px 64px 48px;background:transparent;text-align:center}
 .js-header .s-lbl{display:block;margin-bottom:8px}
-.js-wrap{position:relative;overflow:hidden;height:auto;min-height:0;background:var(--cream);cursor:grab;-webkit-user-select:none;user-select:none;touch-action:pan-y}
+.js-wrap{position:relative;overflow:hidden;height:auto;min-height:0;background:transparent;cursor:grab;-webkit-user-select:none;user-select:none;touch-action:pan-y}
 .js-wrap.grabbing{cursor:grabbing}
 .js-slides{position:relative;height:auto}
 .js-slide{position:relative;overflow:hidden;visibility:hidden;height:0}
 .js-slide.js-active{visibility:visible;height:auto}
 /* Hide art/overlay backgrounds — text only */
 .js-art,.js-overlay{display:none}
-.js-content{position:relative;inset:auto;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;text-align:center;padding:40px 56px 48px;max-width:900px;color:var(--charcoal);margin:32px auto}
+.js-content{position:relative;inset:auto;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;text-align:center;padding:40px 56px 48px;max-width:900px;color:#fff;margin:32px auto}
 .js-tag{font:600 8.5px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;display:block}
-.js-date{font:300 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--black);margin-bottom:24px;display:block}
-.js-title{font:300 clamp(24px,2.8vw,42px)/1.15 var(--serif);margin-bottom:12px;color:var(--black)}
+.js-date{font:300 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:24px;display:block}
+.js-title{font:300 clamp(24px,2.8vw,42px)/1.15 var(--serif);margin-bottom:12px;color:#fff}
 .js-title em{font-style:italic;color:var(--amber2)}
-.js-body{font:300 14px/1.75 var(--sans);max-width:640px;margin-bottom:24px;color:var(--black)}
-.js-read{display:inline-flex;align-items:center;gap:14px;font:400 10px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--black);text-decoration:none;transition:all .28s}
+.js-body{font:300 14px/1.75 var(--sans);max-width:640px;margin-bottom:24px;color:rgba(255,255,255,.78)}
+.js-read{display:inline-flex;align-items:center;gap:14px;font:400 10px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.8);text-decoration:none;transition:all .28s}
 .js-read::after{content:'';width:28px;height:1px;background:var(--amber);transition:width .28s}
 .js-read:hover{color:var(--amber)}.js-read:hover::after{width:44px}
 /* Navigation arrows */
-.js-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:20;width:48px;height:48px;border-radius:50%;background:var(--white);border:1px solid var(--mist);color:var(--charcoal);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .28s;box-shadow:0 2px 12px rgba(0,0,0,.08)}
-.js-arrow:hover{background:var(--charcoal);border-color:var(--charcoal);color:var(--white)}
+.js-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:20;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .28s;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.js-arrow:hover{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.5);color:#fff}
 .js-arrow:active{transform:translateY(-50%) scale(.94)}
 .js-prev{left:20px}.js-next{right:20px}
 .js-arrow svg{width:18px;height:18px;stroke:currentColor;stroke-width:1.5;fill:none}
@@ -1133,8 +1133,8 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 .ws-perk{background:rgba(6,2,0,0.55)}
 .ws-perk-title{color:var(--white)}
 .ws-perk-body{color:rgba(255,255,255,.7)}
-#journal.js-page{background:var(--black)}
-#contact{background:transparent}
+#journal.js-page{background:transparent}
+#contact{background:rgba(6,2,0,0.82)}
 #contact .s-lbl{color:var(--amber)}
 #contact .s-title{color:var(--white)}
 #contact .s-body{color:rgba(255,255,255,.75)}
