@@ -225,8 +225,8 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 @media(max-width:900px){.c-grid{grid-template-columns:1fr 1fr}.cc-img-wrap{height:180px}.c-head{padding:40px 24px 24px}}
 
 /* ═══ EDITORIAL ═════════════════════════════════════════════════════════ */
-#ed{padding:0;background:var(--white);overflow:hidden}
-.ed-wrap{display:grid;grid-template-columns:1fr 1fr;align-items:center;min-height:80vh}
+#ed{padding:0;background:transparent;overflow:hidden}
+.ed-wrap{display:grid;grid-template-columns:1fr;align-items:center;min-height:auto}
 .ed-model-wrap{position:relative;overflow:hidden;aspect-ratio:3/4;width:100%;
   opacity:0;transform:translateX(20px);
   transition:opacity 1.8s cubic-bezier(.4,0,.2,1),transform 1.8s cubic-bezier(.4,0,.2,1)}
@@ -1113,7 +1113,7 @@ footer{background:rgba(6,2,0,0.82);padding:80px 56px 48px;border-top:1px solid r
 .founder-strip{background:rgba(6,2,0,0.55)}
 .founder-strip p,.founder-strip span,.founder-strip a{color:rgba(255,255,255,.8)!important}
 .founder-strip a[href]{color:rgba(255,255,255,.55)!important;border-bottom-color:rgba(255,255,255,.4)!important}
-#ed{background:rgba(6,2,0,0.65)}
+#ed{background:transparent}
 .ed-text{background:transparent}
 .ed-text .s-lbl{color:var(--amber)}
 .ed-text .s-title{color:var(--white)}
