@@ -67,8 +67,8 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .nav-ico-btn .nav-badge.show{display:flex}
 
 /* Tier 3 — Main Nav */
-.nav-main-wrap{border-top:1px solid rgba(255,255,255,.12);transition:border-color .4s}
-#nav-shell.solid .nav-main-wrap{border-top-color:var(--mist)}
+.nav-main-wrap{border-top:none}
+#nav-shell.solid .nav-main-wrap{border-top:none}
 .nav-main{height:44px;display:flex;align-items:center;justify-content:center;overflow:visible;opacity:1;width:100%;padding-right:280px}
 .nl{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#FFFFFF;background:none;border:none;font-family:var(--sans);font-weight:500;padding:0 14px;height:100%;cursor:pointer;position:relative;white-space:nowrap;transition:opacity .3s,color .4s;display:flex;align-items:center}
 #nav-shell.solid .nl{color:#fff}
