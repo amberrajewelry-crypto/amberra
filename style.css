@@ -1135,12 +1135,9 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 #contact .s-body{color:rgba(255,255,255,.75)}
 /* EOF */
 
-/* === CANVAS STACKING FIX: canvas z:1, content z:2 === */
-#nav-shell{z-index:900}
-#hero,#about,.founder-strip,#ed,.ticker,#wholesale,#journal,#contact,footer,
-.mob-nav-overlay,.mob-nav-drawer,#drawer,#cart,#srv-modal,#req-modal,
-#quiz-modal,.epop,.chat-btn,.chat-pop,#cookie-overlay,#hover-detail,
-#legal-modal,#acc-modal,#ws-modal-wrap,#wise-modal-drop,#crypto-disclaimer-drop{
+/* === CANVAS STACKING FIX: canvas z:1, page sections z:2 === */
+/* Only page sections: modals/overlays keep their own position:fixed + z-index */
+#hero,#about,.founder-strip,#ed,.ticker,#wholesale,#journal,#contact,footer{
   position:relative;z-index:2
 }
 
