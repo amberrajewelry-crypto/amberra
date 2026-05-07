@@ -24,7 +24,11 @@ let searchQuery='';
 // Handle URL category params on page load
 const urlParams=new URLSearchParams(window.location.search);
 const catParam=urlParams.get('cat');
+// Also detect category from clean path URLs: /rings, /earrings, /pendants, /bracelets, /chains
+const pathCats=['rings','earrings','pendants','bracelets','chains'];
+const pathCat=pathCats.find(c=>window.location.pathname==='/' + c)||null;
 if(catParam){activeFilter=catParam;}
+else if(pathCat){activeFilter=pathCat;}
 const qParam=urlParams.get('q');
 if(qParam){searchQuery=qParam.toLowerCase();}
 

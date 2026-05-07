@@ -1160,7 +1160,7 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 .hv-btn:hover{background:#fff;color:#1a0c02}
 
 /* === CATEGORY PAGES === */
-#cat-hero{padding:36px 56px 28px;text-align:center;background:var(--cream)}
+#cat-hero{padding:calc(var(--nav-h) + 36px) 56px 28px;text-align:center;background:var(--cream)}
 .cat-h1{font-family:var(--serif);font-size:clamp(22px,2.6vw,36px);font-weight:300;margin:6px 0 10px;color:var(--charcoal);white-space:nowrap}
 .cat-sub{font-family:var(--sans);font-size:11px;color:var(--gray);max-width:700px;margin:0 auto 8px;line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .cat-count{font-family:var(--sans);font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--stone)}
