@@ -1137,7 +1137,7 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 
 /* === CANVAS STACKING FIX: canvas z:1, page sections z:2 === */
 /* Only page sections: modals/overlays keep their own position:fixed + z-index */
-#hero-video,#hero,#about,.founder-strip,#ed,.ticker,#wholesale,#journal,#contact,footer{
+#hero-video,#hero,#about,#bestsellers,.founder-strip,#ed,.ticker,#wholesale,#journal,#contact,footer{
   position:relative;z-index:2
 }
 
@@ -1147,6 +1147,17 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 .hv-cta{position:absolute;bottom:10%;left:50%;transform:translateX(-50%);text-align:center;pointer-events:none}
 .hv-btn{font-family:var(--sans);font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.65);padding:14px 40px;text-decoration:none;display:inline-block;pointer-events:auto;transition:background .25s,color .25s;backdrop-filter:blur(4px);background:rgba(0,0,0,.18)}
 .hv-btn:hover{background:#fff;color:#1a0c02}
+
+/* === BESTSELLERS === */
+#bestsellers{padding:80px 56px;background:var(--cream)}
+.bs-head{text-align:center;margin-bottom:48px}
+.bs-head .s-lbl{display:block;margin-bottom:8px}
+.bs-head .s-title{margin:4px 0 20px}
+.bs-all{font-family:var(--sans);font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--charcoal);text-decoration:none;border-bottom:1px solid var(--charcoal);padding-bottom:2px}
+.bs-all:hover{color:var(--amber);border-color:var(--amber)}
+.bs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1200px;margin:0 auto}
+@media(max-width:900px){.bs-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.bs-grid{grid-template-columns:1fr 1fr;gap:12px}#bestsellers{padding:56px 16px}}
 
 /* === NAV: тёмный backdrop при скролле (читаемо и на fluid, и на белом) === */
 #nav-shell.solid{background:rgba(6,2,0,0.82)!important;backdrop-filter:blur(14px)!important;-webkit-backdrop-filter:blur(14px)!important}
