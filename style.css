@@ -315,7 +315,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 @media(max-width:900px){.quiz-strip{padding:8px 16px 8px 8px;gap:10px}}
 
 /* ═══ CATALOG ═══════════════════════════════════════════════════════════ */
-#catalog{padding:24px 40px 100px;background:var(--cream)}
+#catalog{padding:24px 40px 100px;background:#fff}
 .breadcrumb{padding:20px 40px 0;font-size:11px;letter-spacing:.1em;color:var(--gray);font-family:var(--sans)}
 .breadcrumb a{color:var(--gray);text-decoration:none;transition:color .2s}.breadcrumb a:hover{color:var(--amber)}
 .breadcrumb span{margin:0 8px;color:var(--stone)}
@@ -325,7 +325,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .ftab.act{background:var(--charcoal);color:var(--white);border-color:var(--charcoal)}
 .ftab:hover:not(.act){color:#000;border-color:#000}
 .prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;align-items:start}
-.pc{background:var(--white);position:relative;cursor:pointer;display:flex;flex-direction:column;overflow:hidden}
+.pc{background:var(--white);position:relative;cursor:pointer;display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--mist)}
 .pc.hx{z-index:100}
 .pc-inner{overflow:hidden;display:flex;flex-direction:column;background:var(--white);position:relative}
 .pc-img{flex-shrink:0;width:100%;aspect-ratio:1/1;overflow:hidden;background:var(--white);display:flex;align-items:center;justify-content:center}
