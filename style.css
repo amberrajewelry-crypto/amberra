@@ -1181,20 +1181,7 @@ footer{background:rgba(6,2,0,0.82);padding:80px 56px 48px;border-top:1px solid r
 @media(max-width:900px){.bs-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.bs-grid{grid-template-columns:1fr 1fr;gap:12px}#bestsellers{padding:56px 16px}}
 
-/* === NAV: тёмный backdrop при скролле (читаемо и на fluid, и на белом) === */
-#nav-shell.solid{background:rgba(6,2,0,0.82)!important;backdrop-filter:blur(14px)!important;-webkit-backdrop-filter:blur(14px)!important}
-#nav-shell.solid .nav-logo,
-#nav-shell.solid .nl,
-#nav-shell.solid .nav-ico-btn,
-#nav-shell.solid .nav-util-link{color:#fff!important}
-#nav-shell.solid .nav-logo-bar{border-bottom-color:rgba(255,255,255,.08)!important}
-#nav-shell.solid .nav-main{border-top-color:rgba(255,255,255,.08)!important}
-#nav-shell.solid .nav-search-wrap svg{stroke:#fff!important}
-#nav-shell.solid .nav-search-inp{color:#fff!important}
-#nav-shell.solid .nl::after{background:#fff!important}
-#nav-shell.solid .nl.act::after{background:var(--amber)!important}
-
-/* === NAV: прозрачный solid + чёрный текст на светлых секциях === */
+/* === NAV: всегда прозрачный === */
 #nav-shell.solid{background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
 #nav-shell.solid .nav-logo-bar{border-bottom-color:transparent!important}
 #nav-shell.solid .nav-main{border-top-color:transparent!important}
