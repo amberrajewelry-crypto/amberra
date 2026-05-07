@@ -1,3 +1,7 @@
+const IMG_EXTRAS = {
+  'Morning Dew': ['/images/earrings/morning-dew-2.jpg'], // leaf_eye_butter_rg
+};
+
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=60');
@@ -40,6 +44,7 @@ export default async function handler(req, res) {
         price: f.Price || 0,
         badge: f.Badge || null,
         img: f.Image || '',
+        imgs: [f.Image, ...(IMG_EXTRAS[f.Name] || [])].filter(Boolean),
         material: f.Material || '',
         desc: f.Description || '',
         props

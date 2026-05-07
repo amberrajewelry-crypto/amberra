@@ -4,7 +4,7 @@
   --stone:#C8C4BC;--gray:#8C8880;--charcoal:#3C3830;--black:#2A2520;
   --amber:#C9A832;--amber2:#B8941E;--amber3:#D4B84A;--gold:#E8D080;
   --serif:'Cormorant Garamond',serif;--sans:'Cormorant Garamond',serif;
-  --nav-h:134px;
+  --nav-h:146px;
 }
 html{scroll-behavior:smooth;overflow-x:hidden;scroll-padding-top:var(--nav-h);background:#060200}
 body{padding-top:0;background:transparent;color:var(--black);font-family:var(--serif);font-weight:400;overflow-x:hidden;opacity:1;cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='28'%3E%3Cpath d='M0 0L0 24L5 19L9 28L12 27L8 18L15 18Z' fill='%23D4A832' stroke='%23FFF8E0' stroke-width='1'/%3E%3C/svg%3E") 0 0,auto}
@@ -46,7 +46,8 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .lb:hover,.lb.al{background:var(--cream);color:var(--charcoal)}
 
 /* Tier 2 — Logo Bar (merged with utility) */
-.nav-logo-bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 40px;height:90px;border-bottom:1px solid transparent;transition:border-color .4s}
+.nav-logo-bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 40px;height:auto;min-height:90px;padding-top:16px;padding-bottom:0;border-bottom:1px solid transparent;transition:border-color .4s}
+.nav-center{display:flex;flex-direction:column;align-items:center;gap:0}
 #nav-shell.solid .nav-logo-bar{border-bottom:1px solid var(--mist)}
 .nav-lb-l{display:flex;align-items:center;gap:20px}
 .nav-lb-r{display:flex;align-items:center;gap:16px;justify-content:flex-end}
@@ -69,7 +70,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 /* Tier 3 — Main Nav */
 .nav-main-wrap{border-top:none}
 #nav-shell.solid .nav-main-wrap{border-top:none}
-.nav-main{height:44px;display:flex;align-items:center;justify-content:center;overflow:visible;opacity:1;width:100%;padding-right:280px}
+.nav-main{height:40px;display:flex;align-items:center;justify-content:center;overflow:visible;opacity:1;width:max-content;padding-right:0}
 .nl{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#FFFFFF;background:none;border:none;font-family:var(--sans);font-weight:500;padding:0 14px;height:100%;cursor:pointer;position:relative;white-space:nowrap;transition:opacity .3s,color .4s;display:flex;align-items:center}
 #nav-shell.solid .nl{color:#fff}
 .nl::after{content:'';position:absolute;bottom:0;left:50%;right:50%;height:2px;background:#FFFFFF;transition:left .3s,right .3s,background .4s}

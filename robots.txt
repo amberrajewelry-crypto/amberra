@@ -1,6 +1,14 @@
 User-agent: *
 Allow: /
 
+# Блокируем служебные пути
+Disallow: /cart
+Disallow: /checkout
+Disallow: /account
+Disallow: /admin
+Disallow: /*.json$
+Disallow: /*?*lang=*
+
 # AI Search Crawlers — explicitly permitted
 User-agent: GPTBot
 Allow: /
@@ -24,4 +32,5 @@ Disallow: /
 User-agent: anthropic-ai
 Disallow: /
 
+# Sitemap
 Sitemap: https://www.amberrajewelry.com/sitemap.xml

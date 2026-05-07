@@ -1,0 +1,40 @@
+wing: amberra
+rooms:
+- name: journal
+  description: Files from journal/
+  keywords:
+  - journal
+  - journal
+- name: screenshots
+  description: Files from screenshots/
+  keywords:
+  - screenshots
+  - screenshots
+- name: products
+  description: Files from products/
+  keywords:
+  - products
+  - products
+- name: images
+  description: Files from images/
+  keywords:
+  - images
+  - images
+- name: shop
+  description: Files from shop/
+  keywords:
+  - shop
+  - shop
+- name: scripts
+  description: Files from scripts/
+  keywords:
+  - scripts
+  - scripts
+- name: backend
+  description: Files from api/
+  keywords:
+  - backend
+  - api
+- name: general
+  description: Files that don't fit other rooms
+  keywords: []
