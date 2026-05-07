@@ -1156,3 +1156,17 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 #nav-shell.solid .nav-search-inp{color:#fff!important}
 #nav-shell.solid .nl::after{background:#fff!important}
 #nav-shell.solid .nl.act::after{background:var(--amber)!important}
+
+/* === NAV: прозрачный solid + чёрный текст на светлых секциях === */
+#nav-shell.solid{background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+#nav-shell.solid .nav-logo-bar{border-bottom-color:transparent!important}
+#nav-shell.solid .nav-main{border-top-color:transparent!important}
+/* Dark text when over light/white content (journal slides etc.) */
+#nav-shell.nav-over-light .nav-logo,
+#nav-shell.nav-over-light .nl,
+#nav-shell.nav-over-light .nav-ico-btn,
+#nav-shell.nav-over-light .nav-util-link{color:#1a0c02!important}
+#nav-shell.nav-over-light .nl::after{background:#1a0c02!important}
+#nav-shell.nav-over-light .nl.act::after{background:var(--amber)!important}
+#nav-shell.nav-over-light .nav-search-wrap svg{stroke:#1a0c02!important}
+#nav-shell.nav-over-light .nav-search-inp{color:#1a0c02!important}

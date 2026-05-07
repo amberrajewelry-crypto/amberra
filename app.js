@@ -613,15 +613,26 @@ function initReveal(){
 
 // ── NAV SCROLL ────────────────────────────────────────────────────────────
 const HAS_HERO=!!document.getElementById('hero');
-function updateNavSolid(){
-  if(!HAS_HERO){document.getElementById('nav-shell').classList.add('solid');return;}
-  const heroH=(document.getElementById('hero').offsetHeight||innerHeight)*0.85;
-  document.getElementById('nav-shell').classList.toggle('solid',scrollY>heroH);
+const nav=document.getElementById('nav-shell');
+// Light sections: journal slides have white/light bg images
+const LIGHT_SECTIONS=['journal'];
+function updateNavColor(){
+  if(!nav)return;
+  const navBottom=nav.getBoundingClientRect().bottom;
+  // probe element under the nav bottom center
+  const el=document.elementFromPoint(innerWidth/2,navBottom+4);
+  const section=el&&(el.closest('.js-slide')||el.closest('.js-header'));
+  nav.classList.toggle('nav-over-light',!!section);
 }
-updateNavSolid();
+function updateNavSolid(){
+  if(!HAS_HERO){nav&&nav.classList.add('solid');return;}
+  const heroH=(document.getElementById('hero').offsetHeight||innerHeight)*0.85;
+  nav&&nav.classList.toggle('solid',scrollY>heroH);
+}
+updateNavSolid();updateNavColor();
 window.addEventListener('scroll',()=>{
-  document.getElementById('nav-shell').classList.toggle('sc',scrollY>60);
-  updateNavSolid();
+  nav&&nav.classList.toggle('sc',scrollY>60);
+  updateNavSolid();updateNavColor();
   document.querySelectorAll('.nl').forEach(n=>n.classList.remove('act'));
   closeLang();
 },{passive:true});
