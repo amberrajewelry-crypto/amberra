@@ -315,7 +315,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 @media(max-width:900px){.quiz-strip{padding:8px 16px 8px 8px;gap:10px}}
 
 /* ═══ CATALOG ═══════════════════════════════════════════════════════════ */
-#catalog{padding:80px 40px 100px;background:var(--white)}
+#catalog{padding:24px 40px 100px;background:var(--white)}
 .breadcrumb{padding:20px 40px 0;font-size:11px;letter-spacing:.1em;color:var(--gray);font-family:var(--sans)}
 .breadcrumb a{color:var(--gray);text-decoration:none;transition:color .2s}.breadcrumb a:hover{color:var(--amber)}
 .breadcrumb span{margin:0 8px;color:var(--stone)}
