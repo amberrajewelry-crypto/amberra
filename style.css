@@ -3,7 +3,7 @@
   --white:#FFFFFF;--cream:#FAF8F5;--silk:#F2EEE8;--mist:#E8E4DC;
   --stone:#C8C4BC;--gray:#8C8880;--charcoal:#3C3830;--black:#2A2520;
   --amber:#C9A832;--amber2:#B8941E;--amber3:#D4B84A;--gold:#E8D080;
-  --serif:'Cormorant Garamond',serif;--sans:'Montserrat',Arial,sans-serif;
+  --serif:'Cormorant Garamond',serif;--sans:'Cormorant Garamond',serif;
   --nav-h:134px;
 }
 html{scroll-behavior:smooth;overflow-x:hidden;scroll-padding-top:var(--nav-h);background:#060200}
