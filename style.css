@@ -1109,12 +1109,12 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 
 /* === FLUID BG — ALL SECTIONS TRANSPARENT === */
 #hero{background:transparent}
-#about{background:transparent}
+#about{background:rgba(6,2,0,0.85)}
 .founder-strip{background:rgba(6,2,0,0.55)}
 .founder-strip p,.founder-strip span,.founder-strip a{color:rgba(255,255,255,.8)!important}
 .founder-strip a[href]{color:rgba(255,255,255,.55)!important;border-bottom-color:rgba(255,255,255,.4)!important}
-#ed{background:transparent}
-.ed-text{background:rgba(6,2,0,0.55)}
+#ed{background:rgba(6,2,0,0.65)}
+.ed-text{background:transparent}
 .ed-text .s-lbl{color:var(--amber)}
 .ed-text .s-title{color:var(--white)}
 .ed-text .s-body{color:rgba(255,255,255,.8)}
@@ -1122,7 +1122,7 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 .ed-num{color:var(--amber3)}
 .ed-lbl{color:rgba(255,255,255,.6)}
 .ticker{background:rgba(6,2,0,0.7)}
-#wholesale{background:rgba(6,2,0,0.12)}
+#wholesale{background:rgba(6,2,0,0.78)}
 #wholesale .s-lbl{color:var(--amber)}
 #wholesale .s-title{color:var(--white)}
 #wholesale .s-body{color:rgba(255,255,255,.8)}
