@@ -526,7 +526,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .ws-wa-link:hover{color:var(--charcoal);border-bottom-color:var(--stone)}
 
 /* ═══ FOOTER ════════════════════════════════════════════════════════════ */
-footer{background:rgba(6,2,0,0.82);padding:80px 56px 48px;border-top:1px solid rgba(255,255,255,.04)}
+footer{background:transparent;padding:80px 56px 48px;border-top:1px solid rgba(255,255,255,.04)}
 .ft{display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:56px;margin-bottom:60px}
 .fb{font-family:var(--serif);font-size:26px;letter-spacing:.4em;color:var(--white);margin-bottom:14px}
 .fd{font-size:11px;color:var(--white);line-height:1.85;margin-bottom:24px}
