@@ -1137,8 +1137,15 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 
 /* === CANVAS STACKING FIX: canvas z:1, page sections z:2 === */
 /* Only page sections: modals/overlays keep their own position:fixed + z-index */
-#hero,#about,.founder-strip,#ed,.ticker,#wholesale,#journal,#contact,footer{
+#hero-video,#hero,#about,.founder-strip,#ed,.ticker,#wholesale,#journal,#contact,footer{
   position:relative;z-index:2
+}
+
+/* === HERO VIDEO === */
+#hero-video{width:100%;overflow:hidden;background:#060200}
+#hero-video video{width:100%;height:100vh;object-fit:cover;display:block}
+@media(max-width:768px){
+  #hero-video video{height:56vw;min-height:240px}
 }
 
 /* === NAV: тёмный backdrop при скролле (читаемо и на fluid, и на белом) === */
