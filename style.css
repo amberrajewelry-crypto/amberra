@@ -50,10 +50,10 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 #nav-shell.solid .nav-logo-bar{border-bottom:1px solid var(--mist)}
 .nav-lb-l{display:flex;align-items:center;gap:20px}
 .nav-lb-r{display:flex;align-items:center;gap:16px;justify-content:flex-end}
-.nav-logo{color:#fff;cursor:pointer;transition:opacity .4s,color .4s;display:inline-flex;flex-direction:column;align-items:center;gap:4px;-webkit-font-smoothing:antialiased;text-decoration:none}
+.nav-logo{font-family:var(--serif);letter-spacing:.5em;text-transform:uppercase;color:#fff;cursor:pointer;transition:opacity .4s,color .4s;display:inline-flex;flex-direction:column;align-items:center;gap:2px;-webkit-font-smoothing:antialiased}
 #nav-shell.solid .nav-logo{color:#000}
-.nav-logo-main{font-family:var(--serif);font-size:clamp(36px,4vw,58px);font-weight:300;line-height:1;display:block;letter-spacing:0;text-transform:uppercase}
-.nav-logo-sub{font-family:var(--sans);font-size:clamp(7px,0.6vw,9px);font-weight:400;letter-spacing:.5em;text-transform:uppercase;color:inherit;opacity:.7;display:block;padding-left:.5em}
+.nav-logo-main{font-size:clamp(22px,3vw,42px);font-weight:600;line-height:1;display:block;padding-left:.5em}
+.nav-logo-sub{font-family:var(--sans);font-size:clamp(8px,0.7vw,10px);font-weight:400;letter-spacing:.5em;text-transform:uppercase;color:inherit;opacity:.75;display:block;padding-left:.5em}
 .nav-logo:hover{opacity:.7}
 .nav-ico-btn{position:relative;display:flex;align-items:center;justify-content:center;color:#fff;transition:opacity .3s,color .4s;background:none;border:none;cursor:pointer;padding:4px}
 #nav-shell.solid .nav-ico-btn{color:var(--charcoal)}
