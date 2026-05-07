@@ -329,7 +329,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .pc.hx{z-index:100}
 .pc-inner{overflow:hidden;display:flex;flex-direction:column;background:var(--white);position:relative}
 .pc-img{flex-shrink:0;width:100%;aspect-ratio:1/1;overflow:hidden;background:var(--white);display:flex;align-items:center;justify-content:center}
-.pc-img img{width:72%;height:72%;object-fit:contain;display:block;transition:transform 1s cubic-bezier(.25,.46,.45,.94)}
+.pc-img img{width:100%;height:100%;object-fit:contain;display:block;transition:transform 1s cubic-bezier(.25,.46,.45,.94)}
 .pc.hx .pc-img img{transform:scale(1.03)}
 .pbadge{position:absolute;top:8px;left:8px;padding:3px 7px;font-size:9px;letter-spacing:.15em;text-transform:uppercase;z-index:2;border-radius:3px}
 .pbadge.bestseller{background:var(--charcoal);color:var(--white)}
