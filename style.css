@@ -1143,3 +1143,16 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 #legal-modal,#acc-modal,#ws-modal-wrap,#wise-modal-drop,#crypto-disclaimer-drop{
   position:relative;z-index:2
 }
+
+/* === NAV: всегда прозрачная (fluid bg везде) === */
+#nav-shell.solid{background:transparent!important}
+#nav-shell.solid .nav-logo,
+#nav-shell.solid .nl,
+#nav-shell.solid .nav-ico-btn,
+#nav-shell.solid .nav-util-link{color:#fff!important}
+#nav-shell.solid .nav-logo-bar{border-bottom-color:transparent!important}
+#nav-shell.solid .nav-main{border-top-color:transparent!important}
+#nav-shell.solid .nav-search-wrap svg{stroke:#fff!important}
+#nav-shell.solid .nav-search-inp{color:#fff!important}
+#nav-shell.solid .nl::after{background:#fff!important}
+#nav-shell.solid .nl.act::after{background:var(--amber)!important}
