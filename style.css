@@ -779,14 +779,20 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 @media(max-width:1100px){#hover-detail{display:none}}
 
 /* ═══ ABOUT ══════════════════════════════════════════════════════════════ */
-#about{background:var(--charcoal);padding:160px 56px}
+#about{background:var(--charcoal);padding:140px 56px}
 .ab-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto}
 .ab-inner .s-lbl{color:var(--amber)}
-.ab-inner .s-title{color:var(--white)}
 .ab-inner .s-body{color:var(--stone);max-width:480px;margin-bottom:16px}
-.ab-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
-.ab-pillar{border-top:1px solid rgba(255,255,255,.12);padding-top:20px}
-.ab-pillar-num{font-family:var(--serif);font-size:34px;color:var(--amber);display:block;margin-bottom:6px}
+.ab-title{font-family:var(--serif);font-size:clamp(36px,4.5vw,72px);color:var(--white);font-weight:400;line-height:1.1;letter-spacing:-.01em;margin:16px 0 24px}
+.ab-title em{font-style:italic;color:var(--amber)}
+.ab-quote{margin:32px 0 0;padding:0;border:none;position:relative}
+.ab-quote-mark{font-family:var(--serif);font-size:96px;line-height:.7;color:var(--amber);display:block;margin-bottom:8px;opacity:.5}
+.ab-quote p{font-family:var(--serif);font-size:clamp(17px,1.6vw,22px);font-style:italic;color:var(--white);line-height:1.55;margin:0 0 14px}
+.ab-quote cite{font-family:var(--sans);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);font-style:normal}
+.ab-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px;border-top:1px solid rgba(255,255,255,.1)}
+.ab-pillar{padding:24px 0 0;border-right:1px solid rgba(255,255,255,.07)}
+.ab-pillar:last-child{border-right:none}
+.ab-pillar-num{font-family:var(--serif);font-size:42px;color:var(--amber);display:block;margin-bottom:6px;letter-spacing:-.01em}
 .ab-pillar-lbl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--stone)}
 .ab-img{position:relative;display:flex;align-items:stretch}
 .ab-video-wrap{flex:1;overflow:hidden;line-height:0;min-height:460px;position:relative;
