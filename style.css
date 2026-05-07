@@ -1134,7 +1134,7 @@ footer{background:rgba(6,2,0,0.82);padding:80px 56px 48px;border-top:1px solid r
 .ws-perk-title{color:var(--white)}
 .ws-perk-body{color:rgba(255,255,255,.7)}
 #journal.js-page{background:transparent}
-#contact{background:rgba(6,2,0,0.82)}
+#contact{background:transparent}
 #contact .s-lbl{color:var(--amber)}
 #contact .s-title{color:var(--white)}
 #contact .s-body{color:rgba(255,255,255,.75)}
