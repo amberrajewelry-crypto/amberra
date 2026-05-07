@@ -324,8 +324,8 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .ftab{padding:10px 20px;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#000;border:1px solid #000;background:var(--white);font-family:var(--sans);transition:all .25s;cursor:pointer}
 .ftab.act{background:var(--charcoal);color:var(--white);border-color:var(--charcoal)}
 .ftab:hover:not(.act){color:#000;border-color:#000}
-.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;align-items:start}
-.pc{background:var(--white);position:relative;cursor:pointer;display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--mist)}
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;align-items:start}
+.pc{background:var(--white);position:relative;cursor:pointer;display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--mist);margin:-1px 0 0 -1px}
 .pc.hx{z-index:100}
 .pc-inner{overflow:hidden;display:flex;flex-direction:column;background:var(--white);position:relative}
 .pc-img{flex-shrink:0;width:100%;aspect-ratio:1/1;overflow:hidden;background:var(--white);display:flex;align-items:center;justify-content:center}
