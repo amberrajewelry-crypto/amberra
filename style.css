@@ -72,7 +72,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .nav-main-wrap{border-top:none}
 #nav-shell.solid .nav-main-wrap{border-top:none}
 .nav-main-wrap{display:flex;justify-content:center;width:100%}
-.nav-main{height:44px;display:flex;align-items:center;justify-content:center;overflow:visible;opacity:1}
+.nav-main{height:44px;display:flex;align-items:center;justify-content:center;overflow:visible;opacity:1;margin-left:-120px}
 .nl{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#FFFFFF;background:none;border:none;font-family:var(--sans);font-weight:500;padding:0 14px;height:100%;cursor:pointer;position:relative;white-space:nowrap;transition:opacity .3s,color .4s;display:flex;align-items:center}
 #nav-shell.solid .nl{color:#fff}
 .nl::after{content:'';position:absolute;bottom:0;left:50%;right:50%;height:2px;background:#FFFFFF;transition:left .3s,right .3s,background .4s}
