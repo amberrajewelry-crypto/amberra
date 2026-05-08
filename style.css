@@ -68,6 +68,10 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .nav-ico-btn .nav-badge{position:absolute;top:-4px;right:-6px;min-width:14px;height:14px;background:var(--amber);border-radius:8px;font-size:9px;color:#fff;display:none;align-items:center;justify-content:center;font-family:var(--sans);font-weight:700;padding:0 2px}
 .nav-ico-btn .nav-badge.show{display:flex}
 
+/* Tier 2.5 — Center column */
+.nav-center{display:flex;flex-direction:column;align-items:center;gap:28px;transition:gap .6s cubic-bezier(.4,0,.2,1)}
+#nav-shell.solid .nav-center{gap:4px}
+
 /* Tier 3 — Main Nav */
 .nav-main-wrap{border-top:none}
 #nav-shell.solid .nav-main-wrap{border-top:none}
