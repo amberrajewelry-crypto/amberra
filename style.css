@@ -18,8 +18,8 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 /* ═══ NAV — BULGARI 3-TIER ═══════════════════════════════════════════════ */
-#nav-shell{position:fixed;top:0;left:0;right:0;z-index:900;background:transparent;transition:background .4s,transform .4s cubic-bezier(.4,0,.2,1)}
-#nav-shell.solid{background:transparent}
+#nav-shell{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(6,2,0,0.10);transition:background .4s,transform .4s cubic-bezier(.4,0,.2,1)}
+#nav-shell.solid{background:rgba(6,2,0,0.10)}
 #nav-shell.sc{box-shadow:none}
 #nav-shell.nav-hidden{transform:translateY(-100%)}
 
@@ -1184,8 +1184,8 @@ footer{background:transparent;padding:80px 56px 48px;border-top:1px solid rgba(2
 @media(max-width:900px){.bs-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.bs-grid{grid-template-columns:1fr 1fr;gap:12px}#bestsellers{padding:56px 16px}}
 
-/* === NAV: всегда прозрачный === */
-#nav-shell.solid{background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+/* === NAV: тонирование 10% === */
+#nav-shell.solid{background:rgba(6,2,0,0.10)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
 #nav-shell.solid .nav-logo-bar{border-bottom-color:transparent!important}
 #nav-shell.solid .nav-main{border-top-color:transparent!important}
 /* Dark text when over light/white content (journal slides etc.) */
