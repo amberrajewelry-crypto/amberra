@@ -1203,3 +1203,28 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.fonts.ready.then(alignPendants);
   window.addEventListener('resize',alignPendants);
 });
+
+// Cursor-following AMBERRA label
+(function(){
+  const el = document.getElementById('cursor-amberra');
+  if(!el) return;
+  let cx = window.innerWidth/2, cy = window.innerHeight/2;
+  let tx = cx, ty = cy;
+  let raf;
+
+  document.addEventListener('mousemove', e => {
+    tx = e.clientX; ty = e.clientY;
+    el.classList.add('visible');
+  });
+  document.addEventListener('mouseleave', () => el.classList.remove('visible'));
+
+  function lerp(a, b, t){ return a + (b - a) * t; }
+  function tick(){
+    cx = lerp(cx, tx, 0.08);
+    cy = lerp(cy, ty, 0.08);
+    el.style.left = cx + 'px';
+    el.style.top  = cy + 'px';
+    raf = requestAnimationFrame(tick);
+  }
+  raf = requestAnimationFrame(tick);
+})();
