@@ -644,8 +644,7 @@ function updateNavColor(){
 }
 function updateNavSolid(){
   if(!HAS_HERO){nav&&nav.classList.add('solid');return;}
-  const heroH=(document.getElementById('hero').offsetHeight||innerHeight)*0.85;
-  nav&&nav.classList.toggle('solid',scrollY>heroH);
+  nav&&nav.classList.toggle('solid',scrollY>80);
 }
 updateNavSolid();updateNavColor();
 window.addEventListener('scroll',()=>{
