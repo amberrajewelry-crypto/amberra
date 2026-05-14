@@ -347,63 +347,15 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 @media(max-width:1100px){.prod-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:700px){.prod-grid{grid-template-columns:repeat(2,1fr)}.pc-xpanel{display:none}#catalog{padding:40px 16px}.cat-head{margin-bottom:24px}}
 
-/* ═══ JOURNAL (index.html teaser — 3 cards) ══════════════════════════════ */
-#journal{padding:140px 56px;background:var(--white)}
-.j-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px}
-.j-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
-.jc-img{aspect-ratio:4/3;overflow:hidden;background:var(--charcoal);position:relative}
-.jc-img .js-art{transition:transform 7s ease}
-.jc-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(20,14,8,.45) 0%,rgba(20,14,8,.1) 60%,transparent 100%);pointer-events:none}
-.jc:hover .jc-img .js-art{transform:scale(1.08)}
-.jc-body{padding:22px 0 0}
-.jdate{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#000;margin-bottom:10px;display:block}
-.jtitle{font-family:var(--serif);font-size:clamp(20px,1.8vw,28px);font-weight:300;line-height:1.2;margin-bottom:9px}
-.jex{font-size:13px;color:#000;line-height:1.75}
-@media(max-width:900px){#journal{padding:60px 24px}.j-grid{grid-template-columns:1fr}}
-
-/* ═══ JOURNAL FULL-SLIDE CAROUSEL (journal.html) ═════════════════════════ */
-#journal.js-page{padding:0;padding-top:var(--nav-h);background:transparent}
-.js-header{padding:40px 64px 48px;background:transparent;text-align:center}
-.js-header .s-lbl{display:block;margin-bottom:8px}
-.js-wrap{position:relative;overflow:hidden;height:auto;min-height:0;background:transparent;cursor:grab;-webkit-user-select:none;user-select:none;touch-action:pan-y}
-.js-wrap.grabbing{cursor:grabbing}
-.js-slides{position:relative;height:auto}
-.js-slide{position:relative;overflow:hidden;visibility:hidden;height:0}
-.js-slide.js-active{visibility:visible;height:auto}
-/* Hide art/overlay backgrounds — text only */
-.js-art,.js-overlay{display:none}
-.js-content{position:relative;inset:auto;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;text-align:center;padding:40px 56px 48px;max-width:900px;color:#fff;margin:32px auto}
-.js-tag{font:600 8.5px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;display:block}
-.js-date{font:300 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:24px;display:block}
-.js-title{font:300 clamp(24px,2.8vw,42px)/1.15 var(--serif);margin-bottom:12px;color:#fff}
-.js-title em{font-style:italic;color:var(--amber2)}
-.js-body{font:300 14px/1.75 var(--sans);max-width:640px;margin-bottom:24px;color:rgba(255,255,255,.78)}
-.js-read{display:inline-flex;align-items:center;gap:14px;font:400 10px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.8);text-decoration:none;transition:all .28s}
-.js-read::after{content:'';width:28px;height:1px;background:var(--amber);transition:width .28s}
-.js-read:hover{color:var(--amber)}.js-read:hover::after{width:44px}
-/* Navigation arrows */
-.js-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:20;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .28s;box-shadow:0 2px 12px rgba(0,0,0,.08)}
-.js-arrow:hover{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.5);color:#fff}
-.js-arrow:active{transform:translateY(-50%) scale(.94)}
-.js-prev{left:20px}.js-next{right:20px}
-.js-arrow svg{width:18px;height:18px;stroke:currentColor;stroke-width:1.5;fill:none}
-/* Progress bar */
-.js-prog{position:relative;bottom:auto;left:auto;right:auto;height:2px;background:var(--mist);margin:0 64px}
-.js-prog-fill{height:100%;background:var(--amber);transition:width .55s cubic-bezier(.4,0,.2,1);width:10%}
-/* Counter + dots */
-.js-bottom{position:relative;bottom:auto;right:auto;z-index:20;display:flex;align-items:center;gap:20px;padding:20px 64px 40px}
-.js-counter{font:300 11px/1 var(--sans);letter-spacing:.15em;color:var(--stone)}
-.js-counter b{color:var(--charcoal);font-weight:500}
-.js-dots-row{display:flex;gap:6px;align-items:center}
-.js-dot{width:5px;height:5px;border-radius:50%;background:var(--mist);border:none;cursor:pointer;transition:all .3s;padding:0}
-.js-dot.act{background:var(--amber);width:18px;border-radius:2px}
-@media(max-width:900px){
-  .js-header{padding:48px 24px 32px}
-  .js-content{padding:40px 28px 48px;margin:32px auto;max-width:100%;width:calc(100% - 48px)}
-  .js-arrow{display:none}
-  .js-body{display:block}
-  .js-bottom{padding:16px 24px 32px}
-  .js-prog{margin:0 24px}
+/* === REDESIGN: Journal 3-card grid === */
+#journal{background:var(--cream);padding:120px 48px;position:relative;z-index:2}
+.journal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.journal-card{text-decoration:none;transition:transform 0.6s var(--ease-standard);display:block}
+.journal-card:hover{transform:scale(1.03)}
+.journal-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+@media(max-width:768px){
+  #journal{padding:80px 20px!important}
+  .journal-grid{grid-template-columns:1fr;gap:40px}
 }
 
 /* ═══ CONTACT ═══════════════════════════════════════════════════════════ */
@@ -823,9 +775,6 @@ footer{background:transparent;padding:80px 56px 48px;border-top:1px solid rgba(2
   /* Collections grid mobile — 2 cols */
   .c-grid{grid-template-columns:repeat(2,1fr);gap:8px}
 
-  /* Journal cards mobile */
-  #journal .j-grid{grid-template-columns:1fr}
-
   /* Hide email popup entirely on mobile */
   .epop{display:none!important}
 
@@ -850,14 +799,6 @@ footer{background:transparent;padding:80px 56px 48px;border-top:1px solid rgba(2
 
   /* Quiz strip */
   .quiz-strip{margin:20px auto}
-
-  /* Journal slides */
-  .js-content{padding:24px 20px 32px;margin:24px 16px}
-  .js-title{font-size:clamp(18px,5.5vw,28px)}
-  .js-body{display:none}
-
-  /* Journal section */
-  #journal{padding:48px 16px}
 
   /* Request modal */
   .req-box{padding:32px 20px;width:96%}
@@ -940,7 +881,6 @@ footer{background:transparent;padding:80px 56px 48px;border-top:1px solid rgba(2
 .ws-perk{background:rgba(6,2,0,0.55)}
 .ws-perk-title{color:var(--white)}
 .ws-perk-body{color:rgba(255,255,255,.7)}
-#journal.js-page{background:transparent}
 #contact{background:transparent}
 #contact .s-lbl{color:var(--amber)}
 #contact .s-title{color:var(--white)}

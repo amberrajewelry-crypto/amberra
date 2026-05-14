@@ -614,8 +614,6 @@ function initReveal(){
 // ── NAV SCROLL ────────────────────────────────────────────────────────────
 const HAS_HERO=!!document.getElementById('hero');
 const nav=document.getElementById('nav-shell');
-// Light sections: journal slides have white/light bg images
-const LIGHT_SECTIONS=['journal'];
 // Nav stays transparent always — no solid/color logic needed
 // Keep scroll listener minimal for lang dropdown close
 window.addEventListener('scroll',()=>{
@@ -1015,93 +1013,7 @@ window.addEventListener('load',()=>{
   }
 });
 
-// ── JOURNAL SLIDER (index.html + journal.html) ────────────────────────────
-(function(){
-  const wrap=document.getElementById('js-wrap');
-  if(!wrap)return;
-  const slides=[...document.querySelectorAll('.js-slide')];
-  const dotsEl=document.getElementById('js-dots');
-  const progFill=document.getElementById('js-prog-fill');
-  const curEl=document.getElementById('js-cur');
-  const N=slides.length;
-  let cur=0,anim=false,touchX=0,dragging=false,dragDx=0;
-
-  // Build dots
-  slides.forEach((_,i)=>{
-    const d=document.createElement('button');
-    d.className='js-dot'+(i===0?' act':'');
-    d.setAttribute('aria-label','Article '+(i+1));
-    d.onclick=()=>goTo(i);
-    dotsEl.appendChild(d);
-  });
-
-  function update(n){
-    slides[cur].classList.remove('js-active');
-    slides[n].classList.add('js-active');
-    dotsEl.children[cur].classList.remove('act');
-    dotsEl.children[n].classList.add('act');
-    cur=n;
-    progFill.style.width=Math.round((n+1)/N*100)+'%';
-    curEl.textContent=String(n+1).padStart(2,'0');
-  }
-
-  function goTo(n){
-    if(anim)return;
-    n=((n%N)+N)%N;
-    if(n===cur)return;
-    anim=true;
-    const dir=n>cur?1:-1;
-    const outgoing=slides[cur];
-    const incoming=slides[n];
-    incoming.style.transform=dir>0?'translateX(100%)':'translateX(-100%)';
-    incoming.style.transition='none';
-    incoming.style.visibility='visible';
-    incoming.style.zIndex='2';
-    outgoing.style.zIndex='1';
-    requestAnimationFrame(()=>requestAnimationFrame(()=>{
-      incoming.style.transition='transform .85s cubic-bezier(.4,0,.2,1)';
-      outgoing.style.transition='transform .85s cubic-bezier(.4,0,.2,1)';
-      incoming.style.transform='translateX(0)';
-      outgoing.style.transform=dir>0?'translateX(-100%)':'translateX(100%)';
-      update(n);
-      setTimeout(()=>{
-        outgoing.style.transform='';
-        outgoing.style.transition='';
-        outgoing.style.zIndex='';
-        incoming.style.transition='';
-        incoming.style.zIndex='';
-        incoming.style.visibility='';
-        anim=false;
-      },870);
-    }));
-  }
-
-  document.getElementById('js-prev').onclick=()=>goTo(cur-1);
-  document.getElementById('js-next').onclick=()=>goTo(cur+1);
-
-  document.addEventListener('keydown',e=>{
-    if(e.key==='ArrowLeft')goTo(cur-1);
-    else if(e.key==='ArrowRight')goTo(cur+1);
-  });
-
-  wrap.addEventListener('touchstart',e=>{touchX=e.touches[0].clientX;dragging=false;dragDx=0;},{passive:true});
-  wrap.addEventListener('touchmove',e=>{dragDx=e.touches[0].clientX-touchX;dragging=true;},{passive:true});
-  wrap.addEventListener('touchend',()=>{
-    if(!dragging)return;
-    if(Math.abs(dragDx)>50)goTo(dragDx<0?cur+1:cur-1);
-    dragging=false;
-  });
-
-  wrap.addEventListener('mousedown',e=>{touchX=e.clientX;wrap.classList.add('grabbing');});
-  wrap.addEventListener('mousemove',e=>{if(e.buttons)dragDx=e.clientX-touchX;});
-  wrap.addEventListener('mouseup',()=>{
-    wrap.classList.remove('grabbing');
-    if(Math.abs(dragDx)>60)goTo(dragDx<0?cur+1:cur-1);
-    dragDx=0;
-  });
-
-  progFill.style.width=Math.round(1/N*100)+'%';
-})();
+// Journal is now a static 3-card CSS grid — no JS needed.
 
 document.addEventListener('DOMContentLoaded',()=>{
   setLang(detectLang());
