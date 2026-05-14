@@ -68,9 +68,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   "url": "https://www.amberrajewelry.com",
   "logo": {
     "@type": "ImageObject",
-    "url": "https://www.amberrajewelry.com/images/logo.png",
-    "width": 400,
-    "height": 100
+    "url": "https://www.amberrajewelry.com/images/og-cover.jpg",
+    "width": 1200,
+    "height": 630
   },
   "description": "Handcrafted Bali jewelry made in Ubud with natural amber and 925 sterling silver. Each piece is ritually blessed and unique.",
   "foundingDate": "2023",
@@ -230,8 +230,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Jost:wght@100;200;400;600;700&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Jost:wght@100;200;400;600;700&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="/style.css?v=20260331">
 </head>
 <body>
@@ -243,82 +243,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ══ FLUID BG — fixed full page ══════════════════════════════════════ -->
 <canvas id="fluid-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;display:block;z-index:1;pointer-events:none"></canvas>
 
-<!-- ══ MOBILE NAV ════════════════════════════════════════════════════════ -->
-<div class="mob-nav-overlay" id="mob-nav-overlay" onclick="closeMobNav()"></div>
-<div class="mob-nav-drawer" id="mob-nav-drawer">
-  <div class="mob-nav-head">
-    <span class="mob-nav-logo">AMBERRA</span>
-    <button class="mob-nav-close" onclick="closeMobNav()">✕</button>
+<!-- ══ NAV — 60px Ultra-Minimal ═══════════════════════════════════════ -->
+<header id="nav-shell">
+  <button id="nav-menu-btn" onclick="openMenu()" aria-label="Menu">
+    <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><line x1="0" y1="1" x2="18" y2="1" stroke="#fff" stroke-width="1.2"/><line x1="0" y1="6" x2="18" y2="6" stroke="#fff" stroke-width="1.2"/><line x1="0" y1="11" x2="18" y2="11" stroke="#fff" stroke-width="1.2"/></svg>
+    <span class="label" data-i18n="nav_menu">MENU</span>
+  </button>
+  <a href="/" class="nav-logo">AMBERRA</a>
+  <div class="nav-icons">
+    <button class="nav-ico-btn" onclick="toggleWishView()" aria-label="Wishlist">
+      <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      <span class="nav-badge" id="wish-badge">0</span>
+    </button>
+    <button class="nav-ico-btn" onclick="openAcc()" aria-label="Account">
+      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </button>
+    <button class="nav-ico-btn" onclick="openCart()" aria-label="Cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <span class="nav-badge" id="cart-badge">0</span>
+    </button>
   </div>
-  <div class="mob-nav-links">
-    <a class="mob-nav-link" href="/" data-i18n="nav_home">Home</a>
-    <a class="mob-nav-link" href="/shop" data-i18n="nav_shop">Shop All</a>
-    <a class="mob-nav-link" href="/rings" data-i18n="nav_rings">Rings</a>
-    <a class="mob-nav-link" href="/earrings" data-i18n="nav_earrings">Earrings</a>
-    <a class="mob-nav-link" href="/pendants" data-i18n="nav_pendants">Pendants</a>
-    <a class="mob-nav-link" href="/bracelets" data-i18n="nav_bracelets">Bracelets</a>
-    <a class="mob-nav-link" href="/journal" data-i18n="nav_journal">Journal</a>
-    <a class="mob-nav-link" href="/#about" data-i18n="nav_about">Our Story</a>
-    <a class="mob-nav-link amber" href="/#wholesale" data-i18n="nav_wholesale">Wholesale</a>
-  </div>
-  <div class="mob-nav-foot">
-    <div class="mob-nav-utils">
-      <button class="mob-nav-util" onclick="closeMobNav();openAcc()" data-i18n="util_account">My Account</button>
-      <button class="mob-nav-util" onclick="closeMobNav();openSrv()" data-i18n="util_services">Services</button>
-      <button class="mob-nav-util" onclick="closeMobNav();openReq()" data-i18n="util_contact">Contact Us</button>
-    </div>
-  </div>
-</div>
+</header>
 
-<!-- ══ NAV ════════════════════════════════════════════════════════════════ -->
-<div id="nav-shell">
-  <div class="nav-logo-bar">
-    <div class="nav-lb-l">
-      <button class="mob-menu-btn" onclick="openMobNav()">
-        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-      <button class="nav-util-link keep" onclick="openSrv()">
-        <span data-i18n="util_services">Services</span>
-      </button>
-      <button class="nav-util-link" onclick="openReq()">
-        <span data-i18n="util_contact">Contact Us</span>
-      </button>
-      <div class="nav-search-wrap">
-        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input class="nav-search-inp" type="text" placeholder="Search" data-i18n-ph="search_ph">
-      </div>
+<!-- ══ MENU OVERLAY ═══════════════════════════════════════════════════════ -->
+<div id="menu-overlay">
+  <button id="menu-close-btn" onclick="closeMenu()" aria-label="Close menu">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><line x1="1" y1="1" x2="19" y2="19" stroke="#fff" stroke-width="1.2"/><line x1="19" y1="1" x2="1" y2="19" stroke="#fff" stroke-width="1.2"/></svg>
+  </button>
+  <nav class="menu-nav">
+    <a class="menu-link" href="/rings" data-i18n="nav_rings" onclick="closeMenu()">RINGS</a>
+    <a class="menu-link" href="/earrings" data-i18n="nav_earrings" onclick="closeMenu()">EARRINGS</a>
+    <a class="menu-link" href="/pendants" data-i18n="nav_pendants" onclick="closeMenu()">PENDANTS</a>
+    <a class="menu-link" href="/bracelets" data-i18n="nav_bracelets" onclick="closeMenu()">BRACELETS</a>
+    <a class="menu-link" href="/shop" data-i18n="nav_collections" onclick="closeMenu()">CHAINS</a>
+    <div class="menu-divider"></div>
+    <a class="menu-link menu-link--secondary" href="/journal" data-i18n="nav_journal" onclick="closeMenu()">JOURNAL</a>
+    <a class="menu-link menu-link--secondary" href="/our-story" data-i18n="nav_about" onclick="closeMenu()">OUR STORY</a>
+    <div class="menu-divider"></div>
+    <div class="menu-utils">
+      <button class="menu-util" onclick="closeMenu();openAcc()" data-i18n="util_account">My Account</button>
+      <button class="menu-util" onclick="closeMenu();openSrv()" data-i18n="util_services">Services</button>
+      <button class="menu-util" onclick="closeMenu();openReq()" data-i18n="util_contact">Contact Us</button>
     </div>
-    <div class="nav-center">
-      <a class="nav-logo" href="/"><span class="nav-logo-main">AMBERRA</span><span class="nav-logo-sub">Jewelry</span></a>
-      <div class="nav-main-wrap"><div class="nav-main">
-        <a class="nl" href="/#colls" data-i18n="nav_collections">Collections</a>
-        <a class="nl" href="/rings" data-i18n="nav_rings">Rings</a>
-        <a class="nl" href="/earrings" data-i18n="nav_earrings">Earrings</a>
-        <a class="nl" href="/pendants" data-i18n="nav_pendants">Pendants</a>
-        <a class="nl" href="/bracelets" data-i18n="nav_bracelets">Bracelets</a>
-        <span class="nav-divider"></span>
-        <a class="nl" href="/#about" data-i18n="nav_about">Our Story</a>
-        <a class="nl" href="/#wholesale" data-i18n="nav_wholesale">Wholesale</a>
-        <a class="nl" href="/journal" data-i18n="nav_journal">Journal</a>
-      </div></div>
-    </div>
-    <div class="nav-lb-r">
-      <button class="nav-ico-btn" onclick="toggleWishView()">
-        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-        <span class="nav-badge" id="wish-badge">0</span>
-      </button>
-      <button class="nav-ico-btn" onclick="openAcc()">
-        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-      </button>
-      <a class="nav-ico-btn" href="/stores">
-        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      </a>
-      <button class="nav-ico-btn" onclick="openCart()">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-        <span class="nav-badge" id="cart-badge">0</span>
-      </button>
-    </div>
-  </div>
+  </nav>
 </div>
 
 
@@ -329,41 +296,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </video>
 </section>
 
-<!-- ══ COLLECTIONS GRID ═══════════════════════════════════════════════════ -->
-<section id="colls">
-  <div class="c-head">
-    <h2 class="s-title" style="font-size:clamp(28px,3vw,48px);font-weight:300">The Collection</h2>
-    <button class="c-link" onclick="navTo('/shop')">View All →</button>
-  </div>
-  <div class="c-grid">
-    <div class="cc vis" onclick="navTo('/rings')">
-      <div class="cc-img-wrap">
-        <span class="cc-badge bestseller">Bestseller</span>
-        <img src="images/rings/iris_silver.png" alt="Rings" loading="lazy">
-      </div>
-      <div class="cc-info"><span class="cc-cat">20 pieces · from $89</span><span class="cc-name">Rings</span><span class="cc-price">Baltic amber · 925 silver</span><span class="cc-cta">Shop now</span></div>
-    </div>
-    <div class="cc vis" onclick="navTo('/earrings')">
-      <div class="cc-img-wrap">
-        <span class="cc-badge new">New</span>
-        <img src="images/earrings/halo_green_rg.png" alt="Earrings" loading="lazy">
-      </div>
-      <div class="cc-info"><span class="cc-cat">45 pieces · from $79</span><span class="cc-name">Earrings</span><span class="cc-price">Studs, drops &amp; hoops</span><span class="cc-cta">Shop now</span></div>
-    </div>
-    <div class="cc vis" onclick="navTo('/pendants')">
-      <div class="cc-img-wrap">
-        <img src="images/pendants/IMG_1399.png" alt="Pendants" loading="lazy">
-      </div>
-      <div class="cc-info"><span class="cc-cat">8 pieces · from $99</span><span class="cc-name">Pendants</span><span class="cc-price">Chain included · 45 cm</span><span class="cc-cta">Shop now</span></div>
-    </div>
-    <div class="cc vis" onclick="navTo('/bracelets')">
-      <div class="cc-img-wrap">
-        <img src="images/bracelets/IMG_1566.png" alt="Bracelets" loading="lazy">
-      </div>
-      <div class="cc-info"><span class="cc-cat">19 pieces · from $89</span><span class="cc-name">Bracelets</span><span class="cc-price">Adjustable · XS – XL</span><span class="cc-cta">Shop now</span></div>
-    </div>
-  </div>
-</section>
+<!-- colls section removed -->
 
 <!-- ══ HERO ══════════════════════════════════════════════════════════════ -->
 <section id="hero" style="position:relative;overflow:hidden">
@@ -396,15 +329,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script type="module" src="/fluid-bg.js"></script>
 
 <!-- ══ BESTSELLERS ════════════════════════════════════════════════════════ -->
-<section id="bestsellers">
+<section id="bestsellers" style="display:none">
   <div class="bs-head">
     <h2 class="s-title">Bestselling <em>Pieces</em></h2>
     <a class="bs-all" href="/shop">View All Pieces &nbsp;→</a>
   </div>
 </section>
 
-<!-- ══ DIVIDER ════════════════════════════════════════════════════════════ -->
-<div style="max-width:120px;height:1px;background:var(--amber);margin:0 auto 0;opacity:.5"></div>
+<!-- divider removed -->
 
 <!-- ══ ABOUT TEASER ═══════════════════════════════════════════════════════ -->
 <section id="about">
@@ -505,7 +437,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="c-btns rv d4">
-    <a class="btn-s" href="/#wholesale">Learn More About Partnership</a>
+    <a class="btn-s" href="/our-story#wholesale">Learn More About Partnership</a>
     <a class="ws-wa-link" href="https://wa.me/6287853867120" target="_blank" rel="noopener noreferrer">or contact via WhatsApp</a>
   </div>
 </section>
@@ -783,7 +715,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="https://wa.me/6287853867120" target="_blank" rel="noopener noreferrer" data-i18n="fc_consultation">Consultation</a></li>
         <li><a href="https://wa.me/6287853867120" target="_blank" rel="noopener noreferrer" data-i18n="fc_gift">Gift Wrapping</a></li>
         <li><a href="https://wa.me/6287853867120" target="_blank" rel="noopener noreferrer" data-i18n="fc_custom">Custom Orders</a></li>
-        <li><a href="/#wholesale" data-i18n="nav_wholesale">Wholesale</a></li>
+        <li><a href="/our-story#wholesale" data-i18n="nav_wholesale">Wholesale</a></li>
       </ul>
     </div>
     <div>
@@ -1318,12 +1250,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span>Wishlist</span>
     <span class="mob-bar-badge" id="mob-wish-badge">0</span>
   </button>
-  <button class="mob-bar-btn" onclick="openMobNav()">
+  <button class="mob-bar-btn" onclick="openMenu()">
     <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     <span>Menu</span>
   </button>
 </div>
 
+<script type="module">import{animate,scroll,inView,stagger}from"https://cdn.jsdelivr.net/npm/motion@12/+esm";window.Motion={animate,scroll,inView,stagger};</script>
 <script src="/currency.js?v=20260331"></script>
 <script src="/lang.js?v=20260506"></script>
 <script src="/app.js?v=20260331"></script>

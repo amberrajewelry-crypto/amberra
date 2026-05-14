@@ -616,41 +616,9 @@ const HAS_HERO=!!document.getElementById('hero');
 const nav=document.getElementById('nav-shell');
 // Light sections: journal slides have white/light bg images
 const LIGHT_SECTIONS=['journal'];
-function updateNavColor(){
-  if(!nav)return;
-  const srvModal=document.getElementById('srv-modal');
-  if(srvModal&&srvModal.classList.contains('open')){
-    nav.classList.add('nav-over-light');return;
-  }
-  // While nav is over hero (dark media) — force white text
-  if(HAS_HERO&&!nav.classList.contains('solid')){
-    nav.classList.remove('nav-over-light');return;
-  }
-  const navBottom=nav.getBoundingClientRect().bottom;
-  let el=document.elementFromPoint(innerWidth/2,navBottom+4);
-  // Walk up DOM to find first element with a real background color
-  let isLight=false;
-  let cur=el;
-  while(cur&&cur!==document.documentElement){
-    const bg=getComputedStyle(cur).backgroundColor;
-    if(bg&&bg!=='rgba(0, 0, 0, 0)'&&bg!=='transparent'){
-      const m=bg.match(/\d+/g);
-      if(m){const r=+m[0],g=+m[1],b=+m[2];isLight=(r*299+g*587+b*114)/1000>160;}
-      break;
-    }
-    cur=cur.parentElement;
-  }
-  nav.classList.toggle('nav-over-light',isLight);
-}
-function updateNavSolid(){
-  if(!HAS_HERO){nav&&nav.classList.add('solid');return;}
-  nav&&nav.classList.toggle('solid',scrollY>80);
-}
-updateNavSolid();updateNavColor();
+// Nav stays transparent always — no solid/color logic needed
+// Keep scroll listener minimal for lang dropdown close
 window.addEventListener('scroll',()=>{
-  nav&&nav.classList.toggle('sc',scrollY>60);
-  updateNavSolid();updateNavColor();
-  document.querySelectorAll('.nl').forEach(n=>n.classList.remove('act'));
   closeLang();
 },{passive:true});
 
@@ -1024,17 +992,18 @@ function ckAccept(){
 }
 function ckReject(){localStorage.setItem('ck_choice','rejected');ckClose();}
 
-// ── MOBILE NAV ────────────────────────────────────────────────────────────
-function openMobNav(){
-  document.getElementById('mob-nav-overlay').classList.add('open');
-  document.getElementById('mob-nav-drawer').classList.add('open');
+// ── MENU OVERLAY ──────────────────────────────────────────────────────────
+function openMenu(){
+  document.getElementById('menu-overlay').style.display='block';
   document.body.style.overflow='hidden';
 }
-function closeMobNav(){
-  document.getElementById('mob-nav-overlay').classList.remove('open');
-  document.getElementById('mob-nav-drawer').classList.remove('open');
+function closeMenu(){
+  document.getElementById('menu-overlay').style.display='none';
   document.body.style.overflow='';
 }
+// Legacy aliases for backwards compatibility
+function openMobNav(){openMenu();}
+function closeMobNav(){closeMenu();}
 
 // ── MOB BAR BADGES ────────────────────────────────────────────────────────
 function updateMobBadges(){
