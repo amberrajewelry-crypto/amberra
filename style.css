@@ -1018,6 +1018,24 @@ footer{background:transparent;padding:80px 56px 48px;border-top:1px solid rgba(2
 .cta-link:hover{opacity:0.7}
 .cta-gold{color:var(--amber)}
 
+/* === REDESIGN: Product Showcase === */
+#products{position:relative;z-index:2}
+.prod-scroll{display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 48px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.prod-scroll::-webkit-scrollbar{display:none}
+.prod-card{flex:0 0 320px;scroll-snap-align:start;cursor:pointer;transition:transform 0.6s var(--ease-standard)}
+.prod-card:hover{transform:scale(1.03)}
+.prod-card img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+.prod-card-info{padding:16px 12px}
+.prod-card-name{font-family:var(--serif);font-size:16px;font-weight:300;color:var(--black)}
+.prod-card-cta{font-family:var(--sans);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);border-bottom:1px solid var(--amber);padding-bottom:2px;text-decoration:none;display:inline-block;margin-top:8px}
+.prod-progress{position:relative;height:1px;background:rgba(42,37,32,0.1)}
+.prod-progress-fill{height:1px;background:var(--amber);width:0%;transition:width 0.1s linear}
+@media(max-width:768px){
+  .prod-card{flex:0 0 80vw}
+  .prod-scroll{padding:0 20px}
+  .prod-progress{margin:24px 20px 0!important}
+}
+
 @media(prefers-reduced-motion:reduce){
   .hero-fade.on{animation:none!important;opacity:1!important}
   #scroll-hint{animation:none!important}

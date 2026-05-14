@@ -1163,6 +1163,53 @@ document.addEventListener('DOMContentLoaded',()=>{
   window.addEventListener('resize',alignPendants);
 });
 
+// ── PRODUCT SHOWCASE (index.html) ─────────────────────────────────────────
+function buildProductShowcase(products) {
+  const container = document.getElementById('prod-scroll')
+  if (!container || !products || !products.length) return
+  const items = products.filter(p => p.img).slice(0, 8)
+  container.innerHTML = items.map(p => `
+    <div class="prod-card" onclick="prodCardClick(${p.id})">
+      <img src="${p.img}" alt="${p.name}" loading="lazy" width="320" height="427">
+      <div class="prod-card-info">
+        <div class="prod-card-name">${p.name}</div>
+        <span class="prod-card-cta">DISCOVER</span>
+      </div>
+    </div>
+  `).join('')
+
+  const bar = document.querySelector('.prod-progress-fill')
+  if (bar) {
+    container.addEventListener('scroll', () => {
+      const pct = container.scrollLeft / (container.scrollWidth - container.clientWidth) * 100
+      bar.style.width = pct + '%'
+    }, { passive: true })
+  }
+}
+
+// On index.html, openDrawer is in shop.js which is not loaded — redirect to shop page instead
+function prodCardClick(id) {
+  if (typeof openDrawer === 'function') {
+    openDrawer(id)
+  } else {
+    location.href = '/shop?open=' + id
+  }
+}
+
+// Load products for homepage showcase
+(async function initHomeShowcase() {
+  const container = document.getElementById('prod-scroll')
+  if (!container) return
+  try {
+    const r = await fetch('/api/products')
+    if (!r.ok) throw new Error('HTTP ' + r.status)
+    const prods = await r.json()
+    buildProductShowcase(prods)
+  } catch (e) {
+    console.warn('Product showcase load failed', e)
+  }
+})()
+
 // Displacement morph scroll controller
 if (document.getElementById('morph-canvas')) {
   import('/displacement-morph.js').then(m => {
