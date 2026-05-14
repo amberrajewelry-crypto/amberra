@@ -1136,7 +1136,6 @@ function prodCardClick(id) {
     for (let f = 1; f <= 30; f++) {
       const i = new Image()
       i.src = `/images/editorial/frames/morph${m}_${String(f).padStart(3,'0')}.jpg`
-      i.onload = () => { loaded++ }
       frames.push(i)
     }
   }
@@ -1145,7 +1144,6 @@ function prodCardClick(id) {
   let lastFrame = -1
 
   function scrubOnScroll() {
-    if (loaded < TOTAL) return
     const edTop = editorial.offsetTop
     const edH = editorial.offsetHeight
     const scrolled = window.scrollY - edTop
