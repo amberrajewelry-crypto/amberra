@@ -1114,4 +1114,46 @@ function prodCardClick(id) {
   }
 })()
 
-// Displacement morph — removed, code preserved in displacement-morph.js
+// ── MOTION SCROLL ANIMATIONS ─────────────────────────────────────────────
+;(function initMotionEffects(){
+  const M = window.Motion
+  if (!M) return
+
+  // Editorial: parallax background shift on scroll
+  document.querySelectorAll('.ed-screen').forEach(screen => {
+    M.scroll(M.animate(screen, { backgroundPositionY: ['40%', '60%'] }, { easing: 'linear' }), {
+      target: screen, offset: ['start end', 'end start']
+    })
+  })
+
+  // Collections cards: stagger fade on enter
+  const colls = document.querySelector('#colls')
+  if (colls) {
+    M.inView(colls, () => {
+      M.animate(colls.querySelectorAll('.cc'), { opacity: [0, 1], y: [40, 0] }, {
+        delay: M.stagger(0.12), duration: 0.7, easing: [0.25, 0.46, 0.45, 0.94]
+      })
+    }, { amount: 0.2 })
+  }
+
+  // Footer: gentle fade up
+  const footer = document.querySelector('footer')
+  if (footer) {
+    M.inView(footer, () => {
+      M.animate(footer.querySelectorAll('.footer-cols > div'), { opacity: [0, 1], y: [24, 0] }, {
+        delay: M.stagger(0.1), duration: 0.6, easing: [0.25, 0.46, 0.45, 0.94]
+      })
+    }, { amount: 0.15 })
+  }
+
+  // Product showcase: fade in progress bar
+  const prodSection = document.getElementById('products')
+  if (prodSection) {
+    const bar = prodSection.querySelector('.prod-progress')
+    if (bar) {
+      M.inView(prodSection, () => {
+        M.animate(bar, { opacity: [0, 1] }, { duration: 0.8, delay: 0.3 })
+      }, { amount: 0.3 })
+    }
+  }
+})()
