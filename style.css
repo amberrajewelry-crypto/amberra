@@ -129,31 +129,13 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 @media(prefers-reduced-motion:reduce){.cc-cat,.cc-name,.cc-cta{opacity:1!important;transform:none!important;transition:none!important}}
 @media(max-width:900px){.c-grid{grid-template-columns:1fr 1fr}.cc-img-wrap{height:180px}.c-head{padding:40px 24px 24px}}
 
-/* ═══ EDITORIAL ═════════════════════════════════════════════════════════ */
-#ed{padding:0;background:transparent;overflow:hidden}
-.ed-wrap{display:grid;grid-template-columns:1fr;align-items:center;min-height:auto}
-.ed-model-wrap{position:relative;overflow:hidden;aspect-ratio:3/4;width:100%;
-  opacity:0;transform:translateX(20px);
-  transition:opacity 1.8s cubic-bezier(.4,0,.2,1),transform 1.8s cubic-bezier(.4,0,.2,1)}
-.ed-model-wrap.ed-on{opacity:1;transform:translateX(0)}
-.ed-model-wrap img{width:100%;height:100%;object-fit:cover;object-position:50% 42%;
-  filter:contrast(1.03) saturate(1.06);
-  transition:transform 1s ease}
-.ed-model-wrap:hover img{transform:scale(1.03)}
-.ed-model-tag{position:absolute;bottom:20px;left:24px;font-size:9px;letter-spacing:.32em;
-  color:rgba(255,255,255,.4);z-index:2;font-family:var(--sans);text-transform:uppercase}
-/* Left text column */
-.ed-text{padding:80px 56px 80px 72px;display:flex;flex-direction:column;justify-content:center;background:var(--white)}
-.ed-stats{display:flex;gap:40px;margin-top:48px;padding-top:40px;border-top:1px solid var(--mist)}
-.ed-stat{display:flex;flex-direction:column;gap:4px}
-.ed-num{font-family:var(--serif);font-size:clamp(48px,5vw,72px);font-weight:300;color:var(--charcoal)}
-.ed-lbl{font-size:13px;font-weight:100;letter-spacing:normal;text-transform:uppercase;color:#1f1f1f;font-family:var(--sans)}
-@media(max-width:900px){
-  #ed{padding:0}
-  .ed-wrap{grid-template-columns:1fr;min-height:auto}
-  .ed-model-wrap{aspect-ratio:1/1;min-height:0;-webkit-mask-image:linear-gradient(to bottom,transparent 0%,black 6%,black 88%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0%,black 6%,black 88%,transparent 100%)}
-  .ed-text{padding:48px 24px}
-}
+/* === REDESIGN: Editorial Scroll === */
+#editorial{position:relative;z-index:2}
+.ed-screen{height:100vh;position:relative;background-size:cover;background-position:center;display:flex;align-items:flex-end}
+.ed-overlay{position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(0,0,0,0.6))}
+.ed-text{position:relative;z-index:1;padding:0 48px 80px;max-width:600px}
+.ed-gap{height:80px;position:relative;z-index:0}
+@media(max-width:768px){.ed-text{padding:0 20px 60px}}
 
 /* ═══ TRYON ═════════════════════════════════════════════════════════════ */
 #tryon-sec{padding:96px 56px;background:var(--cream)}
@@ -860,11 +842,6 @@ footer{background:transparent;padding:80px 56px 48px;border-top:1px solid rgba(2
   /* Collections grid mobile — 2 cols */
   .c-grid{grid-template-columns:repeat(2,1fr);gap:8px}
 
-  /* Editorial mobile — photo first, then text */
-  .ed-wrap{grid-template-columns:1fr}
-  .ed-model-wrap{min-height:0;aspect-ratio:4/3;order:-1}
-  .ed-text{padding:40px 24px 48px}
-
   /* Journal cards mobile */
   #journal .j-grid{grid-template-columns:1fr}
 
@@ -977,14 +954,7 @@ footer{background:transparent;padding:80px 56px 48px;border-top:1px solid rgba(2
 .founder-strip{background:rgba(6,2,0,0.55)}
 .founder-strip p,.founder-strip span,.founder-strip a{color:rgba(255,255,255,.8)!important}
 .founder-strip a[href]{color:rgba(255,255,255,.55)!important;border-bottom-color:rgba(255,255,255,.4)!important}
-#ed{background:transparent}
-.ed-text{background:transparent}
-.ed-text .s-lbl{color:var(--amber)}
-.ed-text .s-title{color:var(--white)}
-.ed-text .s-body{color:rgba(255,255,255,.8)}
-.ed-stats{border-top-color:rgba(255,255,255,.12)}
-.ed-num{color:var(--amber3)}
-.ed-lbl{color:rgba(255,255,255,.6)}
+#editorial{background:transparent}
 #wholesale{background:transparent}
 #wholesale .s-lbl{color:var(--amber)}
 #wholesale .s-title{color:var(--white)}
@@ -1005,7 +975,7 @@ footer{background:transparent;padding:80px 56px 48px;border-top:1px solid rgba(2
 
 /* === CANVAS STACKING FIX: canvas z:1, page sections z:2 === */
 /* Only page sections: modals/overlays keep their own position:fixed + z-index */
-#colls,#hero,#about,#bestsellers,.founder-strip,#ed,#wholesale,#journal,#contact,footer{
+#colls,#hero,#about,#bestsellers,.founder-strip,#editorial,#wholesale,#journal,#contact,footer{
   position:relative;z-index:2
 }
 
