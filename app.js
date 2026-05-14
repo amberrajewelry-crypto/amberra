@@ -1119,12 +1119,7 @@ function prodCardClick(id) {
   const M = window.Motion
   if (!M) return
 
-  // Editorial: parallax background shift on scroll
-  document.querySelectorAll('.ed-screen').forEach(screen => {
-    M.scroll(M.animate(screen, { backgroundPositionY: ['40%', '60%'] }, { easing: 'linear' }), {
-      target: screen, offset: ['start end', 'end start']
-    })
-  })
+  // Editorial: sticky stack — no Motion needed, CSS handles it
 
   // Collections cards: stagger fade on enter
   const colls = document.querySelector('#colls')
