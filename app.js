@@ -1146,14 +1146,14 @@ function prodCardClick(id) {
 
   function scrubOnScroll() {
     if (loaded < TOTAL) return
-    const rect = editorial.getBoundingClientRect()
+    const edTop = editorial.offsetTop
     const edH = editorial.offsetHeight
-    const scrolled = -rect.top
+    const scrolled = window.scrollY - edTop
     const progress = Math.max(0, Math.min(1, scrolled / edH))
 
-    // Show/hide scrub overlay
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-      wrap.style.opacity = 1
+    // Show scrub when in editorial zone
+    if (scrolled > -window.innerHeight * 0.5 && scrolled < edH) {
+      wrap.style.opacity = progress < 0.01 ? Math.min(1, (scrolled + window.innerHeight * 0.5) / (window.innerHeight * 0.3)) : 1
       wrap.style.pointerEvents = 'auto'
     } else {
       wrap.style.opacity = 0
