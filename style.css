@@ -358,31 +358,13 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   .journal-grid{grid-template-columns:1fr;gap:40px}
 }
 
-/* ═══ CONTACT ═══════════════════════════════════════════════════════════ */
-#contact{padding:160px 56px;background:var(--white);text-align:center}
-.c-btns{display:flex;gap:16px;align-items:center;justify-content:center;margin-top:52px;flex-wrap:wrap}
-.ws-wa-link{font-family:var(--sans);font-size:9px;letter-spacing:.12em;color:var(--gray);text-decoration:none;border-bottom:1px solid transparent;transition:color .3s,border-color .3s}
-.ws-wa-link:hover{color:var(--charcoal);border-bottom-color:var(--stone)}
-
-/* ═══ FOOTER ════════════════════════════════════════════════════════════ */
-footer{background:transparent;padding:80px 56px 48px;border-top:1px solid rgba(255,255,255,.04)}
-.ft{display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:56px;margin-bottom:60px}
-.fb{font-family:var(--serif);font-size:26px;letter-spacing:.4em;color:var(--white);margin-bottom:14px}
-.fd{font-size:11px;color:var(--white);line-height:1.85;margin-bottom:24px}
-.fs{display:flex;gap:20px;align-items:center}
-.fs a{display:flex;align-items:center;color:rgba(255,255,255,.3);text-decoration:none;transition:color .3s}
-.fs a:hover{color:var(--amber3)}
-.fs a svg{display:block}
-.fc-t{font-size:12px;letter-spacing:0.7px;text-transform:uppercase;color:var(--amber);margin-bottom:22px;display:block;font-weight:700;font-family:var(--sans)}
-.fc-l{list-style:none;display:flex;flex-direction:column;gap:11px}
-.fc-l li a,.fc-l li button{font-size:14px;font-weight:400;letter-spacing:0.7px;color:var(--white);transition:color .3s;display:block;cursor:pointer;background:none;border:none;font-family:var(--sans);text-align:left;padding:0}
-.fc-l li a:hover,.fc-l li button:hover{color:rgba(255,255,255,.7)}
-.fb-bot{display:flex;justify-content:space-between;padding-top:36px;border-top:1px solid rgba(255,255,255,.05);flex-wrap:wrap;gap:16px}
-.fcp{font-size:10px;color:var(--white)}
-.fleg{display:flex;gap:24px}
-.fleg a{font-size:10px;color:var(--white);transition:color .3s}
-.fleg a:hover{color:rgba(255,255,255,.45)}
-@media(max-width:900px){footer{padding:60px 24px 40px}.ft{grid-template-columns:1fr 1fr;gap:36px}}
+/* ═══ CONTACT + FOOTER (redesign) ═══════════════════════════════════════ */
+footer a:hover{opacity:1!important}
+@media(max-width:768px){
+  #contact{padding:80px 20px!important}
+  footer{padding:80px 20px 60px!important}
+  .footer-cols{flex-direction:column!important;gap:40px!important;align-items:center;text-align:center}
+}
 
 /* ═══ DRAWER ════════════════════════════════════════════════════════════ */
 #drawer{position:fixed;inset:0;z-index:800;display:none}
@@ -626,24 +608,6 @@ footer{background:transparent;padding:80px 56px 48px;border-top:1px solid rgba(2
   .founder-strip>div:nth-child(3){display:none}
 }
 
-/* ═══ WHOLESALE ══════════════════════════════════════════════════════════ */
-#wholesale{padding:160px 56px;background:var(--cream);text-align:center}
-.ws-intro{max-width:580px;margin:0 auto 64px}
-.ws-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:860px;margin:0 auto 52px}
-.ws-tier{background:var(--white);padding:40px 24px;text-align:center}
-.ws-tier-min{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#000;margin-bottom:12px;display:block}
-.ws-tier-qty{font-family:var(--serif);font-size:48px;color:var(--charcoal);display:block;line-height:1;margin-bottom:10px}
-.ws-tier-disc{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:500;display:block;margin-bottom:20px}
-.ws-tier-note{font-size:13px;color:#000;line-height:1.7}
-.ws-tier.ws-feat{background:var(--white);border:2px solid var(--amber)}
-.ws-feat .ws-tier-min,.ws-feat .ws-tier-qty,.ws-feat .ws-tier-note{color:var(--charcoal)}
-.ws-feat .ws-tier-qty{color:var(--charcoal)}
-.ws-perks{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin:0 auto 64px}
-.ws-perk{background:var(--silk);padding:32px 28px;text-align:left}
-.ws-perk-icon{font-size:18px;color:var(--amber);margin-bottom:14px;display:block}
-.ws-perk-title{font-family:var(--serif);font-size:20px;color:var(--charcoal);margin-bottom:10px}
-.ws-perk-body{font-size:14px;color:#000;line-height:1.9}
-@media(max-width:900px){#wholesale{padding:64px 24px}.ws-tiers,.ws-perks{grid-template-columns:1fr}.ws-tiers{gap:16px}}
 
 /* ═══ LEGAL MODAL ════════════════════════════════════════════════════════ */
 #legal-modal{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;background:rgba(12,12,12,.7);backdrop-filter:blur(8px);padding:24px}
@@ -729,11 +693,7 @@ footer{background:transparent;padding:80px 56px 48px;border-top:1px solid rgba(2
 
   /* About — cinematic (no old ab-pillars) */
 
-  /* Wholesale */
-  .ws-tiers{grid-template-columns:1fr}
-
   /* Footer */
-  .ft{grid-template-columns:1fr}
 
   /* Chat FAB — above mob-bar */
   .chat-pop{width:calc(100vw - 32px);right:16px;bottom:76px}
@@ -781,17 +741,10 @@ footer{background:transparent;padding:80px 56px 48px;border-top:1px solid rgba(2
   /* Nav height correction — mobile nav is only 56px */
   :root{--nav-h:56px}
 
-  /* Contact section */
-  #contact{padding:64px 20px}
-
   /* Collections text: keep visible since rv observer may fire too late on slow scroll */
   .cc-cat,.cc-name,.cc-cta{transition-duration:.4s}
 
   /* About section — cinematic full-bleed, no padding override needed */
-
-  /* Wholesale */
-  #wholesale{padding:56px 20px}
-  .ws-perks{grid-template-columns:1fr 1fr}
 
   /* Try-on items → 3 cols on mobile (not 4) */
   .tryon-items{grid-template-columns:repeat(3,1fr)}
@@ -805,18 +758,6 @@ footer{background:transparent;padding:80px 56px 48px;border-top:1px solid rgba(2
 
   /* Wise modal */
   #wise-modal{padding:36px 20px 28px}
-
-  /* Footer bottom */
-  .fb-bot{flex-direction:column;gap:12px;align-items:flex-start}
-  .fleg{gap:16px;flex-wrap:wrap}
-  footer{padding:48px 20px 32px}
-  .ft{grid-template-columns:1fr;gap:28px}
-
-  /* About — cinematic video fills viewport, no old ab-video-wrap needed */
-
-  /* Buttons spacing in contact */
-  .c-btns{gap:10px}
-  .c-btns .btn{font-size:9px;padding:12px 20px;letter-spacing:.15em}
 
   /* Cart/drawer improvements */
   .d-body{padding:16px}
@@ -870,26 +811,11 @@ footer{background:transparent;padding:80px 56px 48px;border-top:1px solid rgba(2
 #about{background:transparent}
 /* founder-strip: background and text handled via inline styles in HTML */
 #editorial{background:transparent}
-#wholesale{background:transparent}
-#wholesale .s-lbl{color:var(--amber)}
-#wholesale .s-title{color:var(--white)}
-#wholesale .s-body{color:rgba(255,255,255,.8)}
-.ws-tier{background:rgba(6,2,0,0.65);border:1px solid rgba(255,255,255,.1)}
-.ws-tier.ws-feat{background:rgba(6,2,0,0.75);border:2px solid var(--amber)}
-.ws-tier-min,.ws-tier-qty,.ws-tier-note,.ws-feat .ws-tier-min,.ws-feat .ws-tier-qty,.ws-feat .ws-tier-note{color:rgba(255,255,255,.85)}
-.ws-tier-qty{color:var(--amber3)!important}
-.ws-perk{background:rgba(6,2,0,0.55)}
-.ws-perk-title{color:var(--white)}
-.ws-perk-body{color:rgba(255,255,255,.7)}
-#contact{background:transparent}
-#contact .s-lbl{color:var(--amber)}
-#contact .s-title{color:var(--white)}
-#contact .s-body{color:rgba(255,255,255,.75);font-size:16px}
 /* EOF */
 
 /* === CANVAS STACKING FIX: canvas z:1, page sections z:2 === */
 /* Only page sections: modals/overlays keep their own position:fixed + z-index */
-#colls,#hero,#about,#bestsellers,.founder-strip,#editorial,#wholesale,#journal,#contact,footer{
+#colls,#hero,#about,#bestsellers,.founder-strip,#editorial,#journal,#contact,footer{
   position:relative;z-index:2
 }
 
