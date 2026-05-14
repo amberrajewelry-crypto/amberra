@@ -1047,14 +1047,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     },{rootMargin:'200px'});
     abIo.observe(abVid);
   }
-  // Editorial model reveal
-  const edm=document.querySelector('.ed-model-wrap');
-  if(edm){
-    const io=new IntersectionObserver(es=>{
-      if(es[0].isIntersecting){edm.classList.add('ed-on');io.disconnect();}
-    },{threshold:.15});
-    io.observe(edm);
-  }
   // Align PENDANTS link directly under JEWELRY text in logo
   function alignPendants(){
     const sub=document.querySelector('.nav-logo-sub');
