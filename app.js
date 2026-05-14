@@ -1114,31 +1114,4 @@ function prodCardClick(id) {
   }
 })()
 
-// Displacement morph scroll controller
-if (document.getElementById('morph-canvas')) {
-  import('/displacement-morph.js').then(m => {
-    m.initDisplacementMorph().then(morph => {
-      if (!morph) return
-      const gaps = document.querySelectorAll('.ed-gap')
-      if (!gaps.length) return
-
-      function onScroll() {
-        let found = false
-        gaps.forEach((gap, i) => {
-          const rect = gap.getBoundingClientRect()
-          const viewH = innerHeight
-          const start = rect.top - viewH * 0.3
-          const end = rect.bottom + viewH * 0.3
-          if (start < 0 && end > 0) {
-            const progress = Math.abs(start) / (Math.abs(start) + end)
-            morph.show(i, progress)
-            found = true
-          }
-        })
-        if (!found) morph.hide()
-      }
-
-      window.addEventListener('scroll', onScroll, { passive: true })
-    })
-  }).catch(()=>{}) // silently fail if WebGL not supported
-}
+// Displacement morph — removed, code preserved in displacement-morph.js
