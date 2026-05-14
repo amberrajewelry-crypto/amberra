@@ -1114,12 +1114,101 @@ function prodCardClick(id) {
   }
 })()
 
+// ── EDITORIAL SCROLL SCRUB — 90 frames ──────────────────────────────────
+;(function initScrollScrub(){
+  const editorial = document.getElementById('editorial')
+  const wrap = document.getElementById('ed-scrub-wrap')
+  const img = document.getElementById('ed-scrub-img')
+  if (!editorial || !wrap || !img) return
+
+  const TOTAL = 90
+  const frames = []
+  let loaded = 0
+  const slides = [
+    { label: 'BALTIC AMBER JEWELRY', heading: 'Forty million years in the making', cta: false },
+    { label: 'THE CRAFT', heading: 'Shaped by artisan hands', cta: false },
+    { label: 'THE CREATION', heading: 'Where nature meets craft', cta: false },
+    { label: 'THE COLLECTION', heading: 'Wear your story', cta: true }
+  ]
+
+  // Preload frames
+  for (let m = 1; m <= 3; m++) {
+    for (let f = 1; f <= 30; f++) {
+      const i = new Image()
+      i.src = `/images/editorial/frames/morph${m}_${String(f).padStart(3,'0')}.jpg`
+      i.onload = () => { loaded++ }
+      frames.push(i)
+    }
+  }
+
+  let currentSlide = -1
+  let lastFrame = -1
+
+  function scrubOnScroll() {
+    if (loaded < TOTAL) return
+    const rect = editorial.getBoundingClientRect()
+    const edH = editorial.offsetHeight
+    const scrolled = -rect.top
+    const progress = Math.max(0, Math.min(1, scrolled / edH))
+
+    // Show/hide scrub overlay
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      wrap.style.opacity = 1
+      wrap.style.pointerEvents = 'auto'
+    } else {
+      wrap.style.opacity = 0
+      wrap.style.pointerEvents = 'none'
+      return
+    }
+
+    // Fade out at end
+    if (progress > 0.9) {
+      wrap.style.opacity = 1 - (progress - 0.9) / 0.1
+    }
+
+    // Map to frame
+    const frameIdx = Math.min(TOTAL - 1, Math.max(0, Math.floor(progress * TOTAL)))
+    if (frameIdx !== lastFrame) {
+      lastFrame = frameIdx
+      img.src = frames[frameIdx].src
+    }
+
+    // Text
+    const section = progress * 4
+    const slideIdx = Math.min(3, Math.floor(section))
+    const local = section - slideIdx
+    const inTransition = local > 0.7 && slideIdx < 3
+    const textEl = document.getElementById('ed-scrub-text')
+
+    if (inTransition) {
+      textEl.style.opacity = 0
+      textEl.style.transform = 'translateY(-20px)'
+    } else {
+      textEl.style.opacity = 1
+      textEl.style.transform = 'translateY(0)'
+    }
+
+    if (slideIdx !== currentSlide && !inTransition) {
+      currentSlide = slideIdx
+      const s = slides[slideIdx]
+      document.getElementById('ed-scrub-label').textContent = s.label
+      document.getElementById('ed-scrub-heading').textContent = s.heading
+      document.getElementById('ed-scrub-cta').style.display = s.cta ? 'inline-block' : 'none'
+
+      document.querySelectorAll('.ed-dot').forEach((d, i) => {
+        d.style.background = i === slideIdx ? 'rgba(201,168,50,0.8)' : 'rgba(255,255,255,0.15)'
+        d.style.transform = i === slideIdx ? 'scale(1.8)' : 'scale(1)'
+      })
+    }
+  }
+
+  window.addEventListener('scroll', scrubOnScroll, { passive: true })
+})()
+
 // ── MOTION SCROLL ANIMATIONS ─────────────────────────────────────────────
 ;(function initMotionEffects(){
   const M = window.Motion
   if (!M) return
-
-  // Editorial: sticky stack — no Motion needed, CSS handles it
 
   // Collections cards: stagger fade on enter
   const colls = document.querySelector('#colls')

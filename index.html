@@ -302,37 +302,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 <script type="module" src="/fluid-bg.js"></script>
 
-<!-- ══ EDITORIAL SCROLL ══════════════════════════════════════════════════ -->
-<section id="editorial">
-  <div class="ed-screen" style="background-image:url('/images/editorial/amber-raw.webp')">
-    <div class="ed-overlay"></div>
-    <div class="ed-text rv">
-      <h2 class="heading-section" style="color:#fff" data-i18n="ed1_h">Forty million years in the making</h2>
-    </div>
+<!-- ══ EDITORIAL SCROLL SCRUB — 90 frames, scroll-driven ═════════════════ -->
+<div id="ed-scrub-wrap" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:3;pointer-events:none;opacity:0;transition:opacity 0.3s">
+  <img id="ed-scrub-img" src="" alt="" style="width:100%;height:100%;object-fit:cover">
+  <div style="position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(0,0,0,0.5))"></div>
+  <div id="ed-scrub-text" style="position:absolute;bottom:80px;left:48px;z-index:2;max-width:500px;transition:opacity 0.5s ease,transform 0.5s ease">
+    <div id="ed-scrub-label" class="label" style="color:rgba(255,255,255,0.35);margin-bottom:12px">BALTIC AMBER JEWELRY</div>
+    <h2 id="ed-scrub-heading" class="heading-section" style="color:#fff">Forty million years in the making</h2>
+    <a id="ed-scrub-cta" href="/shop" class="cta-link" style="color:rgba(255,255,255,0.8);margin-top:24px;display:none" data-i18n="ed4_cta">EXPLORE THE COLLECTION</a>
   </div>
-
-  <div class="ed-screen" style="background-image:url('/images/editorial/artisan-hands.webp')">
-    <div class="ed-overlay"></div>
-    <div class="ed-text rv">
-      <h2 class="heading-section" style="color:#fff" data-i18n="ed2_h">Shaped by artisan hands</h2>
-    </div>
+  <div id="ed-scrub-dots" style="position:fixed;right:32px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:14px;z-index:4">
+    <div class="ed-dot" style="width:6px;height:6px;border-radius:50%;background:rgba(201,168,50,0.8);transform:scale(1.8);transition:all 0.3s"></div>
+    <div class="ed-dot" style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);transition:all 0.3s"></div>
+    <div class="ed-dot" style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);transition:all 0.3s"></div>
+    <div class="ed-dot" style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);transition:all 0.3s"></div>
   </div>
-
-  <div class="ed-screen" style="background-image:url('/images/editorial/product-hero.webp')">
-    <div class="ed-overlay"></div>
-    <div class="ed-text rv">
-      <h2 class="heading-section" style="color:#fff" data-i18n="ed3_h">Where nature meets craft</h2>
-    </div>
-  </div>
-
-  <div class="ed-screen" style="background-image:url('/images/editorial/model-editorial.webp')">
-    <div class="ed-overlay"></div>
-    <div class="ed-text rv">
-      <h2 class="heading-section" style="color:#fff" data-i18n="ed4_h">Wear your story</h2>
-      <a href="/shop" class="cta-link" style="color:rgba(255,255,255,0.8);margin-top:24px;display:inline-block" data-i18n="ed4_cta">EXPLORE THE COLLECTION</a>
-    </div>
-  </div>
-</section>
+</div>
+<section id="editorial" style="height:600vh;position:relative;z-index:4"></section>
 
 <!-- ══ PRODUCT SHOWCASE ══════════════════════════════════════════════════ -->
 <section id="products" style="background:var(--cream);padding:120px 0;position:relative;z-index:2">

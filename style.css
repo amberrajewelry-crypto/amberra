@@ -129,14 +129,8 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 @media(prefers-reduced-motion:reduce){.cc-cat,.cc-name,.cc-cta{opacity:1!important;transform:none!important;transition:none!important}}
 @media(max-width:900px){.c-grid{grid-template-columns:1fr 1fr}.cc-img-wrap{height:180px}.c-head{padding:40px 24px 24px}}
 
-/* === Editorial Scroll — sticky stack reveal === */
-#editorial{position:relative;z-index:4;height:400vh}
-.ed-screen{height:100vh;position:sticky;top:0;background-size:cover;background-position:center;display:flex;align-items:flex-end}
-.ed-screen:nth-child(1){z-index:1}
-.ed-screen:nth-child(2){z-index:2}
-.ed-screen:nth-child(3){z-index:3}
-.ed-screen:nth-child(4){z-index:4}
-.ed-overlay{position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(0,0,0,0.6))}
+/* === Editorial Scroll Scrub — 90 frames === */
+#editorial{position:relative;z-index:4}
 .ed-text{position:relative;z-index:1;padding:0 48px 80px;max-width:600px}
 @media(max-width:768px){.ed-text{padding:0 20px 60px}}
 
