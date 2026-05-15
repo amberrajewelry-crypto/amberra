@@ -846,6 +846,31 @@ footer a:hover{opacity:1!important}
 
 /* product showcase removed */
 
+/* === BVLGARI-STYLE SECTIONS — MOBILE === */
+@media(max-width:768px){
+  /* Collections split: stack vertically */
+  section > div[style*="grid-template-columns:1fr 1fr"]{
+    grid-template-columns:1fr!important;min-height:auto!important
+  }
+  section > div[style*="grid-template-columns:1fr 1fr"] > div[style*="padding:80px 64px"]{
+    padding:48px 24px!important
+  }
+  /* Brand stats: wrap on small screens */
+  div[style*="justify-content:center;gap:64px"]{
+    flex-wrap:wrap!important;gap:32px 48px!important
+  }
+  /* Footer columns: 2x2 grid on mobile */
+  div[style*="grid-template-columns:repeat(4,1fr)"]{
+    grid-template-columns:1fr 1fr!important;gap:32px 24px!important
+  }
+  /* Footer bottom bar: stack */
+  div[style*="justify-content:space-between"][style*="padding-top:24px"]{
+    flex-direction:column!important;gap:16px!important;align-items:center!important
+  }
+  /* Newsletter input */
+  div[style*="max-width:400px;margin:0 auto"] input{font-size:14px!important}
+}
+
 @media(prefers-reduced-motion:reduce){
   .hero-fade.on{animation:none!important;opacity:1!important}
   #scroll-hint{animation:none!important}
