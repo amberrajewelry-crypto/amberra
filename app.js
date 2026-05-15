@@ -1114,41 +1114,36 @@ function prodCardClick(id) {
   }
 })()
 
-// ── EDITORIAL SCROLL SCRUB — 484 frames (4 morphs × 121) ────────────────
+// ── EDITORIAL SCROLL SCRUB — single continuous video, 285 frames ─────────
 ;setTimeout(function initScrollScrub(){
   const editorial = document.getElementById('editorial')
   const wrap = document.getElementById('ed-scrub-wrap')
   const img = document.getElementById('ed-scrub-img')
-  const img2 = document.getElementById('ed-scrub-img2')
   if (!editorial || !wrap || !img) return
 
-  const FPM = 121 // frames per morph
-  const BLEND = 15 // crossfade zone: last/first N frames at morph boundaries
-  const MORPHS = ['morph1','morph2','morph3','morph4']
-  const TOTAL = FPM * MORPHS.length // 484
+  const TOTAL = 285
+  const BATCH = 60 // lazy-load in batches of 60
   const frames = new Array(TOTAL)
-  const loaded = new Uint8Array(MORPHS.length)
+  const loadedTo = {v: 0}
   const slides = [
-    { label: 'BALTIC AMBER', heading: 'Forty million years captured in stone', dark: false, cta: false },
-    { label: 'THE ALCHEMY', heading: 'From ancient resin, a gem is born', dark: false, cta: false },
-    { label: 'THE CRAFT', heading: 'Shaped by artisan hands', dark: true, cta: false },
-    { label: 'THE COLLECTION', heading: 'Wear your story', dark: true, cta: true }
+    { at: 0,    label: 'BALTIC AMBER', heading: 'Forty million years captured in stone', dark: false, cta: false },
+    { at: 0.28, label: 'THE ALCHEMY', heading: 'From ancient resin, a gem is born', dark: false, cta: false },
+    { at: 0.55, label: 'THE CRAFT', heading: 'Shaped by artisan hands', dark: true, cta: false },
+    { at: 0.80, label: 'THE COLLECTION', heading: 'Wear your story', dark: true, cta: true }
   ]
 
-  function loadMorph(mi) {
-    if (mi < 0 || mi >= MORPHS.length || loaded[mi]) return
-    loaded[mi] = 1
-    const base = mi * FPM
-    for (let f = 1; f <= FPM; f++) {
+  function loadBatch(from) {
+    if (from >= TOTAL || from < loadedTo.v) return
+    const end = Math.min(TOTAL, from + BATCH)
+    for (let f = from; f < end; f++) {
       const i = new Image()
-      i.src = `/images/editorial/frames-v2/${MORPHS[mi]}_${String(f).padStart(3,'0')}.webp?v=5`
-      frames[base + f - 1] = i
+      i.src = `/images/editorial/frames-v2/frame_${String(f + 1).padStart(4,'0')}.webp?v=6`
+      frames[f] = i
     }
-    loaded[mi] = 2
+    loadedTo.v = end
   }
 
-  loadMorph(0)
-  loadMorph(1)
+  loadBatch(0)
 
   let currentSlide = -1
   let lastFrame = -1
@@ -1173,57 +1168,30 @@ function prodCardClick(id) {
     }
 
     const frameIdx = Math.min(TOTAL - 1, Math.max(0, Math.floor(progress * TOTAL)))
-    const currentMorph = Math.min(MORPHS.length - 1, Math.floor(frameIdx / FPM))
-    loadMorph(currentMorph)
-    loadMorph(currentMorph + 1)
+
+    // Lazy-load next batch
+    if (frameIdx + BATCH > loadedTo.v) loadBatch(loadedTo.v)
 
     if (frameIdx !== lastFrame && frames[frameIdx]) {
       lastFrame = frameIdx
       img.src = frames[frameIdx].src
-
-      // Scroll-driven morph transitions: zoom + blur + brightness flash
-      const localFrame = frameIdx % FPM
-      const ZONE = 18 // transition zone in frames
-      const atEnd = localFrame >= FPM - ZONE && currentMorph < MORPHS.length - 1
-      const atStart = localFrame < ZONE && currentMorph > 0
-
-      if (atEnd) {
-        // Leaving current morph: zoom in + blur + brightness flash
-        const t = (localFrame - (FPM - ZONE)) / ZONE // 0→1
-        const scale = 1 + t * 0.35
-        const blur = t * 12
-        const brightness = 1 + t * 0.8
-        img.style.transform = `scale(${scale})`
-        img.style.filter = `blur(${blur}px) brightness(${brightness})`
-        if (img2) img2.style.opacity = 0
-      } else if (atStart) {
-        // Entering new morph: zoom out from blur + brightness settles
-        const t = localFrame / ZONE // 0→1
-        const scale = 1.35 - t * 0.35
-        const blur = 12 - t * 12
-        const brightness = 1.8 - t * 0.8
-        img.style.transform = `scale(${scale})`
-        img.style.filter = `blur(${blur}px) brightness(${brightness})`
-        if (img2) img2.style.opacity = 0
-      } else {
-        img.style.transform = 'scale(1)'
-        img.style.filter = 'none'
-        if (img2) img2.style.opacity = 0
-      }
     }
 
-    // Text — 4 sections
-    const section = progress * 4
-    const slideIdx = Math.min(3, Math.floor(section))
-    const local = section - slideIdx
-    const inTransition = local > 0.75 && slideIdx < 3
+    // Text overlays — switch at defined progress points
     const textEl = document.getElementById('ed-scrub-text')
     const labelEl = document.getElementById('ed-scrub-label')
     const headEl = document.getElementById('ed-scrub-heading')
     const ctaEl = document.getElementById('ed-scrub-cta')
     const gradEl = wrap.querySelector('.ed-scrub-grad')
 
-    if (inTransition) {
+    let slideIdx = 0
+    for (let i = slides.length - 1; i >= 0; i--) {
+      if (progress >= slides[i].at) { slideIdx = i; break }
+    }
+
+    // Fade text during transitions (near slide change points)
+    const nextSlide = slides[slideIdx + 1]
+    if (nextSlide && progress > nextSlide.at - 0.04 && progress < nextSlide.at + 0.02) {
       textEl.style.opacity = 0
       textEl.style.transform = 'translateY(-20px)'
     } else {
@@ -1231,14 +1199,13 @@ function prodCardClick(id) {
       textEl.style.transform = 'translateY(0)'
     }
 
-    if (slideIdx !== currentSlide && !inTransition) {
+    if (slideIdx !== currentSlide) {
       currentSlide = slideIdx
       const s = slides[slideIdx]
       labelEl.textContent = s.label
       headEl.textContent = s.heading
       ctaEl.style.display = s.cta ? 'inline-block' : 'none'
 
-      // Dark text on white background (morphs 3-4)
       if (s.dark) {
         labelEl.style.color = 'rgba(42,37,32,0.45)'
         headEl.style.color = 'var(--charcoal)'
