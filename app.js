@@ -849,7 +849,7 @@ function chatSend(text){
   setTimeout(()=>{
     typing.style.display='none';
     const key=Object.keys(chatAnswers).find(k=>msg.toLowerCase().includes(k));
-    addMsg(key?chatAnswers[key]:`Thank you for your question! Our team in Bali is happy to help. Please email us at amberrajewelry@gmail.com`,'bot');
+    addMsg(key?chatAnswers[key]:`Thank you for your question! Our team in Bali is happy to help. Please email us at hello@amberrajewelry.com`,'bot');
   },1200);
 }
 function addMsg(text,type){
@@ -882,11 +882,11 @@ const legalContent={
     <h3>Data Sharing</h3>
     <p>We do not sell, trade, or transfer your personal information to third parties. We use the following trusted service providers: Resend (email delivery), PostHog (analytics), Sentry (error monitoring), Vercel (hosting), Airtable (product catalog).</p>
     <h3>Data Retention</h3>
-    <p>Inquiry data is retained for up to 2 years. You may request deletion at any time by emailing us at amberrajewelry@gmail.com.</p>
+    <p>Inquiry data is retained for up to 2 years. You may request deletion at any time by emailing us at hello@amberrajewelry.com.</p>
     <h3>Your Rights</h3>
-    <p>You have the right to access, correct, or delete your personal data. To exercise these rights, contact us at amberrajewelry@gmail.com.</p>
+    <p>You have the right to access, correct, or delete your personal data. To exercise these rights, contact us at hello@amberrajewelry.com.</p>
     <h3>Contact</h3>
-    <p>AMBERRA · Bali, Indonesia · amberrajewelry@gmail.com</p>`,
+    <p>AMBERRA · Bali, Indonesia · hello@amberrajewelry.com</p>`,
 
   terms:`
     <h3>Terms of Use</h3>
@@ -905,7 +905,7 @@ const legalContent={
     <h3>Governing Law</h3>
     <p>These terms are governed by the laws of Indonesia. Any disputes shall be resolved in the courts of Bali, Indonesia.</p>
     <h3>Contact</h3>
-    <p>AMBERRA · Bali, Indonesia · amberrajewelry@gmail.com</p>`,
+    <p>AMBERRA · Bali, Indonesia · hello@amberrajewelry.com</p>`,
 
   cookies:`
     <h3>Cookie Policy</h3>
@@ -926,7 +926,7 @@ const legalContent={
     <h3>Third-Party Services</h3>
     <p>PostHog (analytics) and Sentry (error monitoring) may set their own cookies. Please refer to their respective privacy policies for details.</p>
     <h3>Contact</h3>
-    <p>Questions about our cookie use? Email us at amberrajewelry@gmail.com</p>`
+    <p>Questions about our cookie use? Email us at hello@amberrajewelry.com</p>`
 };
 
 let currentLegalTab='privacy';
@@ -1068,51 +1068,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 
 // ── PRODUCT SHOWCASE (index.html) ─────────────────────────────────────────
-function buildProductShowcase(products) {
-  const container = document.getElementById('prod-scroll')
-  if (!container || !products || !products.length) return
-  const items = products.filter(p => p.img).slice(0, 8)
-  container.innerHTML = items.map(p => `
-    <div class="prod-card" onclick="prodCardClick(${p.id})">
-      <img src="${p.img}" alt="${p.name}" loading="lazy" width="320" height="427">
-      <div class="prod-card-info">
-        <div class="prod-card-name">${p.name}</div>
-        <span class="prod-card-cta">DISCOVER</span>
-      </div>
-    </div>
-  `).join('')
-
-  const bar = document.querySelector('.prod-progress-fill')
-  if (bar) {
-    container.addEventListener('scroll', () => {
-      const pct = container.scrollLeft / (container.scrollWidth - container.clientWidth) * 100
-      bar.style.width = pct + '%'
-    }, { passive: true })
-  }
-}
-
-// On index.html, openDrawer is in shop.js which is not loaded — redirect to shop page instead
-function prodCardClick(id) {
-  if (typeof openDrawer === 'function') {
-    openDrawer(id)
-  } else {
-    location.href = '/shop?open=' + id
-  }
-}
-
-// Load products for homepage showcase
-(async function initHomeShowcase() {
-  const container = document.getElementById('prod-scroll')
-  if (!container) return
-  try {
-    const r = await fetch('/api/products')
-    if (!r.ok) throw new Error('HTTP ' + r.status)
-    const prods = await r.json()
-    buildProductShowcase(prods)
-  } catch (e) {
-    console.warn('Product showcase load failed', e)
-  }
-})()
+// product showcase removed from homepage
 
 // ── EDITORIAL SCROLL SCRUB — single continuous video, 285 frames ─────────
 ;setTimeout(function initScrollScrub(){
@@ -1220,7 +1176,13 @@ function prodCardClick(id) {
     }
   }
 
-  window.addEventListener('scroll', scrubOnScroll, { passive: true })
+  let rafPending = false
+  window.addEventListener('scroll', () => {
+    if (!rafPending) {
+      rafPending = true
+      requestAnimationFrame(() => { scrubOnScroll(); rafPending = false })
+    }
+  }, { passive: true })
 }, 0)
 
 // ── MOTION SCROLL ANIMATIONS ─────────────────────────────────────────────
