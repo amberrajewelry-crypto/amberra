@@ -1114,41 +1114,37 @@ function prodCardClick(id) {
   }
 })()
 
-// ── EDITORIAL SCROLL SCRUB — 366 frames (6 morphs × 61) ─────────────────
+// ── EDITORIAL SCROLL SCRUB — 484 frames (4 morphs × 121) ────────────────
 ;setTimeout(function initScrollScrub(){
   const editorial = document.getElementById('editorial')
   const wrap = document.getElementById('ed-scrub-wrap')
   const img = document.getElementById('ed-scrub-img')
   if (!editorial || !wrap || !img) return
 
-  const FPM = 61 // frames per morph
-  const MORPHS = ['morph1','morph1b','morph2','morph3','morph4','morph5']
-  const TOTAL = FPM * MORPHS.length // 366
+  const FPM = 121 // frames per morph
+  const MORPHS = ['morph1','morph2','morph3','morph4']
+  const TOTAL = FPM * MORPHS.length // 484
   const frames = new Array(TOTAL)
-  const loaded = new Uint8Array(MORPHS.length) // 0=not loaded, 1=loading, 2=done
+  const loaded = new Uint8Array(MORPHS.length)
   const slides = [
-    { label: 'BALTIC AMBER', heading: 'Forty million years captured in stone', cta: false },
-    { label: 'THE FLOW', heading: 'Liquid gold pours from ancient resin', cta: false },
-    { label: 'THE CRAFT', heading: 'A stream becomes a ring, amber grows within', cta: false },
-    { label: 'THE MAGIC', heading: 'Alchemy of light and precious metal', cta: false },
-    { label: 'THE MUSE', heading: 'She appears from golden dust', cta: false },
-    { label: 'THE COLLECTION', heading: 'Wear forty million years on your finger', cta: true }
+    { label: 'BALTIC AMBER', heading: 'Forty million years captured in stone', dark: false, cta: false },
+    { label: 'THE ALCHEMY', heading: 'From ancient resin, a gem is born', dark: false, cta: false },
+    { label: 'THE CRAFT', heading: 'Shaped by artisan hands', dark: true, cta: false },
+    { label: 'THE COLLECTION', heading: 'Wear your story', dark: true, cta: true }
   ]
 
-  // Lazy-preload: load morph by index (0-5)
   function loadMorph(mi) {
     if (mi < 0 || mi >= MORPHS.length || loaded[mi]) return
     loaded[mi] = 1
     const base = mi * FPM
     for (let f = 1; f <= FPM; f++) {
       const i = new Image()
-      i.src = `/images/editorial/frames-v2/${MORPHS[mi]}_${String(f).padStart(3,'0')}.webp?v=4`
+      i.src = `/images/editorial/frames-v2/${MORPHS[mi]}_${String(f).padStart(3,'0')}.webp?v=5`
       frames[base + f - 1] = i
     }
     loaded[mi] = 2
   }
 
-  // Preload first 2 morphs immediately
   loadMorph(0)
   loadMorph(1)
 
@@ -1161,7 +1157,6 @@ function prodCardClick(id) {
     const scrolled = window.scrollY - edTop
     const progress = Math.max(0, Math.min(1, scrolled / edH))
 
-    // Show scrub when in editorial zone
     if (scrolled > -window.innerHeight * 0.5 && scrolled < edH) {
       wrap.style.opacity = progress < 0.01 ? Math.min(1, (scrolled + window.innerHeight * 0.5) / (window.innerHeight * 0.3)) : 1
       wrap.style.pointerEvents = 'auto'
@@ -1171,15 +1166,11 @@ function prodCardClick(id) {
       return
     }
 
-    // Fade out at end
-    if (progress > 0.9) {
-      wrap.style.opacity = 1 - (progress - 0.9) / 0.1
+    if (progress > 0.92) {
+      wrap.style.opacity = 1 - (progress - 0.92) / 0.08
     }
 
-    // Map to frame
     const frameIdx = Math.min(TOTAL - 1, Math.max(0, Math.floor(progress * TOTAL)))
-
-    // Lazy-preload: current morph + next morph
     const currentMorph = Math.min(MORPHS.length - 1, Math.floor(frameIdx / FPM))
     loadMorph(currentMorph)
     loadMorph(currentMorph + 1)
@@ -1189,12 +1180,16 @@ function prodCardClick(id) {
       img.src = frames[frameIdx].src
     }
 
-    // Text — 6 sections
-    const section = progress * 6
-    const slideIdx = Math.min(5, Math.floor(section))
+    // Text — 4 sections
+    const section = progress * 4
+    const slideIdx = Math.min(3, Math.floor(section))
     const local = section - slideIdx
-    const inTransition = local > 0.7 && slideIdx < 5
+    const inTransition = local > 0.75 && slideIdx < 3
     const textEl = document.getElementById('ed-scrub-text')
+    const labelEl = document.getElementById('ed-scrub-label')
+    const headEl = document.getElementById('ed-scrub-heading')
+    const ctaEl = document.getElementById('ed-scrub-cta')
+    const gradEl = wrap.querySelector('.ed-scrub-grad')
 
     if (inTransition) {
       textEl.style.opacity = 0
@@ -1207,9 +1202,22 @@ function prodCardClick(id) {
     if (slideIdx !== currentSlide && !inTransition) {
       currentSlide = slideIdx
       const s = slides[slideIdx]
-      document.getElementById('ed-scrub-label').textContent = s.label
-      document.getElementById('ed-scrub-heading').textContent = s.heading
-      document.getElementById('ed-scrub-cta').style.display = s.cta ? 'inline-block' : 'none'
+      labelEl.textContent = s.label
+      headEl.textContent = s.heading
+      ctaEl.style.display = s.cta ? 'inline-block' : 'none'
+
+      // Dark text on white background (morphs 3-4)
+      if (s.dark) {
+        labelEl.style.color = 'rgba(42,37,32,0.45)'
+        headEl.style.color = 'var(--charcoal)'
+        ctaEl.style.color = 'var(--amber2)'
+        if (gradEl) gradEl.style.background = 'linear-gradient(transparent 40%,rgba(255,255,255,0.6))'
+      } else {
+        labelEl.style.color = 'rgba(255,255,255,0.35)'
+        headEl.style.color = '#fff'
+        ctaEl.style.color = 'rgba(255,255,255,0.8)'
+        if (gradEl) gradEl.style.background = 'linear-gradient(transparent 40%,rgba(0,0,0,0.55))'
+      }
     }
   }
 
