@@ -1135,7 +1135,7 @@ function prodCardClick(id) {
   for (let m = 1; m <= 3; m++) {
     for (let f = 1; f <= FPM; f++) {
       const i = new Image()
-      i.src = `/images/editorial/frames/morph${m}_${String(f).padStart(3,'0')}.webp`
+      i.src = `/images/editorial/frames/morph${m}_${String(f).padStart(3,'0')}.webp?v=2`
       frames.push(i)
     }
   }
