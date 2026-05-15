@@ -828,8 +828,7 @@ footer a:hover{opacity:1!important}
 #bestsellers .pprice{color:#1f1f1f}
 #bestsellers .pc-label{background:#FFFFFF}
 #bestsellers .pc-img img{mix-blend-mode:multiply}
-.bs-all{font-family:var(--sans);font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--charcoal);text-decoration:none;border-bottom:1px solid var(--charcoal);padding-bottom:2px}
-.bs-all:hover{color:var(--amber);border-color:var(--amber)}
+/* .bs-all duplicate removed */
 .bs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1200px;margin:0 auto}
 @media(max-width:900px){.bs-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.bs-grid{grid-template-columns:1fr 1fr;gap:12px}#bestsellers{padding:56px 16px}}

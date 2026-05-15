@@ -708,9 +708,7 @@ function setLang(lang){
   });
   if(typeof renderProducts==='function') renderProducts();
 }
-function toggleLang(){}
-function closeLang(){}
-document.addEventListener('click',e=>{if(!e.target.closest('#lang-sw'))closeLang()});
+// lang switcher removed
 
 // ── JOURNAL TOGGLE ────────────────────────────────────────────────────────
 function toggleJournal(){
