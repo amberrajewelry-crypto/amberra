@@ -1122,7 +1122,7 @@ function prodCardClick(id) {
   if (!editorial || !wrap || !img) return
 
   const FPM = 61 // frames per morph
-  const TOTAL = FPM * 3 // 183
+  const TOTAL = FPM * 5 // 305
   const frames = []
   const slides = [
     { label: 'BALTIC AMBER', heading: 'Forty million years in the making', cta: false },
@@ -1134,7 +1134,7 @@ function prodCardClick(id) {
   ]
 
   // Preload frames
-  for (let m = 1; m <= 3; m++) {
+  for (let m = 1; m <= 5; m++) {
     for (let f = 1; f <= FPM; f++) {
       const i = new Image()
       i.src = `/images/editorial/frames-v2/morph${m}_${String(f).padStart(3,'0')}.webp`
