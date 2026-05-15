@@ -1119,9 +1119,11 @@ function prodCardClick(id) {
   const editorial = document.getElementById('editorial')
   const wrap = document.getElementById('ed-scrub-wrap')
   const img = document.getElementById('ed-scrub-img')
+  const img2 = document.getElementById('ed-scrub-img2')
   if (!editorial || !wrap || !img) return
 
   const FPM = 121 // frames per morph
+  const BLEND = 15 // crossfade zone: last/first N frames at morph boundaries
   const MORPHS = ['morph1','morph2','morph3','morph4']
   const TOTAL = FPM * MORPHS.length // 484
   const frames = new Array(TOTAL)
@@ -1178,6 +1180,30 @@ function prodCardClick(id) {
     if (frameIdx !== lastFrame && frames[frameIdx]) {
       lastFrame = frameIdx
       img.src = frames[frameIdx].src
+
+      // Crossfade at morph boundaries
+      if (img2) {
+        const localFrame = frameIdx % FPM
+        const atEnd = localFrame >= FPM - BLEND && currentMorph < MORPHS.length - 1
+        const atStart = localFrame < BLEND && currentMorph > 0
+
+        if (atEnd) {
+          // Approaching end of morph — blend in first frames of next morph
+          const blendProgress = (localFrame - (FPM - BLEND)) / BLEND
+          const nextBase = (currentMorph + 1) * FPM
+          const nextFrame = nextBase + Math.floor(blendProgress * BLEND)
+          if (frames[nextFrame]) {
+            img2.src = frames[nextFrame].src
+            img2.style.opacity = blendProgress * 0.6
+          }
+        } else if (atStart) {
+          // Just entered new morph — fade out the blend overlay
+          const fadeOut = 1 - localFrame / BLEND
+          img2.style.opacity = fadeOut * 0.3
+        } else {
+          img2.style.opacity = 0
+        }
+      }
     }
 
     // Text — 4 sections
