@@ -1124,24 +1124,33 @@ function prodCardClick(id) {
   const FPM = 61 // frames per morph
   const MORPHS = ['morph1','morph1b','morph2','morph3','morph4','morph5']
   const TOTAL = FPM * MORPHS.length // 366
-  const frames = []
+  const frames = new Array(TOTAL)
+  const loaded = new Uint8Array(MORPHS.length) // 0=not loaded, 1=loading, 2=done
   const slides = [
-    { label: 'MACRO · BALTIC AMBER', heading: 'Forty million years captured in stone', cta: false },
-    { label: 'WIDE · THE FLOW', heading: 'Liquid gold pours from ancient resin', cta: false },
-    { label: 'CLOSE-UP · THE CRAFT', heading: 'A stream becomes a ring, amber grows within', cta: false },
-    { label: 'WIDE · THE MAGIC', heading: 'Alchemy of light and precious metal', cta: false },
-    { label: 'CLOSE-UP · THE MUSE', heading: 'She appears from golden dust', cta: false },
-    { label: 'WIDE · THE COLLECTION', heading: 'Wear forty million years on your finger', cta: true }
+    { label: 'BALTIC AMBER', heading: 'Forty million years captured in stone', cta: false },
+    { label: 'THE FLOW', heading: 'Liquid gold pours from ancient resin', cta: false },
+    { label: 'THE CRAFT', heading: 'A stream becomes a ring, amber grows within', cta: false },
+    { label: 'THE MAGIC', heading: 'Alchemy of light and precious metal', cta: false },
+    { label: 'THE MUSE', heading: 'She appears from golden dust', cta: false },
+    { label: 'THE COLLECTION', heading: 'Wear forty million years on your finger', cta: true }
   ]
 
-  // Preload frames — 6 morphs × 61 frames
-  for (const mName of MORPHS) {
+  // Lazy-preload: load morph by index (0-5)
+  function loadMorph(mi) {
+    if (mi < 0 || mi >= MORPHS.length || loaded[mi]) return
+    loaded[mi] = 1
+    const base = mi * FPM
     for (let f = 1; f <= FPM; f++) {
       const i = new Image()
-      i.src = `/images/editorial/frames-v2/${mName}_${String(f).padStart(3,'0')}.webp?v=3`
-      frames.push(i)
+      i.src = `/images/editorial/frames-v2/${MORPHS[mi]}_${String(f).padStart(3,'0')}.webp?v=4`
+      frames[base + f - 1] = i
     }
+    loaded[mi] = 2
   }
+
+  // Preload first 2 morphs immediately
+  loadMorph(0)
+  loadMorph(1)
 
   let currentSlide = -1
   let lastFrame = -1
@@ -1169,7 +1178,13 @@ function prodCardClick(id) {
 
     // Map to frame
     const frameIdx = Math.min(TOTAL - 1, Math.max(0, Math.floor(progress * TOTAL)))
-    if (frameIdx !== lastFrame) {
+
+    // Lazy-preload: current morph + next morph
+    const currentMorph = Math.min(MORPHS.length - 1, Math.floor(frameIdx / FPM))
+    loadMorph(currentMorph)
+    loadMorph(currentMorph + 1)
+
+    if (frameIdx !== lastFrame && frames[frameIdx]) {
       lastFrame = frameIdx
       img.src = frames[frameIdx].src
     }
@@ -1195,8 +1210,6 @@ function prodCardClick(id) {
       document.getElementById('ed-scrub-label').textContent = s.label
       document.getElementById('ed-scrub-heading').textContent = s.heading
       document.getElementById('ed-scrub-cta').style.display = s.cta ? 'inline-block' : 'none'
-
-      // dots removed — clean minimal look
     }
   }
 
