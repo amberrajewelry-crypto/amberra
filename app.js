@@ -1114,16 +1114,16 @@ function prodCardClick(id) {
   }
 })()
 
-// ── EDITORIAL SCROLL SCRUB — 90 frames ──────────────────────────────────
+// ── EDITORIAL SCROLL SCRUB — 183 frames (61 per morph) ──────────────────
 ;(function initScrollScrub(){
   const editorial = document.getElementById('editorial')
   const wrap = document.getElementById('ed-scrub-wrap')
   const img = document.getElementById('ed-scrub-img')
   if (!editorial || !wrap || !img) return
 
-  const TOTAL = 90
+  const FPM = 61 // frames per morph
+  const TOTAL = FPM * 3 // 183
   const frames = []
-  let loaded = 0
   const slides = [
     { label: 'BALTIC AMBER JEWELRY', heading: 'Forty million years in the making', cta: false },
     { label: 'THE CRAFT', heading: 'Shaped by artisan hands', cta: false },
@@ -1133,9 +1133,9 @@ function prodCardClick(id) {
 
   // Preload frames
   for (let m = 1; m <= 3; m++) {
-    for (let f = 1; f <= 30; f++) {
+    for (let f = 1; f <= FPM; f++) {
       const i = new Image()
-      i.src = `/images/editorial/frames/morph${m}_${String(f).padStart(3,'0')}.jpg`
+      i.src = `/images/editorial/frames/morph${m}_${String(f).padStart(3,'0')}.webp`
       frames.push(i)
     }
   }
