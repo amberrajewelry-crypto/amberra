@@ -1114,7 +1114,7 @@ function prodCardClick(id) {
   }
 })()
 
-// ── EDITORIAL SCROLL SCRUB — 183 frames (61 per morph) ──────────────────
+// ── EDITORIAL SCROLL SCRUB — 366 frames (6 morphs × 61) ─────────────────
 ;setTimeout(function initScrollScrub(){
   const editorial = document.getElementById('editorial')
   const wrap = document.getElementById('ed-scrub-wrap')
@@ -1122,22 +1122,23 @@ function prodCardClick(id) {
   if (!editorial || !wrap || !img) return
 
   const FPM = 61 // frames per morph
-  const TOTAL = FPM * 5 // 305
+  const MORPHS = ['morph1','morph1b','morph2','morph3','morph4','morph5']
+  const TOTAL = FPM * MORPHS.length // 366
   const frames = []
   const slides = [
-    { label: 'BALTIC AMBER', heading: 'Forty million years in the making', cta: false },
-    { label: 'THE ALCHEMY', heading: 'Melting into liquid gold', cta: false },
-    { label: 'THE CRAFT', heading: 'Shaped by artisan hands', cta: false },
-    { label: 'THE CREATION', heading: 'Where nature meets craft', cta: false },
-    { label: 'THE ESSENCE', heading: 'Born from golden dust', cta: false },
-    { label: 'THE COLLECTION', heading: 'Wear your story', cta: true }
+    { label: 'MACRO · BALTIC AMBER', heading: 'Forty million years captured in stone', cta: false },
+    { label: 'WIDE · THE FLOW', heading: 'Liquid gold pours from ancient resin', cta: false },
+    { label: 'CLOSE-UP · THE CRAFT', heading: 'A stream becomes a ring, amber grows within', cta: false },
+    { label: 'WIDE · THE MAGIC', heading: 'Alchemy of light and precious metal', cta: false },
+    { label: 'CLOSE-UP · THE MUSE', heading: 'She appears from golden dust', cta: false },
+    { label: 'WIDE · THE COLLECTION', heading: 'Wear forty million years on your finger', cta: true }
   ]
 
-  // Preload frames
-  for (let m = 1; m <= 5; m++) {
+  // Preload frames — 6 morphs × 61 frames
+  for (const mName of MORPHS) {
     for (let f = 1; f <= FPM; f++) {
       const i = new Image()
-      i.src = `/images/editorial/frames-v2/morph${m}_${String(f).padStart(3,'0')}.webp`
+      i.src = `/images/editorial/frames-v2/${mName}_${String(f).padStart(3,'0')}.webp?v=3`
       frames.push(i)
     }
   }
