@@ -851,7 +851,7 @@ footer a:hover{opacity:1!important}
 .prod-scroll::-webkit-scrollbar{display:none}
 .prod-card{flex:0 0 320px;scroll-snap-align:start;cursor:pointer;transition:transform 0.6s var(--ease-standard)}
 .prod-card:hover{transform:scale(1.03)}
-.prod-card img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+.prod-card img{width:100%;aspect-ratio:3/4;object-fit:contain;object-position:center;display:block;background:var(--bg-dark);padding:24px}
 .prod-card-info{padding:16px 12px}
 .prod-card-name{font-family:var(--serif);font-size:16px;font-weight:300;color:var(--black)}
 .prod-card-cta{font-family:var(--sans);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);border-bottom:1px solid var(--amber);padding-bottom:2px;text-decoration:none;display:inline-block;margin-top:8px}
