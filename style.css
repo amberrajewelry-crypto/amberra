@@ -129,7 +129,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 @media(prefers-reduced-motion:reduce){.cc-cat,.cc-name,.cc-cta{opacity:1!important;transform:none!important;transition:none!important}}
 @media(max-width:900px){.c-grid{grid-template-columns:1fr 1fr}.cc-img-wrap{height:180px}.c-head{padding:40px 24px 24px}}
 
-/* === Editorial Scroll Scrub — 90 frames === */
+/* === Editorial Scroll — 5 morphs, 6 acts === */
 #editorial{position:relative;z-index:4}
 .ed-text{position:relative;z-index:1;padding:0 48px 80px;max-width:600px}
 @media(max-width:768px){.ed-text{padding:0 20px 60px}}

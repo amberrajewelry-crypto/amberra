@@ -1125,9 +1125,11 @@ function prodCardClick(id) {
   const TOTAL = FPM * 3 // 183
   const frames = []
   const slides = [
-    { label: 'BALTIC AMBER JEWELRY', heading: 'Forty million years in the making', cta: false },
+    { label: 'BALTIC AMBER', heading: 'Forty million years in the making', cta: false },
+    { label: 'THE ALCHEMY', heading: 'Melting into liquid gold', cta: false },
     { label: 'THE CRAFT', heading: 'Shaped by artisan hands', cta: false },
     { label: 'THE CREATION', heading: 'Where nature meets craft', cta: false },
+    { label: 'THE ESSENCE', heading: 'Born from golden dust', cta: false },
     { label: 'THE COLLECTION', heading: 'Wear your story', cta: true }
   ]
 
@@ -1171,11 +1173,11 @@ function prodCardClick(id) {
       img.src = frames[frameIdx].src
     }
 
-    // Text
-    const section = progress * 4
-    const slideIdx = Math.min(3, Math.floor(section))
+    // Text — 6 sections
+    const section = progress * 6
+    const slideIdx = Math.min(5, Math.floor(section))
     const local = section - slideIdx
-    const inTransition = local > 0.7 && slideIdx < 3
+    const inTransition = local > 0.7 && slideIdx < 5
     const textEl = document.getElementById('ed-scrub-text')
 
     if (inTransition) {
@@ -1193,10 +1195,7 @@ function prodCardClick(id) {
       document.getElementById('ed-scrub-heading').textContent = s.heading
       document.getElementById('ed-scrub-cta').style.display = s.cta ? 'inline-block' : 'none'
 
-      document.querySelectorAll('.ed-dot').forEach((d, i) => {
-        d.style.background = i === slideIdx ? 'rgba(201,168,50,0.8)' : 'rgba(255,255,255,0.15)'
-        d.style.transform = i === slideIdx ? 'scale(1.8)' : 'scale(1)'
-      })
+      // dots removed — clean minimal look
     }
   }
 
