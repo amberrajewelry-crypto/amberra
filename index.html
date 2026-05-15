@@ -240,9 +240,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<!-- ══ FLUID BG — fixed full page ══════════════════════════════════════ -->
-<canvas id="fluid-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;display:block;z-index:-1;pointer-events:none"></canvas>
-
 <!-- ══ NAV — 60px Ultra-Minimal ═══════════════════════════════════════ -->
 <header id="nav-shell">
   <button id="nav-menu-btn" onclick="openMenu()" aria-label="Menu">
@@ -290,17 +287,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <!-- ══ HERO ══════════════════════════════════════════════════════════════ -->
-<section id="hero" style="position:relative;height:100vh;z-index:2;display:flex;align-items:flex-end">
+<section id="hero" style="position:relative;height:100vh;z-index:2;display:flex;align-items:flex-end;overflow:hidden">
+  <video autoplay muted loop playsinline preload="auto" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+    <source src="/images/hero-video.mp4" type="video/mp4">
+  </video>
+  <div style="position:absolute;inset:0;background:linear-gradient(transparent 30%,rgba(0,0,0,0.5))"></div>
   <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Handcrafted Baltic Amber Jewelry — Rings, Earrings, Pendants & Bracelets</h1>
-  <div id="hero-content" style="padding:0 48px 80px;max-width:600px">
+  <div id="hero-content" style="position:relative;z-index:1;padding:0 48px 80px;max-width:600px">
     <span class="label hero-fade" style="color:rgba(255,255,255,0.5);display:block;margin-bottom:12px;opacity:0">BALTIC AMBER JEWELRY</span>
     <h2 class="heading-hero hero-fade" style="color:#fff;opacity:0" data-i18n="hero_h">Born from<br>Ancient Earth</h2>
     <p class="body-text hero-fade" style="color:rgba(255,255,255,0.6);opacity:0;margin-top:16px" data-i18n="hero_p">Forty million years of nature's patience,<br>shaped by artisan hands in Bali.</p>
     <a href="/shop" class="cta-link hero-fade" style="color:rgba(255,255,255,0.8);opacity:0;margin-top:24px;display:inline-block" data-i18n="hero_cta">DISCOVER THE COLLECTION</a>
   </div>
-  <div id="scroll-hint" style="position:absolute;bottom:32px;left:50%;transform:translateX(-50%);width:1px;height:40px;background:rgba(255,255,255,0.3)"></div>
+  <div id="scroll-hint" style="position:absolute;bottom:32px;left:50%;transform:translateX(-50%);width:1px;height:40px;background:rgba(255,255,255,0.3);z-index:1"></div>
 </section>
-<script type="module" src="/fluid-bg.js"></script>
 
 <!-- ══ EDITORIAL SCROLL — 4 morphs, 4 acts, scroll-driven ═══════════════ -->
 <div id="ed-scrub-wrap" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;pointer-events:none;opacity:0;transition:opacity 0.4s ease;overflow:hidden">
@@ -859,7 +859,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script type="module">import{animate,scroll,inView,stagger}from"https://cdn.jsdelivr.net/npm/motion@12/+esm";window.Motion={animate,scroll,inView,stagger};</script>
 <script src="/currency.js?v=20260331"></script>
 <script src="/lang.js?v=20260506"></script>
-<script src="/app.js?v=20260515p"></script>
+<script src="/app.js?v=20260515q"></script>
 
 </body>
 </html>
