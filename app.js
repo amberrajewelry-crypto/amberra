@@ -1115,7 +1115,7 @@ function prodCardClick(id) {
 })()
 
 // ── EDITORIAL SCROLL SCRUB — 183 frames (61 per morph) ──────────────────
-;(function initScrollScrub(){
+;setTimeout(function initScrollScrub(){
   const editorial = document.getElementById('editorial')
   const wrap = document.getElementById('ed-scrub-wrap')
   const img = document.getElementById('ed-scrub-img')
@@ -1201,7 +1201,7 @@ function prodCardClick(id) {
   }
 
   window.addEventListener('scroll', scrubOnScroll, { passive: true })
-})()
+}, 0)
 
 // ── MOTION SCROLL ANIMATIONS ─────────────────────────────────────────────
 ;(function initMotionEffects(){
