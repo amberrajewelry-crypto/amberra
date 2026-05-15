@@ -1181,28 +1181,34 @@ function prodCardClick(id) {
       lastFrame = frameIdx
       img.src = frames[frameIdx].src
 
-      // Crossfade at morph boundaries
-      if (img2) {
-        const localFrame = frameIdx % FPM
-        const atEnd = localFrame >= FPM - BLEND && currentMorph < MORPHS.length - 1
-        const atStart = localFrame < BLEND && currentMorph > 0
+      // Scroll-driven morph transitions: zoom + blur + brightness flash
+      const localFrame = frameIdx % FPM
+      const ZONE = 18 // transition zone in frames
+      const atEnd = localFrame >= FPM - ZONE && currentMorph < MORPHS.length - 1
+      const atStart = localFrame < ZONE && currentMorph > 0
 
-        if (atEnd) {
-          // Approaching end of morph — blend in first frames of next morph
-          const blendProgress = (localFrame - (FPM - BLEND)) / BLEND
-          const nextBase = (currentMorph + 1) * FPM
-          const nextFrame = nextBase + Math.floor(blendProgress * BLEND)
-          if (frames[nextFrame]) {
-            img2.src = frames[nextFrame].src
-            img2.style.opacity = blendProgress * 0.6
-          }
-        } else if (atStart) {
-          // Just entered new morph — fade out the blend overlay
-          const fadeOut = 1 - localFrame / BLEND
-          img2.style.opacity = fadeOut * 0.3
-        } else {
-          img2.style.opacity = 0
-        }
+      if (atEnd) {
+        // Leaving current morph: zoom in + blur + brightness flash
+        const t = (localFrame - (FPM - ZONE)) / ZONE // 0→1
+        const scale = 1 + t * 0.35
+        const blur = t * 12
+        const brightness = 1 + t * 0.8
+        img.style.transform = `scale(${scale})`
+        img.style.filter = `blur(${blur}px) brightness(${brightness})`
+        if (img2) img2.style.opacity = 0
+      } else if (atStart) {
+        // Entering new morph: zoom out from blur + brightness settles
+        const t = localFrame / ZONE // 0→1
+        const scale = 1.35 - t * 0.35
+        const blur = 12 - t * 12
+        const brightness = 1.8 - t * 0.8
+        img.style.transform = `scale(${scale})`
+        img.style.filter = `blur(${blur}px) brightness(${brightness})`
+        if (img2) img2.style.opacity = 0
+      } else {
+        img.style.transform = 'scale(1)'
+        img.style.filter = 'none'
+        if (img2) img2.style.opacity = 0
       }
     }
 
