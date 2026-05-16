@@ -790,12 +790,6 @@ footer a:hover{opacity:1!important}
 /* === BVLGARI-STYLE SECTIONS — MOBILE === */
 @media(max-width:768px){
   /* Collections split: stack vertically */
-  section > div[style*="grid-template-columns:1fr 1fr"]{
-    grid-template-columns:1fr!important;min-height:auto!important
-  }
-  section > div[style*="grid-template-columns:1fr 1fr"] > div[style*="padding:80px 64px"]{
-    padding:48px 24px!important
-  }
   /* Brand stats: wrap on small screens */
   div[style*="justify-content:center;gap:64px"]{
     flex-wrap:wrap!important;gap:32px 48px!important
