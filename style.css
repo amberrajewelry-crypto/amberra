@@ -88,51 +88,10 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .reveal{transition:opacity .9s cubic-bezier(.25,.46,.45,.94),transform .9s cubic-bezier(.25,.46,.45,.94)}
 .reveal.pre{opacity:0;transform:translateY(32px)}
 .reveal.on{opacity:1;transform:none}
-/* ── Enhanced scroll reveal (luxury animations) ── */
-.rv{opacity:0;transition:opacity .95s cubic-bezier(.25,.46,.45,.94),transform .95s cubic-bezier(.25,.46,.45,.94);transform:translateY(38px)}
-.rv[data-rv="left"]{transform:translateX(-44px)}
-.rv[data-rv="right"]{transform:translateX(44px)}
-.rv[data-rv="scale"]{transform:scale(.96) translateY(18px);transform-origin:center bottom}
-.rv[data-rv="fade"]{transform:none}
-.rv.rv-slow{transition-duration:1.3s}
-.rv.vis{opacity:1!important;transform:none!important}
-/* stagger delays */
-.d1{transition-delay:.08s}.d2{transition-delay:.18s}.d3{transition-delay:.28s}.d4{transition-delay:.38s}.d5{transition-delay:.48s}.d6{transition-delay:.58s}
-/* line reveal */
-.rv-line{transform-origin:left;transform:scaleX(0);transition:transform .85s cubic-bezier(.25,.46,.45,.94)}
-.rv-line.vis{transform:scaleX(1)}
-@media(prefers-reduced-motion:reduce){.rv,.reveal,.rv-line{transition:none!important;opacity:1!important;transform:none!important}}
+@media(prefers-reduced-motion:reduce){.reveal{transition:none!important;opacity:1!important;transform:none!important}}
 
-/* ═══ COLLECTIONS ═══════════════════════════════════════════════════════ */
-#colls{background:transparent;padding:80px 0}
-.c-head{padding:0 40px 32px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px}
-.c-link{font-size:12px;font-weight:400;letter-spacing:0.6px;text-transform:uppercase;color:var(--charcoal);border-bottom:1px solid var(--charcoal);padding-bottom:2px;transition:all .3s;background:none;font-family:var(--sans);cursor:pointer}
-.c-link:hover{color:var(--amber);border-color:var(--amber)}
-.c-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:transparent}
-.cc{position:relative;overflow:hidden;cursor:pointer;background:transparent;display:flex;flex-direction:column;border:1px solid rgba(201,168,50,.15)}
-.cc-img-wrap{height:280px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:transparent;transition:background .4s}
-.cc:hover .cc-img-wrap{background:rgba(201,168,50,.05)}
-.cc img{width:72%;height:82%;object-fit:contain;transition:transform 1.1s cubic-bezier(.4,0,.2,1)}
-.cc:hover img{transform:scale(1.03)}
-.cc-badge{display:none}
-.cc-badge.bestseller{background:var(--charcoal);color:var(--white)}
-.cc-badge.new{background:var(--amber);color:var(--white)}
-.cc-info{padding:16px 20px 20px;background:rgba(6,2,0,.5);backdrop-filter:blur(6px)}
-.cc-cat{font-size:13px;font-weight:100;letter-spacing:normal;text-transform:uppercase;color:var(--amber);margin-bottom:4px;display:block;opacity:1;transform:none}
-.cc-name{font-family:var(--sans);font-size:18px;font-weight:400;color:#fff;line-height:1.22;letter-spacing:normal;text-transform:uppercase;margin-bottom:4px;opacity:1;transform:none}
-.cc-price{font-family:var(--sans);font-size:13px;font-weight:400;letter-spacing:normal;color:rgba(255,255,255,.55);display:block;margin-bottom:10px}
-.cc-cta{font-size:12px;font-weight:400;letter-spacing:0.6px;color:var(--stone);text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;opacity:1;transform:none;transition:color .3s}
-.cc-cta::after{content:'';width:16px;height:1px;background:currentColor;transition:width .3s}
-.cc.vis .cc-cat,.cc.vis .cc-name,.cc.vis .cc-cta{opacity:1;transform:none}
-.cc:hover .cc-cta{color:var(--amber)}
-.cc:hover .cc-cta::after{width:28px}
-@media(prefers-reduced-motion:reduce){.cc-cat,.cc-name,.cc-cta{opacity:1!important;transform:none!important;transition:none!important}}
-@media(max-width:900px){.c-grid{grid-template-columns:1fr 1fr}.cc-img-wrap{height:180px}.c-head{padding:40px 24px 24px}}
-
-/* === Editorial Scroll — 5 morphs, 6 acts === */
+/* === Editorial Scroll === */
 #editorial{position:relative;z-index:4}
-.ed-text{position:relative;z-index:1;padding:0 48px 80px;max-width:600px}
-@media(max-width:768px){.ed-text{padding:0 20px 60px}}
 
 /* ═══ TRYON ═════════════════════════════════════════════════════════════ */
 #tryon-sec{padding:96px 56px;background:var(--cream)}
@@ -473,8 +432,8 @@ footer a:hover{opacity:1!important}
 }
 
 /* ═══ REQUEST MODAL ══════════════════════════════════════════════════════ */
-#req-modal,#ws-modal-wrap{position:fixed;inset:0;z-index:900;display:none;align-items:center;justify-content:center;background:rgba(12,12,12,.7);backdrop-filter:blur(8px)}
-#req-modal.open,#ws-modal-wrap.open{display:flex}
+#req-modal{position:fixed;inset:0;z-index:900;display:none;align-items:center;justify-content:center;background:rgba(12,12,12,.7);backdrop-filter:blur(8px)}
+#req-modal.open{display:flex}
 .req-box{background:var(--white);padding:56px;max-width:520px;width:90%;position:relative}
 .req-box h2{font-family:var(--serif);font-size:28px;font-weight:400;margin-bottom:8px}
 .req-box p{font-size:11px;color:var(--gray);margin-bottom:32px;line-height:1.7}
@@ -588,12 +547,6 @@ footer a:hover{opacity:1!important}
 @media(max-width:1100px){#hover-detail{display:none}}
 
 /* ═══ ABOUT (cinematic full-bleed) ═══════════════════════════════════════ */
-/* === REDESIGN: About cinematic === */
-@media(max-width:768px){
-  #about>div:last-child{padding:0 20px 60px!important}
-  .founder-strip{flex-direction:column!important;text-align:center;gap:16px!important;padding:48px 20px!important}
-  .founder-strip>div:nth-child(3){display:none}
-}
 
 
 /* ═══ LEGAL MODAL ════════════════════════════════════════════════════════ */
@@ -719,17 +672,11 @@ footer a:hover{opacity:1!important}
   .sg-warranty-box{grid-template-columns:1fr}
   .sg-method-step{padding:18px}
 
-  /* Collections grid mobile — 2 cols */
-  .c-grid{grid-template-columns:repeat(2,1fr);gap:8px}
-
   /* Hide email popup entirely on mobile */
   .epop{display:none!important}
 
   /* Nav height correction — mobile nav is only 56px */
   :root{--nav-h:56px}
-
-  /* Collections text: keep visible since rv observer may fire too late on slow scroll */
-  .cc-cat,.cc-name,.cc-cta{transition-duration:.4s}
 
   /* About section — cinematic full-bleed, no padding override needed */
 
@@ -758,12 +705,10 @@ footer a:hover{opacity:1!important}
 @media(max-width:480px){
   .nav-logo{font-size:16px;letter-spacing:.35em}
   .c-grid{gap:6px}
-  .cc-img-wrap{height:160px}
   .tryon-items{grid-template-columns:repeat(3,1fr)}
   .srv-grid{grid-template-columns:1fr 1fr;gap:20px 12px;padding:20px 12px 80px}
   .srv-card-img{aspect-ratio:1/1}
   .sg-care-grid{grid-template-columns:1fr}
-  .ws-perks,.ws-process{grid-template-columns:1fr}
   .ft{grid-template-columns:1fr}
   .prod-grid{gap:4px}
   #catalog{padding:24px 8px}
@@ -795,14 +740,11 @@ footer a:hover{opacity:1!important}
 
 /* === FLUID BG — ALL SECTIONS TRANSPARENT === */
 #hero{background:transparent}
-#about{background:transparent}
-/* founder-strip: background and text handled via inline styles in HTML */
 #editorial{background:transparent}
-/* EOF */
 
 /* === CANVAS STACKING FIX: canvas z:1, page sections z:2 === */
 /* Only page sections: modals/overlays keep their own position:fixed + z-index */
-#colls,#hero,#about,#bestsellers,.founder-strip,#editorial,#contact,footer{
+#hero,#bestsellers,#editorial,#contact,footer{
   position:relative;z-index:2
 }
 
@@ -844,7 +786,6 @@ footer a:hover{opacity:1!important}
 .cta-link:hover{opacity:0.7}
 .cta-gold{color:var(--amber)}
 
-/* product showcase removed */
 
 /* === BVLGARI-STYLE SECTIONS — MOBILE === */
 @media(max-width:768px){
