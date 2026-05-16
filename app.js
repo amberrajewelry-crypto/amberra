@@ -27,6 +27,27 @@ function submitAcc(){
   setTimeout(closeAcc,2500);
 }
 
+// ── FLY TO CART ANIMATION ──────────────────────────────────────────────────
+function flyToCart(imgSrc,startEl){
+  const cartBtn=document.getElementById('cart-badge');
+  if(!cartBtn)return;
+  const from=startEl.getBoundingClientRect();
+  const to=cartBtn.getBoundingClientRect();
+  const img=document.createElement('img');
+  img.className='fly-img';
+  img.src=imgSrc;
+  img.style.left=from.left+'px';
+  img.style.top=from.top+'px';
+  document.body.appendChild(img);
+  const dx=to.left-from.left;
+  const dy=to.top-from.top;
+  img.animate([
+    {transform:'translate(0,0) scale(1)',opacity:1},
+    {transform:`translate(${dx}px,${dy}px) scale(.15)`,opacity:0}
+  ],{duration:700,easing:'cubic-bezier(.4,0,.2,1)',fill:'forwards'})
+  .onfinish=()=>img.remove();
+}
+
 // ── WISHLIST ───────────────────────────────────────────────────────────────
 // Load from URL param ?wish=1,2,3 (cross-device sharing)
 (function(){const p=new URLSearchParams(location.search).get('wish');if(p){const ids=p.split(',').map(Number).filter(Boolean);if(ids.length){localStorage.setItem('amb_wish',JSON.stringify(ids));history.replaceState(null,'',location.pathname)}}})();
@@ -249,6 +270,42 @@ async function payCrypto(btn){
     btn.innerHTML='&#8383; Pay with Crypto';
     alert(e.name==='AbortError'?'Request timed out. Please try again.':'Payment error: '+e.message);
   }
+}
+
+// ── WHOLESALE ──────────────────────────────────────────────────────────────
+function openWholesale(){
+  document.getElementById('ws-modal-wrap').classList.add('open');
+  const sb=window.innerWidth-document.documentElement.clientWidth;
+  document.body.style.paddingRight=sb+'px';
+  document.body.style.overflow='hidden';
+}
+function closeWholesale(){
+  document.getElementById('ws-modal-wrap').classList.remove('open');
+  document.body.style.overflow='';
+  document.body.style.paddingRight='';
+}
+async function submitWholesale(){
+  const name=document.getElementById('ws-fname').value.trim();
+  const email=document.getElementById('ws-email').value.trim();
+  const company=document.getElementById('ws-company').value.trim();
+  const country=document.getElementById('ws-country').value;
+  const partnerType=document.getElementById('ws-type').value;
+  const volume=(document.getElementById('ws-volume')||{}).value||'';
+  const message=(document.getElementById('ws-msg')||{}).value||'';
+  if(!name||!email||!company||!country||!partnerType){
+    alert('Please fill in all required fields.');return;
+  }
+  const btn=document.querySelector('#ws-form-wrap .btn-s');
+  if(btn){btn.disabled=true;btn.textContent='Sending…';}
+  try{
+    await fetch('/api/contact',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({type:'wholesale',name,email,company,country,partnerType,volume,message})
+    });
+  }catch(e){}
+  document.getElementById('ws-form-wrap').style.display='none';
+  document.getElementById('ws-thanks').style.display='block';
 }
 
 // ── REQUEST MODAL ──────────────────────────────────────────────────────────
@@ -527,18 +584,31 @@ function closeSizeGuide(){
 // ── SMOOTH SCROLL ──────────────────────────────────────────────────────────
 function s(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth'})}
 
-// ── SCROLL REVEAL (Oura-style .mo fade-in) ───────────────────────────────
-{
-  const moObs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.classList.add('vis');
-        moObs.unobserve(e.target);
-      }
-    });
-  },{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
-  // app.js loads at end of body — DOM is ready
-  document.querySelectorAll('.mo').forEach(el=>moObs.observe(el));
+// ── REVEAL ────────────────────────────────────────────────────────────────
+function initReveal(){
+  const vph=window.innerHeight;
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const el=e.target;
+    el.classList.remove('pre');
+    el.classList.add('on','vis');
+    obs.unobserve(el);
+  }),{threshold:0,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal,.rv,.rv-line').forEach(el=>{
+    const r=el.getBoundingClientRect();
+    if(r.bottom<0||r.top>vph-40){
+      if(el.classList.contains('reveal'))el.classList.add('pre');
+    }else{
+      el.classList.add('on','vis');
+      return;
+    }
+    obs.observe(el);
+  });
+  // auto-stagger: children of [data-stagger] get sequential delays
+  document.querySelectorAll('[data-stagger]').forEach(wrap=>{
+    const kids=[...wrap.children].filter(c=>c.classList.contains('rv'));
+    kids.forEach((c,i)=>{c.style.transitionDelay=(i*0.1)+'s'});
+  });
 }
 
 // ── NAV SCROLL ────────────────────────────────────────────────────────────
@@ -551,7 +621,46 @@ window.addEventListener('scroll',()=>{
 },{passive:true});
 
 
-// particles canvas removed — replaced by fluid-bg.js Three.js effect
+// ── CANVAS PARTICLES ──────────────────────────────────────────────────────
+(function(){try{
+  const canvas=document.getElementById('particles-canvas');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  if(!ctx)return;
+  let W,H,parts=[];
+  function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
+  resize();window.addEventListener('resize',resize);
+  const COLORS=['rgba(201,168,50,','rgba(212,184,74,','rgba(184,148,30,'];
+  function Particle(){this.reset(true)}
+  Particle.prototype.reset=function(init){
+    this.x=Math.random()*W;
+    this.y=init?Math.random()*H:Math.random()*H+H;
+    this.r=Math.random()*2+.5;
+    this.speed=Math.random()*.4+.15;
+    this.vx=(Math.random()-.5)*.3;
+    this.alpha=Math.random()*.5+.1;
+    this.color=COLORS[Math.floor(Math.random()*COLORS.length)];
+    this.wobble=Math.random()*Math.PI*2;
+    this.wobbleSpeed=Math.random()*.015+.005;
+  };
+  for(let i=0;i<35;i++)parts.push(new Particle());
+  let rafId=null;
+  function animate(){
+    ctx.clearRect(0,0,W,H);
+    parts.forEach(p=>{
+      p.y-=p.speed;p.wobble+=p.wobbleSpeed;p.x+=Math.sin(p.wobble)*.4+p.vx;
+      if(p.y<-10)p.reset(false);
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=p.color+p.alpha+')';ctx.fill();
+    });
+    rafId=requestAnimationFrame(animate);
+  }
+  animate();
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden){if(rafId){cancelAnimationFrame(rafId);rafId=null;}}
+    else{if(!rafId)animate();}
+  });
+}catch(e){console.warn('particles error',e)}})();
 
 // ── HERO FADE-IN ─────────────────────────────────────────────────────────
 window.addEventListener('DOMContentLoaded',()=>{
@@ -570,6 +679,7 @@ ws_n1:'Access to full catalog<br>Standard wholesale pricing<br>WhatsApp support'
 ws_n2:'Priority access to new drops<br>Enhanced pricing tiers<br>Dedicated account manager',
 ws_n3:'Custom packaging options<br>Best pricing available<br>Co-branding opportunities',};
 
+function navTo(path){location.href=path;}
 // Active translation table — starts as EN, replaced by setLang()
 let TR_ACTIVE=TR;
 function t(k){return TR_ACTIVE[k]||TR[k]||k}
@@ -598,9 +708,20 @@ function setLang(lang){
   });
   if(typeof renderProducts==='function') renderProducts();
 }
-// lang switcher removed
+function toggleLang(){}
+function closeLang(){}
+document.addEventListener('click',e=>{if(!e.target.closest('#lang-sw'))closeLang()});
 
-// journal toggle removed — journal section not on index
+// ── JOURNAL TOGGLE ────────────────────────────────────────────────────────
+function toggleJournal(){
+  const extras=document.querySelectorAll('.j-extra');
+  const btn=document.getElementById('j-toggle-btn');
+  if(!extras.length)return;
+  const isHidden=extras[0].style.display==='none'||extras[0].style.display==='';
+  extras.forEach(el=>el.style.display=isHidden?'flex':'none');
+  if(btn){btn.textContent=isHidden?'Show less':'View all articles';}
+  if(isHidden){initReveal();}
+}
 
 // ── QUIZ ──────────────────────────────────────────────────────────────────
 const quizData=[
@@ -695,23 +816,8 @@ async function submitEpop(){
   }catch(e){}
 }
 // Email popup disabled
-
-// ── FOOTER NEWSLETTER ─────────────────────────────────────────────────────
-async function submitNewsletter(){
-  const inp=document.getElementById('nl-email');
-  const btn=document.getElementById('nl-btn');
-  if(!inp||!inp.value||!inp.value.includes('@'))return;
-  btn.textContent='SENDING...';btn.disabled=true;
-  try{
-    await fetch('/api/contact',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({type:'request',piece:'Footer newsletter',name:'Subscriber',email:inp.value,phone:'',message:'Newsletter signup from footer.'})
-    });
-  }catch(e){}
-  inp.value='';btn.textContent='SUBSCRIBED';
-  setTimeout(()=>{btn.textContent='SUBSCRIBE';btn.disabled=false},3000);
-}
+// setTimeout(showEpop,18000);
+// window.addEventListener('scroll',()=>{if(window.scrollY>window.innerHeight*.65)showEpop()});
 
 // ── CHAT ──────────────────────────────────────────────────────────────────
 let chatOpen=false;
@@ -743,7 +849,7 @@ function chatSend(text){
   setTimeout(()=>{
     typing.style.display='none';
     const key=Object.keys(chatAnswers).find(k=>msg.toLowerCase().includes(k));
-    addMsg(key?chatAnswers[key]:`Thank you for your question! Our team in Bali is happy to help. Please email us at hello@amberrajewelry.com`,'bot');
+    addMsg(key?chatAnswers[key]:`Thank you for your question! Our team in Bali is happy to help. Please email us at amberrajewelry@gmail.com`,'bot');
   },1200);
 }
 function addMsg(text,type){
@@ -776,11 +882,11 @@ const legalContent={
     <h3>Data Sharing</h3>
     <p>We do not sell, trade, or transfer your personal information to third parties. We use the following trusted service providers: Resend (email delivery), PostHog (analytics), Sentry (error monitoring), Vercel (hosting), Airtable (product catalog).</p>
     <h3>Data Retention</h3>
-    <p>Inquiry data is retained for up to 2 years. You may request deletion at any time by emailing us at hello@amberrajewelry.com.</p>
+    <p>Inquiry data is retained for up to 2 years. You may request deletion at any time by emailing us at amberrajewelry@gmail.com.</p>
     <h3>Your Rights</h3>
-    <p>You have the right to access, correct, or delete your personal data. To exercise these rights, contact us at hello@amberrajewelry.com.</p>
+    <p>You have the right to access, correct, or delete your personal data. To exercise these rights, contact us at amberrajewelry@gmail.com.</p>
     <h3>Contact</h3>
-    <p>AMBERRA · Bali, Indonesia · hello@amberrajewelry.com</p>`,
+    <p>AMBERRA · Bali, Indonesia · amberrajewelry@gmail.com</p>`,
 
   terms:`
     <h3>Terms of Use</h3>
@@ -799,7 +905,7 @@ const legalContent={
     <h3>Governing Law</h3>
     <p>These terms are governed by the laws of Indonesia. Any disputes shall be resolved in the courts of Bali, Indonesia.</p>
     <h3>Contact</h3>
-    <p>AMBERRA · Bali, Indonesia · hello@amberrajewelry.com</p>`,
+    <p>AMBERRA · Bali, Indonesia · amberrajewelry@gmail.com</p>`,
 
   cookies:`
     <h3>Cookie Policy</h3>
@@ -820,7 +926,7 @@ const legalContent={
     <h3>Third-Party Services</h3>
     <p>PostHog (analytics) and Sentry (error monitoring) may set their own cookies. Please refer to their respective privacy policies for details.</p>
     <h3>Contact</h3>
-    <p>Questions about our cookie use? Email us at hello@amberrajewelry.com</p>`
+    <p>Questions about our cookie use? Email us at amberrajewelry@gmail.com</p>`
 };
 
 let currentLegalTab='privacy';
@@ -962,43 +1068,50 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 
 // ── PRODUCT SHOWCASE (index.html) ─────────────────────────────────────────
-// product showcase removed from homepage
+function buildProductShowcase(products) {
+  const container = document.getElementById('prod-scroll')
+  if (!container || !products || !products.length) return
+  const items = products.filter(p => p.img).slice(0, 8)
+  container.innerHTML = items.map(p => `
+    <div class="prod-card" onclick="prodCardClick(${p.id})">
+      <img src="${p.img}" alt="${p.name}" loading="lazy" width="320" height="427">
+      <div class="prod-card-info">
+        <div class="prod-card-name">${p.name}</div>
+        <span class="prod-card-cta">DISCOVER</span>
+      </div>
+    </div>
+  `).join('')
 
-// editorial scroll scrub removed
-
-// ── MOTION SCROLL ANIMATIONS ─────────────────────────────────────────────
-;(function initMotionEffects(){
-  const M = window.Motion
-  if (!M) return
-
-  // Collections cards: stagger fade on enter
-  const colls = document.querySelector('#colls')
-  if (colls) {
-    M.inView(colls, () => {
-      M.animate(colls.querySelectorAll('.cc'), { opacity: [0, 1], y: [40, 0] }, {
-        delay: M.stagger(0.12), duration: 0.7, easing: [0.25, 0.46, 0.45, 0.94]
-      })
-    }, { amount: 0.2 })
+  const bar = document.querySelector('.prod-progress-fill')
+  if (bar) {
+    container.addEventListener('scroll', () => {
+      const pct = container.scrollLeft / (container.scrollWidth - container.clientWidth) * 100
+      bar.style.width = pct + '%'
+    }, { passive: true })
   }
+}
 
-  // Footer: gentle fade up
-  const footer = document.querySelector('footer')
-  if (footer) {
-    M.inView(footer, () => {
-      M.animate(footer.querySelectorAll('.footer-cols > div'), { opacity: [0, 1], y: [24, 0] }, {
-        delay: M.stagger(0.1), duration: 0.6, easing: [0.25, 0.46, 0.45, 0.94]
-      })
-    }, { amount: 0.15 })
+// On index.html, openDrawer is in shop.js which is not loaded — redirect to shop page instead
+function prodCardClick(id) {
+  if (typeof openDrawer === 'function') {
+    openDrawer(id)
+  } else {
+    location.href = '/shop?open=' + id
   }
+}
 
-  // Product showcase: fade in progress bar
-  const prodSection = document.getElementById('products')
-  if (prodSection) {
-    const bar = prodSection.querySelector('.prod-progress')
-    if (bar) {
-      M.inView(prodSection, () => {
-        M.animate(bar, { opacity: [0, 1] }, { duration: 0.8, delay: 0.3 })
-      }, { amount: 0.3 })
-    }
+// Load products for homepage showcase
+(async function initHomeShowcase() {
+  const container = document.getElementById('prod-scroll')
+  if (!container) return
+  try {
+    const r = await fetch('/api/products')
+    if (!r.ok) throw new Error('HTTP ' + r.status)
+    const prods = await r.json()
+    buildProductShowcase(prods)
+  } catch (e) {
+    console.warn('Product showcase load failed', e)
   }
 })()
+
+// Displacement morph — removed, code preserved in displacement-morph.js
