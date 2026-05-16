@@ -23,20 +23,20 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 /* ═══ NAV — 60px Ultra-Minimal ═══════════════════════════════════════════ */
-#nav-shell{position:fixed;top:0;left:0;right:0;z-index:900;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:transparent;transition:transform .3s var(--ease-exit)}
+#nav-shell{position:fixed;top:0;left:0;right:0;z-index:900;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:var(--bg-dark);transition:transform .3s var(--ease-exit)}
 #nav-shell.nav-hidden{transform:translateY(-100%)}
 
 /* Left: hamburger + MENU */
-#nav-menu-btn{display:flex;align-items:center;gap:10px;background:none;border:none;cursor:pointer;padding:0;color:var(--charcoal);opacity:0.6;transition:opacity .3s}
+#nav-menu-btn{display:flex;align-items:center;gap:10px;background:none;border:none;cursor:pointer;padding:0;color:#fff;opacity:0.6;transition:opacity .3s}
 #nav-menu-btn:hover{opacity:1}
-#nav-menu-btn .label{font-family:var(--sans);font-size:11px;font-weight:300;letter-spacing:0.18em;text-transform:uppercase;color:var(--charcoal)}
+#nav-menu-btn .label{font-family:var(--sans);font-size:11px;font-weight:300;letter-spacing:0.18em;text-transform:uppercase;color:#fff}
 
 /* Center: logo */
-#nav-shell .nav-logo{font-family:var(--serif);font-size:22px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--charcoal);position:absolute;left:50%;transform:translateX(-50%);-webkit-font-smoothing:antialiased}
+#nav-shell .nav-logo{font-family:var(--serif);font-size:22px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:#fff;position:absolute;left:50%;transform:translateX(-50%);-webkit-font-smoothing:antialiased}
 
 /* Right: icons */
 .nav-icons{display:flex;align-items:center;gap:16px}
-.nav-ico-btn{position:relative;display:flex;align-items:center;justify-content:center;color:var(--charcoal);opacity:0.6;transition:opacity .3s;background:none;border:none;cursor:pointer;padding:4px}
+.nav-ico-btn{position:relative;display:flex;align-items:center;justify-content:center;color:#fff;opacity:0.6;transition:opacity .3s;background:none;border:none;cursor:pointer;padding:4px}
 .nav-ico-btn:hover{opacity:1}
 .nav-ico-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.4}
 .nav-ico-btn .nav-badge{position:absolute;top:-4px;right:-6px;min-width:14px;height:14px;background:var(--amber);font-size:9px;color:#fff;display:none;align-items:center;justify-content:center;font-family:var(--sans);font-weight:300;padding:0 2px}
