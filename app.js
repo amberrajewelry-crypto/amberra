@@ -528,17 +528,18 @@ function closeSizeGuide(){
 function s(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth'})}
 
 // ── SCROLL REVEAL (Oura-style .mo fade-in) ───────────────────────────────
-window.addEventListener('DOMContentLoaded',()=>{
-  const obs=new IntersectionObserver(entries=>{
+{
+  const moObs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{
       if(e.isIntersecting){
         e.target.classList.add('vis');
-        obs.unobserve(e.target);
+        moObs.unobserve(e.target);
       }
     });
   },{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
-  document.querySelectorAll('.mo').forEach(el=>obs.observe(el));
-});
+  // app.js loads at end of body — DOM is ready
+  document.querySelectorAll('.mo').forEach(el=>moObs.observe(el));
+}
 
 // ── NAV SCROLL ────────────────────────────────────────────────────────────
 const HAS_HERO=!!document.getElementById('hero');
