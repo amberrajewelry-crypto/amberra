@@ -68,9 +68,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   "url": "https://www.amberrajewelry.com",
   "logo": {
     "@type": "ImageObject",
-    "url": "https://www.amberrajewelry.com/images/og-cover.jpg",
-    "width": 1200,
-    "height": 630
+    "url": "https://www.amberrajewelry.com/images/logo.png",
+    "width": 400,
+    "height": 100
   },
   "description": "Handcrafted Bali jewelry made in Ubud with natural amber and 925 sterling silver. Each piece is ritually blessed and unique.",
   "foundingDate": "2023",
@@ -230,8 +230,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Jost:wght@100;200;400;600;700&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Jost:wght@100;200;400;600;700&display=swap" rel="stylesheet"></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="/style.css?v=20260331">
 </head>
 <body>
@@ -241,184 +241,563 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 <!-- ══ FLUID BG — fixed full page ══════════════════════════════════════ -->
-<canvas id="fluid-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;display:block;z-index:-1;pointer-events:none"></canvas>
+<canvas id="fluid-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;display:block;z-index:1;pointer-events:none"></canvas>
 
-<!-- ══ NAV — 60px Ultra-Minimal ═══════════════════════════════════════ -->
-<header id="nav-shell">
-  <button id="nav-menu-btn" onclick="openMenu()" aria-label="Menu">
-    <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><line x1="0" y1="1" x2="18" y2="1" stroke="#fff" stroke-width="1.2"/><line x1="0" y1="6" x2="18" y2="6" stroke="#fff" stroke-width="1.2"/><line x1="0" y1="11" x2="18" y2="11" stroke="#fff" stroke-width="1.2"/></svg>
-    <span class="label" data-i18n="nav_menu">MENU</span>
-  </button>
-  <a href="/" class="nav-logo">AMBERRA</a>
-  <div class="nav-icons">
-    <button class="nav-ico-btn" onclick="toggleWishView()" aria-label="Wishlist">
-      <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-      <span class="nav-badge" id="wish-badge">0</span>
-    </button>
-    <button class="nav-ico-btn" onclick="openAcc()" aria-label="Account">
-      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-    </button>
-    <button class="nav-ico-btn" onclick="openCart()" aria-label="Cart">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-      <span class="nav-badge" id="cart-badge">0</span>
-    </button>
+<!-- ══ MOBILE NAV ════════════════════════════════════════════════════════ -->
+<div class="mob-nav-overlay" id="mob-nav-overlay" onclick="closeMobNav()"></div>
+<div class="mob-nav-drawer" id="mob-nav-drawer">
+  <div class="mob-nav-head">
+    <span class="mob-nav-logo">AMBERRA</span>
+    <button class="mob-nav-close" onclick="closeMobNav()">✕</button>
   </div>
-</header>
-
-<!-- ══ MENU OVERLAY ═══════════════════════════════════════════════════════ -->
-<div id="menu-overlay">
-  <button id="menu-close-btn" onclick="closeMenu()" aria-label="Close menu">
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><line x1="1" y1="1" x2="19" y2="19" stroke="#fff" stroke-width="1.2"/><line x1="19" y1="1" x2="1" y2="19" stroke="#fff" stroke-width="1.2"/></svg>
-  </button>
-  <nav class="menu-nav">
-    <a class="menu-link" href="/rings" data-i18n="nav_rings" onclick="closeMenu()">RINGS</a>
-    <a class="menu-link" href="/earrings" data-i18n="nav_earrings" onclick="closeMenu()">EARRINGS</a>
-    <a class="menu-link" href="/pendants" data-i18n="nav_pendants" onclick="closeMenu()">PENDANTS</a>
-    <a class="menu-link" href="/bracelets" data-i18n="nav_bracelets" onclick="closeMenu()">BRACELETS</a>
-    <a class="menu-link" href="/shop" data-i18n="nav_collections" onclick="closeMenu()">CHAINS</a>
-    <div class="menu-divider"></div>
-    <a class="menu-link menu-link--secondary" href="/journal" data-i18n="nav_journal" onclick="closeMenu()">JOURNAL</a>
-    <a class="menu-link menu-link--secondary" href="/our-story" data-i18n="nav_about" onclick="closeMenu()">OUR STORY</a>
-    <div class="menu-divider"></div>
-    <div class="menu-utils">
-      <button class="menu-util" onclick="closeMenu();openAcc()" data-i18n="util_account">My Account</button>
-      <button class="menu-util" onclick="closeMenu();openSrv()" data-i18n="util_services">Services</button>
-      <button class="menu-util" onclick="closeMenu();openReq()" data-i18n="util_contact">Contact Us</button>
+  <div class="mob-nav-links">
+    <a class="mob-nav-link" href="/" data-i18n="nav_home">Home</a>
+    <a class="mob-nav-link" href="/shop" data-i18n="nav_shop">Shop All</a>
+    <a class="mob-nav-link" href="/rings" data-i18n="nav_rings">Rings</a>
+    <a class="mob-nav-link" href="/earrings" data-i18n="nav_earrings">Earrings</a>
+    <a class="mob-nav-link" href="/pendants" data-i18n="nav_pendants">Pendants</a>
+    <a class="mob-nav-link" href="/bracelets" data-i18n="nav_bracelets">Bracelets</a>
+    <a class="mob-nav-link" href="/journal" data-i18n="nav_journal">Journal</a>
+    <a class="mob-nav-link" href="/#about" data-i18n="nav_about">Our Story</a>
+    <a class="mob-nav-link amber" href="/#wholesale" data-i18n="nav_wholesale">Wholesale</a>
+  </div>
+  <div class="mob-nav-foot">
+    <div class="mob-nav-utils">
+      <button class="mob-nav-util" onclick="closeMobNav();openAcc()" data-i18n="util_account">My Account</button>
+      <button class="mob-nav-util" onclick="closeMobNav();openSrv()" data-i18n="util_services">Services</button>
+      <button class="mob-nav-util" onclick="closeMobNav();openReq()" data-i18n="util_contact">Contact Us</button>
     </div>
-  </nav>
+  </div>
+</div>
+
+<!-- ══ NAV ════════════════════════════════════════════════════════════════ -->
+<div id="nav-shell">
+  <div class="nav-logo-bar">
+    <div class="nav-lb-l">
+      <button class="mob-menu-btn" onclick="openMobNav()">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <button class="nav-util-link keep" onclick="openSrv()">
+        <span data-i18n="util_services">Services</span>
+      </button>
+      <button class="nav-util-link" onclick="openReq()">
+        <span data-i18n="util_contact">Contact Us</span>
+      </button>
+      <div class="nav-search-wrap">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input class="nav-search-inp" type="text" placeholder="Search" data-i18n-ph="search_ph">
+      </div>
+    </div>
+    <div class="nav-center">
+      <a class="nav-logo" href="/"><span class="nav-logo-main">AMBERRA</span><span class="nav-logo-sub">Jewelry</span></a>
+      <div class="nav-main-wrap"><div class="nav-main">
+        <a class="nl" href="/#colls" data-i18n="nav_collections">Collections</a>
+        <a class="nl" href="/rings" data-i18n="nav_rings">Rings</a>
+        <a class="nl" href="/earrings" data-i18n="nav_earrings">Earrings</a>
+        <a class="nl" href="/pendants" data-i18n="nav_pendants">Pendants</a>
+        <a class="nl" href="/bracelets" data-i18n="nav_bracelets">Bracelets</a>
+        <span class="nav-divider"></span>
+        <a class="nl" href="/#about" data-i18n="nav_about">Our Story</a>
+        <a class="nl" href="/#wholesale" data-i18n="nav_wholesale">Wholesale</a>
+        <a class="nl" href="/journal" data-i18n="nav_journal">Journal</a>
+      </div></div>
+    </div>
+    <div class="nav-lb-r">
+      <button class="nav-ico-btn" onclick="toggleWishView()">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        <span class="nav-badge" id="wish-badge">0</span>
+      </button>
+      <button class="nav-ico-btn" onclick="openAcc()">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </button>
+      <a class="nav-ico-btn" href="/stores">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </a>
+      <button class="nav-ico-btn" onclick="openCart()">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="nav-badge" id="cart-badge">0</span>
+      </button>
+    </div>
+  </div>
 </div>
 
 
-<!-- ══ HERO ══════════════════════════════════════════════════════════════ -->
-<section id="hero" style="position:relative;height:100vh;z-index:2;display:flex;align-items:flex-end">
-  <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Handcrafted Baltic Amber Jewelry — Rings, Earrings, Pendants & Bracelets</h1>
-  <div id="hero-content" style="padding:0 48px 80px;max-width:600px">
-    <span class="label hero-fade" style="color:rgba(255,255,255,0.5);display:block;margin-bottom:12px;opacity:0">BALTIC AMBER JEWELRY</span>
-    <h2 class="heading-hero hero-fade" style="color:#fff;opacity:0" data-i18n="hero_h">Born from<br>Ancient Earth</h2>
-    <p class="body-text hero-fade" style="color:rgba(255,255,255,0.6);opacity:0;margin-top:16px" data-i18n="hero_p">Forty million years of nature's patience,<br>shaped by artisan hands in Bali.</p>
-    <a href="/shop" class="cta-link hero-fade" style="color:rgba(255,255,255,0.8);opacity:0;margin-top:24px;display:inline-block" data-i18n="hero_cta">DISCOVER THE COLLECTION</a>
+<!-- ══ HERO VIDEO ════════════════════════════════════════════════════════ -->
+<section id="hero-video">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/videos/hero.mp4" type="video/mp4">
+  </video>
+</section>
+
+<!-- ══ COLLECTIONS GRID ═══════════════════════════════════════════════════ -->
+<section id="colls">
+  <div class="c-head">
+    <h2 class="s-title" style="font-size:clamp(28px,3vw,48px);font-weight:300">The Collection</h2>
+    <button class="c-link" onclick="navTo('/shop')">View All →</button>
   </div>
-  <div id="scroll-hint" style="position:absolute;bottom:32px;left:50%;transform:translateX(-50%);width:1px;height:40px;background:rgba(255,255,255,0.3)"></div>
+  <div class="c-grid">
+    <div class="cc vis" onclick="navTo('/rings')">
+      <div class="cc-img-wrap">
+        <span class="cc-badge bestseller">Bestseller</span>
+        <img src="images/rings/iris_silver.png" alt="Rings" loading="lazy">
+      </div>
+      <div class="cc-info"><span class="cc-cat">20 pieces · from $89</span><span class="cc-name">Rings</span><span class="cc-price">Baltic amber · 925 silver</span><span class="cc-cta">Shop now</span></div>
+    </div>
+    <div class="cc vis" onclick="navTo('/earrings')">
+      <div class="cc-img-wrap">
+        <span class="cc-badge new">New</span>
+        <img src="images/earrings/halo_green_rg.png" alt="Earrings" loading="lazy">
+      </div>
+      <div class="cc-info"><span class="cc-cat">45 pieces · from $79</span><span class="cc-name">Earrings</span><span class="cc-price">Studs, drops &amp; hoops</span><span class="cc-cta">Shop now</span></div>
+    </div>
+    <div class="cc vis" onclick="navTo('/pendants')">
+      <div class="cc-img-wrap">
+        <img src="images/pendants/IMG_1399.png" alt="Pendants" loading="lazy">
+      </div>
+      <div class="cc-info"><span class="cc-cat">8 pieces · from $99</span><span class="cc-name">Pendants</span><span class="cc-price">Chain included · 45 cm</span><span class="cc-cta">Shop now</span></div>
+    </div>
+    <div class="cc vis" onclick="navTo('/bracelets')">
+      <div class="cc-img-wrap">
+        <img src="images/bracelets/IMG_1566.png" alt="Bracelets" loading="lazy">
+      </div>
+      <div class="cc-info"><span class="cc-cat">19 pieces · from $89</span><span class="cc-name">Bracelets</span><span class="cc-price">Adjustable · XS – XL</span><span class="cc-cta">Shop now</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════════════ -->
+<section id="hero" style="position:relative;overflow:hidden">
+
+  <!-- Slide 1 — fluid only -->
+  <div class="h-slide h-slide-1 h-act" id="h-s1">
+    <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">Handcrafted Baltic Amber Jewelry — Rings, Earrings, Pendants &amp; Bracelets</h1>
+  </div>
+
+  <!-- Slide 2 — editorial overlay -->
+  <div class="h-slide h-slide-2" id="h-s2">
+    <div class="h-s2-wrap">
+      <div class="h-s2-text">
+        <span class="h-s2-lbl" data-i18n="ed_lbl">The Craft</span>
+        <div class="h-s2-rule"></div>
+        <h2 class="h-s2-title" data-i18n="ed_title">Born from <em>Ancient Earth</em></h2>
+        <p class="h-s2-body" data-i18n="ed_body1">Amber is not merely stone — it is time crystallised. Forty million years of forests, insects, light and rain preserved in a single stone.</p>
+        <p class="h-s2-body" style="margin-top:12px" data-i18n="ed_body2">Our artisans in Bali spend lifetimes learning to honour it. Every piece passes through water, fire and prayer before it reaches you.</p>
+      </div>
+      <div class="h-s2-model">
+        <picture>
+          <source srcset="images/model-opt.webp" type="image/webp">
+          <img src="images/model-opt.jpg" alt="AMBERRA amber jewelry" loading="eager">
+        </picture>
+      </div>
+    </div>
+  </div>
+
 </section>
 <script type="module" src="/fluid-bg.js"></script>
 
-<!-- ══ EDITORIAL SCROLL ══════════════════════════════════════════════════ -->
-<section id="editorial">
-  <div class="ed-screen" style="background-image:url('/images/editorial/amber-raw.webp')">
-    <div class="ed-overlay"></div>
-    <div class="ed-text rv">
-      <h2 class="heading-section" style="color:#fff" data-i18n="ed1_h">Forty million years in the making</h2>
-    </div>
-  </div>
-
-  <div class="ed-screen" style="background-image:url('/images/editorial/artisan-hands.webp')">
-    <div class="ed-overlay"></div>
-    <div class="ed-text rv">
-      <h2 class="heading-section" style="color:#fff" data-i18n="ed2_h">Shaped by artisan hands</h2>
-    </div>
-  </div>
-
-  <div class="ed-screen" style="background-image:url('/images/editorial/product-hero.webp')">
-    <div class="ed-overlay"></div>
-    <div class="ed-text rv">
-      <h2 class="heading-section" style="color:#fff" data-i18n="ed3_h">Where nature meets craft</h2>
-    </div>
-  </div>
-
-  <div class="ed-screen" style="background-image:url('/images/editorial/model-editorial.webp')">
-    <div class="ed-overlay"></div>
-    <div class="ed-text rv">
-      <h2 class="heading-section" style="color:#fff" data-i18n="ed4_h">Wear your story</h2>
-      <a href="/shop" class="cta-link" style="color:rgba(255,255,255,0.8);margin-top:24px;display:inline-block" data-i18n="ed4_cta">EXPLORE THE COLLECTION</a>
-    </div>
+<!-- ══ BESTSELLERS ════════════════════════════════════════════════════════ -->
+<section id="bestsellers">
+  <div class="bs-head">
+    <h2 class="s-title">Bestselling <em>Pieces</em></h2>
+    <a class="bs-all" href="/shop">View All Pieces &nbsp;→</a>
   </div>
 </section>
 
-<!-- ══ PRODUCT SHOWCASE ══════════════════════════════════════════════════ -->
-<section id="products" style="background:var(--cream);padding:120px 0;position:relative;z-index:2">
-  <div style="display:flex;justify-content:space-between;align-items:center;padding:0 48px;margin-bottom:32px">
-    <span class="label" style="color:var(--amber)">OUR PIECES</span>
-    <a href="/shop" class="cta-link cta-gold">VIEW ALL</a>
-  </div>
-  <div id="prod-scroll" class="prod-scroll"></div>
-  <div class="prod-progress" style="margin:24px 48px 0"><div class="prod-progress-fill"></div></div>
-</section>
-
-<!-- divider removed -->
+<!-- ══ DIVIDER ════════════════════════════════════════════════════════════ -->
+<div style="max-width:120px;height:1px;background:var(--amber);margin:0 auto 0;opacity:.5"></div>
 
 <!-- ══ ABOUT TEASER ═══════════════════════════════════════════════════════ -->
-<section id="about" style="position:relative;height:100vh;z-index:2;display:flex;align-items:flex-end;overflow:hidden">
-  <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
-    <source src="images/about-video.mp4" type="video/mp4">
-  </video>
-  <div style="position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(0,0,0,0.6))"></div>
-  <div style="position:relative;z-index:1;padding:0 48px 80px;max-width:600px" class="rv">
-    <h2 class="heading-section" style="color:#fff" data-i18n="about_h">Amber Alive for Forty Million Years</h2>
-    <div style="display:flex;gap:32px;margin-top:20px">
-      <span class="label" style="color:rgba(255,255,255,0.6)">40M+ YEARS</span>
-      <span class="label" style="color:rgba(255,255,255,0.6)">94 PIECES</span>
-      <span class="label" style="color:rgba(255,255,255,0.6)">3 COUNTRIES</span>
+<section id="about">
+  <div class="ab-inner">
+    <div class="ab-text">
+      <h2 class="ab-title rv d1">Amber Alive for <em>Forty Million Years</em></h2>
+      <div class="s-rule rv-line d2" style="background:rgba(201,168,50,.5);margin-bottom:32px"></div>
+      <p class="s-body">Jane Sakhvadze — designer and artist — founded AMBERRA with one conviction: to bring life to a material that has existed for millions of years. Silver and gold, precious and semi-precious stones, and sun-warm amber — in the hands of our craftsmen they become something more than jewellery.</p>
+      <p class="s-body" style="margin-top:16px">Working from Bali, Jane brings together ancestral craftsmanship and contemporary vision. Every AMBERRA piece carries the memory of forty million years and the living spirit of the island.</p>
+      <blockquote class="ab-quote">
+        <span class="ab-quote-mark">"</span>
+        <p>Amber has been alive for forty million years.<br>AMBERRA gives it a new form.</p>
+        <cite>— Jane Sakhvadze, Founder</cite>
+      </blockquote>
+      <div class="ab-pillars">
+        <div class="ab-pillar">
+          <span class="ab-pillar-num">40M+</span>
+          <span class="ab-pillar-lbl">Years of amber</span>
+        </div>
+        <div class="ab-pillar">
+          <span class="ab-pillar-num">94</span>
+          <span class="ab-pillar-lbl">Unique pieces</span>
+        </div>
+        <div class="ab-pillar">
+          <span class="ab-pillar-num">3</span>
+          <span class="ab-pillar-lbl">Countries of presence</span>
+        </div>
+      </div>
+    </div>
+    <div class="ab-img">
+      <div class="ab-video-wrap">
+        <video class="ab-video" muted loop playsinline preload="none" data-src="images/about-video.mp4">
+        </video>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ══ FOUNDER STRIP ══════════════════════════════════════════════════════ -->
-<section class="founder-strip" style="background:var(--cream);padding:48px;display:flex;align-items:center;gap:24px;position:relative;z-index:2">
-  <img src="images/founder-jane.jpg" alt="Jane Sakhvadze" width="80" height="80" style="border-radius:50%;object-fit:cover;object-position:center 10%" loading="lazy">
-  <div>
-    <div style="font-family:var(--serif);font-size:18px;font-weight:300;color:var(--amber)" data-i18n="founder_name">Jane Sakhvadze</div>
-    <div style="font-family:var(--sans);font-size:14px;font-weight:300;font-style:italic;opacity:0.7;margin-top:4px;color:var(--black)" data-i18n="founder_role">Founder &amp; Creative Director</div>
+<section class="founder-strip" style="padding:48px 56px">
+  <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:32px;flex-wrap:wrap">
+    <div style="width:80px;height:80px;border-radius:50%;overflow:hidden;border:1.5px solid var(--amber);flex-shrink:0">
+      <img src="images/founder-jane.jpg" alt="Jane Sakhvadze" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 10%">
+    </div>
+    <div style="flex:1;min-width:200px">
+      <p style="font-family:var(--sans);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin:0 0 4px">The Founder</p>
+      <p style="font-family:var(--serif);font-size:18px;color:var(--charcoal);margin:0 0 4px">Jane Sakhvadze <span style="font-size:11px;font-style:normal;font-family:var(--sans);letter-spacing:.12em;color:var(--gray)">· Founder &amp; Creative Director, Bali</span></p>
+      <p style="font-family:var(--serif);font-size:14px;font-style:italic;color:var(--gray);margin:0">"Every piece begins where ancient earth meets living hands."</p>
+    </div>
+    <a href="/our-story#founder" style="font-family:var(--sans);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--charcoal);text-decoration:none;border-bottom:1px solid var(--charcoal);padding-bottom:2px;white-space:nowrap;flex-shrink:0">Meet Jane</a>
   </div>
-  <div style="flex:1"></div>
-  <a href="/our-story#founder" class="cta-link cta-gold" data-i18n="founder_cta">MEET JANE</a>
 </section>
 
 
+<!-- ══ EDITORIAL ══════════════════════════════════════════════════════════ -->
+<section id="ed">
+  <div class="ed-wrap">
+    <div class="ed-text">
+      <div class="s-rule rv-line d1"></div>
+      <h2 class="s-title rv d2" data-i18n="ed_title">Born from <em>Ancient Earth</em></h2>
+      <p class="s-body rv d3" data-i18n="ed_body1">Amber is not merely stone — it is time crystallised. Forty million years of forests, insects, light and rain preserved in a single stone.</p>
+      <p class="s-body rv d4" style="margin-top:16px" data-i18n="ed_body2">Our artisans in Bali spend lifetimes learning to honour it. Every piece passes through water, fire and prayer before it reaches you.</p>
+      <div class="ed-stats rv d5">
+        <div class="ed-stat"><span class="ed-num">40M</span><span class="ed-lbl" data-i18n="stat1">Years of amber</span></div>
+        <div class="ed-stat"><span class="ed-num">94</span><span class="ed-lbl" data-i18n="stat2">Unique pieces</span></div>
+        <div class="ed-stat"><span class="ed-num">3</span><span class="ed-lbl" data-i18n="stat3">Countries of presence</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ══ WHOLESALE TEASER ═══════════════════════════════════════════════════ -->
+<section id="wholesale">
+  <div class="ws-intro rv">
+    <h2 class="s-title" data-i18n="ws_title">Partner With <em>Amberra</em></h2>
+    <p class="s-body" data-i18n="ws_body">We welcome boutiques, concept stores, and jewelry retailers worldwide. Our wholesale program offers exclusive pricing, full product range access, and dedicated account support from Bali.</p>
+  </div>
+  <div class="ws-tiers" data-stagger>
+    <div class="ws-tier rv d1">
+      <span class="ws-tier-min" data-i18n="ws_t1">Starter</span>
+      <span class="ws-tier-qty">10+</span>
+      <span class="ws-tier-disc" data-i18n="ws_ppo">pieces per order</span>
+      <p class="ws-tier-note" data-i18n="ws_n1">Access to full catalog<br>Standard wholesale pricing<br>WhatsApp support</p>
+    </div>
+    <div class="ws-tier ws-feat rv d2">
+      <span class="ws-tier-min" data-i18n="ws_t2">Partner</span>
+      <span class="ws-tier-qty">30+</span>
+      <span class="ws-tier-disc" data-i18n="ws_ppo">pieces per order</span>
+      <p class="ws-tier-note" data-i18n="ws_n2">Priority access to new drops<br>Enhanced pricing tiers<br>Dedicated account manager</p>
+    </div>
+    <div class="ws-tier rv d3">
+      <span class="ws-tier-min" data-i18n="ws_t3">Exclusive</span>
+      <span class="ws-tier-qty">100+</span>
+      <span class="ws-tier-disc" data-i18n="ws_ppo">pieces per order</span>
+      <p class="ws-tier-note" data-i18n="ws_n3">Custom packaging options<br>Best pricing available<br>Co-branding opportunities</p>
+    </div>
+  </div>
+  <div class="c-btns rv d4">
+    <a class="btn-s" href="/#wholesale">Learn More About Partnership</a>
+    <a class="ws-wa-link" href="https://wa.me/6287853867120" target="_blank" rel="noopener noreferrer">or contact via WhatsApp</a>
+  </div>
+</section>
+
+
+<!-- ══ JOURNAL SLIDER ══════════════════════════════════════════════════════ -->
+<section id="journal" class="js-page">
+  <div class="js-header">
+    <h2 class="s-title" style="margin:4px 0 0" data-i18n="j_title">The Amber <em>Journal</em></h2>
+    <a class="c-link" href="/journal" style="margin-top:8px;display:inline-block" data-i18n="j_all">View all articles</a>
+  </div>
+
+  <div class="js-wrap" id="js-wrap">
+    <div class="js-slides" id="js-slides">
+
+      <!-- Slide 1 — Healing / Succinic Acid -->
+      <article class="js-slide js-active">
+        <div class="js-art js-art-1"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Wellness · Science</span>
+          <span class="js-date">March 2026</span>
+          <h2 class="js-title">Baltic Amber Healing Properties:<br><em>The Science of Succinic Acid</em></h2>
+          <p class="js-body">Baltic amber contains up to 8% succinic acid — a natural compound studied for its anti-inflammatory and immune-supporting effects when worn against the skin.</p>
+          <a class="js-read" href="/journal/balinese-amber-rings">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 2 — Care Guide -->
+      <article class="js-slide">
+        <div class="js-art js-art-2"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Care · Ritual</span>
+          <span class="js-date">February 2026</span>
+          <h2 class="js-title">How to Clean Amber Jewelry:<br><em>The Complete Care Guide</em></h2>
+          <p class="js-body">Natural amber is softer than most gemstones. Warm water, mild soap, and a soft cloth are all you need to keep it radiant for generations. Avoid chemicals and ultrasound cleaners.</p>
+          <a class="js-read" href="/journal/amber-earrings">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 3 — Journey of Stone -->
+      <article class="js-slide">
+        <div class="js-art js-art-3"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Origin · Story</span>
+          <span class="js-date">January 2026</span>
+          <h2 class="js-title">From Ancient Forests to Bali:<br><em>The Journey of Every AMBERRA Stone</em></h2>
+          <p class="js-body">Forty million years beneath ancient forests, then in the sacred workshops of Ubud — the remarkable story of each Baltic amber stone and the hands that shape it.</p>
+          <a class="js-read" href="/journal/amber-pendant-necklace">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 4 — Real vs Fake -->
+      <article class="js-slide">
+        <div class="js-art js-art-4"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Authenticity · Knowledge</span>
+          <span class="js-date">December 2025</span>
+          <h2 class="js-title">How to Tell Real Baltic Amber<br>from Fake: <em>5 Simple Tests</em></h2>
+          <p class="js-body">With replicas flooding the market, knowing how to identify authentic Baltic amber is essential. Salt water, UV light, and the scent test reveal the truth instantly.</p>
+          <a class="js-read" href="/journal/amber-bracelets">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 5 — Style Tips -->
+      <article class="js-slide">
+        <div class="js-art js-art-5"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Style · Fashion</span>
+          <span class="js-date">November 2025</span>
+          <h2 class="js-title">5 Ways to Style<br><em>Amber Jewelry This Season</em></h2>
+          <p class="js-body">From layered gold chains to minimalist rings, discover how natural amber complements every aesthetic — from Balinese sunsets to city evenings.</p>
+          <a class="js-read" href="/journal/buy-balinese-amber-jewelry">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 6 — Amber Colors -->
+      <article class="js-slide">
+        <div class="js-art js-art-6"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Color · Meaning</span>
+          <span class="js-date">October 2025</span>
+          <h2 class="js-title">The Golden Spectrum:<br><em>Understanding Amber Colors</em></h2>
+          <p class="js-body">From cognac to cherry, green to milky white — every shade of Baltic amber tells a different geological story and carries its own energy signature.</p>
+          <a class="js-read" href="/journal/amber-jewelry-gift-guide">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 7 — Ancient Gemstone -->
+      <article class="js-slide">
+        <div class="js-art js-art-7"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">History · Earth</span>
+          <span class="js-date">September 2025</span>
+          <h2 class="js-title">Why Baltic Amber Is<br><em>the World's Most Ancient Gemstone</em></h2>
+          <p class="js-body">Unlike diamonds or sapphires, Baltic amber is organic — fossilized resin from forests that disappeared 40 million years ago. Its rarity lies not in hardness, but in time.</p>
+          <a class="js-read" href="/journal/balinese-amber-jewelry-price">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 8 — Ubud Artisans -->
+      <article class="js-slide">
+        <div class="js-art js-art-8"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Craft · People</span>
+          <span class="js-date">August 2025</span>
+          <h2 class="js-title">The Ubud Artisans:<br><em>Hands Behind Every AMBERRA Piece</em></h2>
+          <p class="js-body">In the rice-field studios of Ubud, Balinese silversmiths spend years perfecting the art of setting Baltic amber in sacred geometric forms passed down through generations.</p>
+          <a class="js-read" href="/journal/amber-rings-for-women">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 9 — Feminine Energy -->
+      <article class="js-slide">
+        <div class="js-art js-art-9"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Spirit · Feminine</span>
+          <span class="js-date">July 2025</span>
+          <h2 class="js-title">Amber and Feminine Energy:<br><em>The Ancient Spiritual Connection</em></h2>
+          <p class="js-body">In Bali, amber is worn for protection, warmth, and the awakening of feminine power. Ancient cultures across the world have long associated this resin stone with the divine feminine.</p>
+          <a class="js-read" href="/journal/genuine-balinese-amber">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 10 — The Sacred Ocean Route -->
+      <article class="js-slide">
+        <div class="js-art js-art-10"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Ocean · Sacred</span>
+          <span class="js-date">June 2025</span>
+          <h2 class="js-title">The Sacred Ocean Route:<br><em>How Amber Arrived on Bali's Shore</em></h2>
+          <p class="js-body">Long before gem traders, the ocean itself carried Baltic amber to these sacred shores. A story of tides, ancient volcanoes, and the Balinese belief that the sea delivers gifts from unseen worlds.</p>
+          <a class="js-read" href="/journal/amber-jewelry-collection">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 11 — Complete Guide to Balinese Jewelry -->
+      <article class="js-slide">
+        <div class="js-art js-art-11"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Bali Jewelry · Guide</span>
+          <span class="js-date">April 2026</span>
+          <h2 class="js-title">Complete Guide to<br><em>Balinese Jewelry</em></h2>
+          <p class="js-body">From temple offerings to luxury boutiques — everything you need to know about Balinese jewelry: materials, techniques, spiritual meaning, and how to buy authentic pieces.</p>
+          <a class="js-read" href="/journal/complete-guide-bali-jewelry">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 12 — Best Bali Silver Rings -->
+      <article class="js-slide">
+        <div class="js-art js-art-12"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Rings · Bali Silver</span>
+          <span class="js-date">May 2026</span>
+          <h2 class="js-title">Best Bali Silver Rings:<br><em>The Ultimate Buyer's Guide</em></h2>
+          <p class="js-body">Sterling silver meets sacred Baltic amber in the ring-making tradition of Bali's master smiths. Discover the finest styles, hallmarks of quality, and the stories behind each design.</p>
+          <a class="js-read" href="/journal/best-bali-silver-rings">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 13 — Bali Jewelry Wholesale Guide -->
+      <article class="js-slide">
+        <div class="js-art js-art-13"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Wholesale · B2B</span>
+          <span class="js-date">June 2026</span>
+          <h2 class="js-title">Bali Jewelry Wholesale:<br><em>A Complete B2B Guide</em></h2>
+          <p class="js-body">For boutique owners and buyers seeking authentic Balinese jewelry at wholesale prices — our complete guide to sourcing, minimum orders, certification, and building a lasting partnership.</p>
+          <a class="js-read" href="/journal/bali-jewelry-wholesale-guide">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 14 — Spiritual Jewelry from Bali -->
+      <article class="js-slide">
+        <div class="js-art js-art-14"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Spirit · Sacred</span>
+          <span class="js-date">July 2026</span>
+          <h2 class="js-title">Spiritual Jewelry from Bali:<br><em>Symbols, Meaning &amp; Energy</em></h2>
+          <p class="js-body">Every piece of Balinese jewelry carries a prayer. Discover the sacred symbols woven into amber and silver — from the Om to the lotus — and why spiritual jewelry from Bali resonates across the world.</p>
+          <a class="js-read" href="/journal/spiritual-jewelry-bali">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 15 — How to Style Bali Jewelry -->
+      <article class="js-slide">
+        <div class="js-art js-art-15"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Style · Fashion</span>
+          <span class="js-date">August 2026</span>
+          <h2 class="js-title">How to Style<br><em>Bali Jewelry</em></h2>
+          <p class="js-body">Amber earrings with linen, silver rings stacked at sunset, pendant necklaces for the boardroom — learn how stylists and editors wear Balinese jewelry from morning coffee to evening glow.</p>
+          <a class="js-read" href="/journal/how-to-style-bali-jewelry">Read Article</a>
+        </div>
+      </article>
+
+    </div><!-- end .js-slides -->
+
+    <!-- Arrows -->
+    <button class="js-arrow js-prev" id="js-prev" aria-label="Previous article">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="js-arrow js-next" id="js-next" aria-label="Next article">
+      <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+    </button>
+
+    <!-- Bottom bar -->
+    <div class="js-bottom">
+      <div class="js-dots-row" id="js-dots"></div>
+      <span class="js-counter"><b id="js-cur">01</b> / 15</span>
+    </div>
+
+    <!-- Progress line -->
+    <div class="js-prog"><div class="js-prog-fill" id="js-prog-fill"></div></div>
+  </div><!-- end .js-wrap -->
+</section>
 
 
 <!-- ══ CONTACT ════════════════════════════════════════════════════════════ -->
-<section id="contact" style="background:var(--bg-dark);padding:160px 48px;text-align:center;position:relative;z-index:2">
-  <h2 class="heading-section" style="color:#fff" data-i18n="contact_h">Request a Personal Consultation</h2>
-  <p class="body-text" style="color:rgba(255,255,255,0.6);margin-top:16px;max-width:400px;margin-left:auto;margin-right:auto" data-i18n="contact_p">Let us guide you to the perfect piece.</p>
-  <a href="#" onclick="openReq();return false" class="cta-link" style="color:var(--amber);margin-top:32px;display:inline-block" data-i18n="contact_cta">REQUEST A PIECE</a>
+<section id="contact">
+  <h2 class="s-title rv d1" data-i18n="c_title">Request a Personal Consultation</h2>
+  <p class="s-body rv d2" style="max-width:480px;margin:0 auto" data-i18n="c_body">Our team in Bali will personally guide you to the perfect piece. Every stone is chosen with intention.</p>
+  <div class="c-btns rv d3">
+    <button class="btn-s" onclick="openReq()" data-i18n="req_btn">Request a Piece</button>
+    <a class="btn-o" href="https://instagram.com/amberra.jewelry" target="_blank" rel="noopener noreferrer">Instagram</a>
+  </div>
 </section>
 
 <!-- ══ FOOTER ════════════════════════════════════════════════════════════ -->
-<footer style="background:var(--bg-dark);padding:160px 48px 80px;position:relative;z-index:2">
-  <div style="border-top:1px solid rgba(201,168,50,0.15);padding-top:80px;display:flex;flex-direction:column;align-items:center;gap:40px">
-    <a href="/" style="font-family:var(--serif);font-size:28px;font-weight:300;letter-spacing:0.2em;color:var(--amber);text-decoration:none">AMBERRA</a>
-    <div style="display:flex;gap:24px;align-items:center">
-      <a href="https://instagram.com/amberra.jewelry" aria-label="Instagram" style="color:#fff;opacity:0.4;transition:opacity 0.2s" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
-      <a href="https://wa.me/6287853867120" aria-label="WhatsApp" style="color:#fff;opacity:0.4;transition:opacity 0.2s" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
-      <a href="https://www.pinterest.com/amberra_jewelry/" aria-label="Pinterest" style="color:#fff;opacity:0.4;transition:opacity 0.2s" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 00-4.373 23.178c-.1-.937-.2-2.375.04-3.4.218-.925 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.024 0 1.518.769 1.518 1.69 0 1.03-.655 2.569-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146A12 12 0 1012 0z"/></svg></a>
-    </div>
-    <div class="footer-cols" style="display:flex;gap:80px;margin-top:24px">
-      <div>
-        <div class="label" style="color:var(--amber);margin-bottom:16px">COLLECTIONS</div>
-        <div style="display:flex;flex-direction:column;gap:8px">
-          <a href="/shop?cat=rings" style="color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px;font-weight:300">Rings</a>
-          <a href="/shop?cat=earrings" style="color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px;font-weight:300">Earrings</a>
-          <a href="/shop?cat=pendants" style="color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px;font-weight:300">Pendants</a>
-          <a href="/shop?cat=bracelets" style="color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px;font-weight:300">Bracelets</a>
-        </div>
-      </div>
-      <div>
-        <div class="label" style="color:var(--amber);margin-bottom:16px">SERVICES</div>
-        <div style="display:flex;flex-direction:column;gap:8px">
-          <a href="#" onclick="openSrv();return false" style="color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px;font-weight:300">Size Guide</a>
-          <a href="#" onclick="openSrv();return false" style="color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px;font-weight:300">Care Guide</a>
-          <a href="#" onclick="openSrv();return false" style="color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px;font-weight:300">Certificate</a>
-        </div>
-      </div>
-      <div>
-        <div class="label" style="color:var(--amber);margin-bottom:16px">CONTACT</div>
-        <div style="display:flex;flex-direction:column;gap:8px">
-          <a href="mailto:hello@amberrajewelry.com" style="color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px;font-weight:300">Email</a>
-          <a href="/stores" style="color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px;font-weight:300">Stores</a>
-          <a href="/our-story" style="color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px;font-weight:300">Our Story</a>
-        </div>
+<footer>
+  <div class="ft">
+    <div>
+      <div class="fb">AMBERRA</div>
+      <p class="fd" data-i18n="fd">Natural Baltic amber jewelry,<br>handcrafted in Bali with sacred intention.<br>Each piece is unique — like its wearer.</p>
+      <div class="fs">
+        <a href="https://instagram.com/amberra.jewelry" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://wa.me/6287853867120" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        </a>
+        <a href="https://www.pinterest.com/amberra_jewelry/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+        </a>
       </div>
     </div>
+    <div>
+      <span class="fc-t" data-i18n="fc_coll">Collections</span>
+      <ul class="fc-l">
+        <li><a href="/shop" data-i18n="fc_all">All Jewelry</a></li>
+        <li><a href="/rings" data-i18n="f_rings">Rings</a></li>
+        <li><a href="/earrings" data-i18n="f_earrings">Earrings</a></li>
+        <li><a href="/pendants" data-i18n="f_pendants">Pendants</a></li>
+        <li><a href="/bracelets" data-i18n="f_bracelets">Bracelets</a></li>
+        <li><a href="/chains" data-i18n="f_chains">Chains</a></li>
+      </ul>
+    </div>
+    <div>
+      <span class="fc-t" data-i18n="fc_srv">Services</span>
+      <ul class="fc-l">
+        <li><a href="https://wa.me/6287853867120" target="_blank" rel="noopener noreferrer" data-i18n="fc_consultation">Consultation</a></li>
+        <li><a href="https://wa.me/6287853867120" target="_blank" rel="noopener noreferrer" data-i18n="fc_gift">Gift Wrapping</a></li>
+        <li><a href="https://wa.me/6287853867120" target="_blank" rel="noopener noreferrer" data-i18n="fc_custom">Custom Orders</a></li>
+        <li><a href="/#wholesale" data-i18n="nav_wholesale">Wholesale</a></li>
+      </ul>
+    </div>
+    <div>
+      <span class="fc-t" data-i18n="fc_contact">Contact</span>
+      <ul class="fc-l">
+        <li><a href="mailto:hello@amberrajewelry.com">hello@amberrajewelry.com</a></li>
+        <li><a href="https://wa.me/6287853867120" target="_blank" rel="noopener noreferrer">WhatsApp Bali</a></li>
+        <li><a href="https://instagram.com/amberra.jewelry" target="_blank" rel="noopener noreferrer">Instagram DM</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fb-bot">
+    <span class="fcp">© 2026 AMBERRA. All rights reserved. Bali, Indonesia.</span>
+    <div class="fleg"><a href="#" onclick="openLegal('privacy');return false">Privacy</a><a href="#" onclick="openLegal('terms');return false">Terms</a><a href="#" onclick="openLegal('cookies');return false">Cookies</a></div>
   </div>
 </footer>
 
@@ -724,6 +1103,65 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
+<!-- Wholesale Modal -->
+<div id="ws-modal-wrap" onclick="if(event.target===this)closeWholesale()">
+  <div class="req-box" style="max-width:600px;max-height:90vh;overflow-y:auto" onclick="event.stopPropagation()">
+    <button class="req-close" onclick="closeWholesale()">✕</button>
+    <h2 style="font-family:var(--serif);font-size:26px;font-weight:400;margin-bottom:8px">Partner With Amberra</h2>
+    <p style="font-size:11px;color:var(--gray);margin-bottom:28px;line-height:1.7">Tell us about your business — we will be in touch within 48 hours.</p>
+    <div id="ws-form-wrap">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+        <div class="fg"><label>First Name *</label><input type="text" id="ws-fname"></div>
+        <div class="fg"><label>Last Name *</label><input type="text" id="ws-lname"></div>
+      </div>
+      <div class="fg"><label>Company / Store Name *</label><input type="text" id="ws-company"></div>
+      <div class="fg"><label>Email Address *</label><input type="email" id="ws-email"></div>
+      <div class="fg"><label>WhatsApp / Phone</label><input type="tel" id="ws-phone"></div>
+      <div class="fg">
+        <label>Country / Region *</label>
+        <select id="ws-country" style="width:100%;padding:10px 0;border:none;border-bottom:1px solid var(--mist);font-family:var(--sans);font-size:11px;background:transparent;outline:none">
+          <option value="">Select country</option>
+          <option>United States</option><option>United Kingdom</option><option>France</option>
+          <option>Germany</option><option>Italy</option><option>Spain</option>
+          <option>Australia</option><option>Singapore</option><option>Japan</option>
+          <option>United Arab Emirates</option><option>Russia</option><option>Indonesia</option>
+          <option>Netherlands</option><option>Switzerland</option><option>Canada</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label>Type of Business *</label>
+        <select id="ws-type" style="width:100%;padding:10px 0;border:none;border-bottom:1px solid var(--mist);font-family:var(--sans);font-size:11px;background:transparent;outline:none">
+          <option value="">Select type</option>
+          <option>Boutique / Jewelry Store</option>
+          <option>Concept Store</option>
+          <option>Department Store</option>
+          <option>Online Retailer</option>
+          <option>Spa / Wellness Center</option>
+          <option>Hotel / Resort</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label>Expected Monthly Volume</label>
+        <select id="ws-volume" style="width:100%;padding:10px 0;border:none;border-bottom:1px solid var(--mist);font-family:var(--sans);font-size:11px;background:transparent;outline:none">
+          <option value="">Select volume</option>
+          <option>10–30 pieces (Starter)</option>
+          <option>30–100 pieces (Partner)</option>
+          <option>100+ pieces (Exclusive)</option>
+        </select>
+      </div>
+      <div class="fg"><label>Message (optional)</label><textarea id="ws-msg" style="resize:none;height:80px"></textarea></div>
+      <button class="btn-s" style="width:100%;margin-top:16px" onclick="submitWholesale()">Send Partnership Request</button>
+      <p style="font-size:9px;color:var(--stone);text-align:center;margin-top:14px;letter-spacing:.08em">We reply within 48 hours · Bali, Indonesia</p>
+    </div>
+    <div id="ws-thanks" style="display:none;text-align:center;padding:40px 0">
+      <div style="font-family:var(--serif);font-size:24px;font-style:italic;color:var(--amber);margin-bottom:12px">Thank you ✦</div>
+      <p style="font-size:13px;color:var(--gray);line-height:1.7">Our wholesale team will be in touch within 48 hours.<br>Warm regards from Bali.</p>
+    </div>
+  </div>
+</div>
+
 <!-- Request Modal -->
 <div id="req-modal">
   <div class="req-box">
@@ -880,13 +1318,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span>Wishlist</span>
     <span class="mob-bar-badge" id="mob-wish-badge">0</span>
   </button>
-  <button class="mob-bar-btn" onclick="openMenu()">
+  <button class="mob-bar-btn" onclick="openMobNav()">
     <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     <span>Menu</span>
   </button>
 </div>
 
-<script type="module">import{animate,scroll,inView,stagger}from"https://cdn.jsdelivr.net/npm/motion@12/+esm";window.Motion={animate,scroll,inView,stagger};</script>
 <script src="/currency.js?v=20260331"></script>
 <script src="/lang.js?v=20260506"></script>
 <script src="/app.js?v=20260331"></script>

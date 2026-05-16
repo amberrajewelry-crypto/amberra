@@ -614,9 +614,43 @@ function initReveal(){
 // ── NAV SCROLL ────────────────────────────────────────────────────────────
 const HAS_HERO=!!document.getElementById('hero');
 const nav=document.getElementById('nav-shell');
-// Nav stays transparent always — no solid/color logic needed
-// Keep scroll listener minimal for lang dropdown close
+// Light sections: journal slides have white/light bg images
+const LIGHT_SECTIONS=['journal'];
+function updateNavColor(){
+  if(!nav)return;
+  const srvModal=document.getElementById('srv-modal');
+  if(srvModal&&srvModal.classList.contains('open')){
+    nav.classList.add('nav-over-light');return;
+  }
+  // While nav is over hero (dark media) — force white text
+  if(HAS_HERO&&!nav.classList.contains('solid')){
+    nav.classList.remove('nav-over-light');return;
+  }
+  const navBottom=nav.getBoundingClientRect().bottom;
+  let el=document.elementFromPoint(innerWidth/2,navBottom+4);
+  // Walk up DOM to find first element with a real background color
+  let isLight=false;
+  let cur=el;
+  while(cur&&cur!==document.documentElement){
+    const bg=getComputedStyle(cur).backgroundColor;
+    if(bg&&bg!=='rgba(0, 0, 0, 0)'&&bg!=='transparent'){
+      const m=bg.match(/\d+/g);
+      if(m){const r=+m[0],g=+m[1],b=+m[2];isLight=(r*299+g*587+b*114)/1000>160;}
+      break;
+    }
+    cur=cur.parentElement;
+  }
+  nav.classList.toggle('nav-over-light',isLight);
+}
+function updateNavSolid(){
+  if(!HAS_HERO){nav&&nav.classList.add('solid');return;}
+  nav&&nav.classList.toggle('solid',scrollY>80);
+}
+updateNavSolid();updateNavColor();
 window.addEventListener('scroll',()=>{
+  nav&&nav.classList.toggle('sc',scrollY>60);
+  updateNavSolid();updateNavColor();
+  document.querySelectorAll('.nl').forEach(n=>n.classList.remove('act'));
   closeLang();
 },{passive:true});
 
@@ -662,12 +696,22 @@ window.addEventListener('scroll',()=>{
   });
 }catch(e){console.warn('particles error',e)}})();
 
-// ── HERO FADE-IN ─────────────────────────────────────────────────────────
-window.addEventListener('DOMContentLoaded',()=>{
-  setTimeout(()=>{
-    document.querySelectorAll('.hero-fade').forEach(el=>el.classList.add('on'))
-  },200)
-});
+// ── HERO FULL-PAGE SLIDER ─────────────────────────────────────────────────────────────────────────────
+(function(){
+  const slides=document.querySelectorAll('.h-slide');
+  const dots=document.querySelectorAll('.hfs-dot');
+  if(!slides.length||!dots.length)return;
+  let cur=0;
+  function goTo(n){
+    if(n===cur)return;
+    slides[cur].classList.remove('h-act');
+    dots[cur].classList.remove('act');
+    cur=n;
+    slides[cur].classList.add('h-act');
+    dots[cur].classList.add('act');
+  }
+  dots.forEach((d,i)=>d.addEventListener('click',()=>goTo(i)));
+})();
 
 // ── TRANSLATIONS ──────────────────────────────────────────────────────────
 const TR={nav_home:'Home',nav_shop:'Shop All',util_store:'Find a Store',util_services:'Services',util_contact:'Contact Us',util_account:'My Account',util_wishlist:'Wishlist',search_ph:'Search',nav_collections:'Collections',nav_rings:'Rings',nav_earrings:'Earrings',nav_pendants:'Pendants',nav_bracelets:'Bracelets',nav_journal:'Journal',nav_about:'Our Story',nav_tryon:'Try On',nav_wholesale:'Wholesale',hero_tag:'Bali · New Collection 2026',hero_title:'Amber from the <em>Ancient</em> World',hero_desc:'Natural Baltic amber, millions of years in the making. Handcrafted in Bali with sacred intention.',hero_cta:'Explore Collections',hero_cta2:'All Jewelry',tick1:'Natural Baltic Amber',tick2:'Handcrafted in Bali',tick3:'925 Sterling Silver',tick4:'Sacred Ritual Blessing',tick5:'Free Gift Wrapping',coll_lbl:'Our Universe',coll_title:'Collections',coll_all:'View all pieces',cat_rings:'Collection',cat_earrings:'Collection',cat_pendants:'Collection',cat_bracelets:'Collection',cat_chains:'Collection',col_rings:'Rings',col_earrings:'Earrings',col_pendants:'Pendants',col_bracelets:'Bracelets',col_chains:'Chains',nav_chains:'Chains',f_chains:'Chains',discover:'Discover',ed_lbl:'The Craft',ed_title:'Born from <em>Ancient Earth</em>',ed_body1:'Amber is not merely stone — it is time crystallised. Forty million years of forests, insects, light and rain preserved in a single stone.',ed_body2:'Our artisans in Bali spend lifetimes learning to honour it. Every piece passes through water, fire and prayer before it reaches you.',stat1:'Years of amber',stat2:'Unique pieces',stat3:'Countries',tryon_lbl:'New Feature',tryon_title:'Try On<br><em>Before You Buy</em>',tryon_desc:'Upload your photo and see how each AMBERRA piece looks on you.',tryon_cta:'Upload Your Photo',tryon_badge:'AR Try-On',tryon_hint:'Upload photo to begin',quiz_title:'Find My Amber',quiz_sub:'Answer 5 questions — discover your perfect piece',quiz_cta:'Start Quiz',cat_lbl:'The Collection',cat_title:'All Jewelry',f_all:'All',f_rings:'Rings',f_earrings:'Earrings',f_pendants:'Pendants',f_bracelets:'Bracelets',j_lbl:'Insights',j_title:'The Amber <em>Journal</em>',j_all:'View all articles',j1_date:'March 2026',j1_title:'Baltic Amber Healing Properties: The Science of Succinic Acid',j1_body:'Baltic amber contains up to 8% succinic acid — a natural compound studied for its anti-inflammatory and immune-supporting effects when worn against the skin.',j2_date:'February 2026',j2_title:'How to Clean Amber Jewelry: The Complete Care Guide',j2_body:'Natural amber is softer than most gemstones. Warm water, mild soap, and a soft cloth are all you need to keep it radiant for generations. Avoid chemicals and ultrasound cleaners.',j3_date:'January 2026',j3_title:'From Balinese Forests to Bali: The Journey of Every AMBERRA Stone',j3_body:'Forty million years beneath ancient forests, then a world away in the sacred workshops of Ubud — the remarkable story of each Baltic amber stone.',j4_date:'December 2025',j4_title:'How to Tell Real Baltic Amber from Fake: 5 Simple Tests',j4_body:'With replicas flooding the market, knowing how to identify authentic Baltic amber is essential. Salt water, UV light, and the scent test reveal the truth instantly.',j5_date:'November 2025',j5_title:'5 Ways to Style Amber Jewelry This Season',j5_body:'From layered gold chains to minimalist rings, discover how natural amber complements every aesthetic — from Balinese sunsets to city evenings.',j6_date:'October 2025',j6_title:'The Golden Spectrum: Understanding Amber Colors and Their Meaning',j6_body:'From cognac to cherry, green to milky white — every shade of Baltic amber tells a different geological story and carries its own energy signature.',j7_date:'September 2025',j7_title:'Why Baltic Amber Is the World\'s Most Ancient Gemstone',j7_body:'Unlike diamonds or sapphires, Baltic amber is organic — fossilized resin from forests that disappeared 40 million years ago. Its rarity lies not in hardness, but in time.',j8_date:'August 2025',j8_title:'The Ubud Artisans: Hands Behind Every AMBERRA Piece',j8_body:'In the rice-field studios of Ubud, Balinese silversmiths spend years perfecting the art of setting Baltic amber in sacred geometric forms passed down through generations.',j9_date:'July 2025',j9_title:'Amber and Feminine Energy: The Ancient Spiritual Connection',j9_body:'Baltic cultures associated amber with the goddess of the sea. In Bali it is worn for protection, warmth, and the awakening of feminine power.',c_lbl:'Private Appointments',c_title:'Request a Personal Consultation',c_body:'Our team in Bali will personally guide you to the perfect piece.',fc_coll:'Collections',fc_srv:'Services',fc_contact:'Contact',req_btn:'Request This Piece',req_title:'Request a Piece',req_sub:'Tell us which piece caught your eye.',f_piece:'Piece of Interest',f_name:'Your Name',f_email:'Email',f_phone:'WhatsApp (optional)',f_msg:'Message',req_send:'Send Request',req_thanks:'Thank you ✦',req_thanks_sub:'We will be in touch within 24 hours. Warm regards from Bali.',qm_title:'Find My Amber',qm_sub:'5 questions · 2 minutes · Perfect match',q_next:'Next',ep_title:'A Gift from Amberra',ep_sub:'Join our world — receive 10% off your first order',ep_ph:'Your email address',ep_btn:'Claim Offer',ep_note:'No spam, ever. Unsubscribe anytime.',ep_thanks:'✦ Welcome to Amberra ✦',ep_thanks_sub:'Your 10% code is on its way',chat_lbl:'Ask Us Anything',chat_status:'Online · Bali, Indonesia',chat_welcome:"Hello! I'm your personal Amberra guide. How can I help you find the perfect piece today?",cq1:'Ring sizes',cq2:'Shipping info',cq3:'Care guide',cq4:'Gift ideas',chat_ph:'Ask anything...',cont_btn:'Continue Browsing',to_lbl:'Virtual Try‑On',to_title:'Try On at Home',to_body:'Upload your photo and see how our jewelry looks on you.',to_cam_btn:'Start Camera',to_choose:'Choose a Piece',to_save:'Save Look',to_reset:'Reset',
@@ -980,18 +1024,17 @@ function ckAccept(){
 }
 function ckReject(){localStorage.setItem('ck_choice','rejected');ckClose();}
 
-// ── MENU OVERLAY ──────────────────────────────────────────────────────────
-function openMenu(){
-  document.getElementById('menu-overlay').style.display='block';
+// ── MOBILE NAV ────────────────────────────────────────────────────────────
+function openMobNav(){
+  document.getElementById('mob-nav-overlay').classList.add('open');
+  document.getElementById('mob-nav-drawer').classList.add('open');
   document.body.style.overflow='hidden';
 }
-function closeMenu(){
-  document.getElementById('menu-overlay').style.display='none';
+function closeMobNav(){
+  document.getElementById('mob-nav-overlay').classList.remove('open');
+  document.getElementById('mob-nav-drawer').classList.remove('open');
   document.body.style.overflow='';
 }
-// Legacy aliases for backwards compatibility
-function openMobNav(){openMenu();}
-function closeMobNav(){closeMenu();}
 
 // ── MOB BAR BADGES ────────────────────────────────────────────────────────
 function updateMobBadges(){
@@ -1013,7 +1056,93 @@ window.addEventListener('load',()=>{
   }
 });
 
-// Journal is now a static 3-card CSS grid — no JS needed.
+// ── JOURNAL SLIDER (index.html + journal.html) ────────────────────────────
+(function(){
+  const wrap=document.getElementById('js-wrap');
+  if(!wrap)return;
+  const slides=[...document.querySelectorAll('.js-slide')];
+  const dotsEl=document.getElementById('js-dots');
+  const progFill=document.getElementById('js-prog-fill');
+  const curEl=document.getElementById('js-cur');
+  const N=slides.length;
+  let cur=0,anim=false,touchX=0,dragging=false,dragDx=0;
+
+  // Build dots
+  slides.forEach((_,i)=>{
+    const d=document.createElement('button');
+    d.className='js-dot'+(i===0?' act':'');
+    d.setAttribute('aria-label','Article '+(i+1));
+    d.onclick=()=>goTo(i);
+    dotsEl.appendChild(d);
+  });
+
+  function update(n){
+    slides[cur].classList.remove('js-active');
+    slides[n].classList.add('js-active');
+    dotsEl.children[cur].classList.remove('act');
+    dotsEl.children[n].classList.add('act');
+    cur=n;
+    progFill.style.width=Math.round((n+1)/N*100)+'%';
+    curEl.textContent=String(n+1).padStart(2,'0');
+  }
+
+  function goTo(n){
+    if(anim)return;
+    n=((n%N)+N)%N;
+    if(n===cur)return;
+    anim=true;
+    const dir=n>cur?1:-1;
+    const outgoing=slides[cur];
+    const incoming=slides[n];
+    incoming.style.transform=dir>0?'translateX(100%)':'translateX(-100%)';
+    incoming.style.transition='none';
+    incoming.style.visibility='visible';
+    incoming.style.zIndex='2';
+    outgoing.style.zIndex='1';
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      incoming.style.transition='transform .85s cubic-bezier(.4,0,.2,1)';
+      outgoing.style.transition='transform .85s cubic-bezier(.4,0,.2,1)';
+      incoming.style.transform='translateX(0)';
+      outgoing.style.transform=dir>0?'translateX(-100%)':'translateX(100%)';
+      update(n);
+      setTimeout(()=>{
+        outgoing.style.transform='';
+        outgoing.style.transition='';
+        outgoing.style.zIndex='';
+        incoming.style.transition='';
+        incoming.style.zIndex='';
+        incoming.style.visibility='';
+        anim=false;
+      },870);
+    }));
+  }
+
+  document.getElementById('js-prev').onclick=()=>goTo(cur-1);
+  document.getElementById('js-next').onclick=()=>goTo(cur+1);
+
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowLeft')goTo(cur-1);
+    else if(e.key==='ArrowRight')goTo(cur+1);
+  });
+
+  wrap.addEventListener('touchstart',e=>{touchX=e.touches[0].clientX;dragging=false;dragDx=0;},{passive:true});
+  wrap.addEventListener('touchmove',e=>{dragDx=e.touches[0].clientX-touchX;dragging=true;},{passive:true});
+  wrap.addEventListener('touchend',()=>{
+    if(!dragging)return;
+    if(Math.abs(dragDx)>50)goTo(dragDx<0?cur+1:cur-1);
+    dragging=false;
+  });
+
+  wrap.addEventListener('mousedown',e=>{touchX=e.clientX;wrap.classList.add('grabbing');});
+  wrap.addEventListener('mousemove',e=>{if(e.buttons)dragDx=e.clientX-touchX;});
+  wrap.addEventListener('mouseup',()=>{
+    wrap.classList.remove('grabbing');
+    if(Math.abs(dragDx)>60)goTo(dragDx<0?cur+1:cur-1);
+    dragDx=0;
+  });
+
+  progFill.style.width=Math.round(1/N*100)+'%';
+})();
 
 document.addEventListener('DOMContentLoaded',()=>{
   setLang(detectLang());
@@ -1047,6 +1176,14 @@ document.addEventListener('DOMContentLoaded',()=>{
     },{rootMargin:'200px'});
     abIo.observe(abVid);
   }
+  // Editorial model reveal
+  const edm=document.querySelector('.ed-model-wrap');
+  if(edm){
+    const io=new IntersectionObserver(es=>{
+      if(es[0].isIntersecting){edm.classList.add('ed-on');io.disconnect();}
+    },{threshold:.15});
+    io.observe(edm);
+  }
   // Align PENDANTS link directly under JEWELRY text in logo
   function alignPendants(){
     const sub=document.querySelector('.nav-logo-sub');
@@ -1066,52 +1203,3 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.fonts.ready.then(alignPendants);
   window.addEventListener('resize',alignPendants);
 });
-
-// ── PRODUCT SHOWCASE (index.html) ─────────────────────────────────────────
-function buildProductShowcase(products) {
-  const container = document.getElementById('prod-scroll')
-  if (!container || !products || !products.length) return
-  const items = products.filter(p => p.img).slice(0, 8)
-  container.innerHTML = items.map(p => `
-    <div class="prod-card" onclick="prodCardClick(${p.id})">
-      <img src="${p.img}" alt="${p.name}" loading="lazy" width="320" height="427">
-      <div class="prod-card-info">
-        <div class="prod-card-name">${p.name}</div>
-        <span class="prod-card-cta">DISCOVER</span>
-      </div>
-    </div>
-  `).join('')
-
-  const bar = document.querySelector('.prod-progress-fill')
-  if (bar) {
-    container.addEventListener('scroll', () => {
-      const pct = container.scrollLeft / (container.scrollWidth - container.clientWidth) * 100
-      bar.style.width = pct + '%'
-    }, { passive: true })
-  }
-}
-
-// On index.html, openDrawer is in shop.js which is not loaded — redirect to shop page instead
-function prodCardClick(id) {
-  if (typeof openDrawer === 'function') {
-    openDrawer(id)
-  } else {
-    location.href = '/shop?open=' + id
-  }
-}
-
-// Load products for homepage showcase
-(async function initHomeShowcase() {
-  const container = document.getElementById('prod-scroll')
-  if (!container) return
-  try {
-    const r = await fetch('/api/products')
-    if (!r.ok) throw new Error('HTTP ' + r.status)
-    const prods = await r.json()
-    buildProductShowcase(prods)
-  } catch (e) {
-    console.warn('Product showcase load failed', e)
-  }
-})()
-
-// Displacement morph — removed, code preserved in displacement-morph.js
