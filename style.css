@@ -11,8 +11,8 @@
   --ease-exit:cubic-bezier(0.4, 0.0, 1, 1);
   --ease-standard:cubic-bezier(0.25, 0.1, 0.25, 1);
 }
-html{scroll-behavior:smooth;overflow-x:hidden;scroll-padding-top:var(--nav-h);background:#060200}
-body{padding-top:0;background:transparent;color:var(--black);font-family:var(--serif);font-weight:400;overflow-x:hidden;opacity:1}
+html{scroll-behavior:smooth;overflow-x:hidden;scroll-padding-top:var(--nav-h);background:var(--cream)}
+body{padding-top:0;background:var(--cream);color:var(--black);font-family:var(--serif);font-weight:400;overflow-x:hidden;opacity:1}
 a{text-decoration:none;color:inherit}
 img{display:block;width:100%;height:auto}
 button{cursor:pointer;border:none;background:none;font-family:inherit}
@@ -27,16 +27,16 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 #nav-shell.nav-hidden{transform:translateY(-100%)}
 
 /* Left: hamburger + MENU */
-#nav-menu-btn{display:flex;align-items:center;gap:10px;background:none;border:none;cursor:pointer;padding:0;color:#fff;opacity:0.6;transition:opacity .3s}
+#nav-menu-btn{display:flex;align-items:center;gap:10px;background:none;border:none;cursor:pointer;padding:0;color:var(--charcoal);opacity:0.6;transition:opacity .3s}
 #nav-menu-btn:hover{opacity:1}
-#nav-menu-btn .label{font-family:var(--sans);font-size:11px;font-weight:300;letter-spacing:0.18em;text-transform:uppercase;color:#fff}
+#nav-menu-btn .label{font-family:var(--sans);font-size:11px;font-weight:300;letter-spacing:0.18em;text-transform:uppercase;color:var(--charcoal)}
 
 /* Center: logo */
-#nav-shell .nav-logo{font-family:var(--serif);font-size:22px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:#fff;position:absolute;left:50%;transform:translateX(-50%);-webkit-font-smoothing:antialiased}
+#nav-shell .nav-logo{font-family:var(--serif);font-size:22px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:var(--charcoal);position:absolute;left:50%;transform:translateX(-50%);-webkit-font-smoothing:antialiased}
 
 /* Right: icons */
 .nav-icons{display:flex;align-items:center;gap:16px}
-.nav-ico-btn{position:relative;display:flex;align-items:center;justify-content:center;color:#fff;opacity:0.6;transition:opacity .3s;background:none;border:none;cursor:pointer;padding:4px}
+.nav-ico-btn{position:relative;display:flex;align-items:center;justify-content:center;color:var(--charcoal);opacity:0.6;transition:opacity .3s;background:none;border:none;cursor:pointer;padding:4px}
 .nav-ico-btn:hover{opacity:1}
 .nav-ico-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.4}
 .nav-ico-btn .nav-badge{position:absolute;top:-4px;right:-6px;min-width:14px;height:14px;background:var(--amber);font-size:9px;color:#fff;display:none;align-items:center;justify-content:center;font-family:var(--sans);font-weight:300;padding:0 2px}
@@ -78,6 +78,11 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .hero-fade:nth-child(2).on{animation-delay:0.4s}
 .hero-fade:nth-child(3).on{animation-delay:0.6s}
 .hero-fade:nth-child(4).on{animation-delay:0.8s}
+.hero-fade:nth-child(5).on{animation-delay:1.0s}
+
+/* Hide scrollbar on horizontal carousel */
+.hide-scrollbar::-webkit-scrollbar{display:none}
+.hide-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
 
 /* ═══ SECTIONS ══════════════════════════════════════════════════════════ */
 .s-lbl{font-size:13px;font-weight:100;letter-spacing:normal;text-transform:uppercase;color:var(--amber);margin-bottom:14px;display:none;font-family:var(--sans)}
@@ -738,8 +743,7 @@ footer a:hover{opacity:1!important}
 .pay-security{color:#555;font-size:11px;line-height:1.8;text-align:center;padding:0 20px 60px;background:#0a0600;margin:0}
 /* === END CRYPTO PAYMENT === */
 
-/* === FLUID BG — ALL SECTIONS TRANSPARENT === */
-#hero{background:transparent}
+/* === FLUID BG === */
 #editorial{background:transparent}
 
 /* === CANVAS STACKING FIX: canvas z:1, page sections z:2 === */
@@ -787,12 +791,31 @@ footer a:hover{opacity:1!important}
 .cta-gold{color:var(--amber)}
 
 
-/* === BVLGARI-STYLE SECTIONS — MOBILE === */
+/* === OURA-STYLE SECTIONS — MOBILE === */
 @media(max-width:768px){
-  /* Collections split: stack vertically */
-  /* Brand stats: wrap on small screens */
-  div[style*="justify-content:center;gap:64px"]{
-    flex-wrap:wrap!important;gap:32px 48px!important
+  /* Hero: stack vertically */
+  #hero > div[style*="grid-template-columns"]{
+    grid-template-columns:1fr!important;padding:32px 24px!important;gap:32px!important
+  }
+  /* Product cards: single column */
+  section > div[style*="grid-template-columns:1fr 1fr"][style*="gap:24px"]{
+    grid-template-columns:1fr!important
+  }
+  /* Lifestyle cards padding */
+  section[style*="padding:80px 0 80px 64px"]{
+    padding-left:24px!important
+  }
+  /* Stats padding */
+  section[style*="padding:80px 64px"]{
+    padding:60px 24px!important
+  }
+  /* Statement padding */
+  section[style*="padding:100px 64px"]{
+    padding:60px 24px!important
+  }
+  /* Footer newsletter: single column */
+  footer > div[style*="grid-template-columns:1fr 1fr"]{
+    grid-template-columns:1fr!important
   }
   /* Footer columns: 2x2 grid on mobile */
   div[style*="grid-template-columns:repeat(4,1fr)"]{

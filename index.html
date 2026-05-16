@@ -243,7 +243,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ══ NAV — 60px Ultra-Minimal ═══════════════════════════════════════ -->
 <header id="nav-shell">
   <button id="nav-menu-btn" onclick="openMenu()" aria-label="Menu">
-    <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><line x1="0" y1="1" x2="18" y2="1" stroke="#fff" stroke-width="1.2"/><line x1="0" y1="6" x2="18" y2="6" stroke="#fff" stroke-width="1.2"/><line x1="0" y1="11" x2="18" y2="11" stroke="#fff" stroke-width="1.2"/></svg>
+    <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><line x1="0" y1="1" x2="18" y2="1" stroke="currentColor" stroke-width="1.2"/><line x1="0" y1="6" x2="18" y2="6" stroke="currentColor" stroke-width="1.2"/><line x1="0" y1="11" x2="18" y2="11" stroke="currentColor" stroke-width="1.2"/></svg>
     <span class="label" data-i18n="nav_menu">MENU</span>
   </button>
   <a href="/" class="nav-logo">AMBERRA</a>
@@ -265,7 +265,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ══ MENU OVERLAY ═══════════════════════════════════════════════════════ -->
 <div id="menu-overlay">
   <button id="menu-close-btn" onclick="closeMenu()" aria-label="Close menu">
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><line x1="1" y1="1" x2="19" y2="19" stroke="#fff" stroke-width="1.2"/><line x1="19" y1="1" x2="1" y2="19" stroke="#fff" stroke-width="1.2"/></svg>
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><line x1="1" y1="1" x2="19" y2="19" stroke="currentColor" stroke-width="1.2"/><line x1="19" y1="1" x2="1" y2="19" stroke="currentColor" stroke-width="1.2"/></svg>
   </button>
   <nav class="menu-nav">
     <a class="menu-link" href="/rings" data-i18n="nav_rings" onclick="closeMenu()">RINGS</a>
@@ -286,18 +286,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 
-<!-- ══ HERO ══════════════════════════════════════════════════════════════ -->
-<section id="hero" style="position:relative;height:100vh;z-index:2;display:flex;align-items:flex-end;overflow:hidden">
-  <img src="/images/hero-photo.webp" alt="Model wearing Baltic amber jewelry" width="1920" height="1080" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" fetchpriority="high">
-  <div style="position:absolute;inset:0;background:linear-gradient(transparent 30%,rgba(0,0,0,0.5))"></div>
+<!-- ══ HERO — Oura-style: split text + product image ═══════════════════ -->
+<section id="hero" style="position:relative;z-index:2;min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,var(--cream) 0%,var(--silk) 100%);overflow:hidden;padding:var(--nav-h) 0 0">
   <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Handcrafted Baltic Amber Jewelry — Rings, Earrings, Pendants & Bracelets</h1>
-  <div id="hero-content" style="position:relative;z-index:1;padding:0 48px 80px;max-width:600px">
-    <span class="label hero-fade" style="color:rgba(255,255,255,0.5);display:block;margin-bottom:12px;opacity:0">BALTIC AMBER JEWELRY</span>
-    <h2 class="heading-hero hero-fade" style="color:#fff;opacity:0" data-i18n="hero_h">Born from<br>Ancient Earth</h2>
-    <p class="body-text hero-fade" style="color:rgba(255,255,255,0.6);opacity:0;margin-top:16px" data-i18n="hero_p">Forty million years of nature's patience,<br>shaped by artisan hands in Bali.</p>
-    <a href="/shop" class="hero-fade" style="display:inline-block;opacity:0;margin-top:24px;padding:14px 36px;background:rgba(255,255,255,0.12);backdrop-filter:blur(8px);color:#fff;font-family:var(--sans);font-size:11px;font-weight:300;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,0.25);transition:background 0.3s,border-color 0.3s" data-i18n="hero_cta">DISCOVER THE COLLECTION</a>
+  <div style="display:grid;grid-template-columns:1fr 1fr;align-items:center;width:100%;max-width:1400px;margin:0 auto;padding:60px 64px;gap:40px">
+    <div id="hero-content">
+      <span class="label hero-fade" style="color:var(--gray);display:block;margin-bottom:16px;opacity:0">BALTIC AMBER JEWELRY</span>
+      <h2 class="hero-fade" style="font-family:var(--serif);font-size:clamp(40px,5.5vw,80px);font-weight:300;line-height:1.05;letter-spacing:-0.02em;color:var(--charcoal);opacity:0" data-i18n="hero_h">Timeless.<br>Handcrafted.<br><em style="font-style:italic;color:var(--amber2)">Made for you.</em></h2>
+      <p class="body-text hero-fade" style="color:var(--gray);opacity:0;margin-top:20px;max-width:380px;font-size:16px;line-height:1.7" data-i18n="hero_p">Forty million years of nature's patience, shaped by artisan hands in Bali.</p>
+      <div style="display:flex;gap:12px;margin-top:32px">
+        <a href="/shop" class="hero-fade" style="display:inline-block;opacity:0;padding:14px 32px;background:var(--charcoal);color:#fff;font-family:var(--sans);font-size:12px;font-weight:400;letter-spacing:0.1em;text-decoration:none;border-radius:40px;transition:background 0.3s" data-i18n="hero_cta">Shop</a>
+        <a href="#editorial" class="hero-fade" style="display:inline-block;opacity:0;padding:14px 32px;background:transparent;color:var(--charcoal);font-family:var(--sans);font-size:12px;font-weight:400;letter-spacing:0.1em;text-decoration:none;border-radius:40px;border:1px solid var(--stone);transition:border-color 0.3s">Explore</a>
+      </div>
+    </div>
+    <div style="position:relative;display:flex;align-items:center;justify-content:center">
+      <img src="/images/hero-photo.webp" alt="Model wearing Baltic amber jewelry" width="1920" height="1080" style="width:100%;height:auto;border-radius:24px;object-fit:cover" fetchpriority="high">
+    </div>
   </div>
-  <div id="scroll-hint" style="position:absolute;bottom:32px;left:50%;transform:translateX(-50%);width:1px;height:40px;background:rgba(255,255,255,0.3);z-index:1"></div>
+</section>
+
+<!-- ══ PRODUCT CARDS — 2-column like Oura ═══════════════════════════════ -->
+<section style="position:relative;z-index:2;padding:80px 64px;background:var(--cream);max-width:1400px;margin:0 auto">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+    <a href="/rings" style="position:relative;overflow:hidden;border-radius:24px;background:var(--silk);display:block;text-decoration:none;aspect-ratio:4/5">
+      <img src="/images/editorial/ed-ring-16x9.webp" alt="Amber rings collection" style="width:100%;height:100%;object-fit:cover;border-radius:24px;transition:transform 0.6s ease" loading="lazy">
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:32px;background:linear-gradient(transparent,rgba(0,0,0,0.5));border-radius:0 0 24px 24px">
+        <div style="font-family:var(--serif);font-size:clamp(20px,2.5vw,32px);font-weight:300;color:#fff">Rings</div>
+        <div style="font-family:var(--sans);font-size:13px;color:rgba(255,255,255,0.7);margin-top:4px">From $89</div>
+      </div>
+      <div style="position:absolute;top:24px;right:24px;display:flex;gap:8px">
+        <span style="padding:8px 20px;background:#fff;border-radius:40px;font-family:var(--sans);font-size:12px;font-weight:400;color:var(--charcoal)">Shop</span>
+        <span style="padding:8px 20px;background:rgba(0,0,0,0.4);backdrop-filter:blur(8px);border-radius:40px;font-family:var(--sans);font-size:12px;font-weight:400;color:#fff">Explore</span>
+      </div>
+    </a>
+    <a href="/earrings" style="position:relative;overflow:hidden;border-radius:24px;background:var(--silk);display:block;text-decoration:none;aspect-ratio:4/5">
+      <img src="/images/editorial/ed-model-16x9.webp" alt="Amber earrings collection" style="width:100%;height:100%;object-fit:cover;border-radius:24px;transition:transform 0.6s ease" loading="lazy">
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:32px;background:linear-gradient(transparent,rgba(0,0,0,0.5));border-radius:0 0 24px 24px">
+        <div style="font-family:var(--serif);font-size:clamp(20px,2.5vw,32px);font-weight:300;color:#fff">Earrings &amp; Pendants</div>
+        <div style="font-family:var(--sans);font-size:13px;color:rgba(255,255,255,0.7);margin-top:4px">From $65</div>
+      </div>
+      <div style="position:absolute;top:24px;right:24px;display:flex;gap:8px">
+        <span style="padding:8px 20px;background:#fff;border-radius:40px;font-family:var(--sans);font-size:12px;font-weight:400;color:var(--charcoal)">Shop</span>
+        <span style="padding:8px 20px;background:rgba(0,0,0,0.4);backdrop-filter:blur(8px);border-radius:40px;font-family:var(--sans);font-size:12px;font-weight:400;color:#fff">Explore</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ══ STATEMENT — "gives your style a story" ══════════════════════════ -->
+<section style="position:relative;z-index:2;padding:100px 64px;text-align:center;background:linear-gradient(180deg,var(--cream) 0%,var(--silk) 100%)">
+  <h2 style="font-family:var(--serif);font-size:clamp(32px,4.5vw,64px);font-weight:300;line-height:1.15;color:var(--charcoal);max-width:800px;margin:0 auto">Ancient amber gives your style <em style="font-style:italic;color:var(--amber2)">a story</em></h2>
+  <a href="/our-story" style="display:inline-block;margin-top:32px;padding:14px 32px;background:var(--charcoal);color:#fff;font-family:var(--sans);font-size:12px;font-weight:400;letter-spacing:0.1em;text-decoration:none;border-radius:40px">Why Amberra</a>
 </section>
 
 <!-- ══ EDITORIAL SCROLL — 4 morphs, 4 acts, scroll-driven ═══════════════ -->
@@ -312,43 +351,76 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 <section id="editorial" style="height:400vh;position:relative;z-index:4"></section>
 
-<!-- ══ BRAND STRIP — stats + CTA ═════════════════════════════════════════ -->
-<section style="background:var(--bg-dark);padding:100px 48px;text-align:center;position:relative;z-index:2;border-top:1px solid rgba(201,168,50,0.08)">
-  <span class="label" style="color:var(--amber);letter-spacing:0.25em;display:block;margin-bottom:20px">THE MAISON</span>
-  <h2 class="heading-section" style="color:#fff;font-size:clamp(28px,3.5vw,48px)">Handcrafted in Bali Since 2023</h2>
-  <div style="display:flex;justify-content:center;gap:64px;margin-top:40px">
-    <div>
-      <div style="font-family:var(--serif);font-size:clamp(32px,4vw,56px);font-weight:300;color:var(--amber)">40M+</div>
-      <div class="label" style="color:rgba(255,255,255,0.4);margin-top:8px">YEARS OF AMBER</div>
+<!-- ══ LIFESTYLE CARDS — horizontal scroll like Oura ═══════════════════ -->
+<section style="position:relative;z-index:2;padding:80px 0 80px 64px;background:var(--cream)">
+  <h2 style="font-family:var(--serif);font-size:clamp(24px,3vw,42px);font-weight:300;color:var(--charcoal);margin-bottom:32px">The Craft Behind Every Piece</h2>
+  <div style="display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:16px;-webkit-overflow-scrolling:touch;scrollbar-width:none" class="hide-scrollbar">
+    <div style="flex:0 0 300px;scroll-snap-align:start;border-radius:20px;overflow:hidden;position:relative;aspect-ratio:3/4;background:var(--charcoal)">
+      <img src="/images/editorial/ed-amber-16x9.webp" alt="Raw Baltic amber" style="width:100%;height:100%;object-fit:cover;opacity:0.85" loading="lazy">
+      <div style="position:absolute;bottom:24px;left:24px;right:24px">
+        <h3 style="font-family:var(--serif);font-size:22px;font-weight:300;color:#fff;line-height:1.3">Forty million years<br>of <em>patience</em></h3>
+      </div>
     </div>
-    <div>
-      <div style="font-family:var(--serif);font-size:clamp(32px,4vw,56px);font-weight:300;color:var(--amber)">94</div>
-      <div class="label" style="color:rgba(255,255,255,0.4);margin-top:8px">UNIQUE PIECES</div>
+    <div style="flex:0 0 300px;scroll-snap-align:start;border-radius:20px;overflow:hidden;position:relative;aspect-ratio:3/4;background:var(--charcoal)">
+      <img src="/images/editorial/ed-gold-16x9.webp" alt="Molten gold setting" style="width:100%;height:100%;object-fit:cover;opacity:0.85" loading="lazy">
+      <div style="position:absolute;bottom:24px;left:24px;right:24px">
+        <h3 style="font-family:var(--serif);font-size:22px;font-weight:300;color:#fff;line-height:1.3">Sterling silver,<br><em>shaped by hand</em></h3>
+      </div>
     </div>
-    <div>
-      <div style="font-family:var(--serif);font-size:clamp(32px,4vw,56px);font-weight:300;color:var(--amber)">3</div>
-      <div class="label" style="color:rgba(255,255,255,0.4);margin-top:8px">COUNTRIES</div>
+    <div style="flex:0 0 300px;scroll-snap-align:start;border-radius:20px;overflow:hidden;position:relative;aspect-ratio:3/4;background:var(--charcoal)">
+      <img src="/images/editorial/ed-ring-16x9.webp" alt="Finished amber ring" style="width:100%;height:100%;object-fit:cover;opacity:0.85" loading="lazy">
+      <div style="position:absolute;bottom:24px;left:24px;right:24px">
+        <h3 style="font-family:var(--serif);font-size:22px;font-weight:300;color:#fff;line-height:1.3">Ritually blessed<br>in <em>Ubud</em></h3>
+      </div>
     </div>
+    <div style="flex:0 0 300px;scroll-snap-align:start;border-radius:20px;overflow:hidden;position:relative;aspect-ratio:3/4;background:var(--charcoal)">
+      <img src="/images/editorial/ed-model-16x9.webp" alt="Woman wearing amber jewelry" style="width:100%;height:100%;object-fit:cover;opacity:0.85" loading="lazy">
+      <div style="position:absolute;bottom:24px;left:24px;right:24px">
+        <h3 style="font-family:var(--serif);font-size:22px;font-weight:300;color:#fff;line-height:1.3">Wear your<br><em>story</em></h3>
+      </div>
+    </div>
+    <div style="flex:0 0 40px"></div>
   </div>
-  <a href="/our-story" style="display:inline-block;margin-top:48px;padding:14px 36px;background:transparent;color:#fff;font-family:var(--sans);font-size:11px;font-weight:300;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,0.25);transition:border-color 0.3s">DISCOVER OUR STORY</a>
 </section>
 
-<!-- ══ CONSULTATION CTA ═════════════════════════════════════════════════ -->
-<section id="contact" style="background:var(--bg-dark);padding:80px 48px;text-align:center;position:relative;z-index:2">
-  <h2 class="heading-section" style="color:#fff" data-i18n="contact_h">Request a Personal Consultation</h2>
-  <p class="body-text" style="color:rgba(255,255,255,0.5);margin-top:16px;max-width:420px;margin-left:auto;margin-right:auto" data-i18n="contact_p">Let us guide you to the perfect piece.</p>
-  <a href="#" onclick="openReq();return false" style="display:inline-block;margin-top:32px;padding:14px 36px;background:var(--amber);color:var(--bg-dark);font-family:var(--sans);font-size:11px;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;transition:opacity 0.3s" data-i18n="contact_cta">REQUEST A PIECE</a>
+<!-- ══ STATS — light version ════════════════════════════════════════════ -->
+<section style="position:relative;z-index:2;padding:80px 64px;text-align:center;background:var(--silk)">
+  <div style="display:flex;justify-content:center;gap:80px;flex-wrap:wrap">
+    <div>
+      <div style="font-family:var(--serif);font-size:clamp(36px,4.5vw,64px);font-weight:300;color:var(--amber2)">40M+</div>
+      <div style="font-family:var(--sans);font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);margin-top:8px">Years of amber</div>
+    </div>
+    <div>
+      <div style="font-family:var(--serif);font-size:clamp(36px,4.5vw,64px);font-weight:300;color:var(--amber2)">94</div>
+      <div style="font-family:var(--sans);font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);margin-top:8px">Unique pieces</div>
+    </div>
+    <div>
+      <div style="font-family:var(--serif);font-size:clamp(36px,4.5vw,64px);font-weight:300;color:var(--amber2)">3</div>
+      <div style="font-family:var(--sans);font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);margin-top:8px">Countries</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONSULTATION CTA — light ═════════════════════════════════════════ -->
+<section id="contact" style="position:relative;z-index:2;padding:100px 48px;text-align:center;background:var(--cream)">
+  <h2 style="font-family:var(--serif);font-size:clamp(28px,3.5vw,52px);font-weight:300;color:var(--charcoal)" data-i18n="contact_h">Request a Personal Consultation</h2>
+  <p style="font-family:var(--sans);font-size:15px;color:var(--gray);margin-top:16px;max-width:420px;margin-left:auto;margin-right:auto;line-height:1.7" data-i18n="contact_p">Let us guide you to the perfect piece.</p>
+  <a href="#" onclick="openReq();return false" style="display:inline-block;margin-top:32px;padding:16px 40px;background:var(--charcoal);color:#fff;font-family:var(--sans);font-size:12px;font-weight:400;letter-spacing:0.1em;text-decoration:none;border-radius:40px;transition:background 0.3s" data-i18n="contact_cta">REQUEST A PIECE</a>
 </section>
 
 <!-- ══ FOOTER — Bvlgari-style ═══════════════════════════════════════════ -->
-<footer style="background:var(--bg-dark);padding:60px 48px 40px;position:relative;z-index:2;border-top:1px solid rgba(201,168,50,0.1)">
+<footer style="background:var(--charcoal);padding:60px 48px 40px;position:relative;z-index:2">
   <!-- Newsletter -->
-  <div style="text-align:center;padding-bottom:48px;border-bottom:1px solid rgba(201,168,50,0.08)">
-    <span class="label" style="color:var(--amber);letter-spacing:0.2em;display:block;margin-bottom:16px">SUBSCRIBE TO OUR NEWSLETTER</span>
-    <div style="display:flex;justify-content:center;gap:12px;max-width:400px;margin:0 auto">
-      <input type="email" id="nl-email" placeholder="Your email address" style="flex:1;padding:12px 16px;background:transparent;border:1px solid rgba(255,255,255,0.2);color:#fff;font-family:var(--sans);font-size:13px;font-weight:300;outline:none">
-      <button id="nl-btn" onclick="submitNewsletter()" style="padding:12px 24px;background:var(--amber);color:var(--bg-dark);font-family:var(--sans);font-size:10px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;border:none;cursor:pointer">SUBSCRIBE</button>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.1);align-items:start">
+    <div>
+      <h3 style="font-family:var(--serif);font-size:clamp(24px,3vw,36px);font-weight:300;color:rgba(255,255,255,0.8);line-height:1.3">Receive stories, offers<br>and inspiration from Amberra</h3>
+      <div style="display:flex;gap:0;margin-top:24px;max-width:360px">
+        <input type="email" id="nl-email" placeholder="Email address" style="flex:1;padding:14px 16px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-right:none;border-radius:40px 0 0 40px;color:#fff;font-family:var(--sans);font-size:13px;font-weight:300;outline:none">
+        <button id="nl-btn" onclick="submitNewsletter()" style="padding:14px 20px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-left:none;border-radius:0 40px 40px 0;color:rgba(255,255,255,0.5);cursor:pointer;font-size:16px;line-height:1" aria-label="Subscribe">&rarr;</button>
+      </div>
+      <p style="font-family:var(--sans);font-size:11px;color:rgba(255,255,255,0.3);margin-top:12px">No spam, ever. Unsubscribe anytime.</p>
     </div>
+    <div></div>
   </div>
   <!-- Columns -->
   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:48px;padding-top:48px">
@@ -568,7 +640,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="sg-section-title">1-Year Warranty</div>
         <div class="sg-warranty-box">
           <div class="sg-warranty-seal">
-            <svg viewBox="0 0 24 24"><path d="M12 2l2.4 4.8L20 8l-4 4 .9 5.5L12 15l-4.9 2.5L8 12 4 8l5.6-1.2L12 2z" stroke="#fff" stroke-width="1.2" fill="none"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l2.4 4.8L20 8l-4 4 .9 5.5L12 15l-4.9 2.5L8 12 4 8l5.6-1.2L12 2z" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
           </div>
           <div class="sg-warranty-body">
             <h4>AMBERRA Limited Warranty — 12 Months</h4>
