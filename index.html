@@ -286,60 +286,62 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 
-<!-- ══ HERO — Oura-style: split text + product image ═══════════════════ -->
-<section id="hero" style="position:relative;z-index:2;min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,var(--cream) 0%,var(--silk) 100%);overflow:hidden;padding:var(--nav-h) 0 0">
-  <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Handcrafted Baltic Amber Jewelry — Rings, Earrings, Pendants & Bracelets</h1>
-  <div style="display:grid;grid-template-columns:1fr 1fr;align-items:center;width:100%;max-width:1400px;margin:0 auto;padding:60px 64px;gap:40px">
+<!-- ══ HERO — Oura-style: big text + product slot ═════════════════════ -->
+<section id="hero" class="os" style="position:relative;z-index:2;min-height:100vh;display:flex;align-items:center;background:var(--warm-bg);overflow:hidden;padding:var(--nav-h) 0 0">
+  <h1 class="visually-hidden">Handcrafted Baltic Amber Jewelry — Rings, Earrings, Pendants & Bracelets</h1>
+  <div class="hero-grid">
     <div id="hero-content">
-      <span class="label hero-fade" style="color:var(--gray);display:block;margin-bottom:16px;opacity:0">BALTIC AMBER JEWELRY</span>
-      <h2 class="hero-fade" style="font-family:var(--serif);font-size:clamp(40px,5.5vw,80px);font-weight:300;line-height:1.05;letter-spacing:-0.02em;color:var(--charcoal);opacity:0" data-i18n="hero_h">Timeless.<br>Handcrafted.<br><em style="font-style:italic;color:var(--amber2)">Made for you.</em></h2>
-      <p class="body-text hero-fade" style="color:var(--gray);opacity:0;margin-top:20px;max-width:380px;font-size:16px;line-height:1.7" data-i18n="hero_p">Forty million years of nature's patience, shaped by artisan hands in Bali.</p>
-      <div style="display:flex;gap:12px;margin-top:32px">
-        <a href="/shop" class="hero-fade" style="display:inline-block;opacity:0;padding:14px 32px;background:var(--charcoal);color:#fff;font-family:var(--sans);font-size:12px;font-weight:400;letter-spacing:0.1em;text-decoration:none;border-radius:40px;transition:background 0.3s" data-i18n="hero_cta">Shop</a>
-        <a href="#editorial" class="hero-fade" style="display:inline-block;opacity:0;padding:14px 32px;background:transparent;color:var(--charcoal);font-family:var(--sans);font-size:12px;font-weight:400;letter-spacing:0.1em;text-decoration:none;border-radius:40px;border:1px solid var(--stone);transition:border-color 0.3s">Explore</a>
+      <span class="os-label hero-fade" style="opacity:0">Amber Ring Collection</span>
+      <h2 class="os-hero-h hero-fade" style="opacity:0" data-i18n="hero_h">Timeless.<br>Handcrafted.<br><em>Made for you.</em></h2>
+      <p class="os-body hero-fade" style="opacity:0;margin-top:24px;max-width:400px" data-i18n="hero_p">Forty million years of nature's patience, shaped by artisan hands in Bali.</p>
+      <div class="os-btns hero-fade" style="opacity:0;margin-top:36px">
+        <a href="/shop" class="os-btn os-btn--fill" data-i18n="hero_cta">Shop</a>
+        <a href="#editorial" class="os-btn os-btn--ghost">Explore</a>
       </div>
     </div>
-    <div style="position:relative;display:flex;align-items:center;justify-content:center">
-      <img src="/images/hero-photo.webp" alt="Model wearing Baltic amber jewelry" width="1920" height="1080" style="width:100%;height:auto;border-radius:24px;object-fit:cover" fetchpriority="high">
+    <div class="hero-img-slot" data-placeholder="hero">
+      <!-- PHOTO SLOT: hero product image -->
     </div>
   </div>
 </section>
 
-<!-- ══ PRODUCT CARDS — 2-column like Oura ═══════════════════════════════ -->
-<section style="position:relative;z-index:2;padding:80px 64px;background:var(--cream);max-width:1400px;margin:0 auto">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
-    <a href="/rings" style="position:relative;overflow:hidden;border-radius:24px;background:var(--silk);display:block;text-decoration:none;aspect-ratio:4/5">
-      <img src="/images/editorial/ed-ring-16x9.webp" alt="Amber rings collection" style="width:100%;height:100%;object-fit:cover;border-radius:24px;transition:transform 0.6s ease" loading="lazy">
-      <div style="position:absolute;bottom:0;left:0;right:0;padding:32px;background:linear-gradient(transparent,rgba(0,0,0,0.5));border-radius:0 0 24px 24px">
-        <div style="font-family:var(--serif);font-size:clamp(20px,2.5vw,32px);font-weight:300;color:#fff">Rings</div>
-        <div style="font-family:var(--sans);font-size:13px;color:rgba(255,255,255,0.7);margin-top:4px">From $89</div>
+<!-- ══ PRODUCT CARDS — 2-column ═══════════════════════════════════════ -->
+<section class="os-section os" style="background:var(--warm-bg)">
+  <div class="os-cards">
+    <a href="/rings" class="os-card mo">
+      <div class="os-card-img" data-placeholder="rings"><!-- PHOTO SLOT: rings --></div>
+      <div class="os-card-info">
+        <div class="os-card-name">Rings</div>
+        <div class="os-card-price">From $89</div>
       </div>
-      <div style="position:absolute;top:24px;right:24px;display:flex;gap:8px">
-        <span style="padding:8px 20px;background:#fff;border-radius:40px;font-family:var(--sans);font-size:12px;font-weight:400;color:var(--charcoal)">Shop</span>
-        <span style="padding:8px 20px;background:rgba(0,0,0,0.4);backdrop-filter:blur(8px);border-radius:40px;font-family:var(--sans);font-size:12px;font-weight:400;color:#fff">Explore</span>
+      <div class="os-card-badges">
+        <span class="os-pill os-pill--white">Shop</span>
+        <span class="os-pill os-pill--glass">Explore</span>
       </div>
     </a>
-    <a href="/earrings" style="position:relative;overflow:hidden;border-radius:24px;background:var(--silk);display:block;text-decoration:none;aspect-ratio:4/5">
-      <img src="/images/editorial/ed-model-16x9.webp" alt="Amber earrings collection" style="width:100%;height:100%;object-fit:cover;border-radius:24px;transition:transform 0.6s ease" loading="lazy">
-      <div style="position:absolute;bottom:0;left:0;right:0;padding:32px;background:linear-gradient(transparent,rgba(0,0,0,0.5));border-radius:0 0 24px 24px">
-        <div style="font-family:var(--serif);font-size:clamp(20px,2.5vw,32px);font-weight:300;color:#fff">Earrings &amp; Pendants</div>
-        <div style="font-family:var(--sans);font-size:13px;color:rgba(255,255,255,0.7);margin-top:4px">From $65</div>
+    <a href="/earrings" class="os-card mo">
+      <div class="os-card-img" data-placeholder="earrings"><!-- PHOTO SLOT: earrings --></div>
+      <div class="os-card-info">
+        <div class="os-card-name">Earrings &amp; Pendants</div>
+        <div class="os-card-price">From $65</div>
       </div>
-      <div style="position:absolute;top:24px;right:24px;display:flex;gap:8px">
-        <span style="padding:8px 20px;background:#fff;border-radius:40px;font-family:var(--sans);font-size:12px;font-weight:400;color:var(--charcoal)">Shop</span>
-        <span style="padding:8px 20px;background:rgba(0,0,0,0.4);backdrop-filter:blur(8px);border-radius:40px;font-family:var(--sans);font-size:12px;font-weight:400;color:#fff">Explore</span>
+      <div class="os-card-badges">
+        <span class="os-pill os-pill--white">Shop</span>
+        <span class="os-pill os-pill--glass">Explore</span>
       </div>
     </a>
   </div>
 </section>
 
-<!-- ══ STATEMENT — "gives your style a story" ══════════════════════════ -->
-<section style="position:relative;z-index:2;padding:100px 64px;text-align:center;background:linear-gradient(180deg,var(--cream) 0%,var(--silk) 100%)">
-  <h2 style="font-family:var(--serif);font-size:clamp(32px,4.5vw,64px);font-weight:300;line-height:1.15;color:var(--charcoal);max-width:800px;margin:0 auto">Ancient amber gives your style <em style="font-style:italic;color:var(--amber2)">a story</em></h2>
-  <a href="/our-story" style="display:inline-block;margin-top:32px;padding:14px 32px;background:var(--charcoal);color:#fff;font-family:var(--sans);font-size:12px;font-weight:400;letter-spacing:0.1em;text-decoration:none;border-radius:40px">Why Amberra</a>
+<!-- ══ STATEMENT — centered serif ════════════════════════════════════ -->
+<section class="os-section os" style="background:linear-gradient(180deg,var(--warm-bg) 0%,var(--silk) 100%)">
+  <div class="os-statement mo">
+    <h2 class="os-statement-h">Ancient amber gives<br>your style <em>a story</em></h2>
+    <a href="/our-story" class="os-btn os-btn--fill" style="margin-top:32px">Why Amberra</a>
+  </div>
 </section>
 
-<!-- ══ EDITORIAL SCROLL — 4 morphs, 4 acts, scroll-driven ═══════════════ -->
+<!-- ══ EDITORIAL SCROLL — scroll-driven frame animation ══════════════ -->
 <div id="ed-scrub-wrap" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;pointer-events:none;opacity:0;transition:opacity 0.4s ease;overflow:hidden">
   <img id="ed-scrub-img" src="" alt="" style="width:100%;height:100%;object-fit:cover">
   <div class="ed-scrub-grad" style="position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(0,0,0,0.55));transition:background 0.8s ease"></div>
@@ -351,61 +353,64 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 <section id="editorial" style="height:400vh;position:relative;z-index:4"></section>
 
-<!-- ══ LIFESTYLE CARDS — horizontal scroll like Oura ═══════════════════ -->
-<section style="position:relative;z-index:2;padding:80px 0 80px 64px;background:var(--cream)">
-  <h2 style="font-family:var(--serif);font-size:clamp(24px,3vw,42px);font-weight:300;color:var(--charcoal);margin-bottom:32px">The Craft Behind Every Piece</h2>
-  <div style="display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:16px;-webkit-overflow-scrolling:touch;scrollbar-width:none" class="hide-scrollbar">
-    <div style="flex:0 0 300px;scroll-snap-align:start;border-radius:20px;overflow:hidden;position:relative;aspect-ratio:3/4;background:var(--charcoal)">
-      <img src="/images/editorial/ed-amber-16x9.webp" alt="Raw Baltic amber" style="width:100%;height:100%;object-fit:cover;opacity:0.85" loading="lazy">
-      <div style="position:absolute;bottom:24px;left:24px;right:24px">
-        <h3 style="font-family:var(--serif);font-size:22px;font-weight:300;color:#fff;line-height:1.3">Forty million years<br>of <em>patience</em></h3>
-      </div>
+<!-- ══ LIFESTYLE CAROUSEL — horizontal snap scroll ═══════════════════ -->
+<section class="os-section os" style="background:var(--warm-bg);padding-right:0">
+  <h2 class="os-carousel-h mo">The Craft Behind<br>Every Piece</h2>
+  <div class="os-carousel hide-scrollbar">
+    <div class="os-ccard mo">
+      <div class="os-ccard-img" data-placeholder="craft-1"><!-- PHOTO SLOT: raw amber --></div>
+      <h3 class="os-ccard-text">Forty million years<br>of <em>patience</em></h3>
     </div>
-    <div style="flex:0 0 300px;scroll-snap-align:start;border-radius:20px;overflow:hidden;position:relative;aspect-ratio:3/4;background:var(--charcoal)">
-      <img src="/images/editorial/ed-gold-16x9.webp" alt="Molten gold setting" style="width:100%;height:100%;object-fit:cover;opacity:0.85" loading="lazy">
-      <div style="position:absolute;bottom:24px;left:24px;right:24px">
-        <h3 style="font-family:var(--serif);font-size:22px;font-weight:300;color:#fff;line-height:1.3">Sterling silver,<br><em>shaped by hand</em></h3>
-      </div>
+    <div class="os-ccard mo">
+      <div class="os-ccard-img" data-placeholder="craft-2"><!-- PHOTO SLOT: silver setting --></div>
+      <h3 class="os-ccard-text">Sterling silver,<br><em>shaped by hand</em></h3>
     </div>
-    <div style="flex:0 0 300px;scroll-snap-align:start;border-radius:20px;overflow:hidden;position:relative;aspect-ratio:3/4;background:var(--charcoal)">
-      <img src="/images/editorial/ed-ring-16x9.webp" alt="Finished amber ring" style="width:100%;height:100%;object-fit:cover;opacity:0.85" loading="lazy">
-      <div style="position:absolute;bottom:24px;left:24px;right:24px">
-        <h3 style="font-family:var(--serif);font-size:22px;font-weight:300;color:#fff;line-height:1.3">Ritually blessed<br>in <em>Ubud</em></h3>
-      </div>
+    <div class="os-ccard mo">
+      <div class="os-ccard-img" data-placeholder="craft-3"><!-- PHOTO SLOT: blessing --></div>
+      <h3 class="os-ccard-text">Ritually blessed<br>in <em>Ubud</em></h3>
     </div>
-    <div style="flex:0 0 300px;scroll-snap-align:start;border-radius:20px;overflow:hidden;position:relative;aspect-ratio:3/4;background:var(--charcoal)">
-      <img src="/images/editorial/ed-model-16x9.webp" alt="Woman wearing amber jewelry" style="width:100%;height:100%;object-fit:cover;opacity:0.85" loading="lazy">
-      <div style="position:absolute;bottom:24px;left:24px;right:24px">
-        <h3 style="font-family:var(--serif);font-size:22px;font-weight:300;color:#fff;line-height:1.3">Wear your<br><em>story</em></h3>
-      </div>
+    <div class="os-ccard mo">
+      <div class="os-ccard-img" data-placeholder="craft-4"><!-- PHOTO SLOT: wearing --></div>
+      <h3 class="os-ccard-text">Wear your<br><em>story</em></h3>
     </div>
-    <div style="flex:0 0 40px"></div>
+    <div style="flex:0 0 64px"></div>
   </div>
 </section>
 
-<!-- ══ STATS — light version ════════════════════════════════════════════ -->
-<section style="position:relative;z-index:2;padding:80px 64px;text-align:center;background:var(--silk)">
-  <div style="display:flex;justify-content:center;gap:80px;flex-wrap:wrap">
-    <div>
-      <div style="font-family:var(--serif);font-size:clamp(36px,4.5vw,64px);font-weight:300;color:var(--amber2)">40M+</div>
-      <div style="font-family:var(--sans);font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);margin-top:8px">Years of amber</div>
+<!-- ══ DARK FEATURE — like Oura's dark section ═══════════════════════ -->
+<section class="os-dark os">
+  <div class="os-dark-inner mo">
+    <span class="os-label" style="color:var(--amber)">FORM MEETS CRAFT</span>
+    <h2 class="os-dark-h">Built for beauty,<br>designed for <em>your every day</em></h2>
+    <a href="/shop" class="os-btn os-btn--amber" style="margin-top:32px">Discover All Pieces</a>
+  </div>
+</section>
+
+<!-- ══ STATS ═════════════════════════════════════════════════════════ -->
+<section class="os-section os" style="background:var(--silk)">
+  <div class="os-stats mo">
+    <div class="os-stat">
+      <div class="os-stat-num">40M+</div>
+      <div class="os-stat-label">Years of amber</div>
     </div>
-    <div>
-      <div style="font-family:var(--serif);font-size:clamp(36px,4.5vw,64px);font-weight:300;color:var(--amber2)">94</div>
-      <div style="font-family:var(--sans);font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);margin-top:8px">Unique pieces</div>
+    <div class="os-stat">
+      <div class="os-stat-num">94</div>
+      <div class="os-stat-label">Unique pieces</div>
     </div>
-    <div>
-      <div style="font-family:var(--serif);font-size:clamp(36px,4.5vw,64px);font-weight:300;color:var(--amber2)">3</div>
-      <div style="font-family:var(--sans);font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);margin-top:8px">Countries</div>
+    <div class="os-stat">
+      <div class="os-stat-num">3</div>
+      <div class="os-stat-label">Countries</div>
     </div>
   </div>
 </section>
 
-<!-- ══ CONSULTATION CTA — light ═════════════════════════════════════════ -->
-<section id="contact" style="position:relative;z-index:2;padding:100px 48px;text-align:center;background:var(--cream)">
-  <h2 style="font-family:var(--serif);font-size:clamp(28px,3.5vw,52px);font-weight:300;color:var(--charcoal)" data-i18n="contact_h">Request a Personal Consultation</h2>
-  <p style="font-family:var(--sans);font-size:15px;color:var(--gray);margin-top:16px;max-width:420px;margin-left:auto;margin-right:auto;line-height:1.7" data-i18n="contact_p">Let us guide you to the perfect piece.</p>
-  <a href="#" onclick="openReq();return false" style="display:inline-block;margin-top:32px;padding:16px 40px;background:var(--charcoal);color:#fff;font-family:var(--sans);font-size:12px;font-weight:400;letter-spacing:0.1em;text-decoration:none;border-radius:40px;transition:background 0.3s" data-i18n="contact_cta">REQUEST A PIECE</a>
+<!-- ══ CONSULTATION CTA ═════════════════════════════════════════════ -->
+<section id="contact" class="os-section os" style="background:var(--warm-bg)">
+  <div class="os-cta mo">
+    <h2 class="os-statement-h" data-i18n="contact_h">Request a Personal<br>Consultation</h2>
+    <p class="os-body" style="margin-top:16px;max-width:420px" data-i18n="contact_p">Let us guide you to the perfect piece.</p>
+    <a href="#" onclick="openReq();return false" class="os-btn os-btn--fill" style="margin-top:32px" data-i18n="contact_cta">Request a Piece</a>
+  </div>
 </section>
 
 <!-- ══ FOOTER — Bvlgari-style ═══════════════════════════════════════════ -->

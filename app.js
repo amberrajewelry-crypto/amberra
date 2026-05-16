@@ -527,7 +527,18 @@ function closeSizeGuide(){
 // ── SMOOTH SCROLL ──────────────────────────────────────────────────────────
 function s(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth'})}
 
-// reveal system removed — no .rv elements in current layout
+// ── SCROLL REVEAL (Oura-style .mo fade-in) ───────────────────────────────
+(function(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('vis');
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.mo').forEach(el=>obs.observe(el));
+})();
 
 // ── NAV SCROLL ────────────────────────────────────────────────────────────
 const HAS_HERO=!!document.getElementById('hero');
