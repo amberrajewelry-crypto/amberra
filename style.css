@@ -170,7 +170,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 @media(prefers-reduced-motion:reduce){.reveal{transition:none!important;opacity:1!important;transform:none!important}}
 
 /* === Editorial Scroll === */
-#editorial{position:relative;z-index:4}
+/* editorial removed */
 
 /* ═══ TRYON ═════════════════════════════════════════════════════════════ */
 #tryon-sec{padding:96px 56px;background:var(--cream)}
@@ -818,11 +818,8 @@ footer a:hover{opacity:1!important}
 /* === END CRYPTO PAYMENT === */
 
 /* === FLUID BG === */
-#editorial{background:transparent}
-
 /* === CANVAS STACKING FIX: canvas z:1, page sections z:2 === */
-/* Only page sections: modals/overlays keep their own position:fixed + z-index */
-#hero,#bestsellers,#editorial,#contact,footer{
+#hero,#bestsellers,#contact,footer{
   position:relative;z-index:2
 }
 
