@@ -528,7 +528,7 @@ function closeSizeGuide(){
 function s(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth'})}
 
 // ── SCROLL REVEAL (Oura-style .mo fade-in) ───────────────────────────────
-(function(){
+window.addEventListener('DOMContentLoaded',()=>{
   const obs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{
       if(e.isIntersecting){
@@ -536,9 +536,9 @@ function s(id){const el=document.getElementById(id);if(el)el.scrollIntoView({beh
         obs.unobserve(e.target);
       }
     });
-  },{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
+  },{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
   document.querySelectorAll('.mo').forEach(el=>obs.observe(el));
-})();
+});
 
 // ── NAV SCROLL ────────────────────────────────────────────────────────────
 const HAS_HERO=!!document.getElementById('hero');
