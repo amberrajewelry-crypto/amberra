@@ -1,3 +1,5 @@
+import fallbackProducts from '../data/products.json';
+
 const IMG_EXTRAS = {
   'Morning Dew': ['/images/earrings/morning-dew-2.jpg'], // leaf_eye_butter_rg
 };
@@ -23,10 +25,17 @@ export default async function handler(req, res) {
       const r = await fetch(url, {
         headers: { 'Authorization': `Bearer ${PAT}` }
       });
+      if (!r.ok) break; // Airtable error (e.g. 429 monthly limit) — fall back below
       const data = await r.json();
       records = records.concat(data.records || []);
       offset = data.offset || null;
     } while (offset);
+
+    // Never leave the catalog empty: if Airtable returned nothing, serve the bundled snapshot.
+    if (!records.length) {
+      res.setHeader('X-Data-Source', 'fallback');
+      return res.status(200).json(fallbackProducts);
+    }
 
     const products = records.map((rec, i) => {
       const f = rec.fields;
@@ -53,6 +62,8 @@ export default async function handler(req, res) {
 
     res.status(200).json(products);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    // On any failure, still serve products from the bundled snapshot rather than an empty catalog.
+    res.setHeader('X-Data-Source', 'fallback-error');
+    res.status(200).json(fallbackProducts);
   }
 }
