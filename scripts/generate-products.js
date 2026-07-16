@@ -404,19 +404,19 @@ function staticShopCard(p) {
     </a>`;
 }
 
-function injectShopGrid(products) {
-  const shopPath = path.join(__dirname, '../shop.html');
-  if (!fs.existsSync(shopPath)) return;
-  const html = fs.readFileSync(shopPath, 'utf8');
+function injectStaticGrid(relFile, products) {
+  const p = path.join(__dirname, '..', relFile);
+  if (!fs.existsSync(p)) return;
+  const html = fs.readFileSync(p, 'utf8');
   const si = html.indexOf('<!-- STATIC_GRID_START');
   const ei = html.indexOf('<!-- STATIC_GRID_END -->');
   if (si === -1 || ei === -1) return;
   const startClose = html.indexOf('-->', si) + 3;
-  const list  = products.filter(p => p.slug);
+  const list  = products.filter(x => x.slug);
   const cards = list.map(staticShopCard).join('\n    ');
   const out   = html.slice(0, startClose) + '\n    ' + cards + '\n    ' + html.slice(ei);
-  fs.writeFileSync(shopPath, out, 'utf8');
-  console.log(`✓  shop.html static grid injected (${list.length} cards)`);
+  fs.writeFileSync(p, out, 'utf8');
+  console.log(`✓  ${relFile} static grid injected (${list.length} cards)`);
 }
 
 // ── main ──────────────────────────────────────────────────────────────────────
@@ -472,8 +472,9 @@ async function main() {
 
   console.log(`✓  ${slugs.length} product pages written to /products/`);
 
-  // Inject crawlable static grid into /shop
-  injectShopGrid(products);
+  // Inject crawlable static grid into /shop and /catalog
+  injectStaticGrid('shop.html', products);
+  injectStaticGrid('catalog.html', products);
 
   // Orphan cleanup — remove stale product pages no longer backed by a product.
   let removed = 0;
