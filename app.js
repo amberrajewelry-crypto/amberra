@@ -1184,22 +1184,5 @@ document.addEventListener('DOMContentLoaded',()=>{
     },{threshold:.15});
     io.observe(edm);
   }
-  // Align PENDANTS link directly under JEWELRY text in logo
-  function alignPendants(){
-    const sub=document.querySelector('.nav-logo-sub');
-    const pendants=document.querySelector('.nl[data-i18n="nav_pendants"]');
-    const navMain=document.querySelector('.nav-main');
-    if(!sub||!pendants||!navMain)return;
-    navMain.style.paddingLeft='';
-    requestAnimationFrame(()=>{
-      const jR=sub.getBoundingClientRect();
-      const pR=pendants.getBoundingClientRect();
-      const shift=(jR.left+jR.right)/2-(pR.left+pR.right)/2;
-      if(Math.abs(shift)<1)return;
-      const cur=parseFloat(getComputedStyle(navMain).paddingLeft)||0;
-      navMain.style.paddingLeft=Math.max(0,cur+shift*2)+'px';
-    });
-  }
-  document.fonts.ready.then(alignPendants);
-  window.addEventListener('resize',alignPendants);
+  // Nav alignment handled by CSS only
 });
