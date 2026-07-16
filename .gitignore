@@ -1,16 +1,4 @@
-.vercel
-.env*.local
-
-# Secrets — mempalace exclude
-.env
-.env.*
-*.env
-config.py
-*secret*
-*token*
-*credential*
-*password*
-*private_key*
-*.pem
-*.key
-
+node_modules/
+.DS_Store
+.superpowers/
+*.log
