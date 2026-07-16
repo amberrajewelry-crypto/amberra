@@ -50,6 +50,11 @@ function sizeOptions(cat) {
   }
 }
 
+const TYPE_NOUN = { rings: 'Ring', earrings: 'Earrings', pendants: 'Pendant', bracelets: 'Bracelet', chains: 'Chain' };
+function absImg(img) { return img ? (/^https?:/.test(img) ? img : `${SITE}/${String(img).replace(/^\//, '')}`) : ''; }
+// Duplicate-name SKUs get their jewelry type appended so links/titles are distinct.
+function displayName(prod) { const n = TYPE_NOUN[prod.cat] || ''; return (prod.dup && n) ? `${prod.name} ${n}` : prod.name; }
+
 // ── Airtable fetch ────────────────────────────────────────────────────────────
 
 async function fetchProducts() {
@@ -71,14 +76,10 @@ function productHTML(p, slug) {
   const { name, cat, price, desc, img, material, props, badge } = p;
   const catLabel  = cat ? cat.charAt(0).toUpperCase() + cat.slice(1) : 'Jewelry';
   const canonical = `${SITE}/products/${slug}`;
-  const imgAbs    = img ? (/^https?:/.test(img) ? img : `${SITE}/${String(img).replace(/^\//, '')}`) : '';
+  const imgAbs    = absImg(img);
   const sku       = 'AMB-' + String(p.id != null ? p.id : slug).padStart(4, '0');
   const stone     = (props && props.Stone) ? props.Stone : '';
-  // Distinct display name for duplicate product names (same name, different SKU).
-  // The real differentiator is jewelry type (ring vs earrings…) — append it so
-  // titles/H1 don't cannibalise each other and match "amber <type>" intent.
-  const typeNoun  = { rings: 'Ring', earrings: 'Earrings', pendants: 'Pendant', bracelets: 'Bracelet', chains: 'Chain' }[cat] || '';
-  const dispName  = (p.dup && typeNoun) ? `${name} ${typeNoun}` : name;
+  const dispName  = displayName(p);
   // Title ≤60 visible chars: drop the long suffix, then hard-cap if still long.
   let title = `${dispName} — AMBERRA Handcrafted Amber Jewelry`;
   if (title.length > 60) title = `${dispName} — AMBERRA`;
@@ -165,6 +166,20 @@ function productHTML(p, slug) {
     data-item-image="${esc(imgAbs)}"
     data-item-categories="${esc(catLabel)}"${sizeAttr}>Add to Cart — $${price}</button>`;
 
+  // ── "You May Also Like" — interlink product pages (same category first) ──
+  const related = Array.isArray(p._related) ? p._related : [];
+  const relatedHTML = related.length ? `
+<section class="pp-related">
+  <h2 class="pp-related-head">You May Also Like</h2>
+  <div class="pp-related-grid">
+    ${related.map(r => `<a class="pp-rel-card" href="/products/${esc(r.slug)}">
+      <div class="pp-rel-img"><img src="${esc(absImg(r.img))}" alt="${esc(displayName(r))} — AMBERRA amber jewelry" loading="lazy" width="300" height="400"></div>
+      <div class="pp-rel-name">${esc(displayName(r))}</div>
+      <div class="pp-rel-price">$${r.price}</div>
+    </a>`).join('')}
+  </div>
+</section>` : '';
+
   return `<!DOCTYPE html>
 <html lang="en" translate="no">
 <head>
@@ -230,7 +245,16 @@ ${breadcrumbSchema}
 .pp-footer{text-align:center;padding:40px 32px 60px;border-top:1px solid var(--mist);margin-top:40px}
 .pp-footer p{font:300 13px/1.7 var(--sans);color:var(--stone);max-width:480px;margin:0 auto 16px}
 .pp-footer a{color:var(--amber);text-decoration:none}
-@media(max-width:760px){.pp-wrap{grid-template-columns:1fr;gap:32px;padding:32px 20px 80px}.pp-info{position:static}.pp-name{font-size:28px}}
+.pp-related{max-width:1100px;margin:0 auto;padding:0 32px 60px}
+.pp-related-head{font:300 13px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--stone);text-align:center;margin:0 0 32px}
+.pp-related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.pp-rel-card{text-decoration:none;display:block}
+.pp-rel-img{position:relative;background:var(--silk);overflow:hidden;aspect-ratio:3/4;margin-bottom:12px}
+.pp-rel-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.pp-rel-card:hover .pp-rel-img img{transform:scale(1.05)}
+.pp-rel-name{font:400 14px/1.3 var(--serif);color:var(--charcoal);margin:0 0 4px}
+.pp-rel-price{font:300 12px/1 var(--sans);color:var(--gray)}
+@media(max-width:760px){.pp-wrap{grid-template-columns:1fr;gap:32px;padding:32px 20px 80px}.pp-info{position:static}.pp-name{font-size:28px}.pp-related-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body class="page-light">
@@ -266,7 +290,7 @@ ${breadcrumbSchema}
     <a class="pp-cta-ghost" href="/shop?cat=${esc(cat)}">View All ${esc(catLabel)}</a>
   </div>
 </main>
-
+${relatedHTML}
 <footer class="pp-footer">
   <p>Each AMBERRA piece is handcrafted in Bali using natural amber. Free worldwide shipping on orders over $200.</p>
   <p><a href="/shop">Browse the full collection</a> &nbsp;·&nbsp; <a href="/our-story">Our Story</a> &nbsp;·&nbsp; <a href="/contact">Contact</a></p>
@@ -381,6 +405,18 @@ async function main() {
   }
   for (const p of products) {
     if (p.name && nameCounts[p.name.toLowerCase()] > 1) p.dup = true;
+  }
+
+  // Related products for "You May Also Like": same category first, then pad.
+  const withSlug = products.filter(p => p.slug);
+  for (const p of withSlug) {
+    const same = withSlug.filter(q => q !== p && q.cat === p.cat).slice(0, 4);
+    if (same.length < 4) {
+      const pad = withSlug.filter(q => q !== p && q.cat !== p.cat && !same.includes(q)).slice(0, 4 - same.length);
+      p._related = same.concat(pad);
+    } else {
+      p._related = same;
+    }
   }
 
   const outDir = path.join(__dirname, '../products');
