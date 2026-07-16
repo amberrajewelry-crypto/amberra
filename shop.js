@@ -3,7 +3,7 @@
 // Shop-specific: products, catalog, drawer, try-on, quiz, search, hover detail
 // ═══════════════════════════════════════════════════════════════════════════
 const C='https://res.cloudinary.com/dtfq3xq3t/image/upload';
-const I='https://amberra-jewelry.com/img';
+const I='/images';
 
 // ── PRODUCTS ──────────────────────────────────────────────────────────────
 let products=[];
