@@ -382,6 +382,43 @@ function assignSlugs(products) {
   return products;
 }
 
+// ── /shop static grid (crawlable) ───────────────────────────────────────────
+// Googlebot sees a real product list with /products/<slug> links; shop.js
+// re-renders #prod-grid for users on load. Injected idempotently via markers.
+
+function staticShopCard(p) {
+  const name = displayName(p);
+  const badge = p.badge
+    ? `<div class="pbadge ${esc(p.badge)}">${p.badge === 'bestseller' ? 'Best Seller' : p.badge === 'limited' ? 'Limited' : 'New'}</div>`
+    : '';
+  return `<a class="pc" href="/products/${esc(p.slug)}" style="text-decoration:none;color:inherit">
+      <div class="pc-inner">
+        <div class="pc-img" style="position:relative">${badge}<img src="${esc(absImg(p.img))}" alt="${esc(name)} — AMBERRA amber jewelry" loading="lazy" width="400" height="400"></div>
+        <div class="pc-label">
+          <span class="pcat">${esc((p.cat || '').toUpperCase())}</span>
+          <h3 class="pname">${esc(name)}</h3>
+          <p class="pmaterial">${esc(p.material || '')}</p>
+          <div class="pfoot"><span class="pprice">$${p.price}</span></div>
+        </div>
+      </div>
+    </a>`;
+}
+
+function injectShopGrid(products) {
+  const shopPath = path.join(__dirname, '../shop.html');
+  if (!fs.existsSync(shopPath)) return;
+  const html = fs.readFileSync(shopPath, 'utf8');
+  const si = html.indexOf('<!-- STATIC_GRID_START');
+  const ei = html.indexOf('<!-- STATIC_GRID_END -->');
+  if (si === -1 || ei === -1) return;
+  const startClose = html.indexOf('-->', si) + 3;
+  const list  = products.filter(p => p.slug);
+  const cards = list.map(staticShopCard).join('\n    ');
+  const out   = html.slice(0, startClose) + '\n    ' + cards + '\n    ' + html.slice(ei);
+  fs.writeFileSync(shopPath, out, 'utf8');
+  console.log(`✓  shop.html static grid injected (${list.length} cards)`);
+}
+
 // ── main ──────────────────────────────────────────────────────────────────────
 
 async function main() {
@@ -434,6 +471,9 @@ async function main() {
   }
 
   console.log(`✓  ${slugs.length} product pages written to /products/`);
+
+  // Inject crawlable static grid into /shop
+  injectShopGrid(products);
 
   // Orphan cleanup — remove stale product pages no longer backed by a product.
   let removed = 0;
