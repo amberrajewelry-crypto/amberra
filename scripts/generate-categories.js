@@ -710,7 +710,13 @@ async function fetchFromAirtable() {
 function loadLocalProducts() {
   const p = '/tmp/products.json';
   if (!fs.existsSync(p)) throw new Error('No local products.json at /tmp/products.json');
-  return JSON.parse(fs.readFileSync(p, 'utf8'));
+  const items = JSON.parse(fs.readFileSync(p, 'utf8'));
+  // Surface stone from props.Stone so colorOf() works on the local source too
+  // (Airtable path exposes stone top-level; local JSON nests it under props).
+  for (const it of items) {
+    if (!it.stone && it.props && it.props.Stone) it.stone = it.props.Stone;
+  }
+  return items;
 }
 
 // ── main ─────────────────────────────────────────────────────────────────────

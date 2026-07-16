@@ -223,44 +223,21 @@ function buildSitemap(slugs) {
   return stripped.replace('</urlset>', `${productEntries}\n</urlset>`);
 }
 
-// ── main ──────────────────────────────────────────────────────────────────────
+// ── data sources ──────────────────────────────────────────────────────────────
+// Must stay byte-for-byte aligned with generate-categories.js so product page
+// filenames match the /products/<slug> links emitted on category/hub pages.
 
-async function main() {
-  if (!PAT) {
-    console.warn('⚠  AIRTABLE_PAT not set — skipping product page generation');
-    process.exit(0);
-  }
-
-  console.log('📦 Fetching products from Airtable…');
-  let records;
-  try {
-    records = await fetchProducts();
-  } catch (err) {
-    console.error('❌ Airtable fetch failed:', err.message);
-    process.exit(0); // non-fatal — deploy continues without product pages
-  }
-
-  console.log(`✓  ${records.length} products fetched`);
-
-  const outDir = path.join(__dirname, '../products');
-  if (!fs.existsSync(outDir)) fs.mkdirSync(outDir);
-
-  const slugs   = [];
-  const seen    = new Set();
-
-  for (const rec of records) {
+function normalizeAirtable(records) {
+  return records.map(rec => {
     const f = rec.fields;
-    if (!f.Name) continue;
-
     const props = {};
     if (f.Stone)      props.Stone      = f.Stone;
     if (f.Metal)      props.Metal      = f.Metal;
     if (f.Collection) props.Collection = f.Collection;
     if (f.Closure)    props.Closure    = f.Closure;
     if (f.Chain)      props.Chain      = f.Chain;
-
-    const product = {
-      name:     f.Name,
+    return {
+      name:     f.Name || '',
       cat:      (f.Category || '').toLowerCase(),
       price:    f.Price || 0,
       badge:    f.Badge || null,
@@ -269,18 +246,83 @@ async function main() {
       desc:     f.Description || '',
       props,
     };
+  });
+}
 
-    let slug = toSlug(f.Name);
-    // ensure uniqueness
-    if (seen.has(slug)) slug = slug + '-' + slugs.length;
-    seen.add(slug);
-    slugs.push(slug);
+function loadLocalProducts() {
+  // Same canonical fallback source generate-categories.js reads.
+  const p = '/tmp/products.json';
+  if (!fs.existsSync(p)) throw new Error('No local products at /tmp/products.json');
+  return JSON.parse(fs.readFileSync(p, 'utf8'));
+}
 
-    const html = productHTML(product, slug);
-    fs.writeFileSync(path.join(outDir, `${slug}.html`), html, 'utf8');
+async function loadProducts() {
+  if (PAT) {
+    try {
+      console.log('📦 Fetching products from Airtable…');
+      const records = await fetchProducts();
+      console.log(`✓  ${records.length} products fetched from Airtable`);
+      return normalizeAirtable(records);
+    } catch (err) {
+      console.warn(`⚠  Airtable fetch failed (${err.message}) — falling back to /tmp/products.json`);
+    }
+  }
+  const local = loadLocalProducts();
+  console.log(`✓  ${local.length} products loaded from /tmp/products.json`);
+  return local;
+}
+
+// Identical duplicate-name suffix rule to generate-categories.js::assignSlugs.
+function assignSlugs(products) {
+  const seen = [];
+  for (const p of products) {
+    if (!p.name) continue;
+    let slug = toSlug(p.name);
+    if (seen.includes(slug)) slug = slug + '-' + seen.length;
+    seen.push(slug);
+    p.slug = slug;
+  }
+  return products;
+}
+
+// ── main ──────────────────────────────────────────────────────────────────────
+
+async function main() {
+  let products;
+  try {
+    products = await loadProducts();
+  } catch (err) {
+    console.error('❌ No product source available:', err.message);
+    process.exit(0); // non-fatal — deploy continues without product pages
+  }
+
+  assignSlugs(products);
+
+  const outDir = path.join(__dirname, '../products');
+  if (!fs.existsSync(outDir)) fs.mkdirSync(outDir);
+
+  const slugs   = [];
+  const written = new Set();
+
+  for (const p of products) {
+    if (!p.slug) continue;
+    const html = productHTML(p, p.slug);
+    fs.writeFileSync(path.join(outDir, `${p.slug}.html`), html, 'utf8');
+    slugs.push(p.slug);
+    written.add(`${p.slug}.html`);
   }
 
   console.log(`✓  ${slugs.length} product pages written to /products/`);
+
+  // Orphan cleanup — remove stale product pages no longer backed by a product.
+  let removed = 0;
+  for (const file of fs.readdirSync(outDir)) {
+    if (file.endsWith('.html') && !written.has(file)) {
+      fs.unlinkSync(path.join(outDir, file));
+      removed++;
+    }
+  }
+  if (removed) console.log(`✓  ${removed} orphan product page(s) removed`);
 
   // Update sitemap
   const updatedSitemap = buildSitemap(slugs);
