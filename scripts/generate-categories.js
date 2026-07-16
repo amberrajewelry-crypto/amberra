@@ -502,16 +502,26 @@ function cardHTML(p) {
     </div>`;
 }
 
+function absUrl(u) {
+  if (!u) return '';
+  return /^https?:/.test(u) ? u : `${SITE}/${String(u).replace(/^\//, '')}`;
+}
+
 function itemListSchema(id, name, url, products) {
-  const items = products.slice(0, 10).map((p, i) => ({
-    '@type': 'ListItem', position: i + 1,
-    item: {
-      '@type': 'Product', name: p.name, description: p.desc || '',
-      brand: { '@type': 'Brand', name: 'AMBERRA' },
-      image: p.img ? [p.img] : [],
-      offers: { '@type': 'Offer', priceCurrency: 'USD', price: String(p.price), availability: 'https://schema.org/InStock', url }
-    }
-  }));
+  const items = products.slice(0, 10).map((p, i) => {
+    const purl = p.slug ? `${SITE}/products/${p.slug}` : url;
+    return {
+      '@type': 'ListItem', position: i + 1,
+      url: purl,
+      item: {
+        '@type': 'Product', name: p.name, description: p.desc || '',
+        url: purl,
+        brand: { '@type': 'Brand', name: 'AMBERRA' },
+        image: p.img ? [absUrl(p.img)] : [],
+        offers: { '@type': 'Offer', priceCurrency: 'USD', price: String(p.price), availability: 'https://schema.org/InStock', url: purl }
+      }
+    };
+  });
   return { '@type': 'ItemList', '@id': `${id}#products`, name, itemListElement: items };
 }
 

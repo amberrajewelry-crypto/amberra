@@ -71,23 +71,36 @@ function productHTML(p, slug) {
   const { name, cat, price, desc, img, material, props, badge } = p;
   const catLabel  = cat ? cat.charAt(0).toUpperCase() + cat.slice(1) : 'Jewelry';
   const canonical = `${SITE}/products/${slug}`;
-  const title     = `${name} — AMBERRA Handcrafted Amber Jewelry`;
-  const metaDesc  = `${desc} Handcrafted in Bali from natural amber. ${material}. Free worldwide shipping over $200.`;
+  const imgAbs    = img ? (/^https?:/.test(img) ? img : `${SITE}/${String(img).replace(/^\//, '')}`) : '';
+  const sku       = 'AMB-' + String(p.id != null ? p.id : slug).padStart(4, '0');
+  const stone     = (props && props.Stone) ? props.Stone : '';
+  // Distinct display name for duplicate product names (same name, different SKU).
+  // The real differentiator is jewelry type (ring vs earrings…) — append it so
+  // titles/H1 don't cannibalise each other and match "amber <type>" intent.
+  const typeNoun  = { rings: 'Ring', earrings: 'Earrings', pendants: 'Pendant', bracelets: 'Bracelet', chains: 'Chain' }[cat] || '';
+  const dispName  = (p.dup && typeNoun) ? `${name} ${typeNoun}` : name;
+  // Title ≤60 visible chars: drop the long suffix, then hard-cap if still long.
+  let title = `${dispName} — AMBERRA Handcrafted Amber Jewelry`;
+  if (title.length > 60) title = `${dispName} — AMBERRA`;
+  if (title.length > 60) title = dispName.slice(0, 57).trim() + '…';
+  // Meta description ≤155 chars; drop shipping boilerplate that always overflowed.
+  let metaDesc = `${desc}${stone ? ' ' + stone + '.' : ''} Handcrafted in Bali.`;
+  if (metaDesc.length > 155) metaDesc = metaDesc.slice(0, 152).replace(/\s+\S*$/, '') + '…';
 
-  const hreflangTags = LANGS.map(l => {
-    const href = l === 'en' ? canonical : `${SITE}/${l}/products/${slug}`;
-    return `<link rel="alternate" hreflang="${l}" href="${href}">`;
-  }).join('\n');
+  // Only EN pages exist — advertise en + x-default, not 14 languages that 404.
+  const hreflangTags = `<link rel="alternate" hreflang="en" href="${canonical}">`;
 
   const schema = JSON.stringify({
     '@context': 'https://schema.org',
     '@type':    'Product',
     name,
+    sku,
     description: desc,
-    image:       img ? [img] : [],
+    image:       imgAbs ? [imgAbs] : [],
     brand:       { '@type': 'Brand', name: 'AMBERRA' },
     material,
     category:    catLabel,
+    url:         canonical,
     offers: {
       '@type':        'Offer',
       price:          String(price),
@@ -95,13 +108,37 @@ function productHTML(p, slug) {
       availability:   'https://schema.org/InStock',
       url:            canonical,
       priceValidUntil: String(new Date().getFullYear() + 1) + '-12-31',
+      shippingDetails: {
+        '@type': 'OfferShippingDetails',
+        shippingRate: { '@type': 'MonetaryAmount', value: '0', currency: 'USD' },
+        shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'US' },
+        deliveryTime: {
+          '@type': 'ShippingDeliveryTime',
+          handlingTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 3, unitCode: 'DAY' },
+          transitTime:  { '@type': 'QuantitativeValue', minValue: 7, maxValue: 14, unitCode: 'DAY' }
+        }
+      },
       hasMerchantReturnPolicy: {
         '@type': 'MerchantReturnPolicy',
         applicableCountry: 'US',
-        returnPolicyCategory: 'https://schema.org/MerchantReturnFineSale'
+        returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+        merchantReturnDays: 14,
+        returnMethod: 'https://schema.org/ReturnByMail',
+        returnFees: 'https://schema.org/FreeReturn'
       },
       seller: { '@type': 'Organization', name: 'AMBERRA', url: SITE }
     }
+  }, null, 2);
+
+  const breadcrumbSchema = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+      { '@type': 'ListItem', position: 2, name: 'Amber Jewelry', item: `${SITE}/amber` },
+      { '@type': 'ListItem', position: 3, name: catLabel, item: `${SITE}/${cat}` },
+      { '@type': 'ListItem', position: 4, name, item: canonical }
+    ]
   }, null, 2);
 
   const badgeHTML = badge
@@ -125,7 +162,7 @@ function productHTML(p, slug) {
     data-item-price="${priceStr}"
     data-item-url="${canonical}"
     data-item-description="${esc(shortDesc)}"
-    data-item-image="${esc(img || '')}"
+    data-item-image="${esc(imgAbs)}"
     data-item-categories="${esc(catLabel)}"${sizeAttr}>Add to Cart — $${price}</button>`;
 
   return `<!DOCTYPE html>
@@ -143,14 +180,17 @@ ${hreflangTags}
 <link rel="alternate" hreflang="x-default" href="${canonical}">
 <meta property="og:type" content="product">
 <meta property="og:site_name" content="AMBERRA">
-<meta property="og:title" content="${esc(name)} — AMBERRA">
+<meta property="og:title" content="${esc(dispName)} — AMBERRA">
 <meta property="og:description" content="${esc(desc)}">
-<meta property="og:image" content="${esc(img || '')}">
+<meta property="og:image" content="${esc(imgAbs)}">
 <meta property="og:url" content="${canonical}">
 <meta property="product:price:amount" content="${price}">
 <meta property="product:price:currency" content="USD">
 <script type="application/ld+json">
 ${schema}
+</script>
+<script type="application/ld+json">
+${breadcrumbSchema}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -207,7 +247,7 @@ ${schema}
 
 <main class="pp-wrap">
   <div class="pp-img-wrap">
-    <img src="${esc(img || '')}" alt="${esc(name)} — AMBERRA handcrafted amber jewelry" loading="eager" width="600" height="800">
+    <img src="${esc(imgAbs)}" alt="${esc(dispName)} — AMBERRA handcrafted amber jewelry" loading="eager" width="600" height="800">
   </div>
 
   <div class="pp-info">
@@ -216,7 +256,7 @@ ${schema}
     </div>
     <div class="pp-cat">${esc(catLabel)}</div>
     ${badgeHTML ? `<div class="pp-badge-wrap">${badgeHTML}</div>` : ''}
-    <h1 class="pp-name">${esc(name)}</h1>
+    <h1 class="pp-name">${esc(dispName)}</h1>
     <div class="pp-price">$${price}</div>
     <hr class="pp-divider">
     <p class="pp-desc">${esc(desc)}</p>
@@ -330,6 +370,18 @@ async function main() {
   }
 
   assignSlugs(products);
+
+  // Mark products whose name is shared by another SKU — their pages get a
+  // stone-qualified title/H1 so they don't cannibalise each other.
+  const nameCounts = {};
+  for (const p of products) {
+    if (!p.name) continue;
+    const k = p.name.toLowerCase();
+    nameCounts[k] = (nameCounts[k] || 0) + 1;
+  }
+  for (const p of products) {
+    if (p.name && nameCounts[p.name.toLowerCase()] > 1) p.dup = true;
+  }
 
   const outDir = path.join(__dirname, '../products');
   if (!fs.existsSync(outDir)) fs.mkdirSync(outDir);
