@@ -123,7 +123,7 @@ ${schema}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/style.css?v=20260519c">
 <style>
 .pp-nav{display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:64px;border-bottom:1px solid var(--mist);position:sticky;top:0;background:var(--white);z-index:100}
 .pp-nav-back{font:300 11px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--gray);text-decoration:none;display:flex;align-items:center;gap:8px}
@@ -158,7 +158,7 @@ ${schema}
 @media(max-width:760px){.pp-wrap{grid-template-columns:1fr;gap:32px;padding:32px 20px 80px}.pp-info{position:static}.pp-name{font-size:28px}}
 </style>
 </head>
-<body>
+<body class="page-light">
 <nav class="pp-nav">
   <a class="pp-nav-back" href="/shop">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amberra — Scroll Scrub</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #000; color: #fff; overflow-x: hidden; }
+
+  .canvas-wrap {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1; display: flex; align-items: center; justify-content: center;
+    background: #000;
+  }
+  .canvas-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+
+  .scroll-spacer { height: 900vh; }
+
+  .overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 2; pointer-events: none;
+    display: flex; align-items: flex-end;
+    background: linear-gradient(transparent 50%, rgba(0,0,0,0.5));
+  }
+  .overlay-text {
+    padding: 0 48px 80px;
+    max-width: 550px;
+  }
+  .overlay-label {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 11px; letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.35); margin-bottom: 12px;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .overlay-h {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(32px, 4.5vw, 56px);
+    font-weight: 300; line-height: 1.12;
+    transition: opacity 0.5s ease 0.05s, transform 0.5s ease 0.05s;
+  }
+  .overlay-cta {
+    display: inline-block; margin-top: 24px;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 10px; letter-spacing: 0.18em;
+    color: rgba(201,168,50,0.7);
+    border-bottom: 1px solid rgba(201,168,50,0.3);
+    padding-bottom: 2px; text-decoration: none;
+    transition: opacity 0.4s ease 0.1s;
+  }
+  .text-hide .overlay-label,
+  .text-hide .overlay-h { opacity: 0; transform: translateY(-20px); }
+  .text-hide .overlay-cta { opacity: 0; }
+
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; height: 60px;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 100;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 14px; letter-spacing: 0.22em;
+    color: rgba(201,168,50,0.6);
+  }
+  .progress {
+    position: fixed; right: 32px; top: 50%; transform: translateY(-50%);
+    z-index: 100; display: flex; flex-direction: column; gap: 14px;
+  }
+  .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    transition: background 0.3s, transform 0.3s;
+  }
+  .dot.active { background: rgba(201,168,50,0.8); transform: scale(1.8); }
+
+  .site-content {
+    position: relative; z-index: 3; background: #FAF8F5;
+  }
+  .section-cream {
+    padding: 120px 48px; text-align: center;
+  }
+  .section-cream h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 32px; font-weight: 300; color: #2A2520;
+  }
+  .section-dark {
+    padding: 160px 48px; text-align: center; background: #1a1510;
+  }
+  .section-dark h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 32px; font-weight: 300; color: #fff;
+  }
+  .section-dark p {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 14px; color: rgba(255,255,255,0.4); margin-top: 16px;
+  }
+  .footer {
+    padding: 80px 48px; text-align: center;
+    background: #0a0805; border-top: 1px solid rgba(201,168,50,0.1);
+  }
+  .footer-logo {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 18px; letter-spacing: 0.25em; color: rgba(201,168,50,0.5);
+  }
+  .loading {
+    position: fixed; inset: 0; z-index: 200;
+    background: #000; display: flex; align-items: center; justify-content: center;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 12px; letter-spacing: 0.15em; color: rgba(201,168,50,0.5);
+    transition: opacity 0.6s ease;
+  }
+  .loading.done { opacity: 0; pointer-events: none; }
+</style>
+</head>
+<body>
+
+<div class="loading" id="loader">LOADING FRAMES...</div>
+<div class="nav">AMBERRA</div>
+
+<div class="progress" id="dots">
+  <div class="dot active"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+</div>
+
+<div class="canvas-wrap" id="wrap">
+  <img id="frame" src="" alt="">
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="overlay-text" id="txt">
+    <div class="overlay-label" id="label">BALTIC AMBER JEWELRY</div>
+    <div class="overlay-h" id="heading">Forty million years<br>in the making</div>
+    <a class="overlay-cta" id="cta" href="#" style="display:none">EXPLORE THE COLLECTION</a>
+  </div>
+</div>
+
+<div class="scroll-spacer"></div>
+
+<div class="site-content">
+  <div class="section-cream">
+    <p style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:0.15em;color:rgba(201,168,50,0.8);margin-bottom:8px">OUR PIECES</p>
+    <h2>The Collection</h2>
+  </div>
+  <div class="section-dark">
+    <h2>Request a Personal Consultation</h2>
+    <p>Let us guide you to the perfect piece.</p>
+  </div>
+  <div class="footer"><div class="footer-logo">AMBERRA</div></div>
+</div>
+
+<script>
+// ── Preload all 90 frames ───────────────────────────────
+const TOTAL = 90;
+const frames = [];
+let loaded = 0;
+
+const slides = [
+  { label: 'BALTIC AMBER JEWELRY', heading: 'Forty million years<br>in the making', cta: false },
+  { label: 'THE CRAFT', heading: 'Shaped by<br>artisan hands', cta: false },
+  { label: 'THE CREATION', heading: 'Where nature<br>meets craft', cta: false },
+  { label: 'THE COLLECTION', heading: 'Wear your story', cta: true }
+];
+
+for (let i = 1; i <= 30; i++) {
+  const img = new Image();
+  img.src = `frames/morph1_${String(i).padStart(3,'0')}.jpg`;
+  img.onload = onLoad;
+  frames.push(img);
+}
+for (let i = 1; i <= 30; i++) {
+  const img = new Image();
+  img.src = `frames/morph2_${String(i).padStart(3,'0')}.jpg`;
+  img.onload = onLoad;
+  frames.push(img);
+}
+for (let i = 1; i <= 30; i++) {
+  const img = new Image();
+  img.src = `frames/morph3_${String(i).padStart(3,'0')}.jpg`;
+  img.onload = onLoad;
+  frames.push(img);
+}
+
+function onLoad() {
+  loaded++;
+  if (loaded >= TOTAL) {
+    document.getElementById('loader').classList.add('done');
+    document.getElementById('frame').src = frames[0].src;
+  }
+}
+
+// ── Scroll → frame index ────────────────────────────────
+const frameEl = document.getElementById('frame');
+let currentSlide = -1;
+let lastFrame = -1;
+
+function onScroll() {
+  if (loaded < TOTAL) return;
+
+  const scrollY = window.scrollY;
+  const spacerH = document.querySelector('.scroll-spacer').offsetHeight;
+  const progress = Math.min(1, Math.max(0, scrollY / spacerH));
+
+  // Map to frame 0-89
+  const frameIdx = Math.min(TOTAL - 1, Math.floor(progress * TOTAL));
+
+  if (frameIdx !== lastFrame) {
+    lastFrame = frameIdx;
+    frameEl.src = frames[frameIdx].src;
+  }
+
+  // Fade out at end
+  const wrap = document.getElementById('wrap');
+  const overlay = document.getElementById('overlay');
+  if (progress > 0.92) {
+    const fade = 1 - (progress - 0.92) / 0.08;
+    wrap.style.opacity = fade;
+    overlay.style.opacity = fade;
+  } else {
+    wrap.style.opacity = 1;
+    overlay.style.opacity = 1;
+  }
+
+  // ── Text updates ──────────────────────────────────────
+  // 4 sections: 0-0.25 = slide 1, etc. Transition zones at boundaries.
+  const section = progress * 4;
+  const slideIdx = Math.min(3, Math.floor(section));
+  const localProgress = section - slideIdx;
+
+  // During transition (last 30% of each section), hide text
+  const inTransition = localProgress > 0.7 && slideIdx < 3;
+  const txt = document.getElementById('txt');
+
+  if (inTransition) {
+    txt.classList.add('text-hide');
+  } else {
+    txt.classList.remove('text-hide');
+  }
+
+  if (slideIdx !== currentSlide && !inTransition) {
+    currentSlide = slideIdx;
+    const s = slides[slideIdx];
+    document.getElementById('label').textContent = s.label;
+    document.getElementById('heading').innerHTML = s.heading;
+    document.getElementById('cta').style.display = s.cta ? 'inline-block' : 'none';
+
+    document.querySelectorAll('.dot').forEach((d, i) => {
+      d.classList.toggle('active', i === slideIdx);
+    });
+  }
+}
+
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+</script>
+
+</body>
+</html>
