@@ -72,6 +72,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css?v=20260519c">
+<link rel="preconnect" href="https://app.snipcart.com">
+<link rel="preconnect" href="https://cdn.snipcart.com">
+<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.css">
 <style>
 .pp-nav{display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:64px;border-bottom:1px solid var(--mist);position:sticky;top:0;background:var(--white);z-index:100}
 .pp-nav-back{font:300 11px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--gray);text-decoration:none;display:flex;align-items:center;gap:8px}
@@ -113,7 +116,9 @@
     Shop All
   </a>
   <a class="pp-nav-logo" href="/">AMBERRA</a>
-  <div style="width:80px"></div>
+  <a class="pp-nav-cart snipcart-checkout" href="#" style="font:300 11px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--gray);text-decoration:none">
+    Cart (<span class="snipcart-items-count">0</span>)
+  </a>
 </nav>
 
 <main class="pp-wrap">
@@ -133,7 +138,15 @@
     <p class="pp-desc">A teardrop of hammered silver cradles cognac amber on a sculptural band.</p>
     <p class="pp-material">Natural Amber · Silver &amp;amp; Gold</p>
     <div class="pp-props"><div class="pp-prop"><span class="pp-pk">Stone</span><span class="pp-pv">Natural Cognac Amber</span></div><div class="pp-prop"><span class="pp-pk">Metal</span><span class="pp-pv">925 Silver + 18k Gold</span></div><div class="pp-prop"><span class="pp-pk">Collection</span><span class="pp-pv">Nature</span></div></div>
-    <button class="pp-cta" id="req-btn">Request This Piece</button>
+    <button class="pp-cta snipcart-add-item"
+    data-item-id="teardrop-leaf-ring"
+    data-item-name="Teardrop Leaf Ring"
+    data-item-price="95.00"
+    data-item-url="https://www.amberrajewelry.com/products/teardrop-leaf-ring"
+    data-item-description="A teardrop of hammered silver cradles cognac amber on a sculptural band."
+    data-item-image="images/rings/IMG_9647.JPG"
+    data-item-categories="Rings"
+    data-item-custom1-name="Size" data-item-custom1-options="US 7|US 5|US 6|US 8|US 9" data-item-custom1-required="true">Add to Cart — $95</button>
     <a class="pp-cta-ghost" href="/shop?cat=rings">View All Rings</a>
   </div>
 </main>
@@ -143,11 +156,7 @@
   <p><a href="/shop">Browse the full collection</a> &nbsp;·&nbsp; <a href="/our-story">Our Story</a> &nbsp;·&nbsp; <a href="/contact">Contact</a></p>
 </footer>
 
-<script>
-document.getElementById('req-btn').addEventListener('click', function() {
-  sessionStorage.setItem('req_piece', 'Teardrop Leaf Ring');
-  window.location.href = '/shop';
-});
-</script>
+<div hidden id="snipcart" data-api-key="REPLACE_WITH_SNIPCART_PUBLIC_KEY" data-currency="usd"></div>
+<script async src="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.js"></script>
 </body>
 </html>
