@@ -6,3 +6,5 @@ node_modules/
 
 /amber-drop-*.png
 /rodin-drop-*.png
+
+/dns-zone-backup-*.json

@@ -18,7 +18,7 @@ const MIN_SKU  = 3; // thin-content guard for color pages
 
 const TYPES = {
   rings:     { label: 'Rings',     h1: 'Amber Rings',
-    metaTitle: 'Amber Rings in Sterling Silver — Handcrafted in Bali | AMBERRA',
+    metaTitle: 'Amber Rings in 925 Sterling Silver | AMBERRA Bali',
     metaDesc: 'Handmade Baltic amber rings in 925 sterling silver, shaped by Balinese artisans. Cherry, cognac, green & honey amber. Free worldwide shipping over $200.',
     intro: [
       'Amber rings from AMBERRA are cut from genuine Baltic amber and set by hand in 925 sterling silver in our Ubud workshop. Every stone is natural — no two are alike, from deep cherry and cognac to green, honey and rare blue amber.',
@@ -30,7 +30,7 @@ const TYPES = {
       ['How do I care for an amber ring?', 'To care for an amber ring, avoid perfume, heat and ultrasonic cleaners, since amber is a soft, organic stone that can be damaged by chemicals and vibration. Wipe it gently with a soft cloth and store it separately from harder gemstones and metals that could scratch its surface. Put your ring on last, after applying lotion and hairspray, and take it off before showering, swimming or sleeping. The 925 sterling silver setting can darken slowly with air; a soft cloth restores its shine. Cared for simply, an amber ring keeps its warm glow for decades.']
     ] },
   earrings:  { label: 'Earrings',  h1: 'Amber Earrings',
-    metaTitle: 'Amber Earrings in Sterling Silver — Handcrafted in Bali | AMBERRA',
+    metaTitle: 'Amber Earrings in 925 Sterling Silver | AMBERRA Bali',
     metaDesc: 'Natural Baltic amber earrings handcrafted in Bali — drops, studs, hoops and filigree in 925 sterling silver. Cherry, cognac & honey amber. Free shipping over $200.',
     intro: [
       'Our amber earrings pair natural Baltic amber with hand-forged 925 sterling silver — from light everyday studs to statement drops. Colours range across cherry, cognac, honey, green and blue amber.',
@@ -52,7 +52,7 @@ const TYPES = {
       ['What amber colours are available?', 'AMBERRA amber pendants are available in a full spectrum of natural Baltic amber tones, including cherry, cognac, honey, green, butterscotch and rare blue amber, depending on the individual piece. Every colour is natural to the stone rather than dyed or artificially treated, so each pendant is one of a kind, cut from genuine Baltic amber and finished by hand in Ubud, Bali. The tone of amber depends on how the resin formed and how light passes through it, which is why shades range from clear golden honey to deep translucent cherry and opaque creamy butterscotch.']
     ] },
   bracelets: { label: 'Bracelets', h1: 'Amber Bracelets',
-    metaTitle: 'Amber Bracelets in Sterling Silver — Handcrafted in Bali | AMBERRA',
+    metaTitle: 'Amber Bracelets in 925 Sterling Silver | AMBERRA Bali',
     metaDesc: 'Natural Baltic amber bracelets handcrafted in Ubud, Bali — beaded, link and cuff styles in 925 sterling silver. Cherry, cognac & multi-amber. Free shipping over $200.',
     intro: [
       'From delicate beaded strands to bold silver cuffs, our amber bracelets use natural Baltic amber set in 925 sterling silver. Multi-colour (mosaic) amber is a signature.',
