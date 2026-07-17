@@ -834,8 +834,10 @@ function loadLocalProducts() {
 
 async function main() {
   let products;
-  if (PAT) { console.log('Fetching products from Airtable…'); products = await fetchFromAirtable(); }
-  else     { console.log('No AIRTABLE_PAT — using /tmp/products.json'); products = loadLocalProducts(); }
+  if (PAT) {
+    try { console.log('Fetching products from Airtable…'); products = await fetchFromAirtable(); }
+    catch (err) { console.warn(`⚠  Airtable fetch failed (${err.message}) — falling back to local products.json`); products = loadLocalProducts(); }
+  } else { console.log('No AIRTABLE_PAT — using local products.json'); products = loadLocalProducts(); }
   console.log(`${products.length} products loaded`);
 
   assignSlugs(products);
