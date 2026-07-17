@@ -55,6 +55,10 @@ function absImg(img) { return img ? (/^https?:/.test(img) ? img : `${SITE}/${Str
 // Duplicate-name SKUs get their jewelry type appended so links/titles are distinct.
 function displayName(prod) { const n = TYPE_NOUN[prod.cat] || ''; return (prod.dup && n) ? `${prod.name} ${n}` : prod.name; }
 
+// Amber hue for schema `color` (GMC requires it) + product→colour-hub interlink.
+const AMBER_COLORS = ['blue','butterscotch','cherry','cognac','green','honey','mosaic','raw'];
+function amberColor(prod) { const hay = `${prod.name} ${(prod.props && prod.props.Stone) || ''}`.toLowerCase(); return AMBER_COLORS.find(c => hay.includes(c)) || ''; }
+
 // ── Airtable fetch ────────────────────────────────────────────────────────────
 
 async function fetchProducts() {
@@ -80,10 +84,12 @@ function productHTML(p, slug) {
   const sku       = 'AMB-' + String(p.id != null ? p.id : slug).padStart(4, '0');
   const stone     = (props && props.Stone) ? props.Stone : '';
   const dispName  = displayName(p);
-  // Title ≤60 visible chars: drop the long suffix, then hard-cap if still long.
-  let title = `${dispName} — AMBERRA Handcrafted Amber Jewelry`;
-  if (title.length > 60) title = `${dispName} — AMBERRA`;
-  if (title.length > 60) title = dispName.slice(0, 57).trim() + '…';
+  // Title includes the jewelry type (Ring/Earrings/…) for category CTR, ≤60 chars.
+  const typeWord  = TYPE_NOUN[cat] || '';
+  const titleName = (!typeWord || dispName.endsWith(typeWord)) ? dispName : `${dispName} ${typeWord}`;
+  let title = `${titleName} — AMBERRA Handcrafted Amber Jewelry`;
+  if (title.length > 60) title = `${titleName} — AMBERRA`;
+  if (title.length > 60) title = titleName.slice(0, 57).trim() + '…';
   // Meta description ≤155 chars; drop shipping boilerplate that always overflowed.
   let metaDesc = `${desc}${stone ? ' ' + stone + '.' : ''} Handcrafted in Bali.`;
   if (metaDesc.length > 155) metaDesc = metaDesc.slice(0, 152).replace(/\s+\S*$/, '') + '…';
@@ -100,6 +106,8 @@ function productHTML(p, slug) {
     image:       imgAbs ? [imgAbs] : [],
     brand:       { '@type': 'Brand', name: 'AMBERRA' },
     material,
+    color:       amberColor(p) ? amberColor(p).charAt(0).toUpperCase() + amberColor(p).slice(1) + ' Amber' : 'Amber',
+    additionalProperty: Object.entries(props || {}).map(([k, v]) => ({ '@type': 'PropertyValue', name: k, value: String(v) })),
     category:    catLabel,
     url:         canonical,
     offers: {
@@ -107,6 +115,7 @@ function productHTML(p, slug) {
       price:          String(price),
       priceCurrency:  'USD',
       availability:   'https://schema.org/InStock',
+      itemCondition:  'https://schema.org/NewCondition',
       url:            canonical,
       priceValidUntil: String(new Date().getFullYear() + 1) + '-12-31',
       shippingDetails: {
@@ -285,6 +294,7 @@ ${breadcrumbSchema}
     <hr class="pp-divider">
     <p class="pp-desc">${esc(desc)}</p>
     <p class="pp-material">${esc(material)}</p>
+    ${amberColor(p) ? `<p class="pp-colorhub"><a href="/amber/${amberColor(p)}" style="color:#B8941E;text-decoration:none;border-bottom:1px solid currentColor">Explore all ${amberColor(p)} amber →</a></p>` : ''}
     ${propsHTML ? `<div class="pp-props">${propsHTML}</div>` : ''}
     ${buyBtn}
     <a class="pp-cta-ghost" href="/shop?cat=${esc(cat)}">View All ${esc(catLabel)}</a>
