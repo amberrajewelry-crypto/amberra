@@ -693,7 +693,7 @@ function typePage(slug, cat, products) {
   const links = linksBlock('Shop amber by colour',
     Object.keys(COLORS).map(c => [`/amber/${c}`, COLORS[c].label]).concat([['/amber', 'All Amber Jewelry'], [`/${SILVER.slug}`, 'Sterling Silver Amber']]));
   const schema = { '@context': 'https://schema.org', '@graph': [
-    { '@type': 'CollectionPage', '@id': `${url}#webpage`, url, name: cat.metaTitle, description: cat.metaDesc,
+    { '@type': 'CollectionPage', '@id': `${url}#webpage`, url, isPartOf: { '@id': `${SITE}/#website` }, inLanguage: 'en', publisher: { '@id': `${SITE}/#organization` }, name: cat.metaTitle, description: cat.metaDesc,
       breadcrumb: breadcrumb([{name:'Home',url:SITE},{name:'Amber',url:`${SITE}/amber`},{name:cat.label,url}]) },
     itemListSchema(url, `AMBERRA ${cat.label}`, url, products),
     faqSchema(cat.faq) ].filter(Boolean) };
@@ -707,7 +707,7 @@ function colorPage(colorKey, color, products) {
   const links = linksBlock('Shop amber by type',
     Object.keys(TYPES).map(t => [`/${t}`, TYPES[t].label]).concat([['/amber', 'All Amber Jewelry'], [`/${SILVER.slug}`, 'Sterling Silver Amber']]));
   const schema = { '@context': 'https://schema.org', '@graph': [
-    { '@type': 'CollectionPage', '@id': `${url}#webpage`, url, name: color.metaTitle, description: color.metaDesc,
+    { '@type': 'CollectionPage', '@id': `${url}#webpage`, url, isPartOf: { '@id': `${SITE}/#website` }, inLanguage: 'en', publisher: { '@id': `${SITE}/#organization` }, name: color.metaTitle, description: color.metaDesc,
       breadcrumb: breadcrumb([{name:'Home',url:SITE},{name:'Amber',url:`${SITE}/amber`},{name:color.label,url}]) },
     itemListSchema(url, `AMBERRA ${color.label}`, url, products),
     faqSchema(color.faq) ].filter(Boolean) };
@@ -723,7 +723,7 @@ function hubPage(products, colorCounts) {
   const colorLinks = linksBlock('Shop amber by colour',
     Object.keys(COLORS).filter(c => (colorCounts[c] || 0) >= MIN_SKU).map(c => [`/amber/${c}`, COLORS[c].label]));
   const schema = { '@context': 'https://schema.org', '@graph': [
-    { '@type': 'CollectionPage', '@id': `${url}#webpage`, url, name: HUB.metaTitle, description: HUB.metaDesc,
+    { '@type': 'CollectionPage', '@id': `${url}#webpage`, url, isPartOf: { '@id': `${SITE}/#website` }, inLanguage: 'en', publisher: { '@id': `${SITE}/#organization` }, name: HUB.metaTitle, description: HUB.metaDesc,
       breadcrumb: breadcrumb([{name:'Home',url:SITE},{name:'Amber',url}]) },
     itemListSchema(url, 'AMBERRA Baltic Amber Jewelry', url, products),
     faqSchema(HUB.faq) ].filter(Boolean) };
@@ -737,7 +737,7 @@ function metalPage(products) {
   const links = linksBlock('Shop amber by type',
     Object.keys(TYPES).map(t => [`/${t}`, TYPES[t].label]).concat([['/amber', 'All Amber Jewelry']]));
   const schema = { '@context': 'https://schema.org', '@graph': [
-    { '@type': 'CollectionPage', '@id': `${url}#webpage`, url, name: SILVER.metaTitle, description: SILVER.metaDesc,
+    { '@type': 'CollectionPage', '@id': `${url}#webpage`, url, isPartOf: { '@id': `${SITE}/#website` }, inLanguage: 'en', publisher: { '@id': `${SITE}/#organization` }, name: SILVER.metaTitle, description: SILVER.metaDesc,
       breadcrumb: breadcrumb([{name:'Home',url:SITE},{name:'Amber',url:`${SITE}/amber`},{name:SILVER.label,url}]) },
     itemListSchema(url, `AMBERRA ${SILVER.label} Jewelry`, url, products),
     faqSchema(SILVER.faq) ].filter(Boolean) };
