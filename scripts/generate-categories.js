@@ -92,18 +92,18 @@ const COLORS = {
     metaDesc: 'Handmade cherry amber jewelry in 925 sterling silver. Deep red natural Baltic amber rings, earrings & pendants, handcrafted in Bali. Free shipping over $200.',
     intro: [
       'Cherry amber is natural Baltic amber in its deepest red-to-cognac tones — warm, translucent and richly coloured. AMBERRA sets it by hand in 925 sterling silver.',
-      'Genuine cherry amber deepens with age; each piece is one of a kind and arrives with a certificate of authenticity.'
+      'Genuine cherry deepens with age; each piece is one of a kind and arrives with a certificate of authenticity.'
     ],
     faq: [
-      ['Is cherry amber real amber?', 'Yes, cherry amber is genuine natural Baltic amber in its deepest red-to-mahogany tones, not glass, plastic or bakelite. It is the same fossilised conifer resin known as succinite, formed around 40 million years ago in the Baltic region, and its rich colour develops as amber oxidises and darkens over time. Held to strong light, real cherry amber stays translucent and glows red rather than looking flat and black. You can also recognise genuine amber because it is warm and light in the hand, floats in salt water, and carries faint natural inclusions. AMBERRA certifies every piece as authentic.'],
-      ['Is cherry amber dyed?', 'AMBERRA cherry amber is naturally dark Baltic amber, so its deep red colour comes from the stone itself and from age rather than from dye. The rich, wine-like hue develops as amber is exposed to oxygen over decades and centuries, its surface slowly oxidising from gold toward cognac and finally cherry, which is why so much genuinely antique amber carries these tones. Some sellers deepen pale amber with heat treatment or pass off red glass as cherry amber, but our stones are naturally dark, certified genuine, and one of a kind, each set by hand in 925 sterling silver.']
+      ['Is cherry amber real amber?', 'Yes, cherry amber is genuine natural Baltic amber in its deepest red-to-mahogany tones, not glass, plastic or bakelite. It is the same fossilised conifer resin known as succinite, formed around 40 million years ago in the Baltic region, and its rich colour develops as it oxidises and darkens over time. Held to strong light, real cherry stays translucent and glows red rather than looking flat and black. You can also recognise genuine amber because it is warm and light in the hand, floats in salt water, and carries faint natural inclusions. AMBERRA certifies every piece as authentic.'],
+      ['Is cherry amber dyed?', 'AMBERRA cherry amber is naturally dark Baltic amber, so its deep red colour comes from the stone itself and from age rather than from dye. The rich, wine-like hue develops as amber is exposed to oxygen over decades and centuries, its surface slowly oxidising from gold toward cognac and finally cherry, which is why so much genuinely antique jewellery carries these tones. Some sellers deepen pale stones with heat treatment or pass off red glass as cherry, but our stones are naturally dark, certified genuine, and one of a kind, each set by hand in 925 sterling silver.']
     ] },
   honey: { label: 'Honey Amber', h1: 'Honey Amber Jewelry',
     metaTitle: 'Honey Amber Jewelry in Sterling Silver — Bali | AMBERRA',
     metaDesc: 'Handmade honey amber jewelry in 925 sterling silver — warm golden Baltic amber rings, earrings & pendants, handcrafted in Bali. Free shipping over $200.',
     intro: [
       'Honey amber is the classic warm-gold Baltic amber — clear, glowing and timeless. AMBERRA hand-sets it in 925 sterling silver.',
-      'Each honey amber piece is natural and unique, finished by Balinese artisans in Ubud.'
+      'Each honey piece is natural and unique, finished by Balinese artisans in Ubud.'
     ],
     faq: [
       ['What is honey amber?', 'Honey amber is natural Baltic amber in a warm golden, translucent tone, the most classic amber colour and the shade most people picture when they think of amber. It is the same fossilised conifer resin known as succinite, formed around 40 million years ago in the Baltic region, and it owes its clarity to resin that hardened with few trapped bubbles, letting light pass straight through. Honey stones often preserve faint natural inclusions of ancient bark or plant fibre. Because it flatters every skin tone and reads as both classic and contemporary, honey is an ideal first amber, hand-set by AMBERRA in 925 sterling silver.']
@@ -136,7 +136,7 @@ const COLORS = {
       'Because blue amber is scarce, pieces are limited and each is one of a kind with a certificate of authenticity.'
     ],
     faq: [
-      ['Why is blue amber so rare?', 'Blue amber is among the rarest amber in the world because its blue is not pigment but a natural optical effect that forms only under specific conditions. The body of the stone stays golden, while trace compounds formed as the resin fossilised absorb ultraviolet light and re-emit it as a luminous blue, strongest in sunlight and daylight. Only a small fraction of mined Baltic amber shows this fluorescence, which is why untreated blue stones sit among the most sought-after fossil resins on earth. Because supply is so limited, AMBERRA blue amber pieces are made in small numbers, each certified natural and unique.']
+      ['Why is blue amber so rare?', 'Blue amber is among the rarest amber in the world because its blue is not pigment but a natural optical effect that forms only under specific conditions. The body of the stone stays golden, while trace compounds formed as the resin fossilised absorb ultraviolet light and re-emit it as a luminous blue, strongest in sunlight and daylight. Only a small fraction of mined Baltic amber shows this fluorescence, which is why untreated blue stones sit among the most sought-after fossil resins on earth. Because supply is so limited, AMBERRA blue pieces are made in small numbers, each certified natural and unique.']
     ] },
   butterscotch: { label: 'Butterscotch Amber', h1: 'Butterscotch Amber Jewelry',
     metaTitle: 'Butterscotch Amber Jewelry in Sterling Silver — Bali | AMBERRA',
@@ -195,12 +195,12 @@ const SILVER = {
   metaTitle: 'Sterling Silver Amber Jewelry — 925 Silver, Handcrafted | AMBERRA',
   metaDesc: 'Baltic amber set in solid 925 sterling silver — rings, earrings, pendants & bracelets, handcrafted in Bali. Hypoallergenic, hallmarked silver. Free shipping over $200.',
   intro: [
-    'Every AMBERRA piece pairs natural Baltic amber with solid 925 sterling silver — never plated base metal. The warm glow of amber and the cool shine of hand-worked silver are a classic combination, and sterling is durable enough to wear every day.',
+    'Every AMBERRA piece pairs natural Baltic amber with solid 925 sterling silver — never plated base metal. The warm glow of the stone and the cool shine of hand-worked metal are a classic combination, durable enough to wear every day.',
     'Our silver is 92.5% pure (the “925” hallmark), the international standard for fine jewelry. It is nickel-free and hypoallergenic, hand-forged by Balinese silversmiths in our Ubud workshop, and finished to hold each amber cabochon securely.'
   ],
   faq: [
     ['Is AMBERRA jewelry solid sterling silver?', 'Yes, all AMBERRA settings are solid 925 sterling silver, meaning 92.5 percent pure silver, the international standard for fine jewelry. Some pieces add 18k gold plating over sterling for a warmer look, but none use plated base metal beneath. Sterling silver alloys pure silver with a small amount of other metal for strength, since pure silver alone is too soft to hold a stone securely. Because our sterling is nickel-free, it is hypoallergenic and safe for sensitive skin. Every setting is hand-forged by Balinese silversmiths in our Ubud workshop, and each order includes a certificate of authenticity covering both the amber and the metal.'],
-    ['Is sterling silver good for amber?', 'Yes, sterling silver is one of the best and most traditional metals for Baltic amber. It is strong, hypoallergenic and neutral in cool tone, so it protects the soft, organic amber stone while letting its warm colour lead rather than competing with it. Jewelers have paired 925 sterling silver with Baltic amber for centuries, because the bright, white lustre of silver frames the cherry, cognac and honey tones of amber beautifully. It is also durable enough for daily wear and gentle on sensitive skin. AMBERRA hand-forges every setting to cradle each amber cabochon securely in our Ubud, Bali workshop.'],
+    ['Is sterling silver good for amber?', 'Yes, sterling silver is one of the best and most traditional metals for Baltic amber. It is strong, hypoallergenic and neutral in cool tone, so it protects the soft, organic amber stone while letting its warm colour lead rather than competing with it. Jewelers have paired 925 sterling silver with Baltic amber for centuries, because its bright, white lustre frames the cherry, cognac and honey tones beautifully. It is also durable enough for daily wear and gentle on sensitive skin. AMBERRA hand-forges every setting to cradle each amber cabochon securely in our Ubud, Bali workshop.'],
     ['Will sterling silver tarnish?', 'Sterling silver can darken slowly over time as it naturally reacts with air and moisture, forming a patina. This is normal and easily reversed: simply wipe the metal with a soft cloth and store your jewelry dry, ideally in a soft pouch with an anti-tarnish strip. Worn regularly, sterling silver actually tarnishes less, because the oils of your skin and the friction of wear help keep it bright. Because amber is a soft, organic stone, avoid dipping AMBERRA pieces in silver-cleaning solutions or using ultrasonic machines, which can dull or crack the amber. Polish the silver separately with a proper silver cloth.'],
     ['Is the silver hallmarked?', 'AMBERRA silver meets the 925 sterling standard, which means it is 92.5 percent pure silver, the internationally recognised benchmark for fine jewelry. This is the same 925 mark used to identify genuine sterling silver worldwide. Rather than relying on a stamp alone, each order includes a certificate of authenticity covering both the natural Baltic amber and the sterling silver metal, so you have written assurance of what you are buying. Our silver is nickel-free and hypoallergenic, hand-forged by Balinese silversmiths in our Ubud workshop and finished to hold each amber cabochon securely. Every piece ships with free worldwide shipping over $200.']
   ]
@@ -269,16 +269,16 @@ const SECTIONS = {
       'Cherry amber is natural Baltic amber in its deepest red-to-mahogany tones. The rich colour develops as amber oxidises and darkens over time, which is why antique amber often carries these warm, wine-like hues. Held to the light, genuine cherry amber stays translucent, glowing red rather than flat black.'
     ]],
     ['How to Wear Cherry Amber', [
-      'Cherry’s depth reads as elegant and dressy. Against 925 sterling silver it turns cool and modern; against gold-plated settings it warms into something vintage and rich. A cherry amber ring or pendant makes a natural statement piece, while studs keep the colour subtle.'
+      'Cherry’s depth reads as elegant and dressy. Against 925 sterling silver it turns cool and modern; against gold-plated settings it warms into something vintage and rich. A cherry ring or pendant makes a natural statement piece, while studs keep the colour subtle.'
     ]],
     ['Is Cherry Amber Real or Treated?', [
-      'Some sellers deepen pale amber with heat treatment; others sell red glass or bakelite as "cherry amber". AMBERRA cherry amber is naturally dark Baltic amber, certified genuine. Real cherry amber is warm and light in the hand, carries faint natural inclusions, and glows red under strong light — plastic does not.'
+      'Some sellers deepen pale amber with heat treatment; others sell red glass or bakelite as "cherry amber". AMBERRA cherry amber is naturally dark Baltic amber, certified genuine. Real cherry stones are warm and light in the hand, carries faint natural inclusions, and glows red under strong light — plastic does not.'
     ]],
     ['Why Aged Amber Turns Cherry', [
-      'The deep red of cherry amber is largely a story of time. As amber is exposed to oxygen over decades and centuries, its surface slowly oxidises and darkens from gold toward cognac and finally cherry. This is why so much genuinely antique amber carries these rich tones, and why cherry amber feels heirloom even when newly set.'
+      'The deep red of this shade is largely a story of time. As amber is exposed to oxygen over decades and centuries, its surface slowly oxidises and darkens from gold toward cognac and finally cherry. This is why so much genuinely antique amber carries these rich tones, and why cherry amber feels heirloom even when newly set.'
     ]],
     ['Cherry Amber as a Gift', [
-      'Its jewel-like depth makes cherry amber a memorable gift — striking enough to feel special, classic enough to wear for years. A cherry amber pendant or ring in 925 sterling silver arrives boxed with its certificate of authenticity, ready to give.'
+      'Its jewel-like depth makes cherry a memorable gift — striking enough to feel special, classic enough to wear for years. A cherry pendant or ring in 925 sterling silver arrives boxed with its certificate of authenticity, ready to give.'
     ]]
   ],
   honey: [
@@ -289,10 +289,10 @@ const SECTIONS = {
       'Because honey amber is bright and versatile, it works from daytime to evening. Keep it away from perfume, hairspray and heat, wipe with a soft cloth, and store it separately from harder gemstones to protect its surface.'
     ]],
     ['The Most Versatile Amber', [
-      'If you are buying your first amber, honey is the natural place to start. Its clear golden warmth flatters every skin tone, reads as both classic and contemporary, and pairs with everything from jeans to eveningwear. Set in 925 sterling silver, honey amber earrings or a pendant become pieces you reach for again and again.'
+      'If you are buying your first amber, honey is the natural place to start. Its clear golden warmth flatters every skin tone, reads as both classic and contemporary, and pairs with everything from jeans to eveningwear. Set in 925 sterling silver, honey earrings or a pendant become pieces you reach for again and again.'
     ]],
     ['The Science of Golden Amber', [
-      'Honey amber owes its clarity to resin that fossilised with few trapped bubbles, letting light pass straight through. As succinite, Baltic amber is unusually rich in succinic acid, and honey stones often preserve faint inclusions of ancient conifer bark or plant fibre — tiny time capsules from the Eocene forests that produced the resin some 40 million years ago.'
+      'Honey owes its clarity to resin that fossilised with few trapped bubbles, letting light pass straight through. As succinite, Baltic amber is unusually rich in succinic acid, and honey stones often preserve faint inclusions of ancient conifer bark or plant fibre — tiny time capsules from the Eocene forests that produced the resin some 40 million years ago.'
     ]]
   ],
   cognac: [
@@ -317,7 +317,7 @@ const SECTIONS = {
       'AMBERRA green amber is genuine Baltic amber — the green comes from the stone and its setting, not from dye. As with all our amber, each green piece is certified and one of a kind.'
     ]],
     ['Styling Green Amber', [
-      'Green amber’s cool, unexpected depth makes it a natural conversation piece. It stands out against 925 sterling silver and pairs well with green, teal and earth-toned outfits. Choose a bold green amber ring or pendant when you want something distinctive rather than expected.'
+      'Green amber’s cool, unexpected depth makes it a natural conversation piece. It stands out against 925 sterling silver and pairs well with green, teal and earth-toned outfits. Choose a bold green ring or pendant when you want something distinctive rather than expected.'
     ]],
     ['Where Green Tones Come From', [
       'Green is one of the scarcer natural expressions of Baltic amber. The cool depth appears when translucent succinite is backed by darker material or carries fine plant and mineral inclusions that scatter light toward the green end of the spectrum. Because genuine green tones are far rarer than honey or cognac, each green piece is produced in small numbers and set individually in 925 silver.'
@@ -331,10 +331,10 @@ const SECTIONS = {
       'Because supply is so limited, AMBERRA blue amber pieces are made in small numbers and each is unique. Every one is certified natural Baltic amber and set by hand in 925 sterling silver.'
     ]],
     ['How Blue Amber Gets Its Colour', [
-      'Blue amber is not blue like a sapphire. The body of the stone is golden; the blue appears only as light strikes its surface and is scattered back to the eye, glowing strongest under sunlight and UV. This rare fluorescence, combined with scarce supply, is why blue amber commands a premium among collectors worldwide.'
+      'Blue amber is not blue like a sapphire. The body of the stone is golden; the blue appears only as light strikes its surface and is scattered back to the eye, glowing strongest under sunlight and UV. This rare fluorescence, combined with scarce supply, is why it commands a premium among collectors worldwide.'
     ]],
     ['The Rarest Fluorescence in Amber', [
-      'The blue in blue amber is not pigment — it is fluorescence. Trace aromatic hydrocarbons formed as the resin fossilised absorb ultraviolet light and re-emit it as a luminous blue, strongest in sunlight. Only a small fraction of mined Baltic amber shows this effect, which is why untreated blue stones sit among the most sought-after fossil resins on earth.'
+      'The blue itself is not pigment — it is fluorescence. Trace aromatic hydrocarbons formed as the resin fossilised absorb ultraviolet light and re-emit it as a luminous blue, strongest in sunlight. Only a small fraction of mined Baltic amber shows this effect, which is why untreated blue stones sit among the most sought-after fossil resins on earth.'
     ]]
   ],
   butterscotch: [
@@ -342,13 +342,13 @@ const SECTIONS = {
       'Butterscotch amber — sometimes called "butter" amber — is natural Baltic amber that is creamy and opaque rather than clear. Its soft, milky warmth comes from countless microscopic air bubbles trapped in the resin. The look is gentle, antique and quietly luxurious.'
     ]],
     ['Styling Butterscotch Amber', [
-      'The muted, buttery tone flatters warm and neutral palettes and reads as understated and timeless. Set in 925 sterling silver, butterscotch amber makes elegant everyday earrings and pendants.'
+      'The muted, buttery tone flatters warm and neutral palettes and reads as understated and timeless. Set in 925 sterling silver, butterscotch makes elegant everyday earrings and pendants.'
     ]],
     ['Butterscotch & Antique Style', [
-      'Opaque "butter" amber has been treasured for generations and carries a distinctly vintage, heirloom feeling. Its soft, creamy surface hides the microscopic bubbles that scatter light and give the stone its glow. For anyone drawn to antique and old-world jewelry, butterscotch amber is the natural choice.'
+      'Opaque "butter" amber has been treasured for generations and carries a distinctly vintage, heirloom feeling. Its soft, creamy surface hides the microscopic bubbles that scatter light and give the stone its glow. For anyone drawn to antique and old-world jewelry, butterscotch is the natural choice.'
     ]],
     ['Why Butterscotch Is Opaque', [
-      'The creamy opacity of butterscotch amber comes from countless microscopic air bubbles suspended in the succinite. Where clear honey amber transmits light, these bubbles scatter it, producing a soft, milky glow. The denser the bubbles, the deeper the butterscotch — an entirely natural clouding that was once reserved for ceremonial and royal pieces.'
+      'The creamy opacity of butterscotch comes from countless microscopic air bubbles suspended in the succinite. Where clear honey amber transmits light, these bubbles scatter it, producing a soft, milky glow. The denser the bubbles, the deeper the butterscotch — an entirely natural clouding that was once reserved for ceremonial and royal pieces.'
     ]]
   ],
   mosaic: [
@@ -373,10 +373,10 @@ const SECTIONS = {
       'Raw amber suits a natural, bohemian look and pairs beautifully with hand-forged 925 sterling silver. As with all AMBERRA amber, each raw piece is genuine and one of a kind.'
     ]],
     ['Raw Amber & Natural Living', [
-      'Leaving amber unpolished keeps it closest to how it is found — honest, textured and elemental. For anyone who values natural materials and a grounded, earthy aesthetic, raw amber offers all the warmth and history of Baltic amber without the polished formality. Each piece keeps the stone’s own surface and character.'
+      'Leaving amber unpolished keeps it closest to how it is found — honest, textured and elemental. For anyone who values natural materials and a grounded, earthy aesthetic, it offers all the warmth and history of Baltic amber without the polished formality. Each piece keeps the stone’s own surface and character.'
     ]],
     ['The Weathered Skin of Raw Amber', [
-      'The matte crust on raw amber is its oxidised outer skin, formed over millions of years and usually a shade darker than the translucent resin beneath. Leaving it unpolished preserves the stone much as a Baltic gatherer would have found it on the shore — texture, colour and provenance intact — rather than grinding it into a uniform cabochon.'
+      'The matte crust on raw pieces is the oxidised outer skin, formed over millions of years and usually a shade darker than the translucent resin beneath. Leaving it unpolished preserves the stone much as a Baltic gatherer would have found it on the shore — texture, colour and provenance intact — rather than grinding it into a uniform cabochon.'
     ]]
   ],
   rings: [
