@@ -290,6 +290,9 @@ const SECTIONS = {
     ]],
     ['The Most Versatile Amber', [
       'If you are buying your first amber, honey is the natural place to start. Its clear golden warmth flatters every skin tone, reads as both classic and contemporary, and pairs with everything from jeans to eveningwear. Set in 925 sterling silver, honey amber earrings or a pendant become pieces you reach for again and again.'
+    ]],
+    ['The Science of Golden Amber', [
+      'Honey amber owes its clarity to resin that fossilised with few trapped bubbles, letting light pass straight through. As succinite, Baltic amber is unusually rich in succinic acid, and honey stones often preserve faint inclusions of ancient conifer bark or plant fibre — tiny time capsules from the Eocene forests that produced the resin some 40 million years ago.'
     ]]
   ],
   cognac: [
@@ -301,6 +304,9 @@ const SECTIONS = {
     ]],
     ['Cognac Amber, Naturally', [
       'Cognac is one of the most common natural tones of genuine Baltic amber, which makes it both approachable and unmistakably authentic. Each stone shows its own gradient of brown and gold, sometimes with faint natural inclusions — small marks of a stone that formed over millions of years rather than in a mould.'
+    ]],
+    ['How Cognac Amber Deepens', [
+      'The brown-gold of cognac is the result of gradual surface oxidation — the same slow reaction that, taken further, produces cherry red. Each stone carries its own gradient because oxidation depends on how the resin lay in the ground over millions of years. The internal flow-lines and occasional inclusions visible in a cognac cabochon are signatures no moulded imitation can reproduce.'
     ]]
   ],
   green: [
@@ -312,6 +318,9 @@ const SECTIONS = {
     ]],
     ['Styling Green Amber', [
       'Green amber’s cool, unexpected depth makes it a natural conversation piece. It stands out against 925 sterling silver and pairs well with green, teal and earth-toned outfits. Choose a bold green amber ring or pendant when you want something distinctive rather than expected.'
+    ]],
+    ['Where Green Tones Come From', [
+      'Green is one of the scarcer natural expressions of Baltic amber. The cool depth appears when translucent succinite is backed by darker material or carries fine plant and mineral inclusions that scatter light toward the green end of the spectrum. Because genuine green tones are far rarer than honey or cognac, each green piece is produced in small numbers and set individually in 925 silver.'
     ]]
   ],
   blue: [
@@ -323,6 +332,9 @@ const SECTIONS = {
     ]],
     ['How Blue Amber Gets Its Colour', [
       'Blue amber is not blue like a sapphire. The body of the stone is golden; the blue appears only as light strikes its surface and is scattered back to the eye, glowing strongest under sunlight and UV. This rare fluorescence, combined with scarce supply, is why blue amber commands a premium among collectors worldwide.'
+    ]],
+    ['The Rarest Fluorescence in Amber', [
+      'The blue in blue amber is not pigment — it is fluorescence. Trace aromatic hydrocarbons formed as the resin fossilised absorb ultraviolet light and re-emit it as a luminous blue, strongest in sunlight. Only a small fraction of mined Baltic amber shows this effect, which is why untreated blue stones sit among the most sought-after fossil resins on earth.'
     ]]
   ],
   butterscotch: [
@@ -334,6 +346,9 @@ const SECTIONS = {
     ]],
     ['Butterscotch & Antique Style', [
       'Opaque "butter" amber has been treasured for generations and carries a distinctly vintage, heirloom feeling. Its soft, creamy surface hides the microscopic bubbles that scatter light and give the stone its glow. For anyone drawn to antique and old-world jewelry, butterscotch amber is the natural choice.'
+    ]],
+    ['Why Butterscotch Is Opaque', [
+      'The creamy opacity of butterscotch amber comes from countless microscopic air bubbles suspended in the succinite. Where clear honey amber transmits light, these bubbles scatter it, producing a soft, milky glow. The denser the bubbles, the deeper the butterscotch — an entirely natural clouding that was once reserved for ceremonial and royal pieces.'
     ]]
   ],
   mosaic: [
@@ -345,6 +360,9 @@ const SECTIONS = {
     ]],
     ['One of a Kind by Design', [
       'Because each mosaic is assembled by hand from individually chosen amber fragments, no two pieces can ever match exactly. That is the appeal: a mosaic amber bracelet or pendant is genuinely unique, a small composition of cherry, cognac, honey and green tones that exists nowhere else.'
+    ]],
+    ['A Gallery of Natural Tones', [
+      'Every colour in a mosaic piece — cherry, cognac, honey, green — is genuine Baltic amber that oxidised and formed differently across its 40-million-year history, then was matched by hand for balance. Nothing is dyed. A single mosaic effectively gathers the whole natural range of amber into one composition, which is why no two can repeat.'
     ]]
   ],
   raw: [
@@ -356,6 +374,9 @@ const SECTIONS = {
     ]],
     ['Raw Amber & Natural Living', [
       'Leaving amber unpolished keeps it closest to how it is found — honest, textured and elemental. For anyone who values natural materials and a grounded, earthy aesthetic, raw amber offers all the warmth and history of Baltic amber without the polished formality. Each piece keeps the stone’s own surface and character.'
+    ]],
+    ['The Weathered Skin of Raw Amber', [
+      'The matte crust on raw amber is its oxidised outer skin, formed over millions of years and usually a shade darker than the translucent resin beneath. Leaving it unpolished preserves the stone much as a Baltic gatherer would have found it on the shore — texture, colour and provenance intact — rather than grinding it into a uniform cabochon.'
     ]]
   ],
   rings: [
