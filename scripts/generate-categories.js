@@ -25,9 +25,9 @@ const TYPES = {
       'Choose a bold cocktail silhouette or a fine everyday band. Each ring ships with a certificate of authenticity and is available in US ring sizes 5–9.'
     ],
     faq: [
-      ['Are AMBERRA amber rings real Baltic amber?', 'Yes. Every ring uses natural Baltic amber (succinite), hand-set in 925 sterling silver, with a certificate of authenticity.'],
-      ['What ring sizes do you offer?', 'US sizes 5 to 9. Each product page includes a size guide; contact us for custom sizing.'],
-      ['How do I care for an amber ring?', 'Avoid perfume, heat and ultrasonic cleaners. Wipe with a soft cloth and store separately from harder stones.']
+      ['Are AMBERRA amber rings real Baltic amber?', 'Yes, every AMBERRA amber ring is set with genuine natural Baltic amber, the fossilised conifer resin known to gemologists as succinite, formed around 40 million years ago in the Baltic region. Each ring is hand-set in solid 925 sterling silver by our silversmiths in Ubud, Bali, and ships with a certificate of authenticity. Because the stone is natural rather than pressed or dyed, every ring is one of a kind, with its own colour and inclusions. To verify amber yourself, note that real amber is warm to the touch, floats in salt water, and is far lighter than glass.'],
+      ['What ring sizes do you offer?', 'AMBERRA amber rings are available in US ring sizes 5 to 9, covering most adult finger sizes. Each product page includes a size guide to help you choose, and you can contact us if you need guidance or custom sizing. Because natural Baltic amber is remarkably light, even bold cocktail styles wear comfortably all day. Every ring is hand-set in 925 sterling silver by our artisans in Ubud, Bali, and arrives with a certificate of authenticity. If you are unsure of your size, measure a ring you already own and compare it to the guide.'],
+      ['How do I care for an amber ring?', 'To care for an amber ring, avoid perfume, heat and ultrasonic cleaners, since amber is a soft, organic stone that can be damaged by chemicals and vibration. Wipe it gently with a soft cloth and store it separately from harder gemstones and metals that could scratch its surface. Put your ring on last, after applying lotion and hairspray, and take it off before showering, swimming or sleeping. The 925 sterling silver setting can darken slowly with air; a soft cloth restores its shine. Cared for simply, an amber ring keeps its warm glow for decades.']
     ] },
   earrings:  { label: 'Earrings',  h1: 'Amber Earrings',
     metaTitle: 'Amber Earrings in Sterling Silver — Handcrafted in Bali | AMBERRA',
@@ -37,8 +37,8 @@ const TYPES = {
       'Lightweight and comfortable, each pair is made one at a time by Balinese silversmiths and arrives with a certificate of authenticity.'
     ],
     faq: [
-      ['Are the earrings sterling silver?', 'Yes — 925 sterling silver, some with 18k gold plating. Hooks and posts are hypoallergenic sterling.'],
-      ['Is the amber natural?', 'Every piece uses natural Baltic amber. Colour and inclusions vary because the stone is genuine, not pressed or dyed.']
+      ['Are the earrings sterling silver?', 'Yes, AMBERRA earrings are made from solid 925 sterling silver, with some pieces finished in 18k gold plating over sterling. The hooks and posts are hypoallergenic sterling silver, which makes them a gentle choice for sensitive ears that react to base-metal jewelry. Sterling silver is one of the traditional metals for Baltic amber, cool and neutral in tone so it frames the warm stone rather than competing with it. Every pair is hand-forged one at a time by Balinese silversmiths in our Ubud workshop and arrives with a certificate of authenticity covering both the amber and the metal.'],
+      ['Is the amber natural?', 'Yes, every AMBERRA earring uses natural Baltic amber, the fossilised conifer resin known as succinite that formed around 40 million years ago in the Baltic region. Colour and inclusions vary from pair to pair because the stone is genuine, never pressed, reconstituted or dyed. That natural variation means no two pairs are exactly alike, from deep cherry and cognac to golden honey, green and rare blue amber. To recognise real amber, note that it is warm to the touch, light in weight, and often carries tiny natural bubbles or inclusions. Each pair ships with a certificate of authenticity.']
     ] },
   pendants:  { label: 'Pendants',  h1: 'Amber Pendants & Necklaces',
     metaTitle: 'Amber Pendants & Necklaces in Sterling Silver | AMBERRA',
@@ -48,8 +48,8 @@ const TYPES = {
       'Each pendant is one of a kind, cut from genuine Baltic amber and finished by hand in Ubud, Bali.'
     ],
     faq: [
-      ['Do pendants come with a chain?', 'Some include a chain; where not, pair with an AMBERRA sterling silver chain (see Chains).'],
-      ['What amber colours are available?', 'Cherry, cognac, honey, green, butterscotch and rare blue amber, depending on the piece.']
+      ['Do pendants come with a chain?', 'Some AMBERRA pendants include a matching chain, while others are sold as the pendant alone so you can choose your own length and style. Where a chain is not included, pair the pendant with any AMBERRA sterling silver chain from our Chains collection to build your own necklace. Our chains come in cable and link styles and lengths from 40 to 60 cm: a shorter chain keeps the amber high on the collarbone, while a longer one lets it fall for a layered look. Match the chain metal tone to the pendant setting for a seamless finish.'],
+      ['What amber colours are available?', 'AMBERRA amber pendants are available in a full spectrum of natural Baltic amber tones, including cherry, cognac, honey, green, butterscotch and rare blue amber, depending on the individual piece. Every colour is natural to the stone rather than dyed or artificially treated, so each pendant is one of a kind, cut from genuine Baltic amber and finished by hand in Ubud, Bali. The tone of amber depends on how the resin formed and how light passes through it, which is why shades range from clear golden honey to deep translucent cherry and opaque creamy butterscotch.']
     ] },
   bracelets: { label: 'Bracelets', h1: 'Amber Bracelets',
     metaTitle: 'Amber Bracelets in Sterling Silver — Handcrafted in Bali | AMBERRA',
@@ -59,8 +59,8 @@ const TYPES = {
       'Every bracelet is handmade in Bali and ships with a certificate of authenticity.'
     ],
     faq: [
-      ['What bracelet sizes are available?', 'Most fit 15–19 cm; beaded styles are adjustable. See each product page for sizing.'],
-      ['Is multi-colour amber natural?', 'Yes — mosaic amber combines natural Baltic amber of different tones, not dyed stone.']
+      ['What bracelet sizes are available?', 'Most AMBERRA bracelets fit wrists of about 15 to 19 cm, and beaded styles are adjustable for extra give. To find your size, wrap a soft tape measure snugly around your wrist and add a little room for comfort, then check the sizing note on each product page. Because natural Baltic amber is remarkably light, even bold cuff and link bracelets wear comfortably all day. Every bracelet is hand-set in 925 sterling silver by our Balinese silversmiths in Ubud and ships with a certificate of authenticity. Contact us if you need guidance or a custom length for a wrist outside this range.'],
+      ['Is multi-colour amber natural?', 'Yes, multi-colour or mosaic amber combines pieces of natural Baltic amber in different tones, arranged by hand rather than dyed or artificially coloured. Each fragment is genuine succinite, the fossilised conifer resin that formed around 40 million years ago, and its cherry, cognac, honey and green shades all come from how the resin aged and formed naturally. Because a mosaic is assembled by hand from individually chosen fragments, no two pieces are ever exactly alike, which makes every mosaic bracelet genuinely one of a kind. Each piece is set in 925 sterling silver and arrives with a certificate of authenticity.']
     ] },
   chains:    { label: 'Chains',    h1: 'Sterling Silver Chains',
     metaTitle: 'Sterling Silver Chains — Handcrafted in Bali | AMBERRA',
@@ -70,7 +70,7 @@ const TYPES = {
       'Made by the same Balinese silversmiths behind our amber collections.'
     ],
     faq: [
-      ['Which chain suits an amber pendant?', 'Cable and link chains 40–60 cm work with most AMBERRA pendants. Match the metal tone to your pendant setting.']
+      ['Which chain suits an amber pendant?', 'Cable and link chains in 925 sterling silver, ranging from 40 to 60 cm, work with most AMBERRA amber pendants. The right choice depends on scale and length: a finer cable chain suits delicate pendants and everyday layering, while a heavier link chain balances a larger amber cabochon and can be worn on its own. Shorter chains around 40 to 45 cm keep the pendant high on the collarbone, 50 cm is the classic everyday length, and 55 to 60 cm lets it fall lower. For a seamless look, match the chain metal tone to your pendant setting. All chains are handcrafted in Bali.']
     ] },
 };
 
@@ -95,8 +95,8 @@ const COLORS = {
       'Genuine cherry amber deepens with age; each piece is one of a kind and arrives with a certificate of authenticity.'
     ],
     faq: [
-      ['Is cherry amber real amber?', 'Yes — cherry amber is natural Baltic amber in deep red tones, not glass or plastic. AMBERRA certifies every piece.'],
-      ['Is cherry amber dyed?', 'Our cherry amber is naturally dark Baltic amber; colour comes from the stone and age, not dye.']
+      ['Is cherry amber real amber?', 'Yes, cherry amber is genuine natural Baltic amber in its deepest red-to-mahogany tones, not glass, plastic or bakelite. It is the same fossilised conifer resin known as succinite, formed around 40 million years ago in the Baltic region, and its rich colour develops as amber oxidises and darkens over time. Held to strong light, real cherry amber stays translucent and glows red rather than looking flat and black. You can also recognise genuine amber because it is warm and light in the hand, floats in salt water, and carries faint natural inclusions. AMBERRA certifies every piece as authentic.'],
+      ['Is cherry amber dyed?', 'AMBERRA cherry amber is naturally dark Baltic amber, so its deep red colour comes from the stone itself and from age rather than from dye. The rich, wine-like hue develops as amber is exposed to oxygen over decades and centuries, its surface slowly oxidising from gold toward cognac and finally cherry, which is why so much genuinely antique amber carries these tones. Some sellers deepen pale amber with heat treatment or pass off red glass as cherry amber, but our stones are naturally dark, certified genuine, and one of a kind, each set by hand in 925 sterling silver.']
     ] },
   honey: { label: 'Honey Amber', h1: 'Honey Amber Jewelry',
     metaTitle: 'Honey Amber Jewelry in Sterling Silver — Bali | AMBERRA',
@@ -106,7 +106,7 @@ const COLORS = {
       'Each honey amber piece is natural and unique, finished by Balinese artisans in Ubud.'
     ],
     faq: [
-      ['What is honey amber?', 'Honey amber is natural Baltic amber in a warm golden, translucent tone — the most classic amber colour.']
+      ['What is honey amber?', 'Honey amber is natural Baltic amber in a warm golden, translucent tone, the most classic amber colour and the shade most people picture when they think of amber. It is the same fossilised conifer resin known as succinite, formed around 40 million years ago in the Baltic region, and it owes its clarity to resin that hardened with few trapped bubbles, letting light pass straight through. Honey stones often preserve faint natural inclusions of ancient bark or plant fibre. Because it flatters every skin tone and reads as both classic and contemporary, honey is an ideal first amber, hand-set by AMBERRA in 925 sterling silver.']
     ] },
   cognac: { label: 'Cognac Amber', h1: 'Cognac Amber Jewelry',
     metaTitle: 'Cognac Amber Jewelry in Sterling Silver — Bali | AMBERRA',
@@ -116,7 +116,7 @@ const COLORS = {
       'Every cognac amber piece is genuine and one of a kind, with a certificate of authenticity.'
     ],
     faq: [
-      ['How is cognac amber different from honey amber?', 'Cognac amber is a deeper brown-gold; honey amber is lighter and more golden. Both are natural Baltic amber.']
+      ['How is cognac amber different from honey amber?', 'Cognac amber is a deeper brown-gold, warmer and darker than honey amber, which is lighter and more clearly golden. Both are genuine natural Baltic amber, the fossilised conifer resin known as succinite that formed around 40 million years ago in the Baltic region; the difference in tone comes from how each stone formed and oxidised over time. Cognac sits between honey and cherry, gradually deepening as its surface reacts with air, and each stone shows its own gradient of brown and gold. It is one of the most wearable amber tones, rich enough to feel luxurious yet neutral enough for everyday, set by hand in 925 sterling silver.']
     ] },
   green: { label: 'Green Amber', h1: 'Green Amber Jewelry',
     metaTitle: 'Green Amber Jewelry in Sterling Silver — Bali | AMBERRA',
@@ -126,7 +126,7 @@ const COLORS = {
       'AMBERRA green amber is genuine and hand-finished in Bali; each piece is unique.'
     ],
     faq: [
-      ['Is green amber natural?', 'Yes — AMBERRA green amber is natural Baltic amber; its green depth comes from the stone set over a dark backing, not dye.']
+      ['Is green amber natural?', 'Yes, AMBERRA green amber is genuine natural Baltic amber, the fossilised conifer resin known as succinite that formed around 40 million years ago in the Baltic region. Its cool green depth is not a dye: the effect appears when translucent amber is set over a darker backing that draws out its green undertones, or where fine plant and mineral inclusions scatter light toward the green end of the spectrum. Because genuine green tones are far rarer than honey or cognac, each green piece is produced in small numbers, certified authentic and set individually by hand in 925 sterling silver, making every one a distinctive, one-of-a-kind piece.']
     ] },
   blue: { label: 'Blue Amber', h1: 'Blue Amber Jewelry',
     metaTitle: 'Blue Amber Jewelry in Sterling Silver — Bali | AMBERRA',
@@ -136,7 +136,7 @@ const COLORS = {
       'Because blue amber is scarce, pieces are limited and each is one of a kind with a certificate of authenticity.'
     ],
     faq: [
-      ['Why is blue amber so rare?', 'Blue amber forms only in specific conditions and fluoresces blue in daylight — far scarcer than golden amber, hence its collector value.']
+      ['Why is blue amber so rare?', 'Blue amber is among the rarest amber in the world because its blue is not pigment but a natural optical effect that forms only under specific conditions. The body of the stone stays golden, while trace compounds formed as the resin fossilised absorb ultraviolet light and re-emit it as a luminous blue, strongest in sunlight and daylight. Only a small fraction of mined Baltic amber shows this fluorescence, which is why untreated blue stones sit among the most sought-after fossil resins on earth. Because supply is so limited, AMBERRA blue amber pieces are made in small numbers, each certified natural and unique.']
     ] },
   butterscotch: { label: 'Butterscotch Amber', h1: 'Butterscotch Amber Jewelry',
     metaTitle: 'Butterscotch Amber Jewelry in Sterling Silver — Bali | AMBERRA',
@@ -146,7 +146,7 @@ const COLORS = {
       'Each butterscotch piece is genuine and unique, made by Balinese artisans.'
     ],
     faq: [
-      ['What is butterscotch amber?', 'Butterscotch (or "butter") amber is natural Baltic amber that is creamy and opaque rather than translucent.']
+      ['What is butterscotch amber?', 'Butterscotch amber, sometimes called butter amber, is natural Baltic amber that is creamy and opaque rather than clear and translucent. It is the same fossilised conifer resin known as succinite that formed around 40 million years ago in the Baltic region, and its soft, milky warmth comes from countless microscopic air bubbles trapped in the resin. Where clear honey amber transmits light, these bubbles scatter it, producing a gentle, buttery glow, and the denser the bubbles the deeper the butterscotch tone. The look is soft, antique and quietly luxurious, which is why AMBERRA sets it by hand in 925 sterling silver for elegant everyday pieces.']
     ] },
   mosaic: { label: 'Multi-Colour Amber', h1: 'Multi-Colour Amber Jewelry',
     metaTitle: 'Multi-Colour (Mosaic) Amber Jewelry in Sterling Silver | AMBERRA',
@@ -156,7 +156,7 @@ const COLORS = {
       'Every mosaic piece is a one-off arrangement of genuine amber, handmade in Bali.'
     ],
     faq: [
-      ['Is mosaic amber dyed?', 'No — mosaic (multi-colour) amber uses natural Baltic amber of different tones combined by hand, not dyed stone.']
+      ['Is mosaic amber dyed?', 'No, mosaic or multi-colour amber uses genuine natural Baltic amber of different tones combined by hand, never dyed or artificially coloured stone. Every fragment is authentic succinite, the fossilised conifer resin that formed around 40 million years ago, and its cherry, cognac, honey and green shades all come from how each piece aged and formed naturally over that long history. Because each mosaic is assembled by hand from individually chosen fragments, no two pieces can ever match exactly, so a mosaic bracelet or pendant is genuinely one of a kind. AMBERRA sets every mosaic in 925 sterling silver and includes a certificate of authenticity.']
     ] },
   raw: { label: 'Raw Amber', h1: 'Raw Amber Jewelry',
     metaTitle: 'Raw Amber Jewelry in Sterling Silver — Bali | AMBERRA',
@@ -166,7 +166,7 @@ const COLORS = {
       'Each raw amber piece is genuine and unique, finished by hand in Bali.'
     ],
     faq: [
-      ['What is raw amber?', 'Raw amber is natural Baltic amber left unpolished, keeping its organic texture rather than a smooth cabochon.']
+      ['What is raw amber?', 'Raw amber is natural Baltic amber left unpolished, keeping its organic texture and natural surface rather than being shaped into a smooth cabochon. It is the same fossilised conifer resin known as succinite that formed around 40 million years ago in the Baltic region, shown much as it is found: matte, textured and full of character. The weathered outer crust is the stone oxidised skin, formed over millions of years and usually a shade darker than the translucent resin beneath. Leaving it unpolished preserves the amber as a Baltic gatherer would have found it, and AMBERRA sets each raw piece by hand in 925 sterling silver.']
     ] },
 };
 
@@ -179,10 +179,10 @@ const HUB = {
     'Explore amber by type — rings, earrings, pendants, bracelets and chains — or by colour, from deep cherry and cognac to golden honey, green and rare blue amber. Each piece is one of a kind and arrives with a certificate of authenticity.'
   ],
   faq: [
-    ['What is Baltic amber?', 'Baltic amber (succinite) is fossilised tree resin roughly 40 million years old, prized for its warm colour and light weight.'],
-    ['How do I know AMBERRA amber is real?', 'Every piece uses natural Baltic amber and ships with a certificate of authenticity. See our guide on telling real amber from fake.'],
-    ['What metal do you use?', 'Primarily 925 sterling silver, some pieces with 18k gold plating, all handcrafted in Bali.'],
-    ['Do you ship to the US?', 'Yes — worldwide shipping, free over $200.']
+    ['What is Baltic amber?', 'Baltic amber, known to gemologists as succinite, is fossilised tree resin roughly 40 million years old, formed from ancient conifer forests that grew around the Baltic Sea and the wider Baltic region including Poland, Lithuania and Latvia. Over millions of years the resin hardened and mineralised into the warm, glowing stone used in jewelry today. It is prized for its rich colour, its light weight, and the tiny natural inclusions of air, plant matter or occasionally insects that prove its origin. AMBERRA works only with authentic natural Baltic amber, never pressed, reconstituted or dyed substitutes, setting each stone by hand in 925 sterling silver.'],
+    ['How do I know AMBERRA amber is real?', 'Every AMBERRA piece uses genuine natural Baltic amber and ships with a certificate of authenticity, so authenticity is guaranteed with each order. You can also confirm real amber yourself using the simple tests jewelers rely on: genuine amber floats in salt water, feels warm to the touch rather than cold like glass, becomes electrostatic and attracts light objects when rubbed, and smells faintly of pine or resin when warmed. Real amber is also noticeably lighter than glass or plastic and usually contains natural bubbles or inclusions. Our journal explains these at-home tests in more detail if you would like to verify amber yourself.'],
+    ['What metal do you use?', 'AMBERRA sets its Baltic amber primarily in solid 925 sterling silver, the international standard for fine jewelry at 92.5 percent pure silver, with selected pieces finished in 18k gold plating over sterling. We never use plated base metal. Sterling silver is durable, hypoallergenic and neutral in tone, so it protects the soft amber stone and lets its warm colour lead. All settings, including the hooks and posts on earrings, are hand-forged by Balinese silversmiths in our Ubud workshop, which is why no two pieces are identical. Each order includes a certificate of authenticity covering both the amber and the metal.'],
+    ['Do you ship to the US?', 'Yes, AMBERRA ships worldwide, including to the United States, and shipping is free on orders over $200. Every order is tracked from our workshop in Ubud, Bali, so you can follow your piece on its way. Because each item is handcrafted with natural Baltic amber and 925 sterling silver, orders are prepared individually and boxed with a certificate of authenticity, ready to wear or to give. Whether you are ordering a ring, earrings, a pendant or a bracelet, delivery is available internationally with tracking. If you have questions about your destination or delivery, our team is happy to help before you order.']
   ]
 };
 
@@ -199,10 +199,10 @@ const SILVER = {
     'Our silver is 92.5% pure (the “925” hallmark), the international standard for fine jewelry. It is nickel-free and hypoallergenic, hand-forged by Balinese silversmiths in our Ubud workshop, and finished to hold each amber cabochon securely.'
   ],
   faq: [
-    ['Is AMBERRA jewelry solid sterling silver?', 'Yes — all settings are solid 925 sterling silver (92.5% pure). Some pieces add 18k gold plating over sterling; none use plated base metal.'],
-    ['Is sterling silver good for amber?', 'Yes. Sterling silver is strong, hypoallergenic and neutral in tone, so it protects the soft amber stone and lets its colour lead. It is the traditional metal for Baltic amber.'],
-    ['Will sterling silver tarnish?', 'Sterling can darken slowly with air and moisture. Wipe with a soft cloth and store dry; avoid dipping amber pieces in silver-cleaning solutions, which can harm the stone.'],
-    ['Is the silver hallmarked?', 'Our silver meets the 925 sterling standard. Each order includes a certificate of authenticity covering both the amber and the metal.']
+    ['Is AMBERRA jewelry solid sterling silver?', 'Yes, all AMBERRA settings are solid 925 sterling silver, meaning 92.5 percent pure silver, the international standard for fine jewelry. Some pieces add 18k gold plating over sterling for a warmer look, but none use plated base metal beneath. Sterling silver alloys pure silver with a small amount of other metal for strength, since pure silver alone is too soft to hold a stone securely. Because our sterling is nickel-free, it is hypoallergenic and safe for sensitive skin. Every setting is hand-forged by Balinese silversmiths in our Ubud workshop, and each order includes a certificate of authenticity covering both the amber and the metal.'],
+    ['Is sterling silver good for amber?', 'Yes, sterling silver is one of the best and most traditional metals for Baltic amber. It is strong, hypoallergenic and neutral in cool tone, so it protects the soft, organic amber stone while letting its warm colour lead rather than competing with it. Jewelers have paired 925 sterling silver with Baltic amber for centuries, because the bright, white lustre of silver frames the cherry, cognac and honey tones of amber beautifully. It is also durable enough for daily wear and gentle on sensitive skin. AMBERRA hand-forges every setting to cradle each amber cabochon securely in our Ubud, Bali workshop.'],
+    ['Will sterling silver tarnish?', 'Sterling silver can darken slowly over time as it naturally reacts with air and moisture, forming a patina. This is normal and easily reversed: simply wipe the metal with a soft cloth and store your jewelry dry, ideally in a soft pouch with an anti-tarnish strip. Worn regularly, sterling silver actually tarnishes less, because the oils of your skin and the friction of wear help keep it bright. Because amber is a soft, organic stone, avoid dipping AMBERRA pieces in silver-cleaning solutions or using ultrasonic machines, which can dull or crack the amber. Polish the silver separately with a proper silver cloth.'],
+    ['Is the silver hallmarked?', 'AMBERRA silver meets the 925 sterling standard, which means it is 92.5 percent pure silver, the internationally recognised benchmark for fine jewelry. This is the same 925 mark used to identify genuine sterling silver worldwide. Rather than relying on a stamp alone, each order includes a certificate of authenticity covering both the natural Baltic amber and the sterling silver metal, so you have written assurance of what you are buying. Our silver is nickel-free and hypoallergenic, hand-forged by Balinese silversmiths in our Ubud workshop and finished to hold each amber cabochon securely. Every piece ships with free worldwide shipping over $200.']
   ]
 };
 
