@@ -186,8 +186,42 @@ const HUB = {
   ]
 };
 
+// Metal-cut landing (targets "sterling silver amber jewelry/ring"). Distinct
+// from /amber (material/colour focus) — this page's angle is the 925 silver.
+const SILVER = {
+  slug: 'sterling-silver-amber-jewelry',
+  label: 'Sterling Silver Amber',
+  h1: 'Sterling Silver Amber Jewelry',
+  metaTitle: 'Sterling Silver Amber Jewelry — 925 Silver, Handcrafted | AMBERRA',
+  metaDesc: 'Baltic amber set in solid 925 sterling silver — rings, earrings, pendants & bracelets, handcrafted in Bali. Hypoallergenic, hallmarked silver. Free shipping over $200.',
+  intro: [
+    'Every AMBERRA piece pairs natural Baltic amber with solid 925 sterling silver — never plated base metal. The warm glow of amber and the cool shine of hand-worked silver are a classic combination, and sterling is durable enough to wear every day.',
+    'Our silver is 92.5% pure (the “925” hallmark), the international standard for fine jewelry. It is nickel-free and hypoallergenic, hand-forged by Balinese silversmiths in our Ubud workshop, and finished to hold each amber cabochon securely.'
+  ],
+  faq: [
+    ['Is AMBERRA jewelry solid sterling silver?', 'Yes — all settings are solid 925 sterling silver (92.5% pure). Some pieces add 18k gold plating over sterling; none use plated base metal.'],
+    ['Is sterling silver good for amber?', 'Yes. Sterling silver is strong, hypoallergenic and neutral in tone, so it protects the soft amber stone and lets its colour lead. It is the traditional metal for Baltic amber.'],
+    ['Will sterling silver tarnish?', 'Sterling can darken slowly with air and moisture. Wipe with a soft cloth and store dry; avoid dipping amber pieces in silver-cleaning solutions, which can harm the stone.'],
+    ['Is the silver hallmarked?', 'Our silver meets the 925 sterling standard. Each order includes a certificate of authenticity covering both the amber and the metal.']
+  ]
+};
+
 // deep content sections (unique per page; distributed so nothing repeats) — H2 + paragraphs
 const SECTIONS = {
+  silver: [
+    ['Why 925 Sterling Silver?', [
+      'Sterling silver is an alloy of 92.5% pure silver with 7.5% other metals — usually copper — added for strength. Pure silver alone is too soft to hold a stone; the “925” standard keeps the bright, white lustre of silver while making it durable enough for daily wear. It is the metal jewelers have paired with Baltic amber for centuries.',
+      'Because our sterling is nickel-free, it is hypoallergenic and safe for sensitive skin. Its neutral cool tone is the perfect foil for amber: it never competes with the stone, it frames it, letting the warm cherry, cognac and honey tones lead.'
+    ]],
+    ['Hand-Forged in Ubud', [
+      'AMBERRA silver is worked entirely by hand by Balinese silversmiths in our Ubud workshop. Each setting is forged, shaped and polished to cradle a single amber cabochon securely — filigree, granulation and bezel work that a casting machine cannot reproduce. This is why no two AMBERRA pieces are identical.',
+      'Balinese silversmithing is a living tradition passed down through generations. The same hands that shape our amber rings and pendants have worked silver for a lifetime, and every finished piece carries that craft.'
+    ]],
+    ['Caring for Silver & Amber Together', [
+      'Sterling silver darkens slowly as it reacts with air — a natural patina that wipes away with a soft silver cloth. But amber is a soft, organic stone, so never soak an AMBERRA piece in a silver-dip solution or clean it with ultrasonic machines: these can dull or crack the amber.',
+      'To care for both at once, wipe gently with a dry, soft cloth, keep pieces away from perfume, heat and household chemicals, and store each item separately in a soft pouch. Worn often and kept dry, sterling silver actually tarnishes less — the oils of your skin help keep it bright.'
+    ]]
+  ],
   hub: [
     ['What Is Baltic Amber?', [
       'Baltic amber, known to gemologists as succinite, is fossilised resin from ancient conifer forests that grew around the Baltic Sea some 40 million years ago. Over millennia the resin hardened, mineralised and was carried by rivers and seas into the deposits mined today. It is remarkably light, warm to the touch, and glows from within — qualities no glass or plastic imitation can match.',
@@ -657,7 +691,7 @@ ${faq || ''}`;
 function typePage(slug, cat, products) {
   const url = `${SITE}/${slug}`;
   const links = linksBlock('Shop amber by colour',
-    Object.keys(COLORS).map(c => [`/amber/${c}`, COLORS[c].label]).concat([['/amber', 'All Amber Jewelry']]));
+    Object.keys(COLORS).map(c => [`/amber/${c}`, COLORS[c].label]).concat([['/amber', 'All Amber Jewelry'], [`/${SILVER.slug}`, 'Sterling Silver Amber']]));
   const schema = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'CollectionPage', '@id': `${url}#webpage`, url, name: cat.metaTitle, description: cat.metaDesc,
       breadcrumb: breadcrumb([{name:'Home',url:SITE},{name:'Amber',url:`${SITE}/amber`},{name:cat.label,url}]) },
@@ -671,7 +705,7 @@ function typePage(slug, cat, products) {
 function colorPage(colorKey, color, products) {
   const url = `${SITE}/amber/${colorKey}`;
   const links = linksBlock('Shop amber by type',
-    Object.keys(TYPES).map(t => [`/${t}`, TYPES[t].label]).concat([['/amber', 'All Amber Jewelry']]));
+    Object.keys(TYPES).map(t => [`/${t}`, TYPES[t].label]).concat([['/amber', 'All Amber Jewelry'], [`/${SILVER.slug}`, 'Sterling Silver Amber']]));
   const schema = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'CollectionPage', '@id': `${url}#webpage`, url, name: color.metaTitle, description: color.metaDesc,
       breadcrumb: breadcrumb([{name:'Home',url:SITE},{name:'Amber',url:`${SITE}/amber`},{name:color.label,url}]) },
@@ -685,7 +719,7 @@ function colorPage(colorKey, color, products) {
 function hubPage(products, colorCounts) {
   const url = `${SITE}/amber`;
   const typeLinks = linksBlock('Shop amber by type',
-    Object.keys(TYPES).map(t => [`/${t}`, TYPES[t].label]));
+    Object.keys(TYPES).map(t => [`/${t}`, TYPES[t].label]).concat([[`/${SILVER.slug}`, 'Sterling Silver Amber']]));
   const colorLinks = linksBlock('Shop amber by colour',
     Object.keys(COLORS).filter(c => (colorCounts[c] || 0) >= MIN_SKU).map(c => [`/amber/${c}`, COLORS[c].label]));
   const schema = { '@context': 'https://schema.org', '@graph': [
@@ -696,6 +730,20 @@ function hubPage(products, colorCounts) {
   const main = catBody({ kicker:'Baltic Amber', h1:HUB.h1, sub:HUB.intro[0], count:products.length,
     intro: introHTML(HUB.intro), sections: sectionsHTML(SECTIONS.hub), links: typeLinks + colorLinks, grid: products.map(cardHTML).join('\n'), faq: faqBlock(HUB.faq) });
   return shell({ metaTitle:HUB.metaTitle, metaDesc:HUB.metaDesc, canonical:url, schema, activeSlug:'amber' }, main);
+}
+
+function metalPage(products) {
+  const url = `${SITE}/${SILVER.slug}`;
+  const links = linksBlock('Shop amber by type',
+    Object.keys(TYPES).map(t => [`/${t}`, TYPES[t].label]).concat([['/amber', 'All Amber Jewelry']]));
+  const schema = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'CollectionPage', '@id': `${url}#webpage`, url, name: SILVER.metaTitle, description: SILVER.metaDesc,
+      breadcrumb: breadcrumb([{name:'Home',url:SITE},{name:'Amber',url:`${SITE}/amber`},{name:SILVER.label,url}]) },
+    itemListSchema(url, `AMBERRA ${SILVER.label} Jewelry`, url, products),
+    faqSchema(SILVER.faq) ].filter(Boolean) };
+  const main = catBody({ kicker:'925 Sterling Silver', h1:SILVER.h1, sub:SILVER.intro[0], count:products.length,
+    intro: introHTML(SILVER.intro), sections: sectionsHTML(SECTIONS.silver), links, grid: products.map(cardHTML).join('\n'), faq: faqBlock(SILVER.faq) });
+  return shell({ metaTitle:SILVER.metaTitle, metaDesc:SILVER.metaDesc, canonical:url, schema, activeSlug:'amber' }, main);
 }
 
 // ── data sources ─────────────────────────────────────────────────────────────
@@ -757,6 +805,10 @@ async function main() {
   fs.writeFileSync(path.join(ROOT, 'amber.html'), hubPage(products, colorCounts), 'utf8');
   written.push('/amber'); console.log(`  ✓ amber.html (${products.length})`);
 
+  // 2b) /sterling-silver-amber-jewelry — metal-cut landing (all pieces are 925)
+  fs.writeFileSync(path.join(ROOT, `${SILVER.slug}.html`), metalPage(products), 'utf8');
+  written.push(`/${SILVER.slug}`); console.log(`  ✓ ${SILVER.slug}.html (${products.length})`);
+
   // 3) color pages (guarded ≥ MIN_SKU)
   const amberDir = path.join(ROOT, 'amber');
   if (!fs.existsSync(amberDir)) fs.mkdirSync(amberDir);
@@ -772,7 +824,7 @@ async function main() {
   if (fs.existsSync(smPath)) {
     let sm = fs.readFileSync(smPath, 'utf8');
     // strip previous landing entries (types + /amber + /amber/*)
-    sm = sm.replace(/<url>\s*<loc>[^<]*(\/rings|\/earrings|\/pendants|\/bracelets|\/chains|\/amber(\/[a-z-]+)?)<\/loc>[\s\S]*?<\/url>\s*/g, '');
+    sm = sm.replace(/<url>\s*<loc>[^<]*(\/rings|\/earrings|\/pendants|\/bracelets|\/chains|\/sterling-silver-amber-jewelry|\/amber(\/[a-z-]+)?)<\/loc>[\s\S]*?<\/url>\s*/g, '');
     const entries = written.map(u => `  <url>\n    <loc>${SITE}${u}</loc>\n    <lastmod>${TODAY}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.9</priority>\n  </url>`).join('\n');
     sm = sm.replace('</urlset>', `${entries}\n</urlset>`);
     fs.writeFileSync(smPath, sm, 'utf8');
