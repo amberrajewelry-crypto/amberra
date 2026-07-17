@@ -59,6 +59,73 @@ function displayName(prod) { const n = TYPE_NOUN[prod.cat] || ''; return (prod.d
 const AMBER_COLORS = ['blue','butterscotch','cherry','cognac','green','honey','mosaic','raw'];
 function amberColor(prod) { const hay = `${prod.name} ${(prod.props && prod.props.Stone) || ''}`.toLowerCase(); return AMBER_COLORS.find(c => hay.includes(c)) || ''; }
 
+// Deterministic index from a string — used to vary copy per SKU so 94 product
+// pages don't share identical "About" paragraphs (avoids near-duplicate demotion).
+function pick(seed, arr) { let h = 0; for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0; return arr[h % arr.length]; }
+
+// Unique-ish "About this piece" block (~55-75 words of genuine, varied copy)
+// lifting product pages above the thin-content threshold without boilerplate dupes.
+const CAT_INTRO = {
+  rings: [
+    'Designed for everyday wear, this ring pairs the warmth of natural amber with a hand-finished band.',
+    'This ring frames a single piece of natural amber, sized to sit comfortably and catch the light as you move.',
+    'A ring built around one warm cabochon of amber, finished by hand so no two pieces are exactly alike.'
+  ],
+  earrings: [
+    'These earrings carry the glow of natural amber close to the face, light enough for all-day wear.',
+    'A pair of earrings that let natural amber catch the light with every turn of the head.',
+    'Lightweight earrings that pair the honeyed warmth of amber with a secure, comfortable fitting.'
+  ],
+  pendants: [
+    'This pendant centres a single piece of natural amber, ready to layer or wear on its own.',
+    'A pendant that lets one warm piece of amber rest at the collarbone, hung on a fine chain.',
+    'Worn close to the heart, this pendant turns a fossil of ancient resin into an everyday piece.'
+  ],
+  bracelets: [
+    'This bracelet wraps the wrist in the warm tones of natural amber, finished for comfortable daily wear.',
+    'A bracelet that brings the glow of amber to the wrist, sized to move with you.',
+    'Natural amber set into a bracelet made to be worn and layered, from day to evening.'
+  ],
+  chains: [
+    'A finished chain made to carry your favourite amber pendant, or to be worn on its own.',
+    'This chain is crafted to pair with amber pendants and sit smoothly against the skin.'
+  ]
+};
+const COLOR_LINE = {
+  honey: 'Its honey tone is the classic face of Baltic amber — warm, golden and translucent.',
+  cognac: 'The cognac shade runs deep and warm, like late sunlight held inside the stone.',
+  cherry: 'Its cherry-red depth gives the piece a grounded, dramatic character.',
+  green: 'The green hue links it to nature and renewal, one of amber\'s rarer moods.',
+  blue: 'Rare blue amber lends a sense of mystery and depth few stones can match.',
+  butterscotch: 'The soft, opaque butterscotch tone feels calm and creamy against the skin.',
+  mosaic: 'Its mosaic pattern layers several amber tones into one lively surface.',
+  raw: 'Left raw and unpolished, the amber keeps the texture of the resin as it was found.'
+};
+const CRAFT_LINE = [
+  'Each piece is handcrafted in Bali and shipped worldwide.',
+  'Made by hand in our Bali workshop, it arrives ready to gift.',
+  'Handcrafted in Bali from genuine Baltic amber, then finished by hand.'
+];
+function aboutBlock(p) {
+  const seed = p.name + p.cat;
+  const intro = pick(seed, CAT_INTRO[p.cat] || CAT_INTRO.pendants);
+  const col = amberColor(p);
+  const COLOR_FALLBACK = [
+    'Every piece of natural amber carries its own inclusions and tone, so yours is one of a kind.',
+    'No two pieces of natural amber are alike — the colour and tiny inclusions make each one unique.',
+    'Formed from resin millions of years old, each amber cabochon has a tone and pattern all its own.',
+    'The warm, translucent colour comes from the amber itself, so every piece has its own character.'
+  ];
+  const colLine = COLOR_LINE[col] || pick(seed + (p.material || '') + 'f', COLOR_FALLBACK);
+  const metal = String((p.props && p.props.Metal) || '').toLowerCase();
+  const metalLine = /silver|925/.test(metal) ? ' It is set in 925 sterling silver, hallmarked for lasting wear.'
+    : /gold/.test(metal) ? ' It is finished in warm gold-tone metal to echo the amber.' : '';
+  const craft = pick(seed + 'c', CRAFT_LINE);
+  const body = `${intro} ${colLine}${metalLine} ${craft}`;
+  return `<div class="pp-about"><h2 class="pp-about-h">About this piece</h2><p>${esc(body)}</p>`
+    + `<p class="pp-about-care">Genuine Baltic amber · keep away from perfume and direct heat, and wipe with a soft cloth to preserve its glow.</p></div>`;
+}
+
 // ── Airtable fetch ────────────────────────────────────────────────────────────
 
 async function fetchProducts() {
@@ -241,7 +308,11 @@ ${breadcrumbSchema}
 .pp-price{font:400 26px/1 var(--serif);color:var(--charcoal);margin:0 0 24px}
 .pp-divider{border:none;border-top:1px solid var(--mist);margin:24px 0}
 .pp-desc{font:300 15px/1.75 var(--sans);color:var(--gray);margin:0 0 20px}
-.pp-material{font:300 13px/1.6 var(--sans);color:var(--stone);font-style:italic;margin:0 0 28px}
+.pp-material{font:300 13px/1.6 var(--sans);color:var(--stone);font-style:italic;margin:0 0 24px}
+.pp-about{margin:0 0 28px}
+.pp-about-h{font:400 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--stone);margin:0 0 12px}
+.pp-about p{font:300 14px/1.75 var(--sans);color:var(--gray);margin:0 0 12px}
+.pp-about-care{font-size:12px !important;color:var(--stone) !important;font-style:italic}
 .pp-props{display:flex;flex-direction:column;gap:0;margin-bottom:36px}
 .pp-prop{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--silk)}
 .pp-pk{font:400 10px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--stone)}
@@ -285,7 +356,7 @@ ${breadcrumbSchema}
 
   <div class="pp-info">
     <div class="pp-breadcrumb">
-      <a href="/">AMBERRA</a> &rsaquo; <a href="/shop?cat=${esc(cat)}">${esc(catLabel)}</a> &rsaquo; ${esc(name)}
+      <a href="/">Home</a> &rsaquo; <a href="/amber">Amber Jewelry</a> &rsaquo; <a href="/shop?cat=${esc(cat)}">${esc(catLabel)}</a> &rsaquo; ${esc(name)}
     </div>
     <div class="pp-cat">${esc(catLabel)}</div>
     ${badgeHTML ? `<div class="pp-badge-wrap">${badgeHTML}</div>` : ''}
@@ -294,6 +365,7 @@ ${breadcrumbSchema}
     <hr class="pp-divider">
     <p class="pp-desc">${esc(desc)}</p>
     <p class="pp-material">${esc(material)}</p>
+    ${aboutBlock(p)}
     ${amberColor(p) ? `<p class="pp-colorhub"><a href="/amber/${amberColor(p)}" style="color:#B8941E;text-decoration:none;border-bottom:1px solid currentColor">Explore all ${amberColor(p)} amber →</a></p>` : ''}
     ${propsHTML ? `<div class="pp-props">${propsHTML}</div>` : ''}
     ${buyBtn}
