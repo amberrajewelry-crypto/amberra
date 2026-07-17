@@ -20,6 +20,9 @@ async function loadProducts(){
 // ── CATALOG STATE ─────────────────────────────────────────────────────────
 let activeFilter='all';
 let searchQuery='';
+// Curated collection pages (/collections/*) inject window.COLLECTION_IDS — an
+// ordered id list. When present, the grid renders exactly that set (see renderProducts).
+const collectionIds=Array.isArray(window.COLLECTION_IDS)?window.COLLECTION_IDS:null;
 
 // Handle URL category params on page load
 const urlParams=new URLSearchParams(window.location.search);
@@ -44,7 +47,9 @@ function renderProducts(){
   if(!grid)return;
   let list=showingWishlist
     ? products.filter(p=>wishlist.includes(p.id))
-    : (activeFilter==='all'?products:products.filter(p=>p.cat===activeFilter));
+    : collectionIds
+      ? collectionIds.map(id=>products.find(p=>p.id===id)).filter(Boolean)
+      : (activeFilter==='all'?products:products.filter(p=>p.cat===activeFilter));
   if(searchQuery){
     list=list.filter(p=>
       p.name.toLowerCase().includes(searchQuery)||

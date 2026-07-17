@@ -219,7 +219,7 @@ ${breadcrumbSchema}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css?v=20260519c">
+<link rel="stylesheet" href="/style.css?v=20260717">
 <link rel="preconnect" href="https://app.snipcart.com">
 <link rel="preconnect" href="https://cdn.snipcart.com">
 <link rel="stylesheet" href="https://cdn.snipcart.com/themes/${SNIPCART_VER}/default/snipcart.css">
@@ -357,9 +357,10 @@ function normalizeAirtable(records) {
 }
 
 function loadLocalProducts() {
-  // Same canonical fallback source generate-categories.js reads.
-  const p = '/tmp/products.json';
-  if (!fs.existsSync(p)) throw new Error('No local products at /tmp/products.json');
+  // /tmp for local dev; data/products.json is the committed source used on Vercel build
+  const p = fs.existsSync('/tmp/products.json') ? '/tmp/products.json'
+          : path.join(__dirname, '..', 'data', 'products.json');
+  if (!fs.existsSync(p)) throw new Error('No products.json (checked /tmp and data/)');
   return JSON.parse(fs.readFileSync(p, 'utf8'));
 }
 

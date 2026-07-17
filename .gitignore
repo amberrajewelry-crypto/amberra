@@ -3,3 +3,6 @@ node_modules/
 .superpowers/
 *.log
 .vercel/
+
+/amber-drop-*.png
+/rodin-drop-*.png

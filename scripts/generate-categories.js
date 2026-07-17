@@ -11,7 +11,7 @@ const TABLE_ID = 'tblg9KjmXRv9u0dzv';
 const PAT      = process.env.AIRTABLE_PAT;
 const SITE     = 'https://www.amberrajewelry.com';
 const TODAY    = new Date().toISOString().slice(0, 10);
-const CSSVER   = '20260714a';
+const CSSVER   = '20260717';
 const MIN_SKU  = 3; // thin-content guard for color pages
 
 // ── content maps (methodology: data × template) ──────────────────────────────
@@ -616,27 +616,43 @@ function navHTML(activeSlug) {
 
 function footerHTML() {
   return `<footer>
-  <div class="ft">
+  <div class="ft ft-5">
     <div>
       <div class="fb">AMBERRA</div>
       <p class="fd">Natural Baltic amber jewelry,<br>handcrafted in Bali with sacred intention.<br>Each piece is unique — like its wearer.</p>
+      <div class="fs">
+        <a href="https://instagram.com/amberra.jewelry" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://wa.me/6287853867120" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+      </div>
     </div>
-    <div><span class="fc-t">Shop Amber</span><ul class="fc-l">
-      <li><a href="/amber">All Amber Jewelry</a></li>
-      <li><a href="/rings">Amber Rings</a></li><li><a href="/earrings">Amber Earrings</a></li>
-      <li><a href="/pendants">Amber Pendants</a></li><li><a href="/bracelets">Amber Bracelets</a></li>
+    <div><span class="fc-t">Shop</span><ul class="fc-l">
+      <li><a href="/rings">Rings</a></li><li><a href="/earrings">Earrings</a></li>
+      <li><a href="/pendants">Pendants</a></li><li><a href="/bracelets">Bracelets</a></li>
+      <li><a href="/shop">All Jewelry</a></li>
     </ul></div>
-    <div><span class="fc-t">By Colour</span><ul class="fc-l">
-      <li><a href="/amber/cherry">Cherry Amber</a></li><li><a href="/amber/cognac">Cognac Amber</a></li>
-      <li><a href="/amber/honey">Honey Amber</a></li><li><a href="/amber/green">Green Amber</a></li>
-      <li><a href="/amber/blue">Blue Amber</a></li>
+    <div><span class="fc-t">Collections</span><ul class="fc-l">
+      <li><a href="/collections/solar">The Solar Collection</a></li>
+      <li><a href="/collections/sacred">The Sacred Collection</a></li>
+      <li><a href="/collections/botanica">The Botanica Collection</a></li>
     </ul></div>
     <div><span class="fc-t">Company</span><ul class="fc-l">
       <li><a href="/our-story">Our Story</a></li><li><a href="/journal">Journal</a></li>
       <li><a href="/stores">Stores</a></li><li><a href="/#wholesale">Wholesale</a></li>
     </ul></div>
+    <div><span class="fc-t">Support</span><ul class="fc-l">
+      <li><a href="javascript:openReq()">Contact Us</a></li>
+      <li><a href="javascript:openSrv()">Services</a></li>
+      <li><a href="/our-story">Care Guide</a></li>
+    </ul></div>
   </div>
-  <div class="ft-bot"><span>© 2026 AMBERRA. All rights reserved.</span></div>
+  <div class="ft-bot">
+    <span>© 2026 AMBERRA. All rights reserved.</span>
+    <div class="ft-legal">
+      <a href="javascript:openLegal('privacy')">Privacy Policy</a>
+      <a href="javascript:openLegal('terms')">Terms of Service</a>
+      <a href="javascript:openLegal('returns')">Returns</a>
+    </div>
+  </div>
 </footer>`;
 }
 
@@ -652,6 +668,8 @@ function shell({ metaTitle, metaDesc, canonical, schema, activeSlug }, mainHTML)
 <meta name="robots" content="index, follow">
 <meta name="author" content="AMBERRA">
 <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
 <link rel="canonical" href="${canonical}">
 <link rel="alternate" hreflang="en" href="${canonical}">
 <link rel="alternate" hreflang="x-default" href="${canonical}">
@@ -683,6 +701,11 @@ function shell({ metaTitle, metaDesc, canonical, schema, activeSlug }, mainHTML)
     <a class="mob-nav-link" href="/pendants">Pendants</a><a class="mob-nav-link" href="/bracelets">Bracelets</a>
     <a class="mob-nav-link" href="/journal">Journal</a><a class="mob-nav-link" href="/our-story">Our Story</a>
   </div>
+  <div class="mob-nav-foot"><div class="mob-nav-utils">
+    <button class="mob-nav-util" onclick="closeMobNav();openAcc()">My Account</button>
+    <button class="mob-nav-util" onclick="closeMobNav();openSrv()">Services</button>
+    <button class="mob-nav-util" onclick="closeMobNav();openReq()">Contact</button>
+  </div></div>
 </div>
 ${navHTML(activeSlug)}
 ${mainHTML}
@@ -695,8 +718,11 @@ ${footerHTML()}
 
 // ── page builders ────────────────────────────────────────────────────────────
 
-function catBody({ kicker, h1, sub, count, intro, sections, links, grid, faq }) {
-  return `<section id="cat-hero"><div class="cat-hero-inner">
+function catBody({ kicker, h1, sub, count, intro, sections, links, grid, faq, bcName }) {
+  return `<nav class="cat-breadcrumb" aria-label="Breadcrumb">
+  <a href="/">Home</a> <span>/</span> <a href="/shop">Shop</a> <span>/</span> <span>${esc(bcName || h1)}</span>
+</nav>
+<section id="cat-hero"><div class="cat-hero-inner">
   <span class="s-lbl">${esc(kicker)}</span>
   <h1 class="cat-h1">${esc(h1)}</h1>
   <p class="cat-sub">${esc(sub)}</p>
@@ -791,8 +817,10 @@ async function fetchFromAirtable() {
   });
 }
 function loadLocalProducts() {
-  const p = '/tmp/products.json';
-  if (!fs.existsSync(p)) throw new Error('No local products.json at /tmp/products.json');
+  // /tmp for local dev; data/products.json is the committed source used on Vercel build
+  const p = fs.existsSync('/tmp/products.json') ? '/tmp/products.json'
+          : path.join(__dirname, '..', 'data', 'products.json');
+  if (!fs.existsSync(p)) throw new Error('No products.json (checked /tmp and data/)');
   const items = JSON.parse(fs.readFileSync(p, 'utf8'));
   // Surface stone from props.Stone so colorOf() works on the local source too
   // (Airtable path exposes stone top-level; local JSON nests it under props).
