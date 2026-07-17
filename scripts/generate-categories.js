@@ -724,6 +724,10 @@ function hubPage(products, colorCounts) {
     Object.keys(COLORS).filter(c => (colorCounts[c] || 0) >= MIN_SKU).map(c => [`/amber/${c}`, COLORS[c].label]));
   const schema = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'CollectionPage', '@id': `${url}#webpage`, url, isPartOf: { '@id': `${SITE}/#website` }, inLanguage: 'en', publisher: { '@id': `${SITE}/#organization` }, name: HUB.metaTitle, description: HUB.metaDesc,
+      about: [
+        { '@type': 'Thing', name: 'Baltic amber', sameAs: 'https://en.wikipedia.org/wiki/Baltic_amber' },
+        { '@type': 'Thing', name: 'Amber', sameAs: 'https://en.wikipedia.org/wiki/Amber' }
+      ],
       breadcrumb: breadcrumb([{name:'Home',url:SITE},{name:'Amber',url}]) },
     itemListSchema(url, 'AMBERRA Baltic Amber Jewelry', url, products),
     faqSchema(HUB.faq) ].filter(Boolean) };
