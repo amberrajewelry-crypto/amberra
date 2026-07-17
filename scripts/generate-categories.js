@@ -665,7 +665,7 @@ function shell({ metaTitle, metaDesc, canonical, schema, activeSlug }, mainHTML)
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${esc(metaTitle)}</title>
 <meta name="description" content="${esc(metaDesc)}">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="author" content="AMBERRA">
 <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
 <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
