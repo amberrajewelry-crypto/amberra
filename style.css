@@ -1277,6 +1277,15 @@ body.page-light #catalog{background:#fff}
   width:clamp(140px,18vw,280px);
   height:auto;
 }
+/* Interactive 3D amber drop (model-viewer) */
+.hero-drop-3d{
+  width:clamp(240px,30vw,440px);
+  height:clamp(320px,40vw,580px);
+  background:transparent;
+  --poster-color:transparent;
+  cursor:grab;
+}
+.hero-drop-3d::part(default-progress-bar){display:none}
 .hero-drop-reflect{
   position:absolute;top:100%;left:50%;
   width:clamp(140px,18vw,280px);
