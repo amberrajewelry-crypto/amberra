@@ -51,14 +51,15 @@ function init() {
   const rim = new THREE.DirectionalLight(0xffc070, 2.4); rim.position.set(2, -1, -4); scene.add(rim);
   scene.add(new THREE.AmbientLight(0xffe0b0, 0.35));
 
+  // matte golden — brushed/satin gold, no transparency, soft diffuse sheen
   const amber = new THREE.MeshPhysicalMaterial({
-    color: 0xffc878, transmission: 1.0, thickness: 1.6, ior: 1.52,
-    roughness: 0.05, metalness: 0.0,
-    attenuationColor: new THREE.Color(0xff8a2a), attenuationDistance: 2.4,
-    clearcoat: 1.0, clearcoatRoughness: 0.06, envMapIntensity: 0.85, specularIntensity: 1.0,
+    color: 0xcaa437, transmission: 0.0, metalness: 0.9,
+    roughness: 0.52, envMapIntensity: 0.55,
+    clearcoat: 0.18, clearcoatRoughness: 0.55, sheen: 0.4,
+    sheenColor: new THREE.Color(0xffe6a0), sheenRoughness: 0.7,
   });
   const sparkMat = new THREE.MeshStandardMaterial({
-    color: 0xffdd88, emissive: 0xffb347, emissiveIntensity: 2.2, roughness: 0.4,
+    color: 0xf3d488, emissive: 0xd8a94a, emissiveIntensity: 0.5, roughness: 0.6, metalness: 0.7,
   });
 
   const group = new THREE.Group();
