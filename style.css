@@ -1291,6 +1291,10 @@ body.page-light #catalog{background:#fff}
   0%,100%{filter:drop-shadow(0 0 22px rgba(255,196,96,.48)) drop-shadow(0 0 56px rgba(255,168,54,.30))}
   50%{filter:drop-shadow(0 0 34px rgba(255,210,120,.68)) drop-shadow(0 0 88px rgba(255,178,64,.46))}}
 @media(prefers-reduced-motion:reduce){.hero-drop-3d canvas{animation:none}}
+.hero-drop-3d.hovered canvas{
+  animation:none;
+  filter:drop-shadow(0 0 44px rgba(255,214,120,.85)) drop-shadow(0 0 110px rgba(255,180,70,.6));
+  transition:filter .3s ease}
 .hero-drop-reflect{
   position:absolute;top:100%;left:50%;
   width:clamp(140px,18vw,280px);
