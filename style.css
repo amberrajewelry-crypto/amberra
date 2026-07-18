@@ -1267,7 +1267,7 @@ body.page-light #catalog{background:#fff}
 @media(max-width:900px){.hero-wordmark{font-size:clamp(56px,20vw,140px);letter-spacing:.1em}}
 .hero-drop-wrap{
   position:absolute;
-  left:50%;top:calc(50% + 44px); /* centered lower on screen per art direction */
+  left:50%;top:calc(50% + 120px); /* drop visual mass sits at true screen center */
   transform:translate(-50%,-50%);
   z-index:2;
   pointer-events:none;
