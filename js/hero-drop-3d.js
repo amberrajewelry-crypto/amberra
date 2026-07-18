@@ -110,13 +110,8 @@ function init() {
   controls.minPolarAngle = Math.PI * 0.3; controls.maxPolarAngle = Math.PI * 0.72;
   controls.target.set(0, 0, 0);
 
-  // cursor reaction — tilt toward pointer + hover flare
-  let tpx = 0, tpy = 0, px = 0, py = 0, hover = false, hoverAmt = 0;
-  addEventListener('pointermove', (e) => {
-    const r = mount.getBoundingClientRect();
-    tpx = ((e.clientX - (r.left + r.width / 2)) / innerWidth) * 2;
-    tpy = ((e.clientY - (r.top + r.height / 2)) / innerHeight) * 2;
-  });
+  // cursor reaction — clean hover flare (no wobble): gentle grow + brighter glow/spin/shimmer
+  let hover = false, hoverAmt = 0;
   mount.addEventListener('pointerenter', () => { hover = true; });
   mount.addEventListener('pointerleave', () => { hover = false; });
 
@@ -151,10 +146,8 @@ function init() {
     amber.emissiveIntensity = 0.16 + hoverAmt * 0.5;
     if (mount.classList.contains('hovered') !== hoverAmt > 0.5) mount.classList.toggle('hovered', hoverAmt > 0.5);
 
-    // parallax tilt toward cursor
-    px += (tpx - px) * 0.06; py += (tpy - py) * 0.06;
-    group.rotation.z = -px * 0.14;
-    group.rotation.x = py * 0.14;
+    // hover: gentle scale bump (no wobble)
+    group.scale.setScalar(1 + hoverAmt * 0.07);
 
     controls.update();
     renderer.render(scene, camera);
