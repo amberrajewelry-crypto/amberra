@@ -116,7 +116,7 @@ void main() {
   float str=1.0/max(r*r,0.01);
   vec2 dlt=uTouch.zw;
   if(length(dlt)>0.0001) str*=clamp(dot(normalize(d),normalize(-dlt)),0.0,1.0);
-  vec3 gold=vec3(0.72,0.50,0.06);
+  vec3 gold=vec3(0.45,0.22,0.03);
   gl_FragColor=texture2D(uColor,vUV)+vec4(gold*str*length(dlt)*uRadius*5.0,0);
 }`, { uTouch:{value:new THREE.Vector4()}, uRadius:{value:0.25}, uAspect:{value:innerWidth/innerHeight}, uColor:{value:null} })
 
@@ -146,7 +146,7 @@ uniform sampler2D uColor; uniform float uTime; uniform vec2 uSimTs;
 void main() {
   vec2 c=vUV*2.0-1.0;
   float vig=1.0-smoothstep(0.25,0.95,length(c*vec2(0.72,1.0)));
-  vec3 bg=vec3(0.70,0.49,0.12);
+  vec3 bg=vec3(0.022,0.008,0.001);
   vec3 fl=texture2D(uColor,vUV).rgb*vig;
 
   float hL=dot(texture2D(uColor,vUV-vec2(uSimTs.x,0)).rgb,vec3(0.299,0.587,0.114));
@@ -178,7 +178,7 @@ void main() {
 
   vec3 lit=fl*(0.35+0.65*diff)*shadow;
   vec3 specCol=vec3(0.75,0.50,0.12)*spec*flLum*2.5;
-  vec3 sweepCol=mix(vec3(0.55,0.34,0.05),vec3(1.0,0.78,0.16),beamMax)*(str1+str2);
+  vec3 sweepCol=mix(vec3(0.45,0.22,0.04),vec3(0.85,0.62,0.18),beamMax)*(str1+str2);
   gl_FragColor=vec4(bg+lit+specCol+sweepCol,1);
 }`, { uColor:{value:null}, uTime:{value:0}, uSimTs:{value:SIM_TS} })
 
