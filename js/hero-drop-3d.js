@@ -51,11 +51,11 @@ function init() {
 
   // translucent deep amber (dark cognac resin) — light passes through, inner motes show
   const amber = new THREE.MeshPhysicalMaterial({
-    color: 0xe0a91e, transmission: 0.86, thickness: 1.1, ior: 1.5,
-    roughness: 0.15, metalness: 0.0,
-    attenuationColor: new THREE.Color(0xffbe36), attenuationDistance: 3.2,
-    clearcoat: 0.55, clearcoatRoughness: 0.2, envMapIntensity: 1.0,
-    emissive: new THREE.Color(0xffab30), emissiveIntensity: 0.42, transparent: true,
+    color: 0xe0a91e, transmission: 0.7, thickness: 1.7, ior: 1.49,
+    roughness: 0.46, metalness: 0.0,
+    attenuationColor: new THREE.Color(0xffbe36), attenuationDistance: 3.0,
+    clearcoat: 0.14, clearcoatRoughness: 0.55, envMapIntensity: 0.8,
+    emissive: new THREE.Color(0xffab30), emissiveIntensity: 0.4, transparent: true,
   });
 
   const group = new THREE.Group();
@@ -63,7 +63,7 @@ function init() {
 
   const sparks = [];
   function seedSparks(halfW, halfH, cy) {
-    const N = 20;
+    const N = 30;
     for (let i = 0; i < N; i++) {
       // rejection-sample inside an ellipsoid (bulb-biased) so motes stay within the amber
       let x, y, z;
@@ -146,8 +146,8 @@ function init() {
     amber.emissiveIntensity = 0.16 + hoverAmt * 0.5;
     if (mount.classList.contains('hovered') !== hoverAmt > 0.5) mount.classList.toggle('hovered', hoverAmt > 0.5);
 
-    // hover: gentle scale bump (no wobble)
-    group.scale.setScalar(1 + hoverAmt * 0.07);
+    // living breath + hover grow (no wobble)
+    group.scale.setScalar((1 + hoverAmt * 0.07) * (1 + Math.sin(t * 0.85) * 0.02));
 
     controls.update();
     renderer.render(scene, camera);
