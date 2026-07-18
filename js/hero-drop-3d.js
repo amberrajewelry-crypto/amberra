@@ -6,9 +6,24 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
 const mount = document.getElementById('hero-drop-canvas');
 
+// Guarantee the viewport has real dimensions even if style.css is cached/stale.
+// clamp(200-320) x clamp(280-420) mirrored in JS so WebGL always gets a non-zero framebuffer.
+function ensureSize() {
+  if (!mount) return;
+  const vw = innerWidth || 1200;
+  const w = Math.max(200, Math.min(320, vw * 0.20));
+  const h = Math.max(280, Math.min(420, vw * 0.28));
+  mount.style.width = w + 'px';
+  mount.style.height = h + 'px';
+  mount.style.cursor = 'grab';
+  const wrap = mount.closest('.hero-drop-wrap');
+  if (wrap) { wrap.style.width = w + 'px'; wrap.style.height = h + 'px'; }
+}
+
 function boot() {
-  // wait until the container has a real (non-zero) layout size
-  if (!mount || mount.clientWidth === 0 || mount.clientHeight === 0) {
+  if (!mount) return;
+  ensureSize();
+  if (mount.clientWidth === 0 || mount.clientHeight === 0) {
     requestAnimationFrame(boot);
     return;
   }
@@ -70,6 +85,7 @@ function init() {
   controls.target.set(0, 0, 0);
 
   const resize = () => {
+    ensureSize();
     const w = W(), h = H();
     if (w < 2 || h < 2) return;
     camera.aspect = w / h; camera.updateProjectionMatrix(); renderer.setSize(w, h);
