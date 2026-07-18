@@ -17,29 +17,29 @@ if (mount) {
 
   const scene = new THREE.Scene();               // transparent background
   const pmrem = new THREE.PMREMGenerator(renderer);
-  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.6).texture;
 
-  const camera = new THREE.PerspectiveCamera(32, W() / H(), 0.1, 100);
-  camera.position.set(0, 0.3, 7.2);
+  const camera = new THREE.PerspectiveCamera(30, W() / H(), 0.1, 100);
+  camera.position.set(0, 0.2, 9.0);
 
   // warm rim + key lights for amber sparkle
-  const key = new THREE.DirectionalLight(0xfff2d6, 2.4); key.position.set(-3, 4, 5); scene.add(key);
-  const rim = new THREE.DirectionalLight(0xffb060, 2.0); rim.position.set(2, -1, -4); scene.add(rim);
-  scene.add(new THREE.AmbientLight(0xffd9a0, 0.25));
+  const key = new THREE.DirectionalLight(0xfff2d6, 2.8); key.position.set(-3, 4, 5); scene.add(key);
+  const rim = new THREE.DirectionalLight(0xffc070, 2.4); rim.position.set(2, -1, -4); scene.add(rim);
+  scene.add(new THREE.AmbientLight(0xffe0b0, 0.35));
 
-  // amber glass material — transmission + attenuation gives real depth colour
+  // amber glass — brighter honey-gold, softer attenuation (less dark/red)
   const amber = new THREE.MeshPhysicalMaterial({
-    color: 0xffb066,
+    color: 0xffc878,
     transmission: 1.0,
-    thickness: 2.2,
-    ior: 1.55,
-    roughness: 0.06,
+    thickness: 1.6,
+    ior: 1.52,
+    roughness: 0.05,
     metalness: 0.0,
-    attenuationColor: new THREE.Color(0xd0521a),
-    attenuationDistance: 1.1,
+    attenuationColor: new THREE.Color(0xff8a2a),
+    attenuationDistance: 2.4,
     clearcoat: 1.0,
-    clearcoatRoughness: 0.08,
-    envMapIntensity: 1.4,
+    clearcoatRoughness: 0.06,
+    envMapIntensity: 0.85,
     specularIntensity: 1.0,
   });
   const sparkMat = new THREE.MeshStandardMaterial({
@@ -61,7 +61,7 @@ if (mount) {
     const size = new THREE.Vector3(); box.getSize(size);
     const center = new THREE.Vector3(); box.getCenter(center);
     root.position.sub(center);
-    const s = 4.2 / Math.max(size.x, size.y, size.z);
+    const s = 3.3 / Math.max(size.x, size.y, size.z);
     root.scale.setScalar(s);
     group.add(root);
   });
