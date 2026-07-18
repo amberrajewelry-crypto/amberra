@@ -51,11 +51,11 @@ function init() {
 
   // translucent deep amber (dark cognac resin) — light passes through, inner motes show
   const amber = new THREE.MeshPhysicalMaterial({
-    color: 0x6e3c0a, transmission: 0.9, thickness: 2.2, ior: 1.56,
+    color: 0x7c460e, transmission: 0.9, thickness: 2.0, ior: 1.56,
     roughness: 0.14, metalness: 0.0,
-    attenuationColor: new THREE.Color(0x8a480c), attenuationDistance: 0.85,
+    attenuationColor: new THREE.Color(0x9a520e), attenuationDistance: 1.5,
     clearcoat: 0.6, clearcoatRoughness: 0.18, envMapIntensity: 1.0,
-    emissive: new THREE.Color(0x3a1e04), emissiveIntensity: 0.16, transparent: true,
+    emissive: new THREE.Color(0x5a2f06), emissiveIntensity: 0.24, transparent: true,
   });
 
   const group = new THREE.Group();
@@ -75,8 +75,9 @@ function init() {
       const m = new THREE.MeshStandardMaterial({
         color: 0xffe6b0, emissive: 0xffb347, emissiveIntensity: 1.4, roughness: 0.35, metalness: 0.0,
       });
-      const s = new THREE.Mesh(new THREE.SphereGeometry(0.018 * halfH * 2, 8, 8), m);
-      s.position.set(x * halfW * 0.82, cy + y * halfH * 0.7, z * halfW * 0.82);
+      const s = new THREE.Mesh(new THREE.SphereGeometry(0.02 * halfH * 2, 8, 8), m);
+      // keep motes inside the bulb — tight radial spread, biased slightly up from the tapered tip
+      s.position.set(x * halfW * 0.55, cy + y * halfH * 0.42, z * halfW * 0.55);
       s.userData.phase = Math.random() * Math.PI * 2;
       s.userData.speed = 1.4 + Math.random() * 2.6;
       s.userData.base = 0.5 + Math.random() * 1.4;
@@ -99,7 +100,7 @@ function init() {
     group.add(root);
     // sparks live in group space; drop spans ~[-1.65..1.65] in tallest axis
     const halfH = (size.y * scl) / 2, halfW = (size.x * scl) / 2;
-    seedSparks(halfW, halfH, -halfH * 0.15);
+    seedSparks(halfW, halfH, halfH * 0.02);
   });
 
   const controls = new OrbitControls(camera, renderer.domElement);
