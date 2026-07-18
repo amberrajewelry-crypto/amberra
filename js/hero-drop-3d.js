@@ -53,10 +53,10 @@ function init() {
 
   // matte golden — brushed/satin gold, no transparency, soft diffuse sheen
   const amber = new THREE.MeshPhysicalMaterial({
-    color: 0xe6b23a, transmission: 0.0, metalness: 0.85,
-    roughness: 0.46, envMapIntensity: 0.85,
-    clearcoat: 0.2, clearcoatRoughness: 0.5, sheen: 0.5,
-    sheenColor: new THREE.Color(0xffd970), sheenRoughness: 0.65,
+    color: 0xeab820, transmission: 0.0, metalness: 0.8,
+    roughness: 0.44, envMapIntensity: 0.9,
+    clearcoat: 0.22, clearcoatRoughness: 0.48, sheen: 0.55,
+    sheenColor: new THREE.Color(0xffdd55), sheenRoughness: 0.6,
   });
   const sparkMat = new THREE.MeshStandardMaterial({
     color: 0xf3d488, emissive: 0xd8a94a, emissiveIntensity: 0.5, roughness: 0.6, metalness: 0.7,
@@ -65,7 +65,7 @@ function init() {
   const group = new THREE.Group();
   scene.add(group);
 
-  new GLTFLoader().load('/models/amber-drop.glb?v=3', (gltf) => {
+  new GLTFLoader().load('/models/amber-drop.glb?v=4', (gltf) => {
     const root = gltf.scene;
     let maxV = 0, body = null;
     root.traverse((o) => { if (o.isMesh) { const v = o.geometry.attributes.position.count; if (v > maxV) { maxV = v; body = o; } } });

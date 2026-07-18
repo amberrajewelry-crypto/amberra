@@ -1267,7 +1267,7 @@ body.page-light #catalog{background:#fff}
 @media(max-width:900px){.hero-wordmark{font-size:clamp(56px,20vw,140px);letter-spacing:.1em}}
 .hero-drop-wrap{
   position:absolute;
-  left:50%;top:calc(50% - 18px); /* optical centering: teardrop mass sits low */
+  left:50%;top:calc(50% + 28px); /* sits a touch lower per art direction */
   transform:translate(-50%,-50%);
   z-index:2;
   pointer-events:none;
