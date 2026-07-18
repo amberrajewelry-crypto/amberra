@@ -1256,12 +1256,11 @@ body.page-light #catalog{background:#fff}
   font-family:var(--serif);font-weight:300;
   font-size:clamp(72px,16vw,240px);line-height:1;
   letter-spacing:.14em;text-indent:.14em; /* cancel trailing letter-spacing so ink centers under drop */
-  color:transparent;
-  background:linear-gradient(180deg,rgba(240,216,138,.34) 0%,rgba(201,168,50,.16) 55%,rgba(184,148,30,.08) 100%);
+  color:rgba(255,255,255,.06);
+  text-shadow:0 2px 40px rgba(0,0,0,.25);
+  background:linear-gradient(180deg,rgba(232,208,128,.16),rgba(201,168,50,.05));
   -webkit-background-clip:text;background-clip:text;
   -webkit-text-fill-color:transparent;
-  /* engraved gold-foil depth: dark lower edge + warm top rim */
-  filter:drop-shadow(0 2px 1px rgba(0,0,0,.45)) drop-shadow(0 -1px 0 rgba(255,242,205,.16));
   opacity:0;animation:wmup 1.4s .2s forwards;
 }
 @keyframes wmup{from{opacity:0;transform:translate(-50%,-50%) translateY(24px)}to{opacity:1;transform:translate(-50%,-50%)}}
