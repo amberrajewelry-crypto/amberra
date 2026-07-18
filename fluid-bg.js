@@ -146,7 +146,7 @@ uniform sampler2D uColor; uniform float uTime; uniform vec2 uSimTs;
 void main() {
   vec2 c=vUV*2.0-1.0;
   float vig=1.0-smoothstep(0.25,0.95,length(c*vec2(0.72,1.0)));
-  vec3 bg=vec3(0.022,0.008,0.001);
+  vec3 bg=vec3(0.30,0.24,0.15);
   vec3 fl=texture2D(uColor,vUV).rgb*vig;
 
   float hL=dot(texture2D(uColor,vUV-vec2(uSimTs.x,0)).rgb,vec3(0.299,0.587,0.114));
