@@ -53,10 +53,10 @@ function init() {
 
   // matte golden — brushed/satin gold, no transparency, soft diffuse sheen
   const amber = new THREE.MeshPhysicalMaterial({
-    color: 0xe4cf86, transmission: 0.0, metalness: 0.82,
-    roughness: 0.5, envMapIntensity: 0.7,
-    clearcoat: 0.18, clearcoatRoughness: 0.55, sheen: 0.45,
-    sheenColor: new THREE.Color(0xfff2c8), sheenRoughness: 0.7,
+    color: 0xe6b23a, transmission: 0.0, metalness: 0.85,
+    roughness: 0.46, envMapIntensity: 0.85,
+    clearcoat: 0.2, clearcoatRoughness: 0.5, sheen: 0.5,
+    sheenColor: new THREE.Color(0xffd970), sheenRoughness: 0.65,
   });
   const sparkMat = new THREE.MeshStandardMaterial({
     color: 0xf3d488, emissive: 0xd8a94a, emissiveIntensity: 0.5, roughness: 0.6, metalness: 0.7,
