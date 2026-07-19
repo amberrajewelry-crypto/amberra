@@ -51,12 +51,13 @@ function init() {
 
   // translucent deep amber (dark cognac resin) — light passes through, inner motes show
   const amber = new THREE.MeshPhysicalMaterial({
-    // real polished amber: satin/matte body + glossy clearcoat that catches the light ("блестит")
-    color: 0xdca31c, transmission: 0.66, thickness: 1.6, ior: 1.52,
-    roughness: 0.4, metalness: 0.0,
-    attenuationColor: new THREE.Color(0xffb733), attenuationDistance: 2.6,
-    clearcoat: 0.55, clearcoatRoughness: 0.13, envMapIntensity: 1.05,
-    emissive: new THREE.Color(0xffab30), emissiveIntensity: 0.36, transparent: true,
+    // real cognac amber: deep dark honey core + glossy clearcoat + thin-film iridescence (light play)
+    color: 0xa8650e, transmission: 0.58, thickness: 2.1, ior: 1.53,
+    roughness: 0.42, metalness: 0.0,
+    attenuationColor: new THREE.Color(0xd98a1e), attenuationDistance: 1.35,
+    clearcoat: 0.6, clearcoatRoughness: 0.12, envMapIntensity: 1.05,
+    iridescence: 0.4, iridescenceIOR: 1.32, iridescenceThicknessRange: [120, 440],
+    emissive: new THREE.Color(0xc47816), emissiveIntensity: 0.2, transparent: true,
   });
 
   const group = new THREE.Group();
@@ -134,6 +135,10 @@ function init() {
     const a = t * 0.6;
     glint.position.set(Math.cos(a) * 4.6, 1.6 + Math.sin(a * 0.7) * 1.6, 4.2);
     glint.intensity = 42 + Math.sin(t * 1.25) * 16 + hoverAmt * 55;
+
+    // light play ("переливание"): thin-film iridescence shimmers as the drop turns
+    amber.iridescence = 0.32 + Math.sin(t * 0.9) * 0.18 + hoverAmt * 0.25;
+    amber.iridescenceIOR = 1.3 + Math.sin(t * 0.55) * 0.08;
 
     // inner shimmer: twinkle motes
     for (const s of sparks) {
