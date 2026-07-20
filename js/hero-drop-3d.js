@@ -51,13 +51,13 @@ function init() {
 
   // translucent deep amber (dark cognac resin) — light passes through, inner motes show
   const amber = new THREE.MeshPhysicalMaterial({
-    // matte cognac amber: deep dark honey core, soft satin surface, subtle light play
-    color: 0xa8650e, transmission: 0.56, thickness: 2.1, ior: 1.53,
-    roughness: 0.62, metalness: 0.0,
-    attenuationColor: new THREE.Color(0xd98a1e), attenuationDistance: 1.35,
-    clearcoat: 0.24, clearcoatRoughness: 0.5, envMapIntensity: 0.7,
-    iridescence: 0.18, iridescenceIOR: 1.3, iridescenceThicknessRange: [120, 440],
-    emissive: new THREE.Color(0xc47816), emissiveIntensity: 0.2, transparent: true,
+    // living honey amber: bright glossy wet-look, deep transmission, warm inner glow + stars
+    color: 0xd99a1e, transmission: 0.82, thickness: 1.7, ior: 1.52,
+    roughness: 0.2, metalness: 0.0,
+    attenuationColor: new THREE.Color(0xffbe3e), attenuationDistance: 2.5,
+    clearcoat: 0.9, clearcoatRoughness: 0.07, envMapIntensity: 1.15,
+    iridescence: 0.16, iridescenceIOR: 1.3, iridescenceThicknessRange: [120, 440],
+    emissive: new THREE.Color(0xffb03a), emissiveIntensity: 0.3, transparent: true,
   });
 
   const group = new THREE.Group();
@@ -90,7 +90,7 @@ function init() {
     }
   }
 
-  new GLTFLoader().load('/models/amber-drop.glb?v=5', (gltf) => {
+  new GLTFLoader().load('/models/amber-drop.glb?v=6', (gltf) => {
     const root = gltf.scene;
     let maxV = 0, body = null;
     root.traverse((o) => { if (o.isMesh) { const v = o.geometry.attributes.position.count; if (v > maxV) { maxV = v; body = o; } } });
@@ -138,8 +138,8 @@ function init() {
     glint.position.set(Math.cos(a) * 4.6, 1.6 + Math.sin(a * 0.7) * 1.6, 4.2);
     glint.intensity = 42 + Math.sin(t * 1.25) * 16 + hoverAmt * 55;
 
-    // gentle light play on the matte surface
-    amber.iridescence = 0.14 + Math.sin(t * 0.9) * 0.08 + hoverAmt * 0.2;
+    // gentle light play on the glossy surface
+    amber.iridescence = 0.16 + Math.sin(t * 0.9) * 0.09 + hoverAmt * 0.2;
     amber.iridescenceIOR = 1.28 + Math.sin(t * 0.55) * 0.06;
 
     // inner starfield: sharp star-like twinkle (crisp flashes, not soft breathing)
@@ -152,7 +152,7 @@ function init() {
     // hover flare: faster spin + brighter emission + halo (via CSS class)
     hoverAmt += ((hover ? 1 : 0) - hoverAmt) * 0.08;
     controls.autoRotateSpeed = 2.0 + hoverAmt * 3.2;
-    amber.emissiveIntensity = 0.16 + hoverAmt * 0.5;
+    amber.emissiveIntensity = 0.28 + hoverAmt * 0.5;
     if (mount.classList.contains('hovered') !== hoverAmt > 0.5) mount.classList.toggle('hovered', hoverAmt > 0.5);
 
     // living breath + hover grow (no wobble)
