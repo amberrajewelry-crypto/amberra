@@ -51,13 +51,13 @@ function init() {
 
   // translucent deep amber (dark cognac resin) — light passes through, inner motes show
   const amber = new THREE.MeshPhysicalMaterial({
-    // living honey amber: bright glossy wet-look, deep transmission, warm inner glow + stars
-    color: 0xd99a1e, transmission: 0.82, thickness: 1.7, ior: 1.52,
+    // saturated orange amber: bright glossy wet-look, deep transmission, warm inner glow + stars
+    color: 0xd96e12, transmission: 0.82, thickness: 1.7, ior: 1.52,
     roughness: 0.2, metalness: 0.0,
-    attenuationColor: new THREE.Color(0xffbe3e), attenuationDistance: 2.5,
+    attenuationColor: new THREE.Color(0xff8a1e), attenuationDistance: 2.3,
     clearcoat: 0.9, clearcoatRoughness: 0.07, envMapIntensity: 1.15,
     iridescence: 0.16, iridescenceIOR: 1.3, iridescenceThicknessRange: [120, 440],
-    emissive: new THREE.Color(0xffb03a), emissiveIntensity: 0.3, transparent: true,
+    emissive: new THREE.Color(0xff8524), emissiveIntensity: 0.3, transparent: true,
   });
 
   const group = new THREE.Group();
