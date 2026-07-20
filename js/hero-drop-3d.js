@@ -51,12 +51,12 @@ function init() {
 
   // translucent deep amber (dark cognac resin) — light passes through, inner motes show
   const amber = new THREE.MeshPhysicalMaterial({
-    // real cognac amber: deep dark honey core + glossy clearcoat + thin-film iridescence (light play)
-    color: 0xa8650e, transmission: 0.58, thickness: 2.1, ior: 1.53,
-    roughness: 0.42, metalness: 0.0,
+    // matte cognac amber: deep dark honey core, soft satin surface, subtle light play
+    color: 0xa8650e, transmission: 0.56, thickness: 2.1, ior: 1.53,
+    roughness: 0.62, metalness: 0.0,
     attenuationColor: new THREE.Color(0xd98a1e), attenuationDistance: 1.35,
-    clearcoat: 0.6, clearcoatRoughness: 0.12, envMapIntensity: 1.05,
-    iridescence: 0.4, iridescenceIOR: 1.32, iridescenceThicknessRange: [120, 440],
+    clearcoat: 0.24, clearcoatRoughness: 0.5, envMapIntensity: 0.7,
+    iridescence: 0.18, iridescenceIOR: 1.3, iridescenceThicknessRange: [120, 440],
     emissive: new THREE.Color(0xc47816), emissiveIntensity: 0.2, transparent: true,
   });
 
@@ -65,7 +65,7 @@ function init() {
 
   const sparks = [];
   function seedSparks(halfW, halfH, cy) {
-    const N = 30;
+    const N = 60;
     for (let i = 0; i < N; i++) {
       // rejection-sample inside an ellipsoid (bulb-biased) so motes stay within the amber
       let x, y, z;
@@ -75,14 +75,16 @@ function init() {
         z = (Math.random() * 2 - 1);
       } while (x * x + y * y + z * z > 1);
       const m = new THREE.MeshStandardMaterial({
-        color: 0xffe6b0, emissive: 0xffb347, emissiveIntensity: 1.4, roughness: 0.35, metalness: 0.0,
+        color: 0xfff4d8, emissive: 0xffe1a0, emissiveIntensity: 1.4, roughness: 0.3, metalness: 0.0,
       });
-      const s = new THREE.Mesh(new THREE.SphereGeometry(0.02 * halfH * 2, 8, 8), m);
+      // tiny star-like specks of varied size
+      const r = (0.008 + Math.random() * 0.011) * halfH * 2;
+      const s = new THREE.Mesh(new THREE.SphereGeometry(r, 8, 8), m);
       // keep motes inside the bulb — tight radial spread, biased slightly up from the tapered tip
       s.position.set(x * halfW * 0.55, cy + y * halfH * 0.42, z * halfW * 0.55);
       s.userData.phase = Math.random() * Math.PI * 2;
-      s.userData.speed = 1.4 + Math.random() * 2.6;
-      s.userData.base = 0.5 + Math.random() * 1.4;
+      s.userData.speed = 1.8 + Math.random() * 3.4;
+      s.userData.peak = 2.0 + Math.random() * 2.4;
       group.add(s);
       sparks.push(s);
     }
@@ -136,14 +138,15 @@ function init() {
     glint.position.set(Math.cos(a) * 4.6, 1.6 + Math.sin(a * 0.7) * 1.6, 4.2);
     glint.intensity = 42 + Math.sin(t * 1.25) * 16 + hoverAmt * 55;
 
-    // light play ("переливание"): thin-film iridescence shimmers as the drop turns
-    amber.iridescence = 0.32 + Math.sin(t * 0.9) * 0.18 + hoverAmt * 0.25;
-    amber.iridescenceIOR = 1.3 + Math.sin(t * 0.55) * 0.08;
+    // gentle light play on the matte surface
+    amber.iridescence = 0.14 + Math.sin(t * 0.9) * 0.08 + hoverAmt * 0.2;
+    amber.iridescenceIOR = 1.28 + Math.sin(t * 0.55) * 0.06;
 
-    // inner shimmer: twinkle motes
+    // inner starfield: sharp star-like twinkle (crisp flashes, not soft breathing)
     for (const s of sparks) {
-      const v = s.userData.base + Math.sin(t * s.userData.speed + s.userData.phase) * 1.2;
-      s.material.emissiveIntensity = Math.max(0.1, v) * (1 + hoverAmt * 0.8);
+      const sp = Math.sin(t * s.userData.speed + s.userData.phase);
+      const flash = Math.pow(Math.max(0, sp), 5); // sharp on/off blink like a star
+      s.material.emissiveIntensity = (0.12 + flash * s.userData.peak) * (1 + hoverAmt * 0.9);
     }
 
     // hover flare: faster spin + brighter emission + halo (via CSS class)
