@@ -30,7 +30,7 @@ function init() {
   const W = () => mount.clientWidth || 1, H = () => mount.clientHeight || 1;
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2.5));
   renderer.setSize(W(), H());
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.18;
@@ -43,21 +43,21 @@ function init() {
   const camera = new THREE.PerspectiveCamera(30, W() / H(), 0.1, 100);
   camera.position.set(0, 0.2, 9.0);
 
-  const key = new THREE.DirectionalLight(0xfff2d6, 2.4); key.position.set(-3, 4, 5); scene.add(key);
-  const rim = new THREE.DirectionalLight(0xffc27a, 2.6); rim.position.set(2, -1.5, -4); scene.add(rim);
+  const key = new THREE.DirectionalLight(0xfff2d6, 2.7); key.position.set(-3, 4, 5); scene.add(key);
+  const rim = new THREE.DirectionalLight(0xffc27a, 2.9); rim.position.set(2, -1.5, -4); scene.add(rim);
   scene.add(new THREE.AmbientLight(0xffe6c0, 0.34));
   // orbiting glint light — sweeps a bright specular across the surface
   const glint = new THREE.PointLight(0xfff0d0, 40, 14, 2); scene.add(glint);
 
   // translucent deep amber (dark cognac resin) — light passes through, inner motes show
   const amber = new THREE.MeshPhysicalMaterial({
-    // genuine Baltic amber: cognac-honey depth, satin-gloss, warm translucency (edge→core gradient)
-    color: 0xb0590e, transmission: 0.86, thickness: 2.15, ior: 1.54,
-    roughness: 0.24, metalness: 0.0,
-    attenuationColor: new THREE.Color(0xe8811f), attenuationDistance: 1.45,
-    clearcoat: 0.82, clearcoatRoughness: 0.14, envMapIntensity: 1.3,
-    sheen: 0.55, sheenRoughness: 0.55, sheenColor: new THREE.Color(0xffc978),
-    iridescence: 0.12, iridescenceIOR: 1.3, iridescenceThicknessRange: [140, 420],
+    // genuine Baltic amber: cognac-honey depth, crisp wet-gloss, warm translucency (edge→core gradient)
+    color: 0xb0590e, transmission: 0.88, thickness: 2.2, ior: 1.54,
+    roughness: 0.19, metalness: 0.0,
+    attenuationColor: new THREE.Color(0xe8811f), attenuationDistance: 1.5,
+    clearcoat: 1.0, clearcoatRoughness: 0.08, envMapIntensity: 1.45,
+    sheen: 0.6, sheenRoughness: 0.5, sheenColor: new THREE.Color(0xffcf82),
+    iridescence: 0.14, iridescenceIOR: 1.3, iridescenceThicknessRange: [140, 420],
     emissive: new THREE.Color(0xcf5f18), emissiveIntensity: 0.16, transparent: true,
   });
 
@@ -111,7 +111,7 @@ function init() {
     const size = new THREE.Vector3(); box.getSize(size);
     const center = new THREE.Vector3(); box.getCenter(center);
     root.position.sub(center);
-    const scl = 3.3 / Math.max(size.x, size.y, size.z);
+    const scl = 3.75 / Math.max(size.x, size.y, size.z);
     root.scale.setScalar(scl);
     group.add(root);
     // sparks live in group space; drop spans ~[-1.65..1.65] in tallest axis
