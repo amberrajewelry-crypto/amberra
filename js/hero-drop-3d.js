@@ -33,7 +33,7 @@ function init() {
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
   renderer.setSize(W(), H());
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.2;
+  renderer.toneMappingExposure = 1.12;
   mount.appendChild(renderer.domElement);
 
   const scene = new THREE.Scene();
@@ -43,21 +43,24 @@ function init() {
   const camera = new THREE.PerspectiveCamera(30, W() / H(), 0.1, 100);
   camera.position.set(0, 0.2, 9.0);
 
-  const key = new THREE.DirectionalLight(0xfff2d6, 2.6); key.position.set(-3, 4, 5); scene.add(key);
-  const rim = new THREE.DirectionalLight(0xffb060, 2.2); rim.position.set(2, -1, -4); scene.add(rim);
-  scene.add(new THREE.AmbientLight(0xffe0b0, 0.3));
+  const key = new THREE.DirectionalLight(0xfff2d6, 2.4); key.position.set(-3, 4, 5); scene.add(key);
+  const rim = new THREE.DirectionalLight(0xffc27a, 2.6); rim.position.set(2, -1.5, -4); scene.add(rim);
+  scene.add(new THREE.AmbientLight(0xffe6c0, 0.34));
+  // warm backlight behind the drop — glows through the translucent amber, lifts the rim (real depth)
+  const back = new THREE.PointLight(0xffa848, 26, 22, 2); back.position.set(0, 0.4, -3.6); scene.add(back);
   // orbiting glint light — sweeps a bright specular across the surface
   const glint = new THREE.PointLight(0xfff0d0, 40, 14, 2); scene.add(glint);
 
   // translucent deep amber (dark cognac resin) — light passes through, inner motes show
   const amber = new THREE.MeshPhysicalMaterial({
-    // deep saturated amber: glossy wet-look, richer/darker core, warm inner glow + stars
-    color: 0xbc6210, transmission: 0.8, thickness: 1.9, ior: 1.52,
-    roughness: 0.2, metalness: 0.0,
-    attenuationColor: new THREE.Color(0xf5892a), attenuationDistance: 1.75,
-    clearcoat: 0.9, clearcoatRoughness: 0.07, envMapIntensity: 1.15,
-    iridescence: 0.16, iridescenceIOR: 1.3, iridescenceThicknessRange: [120, 440],
-    emissive: new THREE.Color(0xff9228), emissiveIntensity: 0.3, transparent: true,
+    // genuine Baltic amber: cognac-honey depth, satin-gloss, warm translucency (edge→core gradient)
+    color: 0xb0590e, transmission: 0.86, thickness: 2.15, ior: 1.54,
+    roughness: 0.24, metalness: 0.0,
+    attenuationColor: new THREE.Color(0xe8811f), attenuationDistance: 1.45,
+    clearcoat: 0.82, clearcoatRoughness: 0.14, envMapIntensity: 1.3,
+    sheen: 0.55, sheenRoughness: 0.55, sheenColor: new THREE.Color(0xffc978),
+    iridescence: 0.12, iridescenceIOR: 1.3, iridescenceThicknessRange: [140, 420],
+    emissive: new THREE.Color(0xcf5f18), emissiveIntensity: 0.16, transparent: true,
   });
 
   const group = new THREE.Group();
@@ -65,9 +68,9 @@ function init() {
 
   // glowing heart — soft pulsing core deep inside the drop (additive glow)
   const core = new THREE.Mesh(
-    new THREE.SphereGeometry(0.55, 20, 20),
+    new THREE.SphereGeometry(0.34, 20, 20),
     new THREE.MeshBasicMaterial({
-      color: 0xffb44e, transparent: true, opacity: 0.12,
+      color: 0xffc266, transparent: true, opacity: 0.14,
       blending: THREE.AdditiveBlending, depthWrite: false,
     })
   );
@@ -160,16 +163,22 @@ function init() {
     amber.iridescence = 0.16 + Math.sin(t * 0.9) * 0.09 + hoverAmt * 0.2;
     amber.iridescenceIOR = 1.28 + Math.sin(t * 0.55) * 0.06;
 
-    // glowing heart: soft pulse, flares up on hover
-    core.material.opacity = 0.1 + Math.abs(Math.sin(t * 1.5)) * 0.06 + hoverAmt * 0.24;
-    core.scale.setScalar(0.85 + Math.sin(t * 1.5) * 0.12 + hoverAmt * 0.45);
+    // wandering luminous soul: the light drifts inside the amber on a slow Lissajous path
+    core.position.set(
+      Math.sin(t * 0.37) * 0.32,
+      Math.sin(t * 0.53 + 1.3) * 0.52,
+      Math.cos(t * 0.31) * 0.32
+    );
+    core.material.opacity = 0.12 + Math.abs(Math.sin(t * 1.6)) * 0.07 + hoverAmt * 0.26;
+    core.scale.setScalar(0.8 + Math.sin(t * 1.6) * 0.14 + hoverAmt * 0.5);
 
-    // inner starfield: sharp twinkle + magnetic drift toward the cursor
+    // inner starfield: sharp twinkle + magnetic drift + motes glow when the soul passes near
     const mag = hoverAmt * 0.55;
     for (const s of sparks) {
       const sp = Math.sin(t * s.userData.speed + s.userData.phase);
       const flash = Math.pow(Math.max(0, sp), 5); // sharp on/off blink like a star
-      s.material.emissiveIntensity = (0.12 + flash * s.userData.peak) * (1 + hoverAmt * 0.9);
+      const near = Math.max(0, 1 - s.position.distanceTo(core.position) / 0.75);
+      s.material.emissiveIntensity = (0.12 + flash * s.userData.peak + near * near * 1.6) * (1 + hoverAmt * 0.9);
       const h = s.userData.home;
       s.position.x += (h.x + cx * mag - s.position.x) * 0.12;
       s.position.y += (h.y + cy * mag - s.position.y) * 0.12;
@@ -178,7 +187,7 @@ function init() {
     // hover flare: faster spin + brighter emission + halo (via CSS class)
     hoverAmt += ((hover ? 1 : 0) - hoverAmt) * 0.08;
     controls.autoRotateSpeed = 2.0 + hoverAmt * 3.2;
-    amber.emissiveIntensity = 0.28 + hoverAmt * 0.5;
+    amber.emissiveIntensity = 0.14 + hoverAmt * 0.4;
     if (mount.classList.contains('hovered') !== hoverAmt > 0.5) mount.classList.toggle('hovered', hoverAmt > 0.5);
 
     // living breath + hover grow (no wobble)
