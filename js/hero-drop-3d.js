@@ -10,8 +10,8 @@ const mount = document.getElementById('hero-drop-canvas');
 function ensureSize() {
   if (!mount) return;
   const vw = innerWidth || 1200;
-  const w = Math.max(200, Math.min(320, vw * 0.20));
-  const h = Math.max(280, Math.min(420, vw * 0.28));
+  const w = Math.max(240, Math.min(384, vw * 0.24));
+  const h = Math.max(336, Math.min(504, vw * 0.336));
   mount.style.width = w + 'px';
   mount.style.height = h + 'px';
   mount.style.cursor = 'grab';
