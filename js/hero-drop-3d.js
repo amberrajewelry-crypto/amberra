@@ -51,10 +51,10 @@ function init() {
 
   // translucent deep amber (dark cognac resin) — light passes through, inner motes show
   const amber = new THREE.MeshPhysicalMaterial({
-    // saturated orange amber: bright glossy wet-look, deep transmission, warm inner glow + stars
-    color: 0xd97d16, transmission: 0.82, thickness: 1.7, ior: 1.52,
+    // deep saturated amber: glossy wet-look, richer/darker core, warm inner glow + stars
+    color: 0xbc6210, transmission: 0.8, thickness: 1.9, ior: 1.52,
     roughness: 0.2, metalness: 0.0,
-    attenuationColor: new THREE.Color(0xff9a26), attenuationDistance: 2.35,
+    attenuationColor: new THREE.Color(0xf5892a), attenuationDistance: 1.75,
     clearcoat: 0.9, clearcoatRoughness: 0.07, envMapIntensity: 1.15,
     iridescence: 0.16, iridescenceIOR: 1.3, iridescenceThicknessRange: [120, 440],
     emissive: new THREE.Color(0xff9228), emissiveIntensity: 0.3, transparent: true,
@@ -62,6 +62,16 @@ function init() {
 
   const group = new THREE.Group();
   scene.add(group);
+
+  // glowing heart — soft pulsing core deep inside the drop (additive glow)
+  const core = new THREE.Mesh(
+    new THREE.SphereGeometry(0.55, 20, 20),
+    new THREE.MeshBasicMaterial({
+      color: 0xffb44e, transparent: true, opacity: 0.12,
+      blending: THREE.AdditiveBlending, depthWrite: false,
+    })
+  );
+  group.add(core);
 
   const sparks = [];
   function seedSparks(halfW, halfH, cy) {
@@ -82,6 +92,7 @@ function init() {
       const s = new THREE.Mesh(new THREE.SphereGeometry(r, 8, 8), m);
       // keep motes inside the bulb — tight radial spread, biased slightly up from the tapered tip
       s.position.set(x * halfW * 0.55, cy + y * halfH * 0.42, z * halfW * 0.55);
+      s.userData.home = s.position.clone(); // rest position for magnetic pull
       s.userData.phase = Math.random() * Math.PI * 2;
       s.userData.speed = 1.8 + Math.random() * 3.4;
       s.userData.peak = 2.0 + Math.random() * 2.4;
@@ -114,10 +125,15 @@ function init() {
   controls.minPolarAngle = Math.PI * 0.3; controls.maxPolarAngle = Math.PI * 0.72;
   controls.target.set(0, 0, 0);
 
-  // cursor reaction — clean hover flare (no wobble): gentle grow + brighter glow/spin/shimmer
-  let hover = false, hoverAmt = 0;
+  // cursor reaction — magnetic: light + particles pull toward the pointer, glow rises (no wobble)
+  let hover = false, hoverAmt = 0, cx = 0, cy = 0;
   mount.addEventListener('pointerenter', () => { hover = true; });
-  mount.addEventListener('pointerleave', () => { hover = false; });
+  mount.addEventListener('pointerleave', () => { hover = false; cx = 0; cy = 0; });
+  mount.addEventListener('pointermove', (e) => {
+    const rect = mount.getBoundingClientRect();
+    cx = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    cy = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+  });
 
   const resize = () => {
     ensureSize();
@@ -133,20 +149,30 @@ function init() {
     requestAnimationFrame(animate);
     const t = clock.getElapsedTime();
 
-    // glint sweep: orbiting light + breathing intensity
+    // glint sweep: orbiting light — magnetically drawn toward the cursor on hover
     const a = t * 0.6;
-    glint.position.set(Math.cos(a) * 4.6, 1.6 + Math.sin(a * 0.7) * 1.6, 4.2);
-    glint.intensity = 42 + Math.sin(t * 1.25) * 16 + hoverAmt * 55;
+    const ox = Math.cos(a) * 4.6, oy = 1.6 + Math.sin(a * 0.7) * 1.6;
+    const pull = hoverAmt * 0.85;
+    glint.position.set(ox * (1 - pull) + cx * 4.2 * pull, oy * (1 - pull) + cy * 3.4 * pull, 4.2);
+    glint.intensity = 42 + Math.sin(t * 1.25) * 16 + hoverAmt * 60;
 
     // gentle light play on the glossy surface
     amber.iridescence = 0.16 + Math.sin(t * 0.9) * 0.09 + hoverAmt * 0.2;
     amber.iridescenceIOR = 1.28 + Math.sin(t * 0.55) * 0.06;
 
-    // inner starfield: sharp star-like twinkle (crisp flashes, not soft breathing)
+    // glowing heart: soft pulse, flares up on hover
+    core.material.opacity = 0.1 + Math.abs(Math.sin(t * 1.5)) * 0.06 + hoverAmt * 0.24;
+    core.scale.setScalar(0.85 + Math.sin(t * 1.5) * 0.12 + hoverAmt * 0.45);
+
+    // inner starfield: sharp twinkle + magnetic drift toward the cursor
+    const mag = hoverAmt * 0.55;
     for (const s of sparks) {
       const sp = Math.sin(t * s.userData.speed + s.userData.phase);
       const flash = Math.pow(Math.max(0, sp), 5); // sharp on/off blink like a star
       s.material.emissiveIntensity = (0.12 + flash * s.userData.peak) * (1 + hoverAmt * 0.9);
+      const h = s.userData.home;
+      s.position.x += (h.x + cx * mag - s.position.x) * 0.12;
+      s.position.y += (h.y + cy * mag - s.position.y) * 0.12;
     }
 
     // hover flare: faster spin + brighter emission + halo (via CSS class)
