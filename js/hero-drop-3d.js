@@ -90,7 +90,7 @@ function init() {
     }
   }
 
-  new GLTFLoader().load('/models/amber-drop.glb?v=8', (gltf) => {
+  new GLTFLoader().load('/models/amber-drop.glb?v=9', (gltf) => {
     const root = gltf.scene;
     let maxV = 0, body = null;
     root.traverse((o) => { if (o.isMesh) { const v = o.geometry.attributes.position.count; if (v > maxV) { maxV = v; body = o; } } });
