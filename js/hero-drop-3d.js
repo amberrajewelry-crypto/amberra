@@ -33,7 +33,7 @@ function init() {
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
   renderer.setSize(W(), H());
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.12;
+  renderer.toneMappingExposure = 1.18;
   mount.appendChild(renderer.domElement);
 
   const scene = new THREE.Scene();
@@ -46,8 +46,6 @@ function init() {
   const key = new THREE.DirectionalLight(0xfff2d6, 2.4); key.position.set(-3, 4, 5); scene.add(key);
   const rim = new THREE.DirectionalLight(0xffc27a, 2.6); rim.position.set(2, -1.5, -4); scene.add(rim);
   scene.add(new THREE.AmbientLight(0xffe6c0, 0.34));
-  // warm backlight behind the drop — glows through the translucent amber, lifts the rim (real depth)
-  const back = new THREE.PointLight(0xffa848, 26, 22, 2); back.position.set(0, 0.4, -3.6); scene.add(back);
   // orbiting glint light — sweeps a bright specular across the surface
   const glint = new THREE.PointLight(0xfff0d0, 40, 14, 2); scene.add(glint);
 
