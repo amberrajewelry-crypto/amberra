@@ -63,6 +63,30 @@ function init() {
   const group = new THREE.Group();
   scene.add(group);
 
+  // UNREAL FX ─────────────────────────────────────────────────────
+  // surreal colored rim light orbiting opposite the glint — paints shifting hues on the amber
+  const hueLight = new THREE.PointLight(0xff4ec9, 18, 16, 2); scene.add(hueLight);
+  // pulsing energy core — the glowing heart of the drop
+  const core = new THREE.Mesh(
+    new THREE.SphereGeometry(0.16, 20, 20),
+    new THREE.MeshBasicMaterial({ color: 0xfff2c8, transparent: true, opacity: 0.85 })
+  );
+  group.add(core);
+  // aura: glowing motes orbiting the drop on tilted rings (magical halo)
+  const aura = [];
+  for (let i = 0; i < 8; i++) {
+    const orb = new THREE.Mesh(
+      new THREE.SphereGeometry(0.028 + Math.random() * 0.03, 10, 10),
+      new THREE.MeshBasicMaterial({ color: 0xffdf9a, transparent: true, opacity: 0.9 })
+    );
+    orb.userData = {
+      rad: 2.0 + Math.random() * 1.0, speed: 0.45 + Math.random() * 0.95,
+      phase: Math.random() * Math.PI * 2, tilt: (Math.random() - 0.5) * 1.4,
+      ph2: Math.random() * Math.PI * 2,
+    };
+    scene.add(orb); aura.push(orb);
+  }
+
   const sparks = [];
   function seedSparks(halfW, halfH, cy) {
     const N = 60;
@@ -90,7 +114,7 @@ function init() {
     }
   }
 
-  new GLTFLoader().load('/models/amber-drop.glb?v=6', (gltf) => {
+  new GLTFLoader().load('/models/amber-drop.glb?v=7', (gltf) => {
     const root = gltf.scene;
     let maxV = 0, body = null;
     root.traverse((o) => { if (o.isMesh) { const v = o.geometry.attributes.position.count; if (v > maxV) { maxV = v; body = o; } } });
@@ -138,9 +162,30 @@ function init() {
     glint.position.set(Math.cos(a) * 4.6, 1.6 + Math.sin(a * 0.7) * 1.6, 4.2);
     glint.intensity = 42 + Math.sin(t * 1.25) * 16 + hoverAmt * 55;
 
-    // gentle light play on the glossy surface
-    amber.iridescence = 0.16 + Math.sin(t * 0.9) * 0.09 + hoverAmt * 0.2;
-    amber.iridescenceIOR = 1.28 + Math.sin(t * 0.55) * 0.06;
+    // surreal colored rim light — orbits opposite, hue drifts through the spectrum
+    const b = -t * 0.45 + Math.PI;
+    hueLight.position.set(Math.cos(b) * 5.0, Math.sin(b * 0.9) * 2.4, -3.6);
+    hueLight.color.setHSL((t * 0.06) % 1, 0.85, 0.6);
+    hueLight.intensity = 16 + Math.sin(t * 0.9) * 8 + hoverAmt * 30;
+
+    // iridescent fire — surreal rainbow shift across the glossy surface
+    amber.iridescence = 0.35 + Math.sin(t * 1.1) * 0.28 + hoverAmt * 0.3;
+    amber.iridescenceIOR = 1.18 + Math.sin(t * 0.7) * 0.2;
+
+    // pulsing energy core
+    core.scale.setScalar(0.75 + Math.sin(t * 2.3) * 0.28 + hoverAmt * 0.7);
+    core.material.opacity = 0.45 + Math.abs(Math.sin(t * 2.3)) * 0.4;
+
+    // aura motes swirl around the drop on tilted orbits, twinkling
+    for (const o of aura) {
+      const u = o.userData, ang = t * u.speed + u.phase;
+      const x = Math.cos(ang) * u.rad, z = Math.sin(ang) * u.rad;
+      const y = Math.sin(ang * 1.3 + u.ph2) * 0.9;
+      o.position.set(x, y * Math.cos(u.tilt) + x * Math.sin(u.tilt) * 0.32, z);
+      const tw = 0.35 + Math.pow(Math.max(0, Math.sin(ang * 2 + u.ph2)), 3) * 0.65;
+      o.material.opacity = tw * (0.7 + hoverAmt * 0.5);
+      o.scale.setScalar(0.6 + tw * 0.9 + hoverAmt * 0.5);
+    }
 
     // inner starfield: sharp star-like twinkle (crisp flashes, not soft breathing)
     for (const s of sparks) {
