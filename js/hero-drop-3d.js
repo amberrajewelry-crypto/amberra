@@ -111,7 +111,7 @@ function init() {
     const size = new THREE.Vector3(); box.getSize(size);
     const center = new THREE.Vector3(); box.getCenter(center);
     root.position.sub(center);
-    const scl = 3.75 / Math.max(size.x, size.y, size.z);
+    const scl = 3.3 / Math.max(size.x, size.y, size.z);
     root.scale.setScalar(scl);
     group.add(root);
     // sparks live in group space; drop spans ~[-1.65..1.65] in tallest axis
