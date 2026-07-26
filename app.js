@@ -1175,7 +1175,10 @@ document.addEventListener('DOMContentLoaded',()=>{
         const s=document.createElement('source');
         s.src=abVid.dataset.src; s.type='video/mp4';
         abVid.appendChild(s);
-        abVid.load(); abVid.play().catch(()=>{});
+        const tryPlay=()=>abVid.play().catch(()=>{});
+        abVid.addEventListener('canplay',tryPlay,{once:true});
+        abVid.addEventListener('loadeddata',tryPlay,{once:true});
+        abVid.load(); tryPlay();
         abIo.disconnect();
       }
     },{rootMargin:'200px'});
