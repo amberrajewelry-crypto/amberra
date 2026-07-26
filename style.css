@@ -1227,6 +1227,32 @@ footer{background:#fff;padding:80px 56px 48px;border-top:1px solid var(--mist)}
 .page-home .ws-wa-link{color:rgba(251,247,239,.92)}
 .page-home .ws-wa-link:hover{color:var(--amber3);border-bottom-color:var(--amber3)}
 
+/* ═══ WHITE INTERNAL PAGES — sections tuned for the index dark fluid (wholesale/about/journal/contact)
+   leak light text onto white bg (our-story, journal.html…). Force readable dark text off-home. ═══ */
+body:not(.page-home) #wholesale .s-title,
+body:not(.page-home) #contact .s-title{color:var(--charcoal)}
+body:not(.page-home) #wholesale .s-body,
+body:not(.page-home) #contact .s-body,
+body:not(.page-home) #about .s-body,
+body:not(.page-home) .ab-inner .s-body{color:#4A4640}
+body:not(.page-home) .ws-tier{background:#fff;border:1px solid var(--mist)}
+body:not(.page-home) .ws-tier-min{color:var(--charcoal)}
+body:not(.page-home) .ws-tier-qty,
+body:not(.page-home) .ws-feat .ws-tier-qty{color:var(--charcoal)!important}
+body:not(.page-home) .ws-tier-note,
+body:not(.page-home) .ws-tier-line{color:#4A4640}
+body:not(.page-home) .ws-tier-line{border-color:rgba(0,0,0,.06)}
+body:not(.page-home) .ws-tier-head{border-bottom-color:rgba(0,0,0,.08)}
+body:not(.page-home) .ws-pillar-num{color:var(--charcoal)}
+body:not(.page-home) .ws-pillar-lbl{color:var(--gray)}
+body:not(.page-home) .ws-pillars{border-top-color:rgba(0,0,0,.1)}
+body:not(.page-home) .ws-pillar{border-right-color:rgba(0,0,0,.07)}
+body:not(.page-home) .ab-pillar-lbl{color:var(--gray)}
+body:not(.page-home) .ab-pillars{border-top-color:rgba(0,0,0,.1)}
+body:not(.page-home) .ab-pillar{border-right-color:rgba(0,0,0,.07)}
+body:not(.page-home) .js-body{color:#4A4640}
+body:not(.page-home) .js-read{color:var(--charcoal)}
+
 /* === HERO VIDEO === */
 #hero-video{position:relative;width:100%;overflow:hidden;background:transparent}
 #hero-video video{width:100%;height:auto;display:block}
