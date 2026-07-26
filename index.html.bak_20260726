@@ -497,7 +497,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/style.css?v=20260726a">
+<link rel="stylesheet" href="/style.css?v=20260720a">
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -606,35 +606,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section id="colls">
   <div class="c-head">
     <h2 class="s-title" style="font-size:clamp(28px,3vw,48px);font-weight:300">The Collection</h2>
-    <a class="c-link" href="/shop">View All →</a>
+    <button class="c-link" onclick="navTo('/shop')">View All →</button>
   </div>
   <div class="c-grid">
-    <a class="cc rv d1" data-rv="scale" href="/rings" aria-label="Shop Baltic amber rings">
+    <div class="cc rv d1" data-rv="scale" onclick="navTo('/rings')">
       <div class="cc-img-wrap">
         <span class="cc-badge bestseller">Bestseller</span>
-        <img src="images/rings/iris_silver.png" alt="Baltic amber rings in 925 sterling silver" loading="lazy">
+        <img src="images/rings/iris_silver.png" alt="Rings" loading="lazy">
       </div>
       <div class="cc-info"><span class="cc-cat">20 pieces · from $89</span><span class="cc-name">Rings</span><span class="cc-price">Baltic amber · 925 silver</span><span class="cc-cta">Shop now</span></div>
-    </a>
-    <a class="cc rv d2" data-rv="scale" href="/earrings" aria-label="Shop Baltic amber earrings">
+    </div>
+    <div class="cc rv d2" data-rv="scale" onclick="navTo('/earrings')">
       <div class="cc-img-wrap">
         <span class="cc-badge new">New</span>
-        <img src="images/earrings/halo_green_rg.png" alt="Baltic amber earrings — studs, drops and hoops" loading="lazy">
+        <img src="images/earrings/halo_green_rg.png" alt="Earrings" loading="lazy">
       </div>
       <div class="cc-info"><span class="cc-cat">45 pieces · from $79</span><span class="cc-name">Earrings</span><span class="cc-price">Studs, drops &amp; hoops</span><span class="cc-cta">Shop now</span></div>
-    </a>
-    <a class="cc rv d3" data-rv="scale" href="/pendants" aria-label="Shop Baltic amber pendants">
+    </div>
+    <div class="cc rv d3" data-rv="scale" onclick="navTo('/pendants')">
       <div class="cc-img-wrap">
-        <img src="images/pendants/IMG_1399.png" alt="Baltic amber pendant with 45 cm silver chain" loading="lazy">
+        <img src="images/pendants/IMG_1399.png" alt="Pendants" loading="lazy">
       </div>
       <div class="cc-info"><span class="cc-cat">8 pieces · from $99</span><span class="cc-name">Pendants</span><span class="cc-price">Chain included · 45 cm</span><span class="cc-cta">Shop now</span></div>
-    </a>
-    <a class="cc rv d4" data-rv="scale" href="/bracelets" aria-label="Shop Baltic amber bracelets">
+    </div>
+    <div class="cc rv d4" data-rv="scale" onclick="navTo('/bracelets')">
       <div class="cc-img-wrap">
-        <img src="images/bracelets/IMG_1566.png" alt="Adjustable Baltic amber bracelet, sizes XS to XL" loading="lazy">
+        <img src="images/bracelets/IMG_1566.png" alt="Bracelets" loading="lazy">
       </div>
       <div class="cc-info"><span class="cc-cat">19 pieces · from $89</span><span class="cc-name">Bracelets</span><span class="cc-price">Adjustable · XS – XL</span><span class="cc-cta">Shop now</span></div>
-    </a>
+    </div>
   </div>
 </section>
 
@@ -642,27 +642,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section id="signature-colls">
   <div class="c-head">
     <h2 class="s-title" style="font-size:clamp(28px,3vw,48px);font-weight:300">Curated <em>Collections</em></h2>
-    <a class="c-link" href="/collections/solar">Discover →</a>
+    <button class="c-link" onclick="navTo('/collections/solar')">Discover →</button>
   </div>
   <div class="c-grid">
-    <a class="cc rv d1" data-rv="scale" href="/collections/solar" aria-label="Explore the Solar amber collection">
+    <div class="cc rv d1" data-rv="scale" onclick="navTo('/collections/solar')">
       <div class="cc-img-wrap">
         <img src="images/earrings/sunburst_tassel_e.jpg" alt="The Solar Collection — sun-warm amber jewelry" loading="lazy">
       </div>
       <div class="cc-info"><span class="cc-cat">18 pieces</span><span class="cc-name">The Solar Collection</span><span class="cc-price">Sunlight caught in amber</span><span class="cc-cta">Explore</span></div>
-    </a>
-    <a class="cc rv d2" data-rv="scale" href="/collections/sacred" aria-label="Explore the Sacred amber collection">
+    </div>
+    <div class="cc rv d2" data-rv="scale" onclick="navTo('/collections/sacred')">
       <div class="cc-img-wrap">
         <img src="images/rings/IMG_9633.JPG" alt="The Sacred Collection — amber talismans &amp; sacred symbols" loading="lazy">
       </div>
       <div class="cc-info"><span class="cc-cat">14 pieces</span><span class="cc-name">The Sacred Collection</span><span class="cc-price">Talismans &amp; sacred symbols</span><span class="cc-cta">Explore</span></div>
-    </a>
-    <a class="cc rv d3" data-rv="scale" href="/collections/botanica" aria-label="Explore the Botanica amber collection">
+    </div>
+    <div class="cc rv d3" data-rv="scale" onclick="navTo('/collections/botanica')">
       <div class="cc-img-wrap">
         <img src="images/earrings/iris_green_gold.jpg" alt="The Botanica Collection — amber leaves, petals &amp; blossoms" loading="lazy">
       </div>
       <div class="cc-info"><span class="cc-cat">14 pieces</span><span class="cc-name">The Botanica Collection</span><span class="cc-price">Leaves, petals &amp; blossoms</span><span class="cc-cta">Explore</span></div>
-    </a>
+    </div>
   </div>
 </section>
 
@@ -715,17 +715,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- ══ FOUNDER STRIP ══════════════════════════════════════════════════════ -->
-<section class="founder-strip">
-  <div class="founder-card">
-    <div class="founder-photo">
-      <img src="images/founder-jane.jpg" alt="Jane Sakhvadze, founder of Amberra" loading="lazy">
+<section class="founder-strip" style="padding:48px 56px">
+  <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:32px;flex-wrap:wrap">
+    <div style="width:80px;height:80px;border-radius:50%;overflow:hidden;border:1.5px solid var(--amber);flex-shrink:0">
+      <img src="images/founder-jane.jpg" alt="Jane Sakhvadze" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 10%">
     </div>
-    <div class="founder-body">
-      <p class="founder-eyebrow">The Founder</p>
-      <p class="founder-name">Jane Sakhvadze <span>· Founder &amp; Creative Director, Bali</span></p>
-      <p class="founder-quote">"Every piece begins where ancient earth meets living hands."</p>
+    <div style="flex:1;min-width:200px">
+      <p style="font-family:var(--sans);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin:0 0 4px">The Founder</p>
+      <p style="font-family:var(--serif);font-size:18px;color:var(--charcoal);margin:0 0 4px">Jane Sakhvadze <span style="font-size:11px;font-style:normal;font-family:var(--sans);letter-spacing:.12em;color:var(--gray)">· Founder &amp; Creative Director, Bali</span></p>
+      <p style="font-family:var(--serif);font-size:14px;font-style:italic;color:var(--gray);margin:0">"Every piece begins where ancient earth meets living hands."</p>
     </div>
-    <a href="/our-story#founder" class="founder-cta">Meet Jane</a>
+    <a href="/our-story#founder" style="font-family:var(--sans);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--charcoal);text-decoration:none;border-bottom:1px solid var(--charcoal);padding-bottom:2px;white-space:nowrap;flex-shrink:0">Meet Jane</a>
   </div>
 </section>
 
@@ -1101,7 +1101,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
   <nav class="ft-colours" aria-label="Shop amber by colour" style="max-width:1280px;margin:0 auto;padding:28px 6vw 0;border-top:1px solid rgba(255,255,255,.08)">
     <span class="fc-t" style="display:block;margin-bottom:12px">Amber by Colour</span>
-    <div style="display:flex;flex-wrap:wrap;gap:12px 24px;font-size:14px;letter-spacing:.04em">
+    <div style="display:flex;flex-wrap:wrap;gap:10px 22px;font-size:12px;letter-spacing:.04em">
       <a href="/amber/cherry">Cherry Amber</a>
       <a href="/amber/honey">Honey Amber</a>
       <a href="/amber/cognac">Cognac Amber</a>
