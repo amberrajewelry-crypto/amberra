@@ -28,9 +28,11 @@ function boot() {
 
 function init() {
   const W = () => mount.clientWidth || 1, H = () => mount.clientHeight || 1;
+  // touch devices: no mouse → skip magnetic cursor, lighten the render
+  const coarse = matchMedia('(pointer:coarse)').matches;
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2.5));
+  renderer.setPixelRatio(Math.min(devicePixelRatio, coarse ? 2 : 2.5));
   renderer.setSize(W(), H());
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.18;
@@ -76,7 +78,7 @@ function init() {
 
   const sparks = [];
   function seedSparks(halfW, halfH, cy) {
-    const N = 60;
+    const N = coarse ? 38 : 60;
     for (let i = 0; i < N; i++) {
       // rejection-sample inside an ellipsoid (bulb-biased) so motes stay within the amber
       let x, y, z;
@@ -130,11 +132,13 @@ function init() {
   let hover = false, hoverAmt = 0, cx = 0, cy = 0;
   mount.addEventListener('pointerenter', () => { hover = true; });
   mount.addEventListener('pointerleave', () => { hover = false; cx = 0; cy = 0; });
-  mount.addEventListener('pointermove', (e) => {
-    const rect = mount.getBoundingClientRect();
-    cx = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-    cy = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
-  });
+  if (!coarse) {
+    mount.addEventListener('pointermove', (e) => {
+      const rect = mount.getBoundingClientRect();
+      cx = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      cy = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+    });
+  }
 
   const resize = () => {
     ensureSize();
