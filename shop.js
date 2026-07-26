@@ -4,6 +4,9 @@
 // ═══════════════════════════════════════════════════════════════════════════
 const C='https://res.cloudinary.com/dtfq3xq3t/image/upload';
 const I='/images';
+// WebP delivery with fallback (mirrors app.js; safe if app.js loads first)
+if(typeof wsrc!=='function'){window.wsrc=function(p){return (typeof p==='string'&&/^\/?images\/.*\.(jpe?g|png)$/i.test(p))?p.replace(/\.(jpe?g|png)$/i,'.webp'):p;};}
+if(typeof wimg!=='function'){window.wimg=function(el,src){if(!el)return;el.onerror=function(){this.onerror=null;this.src=src;};el.src=wsrc(src);};}
 
 // ── PRODUCTS ──────────────────────────────────────────────────────────────
 let products=[];
@@ -70,8 +73,8 @@ function renderProducts(){
       `<div class="pc-xprop"><span class="pc-xpk">${k}</span><span class="pc-xpv">${v}</span></div>`).join('');
     const hasMulti=p.imgs&&p.imgs.length>1;
     const imgHtml=hasMulti
-      ? `<div class="pc-slides">${p.imgs.map((src,si)=>`<img src="${src}" alt="${p.name}" class="pcs${si===0?' active':''}" loading="lazy" width="400" height="400">`).join('')}</div><div class="pc-sdots">${p.imgs.map((_,si)=>`<span class="pc-sdot${si===0?' on':''}"></span>`).join('')}</div>`
-      : `<img src="${p.img}" alt="${p.name}" loading="lazy" width="400" height="400">`;
+      ? `<div class="pc-slides">${p.imgs.map((src,si)=>`<img src="${wsrc(src)}" onerror="this.onerror=null;this.src='${src}'" alt="${p.name}" class="pcs${si===0?' active':''}" loading="lazy" width="400" height="400">`).join('')}</div><div class="pc-sdots">${p.imgs.map((_,si)=>`<span class="pc-sdot${si===0?' on':''}"></span>`).join('')}</div>`
+      : `<img src="${wsrc(p.img)}" onerror="this.onerror=null;this.src='${p.img}'" alt="${p.name}" loading="lazy" width="400" height="400">`;
     return `<div class="pc reveal" style="transition-delay:${(i%4)*.06}s"
       onmouseenter="hxOn(this)"
       onmouseleave="hxOff(this)">
@@ -197,7 +200,7 @@ function openDrawer(id){
     cartBtn.disabled=false;
   }
   const imgs=p.imgs||[p.img];
-  document.getElementById('d-img').src=imgs[0];
+  wimg(document.getElementById('d-img'),imgs[0]);
   document.getElementById('d-cat').textContent=p.cat.toUpperCase();
   document.getElementById('d-name').textContent=p.name;
   document.getElementById('d-mat').textContent=p.material;
@@ -216,7 +219,7 @@ function openDrawer(id){
   const gallery=document.getElementById('d-gallery');
   if(imgs.length>1){
     gallery.innerHTML=imgs.map((src,i)=>
-      `<img class="d-thumb${i===0?' act':''}" src="${src}" onclick="setDImg(this,'${src}')" alt="">`
+      `<img class="d-thumb${i===0?' act':''}" src="${wsrc(src)}" onerror="this.onerror=null;this.src='${src}'" onclick="setDImg(this,'${src}')" alt="">`
     ).join('');
     gallery.style.display='flex';
   } else {
@@ -233,7 +236,7 @@ function openDrawer(id){
   document.getElementById('drawer').classList.add('open');
 }
 function setDImg(el,src){
-  document.getElementById('d-img').src=src;
+  wimg(document.getElementById('d-img'),src);
   document.querySelectorAll('.d-thumb').forEach(t=>t.classList.remove('act'));
   el.classList.add('act');
 }
@@ -285,7 +288,7 @@ function hxOff(el){
 function showHD(id){
   clearTimeout(hdTimer);
   const p=products.find(x=>x.id===id);if(!p)return;
-  document.getElementById('hd-img').src=p.img;
+  wimg(document.getElementById('hd-img'),p.img);
   document.getElementById('hd-cat').textContent=p.cat.toUpperCase();
   document.getElementById('hd-name').textContent=p.name;
   const mat=document.getElementById('hd-material');

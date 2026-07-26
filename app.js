@@ -3,6 +3,11 @@
 // Used on every page: nav, translations, cart, wishlist, modals, chat, cookie
 // ═══════════════════════════════════════════════════════════════════════════
 
+// WebP delivery: rewrite local /images/*.jpg|png → .webp, fall back to original on 404.
+// Remote (Cloudinary) and non-image paths are left untouched.
+function wsrc(p){return (typeof p==='string'&&/^\/?images\/.*\.(jpe?g|png)$/i.test(p))?p.replace(/\.(jpe?g|png)$/i,'.webp'):p;}
+function wimg(el,src){if(!el)return;el.onerror=function(){this.onerror=null;this.src=src;};el.src=wsrc(src);}
+
 // ── ACCOUNT MODAL ─────────────────────────────────────────────────────────
 function openAcc(){
   document.getElementById('acc-modal').classList.add('open');
@@ -82,7 +87,7 @@ function renderWishlist(){
   const shareUrl=location.origin+'/shop?wish='+wishlist.join(',');
   body.innerHTML=`<button class="wish-share-btn" onclick="navigator.clipboard.writeText('${shareUrl}').then(()=>{this.textContent='Link copied ✦';setTimeout(()=>this.textContent='Share Wishlist',2000)})">Share Wishlist</button>`+list.map(p=>`
     <div class="wish-item" onclick="closeWishPanel();if(typeof openDrawer==='function')openDrawer(${p.id})">
-      <img src="${p.img}" alt="${p.name}">
+      <img src="${wsrc(p.img)}" onerror="this.onerror=null;this.src='${p.img}'" alt="${p.name}">
       <div class="wish-item-info">
         <div class="wish-item-name">${p.name}</div>
         <div class="wish-item-mat">${p.material||p.cat}</div>
@@ -191,7 +196,7 @@ function renderCart(){
   }
   body.innerHTML=cart.map(p=>`
     <div class="cart-item">
-      <img src="${p.img}" alt="${p.name}">
+      <img src="${wsrc(p.img)}" onerror="this.onerror=null;this.src='${p.img}'" alt="${p.name}">
       <div class="cart-item-info">
         <div class="cart-item-name">${p.name}</div>
         <div class="cart-item-mat">${p.material}</div>
@@ -823,7 +828,7 @@ function showQuizResult(){
         <p style="font-size:12px;color:var(--gray);margin-top:4px">Based on your unique style profile</p>
       </div>
       <div class="q-body">
-        <img src="${p.img}" style="width:100%;aspect-ratio:1;object-fit:contain;background:var(--silk);padding:20px;margin-bottom:16px" alt="${p.name}">
+        <img src="${wsrc(p.img)}" onerror="this.onerror=null;this.src='${p.img}'" style="width:100%;aspect-ratio:1;object-fit:contain;background:var(--silk);padding:20px;margin-bottom:16px" alt="${p.name}">
         <div class="pcat" style="margin-bottom:4px">${p.cat.toUpperCase()}</div>
         <h3 style="font-family:var(--serif);font-size:20px;margin-bottom:6px">${p.name}</h3>
         <p style="font-size:11px;color:var(--gray);margin-bottom:6px">${p.material}</p>
