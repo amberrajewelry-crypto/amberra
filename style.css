@@ -1252,6 +1252,8 @@ body:not(.page-home) .ab-pillars{border-top-color:rgba(0,0,0,.1)}
 body:not(.page-home) .ab-pillar{border-right-color:rgba(0,0,0,.07)}
 body:not(.page-home) .js-body{color:#4A4640}
 body:not(.page-home) .js-read{color:var(--charcoal)}
+body:not(.page-home) .js-counter{color:var(--gray)}
+body:not(.page-home) .js-counter b{color:var(--charcoal)}
 
 /* === HERO VIDEO === */
 #hero-video{position:relative;width:100%;overflow:hidden;background:transparent}
