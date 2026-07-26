@@ -219,7 +219,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .cc:hover img{transform:scale(1.03)}
 .cc-badge{position:absolute;top:10px;left:10px;z-index:4;padding:3px 8px;font-family:var(--sans);font-size:8px;letter-spacing:.18em;text-transform:uppercase}
 .cc-badge.bestseller{background:var(--charcoal);color:var(--white)}
-.cc-badge.new{background:var(--amber);color:var(--white)}
+.cc-badge.new{background:var(--amber);color:#1a0c02}
 .cc-info{padding:16px 20px 20px;background:transparent}
 .cc-cat{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:5px;display:block;opacity:1;transform:none}
 /* signature-colls: product-on-white JPGs framed as clean tiles so they read intentional on the dark theme */
@@ -1219,6 +1219,13 @@ footer{background:#fff;padding:80px 56px 48px;border-top:1px solid var(--mist)}
 .page-home #journal .js-body{color:rgba(255,255,255,.82)}
 /* white product tiles on the dark bg need a defined edge, category eyebrow stays amber */
 .page-home .cc-name{text-shadow:0 1px 14px rgba(0,0,0,.5)}
+/* per-section contrast fixes (computed-contrast audit: js-counter, contact btn-o, wholesale wa-link) */
+.page-home .js-counter{color:rgba(255,255,255,.65)}
+.page-home .js-counter b{color:#FBF7EF}
+.page-home .btn-o{color:#FBF7EF;border-color:rgba(255,255,255,.55)}
+.page-home .btn-o:hover{opacity:1;border-color:var(--amber3);color:var(--amber3)}
+.page-home .ws-wa-link{color:rgba(251,247,239,.92)}
+.page-home .ws-wa-link:hover{color:var(--amber3);border-bottom-color:var(--amber3)}
 
 /* === HERO VIDEO === */
 #hero-video{position:relative;width:100%;overflow:hidden;background:transparent}
