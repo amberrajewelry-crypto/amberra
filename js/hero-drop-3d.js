@@ -51,16 +51,16 @@ function init() {
   // orbiting glint light — sweeps a bright specular across the surface
   const glint = new THREE.PointLight(0xfff0d0, 40, 14, 2); scene.add(glint);
 
-  // translucent deep amber (dark cognac resin) — light passes through, inner motes show
+  // crystal-clear amber: glassy, high light transmission, bright honey — a gem, not dark resin
   const amber = new THREE.MeshPhysicalMaterial({
-    // genuine Baltic amber: cognac-honey depth, crisp wet-gloss, warm translucency (edge→core gradient)
-    color: 0xb0590e, transmission: 0.88, thickness: 2.2, ior: 1.54,
-    roughness: 0.19, metalness: 0.0,
-    attenuationColor: new THREE.Color(0xe8811f), attenuationDistance: 1.5,
-    clearcoat: 1.0, clearcoatRoughness: 0.08, envMapIntensity: 1.45,
-    sheen: 0.6, sheenRoughness: 0.5, sheenColor: new THREE.Color(0xffcf82),
-    iridescence: 0.14, iridescenceIOR: 1.3, iridescenceThicknessRange: [140, 420],
-    emissive: new THREE.Color(0xcf5f18), emissiveIntensity: 0.16, transparent: true,
+    // clear honey-amber crystal: light passes almost fully, crisp glass gloss, luminous core stays visible
+    color: 0xe8912a, transmission: 0.985, thickness: 0.85, ior: 1.55,
+    roughness: 0.035, metalness: 0.0,
+    attenuationColor: new THREE.Color(0xf6b24a), attenuationDistance: 3.6,
+    clearcoat: 1.0, clearcoatRoughness: 0.02, envMapIntensity: 1.9,
+    sheen: 0.35, sheenRoughness: 0.35, sheenColor: new THREE.Color(0xffe4a8),
+    iridescence: 0.1, iridescenceIOR: 1.28, iridescenceThicknessRange: [140, 420],
+    emissive: new THREE.Color(0xc26a12), emissiveIntensity: 0.09, transparent: true,
   });
 
   const group = new THREE.Group();
