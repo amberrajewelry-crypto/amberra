@@ -380,7 +380,7 @@ function hideHoverDetail(){
 const _urlLang=getLangFromPath();
 const _storedLang=localStorage.getItem('amb_lang');
 const _navLang=navigator.language.split('-')[0];
-const _initLang=_urlLang||(_storedLang&&I18N_LANGS.includes(_storedLang)?_storedLang:null)||(I18N_LANGS.includes(_navLang)?_navLang:'en');
+const _initLang='en';
 setLang(_initLang,false);
 renderProducts();
 initReveal();

@@ -741,3 +741,4 @@ body{font-size:14px}
 /* ── WCAG AA contrast fixes (27.07) — amber/gold accents readable on white ── */
 .s-lbl{color:#9A7B12}
 .cc-cat{color:#9A7B12}
+#lang-sw{display:none}

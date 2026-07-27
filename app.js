@@ -1150,7 +1150,7 @@ window.addEventListener('load',()=>{
 })();
 
 document.addEventListener('DOMContentLoaded',()=>{
-  setLang(detectLang());
+  setLang("en");
   initReveal();
   updateWishBadge();
   updateCartBadge();
