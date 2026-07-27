@@ -84,7 +84,6 @@ function renderProducts(){
           <span class="pcat">${p.cat.toUpperCase()}</span>
           <h3 class="pname">${p.name}</h3>
           <p class="pmaterial">${p.material}</p>
-          <div class="pstars">★★★★★<span class="pstars-count">(${Math.floor(Math.random()*30)+12})</span></div>
           <div class="pfoot"><span class="pprice">${window.formatPrice?window.formatPrice(p.price):'$'+p.price}</span></div>
         </div>
       </div>
