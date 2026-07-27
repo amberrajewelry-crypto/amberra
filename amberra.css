@@ -16,7 +16,7 @@
   --off-white:#FAF8F5;
   --light:#E8E4DC;--mist:#D4CFC6;--nav-h:144px;
   --slate:#2A2520;--gold2:#9A7B12;--bvlg-dark:#2A2520;
-  --serif:'Cormorant Garamond',serif;--sans:'Cormorant Garamond',serif;
+  --serif:'Cormorant Garamond',serif;--sans:'Montserrat','Helvetica Neue',Arial,sans-serif;
 }
 html{scroll-behavior:smooth}
 body{padding-top:144px;background:var(--white);color:var(--black);font-family:var(--sans);font-weight:300;overflow-x:hidden;cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='28' viewBox='0 0 20 28'%3E%3Cpath d='M0 0 L0 24 L5 19 L9 28 L12 27 L8 18 L15 18 Z' fill='%23A8894A' stroke='%23FFFFFF' stroke-width='1'/%3E%3C/svg%3E") 0 0, auto}

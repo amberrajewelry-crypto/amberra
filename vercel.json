@@ -1,5 +1,5 @@
 {
-  "buildCommand": "node scripts/generate-products.js && node scripts/generate-categories.js",
+  "buildCommand": "node scripts/generate-products.js && node scripts/generate-categories.js && node scripts/generate-collections.js",
   "outputDirectory": ".",
   "cleanUrls": true,
   "trailingSlash": false,
