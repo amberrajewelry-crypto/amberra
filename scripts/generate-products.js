@@ -55,7 +55,7 @@ function absImg(img) { return img ? (/^https?:/.test(img) ? img : `${SITE}/${Str
 // Duplicate-name SKUs get their jewelry type appended so links/titles are distinct.
 function displayName(prod) { const n = TYPE_NOUN[prod.cat] || ''; return (prod.dup && n) ? `${prod.name} ${n}` : prod.name; }
 
-// Amber hue for schema `color` (GMC requires it) + product→colour-hub interlink.
+// Amber hue for schema `color` (GMC requires it) + product→color-hub interlink.
 const AMBER_COLORS = ['blue','butterscotch','cherry','cognac','green','honey','mosaic','raw'];
 function amberColor(prod) { const hay = `${prod.name} ${(prod.props && prod.props.Stone) || ''}`.toLowerCase(); return AMBER_COLORS.find(c => hay.includes(c)) || ''; }
 
@@ -77,7 +77,7 @@ const CAT_INTRO = {
     'Lightweight earrings that pair the honeyed warmth of amber with a secure, comfortable fitting.'
   ],
   pendants: [
-    'This pendant centres a single piece of natural amber, ready to layer or wear on its own.',
+    'This pendant centers a single piece of natural amber, ready to layer or wear on its own.',
     'A pendant that lets one warm piece of amber rest at the collarbone, hung on a fine chain.',
     'Worn close to the heart, this pendant turns a fossil of ancient resin into an everyday piece.'
   ],
@@ -87,7 +87,7 @@ const CAT_INTRO = {
     'Natural amber set into a bracelet made to be worn and layered, from day to evening.'
   ],
   chains: [
-    'A finished chain made to carry your favourite amber pendant, or to be worn on its own.',
+    'A finished chain made to carry your favorite amber pendant, or to be worn on its own.',
     'This chain is crafted to pair with amber pendants and sit smoothly against the skin.'
   ]
 };
@@ -112,9 +112,9 @@ function aboutBlock(p) {
   const col = amberColor(p);
   const COLOR_FALLBACK = [
     'Every piece of natural amber carries its own inclusions and tone, so yours is one of a kind.',
-    'No two pieces of natural amber are alike — the colour and tiny inclusions make each one unique.',
+    'No two pieces of natural amber are alike — the color and tiny inclusions make each one unique.',
     'Formed from resin millions of years old, each amber cabochon has a tone and pattern all its own.',
-    'The warm, translucent colour comes from the amber itself, so every piece has its own character.'
+    'The warm, translucent color comes from the amber itself, so every piece has its own character.'
   ];
   const colLine = COLOR_LINE[col] || pick(seed + (p.material || '') + 'f', COLOR_FALLBACK);
   const metal = String((p.props && p.props.Metal) || '').toLowerCase();
@@ -286,7 +286,7 @@ ${breadcrumbSchema}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css?v=20260717">
+<link rel="stylesheet" href="/style.css?v=20260727b">
 <link rel="preconnect" href="https://app.snipcart.com">
 <link rel="preconnect" href="https://cdn.snipcart.com">
 <link rel="stylesheet" href="https://cdn.snipcart.com/themes/${SNIPCART_VER}/default/snipcart.css">

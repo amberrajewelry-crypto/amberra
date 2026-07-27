@@ -6,7 +6,7 @@
   --silk:#F2EEE8;
   --mist:#E8E4DC;
   --stone:#C8C4BC;
-  --gray:#8C8880;
+  --gray:#6E6A62;
   --charcoal:#3C3830;
   --black:#000000;
   --amber:#C9A832;
@@ -15,6 +15,7 @@
   --gold:#E8D080;
   --off-white:#FAF8F5;
   --light:#E8E4DC;--mist:#D4CFC6;--nav-h:144px;
+  --slate:#2A2520;--gold2:#9A7B12;--bvlg-dark:#2A2520;
   --serif:'Cormorant Garamond',serif;--sans:'Cormorant Garamond',serif;
 }
 html{scroll-behavior:smooth}
@@ -736,3 +737,7 @@ body{font-size:14px}
 /* Кнопки */
 .btn-s,.btn-o,.btn-w{font-size:12px!important;letter-spacing:.2em}
 
+
+/* ── WCAG AA contrast fixes (27.07) — amber/gold accents readable on white ── */
+.s-lbl{color:#9A7B12}
+.cc-cat{color:#9A7B12}

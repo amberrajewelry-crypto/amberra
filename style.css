@@ -1472,3 +1472,19 @@ body.page-light #catalog{background:#fff}
 .cat-block{margin-bottom:34px}
 .cat-block h2{font:300 26px/1.25 var(--serif);color:var(--charcoal);margin:0 0 14px}
 .cat-block p{font:300 16px/1.85 var(--sans);color:#3a3630;margin:0 0 14px}
+
+/* ── WCAG AA contrast fixes (27.07) — light-context accents/greys readable ── */
+body:not(.page-home) .s-lbl,
+body:not(.page-home) .pcat,
+body:not(.page-home) .cc-cat,
+body:not(.page-home) .ws-tier-disc{color:#9A7B12}
+body:not(.page-home) .pmaterial,
+body:not(.page-home) .cat-breadcrumb,
+body:not(.page-home) .cat-breadcrumb a,
+body:not(.page-home) .cat-links-t{color:#6E6A62}
+.cat-links-row a:hover,
+.faq-item summary::after,
+body:not(.page-home) .js-title em{color:#8A6E14}
+.tryon-hint-pill{color:#8A6D10}
+#tryon-sec .tryon-mode-divider,
+#tryon-sec .tryon-items-label{color:#6E6A62}

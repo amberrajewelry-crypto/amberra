@@ -373,7 +373,7 @@ function closeSrv(){
 const SVC={
 consultation:{title:'Book an Appointment',body:`
 <div class="sg-section">
-<div class="sg-section-title">Your Personal Jewellery Appointment</div>
+<div class="sg-section-title">Your Personal Jewelry Appointment</div>
 <p class="sg-intro">Every great piece of jewelry begins with a conversation. Our specialists in Bali are available for private one-on-one consultations — by WhatsApp, video call, or in our Ubud atelier.</p>
 <div class="sg-method">
 <div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>Choose Your Format</b>WhatsApp consultation (instant) · Video call via Zoom or FaceTime · In-person visit to our Ubud studio by appointment. All consultations are complimentary and carry no obligation.</div></div>
