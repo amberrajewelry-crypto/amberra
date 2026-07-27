@@ -228,6 +228,15 @@ function openDrawer(id){
   }
   const sizeEl=document.getElementById('d-size');
   if(sizeEl) sizeEl.innerHTML=buildSizeSelector(p);
+  // You may also like — 3 pieces from the same category
+  const rel=document.getElementById('d-related');
+  if(rel){
+    const others=products.filter(x=>x.cat===p.cat&&x.id!==id).slice(0,3);
+    rel.innerHTML=others.length?`<h3 class="d-rel-h">You May Also Like</h3><div class="d-rel-grid">${others.map(o=>{
+      const oi=(o.imgs&&o.imgs[0])||o.img;
+      return `<a class="d-rel-card" href="#" onclick="openDrawer(${o.id});return false"><span class="d-rel-imgw"><img src="${wsrc(oi)}" onerror="this.onerror=null;this.src='${oi}'" alt="${o.name}" loading="lazy"></span><span class="d-rel-name">${o.name}</span><span class="d-rel-price">${window.formatPrice?window.formatPrice(o.price):'$'+o.price}</span></a>`;
+    }).join('')}</div>`:'';
+  }
   const sb=window.innerWidth-document.documentElement.clientWidth;
   document.body.style.paddingRight=sb+'px';
   document.body.style.overflow='hidden';
