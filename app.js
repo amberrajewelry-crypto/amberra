@@ -392,7 +392,7 @@ giftwrap:{title:'Gift Wrapping',body:`
 <div class="sg-section-title">The Art of the Gift</div>
 <p class="sg-intro">Every AMBERRA piece is presented in our signature packaging — handcrafted in Bali using materials that honour the natural world from which amber itself comes.</p>
 <div class="sg-method">
-<div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>Signature AMBERRA Box</b>Matte black rigid box with gold foil stamping. Interior lined with cream-coloured velvet. Each box is sealed with our amber-toned wax stamp — a ritual in itself.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>Signature AMBERRA Box</b>Matte black rigid box with gold foil stamping. Interior lined with cream-colored velvet. Each box is sealed with our amber-toned wax stamp — a ritual in itself.</div></div>
 <div class="sg-method-step"><span class="sg-method-num">02</span><div class="sg-method-text"><b>Luxury Ribbon & Tissue</b>Hand-tied satin ribbon in ivory or deep charcoal. Acid-free tissue paper with the AMBERRA emblem. All packaging is recyclable and plastic-free.</div></div>
 <div class="sg-method-step"><span class="sg-method-num">03</span><div class="sg-method-text"><b>Personalised Message Card</b>Include a handwritten message on our cream-laid card stock — engraved with the AMBERRA monogram. Available in English, Russian, Arabic, Indonesian, and French. No extra charge.</div></div>
 <div class="sg-method-step"><span class="sg-method-num">04</span><div class="sg-method-text"><b>Bali Gift Set Upgrade</b>Add a hand-painted batik pouch, artisan incense from Ubud, and a small raw amber specimen for $28. A gift that carries the spirit of Bali.</div></div>
@@ -495,7 +495,7 @@ care:{title:'Care & Warranty',body:`
 <ul>
 <li>Manufacturing defects in clasps, settings, and closures</li>
 <li>Stone loss caused by a defective setting (not by impact, force, or misuse)</li>
-<li>Premature and abnormal discolouration of sterling silver components</li>
+<li>Premature and abnormal discoloration of sterling silver components</li>
 <li>Separation of gold vermeil in less than 6 months of normal use</li>
 <li>One complimentary professional inspection and clean within the warranty period</li>
 </ul>
@@ -510,7 +510,7 @@ custom:{title:'Custom Orders',body:`
 <div class="sg-section-title">Your Bespoke Piece</div>
 <p class="sg-intro">Every amber stone is unique — no two are alike. Our Bali atelier accepts fully bespoke commissions: from a ring made to your exact size and stone preference, to a multi-piece set designed for a special occasion.</p>
 <div class="sg-method">
-<div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>Initial Consultation</b>Share your vision via WhatsApp or email. Reference images, stone colours, metal preferences (sterling silver, gold vermeil, solid 18k), occasion, and budget. No brief is too simple or too ambitious.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>Initial Consultation</b>Share your vision via WhatsApp or email. Reference images, stone colors, metal preferences (sterling silver, gold vermeil, solid 18k), occasion, and budget. No brief is too simple or too ambitious.</div></div>
 <div class="sg-method-step"><span class="sg-method-num">02</span><div class="sg-method-text"><b>Stone Selection</b>We will present 3–5 amber specimens matching your specifications — photographed on white and on skin. You select the stone you feel drawn to. This is your piece, beginning with your choice.</div></div>
 <div class="sg-method-step"><span class="sg-method-num">03</span><div class="sg-method-text"><b>Design Proposal</b>Our artisan prepares a hand-drawn sketch and, for complex pieces, a 3D render. You review and approve before any metal is touched. One round of revisions is included at no extra cost.</div></div>
 <div class="sg-method-step"><span class="sg-method-num">04</span><div class="sg-method-text"><b>Crafting in Bali</b>Your piece is made by hand in our Ubud workshop. Standard completion: 2–3 weeks. Complex or engraved pieces: 4–5 weeks. You will receive progress photographs at each stage.</div></div>
@@ -532,7 +532,7 @@ tryon:{title:'Virtual Try On',body:`
 <div class="sg-method-step"><span class="sg-method-num">03</span><div class="sg-method-text"><b>Adjust &amp; Compare</b>Drag to reposition. Use pinch-to-zoom to scale. Compare up to three pieces side by side. Save your look as an image to share with friends or revisit later.</div></div>
 <div class="sg-method-step"><span class="sg-method-num">04</span><div class="sg-method-text"><b>Order with Confidence</b>Once you have found your piece, add it directly to your cart from the Try On view. Not sure? Save it to your Wishlist or send us the image on WhatsApp for a personal stylist opinion.</div></div>
 </div>
-<p class="sg-note">Best results on desktop or tablet. Works on all modern browsers without installation. For the most accurate colour rendering, use natural daylight when taking your source photo. Camera live mode coming soon.</p>
+<p class="sg-note">Best results on desktop or tablet. Works on all modern browsers without installation. For the most accurate color rendering, use natural daylight when taking your source photo. Camera live mode coming soon.</p>
 </div>`},
 
 blessing:{title:'The Bali Blessing',body:`
@@ -556,7 +556,7 @@ certificate:{title:'Certificate of Authenticity',body:`
 <div class="sg-section-title">Your Guarantee of Origin &amp; Authenticity</div>
 <p class="sg-intro">Every AMBERRA piece is accompanied by a Certificate of Authenticity — a document that records the origin, composition, and individual character of your amber stone and its setting.</p>
 <div class="sg-method">
-<div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>What Is Certified</b>Baltic amber origin (Bali, Indonesia) · Succinic acid content (2–8%) confirming genuine resinite amber · Metal purity (925 sterling silver or 18k gold vermeil) · Stone colour classification and inclusion description.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>What Is Certified</b>Baltic amber origin (Bali, Indonesia) · Succinic acid content (2–8%) confirming genuine resinite amber · Metal purity (925 sterling silver or 18k gold vermeil) · Stone color classification and inclusion description.</div></div>
 <div class="sg-method-step"><span class="sg-method-num">02</span><div class="sg-method-text"><b>The Physical Certificate</b>Printed on heavyweight 300gsm cream cotton paper. Bears the AMBERRA embossed seal, the artisan's signature, the date of completion, and a unique piece reference number. Presented in a protective archival sleeve.</div></div>
 <div class="sg-method-step"><span class="sg-method-num">03</span><div class="sg-method-text"><b>Digital Verification</b>Each certificate includes a QR code linking to your piece's unique digital record — including high-resolution photography, stone provenance documentation, and the Bali Blessing date. Permanently hosted and accessible at any time.</div></div>
 <div class="sg-method-step"><span class="sg-method-num">04</span><div class="sg-method-text"><b>Resale &amp; Inheritance Value</b>AMBERRA certificates are transferable. Should your piece be gifted, inherited, or resold, the certificate travels with it. A re-authentication service is available for $35, updating the certificate with a new owner name and date.</div></div>
@@ -774,7 +774,7 @@ function toggleJournal(){
 
 // ── QUIZ ──────────────────────────────────────────────────────────────────
 const quizData=[
-  {q:'What draws you most to amber jewelry?',opts:['The ancient history','The warm golden colour','The spiritual energy','The uniqueness of each stone']},
+  {q:'What draws you most to amber jewelry?',opts:['The ancient history','The warm golden color','The spiritual energy','The uniqueness of each stone']},
   {q:'How would you describe your personal style?',opts:['Minimalist & refined','Bold & expressive','Earthy & natural','Classic & timeless']},
   {q:'When do you most often wear jewelry?',opts:['Every day, always','Special occasions only','Work & professional settings','Meditation & wellness moments']},
   {q:'Which metal feels most like you?',opts:['Pure sterling silver','Gold-plated glamour','Oxidized & rustic','Mixed metals']},

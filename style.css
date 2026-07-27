@@ -564,10 +564,10 @@ footer{background:#fff;padding:80px 56px 48px;border-top:1px solid var(--mist)}
 .fleg a{font-size:14px;color:#8C8880;text-decoration:none;transition:color .3s}
 .fleg a:hover{color:var(--amber)}
 /* amber-by-colour SEO nav — was missing hover feedback entirely */
-.ft-colours a{color:#8C8880;text-decoration:none;position:relative;transition:color .3s}
-.ft-colours a::after{content:'';position:absolute;left:0;bottom:-3px;width:0;height:1px;background:var(--amber);transition:width .35s}
-.ft-colours a:hover{color:var(--amber)}
-.ft-colours a:hover::after{width:100%}
+.ft-colors a{color:#8C8880;text-decoration:none;position:relative;transition:color .3s}
+.ft-colors a::after{content:'';position:absolute;left:0;bottom:-3px;width:0;height:1px;background:var(--amber);transition:width .35s}
+.ft-colors a:hover{color:var(--amber)}
+.ft-colors a:hover::after{width:100%}
 
 /* ═══ FOUNDER STRIP ═════════════════════════════════════════════════════ */
 .founder-strip{background:var(--cream);padding:64px 6vw}
