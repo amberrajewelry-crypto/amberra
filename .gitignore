@@ -8,3 +8,4 @@ node_modules/
 /rodin-drop-*.png
 
 /dns-zone-backup-*.json
+.firecrawl/
