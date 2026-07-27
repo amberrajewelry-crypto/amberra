@@ -1521,3 +1521,19 @@ body:not(.page-home) .js-title em{color:#8A6E14}
 .srv-item p{font-family:var(--serif);font-size:15px;line-height:1.7;color:#4A4640}
 .srv-item p a{color:#8A6E14;text-decoration:none;border-bottom:1px solid rgba(138,110,20,.35);white-space:nowrap}
 @media(max-width:820px){.srv-grid{grid-template-columns:1fr;gap:20px}}
+
+/* ── The Making (our-story) + shop collections footer (27.07) ── */
+.making-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:22px}
+.making-step{text-align:left}
+.making-num{font-family:var(--serif);font-size:26px;color:#8A6E14;display:block;margin-bottom:10px}
+.making-step h3{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--charcoal);margin-bottom:8px;line-height:1.2}
+.making-step p{font-family:var(--serif);font-size:14px;line-height:1.65;color:#4A4640}
+@media(max-width:900px){.making-grid{grid-template-columns:1fr 1fr;gap:26px}}
+@media(max-width:560px){.making-grid{grid-template-columns:1fr}}
+.shop-coll-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.shop-coll{display:flex;flex-direction:column;gap:6px;padding:34px 28px;border:1px solid var(--mist);border-radius:12px;text-decoration:none;background:#fff;transition:border-color .3s,transform .3s}
+.shop-coll:hover{border-color:var(--amber);transform:translateY(-2px)}
+.shop-coll-lbl{font-family:var(--sans);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9A7B12}
+.shop-coll-name{font-family:var(--serif);font-size:24px;font-weight:300;color:var(--charcoal)}
+.shop-coll-cta{font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8A6E14;margin-top:10px}
+@media(max-width:820px){.shop-coll-grid{grid-template-columns:1fr}}
