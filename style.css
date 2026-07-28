@@ -340,6 +340,13 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .ftab.act{background:var(--charcoal);color:var(--white);border-color:var(--charcoal)}
 .ftab:hover:not(.act){color:#000;border-color:#000}
 .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start}
+.cat-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1280px;margin:0 auto 22px;padding:0 24px}
+.cat-count{font-family:var(--sans);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray)}
+.cat-sort{display:flex;align-items:center;gap:10px}
+.cat-sort-lbl{font-family:var(--sans);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray)}
+.cat-sort select{font-family:var(--sans);font-size:12px;letter-spacing:.04em;color:var(--charcoal);background:transparent;border:none;border-bottom:1px solid var(--mist);padding:6px 20px 6px 4px;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='none' stroke='%238C8880' stroke-width='1.2' d='M1 1l4 4 4-4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right center;transition:border-color .2s}
+.cat-sort select:hover{border-bottom-color:var(--amber)}
+.cat-sort select:focus{outline:none;border-bottom-color:var(--amber)}
 .pc{background:#fff;position:relative;cursor:pointer;display:flex;flex-direction:column;overflow:hidden;border:none;margin:0}
 .pc.hx{z-index:100}
 .pc-inner{overflow:hidden;display:flex;flex-direction:column;background:#fff;position:relative;

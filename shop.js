@@ -23,6 +23,7 @@ async function loadProducts(){
 // ── CATALOG STATE ─────────────────────────────────────────────────────────
 let activeFilter='all';
 let searchQuery='';
+let activeSort='featured';
 // Curated collection pages (/collections/*) inject window.COLLECTION_IDS — an
 // ordered id list. When present, the grid renders exactly that set (see renderProducts).
 const collectionIds=Array.isArray(window.COLLECTION_IDS)?window.COLLECTION_IDS:null;
@@ -61,6 +62,9 @@ function renderProducts(){
       (p.desc||'').toLowerCase().includes(searchQuery)
     );
   }
+  list=sortList(list,activeSort);
+  const cnt=document.getElementById('cat-count');
+  if(cnt)cnt.textContent=list.length+(list.length===1?' piece':' pieces');
   if(!list.length){
     grid.innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:60px;color:var(--stone);font-size:11px;letter-spacing:.15em">${showingWishlist?'YOUR WISHLIST IS EMPTY':'NO RESULTS FOUND'}</div>`;
     return;
@@ -119,6 +123,17 @@ function fac(cat){
   s('catalog');
   setTimeout(renderProducts,300);
 }
+
+// ── SORT ──────────────────────────────────────────────────────────────────
+// ponytail: deterministic copy-sort, original products order preserved as Featured (Airtable order).
+function sortList(list,mode){
+  const out=list.slice();
+  if(mode==='price-asc')out.sort((a,b)=>(a.price||0)-(b.price||0));
+  else if(mode==='price-desc')out.sort((a,b)=>(b.price||0)-(a.price||0));
+  else if(mode==='newest')out.sort((a,b)=>(b.badge==='new'?1:0)-(a.badge==='new'?1:0));
+  return out; // 'featured' = keep source order
+}
+function setSort(v){activeSort=v;renderProducts();}
 
 // ── SIZE SELECTOR ─────────────────────────────────────────────────────────
 const RING_SIZE_RANGES={
