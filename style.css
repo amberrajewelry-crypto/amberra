@@ -339,7 +339,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .ftab{padding:10px 20px;font-size:14px;letter-spacing:.15em;text-transform:uppercase;color:#000;border:1px solid #000;background:var(--white);font-family:var(--sans);transition:all .25s;cursor:pointer}
 .ftab.act{background:var(--charcoal);color:var(--white);border-color:var(--charcoal)}
 .ftab:hover:not(.act){color:#000;border-color:#000}
-.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:start}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start}
 .pc{background:#fff;position:relative;cursor:pointer;display:flex;flex-direction:column;overflow:hidden;border:none;margin:0}
 .pc.hx{z-index:100}
 .pc-inner{overflow:hidden;display:flex;flex-direction:column;background:#fff;position:relative;
@@ -458,12 +458,12 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .pc-label *{color:#1a0c02}
 .pc-label .pc-cat{color:var(--amber)}
 .pcat{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:8px;display:block;font-weight:500}
-.pname{font-family:var(--serif);font-size:18px;font-weight:500;margin-bottom:5px;line-height:1.25;color:#1a0c02}
+.pname{font-family:var(--serif);font-size:21px;font-weight:500;margin-bottom:5px;line-height:1.25;color:#1a0c02;min-height:2.6em}
 .pmaterial{font-size:14px;color:#3a3630;margin-bottom:6px;line-height:1.4}
 .pstars{font-size:14px;color:var(--amber);margin-bottom:5px;letter-spacing:.05em}
 .pstars-count{font-size:13px;color:#5a5650;font-family:var(--sans);margin-left:3px}
 .pfoot{display:flex;align-items:center}
-.pprice{font-family:var(--serif);font-size:18px;font-weight:500;color:#1a0c02}
+.pprice{font-family:var(--serif);font-size:18px;font-weight:500;color:#1a0c02;font-variant-numeric:tabular-nums}
 /* Expanded info panel */
 .pc-xpanel{position:absolute;top:0;left:calc(100% + 10px);width:100%;height:100%;background:var(--white);border-radius:12px;border:1px solid var(--mist);box-shadow:0 10px 40px rgba(12,12,12,.12);display:flex;flex-direction:column;justify-content:center;padding:24px 22px;opacity:0;transform:translateX(-12px);transition:opacity .4s cubic-bezier(.25,.46,.45,.94),transform .4s cubic-bezier(.25,.46,.45,.94);pointer-events:none;z-index:11}
 .pc.hx-l .pc-xpanel{left:auto;right:calc(100% + 10px);transform:translateX(12px)}
