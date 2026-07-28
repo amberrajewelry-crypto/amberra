@@ -100,6 +100,8 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .btn-s:hover{opacity:.75}
 .btn-o{padding:13px 36px;border:1px solid var(--charcoal);color:var(--charcoal);font-size:12px;letter-spacing:.18em;text-transform:uppercase;background:none;font-family:var(--sans);transition:opacity .4s,border-color .4s;cursor:pointer}
 .btn-o:hover{opacity:.6}
+/* pressed-feedback: tactile click response on key CTAs (was missing) */
+.btn-s:active,.btn-o:active,.btn-cart:active,.hero-cta:active,.hm-btn-primary:active,.hm-btn-ghost:active{transform:scale(.98)}
 
 /* ═══ HERO ══════════════════════════════════════════════════════════════ */
 #hero{height:100vh;min-height:680px;position:relative;overflow:hidden;background:transparent}
