@@ -24,6 +24,7 @@ async function loadProducts(){
 let activeFilter='all';
 let searchQuery='';
 let activeSort='featured';
+let activeCollection='all';
 // Curated collection pages (/collections/*) inject window.COLLECTION_IDS — an
 // ordered id list. When present, the grid renders exactly that set (see renderProducts).
 const collectionIds=Array.isArray(window.COLLECTION_IDS)?window.COLLECTION_IDS:null;
@@ -61,6 +62,9 @@ function renderProducts(){
       (p.material||'').toLowerCase().includes(searchQuery)||
       (p.desc||'').toLowerCase().includes(searchQuery)
     );
+  }
+  if(activeCollection!=='all'){
+    list=list.filter(p=>(p.props&&p.props.Collection)===activeCollection);
   }
   list=sortList(list,activeSort);
   const cnt=document.getElementById('cat-count');
@@ -134,6 +138,20 @@ function sortList(list,mode){
   return out; // 'featured' = keep source order
 }
 function setSort(v){activeSort=v;renderProducts();}
+
+// ── COLLECTION FILTER ──────────────────────────────────────────────────────
+// ponytail: populate only collections present in loaded products, sorted by count desc.
+function populateCollections(){
+  const sel=document.getElementById('cat-collection');
+  if(!sel)return;
+  const counts={};
+  products.forEach(p=>{const c=p.props&&p.props.Collection;if(c)counts[c]=(counts[c]||0)+1;});
+  const names=Object.keys(counts).sort((a,b)=>counts[b]-counts[a]||a.localeCompare(b));
+  const cur=activeCollection;
+  sel.innerHTML='<option value="all">All Collections</option>'+names.map(n=>`<option value="${n}">${n} (${counts[n]})</option>`).join('');
+  sel.value=cur&&names.includes(cur)?cur:'all';
+}
+function setCollection(v){activeCollection=v;renderProducts();}
 
 // ── SIZE SELECTOR ─────────────────────────────────────────────────────────
 const RING_SIZE_RANGES={
@@ -344,6 +362,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       });
     }
     renderProducts();
+    populateCollections();
     // Trigger reveal after load
     setTimeout(()=>{
       document.querySelectorAll('.reveal').forEach(el=>{
