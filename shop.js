@@ -232,7 +232,8 @@ function openDrawer(id){
     cartBtn.disabled=false;
   }
   const imgs=p.imgs||[p.img];
-  wimg(document.getElementById('d-img'),imgs[0]);
+  const dImgEl=document.getElementById('d-img');
+  wimg(dImgEl,imgs[0]); if(dImgEl) dImgEl.alt=p.name;
   document.getElementById('d-cat').textContent=p.cat.toUpperCase();
   document.getElementById('d-name').textContent=p.name;
   document.getElementById('d-mat').textContent=p.material;
@@ -251,7 +252,7 @@ function openDrawer(id){
   const gallery=document.getElementById('d-gallery');
   if(imgs.length>1){
     gallery.innerHTML=imgs.map((src,i)=>
-      `<img class="d-thumb${i===0?' act':''}" src="${wsrc(src)}" onerror="this.onerror=null;this.src='${src}'" onclick="setDImg(this,'${src}')" alt="">`
+      `<img class="d-thumb${i===0?' act':''}" src="${wsrc(src)}" onerror="this.onerror=null;this.src='${src}'" onclick="setDImg(this,'${src}')" alt="${p.name} thumbnail">`
     ).join('');
     gallery.style.display='flex';
   } else {
@@ -277,7 +278,10 @@ function openDrawer(id){
   document.getElementById('drawer').classList.add('open');
 }
 function setDImg(el,src){
-  wimg(document.getElementById('d-img'),src);
+  const dEl=document.getElementById('d-img');
+  wimg(dEl,src);
+  const p=products.find(x=>x.id===drawerProductId);
+  if(dEl&&p) dEl.alt=p.name;
   document.querySelectorAll('.d-thumb').forEach(t=>t.classList.remove('act'));
   el.classList.add('act');
 }
@@ -329,7 +333,8 @@ function hxOff(el){
 function showHD(id){
   clearTimeout(hdTimer);
   const p=products.find(x=>x.id===id);if(!p)return;
-  wimg(document.getElementById('hd-img'),p.img);
+  const hdEl=document.getElementById('hd-img');
+  wimg(hdEl,p.img); if(hdEl) hdEl.alt=p.name;
   document.getElementById('hd-cat').textContent=p.cat.toUpperCase();
   document.getElementById('hd-name').textContent=p.name;
   const mat=document.getElementById('hd-material');
