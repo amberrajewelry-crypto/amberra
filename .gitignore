@@ -10,3 +10,5 @@ node_modules/
 /dns-zone-backup-*.json
 .firecrawl/
 .indexnow-key
+*.bak
+graphify-out/
