@@ -708,7 +708,9 @@ function shell({ metaTitle, metaDesc, canonical, schema, activeSlug }, mainHTML)
   </div></div>
 </div>
 ${navHTML(activeSlug)}
+<main>
 ${mainHTML}
+</main>
 ${footerHTML()}
 <script src="/app.js?v=${CSSVER}" defer></script>
 <script src="/shop.js?v=${CSSVER}" defer></script>
