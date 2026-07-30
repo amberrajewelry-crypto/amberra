@@ -339,7 +339,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .ftab{padding:10px 20px;font-size:14px;letter-spacing:.15em;text-transform:uppercase;color:#000;border:1px solid #000;background:var(--white);font-family:var(--sans);transition:all .25s;cursor:pointer}
 .ftab.act{background:var(--charcoal);color:var(--white);border-color:var(--charcoal)}
 .ftab:hover:not(.act){color:#000;border-color:#000}
-.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start}
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:start}
 .cat-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1280px;margin:0 auto 22px;padding:0 24px}
 .cat-count{font-family:var(--sans);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray)}
 .cat-sort{display:flex;align-items:center;gap:10px}
