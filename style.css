@@ -350,9 +350,9 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .pc{background:#fff;position:relative;cursor:pointer;display:flex;flex-direction:column;overflow:hidden;border:none;margin:0;height:100%}
 .pc.hx{z-index:100}
 .pc-inner{overflow:hidden;display:flex;flex-direction:column;background:#fff;position:relative;height:100%;
-  border-radius:12px;box-shadow:0 6px 26px rgba(60,40,10,.08);
+  border-radius:12px;box-shadow:0 10px 30px rgba(60,40,10,.18),0 2px 6px rgba(60,40,10,.10);
   transition:transform .55s cubic-bezier(.4,0,.2,1),box-shadow .55s cubic-bezier(.4,0,.2,1)}
-.pc:hover .pc-inner{transform:translateY(-5px);box-shadow:0 16px 44px rgba(60,40,10,.16)}
+.pc:hover .pc-inner{transform:translateY(-5px);box-shadow:0 20px 48px rgba(60,40,10,.28),0 4px 10px rgba(60,40,10,.14)}
 .pc-img{flex-shrink:0;width:100%;aspect-ratio:1/1;overflow:hidden;background:#fff;display:flex;align-items:center;justify-content:center}
 .pc-img img{width:85%;height:85%;object-fit:contain;display:block;transition:transform .8s cubic-bezier(.25,.46,.45,.94);filter:drop-shadow(0 10px 20px rgba(60,40,10,.16))}
 .pc.hx .pc-img img,.pc:hover .pc-img img{transform:scale(1.06)}
