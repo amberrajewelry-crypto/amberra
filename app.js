@@ -1192,5 +1192,18 @@ document.addEventListener('DOMContentLoaded',()=>{
     },{threshold:.15});
     io.observe(edm);
   }
+  // Brand video — lazy load 2s after DOMContentLoaded (does not block initial paint)
+  const brandVid=document.querySelector('.brand-vid');
+  if(brandVid&&brandVid.dataset.src){
+    setTimeout(()=>{
+      const s=document.createElement('source');
+      s.src=brandVid.dataset.src; s.type='video/mp4';
+      brandVid.appendChild(s);
+      const tryPlay=()=>brandVid.play().catch(()=>{});
+      brandVid.addEventListener('canplay',tryPlay,{once:true});
+      brandVid.addEventListener('loadeddata',tryPlay,{once:true});
+      brandVid.load(); tryPlay();
+    },2000);
+  }
   // Nav alignment handled by CSS only
 });
