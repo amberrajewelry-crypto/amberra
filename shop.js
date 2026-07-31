@@ -233,6 +233,7 @@ function openDrawer(id){
   }
   const imgs=p.imgs||[p.img];
   const dImgEl=document.getElementById('d-img');
+  if(window.dZoomReset)window.dZoomReset();
   wimg(dImgEl,imgs[0]); if(dImgEl) dImgEl.alt=p.name;
   document.getElementById('d-cat').textContent=p.cat.toUpperCase();
   document.getElementById('d-name').textContent=p.name;
@@ -286,6 +287,7 @@ function setDImg(el,src){
   el.classList.add('act');
 }
 function closeDrawer(){
+  if(window.dZoomReset)window.dZoomReset();
   document.getElementById('drawer').classList.remove('open');
   document.getElementById('nav-shell').classList.remove('nav-hidden');
   document.body.style.overflow='';

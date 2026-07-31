@@ -1205,5 +1205,33 @@ document.addEventListener('DOMContentLoaded',()=>{
       brandVid.load(); tryPlay();
     },2000);
   }
+  // Bvlgari-style hover-zoom + pan on product drawer image (31.07)
+  (function dZoomInit(){
+    var box=document.querySelector('#drawer .d-img');
+    if(!box||box.dataset.zoom)return;
+    box.dataset.zoom='1';
+    var SCALE=2.2;
+    var img=function(){return box.querySelector('img');};
+    function origin(ev){var r=box.getBoundingClientRect();
+      return [Math.max(0,Math.min(100,(ev.clientX-r.left)/r.width*100)),
+              Math.max(0,Math.min(100,(ev.clientY-r.top)/r.height*100))];}
+    function apply(ev){var i=img();if(!i)return;var o=origin(ev);
+      i.style.transformOrigin=o[0]+'% '+o[1]+'%';i.style.transform='scale('+SCALE+')';box.classList.add('zooming');}
+    function reset(){var i=img();if(!i)return;i.style.transform='';i.style.transformOrigin='center';box.classList.remove('zooming');}
+    function isZoomed(){var i=img();return !!(i&&i.style.transform&&i.style.transform!=='none'&&i.style.transform!=='');}
+    var down=null;
+    box.addEventListener('pointermove',function(ev){
+      if(ev.pointerType==='mouse'){apply(ev);return;}
+      if(ev.pointerType==='touch'&&down&&down.moved)apply(ev);
+    });
+    box.addEventListener('pointerleave',reset);
+    box.addEventListener('pointerdown',function(ev){if(ev.pointerType==='touch')down={x:ev.clientX,y:ev.clientY,moved:false};});
+    box.addEventListener('pointerup',function(ev){
+      if(ev.pointerType!=='touch'||!down)return;
+      if(!down.moved){if(isZoomed())reset();else{var i=img();i.style.transformOrigin='50% 50%';i.style.transform='scale('+SCALE+')';box.classList.add('zooming');}}
+      down=null;
+    });
+    window.dZoomReset=reset;
+  })();
   // Nav alignment handled by CSS only
 });
