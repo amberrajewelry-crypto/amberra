@@ -1634,3 +1634,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visi
   .brand-vid{display:none}
   .brand-video{background-image:url(/images/signature-video-poster.jpg);background-size:cover;background-position:center}
 }
+
+/* ── Scroll-snap: full-bleed slides softly lock into viewport (31.07) ── */
+html{scroll-snap-type:y proximity}
+#hero-3d,#brand-video{scroll-snap-align:start}
