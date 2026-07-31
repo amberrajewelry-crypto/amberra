@@ -613,7 +613,7 @@ footer{background:#fff;padding:80px 56px 48px;border-top:1px solid var(--mist)}
 .d-img.zooming .d-zoom-hint{opacity:0}
 /* reveal photo on drawer open */
 #drawer .d-img img{opacity:0;transform:scale(.96)}
-#drawer.open .d-img img{opacity:1;transform:scale(1);transition:opacity .5s ease,transform .5s cubic-bezier(.25,.46,.45,.94)}
+#drawer.open .d-img img{opacity:1;transform:scale(1);transition:opacity .5s ease}
 @media (prefers-reduced-motion:reduce){#drawer .d-img img,#drawer.open .d-img img{opacity:1;transform:none;transition:none}}
 .d-close{position:absolute;top:12px;right:12px;width:28px;height:28px;background:none;border:none;font-size:16px;cursor:pointer;color:var(--gray);display:flex;align-items:center;justify-content:center;z-index:2;transition:color .2s}
 .d-close:hover{color:var(--charcoal)}
