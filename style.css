@@ -1619,16 +1619,16 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visi
 }
 
 /* ── Brand video — iconic piece (30.07) ── */
-.brand-video{position:relative;z-index:2;min-height:78vh;display:flex;align-items:flex-end;overflow:hidden;background:#0a0703}
+.brand-video{position:relative;z-index:2;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden;background:#0a0703}
 .brand-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
-.brand-video-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,7,3,.35) 0%,rgba(10,7,3,0) 38%,rgba(10,7,3,.72) 100%);pointer-events:none}
-.brand-video-copy{position:relative;z-index:2;max-width:680px;padding:0 6vw 11vh;color:#fff}
+.brand-video-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,7,3,.42) 0%,rgba(10,7,3,0) 30%,rgba(10,7,3,.12) 52%,rgba(10,7,3,.88) 100%);pointer-events:none}
+.brand-video-copy{position:relative;z-index:2;max-width:720px;padding:0 6vw 12vh;color:#fff}
 .brand-video-copy .bv-eyebrow{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--amber3);margin-bottom:18px}
 .brand-video-copy .bv-title{font-family:var(--serif);font-weight:500;font-size:clamp(34px,5vw,64px);line-height:1.04;margin:0 0 18px}
 .brand-video-copy .bv-sub{font-family:var(--sans);font-size:clamp(15px,1.6vw,19px);line-height:1.55;color:rgba(255,255,255,.82);margin:0;max-width:480px}
 @media (max-width:900px){
-  .brand-video{min-height:64vh}
-  .brand-video-copy{padding:0 6vw 8vh}
+  .brand-video{min-height:82vh}
+  .brand-video-copy{padding:0 6vw 9vh}
 }
 @media (prefers-reduced-motion:reduce){
   .brand-vid{display:none}
