@@ -379,7 +379,7 @@ function ppAddCart(btn){
     var cart=JSON.parse(localStorage.getItem('amb_cart')||'[]');
     var ex=cart.find(function(x){return x.id===id;});
     if(ex){ex.qty=(ex.qty||1)+1;}
-    else{cart.push({id:id,name:name,img:img,material:material,price:price,qty:1});}
+    else{cart.push({id:id,name:name,img:img,material:material,price:price,size:'',qty:1});}
     localStorage.setItem('amb_cart',JSON.stringify(cart));
   }catch(e){}
   // ?added=1 makes app.js openCart() on load, so the buyer sees their item.

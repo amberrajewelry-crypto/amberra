@@ -124,19 +124,21 @@ function closeWishPanel(){
 let cart=JSON.parse(localStorage.getItem('amb_cart')||'[]');
 let drawerProductId=null;
 function isInCart(id){return cart.some(x=>x.id===id)}
-function addToCart(id){
+function addToCart(id, size){
   const p=(typeof products!=='undefined'?products:[]).find(x=>x.id===id);
   if(!p)return;
-  const existing=cart.find(x=>x.id===id);
+  const sz=size||'';
+  const existing=cart.find(x=>x.id===id && (x.size||'')===sz);
   if(existing){existing.qty=(existing.qty||1)+1;}
-  else{cart.push({id:p.id,name:p.name,img:p.img,material:p.material,price:p.price,qty:1});}
+  else{cart.push({id:p.id,name:p.name,img:p.img,material:p.material,price:p.price,size:sz,qty:1});}
   localStorage.setItem('amb_cart',JSON.stringify(cart));
   updateCartBadge();
   updateMobBadges();
 }
 function addToCartFromDrawer(){
   if(!drawerProductId)return;
-  addToCart(drawerProductId);
+  const size=(typeof getSelectedSize==='function')?getSelectedSize():'';
+  addToCart(drawerProductId, size);
   const btn=document.getElementById('d-cart');
   if(btn){
     const item=cart.find(x=>x.id===drawerProductId);
@@ -148,18 +150,18 @@ function addToCartFromDrawer(){
   const dimg=document.getElementById('d-img');
   if(dimg)flyToCart(dimg.src,dimg);
 }
-function changeQty(id,delta){
-  const item=cart.find(x=>x.id===id);
+function changeQty(idx,delta){
+  const item=cart[idx];
   if(!item)return;
   item.qty=(item.qty||1)+delta;
-  if(item.qty<1){cart=cart.filter(x=>x.id!==id);}
+  if(item.qty<1){cart.splice(idx,1);}
   localStorage.setItem('amb_cart',JSON.stringify(cart));
   updateCartBadge();
   updateMobBadges();
   renderCart();
 }
-function removeFromCart(id){
-  cart=cart.filter(x=>x.id!==id);
+function removeFromCart(idx){
+  cart.splice(idx,1);
   localStorage.setItem('amb_cart',JSON.stringify(cart));
   updateCartBadge();
   updateMobBadges();
@@ -196,19 +198,19 @@ function renderCart(){
     foot.style.display='none';
     return;
   }
-  body.innerHTML=cart.map(p=>`
+  body.innerHTML=cart.map((p,i)=>`
     <div class="cart-item">
       <img src="${wsrc(p.img)}" onerror="this.onerror=null;this.src='${p.img}'" alt="${p.name}">
       <div class="cart-item-info">
         <div class="cart-item-name">${p.name}</div>
-        <div class="cart-item-mat">${p.material}</div>
+        <div class="cart-item-mat">${p.material}${p.size?(' · Size '+p.size):''}</div>
         <div class="cart-item-bot">
           <span class="cart-item-price">${window.formatPrice?window.formatPrice(p.price*(p.qty||1)):'$'+(p.price*(p.qty||1))}</span>
           <div class="cart-qty">
-            <button class="cart-qty-btn" onclick="changeQty(${p.id},-1)">−</button>
+            <button class="cart-qty-btn" onclick="changeQty(${i},-1)">−</button>
             <span class="cart-qty-num">${p.qty||1}</span>
-            <button class="cart-qty-btn" onclick="changeQty(${p.id},1)">+</button>
-            <button class="cart-item-rm" onclick="removeFromCart(${p.id})">✕</button>
+            <button class="cart-qty-btn" onclick="changeQty(${i},1)">+</button>
+            <button class="cart-item-rm" onclick="removeFromCart(${i})">✕</button>
           </div>
         </div>
       </div>
@@ -218,7 +220,7 @@ function renderCart(){
   foot.style.display='block';
 }
 function checkoutCart(){
-  const names=cart.map(p=>p.name).join(', ');
+  const names=cart.map(p=>p.name+(p.size?(' (Size '+p.size+')'):'')).join(', ');
   closeCart();
   openReq(names);
 }
@@ -260,7 +262,7 @@ window.closeCryptoDisclaimer=function(){
 async function payCrypto(btn){
   const c=JSON.parse(localStorage.getItem('amb_cart')||'[]');
   const amount=c.reduce((s,p)=>s+(Number(p.price)*(p.qty||1)),0)||1;
-  const desc=c.length?c.map(p=>p.name).join(', '):'AMBERRA Jewelry';
+  const desc=c.length?c.map(p=>p.name+(p.size?(' (Size '+p.size+')'):'')).join(', '):'AMBERRA Jewelry';
   btn.disabled=true;
   btn.innerHTML='CREATING INVOICE…';
   const controller=new AbortController();
