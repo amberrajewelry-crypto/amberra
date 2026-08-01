@@ -58,9 +58,9 @@ function absImg(img) {
   let u = String(img);
   // Normalize bare/canonical host → www (matches canonical, kills host-mismatch for OG/schema).
   u = u.replace(/^https?:\/\/(www\.)?amberra-jewelry\.com\//i, 'https://www.amberrajewelry.com/');
-  // Upgrade /img/{NUM}.jpg → /images/products/{NUM}.webp only when a local webp exists.
-  const m = u.match(/\/img\/(\d+)\.jpe?g/i);
-  if (m && _WEBP_NUMS.has(m[1])) u = u.replace(/\/img\/(\d+)\.jpe?g/i, `/images/products/${m[1]}.webp`);
+  // Upgrade /img/{NUM}.{jpg,png} → /images/products/{NUM}.webp only when a local webp exists.
+  const m = u.match(/\/img\/(\d+)\.(?:jpe?g|png)/i);
+  if (m && _WEBP_NUMS.has(m[1])) u = u.replace(/\/img\/(\d+)\.(?:jpe?g|png)/i, `/images/products/${m[1]}.webp`);
   return /^https?:/.test(u) ? u : `${SITE}/${u.replace(/^\//, '')}`;
 }
 // Duplicate-name SKUs get their jewelry type appended so links/titles are distinct.
@@ -297,7 +297,7 @@ ${breadcrumbSchema}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css?v=20260728e">
+<link rel="stylesheet" href="/style.css?v=20260801b">
 <link rel="preconnect" href="https://app.snipcart.com">
 <link rel="preconnect" href="https://cdn.snipcart.com">
 <link rel="stylesheet" href="https://cdn.snipcart.com/themes/${SNIPCART_VER}/default/snipcart.css">
