@@ -288,6 +288,10 @@ ${hreflangTags}
 <meta property="og:url" content="${canonical}">
 <meta property="product:price:amount" content="${price}">
 <meta property="product:price:currency" content="USD">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(dispName)} — AMBERRA">
+<meta name="twitter:description" content="${esc(desc)}">
+<meta name="twitter:image" content="${esc(imgAbs)}">
 <script type="application/ld+json">
 ${schema}
 </script>

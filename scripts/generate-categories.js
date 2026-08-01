@@ -31,7 +31,7 @@ const TYPES = {
     ] },
   earrings:  { label: 'Earrings',  h1: 'Amber Earrings',
     metaTitle: 'Amber Earrings in 925 Sterling Silver | AMBERRA Bali',
-    metaDesc: 'Natural Baltic amber earrings handcrafted in Bali — drops, studs, hoops and filigree in 925 sterling silver. Cherry, cognac & honey amber. Free shipping over $200.',
+    metaDesc: 'Natural Baltic amber earrings handcrafted in Bali — drops, studs, hoops & filigree in 925 silver. Cherry, cognac & honey amber. Free shipping over $200.',
     intro: [
       'Our amber earrings pair natural Baltic amber with hand-forged 925 sterling silver — from light everyday studs to statement drops. Colors range across cherry, cognac, honey, green and blue amber.',
       'Lightweight and comfortable, each pair is made one at a time by Balinese silversmiths and arrives with a certificate of authenticity.'
@@ -172,7 +172,7 @@ const COLORS = {
 
 const HUB = {
   h1: 'Handmade Baltic Amber Jewelry',
-  metaTitle: 'Handmade Baltic Amber Jewelry in Sterling Silver — Bali | AMBERRA',
+  metaTitle: 'Baltic Amber Jewelry in Sterling Silver — Bali | AMBERRA',
   metaDesc: 'Handmade Baltic amber jewelry in 925 sterling silver — rings, earrings, pendants & bracelets in cherry, cognac, honey, green & blue amber. Handcrafted in Bali.',
   intro: [
     'AMBERRA is a handcrafted jewelry house in Ubud, Bali. Every piece pairs genuine Baltic amber — a 40-million-year-old fossil resin — with 925 sterling silver, shaped one at a time by Balinese silversmiths.',
@@ -193,7 +193,7 @@ const SILVER = {
   label: 'Sterling Silver Amber',
   h1: 'Sterling Silver Amber Jewelry',
   metaTitle: 'Sterling Silver Amber Jewelry — 925 Silver, Handcrafted | AMBERRA',
-  metaDesc: 'Baltic amber set in solid 925 sterling silver — rings, earrings, pendants & bracelets, handcrafted in Bali. Hypoallergenic, hallmarked silver. Free shipping over $200.',
+  metaDesc: 'Baltic amber in solid 925 sterling silver — rings, earrings, pendants & bracelets, handcrafted in Bali. Hypoallergenic silver. Free shipping over $200.',
   intro: [
     'Every AMBERRA piece pairs natural Baltic amber with solid 925 sterling silver — never plated base metal. The warm glow of the stone and the cool shine of hand-worked metal are a classic combination, durable enough to wear every day.',
     'Our silver is 92.5% pure (the “925” hallmark), the international standard for fine jewelry. It is nickel-free and hypoallergenic, hand-forged by Balinese silversmiths in our Ubud workshop, and finished to hold each amber cabochon securely.'
