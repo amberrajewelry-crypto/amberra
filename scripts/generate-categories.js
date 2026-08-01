@@ -656,7 +656,11 @@ function footerHTML() {
 </footer>`;
 }
 
-function shell({ metaTitle, metaDesc, canonical, schema, activeSlug }, mainHTML) {
+// Per-category OG image (clean brand webp). Falls back to og-cover.webp.
+const OG_BY_SLUG = { rings: '/images/hero-ring.webp', amber: '/images/amber-drop.webp', 'sterling-silver-amber-jewelry': '/images/amber-drop.webp' };
+function ogFor(slug) { return `${SITE}${OG_BY_SLUG[slug] || '/images/og-cover.webp'}`; }
+
+function shell({ metaTitle, metaDesc, canonical, schema, activeSlug, ogImage }, mainHTML) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -678,7 +682,7 @@ function shell({ metaTitle, metaDesc, canonical, schema, activeSlug }, mainHTML)
 <meta property="og:title" content="${esc(metaTitle)}">
 <meta property="og:description" content="${esc(metaDesc)}">
 <meta property="og:url" content="${canonical}">
-<meta property="og:image" content="${SITE}/images/og-cover.jpg">
+<meta property="og:image" content="${ogImage || SITE + '/images/og-cover.webp'}">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">${JSON.stringify(schema, null, 2)}</script>
 <script src="https://js-de.sentry-cdn.com/4685202527800b7a5362a10c52b9ba1b.min.js" crossorigin="anonymous" async></script>
@@ -748,7 +752,7 @@ function typePage(slug, cat, products) {
     faqSchema(cat.faq) ].filter(Boolean) };
   const main = catBody({ kicker:'The Collection', h1:cat.h1, sub:cat.intro[0], count:products.length,
     intro: introHTML(cat.intro), sections: sectionsHTML(SECTIONS[slug]), links, grid: products.map(cardHTML).join('\n'), faq: faqBlock(cat.faq) });
-  return shell({ metaTitle:cat.metaTitle, metaDesc:cat.metaDesc, canonical:url, schema, activeSlug:slug }, main);
+  return shell({ metaTitle:cat.metaTitle, metaDesc:cat.metaDesc, canonical:url, schema, activeSlug:slug, ogImage: ogFor(slug) }, main);
 }
 
 function colorPage(colorKey, color, products) {
@@ -762,7 +766,7 @@ function colorPage(colorKey, color, products) {
     faqSchema(color.faq) ].filter(Boolean) };
   const main = catBody({ kicker:'Amber by Color', h1:color.h1, sub:color.intro[0], count:products.length,
     intro: introHTML(color.intro), sections: sectionsHTML(SECTIONS[colorKey]), links, grid: products.map(cardHTML).join('\n'), faq: faqBlock(color.faq) });
-  return shell({ metaTitle:color.metaTitle, metaDesc:color.metaDesc, canonical:url, schema, activeSlug:'amber' }, main);
+  return shell({ metaTitle:color.metaTitle, metaDesc:color.metaDesc, canonical:url, schema, activeSlug:'amber', ogImage: ogFor('amber') }, main);
 }
 
 function hubPage(products, colorCounts) {
@@ -782,7 +786,7 @@ function hubPage(products, colorCounts) {
     faqSchema(HUB.faq) ].filter(Boolean) };
   const main = catBody({ kicker:'Baltic Amber', h1:HUB.h1, sub:HUB.intro[0], count:products.length,
     intro: introHTML(HUB.intro), sections: sectionsHTML(SECTIONS.hub), links: typeLinks + colorLinks, grid: products.map(cardHTML).join('\n'), faq: faqBlock(HUB.faq) });
-  return shell({ metaTitle:HUB.metaTitle, metaDesc:HUB.metaDesc, canonical:url, schema, activeSlug:'amber' }, main);
+  return shell({ metaTitle:HUB.metaTitle, metaDesc:HUB.metaDesc, canonical:url, schema, activeSlug:'amber', ogImage: ogFor('amber') }, main);
 }
 
 function metalPage(products) {
@@ -796,7 +800,7 @@ function metalPage(products) {
     faqSchema(SILVER.faq) ].filter(Boolean) };
   const main = catBody({ kicker:'925 Sterling Silver', h1:SILVER.h1, sub:SILVER.intro[0], count:products.length,
     intro: introHTML(SILVER.intro), sections: sectionsHTML(SECTIONS.silver), links, grid: products.map(cardHTML).join('\n'), faq: faqBlock(SILVER.faq) });
-  return shell({ metaTitle:SILVER.metaTitle, metaDesc:SILVER.metaDesc, canonical:url, schema, activeSlug:'amber' }, main);
+  return shell({ metaTitle:SILVER.metaTitle, metaDesc:SILVER.metaDesc, canonical:url, schema, activeSlug:'amber', ogImage: ogFor(SILVER.slug) }, main);
 }
 
 // ── data sources ─────────────────────────────────────────────────────────────

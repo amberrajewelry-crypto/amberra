@@ -51,7 +51,18 @@ function sizeOptions(cat) {
 }
 
 const TYPE_NOUN = { rings: 'Ring', earrings: 'Earrings', pendants: 'Pendant', bracelets: 'Bracelet', chains: 'Chain' };
-function absImg(img) { return img ? (/^https?:/.test(img) ? img : `${SITE}/${String(img).replace(/^\//, '')}`) : ''; }
+// Local webp product images (NUM.webp) — used to upgrade Airtable's /img/NUM.jpg URLs.
+const _WEBP_NUMS = new Set((() => { try { return fs.readdirSync(path.join(__dirname, '..', 'images', 'products')).map(f => (f.match(/(\d+)\.webp/) || [])[1]).filter(Boolean); } catch { return []; } })());
+function absImg(img) {
+  if (!img) return '';
+  let u = String(img);
+  // Normalize bare/canonical host → www (matches canonical, kills host-mismatch for OG/schema).
+  u = u.replace(/^https?:\/\/(www\.)?amberra-jewelry\.com\//i, 'https://www.amberrajewelry.com/');
+  // Upgrade /img/{NUM}.jpg → /images/products/{NUM}.webp only when a local webp exists.
+  const m = u.match(/\/img\/(\d+)\.jpe?g/i);
+  if (m && _WEBP_NUMS.has(m[1])) u = u.replace(/\/img\/(\d+)\.jpe?g/i, `/images/products/${m[1]}.webp`);
+  return /^https?:/.test(u) ? u : `${SITE}/${u.replace(/^\//, '')}`;
+}
 // Duplicate-name SKUs get their jewelry type appended so links/titles are distinct.
 function displayName(prod) { const n = TYPE_NOUN[prod.cat] || ''; return (prod.dup && n) ? `${prod.name} ${n}` : prod.name; }
 
