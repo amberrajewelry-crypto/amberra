@@ -1204,6 +1204,18 @@ footer{background:#fff;padding:80px 56px 48px;border-top:1px solid var(--mist)}
 .ws-tier-qty,.ws-feat .ws-tier-qty{color:var(--amber3)!important}
 .ws-tier-note,.ws-feat .ws-tier-note{color:rgba(255,255,255,.7)}
 @media(max-width:700px){.ws-pillars{flex-direction:column;gap:32px;align-items:center}}
+/* === EXPLORE: SEO hub of internal links to landing pages === */
+#explore{background:transparent;text-align:center}
+.ex-inner{max-width:1100px;margin:0 auto;padding:110px 24px 90px}
+.ex-eyebrow{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.35em;text-transform:uppercase;color:var(--amber);margin-bottom:20px}
+#explore .s-title{color:var(--white);font-size:clamp(32px,5vw,52px)}
+.ex-lede{font-size:17px;line-height:1.85;color:rgba(255,255,255,.72);max-width:720px;margin:0 auto 72px}
+.ex-group{margin-bottom:52px}
+.ex-h{font-family:var(--serif);font-style:italic;font-size:clamp(20px,2vw,26px);font-weight:400;color:var(--gold);margin-bottom:22px}
+.ex-links{list-style:none;display:flex;flex-wrap:wrap;gap:12px 30px;justify-content:center;padding:0;margin:0;max-width:900px;margin:0 auto}
+.ex-links a{font-size:15px;letter-spacing:.01em;color:rgba(255,255,255,.82);text-decoration:none;border-bottom:1px solid rgba(201,168,50,.3);padding-bottom:4px;transition:color .25s,border-color .25s}
+.ex-links a:hover{color:var(--gold);border-color:var(--gold)}
+@media(max-width:640px){.ex-inner{padding:80px 20px 60px}.ex-links{gap:10px 22px}.ex-links a{font-size:14px}}
 #journal.js-page{background:transparent}
 #contact{background:transparent}
 #contact .s-lbl{color:var(--amber)}
@@ -1213,7 +1225,7 @@ footer{background:#fff;padding:80px 56px 48px;border-top:1px solid var(--mist)}
 
 /* === CANVAS STACKING FIX: canvas z:1, page sections z:2 === */
 /* Only page sections: modals/overlays keep their own position:fixed + z-index */
-#hero-video,#colls,#signature-colls,#hero,#about,#bestsellers,.founder-strip,#ed,.ticker,#wholesale,#journal,#contact,footer,.trustbar{
+#hero-video,#colls,#signature-colls,#hero,#about,#bestsellers,.founder-strip,#ed,.ticker,#wholesale,#explore,#journal,#contact,footer,.trustbar{
   position:relative;z-index:2
 }
 
