@@ -144,7 +144,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css?v=20260801c">
+<link rel="stylesheet" href="/style.css?v=20260801d">
 <style>
 .pp-nav{display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:64px;border-bottom:1px solid var(--mist);position:sticky;top:0;background:var(--white);z-index:100}
 .pp-nav-back{font:300 11px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--gray);text-decoration:none;display:flex;align-items:center;gap:8px}
@@ -199,7 +199,9 @@
     Shop All
   </a>
   <a class="pp-nav-logo" href="/">AMBERRA</a>
-  <a class="pp-nav-cart" href="/shop" style="font:300 11px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--gray);text-decoration:none">Shop</a>
+  <a class="pp-nav-cart" href="/shop" aria-label="Cart" style="display:flex;align-items:center;color:var(--charcoal);text-decoration:none">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.4a1.5 1.5 0 0 0 1.5 1.2h8.2a1.5 1.5 0 0 0 1.5-1.2L21 7H6"/></svg>
+  </a>
 </nav>
 
 <main class="pp-wrap">
@@ -221,7 +223,13 @@
     <div class="pp-about"><h2 class="pp-about-h">About this piece</h2><p>This ring frames a single piece of natural amber, sized to sit comfortably and catch the light as you move. The green hue links it to nature and renewal, one of amber's rarer moods. It is set in 925 sterling silver, hallmarked for lasting wear. Handcrafted in Bali from genuine Baltic amber, then finished by hand.</p><p class="pp-about-care">Genuine Baltic amber · keep away from perfume and direct heat, and wipe with a soft cloth to preserve its glow.</p></div>
     <p class="pp-colorhub"><a href="/amber/green" style="color:#B8941E;text-decoration:none;border-bottom:1px solid currentColor">Explore all green amber →</a></p>
     <div class="pp-props"><div class="pp-prop"><span class="pp-pk">Stone</span><span class="pp-pv">Natural Green Amber</span></div><div class="pp-prop"><span class="pp-pk">Metal</span><span class="pp-pv">Oxidized Silver + 18k Gold</span></div><div class="pp-prop"><span class="pp-pk">Collection</span><span class="pp-pv">Cosmos</span></div></div>
-    <a class="pp-cta" href="/shop?cat=rings">Add to Cart — $135</a>
+    <button class="pp-cta" type="button"
+    onclick="ppAddCart(this)"
+    data-id="cosmic-swirl-ring"
+    data-name="Cosmic Swirl Ring"
+    data-img="https://www.amberrajewelry.com/images/rings/IMG_9643.JPG"
+    data-material="Natural Green Amber · Silver &amp;amp; Gold"
+    data-price="135">Add to Cart — $135</button>
     <a class="pp-cta-ghost" href="/shop?cat=rings">View All Rings</a>
   </div>
 </main>
@@ -252,6 +260,27 @@
   <p>Each AMBERRA piece is handcrafted in Bali using natural amber. Free worldwide shipping on orders over $200.</p>
   <p><a href="/shop">Browse the full collection</a> &nbsp;·&nbsp; <a href="/our-story">Our Story</a> &nbsp;·&nbsp; <a href="/contact">Contact</a></p>
 </footer>
+
+<script>
+// Add to cart from a product landing page into the same amb_cart store the
+// index/shop drawer reads, then hand off to /shop which opens the drawer.
+function ppAddCart(btn){
+  try{
+    var id=btn.dataset.id||'';   // product slug — string id for dedup
+    var name=btn.dataset.name||'';
+    var img=btn.dataset.img||'';
+    var material=btn.dataset.material||'';
+    var price=Number(btn.dataset.price)||0;
+    var cart=JSON.parse(localStorage.getItem('amb_cart')||'[]');
+    var ex=cart.find(function(x){return x.id===id;});
+    if(ex){ex.qty=(ex.qty||1)+1;}
+    else{cart.push({id:id,name:name,img:img,material:material,price:price,qty:1});}
+    localStorage.setItem('amb_cart',JSON.stringify(cart));
+  }catch(e){}
+  // ?added=1 makes app.js openCart() on load, so the buyer sees their item.
+  location.href='/shop?added=1';
+}
+</script>
 
 </body>
 </html>

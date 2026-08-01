@@ -219,8 +219,15 @@ function productHTML(p, slug) {
     `<div class="pp-prop"><span class="pp-pk">${esc(k)}</span><span class="pp-pv">${esc(v)}</span></div>`
   ).join('');
 
-  // Buy CTA → live catalog (app.js drawer cart, not the dead Snipcart on product pages)
-  const buyBtn = `<a class="pp-cta" href="/shop?cat=${esc(cat)}">Add to Cart — $${price}</a>`;
+  // Buy CTA → real add-to-cart into amb_cart (same store app.js drawer uses),
+  // then hand off to /shop which opens the drawer with ?added=1.
+  const buyBtn = `<button class="pp-cta" type="button"
+    onclick="ppAddCart(this)"
+    data-id="${esc(slug)}"
+    data-name="${esc(name)}"
+    data-img="${esc(imgAbs)}"
+    data-material="${esc(material)}"
+    data-price="${esc(String(price))}">Add to Cart — $${price}</button>`;
 
   // ── "You May Also Like" — interlink product pages (same category first) ──
   const related = Array.isArray(p._related) ? p._related : [];
@@ -270,7 +277,7 @@ ${breadcrumbSchema}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css?v=20260801c">
+<link rel="stylesheet" href="/style.css?v=20260801d">
 <style>
 .pp-nav{display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:64px;border-bottom:1px solid var(--mist);position:sticky;top:0;background:var(--white);z-index:100}
 .pp-nav-back{font:300 11px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--gray);text-decoration:none;display:flex;align-items:center;gap:8px}
@@ -325,7 +332,9 @@ ${breadcrumbSchema}
     Shop All
   </a>
   <a class="pp-nav-logo" href="/">AMBERRA</a>
-  <a class="pp-nav-cart" href="/shop" style="font:300 11px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--gray);text-decoration:none">Shop</a>
+  <a class="pp-nav-cart" href="/shop" aria-label="Cart" style="display:flex;align-items:center;color:var(--charcoal);text-decoration:none">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.4a1.5 1.5 0 0 0 1.5 1.2h8.2a1.5 1.5 0 0 0 1.5-1.2L21 7H6"/></svg>
+  </a>
 </nav>
 
 <main class="pp-wrap">
@@ -356,6 +365,27 @@ ${relatedHTML}
   <p>Each AMBERRA piece is handcrafted in Bali using natural amber. Free worldwide shipping on orders over $200.</p>
   <p><a href="/shop">Browse the full collection</a> &nbsp;·&nbsp; <a href="/our-story">Our Story</a> &nbsp;·&nbsp; <a href="/contact">Contact</a></p>
 </footer>
+
+<script>
+// Add to cart from a product landing page into the same amb_cart store the
+// index/shop drawer reads, then hand off to /shop which opens the drawer.
+function ppAddCart(btn){
+  try{
+    var id=btn.dataset.id||'';   // product slug — string id for dedup
+    var name=btn.dataset.name||'';
+    var img=btn.dataset.img||'';
+    var material=btn.dataset.material||'';
+    var price=Number(btn.dataset.price)||0;
+    var cart=JSON.parse(localStorage.getItem('amb_cart')||'[]');
+    var ex=cart.find(function(x){return x.id===id;});
+    if(ex){ex.qty=(ex.qty||1)+1;}
+    else{cart.push({id:id,name:name,img:img,material:material,price:price,qty:1});}
+    localStorage.setItem('amb_cart',JSON.stringify(cart));
+  }catch(e){}
+  // ?added=1 makes app.js openCart() on load, so the buyer sees their item.
+  location.href='/shop?added=1';
+}
+</script>
 
 </body>
 </html>`;

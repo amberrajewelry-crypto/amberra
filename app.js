@@ -56,6 +56,8 @@ function flyToCart(imgSrc,startEl){
 // ── WISHLIST ───────────────────────────────────────────────────────────────
 // Load from URL param ?wish=1,2,3 (cross-device sharing)
 (function(){const p=new URLSearchParams(location.search).get('wish');if(p){const ids=p.split(',').map(Number).filter(Boolean);if(ids.length){localStorage.setItem('amb_wish',JSON.stringify(ids));history.replaceState(null,'',location.pathname)}}})();
+// ?added=1 — buyer clicked Add to Cart on a product landing page; open the drawer.
+(function(){if(new URLSearchParams(location.search).get('added')){const clean=()=>{history.replaceState(null,'',location.pathname);};document.addEventListener('DOMContentLoaded',function(){try{openCart();}catch(e){}clean();});clean();}})();
 let wishlist=JSON.parse(localStorage.getItem('amb_wish')||'[]');
 function isWished(id){return wishlist.includes(id)}
 function toggleWish(id,e){
