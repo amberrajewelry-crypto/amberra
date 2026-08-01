@@ -1125,11 +1125,12 @@ footer{background:#fff;padding:80px 56px 48px;border-top:1px solid var(--mist)}
   textarea,select{font-size:16px}
 
   /* Tap-targets ≥44px (WCAG 2.5.5): enlarge small interactive controls */
-  .nav-ico-btn{min-width:44px;min-height:44px}
-  .cart-close,.chat-hc{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
-  .mob-nav-util{min-height:44px;display:flex;align-items:center}
-  .chat-qb{min-height:40px;display:inline-flex;align-items:center}
-  .chat-send{min-width:44px;min-height:44px;display:flex;align-items:center}
+  /* Tap-targets ≥44px (WCAG 2.5.5): +2px margin absorbs flex-shrink so rendered ≥44 */
+  .nav-ico-btn{min-width:46px;min-height:46px}
+  .cart-close,.chat-hc{min-width:46px;min-height:46px;display:inline-flex;align-items:center;justify-content:center}
+  .mob-nav-util{min-height:46px;display:flex;align-items:center}
+  .chat-qb{min-height:46px;display:inline-flex;align-items:center}
+  .chat-send{min-width:46px;min-height:46px;display:flex;align-items:center}
 
   /* Ticker readable */
   .t-item{font-size:12px}
