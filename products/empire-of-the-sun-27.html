@@ -140,9 +140,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css?v=20260801c">
-<link rel="preconnect" href="https://app.snipcart.com">
-<link rel="preconnect" href="https://cdn.snipcart.com">
-<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.css">
 <style>
 .pp-nav{display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:64px;border-bottom:1px solid var(--mist);position:sticky;top:0;background:var(--white);z-index:100}
 .pp-nav-back{font:300 11px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--gray);text-decoration:none;display:flex;align-items:center;gap:8px}
@@ -197,9 +194,7 @@
     Shop All
   </a>
   <a class="pp-nav-logo" href="/">AMBERRA</a>
-  <a class="pp-nav-cart snipcart-checkout" href="#" style="font:300 11px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--gray);text-decoration:none">
-    Cart (<span class="snipcart-items-count">0</span>)
-  </a>
+  <a class="pp-nav-cart" href="/shop" style="font:300 11px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--gray);text-decoration:none">Shop</a>
 </nav>
 
 <main class="pp-wrap">
@@ -221,15 +216,7 @@
     <div class="pp-about"><h2 class="pp-about-h">About this piece</h2><p>This bracelet wraps the wrist in the warm tones of natural amber, finished for comfortable daily wear. No two pieces of natural amber are alike — the color and tiny inclusions make each one unique. It is set in 925 sterling silver, hallmarked for lasting wear. Made by hand in our Bali workshop, it arrives ready to gift.</p><p class="pp-about-care">Genuine Baltic amber · keep away from perfume and direct heat, and wipe with a soft cloth to preserve its glow.</p></div>
     
     <div class="pp-props"><div class="pp-prop"><span class="pp-pk">Stone</span><span class="pp-pv">Natural Baltic Amber ×5</span></div><div class="pp-prop"><span class="pp-pk">Metal</span><span class="pp-pv">925 Sterling Silver</span></div></div>
-    <button class="pp-cta snipcart-add-item"
-    data-item-id="empire-of-the-sun-27"
-    data-item-name="Empire of the Sun"
-    data-item-price="169.00"
-    data-item-url="https://www.amberrajewelry.com/products/empire-of-the-sun-27"
-    data-item-description="Imperial amber stations linked in sterling silver — wear the power of the sun on your wrist."
-    data-item-image="https://www.amberrajewelry.com/images/products/48121837.webp"
-    data-item-categories="Bracelets"
-    data-item-custom1-name="Size" data-item-custom1-options="M (17cm)|XS (15cm)|S (16cm)|L (18cm)|XL (19cm)" data-item-custom1-required="true">Add to Cart — $169</button>
+    <a class="pp-cta" href="/shop?cat=bracelets">Add to Cart — $169</a>
     <a class="pp-cta-ghost" href="/shop?cat=bracelets">View All Bracelets</a>
   </div>
 </main>
@@ -261,7 +248,5 @@
   <p><a href="/shop">Browse the full collection</a> &nbsp;·&nbsp; <a href="/our-story">Our Story</a> &nbsp;·&nbsp; <a href="/contact">Contact</a></p>
 </footer>
 
-<div hidden id="snipcart" data-api-key="REPLACE_WITH_SNIPCART_PUBLIC_KEY" data-currency="usd"></div>
-<script async src="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.js"></script>
 </body>
 </html>

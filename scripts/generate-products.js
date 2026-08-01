@@ -32,24 +32,6 @@ function esc(str) {
     .replace(/>/g, '&gt;');
 }
 
-// Snipcart public API key — injected at build time. Store stays inert (button
-// present, cart won't open) until the owner sets a real key. Set via env:
-//   SNIPCART_PUBLIC_KEY=... vercel build
-const SNIPCART_KEY = process.env.SNIPCART_PUBLIC_KEY || 'REPLACE_WITH_SNIPCART_PUBLIC_KEY';
-const SNIPCART_VER = 'v3.7.1';
-
-// Size options per category → Snipcart custom field. Mirrors shop.js
-// buildSizeSelector. First value is the default. Earrings = one size (no field).
-function sizeOptions(cat) {
-  switch (cat) {
-    case 'rings':     return 'US 7|US 5|US 6|US 8|US 9';
-    case 'bracelets': return 'M (17cm)|XS (15cm)|S (16cm)|L (18cm)|XL (19cm)';
-    case 'pendants':
-    case 'chains':    return '45cm|40cm|50cm|55cm|60cm';
-    default:          return null; // earrings & misc — one size
-  }
-}
-
 const TYPE_NOUN = { rings: 'Ring', earrings: 'Earrings', pendants: 'Pendant', bracelets: 'Bracelet', chains: 'Chain' };
 // Local webp product images (NUM.webp) — used to upgrade Airtable's /img/NUM.jpg URLs.
 const _WEBP_NUMS = new Set((() => { try { return fs.readdirSync(path.join(__dirname, '..', 'images', 'products')).map(f => (f.match(/(\d+)\.webp/) || [])[1]).filter(Boolean); } catch { return []; } })());
@@ -237,21 +219,8 @@ function productHTML(p, slug) {
     `<div class="pp-prop"><span class="pp-pk">${esc(k)}</span><span class="pp-pv">${esc(v)}</span></div>`
   ).join('');
 
-  // ── Snipcart buy button ──
-  const priceStr = Number(price || 0).toFixed(2);
-  const shortDesc = (desc || '').slice(0, 160);
-  const sizeOpts = sizeOptions(cat);
-  const sizeAttr = sizeOpts
-    ? `\n    data-item-custom1-name="Size" data-item-custom1-options="${esc(sizeOpts)}" data-item-custom1-required="true"`
-    : '';
-  const buyBtn = `<button class="pp-cta snipcart-add-item"
-    data-item-id="${esc(slug)}"
-    data-item-name="${esc(name)}"
-    data-item-price="${priceStr}"
-    data-item-url="${canonical}"
-    data-item-description="${esc(shortDesc)}"
-    data-item-image="${esc(imgAbs)}"
-    data-item-categories="${esc(catLabel)}"${sizeAttr}>Add to Cart — $${price}</button>`;
+  // Buy CTA → live catalog (app.js drawer cart, not the dead Snipcart on product pages)
+  const buyBtn = `<a class="pp-cta" href="/shop?cat=${esc(cat)}">Add to Cart — $${price}</a>`;
 
   // ── "You May Also Like" — interlink product pages (same category first) ──
   const related = Array.isArray(p._related) ? p._related : [];
@@ -302,9 +271,6 @@ ${breadcrumbSchema}
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css?v=20260801c">
-<link rel="preconnect" href="https://app.snipcart.com">
-<link rel="preconnect" href="https://cdn.snipcart.com">
-<link rel="stylesheet" href="https://cdn.snipcart.com/themes/${SNIPCART_VER}/default/snipcart.css">
 <style>
 .pp-nav{display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:64px;border-bottom:1px solid var(--mist);position:sticky;top:0;background:var(--white);z-index:100}
 .pp-nav-back{font:300 11px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--gray);text-decoration:none;display:flex;align-items:center;gap:8px}
@@ -359,9 +325,7 @@ ${breadcrumbSchema}
     Shop All
   </a>
   <a class="pp-nav-logo" href="/">AMBERRA</a>
-  <a class="pp-nav-cart snipcart-checkout" href="#" style="font:300 11px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--gray);text-decoration:none">
-    Cart (<span class="snipcart-items-count">0</span>)
-  </a>
+  <a class="pp-nav-cart" href="/shop" style="font:300 11px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--gray);text-decoration:none">Shop</a>
 </nav>
 
 <main class="pp-wrap">
@@ -393,8 +357,6 @@ ${relatedHTML}
   <p><a href="/shop">Browse the full collection</a> &nbsp;·&nbsp; <a href="/our-story">Our Story</a> &nbsp;·&nbsp; <a href="/contact">Contact</a></p>
 </footer>
 
-<div hidden id="snipcart" data-api-key="${SNIPCART_KEY}" data-currency="usd"></div>
-<script async src="https://cdn.snipcart.com/themes/${SNIPCART_VER}/default/snipcart.js"></script>
 </body>
 </html>`;
 }

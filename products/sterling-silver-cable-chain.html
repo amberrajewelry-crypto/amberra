@@ -135,9 +135,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css?v=20260801c">
-<link rel="preconnect" href="https://app.snipcart.com">
-<link rel="preconnect" href="https://cdn.snipcart.com">
-<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.css">
 <style>
 .pp-nav{display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:64px;border-bottom:1px solid var(--mist);position:sticky;top:0;background:var(--white);z-index:100}
 .pp-nav-back{font:300 11px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--gray);text-decoration:none;display:flex;align-items:center;gap:8px}
@@ -192,9 +189,7 @@
     Shop All
   </a>
   <a class="pp-nav-logo" href="/">AMBERRA</a>
-  <a class="pp-nav-cart snipcart-checkout" href="#" style="font:300 11px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--gray);text-decoration:none">
-    Cart (<span class="snipcart-items-count">0</span>)
-  </a>
+  <a class="pp-nav-cart" href="/shop" style="font:300 11px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--gray);text-decoration:none">Shop</a>
 </nav>
 
 <main class="pp-wrap">
@@ -216,15 +211,7 @@
     <div class="pp-about"><h2 class="pp-about-h">About this piece</h2><p>This chain is crafted to pair with amber pendants and sit smoothly against the skin. Formed from resin millions of years old, each amber cabochon has a tone and pattern all its own. It is set in 925 sterling silver, hallmarked for lasting wear. Handcrafted in Bali from genuine Baltic amber, then finished by hand.</p><p class="pp-about-care">Genuine Baltic amber · keep away from perfume and direct heat, and wipe with a soft cloth to preserve its glow.</p></div>
     
     <div class="pp-props"><div class="pp-prop"><span class="pp-pk">Metal</span><span class="pp-pv">925 Sterling Silver</span></div></div>
-    <button class="pp-cta snipcart-add-item"
-    data-item-id="sterling-silver-cable-chain"
-    data-item-name="Sterling Silver Cable Chain"
-    data-item-price="89.00"
-    data-item-url="https://www.amberrajewelry.com/products/sterling-silver-cable-chain"
-    data-item-description="A classic cable chain in polished sterling silver. Available in 40, 45 and 50 cm lengths. Perfect for any pendant."
-    data-item-image="https://www.amberrajewelry.com/images/chains/IMG_9799.jpg"
-    data-item-categories="Chains"
-    data-item-custom1-name="Size" data-item-custom1-options="45cm|40cm|50cm|55cm|60cm" data-item-custom1-required="true">Add to Cart — $89</button>
+    <a class="pp-cta" href="/shop?cat=chains">Add to Cart — $89</a>
     <a class="pp-cta-ghost" href="/shop?cat=chains">View All Chains</a>
   </div>
 </main>
@@ -256,7 +243,5 @@
   <p><a href="/shop">Browse the full collection</a> &nbsp;·&nbsp; <a href="/our-story">Our Story</a> &nbsp;·&nbsp; <a href="/contact">Contact</a></p>
 </footer>
 
-<div hidden id="snipcart" data-api-key="REPLACE_WITH_SNIPCART_PUBLIC_KEY" data-currency="usd"></div>
-<script async src="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.js"></script>
 </body>
 </html>
