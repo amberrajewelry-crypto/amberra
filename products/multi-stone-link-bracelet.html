@@ -139,7 +139,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css?v=20260801d">
+<link rel="stylesheet" href="/style.css?v=20260802a">
 <style>
 .pp-nav{display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:64px;border-bottom:1px solid var(--mist);position:sticky;top:0;background:var(--white);z-index:100}
 .pp-nav-back{font:300 11px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--gray);text-decoration:none;display:flex;align-items:center;gap:8px}
@@ -269,7 +269,7 @@ function ppAddCart(btn){
     var cart=JSON.parse(localStorage.getItem('amb_cart')||'[]');
     var ex=cart.find(function(x){return x.id===id;});
     if(ex){ex.qty=(ex.qty||1)+1;}
-    else{cart.push({id:id,name:name,img:img,material:material,price:price,qty:1});}
+    else{cart.push({id:id,name:name,img:img,material:material,price:price,size:'',qty:1});}
     localStorage.setItem('amb_cart',JSON.stringify(cart));
   }catch(e){}
   // ?added=1 makes app.js openCart() on load, so the buyer sees their item.
