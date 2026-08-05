@@ -11,8 +11,19 @@ const TABLE_ID = 'tblg9KjmXRv9u0dzv';
 const PAT      = process.env.AIRTABLE_PAT;
 const SITE     = 'https://www.amberrajewelry.com';
 const TODAY    = new Date().toISOString().slice(0, 10);
-const CSSVER   = '20260802a';
+const CSSVER   = '20260804c';
 const MIN_SKU  = 3; // thin-content guard for color pages
+
+// Local webp product images — upgrade Airtable's /img/NUM.jpg → /images/products/NUM.webp (matches generate-products absImg).
+const _WEBP_NUMS = new Set((() => { try { return fs.readdirSync(path.join(__dirname, '..', 'images', 'products')).map(f => (f.match(/(\d+)\.webp/) || [])[1]).filter(Boolean); } catch { return []; } })());
+function absImg(img) {
+  if (!img) return '';
+  let u = String(img);
+  u = u.replace(/^https?:\/\/(www\.)?amberra-jewelry\.com\//i, 'https://www.amberrajewelry.com/');
+  const m = u.match(/\/img\/(\d+)\.(?:jpe?g|png)/i);
+  if (m && _WEBP_NUMS.has(m[1])) u = u.replace(/\/img\/(\d+)\.(?:jpe?g|png)/i, `/images/products/${m[1]}.webp`);
+  return /^https?:/.test(u) ? u : `${SITE}/${u.replace(/^\//, '')}`;
+}
 
 // ── content maps (methodology: data × template) ──────────────────────────────
 
@@ -528,9 +539,9 @@ function cardHTML(p) {
   const badgeHTML = p.badge
     ? `<span class="pbadge ${esc(p.badge)}">${p.badge === 'bestseller' ? 'Bestseller' : p.badge === 'limited' ? 'Limited' : 'New'}</span>`
     : '';
-  const img = p.img || '';
+  const img = absImg(p.img) || '';
   const imgTag = img
-    ? `<img src="${esc(img)}" alt="${esc(p.name)} — AMBERRA ${esc(p.cat)}" loading="lazy">`
+    ? `<img src="${esc(img)}" alt="${esc(p.name)} — AMBERRA ${esc(p.cat)}" loading="lazy" width="400" height="400">`
     : `<div style="width:100%;height:100%;background:var(--mist)"></div>`;
   return `
     <div class="pc" onclick="openDrawer(${p.id})">
@@ -572,7 +583,7 @@ function itemListSchema(id, name, url, products) {
         '@type': 'Product', name: p.name, description: p.desc || '',
         url: purl,
         brand: { '@type': 'Brand', name: 'AMBERRA' },
-        image: p.img ? [absUrl(p.img)] : [],
+        image: p.img ? [absImg(p.img)] : [],
         offers: { '@type': 'Offer', priceCurrency: 'USD', price: String(p.price), availability: 'https://schema.org/InStock', url: purl }
       }
     };

@@ -105,6 +105,8 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 
 /* ═══ HERO ══════════════════════════════════════════════════════════════ */
 #hero{height:100vh;min-height:680px;position:relative;overflow:hidden;background:transparent}
+/* Lift every index content section above #particles-canvas (fixed z-index:1). ponytail: new section on index → add its id here or it gets overlaid by the canvas. */
+#signature-colls,#bestsellers,#about,#wholesale,#explore,#journal,#contact{position:relative;z-index:2}
 
 /* Hero slides */
 .h-slide{position:absolute;inset:0;z-index:1;opacity:0;transition:opacity .9s cubic-bezier(.4,0,.2,1);pointer-events:none}
@@ -600,7 +602,7 @@ footer{background:#fff;padding:80px 56px 48px;border-top:1px solid var(--mist)}
 
 /* ═══ DRAWER ════════════════════════════════════════════════════════════ */
 /* Bvlgari-style full-bleed product viewer: photo-hero left, thumbs under, info column right */
-#drawer{position:fixed;inset:0;z-index:800;display:none;align-items:center;justify-content:center;padding:24px}
+#drawer{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:24px}
 #drawer.open{display:flex}
 .d-bg{position:absolute;inset:0;background:rgba(12,12,12,.55);backdrop-filter:blur(6px)}
 .d-panel{position:relative;width:min(1100px,96vw);max-height:90vh;display:grid;grid-template-columns:minmax(0,1fr) min(480px,46%);grid-template-rows:minmax(0,1fr) auto;background:var(--white);overflow:hidden;border-radius:14px;box-shadow:0 30px 80px rgba(12,12,12,.30);transform:translateY(18px) scale(.985);opacity:0;transition:transform .45s cubic-bezier(.25,.46,.45,.94),opacity .35s ease}

@@ -736,6 +736,19 @@ function navTo(path){location.href=path;}
 // Active translation table — starts as EN, replaced by setLang()
 let TR_ACTIVE=TR;
 function t(k){return TR_ACTIVE[k]||TR[k]||k}
+// ISO country → UI language (content stays EN; only [data-i18n] UI chrome is translated).
+const COUNTRY_TO_LANG={US:'en',GB:'en',AU:'en',CA:'en',NZ:'en',IE:'en',ZA:'en',RU:'ru',BY:'ru',KZ:'ru',GE:'ka',DE:'de',AT:'de',CH:'de',LI:'de',FR:'fr',BE:'fr',LU:'fr',ES:'es',MX:'es',AR:'es',CO:'es',CL:'es',PE:'es',PT:'pt',BR:'pt',IT:'it',TR:'tr',CN:'zh',JP:'ja',KR:'ko',IN:'hi',ID:'id',AE:'ar',SA:'ar',EG:'ar',QA:'ar',UA:'uk'};
+function hasTrans(l){return typeof TRANSLATIONS!=='undefined'&&!!TRANSLATIONS[l];}
+// Priority: saved choice → geo-IP → navigator → 'en'. First visit triggers /api/geo (cached at edge 24h).
+async function initLang(){
+  const saved=localStorage.getItem('amb_lang');
+  if(saved&&hasTrans(saved)){setLang(saved);return;}
+  try{
+    const r=await fetch('/api/geo',{headers:{Accept:'application/json'}});
+    if(r.ok){const c=(await r.json()).country||'';const geo=COUNTRY_TO_LANG[c.toUpperCase()]||'';if(geo&&hasTrans(geo)){setLang(geo);return;}}
+  }catch(e){}
+  setLang(detectLang());
+}
 function detectLang(){
   const saved=localStorage.getItem('amb_lang');
   if(saved&&typeof TRANSLATIONS!=='undefined'&&TRANSLATIONS[saved])return saved;
@@ -1154,7 +1167,7 @@ window.addEventListener('load',()=>{
 })();
 
 document.addEventListener('DOMContentLoaded',()=>{
-  setLang("en");
+  initLang();
   initReveal();
   updateWishBadge();
   updateCartBadge();

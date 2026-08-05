@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 const ROOT = process.cwd();
 const SITE = 'https://www.amberrajewelry.com';
-const CSSVER = '20260802a';
+const CSSVER = '20260804c';
 
 function toSlug(name) {
   return name.toLowerCase()
@@ -128,7 +128,7 @@ ${JSON.stringify({
   const smPath = path.join(ROOT, 'sitemap.xml');
   try {
     let sm = fs.readFileSync(smPath, 'utf8');
-    sm = sm.replace(/  <url>\s*<loc>[^<]*\/collections\/[a-z-]+<\/loc>[\s\S]*?<\/url>\s*/g, '');
+    sm = sm.replace(/\s*<url>\s*<loc>[^<]*\/collections\/[a-z-]+<\/loc>[\s\S]*?<\/url>\s*/g, '');
     const entries = sitemapUrls.map(u => `  <url>\n    <loc>${SITE}${u}</loc>\n    <lastmod>2026-07-27</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>`).join('\n');
     sm = sm.replace('</urlset>', entries + '\n</urlset>');
     fs.writeFileSync(smPath, sm);
