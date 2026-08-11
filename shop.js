@@ -86,7 +86,7 @@ function renderProducts(){
     return `<div class="pc reveal" style="transition-delay:${(i%4)*.06}s"
       onmouseenter="hxOn(this)"
       onmouseleave="hxOff(this)">
-      <div class="pc-inner" onclick="openDrawer(${p.id})">
+      <div class="pc-inner" onclick="${p.slug?`location.href='/products/${p.slug}'`:`openDrawer(${p.id})`}">
         <div class="pc-img" style="position:relative">${b}${wish}${cam}${imgHtml}</div>
         <div class="pc-label">
           <span class="pcat">${p.cat.toUpperCase()}</span>
@@ -95,7 +95,7 @@ function renderProducts(){
           <div class="pfoot"><span class="pprice">${window.formatPrice?window.formatPrice(p.price):'$'+p.price}</span></div>
         </div>
       </div>
-      <div class="pc-xpanel" onclick="openDrawer(${p.id})">
+      <div class="pc-xpanel" onclick="${p.slug?`location.href='/products/${p.slug}'`:`openDrawer(${p.id})`}">
         <span class="pc-xcat">${p.cat.toUpperCase()}</span>
         <h3 class="pc-xname">${p.name}</h3>
         <p class="pc-xmat">${p.material}</p>

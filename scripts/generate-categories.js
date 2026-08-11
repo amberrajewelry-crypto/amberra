@@ -11,7 +11,7 @@ const TABLE_ID = 'tblg9KjmXRv9u0dzv';
 const PAT      = process.env.AIRTABLE_PAT;
 const SITE     = 'https://www.amberrajewelry.com';
 const TODAY    = new Date().toISOString().slice(0, 10);
-const CSSVER   = '20260804c';
+const CSSVER   = '20260811e';
 const MIN_SKU  = 3; // thin-content guard for color pages
 
 // Local webp product images — upgrade Airtable's /img/NUM.jpg → /images/products/NUM.webp (matches generate-products absImg).
@@ -544,7 +544,7 @@ function cardHTML(p) {
     ? `<img src="${esc(img)}" alt="${esc(p.name)} — AMBERRA ${esc(p.cat)}" loading="lazy" width="400" height="400">`
     : `<div style="width:100%;height:100%;background:var(--mist)"></div>`;
   return `
-    <div class="pc" onclick="openDrawer(${p.id})">
+    <div class="pc"${p.slug ? ` onclick="location.href='/products/${esc(p.slug)}'"` : ` onclick="openDrawer(${p.id})"`}>
       <div class="pc-inner">
         <div class="pc-img">
           ${badgeHTML}

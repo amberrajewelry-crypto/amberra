@@ -4,6 +4,30 @@ const IMG_EXTRAS = {
   'Morning Dew': ['/images/earrings/morning-dew-2.jpg'], // leaf_eye_butter_rg
 };
 
+// ponytail: mirror of generate-products.js assignSlugs/toSlug — keep in sync so
+// live cards link to the same /products/<slug> pages as the static HTML.
+function toSlug(name) {
+  return name.toLowerCase()
+    .replace(/[àáâãäå]/g, 'a').replace(/[èéêë]/g, 'e')
+    .replace(/[ìíîï]/g, 'i').replace(/[òóôõö]/g, 'o')
+    .replace(/[ùúûü]/g, 'u').replace(/ñ/g, 'n')
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+function assignSlugs(products) {
+  const seen = [];
+  for (const p of products) {
+    if (!p.name) continue;
+    let slug = toSlug(p.name);
+    if (seen.includes(slug)) slug = slug + '-' + seen.length;
+    seen.push(slug);
+    p.slug = slug;
+  }
+  return products;
+}
+
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=60');
@@ -34,7 +58,7 @@ export default async function handler(req, res) {
     // Never leave the catalog empty: if Airtable returned nothing, serve the bundled snapshot.
     if (!records.length) {
       res.setHeader('X-Data-Source', 'fallback');
-      return res.status(200).json(fallbackProducts);
+      return res.status(200).json(assignSlugs(fallbackProducts));
     }
 
     const products = records.map((rec, i) => {
@@ -60,10 +84,11 @@ export default async function handler(req, res) {
       };
     });
 
+    assignSlugs(products);
     res.status(200).json(products);
   } catch (err) {
     // On any failure, still serve products from the bundled snapshot rather than an empty catalog.
     res.setHeader('X-Data-Source', 'fallback-error');
-    res.status(200).json(fallbackProducts);
+    res.status(200).json(assignSlugs(fallbackProducts));
   }
 }
