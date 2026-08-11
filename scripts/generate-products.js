@@ -48,6 +48,16 @@ function absImg(img) {
 // Duplicate-name SKUs get their jewelry type appended so links/titles are distinct.
 function displayName(prod) { const n = TYPE_NOUN[prod.cat] || ''; return (prod.dup && n) ? `${prod.name} ${n}` : prod.name; }
 
+// For a local /images/*.{jpg,png} URL, return its .webp sibling absolute URL — but
+// only if that .webp actually exists on disk. Lets the static grid ship webp (light)
+// instead of the heavy original, which the client-side render already loads on top.
+function webpSibling(absUrl) {
+  const rel = String(absUrl).replace(/^https?:\/\/[^/]+\//, '').split('?')[0];
+  if (!/^images\/.+\.(jpe?g|png)$/i.test(rel)) return null;
+  const webpRel = rel.replace(/\.(jpe?g|png)$/i, '.webp');
+  return fs.existsSync(path.join(__dirname, '..', webpRel)) ? `${SITE}/${webpRel}` : null;
+}
+
 // Amber hue for schema `color` (GMC requires it) + product→color-hub interlink.
 const AMBER_COLORS = ['blue','butterscotch','cherry','cognac','green','honey','mosaic','raw'];
 function amberColor(prod) { const hay = `${prod.name} ${(prod.props && prod.props.Stone) || ''}`.toLowerCase(); return AMBER_COLORS.find(c => hay.includes(c)) || ''; }
@@ -517,7 +527,13 @@ function staticShopCard(p) {
     : '';
   return `<a class="pc" href="/products/${esc(p.slug)}" style="text-decoration:none;color:inherit">
       <div class="pc-inner">
-        <div class="pc-img" style="position:relative">${badge}<img src="${esc(absImg(p.img))}" alt="${esc(name)} — AMBERRA amber jewelry" loading="lazy" width="400" height="400"></div>
+        <div class="pc-img" style="position:relative">${badge}${(() => {
+          const orig = absImg(p.img), webp = webpSibling(orig);
+          const a = `alt="${esc(name)} — AMBERRA amber jewelry" loading="lazy" width="400" height="400"`;
+          return webp
+            ? `<img src="${esc(webp)}" onerror="this.onerror=null;this.src='${esc(orig)}'" ${a}>`
+            : `<img src="${esc(orig)}" ${a}>`;
+        })()}</div>
         <div class="pc-label">
           <span class="pcat">${esc((p.cat || '').toUpperCase())}</span>
           <h3 class="pname">${esc(name)}</h3>
