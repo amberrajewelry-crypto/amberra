@@ -472,7 +472,7 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
 .chat-h{padding:14px 16px;border-bottom:1px solid var(--mist);display:flex;align-items:center;gap:10px;background:var(--off-white)}
 .chat-av{width:36px;height:36px;background:linear-gradient(135deg,#C9A832,#B8941E);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .chat-av svg{width:16px;height:16px;stroke:var(--gold2);fill:none;stroke-width:1.2}
-.chat-hi h4{font-family:var(--serif);font-size:14px;font-weight:400}
+.chat-hi h3{font-family:var(--serif);font-size:14px;font-weight:400}
 .chat-hi p{font-size:8.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--gold)}
 .chat-hc{margin-left:auto;background:none;border:none;color:var(--gray);font-size:15px;padding:2px 4px}
 .chat-msgs{flex:1;padding:12px;display:flex;flex-direction:column;gap:8px;max-height:230px;overflow-y:auto;min-height:130px}
@@ -726,7 +726,7 @@ body{font-size:14px}
 .ftab.act{background:#2A2520!important;color:#FAF8F5!important;border-color:#2A2520!important}
 
 /* Chat popup */
-.chat-hi h4{font-size:13px!important;color:#2A2520}
+.chat-hi h3{font-size:13px!important;color:#2A2520}
 .chat-msg{font-size:12px!important;line-height:1.7}
 
 /* Footer */

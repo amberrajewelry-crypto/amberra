@@ -34,4 +34,3 @@ Disallow: /
 
 # Sitemap
 Sitemap: https://www.amberrajewelry.com/sitemap.xml
-IndexNow-Key: accdb8ff5a2e86e0e84410e7e59911b4
