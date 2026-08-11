@@ -727,7 +727,7 @@ ${navHTML(activeSlug)}
 ${mainHTML}
 </main>
 ${footerHTML()}
-<script src="/currency.js?v=20260811f" defer></script>
+<script src="/currency.js?v=20260811g" defer></script>
 <script src="/app.js?v=${CSSVER}" defer></script>
 <script src="/shop.js?v=${CSSVER}" defer></script>
 </body>

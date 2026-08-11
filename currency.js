@@ -5,7 +5,8 @@
   var cur = 'USD', rate = 1;
   var CFG = {
     USD: { locale: 'en-US', code: 'USD' },
-    AUD: { locale: 'en-AU', code: 'AUD' }
+    // en-US (not en-AU) so AUD renders the unambiguous "A$" symbol; en-AU would show a bare "$".
+    AUD: { locale: 'en-US', code: 'AUD' }
   };
 
   window.getCurrency = function () { return cur; };
