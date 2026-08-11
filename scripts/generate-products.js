@@ -242,7 +242,7 @@ function productHTML(p, slug) {
     data-name="${esc(name)}"
     data-img="${esc(imgAbs)}"
     data-material="${esc(material)}"
-    data-price="${esc(String(price))}">Add to Cart — $${price}</button>`;
+    data-price="${esc(String(price))}">Add to Cart — <span class="pp-cta-price" data-usd="${price}">$${price}</span></button>`;
 
   // ── "You May Also Like" — interlink product pages (same category first) ──
   const related = Array.isArray(p._related) ? p._related : [];
@@ -253,7 +253,7 @@ function productHTML(p, slug) {
     ${related.map(r => `<a class="pp-rel-card" href="/products/${esc(r.slug)}">
       <div class="pp-rel-img"><img src="${esc(absImg(r.img))}" alt="${esc(displayName(r))} — AMBERRA amber jewelry" loading="lazy" width="300" height="400"></div>
       <div class="pp-rel-name">${esc(displayName(r))}</div>
-      <div class="pp-rel-price">$${r.price}</div>
+      <div class="pp-rel-price" data-usd="${r.price}">$${r.price}</div>
     </a>`).join('')}
   </div>
 </section>` : '';
@@ -371,7 +371,7 @@ ${breadcrumbSchema}
     <div class="pp-cat">${esc(catLabel)}</div>
     ${badgeHTML ? `<div class="pp-badge-wrap">${badgeHTML}</div>` : ''}
     <h1 class="pp-name">${esc(dispName)}</h1>
-    <div class="pp-price">$${price}</div>
+    <div class="pp-price" data-usd="${price}">$${price}</div>
     <hr class="pp-divider">
     <p class="pp-desc">${esc(desc)}</p>
     <p class="pp-material">${esc(material)}</p>
@@ -410,6 +410,7 @@ ${relatedHTML}
   <p><a href="/shop">Browse the full collection</a> &nbsp;·&nbsp; <a href="/our-story">Our Story</a> &nbsp;·&nbsp; <a href="/faq">Client Care</a> &nbsp;·&nbsp; <a href="/contact">Contact</a></p>
 </footer>
 
+<script defer src="/currency.js?v=20260811f"></script>
 <script>
 // Add to cart from a product landing page into the same amb_cart store the
 // index/shop drawer reads, then hand off to /shop which opens the drawer.
@@ -538,7 +539,7 @@ function staticShopCard(p) {
           <span class="pcat">${esc((p.cat || '').toUpperCase())}</span>
           <h3 class="pname">${esc(name)}</h3>
           <p class="pmaterial">${esc(p.material || '')}</p>
-          <div class="pfoot"><span class="pprice">$${p.price}</span></div>
+          <div class="pfoot"><span class="pprice" data-usd="${p.price}">$${p.price}</span></div>
         </div>
       </div>
     </a>`;

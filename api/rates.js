@@ -5,7 +5,7 @@ let cache = { data: null, ts: 0 };
 const TTL = 86400 * 1000; // 24h
 
 // Currencies supported by frankfurter.app (RUB removed due to sanctions, GEL not available)
-const FRANKFURTER_CURRENCIES = ['CNY','AED','IDR','EUR','JPY','KRW','TRY','PLN','INR'];
+const FRANKFURTER_CURRENCIES = ['CNY','AED','IDR','EUR','JPY','KRW','TRY','PLN','INR','AUD'];
 
 // Hardcoded rates for currencies not available on frankfurter.app
 // RUB: removed from frankfurter in 2022 (EU sanctions)
@@ -18,7 +18,7 @@ const HARDCODED_RATES = {
 // Full fallback if frankfurter fetch fails entirely
 const FALLBACK_RATES = {
   USD:1, RUB:92, CNY:7.3, AED:3.67, IDR:15800,
-  EUR:0.92, JPY:149, KRW:1320, TRY:32, PLN:4.0, INR:83, GEL:2.72
+  EUR:0.92, JPY:149, KRW:1320, TRY:32, PLN:4.0, INR:83, GEL:2.72, AUD:1.52
 };
 
 export default async function handler(req, res) {

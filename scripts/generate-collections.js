@@ -61,7 +61,7 @@ function card(p) {
         <span class="coll-card-img"><img src="${esc(absImg(p.img))}" alt="${esc(p.name)} — AMBERRA amber jewelry" loading="lazy" width="300" height="300"></span>
         <span class="coll-card-cat">${esc(p.cat)}</span>
         <span class="coll-card-name">${esc(p.name)}</span>
-        <span class="coll-card-price">${price}</span>
+        <span class="coll-card-price" data-usd="${p.price}">${price}</span>
       </a>`;
 }
 

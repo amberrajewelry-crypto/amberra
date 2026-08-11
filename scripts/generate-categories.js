@@ -560,7 +560,7 @@ function cardHTML(p) {
             : `<span class="pname">${esc(p.name)}</span>`}
           <span class="pmaterial">${esc(p.material || '')}</span>
           <div class="pfoot">
-            <span class="pprice">$${p.price}</span>
+            <span class="pprice" data-usd="${p.price}">$${p.price}</span>
             ${p.slug ? `<a class="pc-view" href="/products/${esc(p.slug)}" onclick="event.stopPropagation()">View</a>` : ''}
           </div>
         </div>
@@ -727,6 +727,7 @@ ${navHTML(activeSlug)}
 ${mainHTML}
 </main>
 ${footerHTML()}
+<script src="/currency.js?v=20260811f" defer></script>
 <script src="/app.js?v=${CSSVER}" defer></script>
 <script src="/shop.js?v=${CSSVER}" defer></script>
 </body>
