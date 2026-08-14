@@ -1718,3 +1718,33 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visi
 /* ── Scroll-snap: full-bleed slides softly lock into viewport (31.07) ── */
 html{scroll-snap-type:y proximity}
 #hero-3d,#brand-video{scroll-snap-align:start}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   PREMIUM POLISH (14.08) — luxury type rendering + scroll-driven parallax.
+   Purely additive: no existing rule removed. Parallax is @supports + reduced-
+   motion guarded and GPU-composited (animation-timeline, no scroll-listener →
+   no jank). Unsupported browsers gracefully render the static layout.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Luxury type rendering + OpenType features ─────────────────────────── */
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+body{font-feature-settings:"kern" 1,"liga" 1,"calt" 1}
+/* Display serif: enable kerning, standard + discretionary ligatures */
+.hero-title,.bv-title,.s-title,.ab-title,.pp-name,.coll-card-name{font-feature-settings:"kern" 1,"liga" 1,"dlig" 1}
+/* Oldstyle proportional figures make large serif numerals read as editorial */
+.ab-pillar-num{font-feature-settings:"onum" 1,"pnum" 1,"kern" 1}
+
+/* ── Scroll-driven parallax — cinematic depth, no JS, degrades to static ── */
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    /* Brand video: slow Ken-Burns zoom-out as the section scrolls through */
+    .brand-vid{animation:amPar-zoom linear both;animation-timeline:view();animation-range:cover 0% cover 100%;will-change:transform}
+    /* Copy rises and settles as it enters view */
+    .brand-video-copy{animation:amPar-rise linear both;animation-timeline:view();animation-range:entry 8% entry 85%}
+    /* About pillars settle upward on entry */
+    .ab-pillars{animation:amPar-rise2 linear both;animation-timeline:view();animation-range:entry 12% cover 38%}
+  }
+}
+@keyframes amPar-zoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+@keyframes amPar-rise{from{transform:translateY(48px);opacity:.3}to{transform:translateY(0);opacity:1}}
+@keyframes amPar-rise2{from{transform:translateY(30px)}to{transform:translateY(0)}}

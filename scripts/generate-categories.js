@@ -11,7 +11,7 @@ const TABLE_ID = 'tblg9KjmXRv9u0dzv';
 const PAT      = process.env.AIRTABLE_PAT;
 const SITE     = 'https://www.amberrajewelry.com';
 const TODAY    = new Date().toISOString().slice(0, 10);
-const CSSVER   = '20260811h';
+const CSSVER   = '20260811i';
 const MIN_SKU  = 3; // thin-content guard for color pages
 
 // Local webp product images — upgrade Airtable's /img/NUM.jpg → /images/products/NUM.webp (matches generate-products absImg).
