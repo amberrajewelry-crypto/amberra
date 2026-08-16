@@ -51,16 +51,16 @@ function init() {
   // orbiting glint light — sweeps a bright specular across the surface
   const glint = new THREE.PointLight(0xfff0d0, 40, 14, 2); scene.add(glint);
 
-  // crystal-clear amber: glassy, high light transmission, bright honey — a gem, not dark resin
+  // deep cognac amber: glassy gem but richer & darker, holds its color against the bright bg
   const amber = new THREE.MeshPhysicalMaterial({
-    // clear honey-amber crystal: light passes almost fully, crisp glass gloss, luminous core stays visible
-    color: 0xe8912a, transmission: 0.985, thickness: 0.85, ior: 1.55,
-    roughness: 0.035, metalness: 0.0,
-    attenuationColor: new THREE.Color(0xf6b24a), attenuationDistance: 3.6,
+    // deeper honey-cognac crystal: shorter attenuation + thicker body absorb more light → dark luminous core
+    color: 0xb0611a, transmission: 0.92, thickness: 1.25, ior: 1.55,
+    roughness: 0.04, metalness: 0.0,
+    attenuationColor: new THREE.Color(0xa85211), attenuationDistance: 1.35,
     clearcoat: 1.0, clearcoatRoughness: 0.02, envMapIntensity: 1.9,
     sheen: 0.35, sheenRoughness: 0.35, sheenColor: new THREE.Color(0xffe4a8),
     iridescence: 0.1, iridescenceIOR: 1.28, iridescenceThicknessRange: [140, 420],
-    emissive: new THREE.Color(0xc26a12), emissiveIntensity: 0.09, transparent: true,
+    emissive: new THREE.Color(0x8f4a0e), emissiveIntensity: 0.06, transparent: true,
   });
 
   const group = new THREE.Group();
@@ -189,7 +189,7 @@ function init() {
     // hover flare: faster spin + brighter emission + halo (via CSS class)
     hoverAmt += ((hover ? 1 : 0) - hoverAmt) * 0.08;
     controls.autoRotateSpeed = 2.0 + hoverAmt * 3.2;
-    amber.emissiveIntensity = 0.14 + hoverAmt * 0.4;
+    amber.emissiveIntensity = 0.08 + hoverAmt * 0.32;
     if (mount.classList.contains('hovered') !== hoverAmt > 0.5) mount.classList.toggle('hovered', hoverAmt > 0.5);
 
     // living breath + hover grow (no wobble)
