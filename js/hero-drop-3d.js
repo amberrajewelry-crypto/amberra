@@ -45,23 +45,23 @@ function init() {
   const camera = new THREE.PerspectiveCamera(30, W() / H(), 0.1, 100);
   camera.position.set(0, 0.2, 9.0);
 
-  const key = new THREE.DirectionalLight(0xffdca6, 2.3); key.position.set(-3, 4, 5); scene.add(key);
-  const rim = new THREE.DirectionalLight(0xffbf72, 2.4); rim.position.set(2, -1.5, -4); scene.add(rim);
-  scene.add(new THREE.AmbientLight(0xffe6c0, 0.42));
-  // orbiting glint light — warm polished sheen highlight (golden, not white/glassy)
-  const glint = new THREE.PointLight(0xffdca0, 24, 14, 2); scene.add(glint);
+  const key = new THREE.DirectionalLight(0xffd39a, 1.7); key.position.set(-3, 4, 5); scene.add(key);
+  const rim = new THREE.DirectionalLight(0xffbf72, 1.9); rim.position.set(2, -1.5, -4); scene.add(rim);
+  scene.add(new THREE.AmbientLight(0xffe6c0, 0.5));
+  // orbiting glint light — subtle warm sheen only, no bright white specular streak
+  const glint = new THREE.PointLight(0xffd79a, 9, 14, 2); scene.add(glint);
 
-  // polished cognac amber: glossy (not matte) but dense-bodied — solid warm resin, not clear glass
+  // polished cognac amber, no white rim: warm gloss from a tinted specular, clearcoat/envMap dialled down so edges don't flare white
   const amber = new THREE.MeshPhysicalMaterial({
-    // low transmission keeps it a solid amber colour; low roughness + clearcoat give the polished gloss, warm envMap avoids glassy mirror
-    color: 0xc2761a, transmission: 0.48, thickness: 1.5, ior: 1.55,
-    roughness: 0.09, metalness: 0.0,
-    attenuationColor: new THREE.Color(0xcf8420), attenuationDistance: 1.2,
-    clearcoat: 0.7, clearcoatRoughness: 0.06, envMapIntensity: 0.75,
+    color: 0xc2761a, transmission: 0.4, thickness: 1.5, ior: 1.55,
+    roughness: 0.16, metalness: 0.0,
+    attenuationColor: new THREE.Color(0xcf8420), attenuationDistance: 1.15,
+    clearcoat: 0.0, clearcoatRoughness: 0.4, envMapIntensity: 0.2,
+    specularIntensity: 0.4, specularColor: new THREE.Color(0xffcf8a),
     dispersion: 0.0,
     sheen: 0.0,
     iridescence: 0.0,
-    emissive: new THREE.Color(0xaa5c16), emissiveIntensity: 0.24, transparent: true,
+    emissive: new THREE.Color(0xaa5c16), emissiveIntensity: 0.26, transparent: true,
   });
 
   const group = new THREE.Group();

@@ -364,6 +364,8 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .pc-img{flex-shrink:0;width:100%;aspect-ratio:1/1;overflow:hidden;background:#fff;display:flex;align-items:center;justify-content:center}
 .pc-img img{width:85%;height:85%;object-fit:contain;display:block;transition:transform .8s cubic-bezier(.25,.46,.45,.94);filter:drop-shadow(0 10px 20px rgba(60,40,10,.16))}
 .pc.hx .pc-img img,.pc:hover .pc-img img{transform:scale(1.06)}
+.pc-img img[src*="48121833"]{transform:scale(.7)} /* All-Seeing Eye ring −30% */
+.pc.hx .pc-img img[src*="48121833"],.pc:hover .pc-img img[src*="48121833"]{transform:scale(.742)}
 .pbadge{position:absolute;top:8px;left:8px;padding:3px 7px;font-size:12px;letter-spacing:.15em;text-transform:uppercase;z-index:2;border-radius:4px}
 .pbadge.bestseller{background:var(--charcoal);color:var(--white)}
 .pbadge.new{background:var(--white);color:var(--charcoal);border:1px solid var(--mist)}
