@@ -4,6 +4,13 @@ import { EffectComposer, RenderPass, BloomEffect, EffectPass } from 'https://esm
 const canvas = document.getElementById('fluid-canvas')
 if (!canvas) throw new Error('fluid-canvas not found')
 
+// mobile: skip the WebGL fluid sim entirely — one fewer GL context + rAF loop on
+// phones. a static CSS gradient (.fluid-fallback) stands in; drift is imperceptible
+// at that size. body stays unindented inside the else to keep the diff minimal.
+if (window.matchMedia('(max-width:768px)').matches) {
+  canvas.classList.add('fluid-fallback')
+} else {
+
 const renderer = new THREE.WebGLRenderer({
   canvas,
   antialias: false,
@@ -284,3 +291,5 @@ window.addEventListener('resize',()=>{
   forceMat.uniforms.uAspect.value=innerWidth/innerHeight
   injectMat.uniforms.uAspect.value=innerWidth/innerHeight
 })
+
+}

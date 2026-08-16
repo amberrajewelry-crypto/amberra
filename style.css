@@ -105,6 +105,8 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 
 /* ═══ HERO ══════════════════════════════════════════════════════════════ */
 #hero{height:100vh;min-height:680px;position:relative;overflow:hidden;background:transparent}
+/* mobile fallback when fluid-bg.js skips the WebGL sim: static warm-gold ambience */
+#fluid-canvas.fluid-fallback{background:radial-gradient(130% 100% at 50% 38%,#6b5320 0%,#3a2a10 40%,#1c1308 72%,#0f0a04 100%)}
 /* Lift every index content section above #particles-canvas (fixed z-index:1). ponytail: new section on index → add its id here or it gets overlaid by the canvas. */
 #signature-colls,#bestsellers,#about,#wholesale,#explore,#journal,#contact{position:relative;z-index:2}
 
@@ -1492,6 +1494,10 @@ body.page-light #catalog{background:#fff}
   animation:up 1.1s .45s forwards,heroShimmer 6s linear infinite;
 }
 @keyframes heroShimmer{to{background-position:220% center}}
+/* once breatheTitle() wraps words in .bw, THEY paint the gold+shimmer; drop the
+   parent's own clipped gradient so it doesn't double-paint the glyphs at the
+   static (un-breathed) position — that offset copy was the ghosting artifact */
+.hero-title:has(.bw){background:none}
 @media(prefers-reduced-motion:reduce){.hero-title{animation:up 1.1s .45s forwards}}
 /* hero-title "breath": words drift ±2.5px; also re-apply clipped gold gradient
    so the shimmer survives breatheTitle() wrapping each word in its own <span> */
