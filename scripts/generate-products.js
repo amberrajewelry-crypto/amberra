@@ -537,7 +537,7 @@ function staticShopCard(p) {
   const badge = p.badge
     ? `<div class="pbadge ${esc(p.badge)}">${p.badge === 'bestseller' ? 'Best Seller' : p.badge === 'limited' ? 'Limited' : 'New'}</div>`
     : '';
-  return `<a class="pc" href="/products/${esc(p.slug)}" style="text-decoration:none;color:inherit">
+  return `<a class="pc" data-cat="${esc(p.cat)}" href="/products/${esc(p.slug)}" style="text-decoration:none;color:inherit">
       <div class="pc-inner">
         <div class="pc-img" style="position:relative">${badge}${(() => {
           const orig = absImg(p.img), webp = webpSibling(orig);
@@ -566,8 +566,15 @@ function injectBestsellers(relFile, products) {
   if (si === -1 || ei === -1) return;
   const startClose = html.indexOf('-->', si) + 3;
   const withSlug = products.filter(x => x.slug);
-  const best = withSlug.filter(x => x.badge === 'bestseller');
-  const list = (best.length >= 4 ? best : withSlug).slice(0, 6);
+  // Curated, category-balanced order: each row = earrings · bracelet · ring. All transparent-bg.
+  const CURATED = [
+    ['earrings', 'All-Seeing Eye'], ['bracelets', 'Empire of the Sun'], ['rings', 'All-Seeing Eye'],
+    ['earrings', 'Amber Blossom'],  ['bracelets', 'Amber Path'],        ['rings', 'Amber Clover Ring'],
+  ];
+  const pick = (cat, name) => withSlug.find(x => x.cat === cat && x.name === name);
+  const list = CURATED.map(([c, n]) => pick(c, n)).filter(Boolean);
+  const have = new Set(list);
+  for (const x of withSlug) { if (list.length >= 6) break; if (!have.has(x)) list.push(x); } // fallback pad
   const cards = list.map(staticShopCard).join('\n      ');
   const out = html.slice(0, startClose) + '\n      ' + cards + '\n    ' + html.slice(ei);
   fs.writeFileSync(p, out, 'utf8');
