@@ -51,16 +51,17 @@ function init() {
   // orbiting glint light — sweeps a bright specular across the surface
   const glint = new THREE.PointLight(0xfff0d0, 40, 14, 2); scene.add(glint);
 
-  // deep cognac amber: glassy gem but richer & darker, holds its color against the bright bg
+  // golden amber diamond: rich gold body, high refraction + dispersion for brilliant fire, no white rim
   const amber = new THREE.MeshPhysicalMaterial({
-    // deeper honey-cognac crystal: shorter attenuation + thicker body absorb more light → dark luminous core
-    color: 0xb0611a, transmission: 0.92, thickness: 1.25, ior: 1.55,
-    roughness: 0.04, metalness: 0.0,
-    attenuationColor: new THREE.Color(0xa85211), attenuationDistance: 1.35,
-    clearcoat: 1.0, clearcoatRoughness: 0.02, envMapIntensity: 1.9,
-    sheen: 0.35, sheenRoughness: 0.35, sheenColor: new THREE.Color(0xffe4a8),
-    iridescence: 0.1, iridescenceIOR: 1.28, iridescenceThicknessRange: [140, 420],
-    emissive: new THREE.Color(0x8f4a0e), emissiveIntensity: 0.06, transparent: true,
+    // warm gold crystal — higher ior & dispersion throw diamond-like sparkle; sheen off = no pale outline
+    color: 0xd99a26, transmission: 0.94, thickness: 1.0, ior: 1.85,
+    roughness: 0.02, metalness: 0.0,
+    attenuationColor: new THREE.Color(0xdc9c2c), attenuationDistance: 2.3,
+    clearcoat: 1.0, clearcoatRoughness: 0.015, envMapIntensity: 2.5,
+    dispersion: 0.55,
+    sheen: 0.0,
+    iridescence: 0.0,
+    emissive: new THREE.Color(0xa8641a), emissiveIntensity: 0.05, transparent: true,
   });
 
   const group = new THREE.Group();
