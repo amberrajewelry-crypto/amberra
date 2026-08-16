@@ -45,23 +45,23 @@ function init() {
   const camera = new THREE.PerspectiveCamera(30, W() / H(), 0.1, 100);
   camera.position.set(0, 0.2, 9.0);
 
-  const key = new THREE.DirectionalLight(0xffdca6, 1.9); key.position.set(-3, 4, 5); scene.add(key);
+  const key = new THREE.DirectionalLight(0xffdca6, 2.3); key.position.set(-3, 4, 5); scene.add(key);
   const rim = new THREE.DirectionalLight(0xffbf72, 2.4); rim.position.set(2, -1.5, -4); scene.add(rim);
   scene.add(new THREE.AmbientLight(0xffe6c0, 0.42));
-  // orbiting glint light — soft warm sheen, not a glassy mirror specular
-  const glint = new THREE.PointLight(0xffdca0, 14, 14, 2); scene.add(glint);
+  // orbiting glint light — warm polished sheen highlight (golden, not white/glassy)
+  const glint = new THREE.PointLight(0xffdca0, 24, 14, 2); scene.add(glint);
 
-  // real Baltic amber, not glass: dense polished resin — warm honey body, soft broad highlight, lit from within
+  // polished cognac amber: glossy (not matte) but dense-bodied — solid warm resin, not clear glass
   const amber = new THREE.MeshPhysicalMaterial({
-    // low transmission = solid amber (not see-through glass); higher roughness + low clearcoat = soft warm sheen, no mirror glint
-    color: 0xbb701a, transmission: 0.42, thickness: 1.6, ior: 1.55,
-    roughness: 0.32, metalness: 0.0,
-    attenuationColor: new THREE.Color(0xc87e1c), attenuationDistance: 1.0,
-    clearcoat: 0.12, clearcoatRoughness: 0.35, envMapIntensity: 0.5,
+    // low transmission keeps it a solid amber colour; low roughness + clearcoat give the polished gloss, warm envMap avoids glassy mirror
+    color: 0xc2761a, transmission: 0.48, thickness: 1.5, ior: 1.55,
+    roughness: 0.09, metalness: 0.0,
+    attenuationColor: new THREE.Color(0xcf8420), attenuationDistance: 1.2,
+    clearcoat: 0.7, clearcoatRoughness: 0.06, envMapIntensity: 0.75,
     dispersion: 0.0,
     sheen: 0.0,
     iridescence: 0.0,
-    emissive: new THREE.Color(0xaa5c16), emissiveIntensity: 0.3, transparent: true,
+    emissive: new THREE.Color(0xaa5c16), emissiveIntensity: 0.24, transparent: true,
   });
 
   const group = new THREE.Group();
