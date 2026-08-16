@@ -51,9 +51,36 @@ function init() {
   // orbiting glint light — subtle warm sheen only, no bright white specular streak
   const glint = new THREE.PointLight(0xffd79a, 9, 14, 2); scene.add(glint);
 
-  // polished cognac amber, no white rim: warm gloss from a tinted specular, clearcoat/envMap dialled down so edges don't flare white
+  // real amber is never one flat colour — build a cloudy honey↔cognac tonal map so the body has natural shades
+  function makeAmberTexture() {
+    const c = document.createElement('canvas'); c.width = c.height = 1024;
+    const g = c.getContext('2d');
+    g.fillStyle = '#c2761a'; g.fillRect(0, 0, 1024, 1024);
+    const blob = (x, y, r, col, a) => {
+      const rg = g.createRadialGradient(x, y, 0, x, y, r);
+      rg.addColorStop(0, col); rg.addColorStop(1, 'rgba(0,0,0,0)');
+      g.globalAlpha = a; g.fillStyle = rg;
+      g.beginPath(); g.arc(x, y, r, 0, Math.PI * 2); g.fill();
+    };
+    const R = () => Math.random() * 1024;
+    const dark = ['#5a330a', '#6e3c0d', '#7f470f'];        // turbid cognac depths
+    for (let i = 0; i < 10; i++) blob(R(), R(), 170 + Math.random() * 280, dark[i % 3], 0.45 + Math.random() * 0.3);
+    const light = ['#e2a848', '#eab65e', '#d59636'];       // luminous honey zones
+    for (let i = 0; i < 9; i++) blob(R(), R(), 140 + Math.random() * 230, light[i % 3], 0.3 + Math.random() * 0.3);
+    for (let i = 0; i < 6; i++) blob(R(), R(), 120 + Math.random() * 180, '#b86a16', 0.28);  // mid blend
+    g.globalAlpha = 1;
+    const tex = new THREE.CanvasTexture(c);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+    tex.anisotropy = 4;
+    return tex;
+  }
+  const amberTex = makeAmberTexture();
+
+  // polished cognac amber, multi-toned like the real stone: cloudy honey↔cognac body, warm tinted gloss, no white rim
   const amber = new THREE.MeshPhysicalMaterial({
-    color: 0xc2761a, transmission: 0.4, thickness: 1.5, ior: 1.55,
+    color: 0xffffff, map: amberTex,
+    transmission: 0.4, thickness: 1.5, ior: 1.55,
     roughness: 0.16, metalness: 0.0,
     attenuationColor: new THREE.Color(0xcf8420), attenuationDistance: 1.15,
     clearcoat: 0.0, clearcoatRoughness: 0.4, envMapIntensity: 0.2,
