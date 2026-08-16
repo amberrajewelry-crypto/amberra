@@ -366,6 +366,8 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .pc.hx .pc-img img,.pc:hover .pc-img img{transform:scale(1.06)}
 .pc-img img[src*="48121833"]{transform:scale(.7)} /* All-Seeing Eye ring −30% */
 .pc.hx .pc-img img[src*="48121833"],.pc:hover .pc-img img[src*="48121833"]{transform:scale(.742)}
+.pc-img img[src*="clover_amber"]{transform:scale(.8)} /* Amber Clover ring −20% */
+.pc.hx .pc-img img[src*="clover_amber"],.pc:hover .pc-img img[src*="clover_amber"]{transform:scale(.848)}
 .pbadge{position:absolute;top:8px;left:8px;padding:3px 7px;font-size:12px;letter-spacing:.15em;text-transform:uppercase;z-index:2;border-radius:4px}
 .pbadge.bestseller{background:var(--charcoal);color:var(--white)}
 .pbadge.new{background:var(--white);color:var(--charcoal);border:1px solid var(--mist)}
@@ -1371,6 +1373,9 @@ body.page-story #about{padding-top:calc(var(--nav-h) + 30px)}
 #bestsellers .pc-img{overflow:hidden}
 #bestsellers .pc[data-cat="bracelets"] .pc-img img{transform:scale(1.1)}
 #bestsellers .pc[data-cat="bracelets"]:hover .pc-img img{transform:scale(1.16)}
+/* кольца крупноваты в плитке — уменьшаем на 20% */
+#bestsellers .pc[data-cat="rings"] .pc-img img{transform:scale(0.8)}
+#bestsellers .pc[data-cat="rings"]:hover .pc-img img{transform:scale(0.85)}
 /* прозрачный слой поверх фото — гасит оверлей «поиск по картинке» Яндекс.Браузера (клик проходит на ссылку) */
 #bestsellers .pc-img::after{content:"";position:absolute;inset:0;z-index:2}
 
