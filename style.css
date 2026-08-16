@@ -944,7 +944,7 @@ footer{background:#fff;padding:80px 56px 48px;border-top:1px solid var(--mist)}
 @keyframes floatParticle{0%{opacity:0;transform:translateY(20px) scale(0)}20%{opacity:.7}80%{opacity:.3}100%{opacity:0;transform:translateY(-80px) scale(1.2)}}
 
 /* ═══ MOBILE NAV (hamburger) ════════════════════════════════════════════ */
-.mob-menu-btn{display:none;width:40px;height:40px;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;flex-shrink:0}
+.mob-menu-btn{display:none;width:44px;height:44px;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;flex-shrink:0}
 .mob-menu-btn svg{width:20px;height:20px;stroke:var(--charcoal);fill:none;stroke-width:1.8}
 .mob-nav-overlay{display:none;position:fixed;inset:0;background:rgba(12,12,12,.5);z-index:800;backdrop-filter:blur(4px)}
 .mob-nav-overlay.open{display:block}
