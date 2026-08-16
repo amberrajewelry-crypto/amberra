@@ -40,7 +40,7 @@ function init() {
 
   const scene = new THREE.Scene();
   const pmrem = new THREE.PMREMGenerator(renderer);
-  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.5).texture;
+  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
 
   const camera = new THREE.PerspectiveCamera(30, W() / H(), 0.1, 100);
   camera.position.set(0, 0.2, 9.0);

@@ -1,5 +1,5 @@
-import * as THREE from 'https://esm.sh/three@0.177.0'
-import { EffectComposer, RenderPass, BloomEffect, EffectPass } from 'https://esm.sh/postprocessing@6.37.3'
+import * as THREE from 'three'
+import { EffectComposer, RenderPass, BloomEffect, EffectPass } from 'https://esm.sh/postprocessing@6.37.3?external=three'
 
 const canvas = document.getElementById('fluid-canvas')
 if (!canvas) throw new Error('fluid-canvas not found')
