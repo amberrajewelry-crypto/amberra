@@ -489,18 +489,26 @@ function loadLocalProducts() {
 }
 
 async function loadProducts() {
-  if (PAT) {
+  // Hit Airtable ONLY on an explicit catalog sync (SYNC_AIRTABLE=1), never on every
+  // deploy. Vercel rebuilds on each push; fetching every time burned the monthly
+  // Airtable API quota (429 PUBLIC_API_BILLING_LIMIT_EXCEEDED). Normal builds use the
+  // committed data/products.json snapshot (0 API calls). Refresh catalog:
+  //   SYNC_AIRTABLE=1 npm run build   → updates data/products.json → commit to publish.
+  if (PAT && process.env.SYNC_AIRTABLE) {
     try {
-      console.log('📦 Fetching products from Airtable…');
-      const records = await fetchProducts();
+      console.log('📦 Fetching products from Airtable (SYNC_AIRTABLE)…');
+      const records = normalizeAirtable(await fetchProducts());
       console.log(`✓  ${records.length} products fetched from Airtable`);
-      return normalizeAirtable(records);
+      const snap = path.join(__dirname, '..', 'data', 'products.json');
+      fs.writeFileSync(snap, JSON.stringify(records, null, 2), 'utf8');
+      console.log('✓  snapshot written → data/products.json (commit to publish)');
+      return records;
     } catch (err) {
-      console.warn(`⚠  Airtable fetch failed (${err.message}) — falling back to /tmp/products.json`);
+      console.warn(`⚠  Airtable sync failed (${err.message}) — using committed snapshot`);
     }
   }
   const local = loadLocalProducts();
-  console.log(`✓  ${local.length} products loaded from /tmp/products.json`);
+  console.log(`✓  ${local.length} products from committed snapshot (set SYNC_AIRTABLE=1 to refresh from Airtable)`);
   return local;
 }
 
