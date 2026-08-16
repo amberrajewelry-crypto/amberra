@@ -102,9 +102,9 @@ function init() {
 
   // glowing heart — soft pulsing core deep inside the drop (additive glow)
   const core = new THREE.Mesh(
-    new THREE.SphereGeometry(0.48, 24, 24),
+    new THREE.SphereGeometry(0.3, 20, 20),
     new THREE.MeshBasicMaterial({
-      color: 0xffcf7a, transparent: true, opacity: 0.22,
+      color: 0xffc266, transparent: true, opacity: 0.06,
       blending: THREE.AdditiveBlending, depthWrite: false,
     })
   );
@@ -205,8 +205,8 @@ function init() {
       Math.sin(t * 0.53 + 1.3) * 0.52,
       Math.cos(t * 0.31) * 0.32
     );
-    core.material.opacity = 0.24 + Math.abs(Math.sin(t * 1.6)) * 0.12 + hoverAmt * 0.26;
-    core.scale.setScalar(0.92 + Math.sin(t * 1.6) * 0.16 + hoverAmt * 0.5);
+    core.material.opacity = 0.05 + Math.abs(Math.sin(t * 1.6)) * 0.04 + hoverAmt * 0.18;
+    core.scale.setScalar(0.8 + Math.sin(t * 1.6) * 0.12 + hoverAmt * 0.4);
 
     // inner starfield: sharp twinkle + magnetic drift + motes glow when the soul passes near
     const mag = hoverAmt * 0.55;
