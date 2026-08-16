@@ -1278,6 +1278,12 @@ footer{background:#fff;padding:80px 56px 48px;border-top:1px solid var(--mist)}
 .page-home .bs-all{color:#FBF7EF}
 .page-home #about .s-title{color:#FBF7EF}
 .page-home #about .s-body{color:rgba(255,255,255,.82)}
+/* trustbar over dark fluid — was charcoal (unreadable); lift to light */
+.page-home .tb-t{color:#FBF7EF}
+.page-home .tb-d{color:rgba(255,255,255,.80)}
+/* founder heading on one line (col ~560px) */
+.page-home .ab-title{white-space:nowrap;font-size:clamp(30px,3.3vw,44px)}
+@media(max-width:760px){.page-home .ab-title{white-space:normal;font-size:clamp(30px,6vw,40px)}}
 .page-home #journal .js-content{color:#fff}
 .page-home #journal .js-title{color:#fff}
 .page-home #journal .js-date{color:rgba(255,255,255,.62)}

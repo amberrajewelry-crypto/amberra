@@ -58,7 +58,7 @@ function webpSibling(absUrl) {
   const rel = String(absUrl).replace(/^https?:\/\/[^/]+\//, '').split('?')[0];
   if (!/^images\/.+\.(jpe?g|png)$/i.test(rel)) return null;
   const webpRel = rel.replace(/\.(jpe?g|png)$/i, '.webp');
-  return fs.existsSync(path.join(__dirname, '..', webpRel)) ? `${SITE}/${webpRel}` : null;
+  return fs.existsSync(path.join(__dirname, '..', webpRel)) ? `${SITE}/${webpRel}?v=2` : null;
 }
 
 // Amber hue for schema `color` (GMC requires it) + product→color-hub interlink.
