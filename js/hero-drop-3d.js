@@ -51,16 +51,17 @@ function init() {
   // orbiting glint light — sweeps a bright specular across the surface
   const glint = new THREE.PointLight(0xfff0d0, 40, 14, 2); scene.add(glint);
 
-  // luminous honey-amber gem: glossy translucent crystal, warm and clearly amber (richer, not washed-out)
+  // real Baltic amber, not glass: dense translucent resin — warm honey body, lit from within, sun-spangle flecks
   const amber = new THREE.MeshPhysicalMaterial({
-    color: 0xdb8f1f, transmission: 0.96, thickness: 1.0, ior: 1.55,
-    roughness: 0.05, metalness: 0.0,
-    attenuationColor: new THREE.Color(0xe0982a), attenuationDistance: 2.6,
-    clearcoat: 1.0, clearcoatRoughness: 0.025, envMapIntensity: 2.0,
-    dispersion: 0.12,
-    sheen: 0.12, sheenRoughness: 0.4, sheenColor: new THREE.Color(0xffdf9e),
-    iridescence: 0.08, iridescenceIOR: 1.3, iridescenceThicknessRange: [140, 420],
-    emissive: new THREE.Color(0xbf6f16), emissiveIntensity: 0.09, transparent: true,
+    // lower transmission so the warm colour reads as solid amber (not clear glass); strong short attenuation = honey glow
+    color: 0xc0771a, transmission: 0.6, thickness: 1.4, ior: 1.55,
+    roughness: 0.14, metalness: 0.0,
+    attenuationColor: new THREE.Color(0xcf8420), attenuationDistance: 1.5,
+    clearcoat: 0.65, clearcoatRoughness: 0.09, envMapIntensity: 1.15,
+    dispersion: 0.0,
+    sheen: 0.0,
+    iridescence: 0.0,
+    emissive: new THREE.Color(0xb0611a), emissiveIntensity: 0.2, transparent: true,
   });
 
   const group = new THREE.Group();
