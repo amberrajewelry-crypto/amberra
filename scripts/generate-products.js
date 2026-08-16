@@ -43,7 +43,10 @@ function absImg(img) {
   // Upgrade /img/{NUM}.{jpg,png} → /images/products/{NUM}.webp only when a local webp exists.
   const m = u.match(/\/img\/(\d+)\.(?:jpe?g|png)/i);
   if (m && _WEBP_NUMS.has(m[1])) u = u.replace(/\/img\/(\d+)\.(?:jpe?g|png)/i, `/images/products/${m[1]}.webp`);
-  return /^https?:/.test(u) ? u : `${SITE}/${u.replace(/^\//, '')}`;
+  u = /^https?:/.test(u) ? u : `${SITE}/${u.replace(/^\//, '')}`;
+  // Bust immutable CDN cache when product webp content changes (bg-removed → transparent). Bump on re-export.
+  if (/\/images\/products\/\d+\.webp$/.test(u)) u += '?v=2';
+  return u;
 }
 // Duplicate-name SKUs get their jewelry type appended so links/titles are distinct.
 function displayName(prod) { const n = TYPE_NOUN[prod.cat] || ''; return (prod.dup && n) ? `${prod.name} ${n}` : prod.name; }

@@ -1346,15 +1346,19 @@ body.page-story #about{padding-top:calc(var(--nav-h) + 30px)}
 .bs-head .s-title{margin:4px 0 20px;color:var(--white)}
 .bs-all{color:var(--white)!important;border-color:var(--white)!important}
 .bs-all:hover{color:var(--amber)!important;border-color:var(--amber)!important}
-#bestsellers .pcat{color:#6E5410}
-#bestsellers .pname{color:var(--charcoal)}
-#bestsellers .pprice{color:var(--charcoal)}
-#bestsellers .pc-label{background:#fff;backdrop-filter:none}
-#bestsellers .pc-label *{color:#1a0c02}
-#bestsellers .pc-label .pcat{color:#6E5410}
-#bestsellers .pc-inner{background:#fff}
-#bestsellers .pc{background:#fff;border:none}
-#bestsellers .pc-img{background:#fff}
+/* Bestsellers: transparent cards so rembg-cut products glow on the dark hero bg
+   (Jacob&Co dark-luxury look). Text goes light/gold to read on dark. Product
+   images are transparent webp — on light pages (.page-light) cards stay white. */
+#bestsellers .pcat{color:#D4B84A}
+#bestsellers .pname{color:#F2EEE8}
+#bestsellers .pprice{color:#E8D080}
+#bestsellers .pc-label{background:transparent;backdrop-filter:none}
+#bestsellers .pc-label *{color:#F2EEE8}
+#bestsellers .pc-label .pcat{color:#D4B84A}
+#bestsellers .pc-inner{background:transparent}
+#bestsellers .pc{background:transparent;border:none}
+#bestsellers .pc-img{background:transparent}
+#bestsellers .pc:hover .pc-inner{box-shadow:none}
 
 .bs-all{font-family:var(--sans);font-size:13px;letter-spacing:.25em;text-transform:uppercase;color:var(--charcoal);text-decoration:none;border-bottom:1px solid var(--charcoal);padding-bottom:2px}
 .bs-all:hover{color:var(--amber);border-color:var(--amber)}
