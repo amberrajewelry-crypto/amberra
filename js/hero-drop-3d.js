@@ -68,6 +68,12 @@ function init() {
     const light = ['#e2a848', '#eab65e', '#d59636'];       // luminous honey zones
     for (let i = 0; i < 9; i++) blob(R(), R(), 140 + Math.random() * 230, light[i % 3], 0.3 + Math.random() * 0.3);
     for (let i = 0; i < 6; i++) blob(R(), R(), 120 + Math.random() * 180, '#b86a16', 0.28);  // mid blend
+    // suspended inclusions — tiny fossil specks & golden flecks trapped in the ancient resin
+    for (let i = 0; i < 46; i++) {
+      g.globalAlpha = 0.25 + Math.random() * 0.4;
+      g.fillStyle = Math.random() < 0.6 ? '#4a2a08' : '#f2ca78';
+      g.beginPath(); g.arc(R(), R(), 2 + Math.random() * 6, 0, Math.PI * 2); g.fill();
+    }
     g.globalAlpha = 1;
     const tex = new THREE.CanvasTexture(c);
     tex.colorSpace = THREE.SRGBColorSpace;
@@ -80,11 +86,11 @@ function init() {
   // polished cognac amber, multi-toned like the real stone: cloudy honey↔cognac body, warm tinted gloss, no white rim
   const amber = new THREE.MeshPhysicalMaterial({
     color: 0xffffff, map: amberTex,
-    transmission: 0.4, thickness: 1.5, ior: 1.55,
-    roughness: 0.16, metalness: 0.0,
-    attenuationColor: new THREE.Color(0xcf8420), attenuationDistance: 1.15,
-    clearcoat: 0.0, clearcoatRoughness: 0.4, envMapIntensity: 0.2,
-    specularIntensity: 0.4, specularColor: new THREE.Color(0xffcf8a),
+    transmission: 0.5, thickness: 1.5, ior: 1.55,
+    roughness: 0.07, metalness: 0.0,
+    attenuationColor: new THREE.Color(0xcf8420), attenuationDistance: 1.3,
+    clearcoat: 0.15, clearcoatRoughness: 0.2, envMapIntensity: 0.28,
+    specularIntensity: 0.7, specularColor: new THREE.Color(0xffdaa2),
     dispersion: 0.0,
     sheen: 0.0,
     iridescence: 0.0,
