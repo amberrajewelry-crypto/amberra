@@ -852,10 +852,13 @@ function loadLocalProducts() {
 
 async function main() {
   let products;
-  if (PAT) {
-    try { console.log('Fetching products from Airtable…'); products = await fetchFromAirtable(); }
+  // Airtable only on explicit sync (SYNC_AIRTABLE=1). generate-products.js owns the
+  // snapshot refresh; here we just read data/products.json on normal deploys so the
+  // build stops burning Airtable API quota (429 billing limit). See generate-products.js.
+  if (PAT && process.env.SYNC_AIRTABLE) {
+    try { console.log('Fetching products from Airtable (SYNC_AIRTABLE)…'); products = await fetchFromAirtable(); }
     catch (err) { console.warn(`⚠  Airtable fetch failed (${err.message}) — falling back to local products.json`); products = loadLocalProducts(); }
-  } else { console.log('No AIRTABLE_PAT — using local products.json'); products = loadLocalProducts(); }
+  } else { console.log('Using committed products.json snapshot (set SYNC_AIRTABLE=1 to refresh)'); products = loadLocalProducts(); }
   console.log(`${products.length} products loaded`);
 
   assignSlugs(products);
