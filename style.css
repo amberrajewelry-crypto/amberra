@@ -1367,8 +1367,8 @@ body.page-story #about{padding-top:calc(var(--nav-h) + 30px)}
 #bestsellers .pc:hover .pc-inner{box-shadow:none}
 /* тонкие диагональные браслеты мельче колец/серёг — увеличиваем для соразмерности */
 #bestsellers .pc-img{overflow:hidden}
-#bestsellers .pc[data-cat="bracelets"] .pc-img img{transform:scale(1.85)}
-#bestsellers .pc[data-cat="bracelets"]:hover .pc-img img{transform:scale(1.95)}
+#bestsellers .pc[data-cat="bracelets"] .pc-img img{transform:scale(1.1)}
+#bestsellers .pc[data-cat="bracelets"]:hover .pc-img img{transform:scale(1.16)}
 /* прозрачный слой поверх фото — гасит оверлей «поиск по картинке» Яндекс.Браузера (клик проходит на ссылку) */
 #bestsellers .pc-img::after{content:"";position:absolute;inset:0;z-index:2}
 

@@ -45,7 +45,7 @@ function absImg(img) {
   if (m && _WEBP_NUMS.has(m[1])) u = u.replace(/\/img\/(\d+)\.(?:jpe?g|png)/i, `/images/products/${m[1]}.webp`);
   u = /^https?:/.test(u) ? u : `${SITE}/${u.replace(/^\//, '')}`;
   // Bust immutable CDN cache when product webp content changes (bg-removed → transparent). Bump on re-export.
-  if (/\/images\/products\/\d+\.webp$/.test(u)) u += '?v=2';
+  if (/\/images\/products\/\d+\.webp$/.test(u)) u += '?v=3';
   return u;
 }
 // Duplicate-name SKUs get their jewelry type appended so links/titles are distinct.
@@ -58,7 +58,7 @@ function webpSibling(absUrl) {
   const rel = String(absUrl).replace(/^https?:\/\/[^/]+\//, '').split('?')[0];
   if (!/^images\/.+\.(jpe?g|png)$/i.test(rel)) return null;
   const webpRel = rel.replace(/\.(jpe?g|png)$/i, '.webp');
-  return fs.existsSync(path.join(__dirname, '..', webpRel)) ? `${SITE}/${webpRel}?v=2` : null;
+  return fs.existsSync(path.join(__dirname, '..', webpRel)) ? `${SITE}/${webpRel}?v=3` : null;
 }
 
 // Amber hue for schema `color` (GMC requires it) + product→color-hub interlink.
@@ -569,7 +569,7 @@ function injectBestsellers(relFile, products) {
   // Curated, category-balanced order: each row = earrings · bracelet · ring. All transparent-bg.
   const CURATED = [
     ['earrings', 'All-Seeing Eye'], ['bracelets', 'Empire of the Sun'], ['rings', 'All-Seeing Eye'],
-    ['earrings', 'Amber Blossom'],  ['bracelets', 'Amber Path'],        ['rings', 'Amber Clover Ring'],
+    ['earrings', 'Amber Blossom'],  ['bracelets', 'Four Blessing'],     ['rings', 'Amber Clover Ring'],
   ];
   const pick = (cat, name) => withSlug.find(x => x.cat === cat && x.name === name);
   const list = CURATED.map(([c, n]) => pick(c, n)).filter(Boolean);
