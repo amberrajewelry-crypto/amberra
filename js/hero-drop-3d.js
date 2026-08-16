@@ -51,17 +51,16 @@ function init() {
   // orbiting glint light — sweeps a bright specular across the surface
   const glint = new THREE.PointLight(0xfff0d0, 40, 14, 2); scene.add(glint);
 
-  // frosted golden amber: matte satin shell that diffuses the pulsing light glowing from within
+  // luminous honey-amber gem: glossy translucent crystal, warm and clearly amber (richer, not washed-out)
   const amber = new THREE.MeshPhysicalMaterial({
-    // rough surface + transmission = frosted glass; inner core light bleeds softly through, no gloss/sparkle
-    color: 0xd99a26, transmission: 0.78, thickness: 1.1, ior: 1.5,
-    roughness: 0.6, metalness: 0.0,
-    attenuationColor: new THREE.Color(0xdc9c2c), attenuationDistance: 2.3,
-    clearcoat: 0.0, clearcoatRoughness: 0.5, envMapIntensity: 0.45,
-    dispersion: 0.0,
-    sheen: 0.0,
-    iridescence: 0.0,
-    emissive: new THREE.Color(0xa8641a), emissiveIntensity: 0.12, transparent: true,
+    color: 0xdb8f1f, transmission: 0.96, thickness: 1.0, ior: 1.55,
+    roughness: 0.05, metalness: 0.0,
+    attenuationColor: new THREE.Color(0xe0982a), attenuationDistance: 2.6,
+    clearcoat: 1.0, clearcoatRoughness: 0.025, envMapIntensity: 2.0,
+    dispersion: 0.12,
+    sheen: 0.12, sheenRoughness: 0.4, sheenColor: new THREE.Color(0xffdf9e),
+    iridescence: 0.08, iridescenceIOR: 1.3, iridescenceThicknessRange: [140, 420],
+    emissive: new THREE.Color(0xbf6f16), emissiveIntensity: 0.09, transparent: true,
   });
 
   const group = new THREE.Group();
@@ -172,10 +171,8 @@ function init() {
       Math.sin(t * 0.53 + 1.3) * 0.52,
       Math.cos(t * 0.31) * 0.32
     );
-    // stronger, slower heartbeat — the inner light visibly pulses through the frosted shell
-    const pulse = Math.abs(Math.sin(t * 1.15));
-    core.material.opacity = 0.24 + pulse * 0.36 + hoverAmt * 0.26;
-    core.scale.setScalar(0.82 + pulse * 0.34 + hoverAmt * 0.5);
+    core.material.opacity = 0.12 + Math.abs(Math.sin(t * 1.6)) * 0.07 + hoverAmt * 0.26;
+    core.scale.setScalar(0.8 + Math.sin(t * 1.6) * 0.14 + hoverAmt * 0.5);
 
     // inner starfield: sharp twinkle + magnetic drift + motes glow when the soul passes near
     const mag = hoverAmt * 0.55;
@@ -192,7 +189,7 @@ function init() {
     // hover flare: faster spin + brighter emission + halo (via CSS class)
     hoverAmt += ((hover ? 1 : 0) - hoverAmt) * 0.08;
     controls.autoRotateSpeed = 2.0 + hoverAmt * 3.2;
-    amber.emissiveIntensity = 0.1 + pulse * 0.22 + hoverAmt * 0.3;
+    amber.emissiveIntensity = 0.14 + hoverAmt * 0.4;
     if (mount.classList.contains('hovered') !== hoverAmt > 0.5) mount.classList.toggle('hovered', hoverAmt > 0.5);
 
     // living breath + hover grow (no wobble)
