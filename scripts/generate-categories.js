@@ -114,7 +114,7 @@ const COLORS = {
  metaDesc: 'Handmade honey amber jewelry in 925 sterling silver — warm golden Baltic amber rings, earrings & pendants, handcrafted. Free shipping over $200.',
  intro: [
  'Honey amber is the classic warm-gold Baltic amber — clear, glowing and timeless. AMBERRA hand-sets it in 925 sterling silver.',
- 'Each honey piece is natural and unique, finished by our artisans in Bali.'
+ 'Each honey piece is natural and unique, finished by our artisans.'
  ],
  faq: [
  ['What is honey amber?', 'Honey amber is natural Baltic amber in a warm golden, translucent tone, the most classic amber color and the shade most people picture when they think of amber. It is the same fossilised conifer resin known as succinite, formed around 40 million years ago in the Baltic region, and it owes its clarity to resin that hardened with few trapped bubbles, letting light pass straight through. Honey stones often preserve faint natural inclusions of ancient bark or plant fiber. Because it flatters every skin tone and reads as both classic and contemporary, honey is an ideal first amber, hand-set by AMBERRA in 925 sterling silver.']
@@ -134,7 +134,7 @@ const COLORS = {
  metaDesc: 'Handmade green amber jewelry in 925 sterling silver — natural Baltic amber with green tones, handcrafted. Free worldwide shipping over $200.',
  intro: [
  'Green amber is natural Baltic amber with cool green depths — distinctive and eye-catching against sterling silver.',
- 'AMBERRA green amber is genuine and hand-finished in Bali; each piece is unique.'
+ 'AMBERRA green amber is genuine and hand-finished; each piece is unique.'
  ],
  faq: [
  ['Is green amber natural?', 'Yes, AMBERRA green amber is genuine natural Baltic amber, the fossilised conifer resin known as succinite that formed around 40 million years ago in the Baltic region. Its cool green depth is not a dye: the effect appears when translucent amber is set over a darker backing that draws out its green undertones, or where fine plant and mineral inclusions scatter light toward the green end of the spectrum. Because genuine green tones are far rarer than honey or cognac, each green piece is produced in small numbers, certified authentic and set individually by hand in 925 sterling silver, making every one a distinctive, one-of-a-kind piece.']
@@ -174,7 +174,7 @@ const COLORS = {
  metaDesc: 'Handmade raw amber jewelry in 925 sterling silver — unpolished natural Baltic amber, handcrafted. Organic and one of a kind. Free shipping over $200.',
  intro: [
  'Raw amber keeps the natural, unpolished surface of Baltic amber — organic and earthy, set in 925 sterling silver.',
- 'Each raw amber piece is genuine and unique, finished by hand in Bali.'
+ 'Each raw amber piece is genuine and unique, finished by hand.'
  ],
  faq: [
  ['What is raw amber?', 'Raw amber is natural Baltic amber left unpolished, keeping its organic texture and natural surface rather than being shaped into a smooth cabochon. It is the same fossilised conifer resin known as succinite that formed around 40 million years ago in the Baltic region, shown much as it is found: matte, textured and full of character. The weathered outer crust is the stone oxidised skin, formed over millions of years and usually a shade darker than the translucent resin beneath. Leaving it unpolished preserves the amber as a Baltic gatherer would have found it, and AMBERRA sets each raw piece by hand in 925 sterling silver.']
