@@ -45,56 +45,22 @@ function init() {
   const camera = new THREE.PerspectiveCamera(30, W() / H(), 0.1, 100);
   camera.position.set(0, 0.2, 9.0);
 
-  const key = new THREE.DirectionalLight(0xffd39a, 1.7); key.position.set(-3, 4, 5); scene.add(key);
-  const rim = new THREE.DirectionalLight(0xffbf72, 1.9); rim.position.set(2, -1.5, -4); scene.add(rim);
-  scene.add(new THREE.AmbientLight(0xffe6c0, 0.5));
-  // orbiting glint light — subtle warm sheen only, no bright white specular streak
-  const glint = new THREE.PointLight(0xffd79a, 9, 14, 2); scene.add(glint);
+  const key = new THREE.DirectionalLight(0xfff2d6, 2.7); key.position.set(-3, 4, 5); scene.add(key);
+  const rim = new THREE.DirectionalLight(0xffc27a, 2.9); rim.position.set(2, -1.5, -4); scene.add(rim);
+  scene.add(new THREE.AmbientLight(0xffe6c0, 0.34));
+  // orbiting glint light — sweeps a bright specular across the surface
+  const glint = new THREE.PointLight(0xfff0d0, 40, 14, 2); scene.add(glint);
 
-  // real amber is never one flat colour — build a cloudy honey↔cognac tonal map so the body has natural shades
-  function makeAmberTexture() {
-    const c = document.createElement('canvas'); c.width = c.height = 1024;
-    const g = c.getContext('2d');
-    g.fillStyle = '#c2761a'; g.fillRect(0, 0, 1024, 1024);
-    const blob = (x, y, r, col, a) => {
-      const rg = g.createRadialGradient(x, y, 0, x, y, r);
-      rg.addColorStop(0, col); rg.addColorStop(1, 'rgba(0,0,0,0)');
-      g.globalAlpha = a; g.fillStyle = rg;
-      g.beginPath(); g.arc(x, y, r, 0, Math.PI * 2); g.fill();
-    };
-    const R = () => Math.random() * 1024;
-    const dark = ['#5a330a', '#6e3c0d', '#7f470f'];        // turbid cognac depths
-    for (let i = 0; i < 10; i++) blob(R(), R(), 170 + Math.random() * 280, dark[i % 3], 0.45 + Math.random() * 0.3);
-    const light = ['#e2a848', '#eab65e', '#d59636'];       // luminous honey zones
-    for (let i = 0; i < 9; i++) blob(R(), R(), 140 + Math.random() * 230, light[i % 3], 0.3 + Math.random() * 0.3);
-    for (let i = 0; i < 6; i++) blob(R(), R(), 120 + Math.random() * 180, '#b86a16', 0.28);  // mid blend
-    // suspended inclusions — tiny fossil specks & golden flecks trapped in the ancient resin
-    for (let i = 0; i < 46; i++) {
-      g.globalAlpha = 0.25 + Math.random() * 0.4;
-      g.fillStyle = Math.random() < 0.6 ? '#4a2a08' : '#f2ca78';
-      g.beginPath(); g.arc(R(), R(), 2 + Math.random() * 6, 0, Math.PI * 2); g.fill();
-    }
-    g.globalAlpha = 1;
-    const tex = new THREE.CanvasTexture(c);
-    tex.colorSpace = THREE.SRGBColorSpace;
-    tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
-    tex.anisotropy = 4;
-    return tex;
-  }
-  const amberTex = makeAmberTexture();
-
-  // polished cognac amber, multi-toned like the real stone: cloudy honey↔cognac body, warm tinted gloss, no white rim
+  // crystal-clear amber: glassy, high light transmission, bright honey — a gem, not dark resin
   const amber = new THREE.MeshPhysicalMaterial({
-    color: 0xffffff, map: amberTex,
-    transmission: 0.5, thickness: 1.5, ior: 1.55,
-    roughness: 0.07, metalness: 0.0,
-    attenuationColor: new THREE.Color(0xcf8420), attenuationDistance: 1.3,
-    clearcoat: 0.15, clearcoatRoughness: 0.2, envMapIntensity: 0.28,
-    specularIntensity: 0.7, specularColor: new THREE.Color(0xffdaa2),
-    dispersion: 0.0,
-    sheen: 0.0,
-    iridescence: 0.0,
-    emissive: new THREE.Color(0xaa5c16), emissiveIntensity: 0.26, transparent: true,
+    // clear honey-amber crystal: light passes almost fully, crisp glass gloss, luminous core stays visible
+    color: 0xe8912a, transmission: 0.985, thickness: 0.85, ior: 1.55,
+    roughness: 0.035, metalness: 0.0,
+    attenuationColor: new THREE.Color(0xf6b24a), attenuationDistance: 3.6,
+    clearcoat: 1.0, clearcoatRoughness: 0.02, envMapIntensity: 1.9,
+    sheen: 0.35, sheenRoughness: 0.35, sheenColor: new THREE.Color(0xffe4a8),
+    iridescence: 0.1, iridescenceIOR: 1.28, iridescenceThicknessRange: [140, 420],
+    emissive: new THREE.Color(0xc26a12), emissiveIntensity: 0.09, transparent: true,
   });
 
   const group = new THREE.Group();
@@ -102,9 +68,9 @@ function init() {
 
   // glowing heart — soft pulsing core deep inside the drop (additive glow)
   const core = new THREE.Mesh(
-    new THREE.SphereGeometry(0.3, 20, 20),
+    new THREE.SphereGeometry(0.34, 20, 20),
     new THREE.MeshBasicMaterial({
-      color: 0xffc266, transparent: true, opacity: 0.06,
+      color: 0xffc266, transparent: true, opacity: 0.14,
       blending: THREE.AdditiveBlending, depthWrite: false,
     })
   );
@@ -205,8 +171,8 @@ function init() {
       Math.sin(t * 0.53 + 1.3) * 0.52,
       Math.cos(t * 0.31) * 0.32
     );
-    core.material.opacity = 0.05 + Math.abs(Math.sin(t * 1.6)) * 0.04 + hoverAmt * 0.18;
-    core.scale.setScalar(0.8 + Math.sin(t * 1.6) * 0.12 + hoverAmt * 0.4);
+    core.material.opacity = 0.12 + Math.abs(Math.sin(t * 1.6)) * 0.07 + hoverAmt * 0.26;
+    core.scale.setScalar(0.8 + Math.sin(t * 1.6) * 0.14 + hoverAmt * 0.5);
 
     // inner starfield: sharp twinkle + magnetic drift + motes glow when the soul passes near
     const mag = hoverAmt * 0.55;
@@ -223,7 +189,7 @@ function init() {
     // hover flare: faster spin + brighter emission + halo (via CSS class)
     hoverAmt += ((hover ? 1 : 0) - hoverAmt) * 0.08;
     controls.autoRotateSpeed = 2.0 + hoverAmt * 3.2;
-    amber.emissiveIntensity = 0.22 + hoverAmt * 0.4;
+    amber.emissiveIntensity = 0.14 + hoverAmt * 0.4;
     if (mount.classList.contains('hovered') !== hoverAmt > 0.5) mount.classList.toggle('hovered', hoverAmt > 0.5);
 
     // living breath + hover grow (no wobble)

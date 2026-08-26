@@ -378,9 +378,9 @@ const SVC={
 consultation:{title:'Book an Appointment',body:`
 <div class="sg-section">
 <div class="sg-section-title">Your Personal Jewelry Appointment</div>
-<p class="sg-intro">Every great piece of jewelry begins with a conversation. Our specialists in Bali are available for private one-on-one consultations — by WhatsApp, video call, or in our Ubud atelier.</p>
+<p class="sg-intro">Every great piece of jewelry begins with a conversation. Our specialists in Bali are available for private one-on-one consultations — by WhatsApp, video call, or in our atelier.</p>
 <div class="sg-method">
-<div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>Choose Your Format</b>WhatsApp consultation (instant) · Video call via Zoom or FaceTime · In-person visit to our Ubud studio by appointment. All consultations are complimentary and carry no obligation.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>Choose Your Format</b>WhatsApp consultation (instant) · Video call via Zoom or FaceTime · In-person visit to our Bali studio by appointment. All consultations are complimentary and carry no obligation.</div></div>
 <div class="sg-method-step"><span class="sg-method-num">02</span><div class="sg-method-text"><b>What to Expect</b>Share your occasion, style references, and budget. Our specialist will guide you through the collection, recommend pieces that suit your proportions and skin tone, and explain the story behind each amber stone.</div></div>
 <div class="sg-method-step"><span class="sg-method-num">03</span><div class="sg-method-text"><b>After Your Consultation</b>We will send you a curated selection with high-resolution images and pricing. Reserved pieces are held for 48 hours. Full bespoke proposals are available within 5–7 business days.</div></div>
 <div class="sg-method-step"><span class="sg-method-num">04</span><div class="sg-method-text"><b>Book Now</b>Contact us on WhatsApp at +62 878 5386 7120 or email <a href="mailto:hello@amberrajewelry.com" style="color:var(--amber)">hello@amberrajewelry.com</a>. We respond within 4 hours during Bali business hours (08:00–20:00 WITA).</div></div>
@@ -394,12 +394,12 @@ consultation:{title:'Book an Appointment',body:`
 giftwrap:{title:'Gift Wrapping',body:`
 <div class="sg-section">
 <div class="sg-section-title">The Art of the Gift</div>
-<p class="sg-intro">Every AMBERRA piece is presented in our signature packaging — handcrafted in Bali using materials that honour the natural world from which amber itself comes.</p>
+<p class="sg-intro">Every AMBERRA piece is presented in our signature packaging — designed in Bali using materials that honour the natural world from which amber itself comes.</p>
 <div class="sg-method">
 <div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>Signature AMBERRA Box</b>Matte black rigid box with gold foil stamping. Interior lined with cream-colored velvet. Each box is sealed with our amber-toned wax stamp — a ritual in itself.</div></div>
 <div class="sg-method-step"><span class="sg-method-num">02</span><div class="sg-method-text"><b>Luxury Ribbon & Tissue</b>Hand-tied satin ribbon in ivory or deep charcoal. Acid-free tissue paper with the AMBERRA emblem. All packaging is recyclable and plastic-free.</div></div>
 <div class="sg-method-step"><span class="sg-method-num">03</span><div class="sg-method-text"><b>Personalised Message Card</b>Include a handwritten message on our cream-laid card stock — engraved with the AMBERRA monogram. Available in English, Russian, Arabic, Indonesian, and French. No extra charge.</div></div>
-<div class="sg-method-step"><span class="sg-method-num">04</span><div class="sg-method-text"><b>Bali Gift Set Upgrade</b>Add a hand-painted batik pouch, artisan incense from Ubud, and a small raw amber specimen for $28. A gift that carries the spirit of Bali.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">04</span><div class="sg-method-text"><b>Bali Gift Set Upgrade</b>Add a hand-painted batik pouch, artisan incense from Bali, and a small raw amber specimen for $28. A gift that carries the spirit of Bali.</div></div>
 </div>
 <p class="sg-note">Gift wrapping is complimentary on all orders. Upgrade options available at checkout. For corporate gifting (10+ pieces), contact our team directly for bespoke solutions.</p>
 </div>`},
@@ -517,8 +517,8 @@ custom:{title:'Custom Orders',body:`
 <div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>Initial Consultation</b>Share your vision via WhatsApp or email. Reference images, stone colors, metal preferences (sterling silver, gold vermeil, solid 18k), occasion, and budget. No brief is too simple or too ambitious.</div></div>
 <div class="sg-method-step"><span class="sg-method-num">02</span><div class="sg-method-text"><b>Stone Selection</b>We will present 3–5 amber specimens matching your specifications — photographed on white and on skin. You select the stone you feel drawn to. This is your piece, beginning with your choice.</div></div>
 <div class="sg-method-step"><span class="sg-method-num">03</span><div class="sg-method-text"><b>Design Proposal</b>Our artisan prepares a hand-drawn sketch and, for complex pieces, a 3D render. You review and approve before any metal is touched. One round of revisions is included at no extra cost.</div></div>
-<div class="sg-method-step"><span class="sg-method-num">04</span><div class="sg-method-text"><b>Crafting in Bali</b>Your piece is made by hand in our Ubud workshop. Standard completion: 2–3 weeks. Complex or engraved pieces: 4–5 weeks. You will receive progress photographs at each stage.</div></div>
-<div class="sg-method-step"><span class="sg-method-num">05</span><div class="sg-method-text"><b>Delivery &amp; Ceremony</b>Shipped in our signature box with a personalised certificate of authenticity. Each custom piece is individually blessed in the Balinese tradition before it leaves the atelier.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">04</span><div class="sg-method-text"><b>Crafting in Bali</b>Your piece is made by hand in our atelier. Standard completion: 2–3 weeks. Complex or engraved pieces: 4–5 weeks. You will receive progress photographs at each stage.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">05</span><div class="sg-method-text"><b>Delivery &amp; Ceremony</b>Shipped in our signature box with a personalised certificate of authenticity. Each custom piece is individually crafted by hand by our artisans before it leaves the atelier.</div></div>
 </div>
 <div class="sg-warranty-box" style="margin-top:32px">
 <div class="sg-warranty-seal" style="background:var(--cream);border:1px solid var(--mist)"><svg viewBox="0 0 24 24" stroke="var(--amber)" fill="none" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
@@ -542,7 +542,7 @@ tryon:{title:'Virtual Try On',body:`
 blessing:{title:'The Bali Blessing',body:`
 <div class="sg-section">
 <div class="sg-section-title">A Sacred Ritual Before Every Piece Leaves Bali</div>
-<p class="sg-intro">In Balinese Hindu tradition, objects crafted with intention carry energy — and that energy can be consecrated. Every AMBERRA piece undergoes a blessing ceremony in the Ubud tradition before it is shipped to you.</p>
+<p class="sg-intro">In Balinese Hindu tradition, objects crafted with intention carry energy — and that energy can be consecrated. Every AMBERRA piece undergoes a blessing ceremony by hand before it is shipped to you.</p>
 <div class="sg-method">
 <div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>The Ceremony</b>Performed by a local Balinese priest (Pemangku) in our atelier courtyard, each piece is laid on a woven offering tray (gebogan) with fresh flowers, incense (dupa), and holy water from the Tirta Empul temple spring in Tampaksiring.</div></div>
 <div class="sg-method-step"><span class="sg-method-num">02</span><div class="sg-method-text"><b>The Intention</b>The ceremony calls for protection, clarity, and alignment for the wearer. In Balinese belief, amber — as a stone of ancient light — amplifies positive intention and shields against disharmony.</div></div>
@@ -730,8 +730,8 @@ window.addEventListener('scroll',()=>{
 })();
 
 // ── TRANSLATIONS ──────────────────────────────────────────────────────────
-const TR={nav_home:'Home',nav_shop:'Shop All',util_store:'Find a Store',util_services:'Services',util_contact:'Contact Us',util_account:'My Account',util_wishlist:'Wishlist',search_ph:'Search',nav_collections:'Collections',nav_rings:'Rings',nav_earrings:'Earrings',nav_pendants:'Pendants',nav_bracelets:'Bracelets',nav_journal:'Journal',nav_about:'Our Story',nav_tryon:'Try On',nav_wholesale:'Wholesale',hero_eyebrow:'Baltic Amber · Handcrafted in Bali',hero_title:'Light that remembers<br>forty million years',hero_sub:'Natural amber & 925 sterling silver, ritually blessed and shipped worldwide.',hero_cta:'Shop the Collection',hero_cta2:'All Jewelry',tick1:'Natural Baltic Amber',tick2:'Handcrafted in Bali',tick3:'925 Sterling Silver',tick4:'Sacred Ritual Blessing',tick5:'Free Gift Wrapping',coll_lbl:'Our Universe',coll_title:'Collections',coll_all:'View all pieces',cat_rings:'Collection',cat_earrings:'Collection',cat_pendants:'Collection',cat_bracelets:'Collection',cat_chains:'Collection',col_rings:'Rings',col_earrings:'Earrings',col_pendants:'Pendants',col_bracelets:'Bracelets',col_chains:'Chains',nav_chains:'Chains',f_chains:'Chains',discover:'Discover',ed_lbl:'The Craft',ed_title:'Born from <em>Ancient Earth</em>',ed_body1:'Amber is not merely stone — it is time crystallised. An ancient forest of insects, light and rain, preserved in a single warm stone.',ed_body2:'Our artisans in Bali spend lifetimes learning to honour it. Every piece passes through water, fire and prayer before it reaches you.',stat1:'Years of amber',stat2:'Unique pieces',stat3:'Countries',tryon_lbl:'New Feature',tryon_title:'Try On<br><em>Before You Buy</em>',tryon_desc:'Upload your photo and see how each AMBERRA piece looks on you.',tryon_cta:'Upload Your Photo',tryon_badge:'AR Try-On',tryon_hint:'Upload photo to begin',quiz_title:'Find My Amber',quiz_sub:'Answer 5 questions — discover your perfect piece',quiz_cta:'Start Quiz',cat_lbl:'The Collection',cat_title:'All Jewelry',f_all:'All',f_rings:'Rings',f_earrings:'Earrings',f_pendants:'Pendants',f_bracelets:'Bracelets',j_lbl:'Insights',j_title:'The Amber <em>Journal</em>',j_all:'View all articles',j1_date:'March 2026',j1_title:'Baltic Amber Healing Properties: The Science of Succinic Acid',j1_body:'Baltic amber contains up to 8% succinic acid — a natural compound studied for its anti-inflammatory and immune-supporting effects when worn against the skin.',j2_date:'February 2026',j2_title:'How to Clean Amber Jewelry: The Complete Care Guide',j2_body:'Natural amber is softer than most gemstones. Warm water, mild soap, and a soft cloth are all you need to keep it radiant for generations. Avoid chemicals and ultrasound cleaners.',j3_date:'January 2026',j3_title:'From Balinese Forests to Bali: The Journey of Every AMBERRA Stone',j3_body:'Forty million years beneath ancient forests, then a world away in the sacred workshops of Ubud — the remarkable story of each Baltic amber stone.',j4_date:'December 2025',j4_title:'How to Tell Real Baltic Amber from Fake: 5 Simple Tests',j4_body:'With replicas flooding the market, knowing how to identify authentic Baltic amber is essential. Salt water, UV light, and the scent test reveal the truth instantly.',j5_date:'November 2025',j5_title:'5 Ways to Style Amber Jewelry This Season',j5_body:'From layered gold chains to minimalist rings, discover how natural amber complements every aesthetic — from Balinese sunsets to city evenings.',j6_date:'October 2025',j6_title:'The Golden Spectrum: Understanding Amber Colors and Their Meaning',j6_body:'From cognac to cherry, green to milky white — every shade of Baltic amber tells a different geological story and carries its own energy signature.',j7_date:'September 2025',j7_title:'Why Baltic Amber Is the World\'s Most Ancient Gemstone',j7_body:'Unlike diamonds or sapphires, Baltic amber is organic — fossilized resin from forests that disappeared 40 million years ago. Its rarity lies not in hardness, but in time.',j8_date:'August 2025',j8_title:'The Ubud Artisans: Hands Behind Every AMBERRA Piece',j8_body:'In the rice-field studios of Ubud, Balinese silversmiths spend years perfecting the art of setting Baltic amber in sacred geometric forms passed down through generations.',j9_date:'July 2025',j9_title:'Amber and Feminine Energy: The Ancient Spiritual Connection',j9_body:'Baltic cultures associated amber with the goddess of the sea. In Bali it is worn for protection, warmth, and the awakening of feminine power.',c_lbl:'Private Appointments',c_title:'Book an Appointment',c_body:'Our team in Bali will personally guide you to the perfect piece.',fc_coll:'Collections',fc_srv:'Services',fc_contact:'Contact',req_btn:'Request This Piece',req_title:'Request a Piece',req_sub:'Tell us which piece caught your eye.',f_piece:'Piece of Interest',f_name:'Your Name',f_email:'Email',f_phone:'WhatsApp (optional)',f_msg:'Message',req_send:'Send Request',req_thanks:'Thank you ✦',req_thanks_sub:'We will be in touch within 24 hours. Warm regards from Bali.',qm_title:'Find My Amber',qm_sub:'5 questions · 2 minutes · Perfect match',q_next:'Next',ep_title:'A Gift from Amberra',ep_sub:'Join our world — receive 10% off your first order',ep_ph:'Your email address',ep_btn:'Claim Offer',ep_note:'No spam, ever. Unsubscribe anytime.',ep_thanks:'✦ Welcome to Amberra ✦',ep_thanks_sub:'Your 10% code is on its way',chat_lbl:'Ask Us Anything',chat_status:'Online · Bali, Indonesia',chat_welcome:"Hello! I'm your personal Amberra guide. How can I help you find the perfect piece today?",cq1:'Ring sizes',cq2:'Shipping info',cq3:'Care guide',cq4:'Gift ideas',chat_ph:'Ask anything...',cont_btn:'Continue Browsing',to_lbl:'Virtual Try‑On',to_title:'Try On at Home',to_body:'Upload your photo and see how our jewelry looks on you.',to_cam_btn:'Start Camera',to_choose:'Choose a Piece',to_save:'Save Look',to_reset:'Reset',
-fd:'Natural Baltic amber jewelry,<br>handcrafted in Bali with sacred intention.<br>Each piece is unique — like its wearer.',
+const TR={nav_home:'Home',nav_shop:'Shop All',util_store:'Find a Store',util_services:'Services',util_contact:'Contact Us',util_account:'My Account',util_wishlist:'Wishlist',search_ph:'Search',nav_collections:'Collections',nav_rings:'Rings',nav_earrings:'Earrings',nav_pendants:'Pendants',nav_bracelets:'Bracelets',nav_journal:'Journal',nav_about:'Our Story',nav_tryon:'Try On',nav_wholesale:'Wholesale',hero_eyebrow:'Baltic Amber · Designed in Bali',hero_title:'Light that remembers<br>forty million years',hero_sub:'Natural amber & 925 sterling silver, finished by hand and shipped worldwide.',hero_cta:'Shop the Collection',hero_cta2:'All Jewelry',tick1:'Natural Baltic Amber',tick2:'Designed in Bali',tick3:'925 Sterling Silver',tick4:'Certificate of Authenticity',tick5:'Free Gift Wrapping',coll_lbl:'Our Universe',coll_title:'Collections',coll_all:'View all pieces',cat_rings:'Collection',cat_earrings:'Collection',cat_pendants:'Collection',cat_bracelets:'Collection',cat_chains:'Collection',col_rings:'Rings',col_earrings:'Earrings',col_pendants:'Pendants',col_bracelets:'Bracelets',col_chains:'Chains',nav_chains:'Chains',f_chains:'Chains',discover:'Discover',ed_lbl:'The Craft',ed_title:'Born from <em>Ancient Earth</em>',ed_body1:'Amber is not merely stone — it is time crystallised. An ancient forest of insects, light and rain, preserved in a single warm stone.',ed_body2:'Our artisans spend lifetimes learning to honour it. Every piece is shaped, set and finished by hand before it reaches you.',stat1:'Years of amber',stat2:'Unique pieces',stat3:'Countries',tryon_lbl:'New Feature',tryon_title:'Try On<br><em>Before You Buy</em>',tryon_desc:'Upload your photo and see how each AMBERRA piece looks on you.',tryon_cta:'Upload Your Photo',tryon_badge:'AR Try-On',tryon_hint:'Upload photo to begin',quiz_title:'Find My Amber',quiz_sub:'Answer 5 questions — discover your perfect piece',quiz_cta:'Start Quiz',cat_lbl:'The Collection',cat_title:'All Jewelry',f_all:'All',f_rings:'Rings',f_earrings:'Earrings',f_pendants:'Pendants',f_bracelets:'Bracelets',j_lbl:'Insights',j_title:'The Amber <em>Journal</em>',j_all:'View all articles',j1_date:'March 2026',j1_title:'Baltic Amber Healing Properties: The Science of Succinic Acid',j1_body:'Baltic amber contains up to 8% succinic acid — a natural compound studied for its anti-inflammatory and immune-supporting effects when worn against the skin.',j2_date:'February 2026',j2_title:'How to Clean Amber Jewelry: The Complete Care Guide',j2_body:'Natural amber is softer than most gemstones. Warm water, mild soap, and a soft cloth are all you need to keep it radiant for generations. Avoid chemicals and ultrasound cleaners.',j3_date:'January 2026',j3_title:'From Balinese Forests to Bali: The Journey of Every AMBERRA Stone',j3_body:'Forty million years beneath ancient forests, then a world away in the workshops where it is set — the remarkable story of each Baltic amber stone.',j4_date:'December 2025',j4_title:'How to Tell Real Baltic Amber from Fake: 5 Simple Tests',j4_body:'With replicas flooding the market, knowing how to identify authentic Baltic amber is essential. Salt water, UV light, and the scent test reveal the truth instantly.',j5_date:'November 2025',j5_title:'5 Ways to Style Amber Jewelry This Season',j5_body:'From layered gold chains to minimalist rings, discover how natural amber complements every aesthetic — from Balinese sunsets to city evenings.',j6_date:'October 2025',j6_title:'The Golden Spectrum: Understanding Amber Colors and Their Meaning',j6_body:'From cognac to cherry, green to milky white — every shade of Baltic amber tells a different geological story and carries its own energy signature.',j7_date:'September 2025',j7_title:'Why Baltic Amber Is the World\'s Most Ancient Gemstone',j7_body:'Unlike diamonds or sapphires, Baltic amber is organic — fossilized resin from forests that disappeared 40 million years ago. Its rarity lies not in hardness, but in time.',j8_date:'August 2025',j8_title:'The Bali Artisans: Hands Behind Every AMBERRA Piece',j8_body:'Our silversmiths spend years perfecting the art of setting Baltic amber in sacred geometric forms passed down through generations.',j9_date:'July 2025',j9_title:'Amber and Feminine Energy: The Ancient Spiritual Connection',j9_body:'Baltic cultures associated amber with the goddess of the sea. In Bali it is worn for protection, warmth, and the awakening of feminine power.',c_lbl:'Private Appointments',c_title:'Book an Appointment',c_body:'Our team in Bali will personally guide you to the perfect piece.',fc_coll:'Collections',fc_srv:'Services',fc_contact:'Contact',req_btn:'Request This Piece',req_title:'Request a Piece',req_sub:'Tell us which piece caught your eye.',f_piece:'Piece of Interest',f_name:'Your Name',f_email:'Email',f_phone:'WhatsApp (optional)',f_msg:'Message',req_send:'Send Request',req_thanks:'Thank you ✦',req_thanks_sub:'We will be in touch within 24 hours. Warm regards from Bali.',qm_title:'Find My Amber',qm_sub:'5 questions · 2 minutes · Perfect match',q_next:'Next',ep_title:'A Gift from Amberra',ep_sub:'Join our world — receive 10% off your first order',ep_ph:'Your email address',ep_btn:'Claim Offer',ep_note:'No spam, ever. Unsubscribe anytime.',ep_thanks:'✦ Welcome to Amberra ✦',ep_thanks_sub:'Your 10% code is on its way',chat_lbl:'Ask Us Anything',chat_status:'Online · Bali, Indonesia',chat_welcome:"Hello! I'm your personal Amberra guide. How can I help you find the perfect piece today?",cq1:'Ring sizes',cq2:'Shipping info',cq3:'Care guide',cq4:'Gift ideas',chat_ph:'Ask anything...',cont_btn:'Continue Browsing',to_lbl:'Virtual Try‑On',to_title:'Try On at Home',to_body:'Upload your photo and see how our jewelry looks on you.',to_cam_btn:'Start Camera',to_choose:'Choose a Piece',to_save:'Save Look',to_reset:'Reset',
+fd:'Natural Baltic amber jewelry,<br>designed in Bali with sacred intention.<br>Each piece is unique — like its wearer.',
 fc_all:'All Jewelry',fc_consultation:'Consultation',fc_gift:'Gift Wrapping',fc_custom:'Custom Orders',
 ws_lbl:'B2B Program',ws_title:'Partner With <em>Amberra</em>',ws_body:'We welcome boutiques, concept stores, and jewelry retailers worldwide. Our wholesale program offers exclusive pricing, full product range access, and dedicated account support from Bali.',
 ws_t1:'Starter',ws_t2:'Partner',ws_t3:'Exclusive',ws_ppo:'pieces per order',
@@ -748,20 +748,42 @@ const COUNTRY_TO_LANG={US:'en',GB:'en',AU:'en',CA:'en',NZ:'en',IE:'en',ZA:'en',R
 function hasTrans(l){return typeof TRANSLATIONS!=='undefined'&&!!TRANSLATIONS[l];}
 // Priority: saved choice → geo-IP → navigator → 'en'. First visit triggers /api/geo (cached at edge 24h).
 async function initLang(){
+  // Saved manual choice always wins.
   const saved=localStorage.getItem('amb_lang');
   if(saved&&hasTrans(saved)){setLang(saved);return;}
+  // Paint English first (primary market) — no flash of a wrong locale.
+  setLang('en');
+  // SAFE auto-switch: only to a language that is 100% translated (zero English
+  // islands). Blocks the mixed-locale mess partial machine translations caused
+  // (e.g. ka in Tbilisi with untranslated content). Self-maintaining: when a
+  // language's translation table becomes complete, it auto-qualifies here.
   try{
-    const r=await fetch('/api/geo',{headers:{Accept:'application/json'}});
-    if(r.ok){const c=(await r.json()).country||'';const geo=COUNTRY_TO_LANG[c.toUpperCase()]||'';if(geo&&hasTrans(geo)){setLang(geo);return;}}
-  }catch(e){}
-  setLang(detectLang());
+    const cand=await preferredLang();
+    if(cand&&cand!=='en'&&isLangComplete(cand)) setLang(cand);
+  }catch(_){}
 }
-function detectLang(){
-  const saved=localStorage.getItem('amb_lang');
-  if(saved&&typeof TRANSLATIONS!=='undefined'&&TRANSLATIONS[saved])return saved;
-  const nav=(navigator.language||navigator.userLanguage||'en').split('-')[0].toLowerCase();
-  if(typeof TRANSLATIONS!=='undefined'&&TRANSLATIONS[nav])return nav;
-  return 'en';
+// A language is complete when EVERY on-page i18n key resolves in it — no fallback
+// to the English base (TR). Measured against the live DOM, so it stays honest.
+function isLangComplete(lang){
+  if(lang==='en') return true;
+  if(typeof TRANSLATIONS==='undefined'||!TRANSLATIONS[lang]) return false;
+  const t=TRANSLATIONS[lang], keys=new Set();
+  document.querySelectorAll('[data-i18n]').forEach(e=>keys.add(e.dataset.i18n));
+  document.querySelectorAll('[data-i18n-ph]').forEach(e=>keys.add(e.dataset.i18nPh));
+  for(const k of keys){const v=t[k]; if(v===undefined||v===null||String(v).trim()==='') return false;}
+  return true;
+}
+// Preferred UI language: browser preference first (what the user reads), then a
+// geo-IP fallback via the edge-cached /api/geo. Returns null if unsupported.
+async function preferredLang(){
+  const nav=(navigator.language||navigator.userLanguage||'').split('-')[0].toLowerCase();
+  if(nav&&typeof TRANSLATIONS!=='undefined'&&TRANSLATIONS[nav]) return nav;
+  try{
+    const g=await fetch('/api/geo').then(r=>r.json());
+    const byCountry={GE:'ka',RU:'ru',UA:'uk',CN:'zh',TW:'zh',HK:'zh',JP:'ja',KR:'ko',DE:'de',AT:'de',FR:'fr',ES:'es',MX:'es',AR:'es',PT:'pt',BR:'pt',IT:'it',TR:'tr',ID:'id',MY:'ms',TH:'th',VN:'vi',PL:'pl',NL:'nl',IN:'hi',BD:'bn',PH:'tl',MM:'my',SA:'ar',AE:'ar',EG:'ar'};
+    const c=((g&&(g.country||g.countryCode||''))+'').toUpperCase();
+    return byCountry[c]||null;
+  }catch(_){ return null; }
 }
 function setLang(lang){
   // Merge: TR (full EN base) + TRANSLATIONS[lang] overrides
@@ -1235,6 +1257,12 @@ document.addEventListener('DOMContentLoaded',()=>{
       }
     },{rootMargin:'200px'});
     abIo.observe(abVid);
+  } else if(abVid){
+    // direct <source>: force play (autoplay may be blocked, e.g. Yandex)
+    const tryPlay=()=>abVid.play().catch(()=>{});
+    abVid.addEventListener('canplay',tryPlay,{once:true});
+    abVid.addEventListener('loadeddata',tryPlay,{once:true});
+    tryPlay();
   }
   // Editorial model reveal
   const edm=document.querySelector('.ed-model-wrap');
@@ -1254,6 +1282,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       const tryPlay=()=>brandVid.play().catch(()=>{});
       brandVid.addEventListener('canplay',tryPlay,{once:true});
       brandVid.addEventListener('loadeddata',tryPlay,{once:true});
+      brandVid.addEventListener('playing',()=>brandVid.classList.add('is-playing'),{once:true});
       brandVid.load(); tryPlay();
     },2000);
   }

@@ -519,6 +519,8 @@ footer{background:#2A2520;padding:80px 56px 48px;border-top:1px solid rgba(255,2
   .j-grid,.tryon-items{grid-template-columns:1fr 1fr}
   .prod-grid{grid-template-columns:1fr 1fr}
   .c-grid{grid-template-columns:1fr}
+  #spread>*{min-width:0}.sp-content{padding:48px 24px}
+  .f-row{flex-wrap:wrap}.ft>*{min-width:0}
   .d-panel{width:100vw}
   .c-btns{flex-direction:column;align-items:center}
   .quiz-strip{flex-direction:column;margin:0 24px}

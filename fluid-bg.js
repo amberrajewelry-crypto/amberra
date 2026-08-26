@@ -4,12 +4,11 @@ import { EffectComposer, RenderPass, BloomEffect, EffectPass } from 'https://esm
 const canvas = document.getElementById('fluid-canvas')
 if (!canvas) throw new Error('fluid-canvas not found')
 
-// mobile: skip the WebGL fluid sim entirely — one fewer GL context + rAF loop on
-// phones. a static CSS gradient (.fluid-fallback) stands in; drift is imperceptible
-// at that size. body stays unindented inside the else to keep the diff minimal.
-if (window.matchMedia('(max-width:768px)').matches) {
-  canvas.classList.add('fluid-fallback')
-} else {
+// mobile: run the SAME WebGL fluid sim, just cheaper (lower sim res + pixelRatio 1
+// + fewer pressure iters) so the gold still reacts to touch (touchmove handled
+// below). IS_MOBILE tunes the perf knobs. Bare block keeps the closing brace balanced.
+const IS_MOBILE = window.matchMedia('(max-width:768px)').matches
+{
 
 const renderer = new THREE.WebGLRenderer({
   canvas,
@@ -18,7 +17,7 @@ const renderer = new THREE.WebGLRenderer({
   alpha: false,
 })
 renderer.setSize(innerWidth, innerHeight)
-renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5))
+renderer.setPixelRatio(Math.min(devicePixelRatio, IS_MOBILE ? 1 : 1.5))
 renderer.autoClear = false
 
 const simScene  = new THREE.Scene()
@@ -26,8 +25,9 @@ const simCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1)
 const quad      = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), null)
 simScene.add(quad)
 
-const SIM_W = Math.round(innerWidth  * 0.5)
-const SIM_H = Math.round(innerHeight * 0.5)
+const SIM_SCALE = IS_MOBILE ? 0.4 : 0.5
+const SIM_W = Math.round(innerWidth  * SIM_SCALE)
+const SIM_H = Math.round(innerHeight * SIM_SCALE)
 
 const RT_OPTS = {
   minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter,
@@ -123,8 +123,9 @@ void main() {
   float str=1.0/max(r*r,0.01);
   vec2 dlt=uTouch.zw;
   if(length(dlt)>0.0001) str*=clamp(dot(normalize(d),normalize(-dlt)),0.0,1.0);
+  str=min(str,9.0);
   vec3 gold=vec3(0.45,0.22,0.03);
-  gl_FragColor=texture2D(uColor,vUV)+vec4(gold*str*length(dlt)*uRadius*5.0,0);
+  gl_FragColor=texture2D(uColor,vUV)+vec4(gold*str*length(dlt)*uRadius*3.8,0);
 }`, { uTouch:{value:new THREE.Vector4()}, uRadius:{value:0.25}, uAspect:{value:innerWidth/innerHeight}, uColor:{value:null} })
 
 const clearMat   = makeMat(`void main(){gl_FragColor=vec4(0);}`,{})
@@ -196,7 +197,7 @@ dispScene.add(new THREE.Mesh(new THREE.PlaneGeometry(2,2), new THREE.MeshBasicMa
 const composer = new EffectComposer(renderer)
 composer.addPass(new RenderPass(dispScene, dispCamera))
 composer.addPass(new EffectPass(dispCamera, new BloomEffect({
-  intensity:2.2, luminanceThreshold:0.30, luminanceSmoothing:0.5, radius:0.80,
+  intensity:1.5, luminanceThreshold:0.42, luminanceSmoothing:0.5, radius:0.70,
 })))
 
 const mouseUV=new THREE.Vector2(-1,-1), prevUV=new THREE.Vector2(-1,-1), delta=new THREE.Vector2(0,0)
@@ -222,7 +223,7 @@ function getAutoPos(t){
   return {x,y}
 }
 
-const ITERS=32, DT=1/30, VEL_DECAY=0.0005, COL_DECAY=0.003
+const ITERS=IS_MOBILE?18:32, DT=1/30, VEL_DECAY=0.0005, COL_DECAY=0.0075
 
 function simStep(t){
   advMat.uniforms.uInput.value=velA.texture; advMat.uniforms.uVel.value=velA.texture

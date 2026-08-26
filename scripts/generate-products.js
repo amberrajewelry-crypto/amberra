@@ -108,9 +108,9 @@ const COLOR_LINE = {
   raw: 'Left raw and unpolished, the amber keeps the texture of the resin as it was found.'
 };
 const CRAFT_LINE = [
-  'Each piece is handcrafted in Bali and shipped worldwide.',
+  'Each piece is handcrafted and shipped worldwide.',
   'Made by hand in our Bali workshop, it arrives ready to gift.',
-  'Handcrafted in Bali from genuine Baltic amber, then finished by hand.'
+  'Handcrafted from genuine Baltic amber, then finished by hand.'
 ];
 function aboutBlock(p) {
   const seed = p.name + p.cat;
@@ -169,7 +169,7 @@ function productHTML(p, slug) {
   if (title.length > 60) title = `${titleName} — AMBERRA`;
   if (title.length > 60) title = titleName.slice(0, 57).trim() + '…';
   // Meta description ≤155 chars; drop shipping boilerplate that always overflowed.
-  let metaDesc = `${desc}${stone ? ' ' + stone + '.' : ''} Handcrafted in Bali.`;
+  let metaDesc = `${desc}${stone ? ' ' + stone + '.' : ''} Handcrafted.`;
   if (metaDesc.length > 155) metaDesc = metaDesc.slice(0, 152).replace(/\s+\S*$/, '') + '…';
 
   // Only EN pages exist — advertise en + x-default, not 14 languages that 404.
@@ -391,7 +391,7 @@ ${breadcrumbSchema}
       </a>
       <a class="pp-trust-item" href="/our-story">
         <svg class="pp-trust-ic" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.5-6.5-10.5A6.5 6.5 0 0 1 18.5 10.5C18.5 15.5 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.2"/></svg>
-        <span class="pp-trust-t">Handcrafted in Bali</span>
+        <span class="pp-trust-t">Handcrafted</span>
         <span class="pp-trust-s">Made by hand in Ubud</span>
       </a>
       <a class="pp-trust-item" href="/faq">
@@ -409,7 +409,7 @@ ${breadcrumbSchema}
 </main>
 ${relatedHTML}
 <footer class="pp-footer">
-  <p>Each AMBERRA piece is handcrafted in Bali using natural amber. Free worldwide shipping on orders over $200.</p>
+  <p>Each AMBERRA piece is handcrafted using natural amber. Free worldwide shipping on orders over $200.</p>
   <p><a href="/shop">Browse the full collection</a> &nbsp;·&nbsp; <a href="/our-story">Our Story</a> &nbsp;·&nbsp; <a href="/faq">Client Care</a> &nbsp;·&nbsp; <a href="/contact">Contact</a></p>
 </footer>
 
