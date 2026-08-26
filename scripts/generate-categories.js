@@ -28,8 +28,8 @@ function absImg(img) {
 // ── content maps (methodology: data × template) ──────────────────────────────
 
 const TYPES = {
- rings: { label: 'Rings', h1: 'Amber Rings',
- metaTitle: 'Amber Rings in 925 Sterling Silver | AMBERRA Bali',
+ rings: { label: 'Rings', h1: 'Handmade Sterling Silver Rings with Baltic Amber',
+ metaTitle: 'Handmade Sterling Silver Rings with Baltic Amber | AMBERRA',
  metaDesc: 'Handmade Baltic amber rings in 925 sterling silver, shaped by Balinese artisans. Cherry, cognac, green & honey amber. Free worldwide shipping over $200.',
  intro: [
  'Amber rings from AMBERRA are cut from genuine Baltic amber and set by hand in 925 sterling silver by hand. Every stone is natural — no two are alike, from deep cherry and cognac to green, honey and rare blue amber.',
@@ -40,8 +40,8 @@ const TYPES = {
  ['What ring sizes do you offer?', 'AMBERRA amber rings are available in US ring sizes 5 to 9, covering most adult finger sizes. Each product page includes a size guide to help you choose, and you can contact us if you need guidance or custom sizing. Because natural Baltic amber is remarkably light, even bold cocktail styles wear comfortably all day. Every ring is hand-set in 925 sterling silver by our artisans in Bali, and arrives with a certificate of authenticity. If you are unsure of your size, measure a ring you already own and compare it to the guide.'],
  ['How do I care for an amber ring?', 'To care for an amber ring, avoid perfume, heat and ultrasonic cleaners, since amber is a soft, organic stone that can be damaged by chemicals and vibration. Wipe it gently with a soft cloth and store it separately from harder gemstones and metals that could scratch its surface. Put your ring on last, after applying lotion and hairspray, and take it off before showering, swimming or sleeping. The 925 sterling silver setting can darken slowly with air; a soft cloth restores its shine. Cared for simply, an amber ring keeps its warm glow for decades.']
  ] },
- earrings: { label: 'Earrings', h1: 'Amber Earrings',
- metaTitle: 'Amber Earrings in 925 Sterling Silver | AMBERRA Bali',
+ earrings: { label: 'Earrings', h1: 'Handmade Sterling Silver Earrings with Baltic Amber',
+ metaTitle: 'Handmade Sterling Silver Earrings with Baltic Amber | AMBERRA',
  metaDesc: 'Natural Baltic amber earrings handcrafted in Bali — drops, studs, hoops & filigree in 925 silver. Cherry, cognac & honey amber. Free shipping over $200.',
  intro: [
  'Our amber earrings pair natural Baltic amber with hand-forged 925 sterling silver — from light everyday studs to statement drops. Colors range across cherry, cognac, honey, green and blue amber.',
@@ -51,8 +51,8 @@ const TYPES = {
  ['Are the earrings sterling silver?', 'Yes, AMBERRA earrings are made from solid 925 sterling silver, with some pieces finished in 18k gold plating over sterling. The hooks and posts are hypoallergenic sterling silver, which makes them a gentle choice for sensitive ears that react to base-metal jewelry. Sterling silver is one of the traditional metals for Baltic amber, cool and neutral in tone so it frames the warm stone rather than competing with it. Every pair is hand-forged one at a time by our artisans and arrives with a certificate of authenticity covering both the amber and the metal.'],
  ['Is the amber natural?', 'Yes, every AMBERRA earring uses natural Baltic amber, the fossilised conifer resin known as succinite that formed around 40 million years ago in the Baltic region. Color and inclusions vary from pair to pair because the stone is genuine, never pressed, reconstituted or dyed. That natural variation means no two pairs are exactly alike, from deep cherry and cognac to golden honey, green and rare blue amber. To recognize real amber, note that it is warm to the touch, light in weight, and often carries tiny natural bubbles or inclusions. Each pair ships with a certificate of authenticity.']
  ] },
- pendants: { label: 'Pendants', h1: 'Amber Pendants & Necklaces',
- metaTitle: 'Amber Pendants & Necklaces in Sterling Silver | AMBERRA',
+ pendants: { label: 'Pendants', h1: 'Handmade Sterling Silver Pendants with Baltic Amber',
+ metaTitle: 'Sterling Silver Amber Pendants & Necklaces, Handmade | AMBERRA',
  metaDesc: 'Baltic amber pendants and necklaces handcrafted in Bali in 925 sterling silver. Cherry, cognac, green & blue amber. Pair with a silver chain. Free shipping over $200.',
  intro: [
  'Amber pendant necklaces from AMBERRA frame a single natural Baltic amber cabochon in hand-worked sterling silver. Wear one alone or layered; pair with any AMBERRA silver chain.',
@@ -62,8 +62,8 @@ const TYPES = {
  ['Do pendants come with a chain?', 'Some AMBERRA pendants include a matching chain, while others are sold as the pendant alone so you can choose your own length and style. Where a chain is not included, pair the pendant with any AMBERRA sterling silver chain from our Chains collection to build your own necklace. Our chains come in cable and link styles and lengths from 40 to 60 cm: a shorter chain keeps the amber high on the collarbone, while a longer one lets it fall for a layered look. Match the chain metal tone to the pendant setting for a seamless finish.'],
  ['What amber colors are available?', 'AMBERRA amber pendants are available in a full spectrum of natural Baltic amber tones, including cherry, cognac, honey, green, butterscotch and rare blue amber, depending on the individual piece. Every color is natural to the stone rather than dyed or artificially treated, so each pendant is one of a kind, cut from genuine Baltic amber and finished by hand. The tone of amber depends on how the resin formed and how light passes through it, which is why shades range from clear golden honey to deep translucent cherry and opaque creamy butterscotch.']
  ] },
- bracelets: { label: 'Bracelets', h1: 'Amber Bracelets',
- metaTitle: 'Amber Bracelets in 925 Sterling Silver | AMBERRA Bali',
+ bracelets: { label: 'Bracelets', h1: 'Handmade Sterling Silver Bracelets with Baltic Amber',
+ metaTitle: 'Handmade Sterling Silver Bracelets with Amber | AMBERRA',
  metaDesc: 'Natural Baltic amber bracelets handcrafted in Bali — beaded, link and cuff styles in 925 sterling silver. Cherry, cognac & multi-amber. Free shipping over $200.',
  intro: [
  'From delicate beaded strands to bold silver cuffs, our amber bracelets use natural Baltic amber set in 925 sterling silver. Multi-color (mosaic) amber is a signature.',
