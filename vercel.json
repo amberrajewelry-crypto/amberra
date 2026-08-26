@@ -23,6 +23,46 @@
       "source": "/ru/:path+",
       "destination": "/:path+",
       "permanent": true
+    },
+    {
+      "source": "/shop/rings",
+      "destination": "/rings",
+      "permanent": true
+    },
+    {
+      "source": "/shop/earrings",
+      "destination": "/earrings",
+      "permanent": true
+    },
+    {
+      "source": "/shop/bracelets",
+      "destination": "/bracelets",
+      "permanent": true
+    },
+    {
+      "source": "/shop/pendants",
+      "destination": "/pendants",
+      "permanent": true
+    },
+    {
+      "source": "/collections/solar",
+      "destination": "/amber",
+      "permanent": true
+    },
+    {
+      "source": "/collections/sacred",
+      "destination": "/amber",
+      "permanent": true
+    },
+    {
+      "source": "/collections/botanica",
+      "destination": "/amber",
+      "permanent": true
+    },
+    {
+      "source": "/bali-jewelry",
+      "destination": "/sterling-silver-amber-jewelry",
+      "permanent": true
     }
   ],
   "headers": [
