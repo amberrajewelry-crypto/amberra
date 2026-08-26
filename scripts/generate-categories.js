@@ -426,7 +426,7 @@ const SECTIONS = {
  ],
  rings: [
  ['The Craft Behind Our Amber Rings', [
- 'Each AMBERRA amber ring begins with a single natural Baltic amber cabochon, chosen for color and clarity, then set into a hand-forged 925 sterling silver band by our our artisans. Filigree, granulation and open settings are all done by hand, so every ring is unique.'
+ 'Each AMBERRA amber ring begins with a single natural Baltic amber cabochon, chosen for color and clarity, then set into a hand-forged 925 sterling silver band by our artisans. Filigree, granulation and open settings are all done by hand, so every ring is unique.'
  ]],
  ['Choosing & Sizing Your Ring', [
  'Amber rings are available in US sizes 5–9. Because amber is light, even bold cocktail styles wear comfortably. Consider a deep cherry or cognac stone for a statement piece, or honey and butterscotch for everyday. Keep your ring away from heat and chemicals and wipe it with a soft cloth.'
