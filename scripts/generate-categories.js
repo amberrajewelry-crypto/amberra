@@ -237,6 +237,26 @@ const HANDMADE = {
  ]
 };
 
+// Brand / E-E-A-T landing (targets "artisan jewelry" 18100 + "handmade jewelry" 33100).
+// Angle: who we are and how we work — informational/brand, not a metal or craft-technique cut.
+const ARTISAN = {
+ slug: 'artisan-jewelry',
+ label: 'Artisan Jewelry',
+ h1: 'Artisan Jewelry, Made by Real Hands',
+ metaTitle: 'Artisan Jewelry — Handmade by Our Makers | AMBERRA',
+ metaDesc: 'Artisan jewelry from a small independent studio — natural Baltic amber and 925 sterling silver, designed in Bali and made by hand, one piece at a time. Free shipping over $200.',
+ intro: [
+ 'AMBERRA is artisan jewelry in the true sense: a small independent studio, not a factory brand. Every design is drawn by hand, and every piece is made by the same makers who have worked silver and amber for years — not stamped out on a production line.',
+ 'We work in two honest materials, natural Baltic amber and solid 925 sterling silver, designed in Bali and finished by hand. Because a person makes each piece, no two are identical, and every order arrives with a certificate of authenticity.'
+ ],
+ faq: [
+ ['What is artisan jewelry?', 'Artisan jewelry is jewelry designed and made by skilled makers by hand, in small numbers, rather than mass-produced by machine in a factory. An artisan piece is shaped, set and finished individually, so each one carries small natural variations and the character of the person who made it. It usually uses genuine materials — at AMBERRA, natural Baltic amber and solid 925 sterling silver — rather than plated base metal or imitation stones. Buying artisan jewelry means owning something closer to a one-of-a-kind object than an identical unit, and it directly supports the makers keeping traditional handcraft alive. Every AMBERRA piece is handmade and ships with a certificate of authenticity.'],
+ ['Who makes AMBERRA jewelry?', 'AMBERRA is a small independent studio, and every piece is made by our own makers — the silversmiths and setters who shape the metal, cut the settings and place each amber stone by hand. We are not a marketplace reseller badging factory stock; the people who design the jewelry work directly with the people who make it. Our designs are drawn in Bali, where the studio was founded, and each piece is worked by hand from solid 925 sterling silver and natural Baltic amber. That direct, small-team way of working is why our pieces are consistent in quality yet each individually unique, and why every order can carry a certificate of authenticity for both the amber and the silver.'],
+ ['How is artisan jewelry different from mass-produced?', 'Mass-produced jewelry is cast or stamped in large identical batches by machine, often in plated base metal with pressed or synthetic stones, and finished for speed. Artisan jewelry like AMBERRA is the opposite: each piece is made and inspected by a person, in solid 925 sterling silver with genuine natural Baltic amber, so the setting, polish and fit of the stone are judged by eye. That means better-set stones, real materials, and pieces that are repairable and age into heirlooms rather than being thrown away. It also means each item is genuinely one of a kind, because both natural amber and the human hand introduce variation no factory line reproduces.'],
+ ['Is AMBERRA jewelry ethical and sustainable?', 'AMBERRA works in a small-batch way rather than mass production, which means far less waste than factory jewelry built for volume. We use genuine natural Baltic amber — a natural fossil resin, not a mined crystal or a lab imitation — and solid, long-lasting 925 sterling silver rather than disposable plated metal, so pieces are built to last and be repaired rather than replaced. Buying directly from an independent studio also means your purchase supports the makers keeping a traditional craft alive, instead of an anonymous factory. Every piece is handmade in small numbers and ships with a certificate of authenticity.']
+ ]
+};
+
 // deep content sections (unique per page; distributed so nothing repeats) — H2 + paragraphs
 const SECTIONS = {
  silver: [
@@ -265,6 +285,24 @@ const SECTIONS = {
  ['One of a Kind, By Design', [
  'Two things make every AMBERRA piece unique. First, natural Baltic amber: no two stones share the same color, clarity or inclusions, so each setting is built around its own stone. Second, the hand of the maker: even the same design, made twice, comes out with its own small differences.',
  'That is the quiet luxury of handmade jewelry. You are not wearing one of ten thousand identical units — you are wearing the only one exactly like it, backed by a certificate of authenticity for both the amber and the 925 sterling silver.'
+ ]]
+ ],
+ artisan: [
+ ['The Mark of an Artisan Piece', [
+ 'An artisan piece announces itself quietly. The stone sits in a setting cut to its own outline rather than a standard mould; the surface is finished by hand, so it holds a warmth that machine-buffing never quite gives; and the back is as considered as the front. These are the tells of a maker, not a mould.',
+ 'We think jewelry should be judged the way a maker judges it — by how the parts meet, how the stone is held, how it feels in the hand. That is a standard you can only reach when a person, not a machine, has the final say on every piece.'
+ ]],
+ ['A Small Studio, Not a Factory', [
+ 'AMBERRA is independent and deliberately small. We are not a marketplace storefront reselling anonymous factory stock under our name; the people who draw the designs work alongside the people who cut the silver and set the amber. That closeness is the whole point — nothing is briefed out to a line that never sees the finished piece.',
+ 'Working small has a cost: we make in modest numbers and some pieces sell out. But it is the only way we know to keep quality honest and to keep the craft, and the makers, at the centre of the brand rather than at the end of a supply chain.'
+ ]],
+ ['Designed in Bali', [
+ 'AMBERRA was founded in Bali, and that is where our designs still begin — sketched by hand before a single piece is made. Bali is a place with a deep, living relationship to craft and to the sea, and that sensibility runs through the work: warm, organic, unhurried.',
+ 'The amber itself travels much further. It is genuine Baltic amber, fossil resin from the forests that grew around the Baltic Sea some 40 million years ago — a material with its own long story, brought together with hand-worked 925 sterling silver.'
+ ]],
+ ['Honest Materials, Built to Last', [
+ 'We use two materials and no shortcuts: natural Baltic amber, never pressed reconstitute or dyed imitation, and solid 925 sterling silver, never plated base metal. Real materials cost more and demand more skill to work, but they are what let a piece be repaired, re-polished and handed on rather than thrown away.',
+ 'That is also why we send a certificate of authenticity with every order, covering both the amber and the silver. You should know exactly what you are wearing — and be able to keep it for a lifetime.'
  ]]
  ],
  hub: [
@@ -674,6 +712,7 @@ function footerHTML() {
  <li><a href="/rings">Rings</a></li><li><a href="/earrings">Earrings</a></li>
  <li><a href="/pendants">Pendants</a></li><li><a href="/bracelets">Bracelets</a></li>
  <li><a href="/handmade-sterling-silver-jewelry">Handmade Silver</a></li>
+ <li><a href="/artisan-jewelry">Artisan Jewelry</a></li>
  <li><a href="/sterling-silver-amber-jewelry">Sterling Silver Amber</a></li>
  <li><a href="/shop">All Jewelry</a></li>
  </ul></div>
@@ -866,6 +905,21 @@ function pillarPage(products) {
  return shell({ metaTitle:HANDMADE.metaTitle, metaDesc:HANDMADE.metaDesc, canonical:url, schema, activeSlug:'shop', ogImage: ogFor(HANDMADE.slug) }, main);
 }
 
+function artisanPage(products) {
+ const url = `${SITE}/${ARTISAN.slug}`;
+ const links = linksBlock('Explore the collection',
+ Object.keys(TYPES).map(t => [`/${t}`, TYPES[t].label])
+ .concat([['/amber', 'All Amber Jewelry'], [`/${HANDMADE.slug}`, 'Handmade Sterling Silver']]));
+ const schema = { '@context': 'https://schema.org', '@graph': [
+ { '@type': 'CollectionPage', '@id': `${url}#webpage`, url, isPartOf: { '@id': `${SITE}/#website` }, inLanguage: 'en', publisher: { '@id': `${SITE}/#organization` }, name: ARTISAN.metaTitle, description: ARTISAN.metaDesc,
+ breadcrumb: breadcrumb([{name:'Home',url:SITE},{name:'Shop',url:`${SITE}/shop`},{name:ARTISAN.label,url}]) },
+ itemListSchema(url, `AMBERRA ${ARTISAN.label}`, url, products),
+ faqSchema(ARTISAN.faq) ].filter(Boolean) };
+ const main = catBody({ kicker:'Independent Studio · Handmade', h1:ARTISAN.h1, sub:ARTISAN.intro[0], count:products.length,
+ intro: introHTML(ARTISAN.intro), sections: sectionsHTML(SECTIONS.artisan), links, grid: products.map(cardHTML).join('\n'), faq: faqBlock(ARTISAN.faq) });
+ return shell({ metaTitle:ARTISAN.metaTitle, metaDesc:ARTISAN.metaDesc, canonical:url, schema, activeSlug:'shop', ogImage: ogFor(ARTISAN.slug) }, main);
+}
+
 // ── data sources ─────────────────────────────────────────────────────────────
 
 async function fetchFromAirtable() {
@@ -940,6 +994,10 @@ async function main() {
  fs.writeFileSync(path.join(ROOT, `${HANDMADE.slug}.html`), pillarPage(products), 'utf8');
  written.push(`/${HANDMADE.slug}`); console.log(` ✓ ${HANDMADE.slug}.html (${products.length})`);
 
+ // 2d) /artisan-jewelry — brand/E-E-A-T pillar (artisan 18100 / handmade 33100)
+ fs.writeFileSync(path.join(ROOT, `${ARTISAN.slug}.html`), artisanPage(products), 'utf8');
+ written.push(`/${ARTISAN.slug}`); console.log(` ✓ ${ARTISAN.slug}.html (${products.length})`);
+
  // 3) color pages (guarded ≥ MIN_SKU)
  const amberDir = path.join(ROOT, 'amber');
  if (!fs.existsSync(amberDir)) fs.mkdirSync(amberDir);
@@ -955,7 +1013,7 @@ async function main() {
  if (fs.existsSync(smPath)) {
  let sm = fs.readFileSync(smPath, 'utf8');
  // strip previous landing entries (types + /amber + /amber/*)
- sm = sm.replace(/<url>\s*<loc>[^<]*(\/rings|\/earrings|\/pendants|\/bracelets|\/chains|\/handmade-sterling-silver-jewelry|\/sterling-silver-amber-jewelry|\/amber(\/[a-z-]+)?)<\/loc>[\s\S]*?<\/url>\s*/g, '');
+ sm = sm.replace(/<url>\s*<loc>[^<]*(\/rings|\/earrings|\/pendants|\/bracelets|\/chains|\/handmade-sterling-silver-jewelry|\/sterling-silver-amber-jewelry|\/artisan-jewelry|\/amber(\/[a-z-]+)?)<\/loc>[\s\S]*?<\/url>\s*/g, '');
  const entries = written.map(u => ` <url>\n <loc>${SITE}${u}</loc>\n <lastmod>${TODAY}</lastmod>\n <changefreq>weekly</changefreq>\n <priority>0.9</priority>\n </url>`).join('\n');
  sm = sm.replace('</urlset>', `${entries}\n</urlset>`);
  fs.writeFileSync(smPath, sm, 'utf8');
