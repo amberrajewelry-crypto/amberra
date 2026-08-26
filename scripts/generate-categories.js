@@ -217,6 +217,26 @@ const SILVER = {
  ]
 };
 
+// Handmade/craft landing (targets "handmade sterling silver jewelry" 4400 LOW).
+// Angle: the hand process — distinct from SILVER (metal properties) and HUB (amber material).
+const HANDMADE = {
+ slug: 'handmade-sterling-silver-jewelry',
+ label: 'Handmade Sterling Silver',
+ h1: 'Handmade Sterling Silver Jewelry',
+ metaTitle: 'Handmade Sterling Silver Jewelry — Artisan-Made | AMBERRA',
+ metaDesc: 'Handmade sterling silver jewelry shaped one at a time by our artisans — rings, earrings, pendants & bracelets in 925 silver with natural Baltic amber. Free shipping over $200.',
+ intro: [
+ 'Every AMBERRA piece is handmade — forged, set and finished one at a time by our artisans rather than stamped out by machine. That is why no two are quite alike, and why each carries the small, human marks of the hand that made it.',
+ 'Our craft is solid 925 sterling silver paired with natural Baltic amber, across rings, earrings, pendants, bracelets and chains. Every piece ships with a certificate of authenticity.'
+ ],
+ faq: [
+ ['What does “handmade” mean at AMBERRA?', 'At AMBERRA, handmade means each piece is shaped by hand by our artisans from start to finish — the silver is forged, the setting is built, the amber is set and the whole piece is polished individually, never cast in bulk or assembled from machine-stamped parts. Because a person makes every decision along the way, small natural variations are part of each piece rather than flaws, and no two are ever exactly identical. This is slower than factory production, but it is what gives handmade jewelry its character and why each item can carry a certificate of authenticity for both the amber and the 925 sterling silver.'],
+ ['Is handmade jewelry worth it over mass-produced?', 'Handmade jewelry is made and checked by a person at every step, so the finish, the setting and the fit of the stone are judged by eye rather than by a machine tolerance. That usually means better-set stones, more careful polishing and a piece that is genuinely one of a kind, since natural Baltic amber and hand-forging both introduce variation no production line reproduces. Handmade pieces also tend to be more repairable and to age into heirlooms rather than being replaced. Every AMBERRA piece is worked by hand by our artisans in 925 sterling silver and arrives with a certificate of authenticity.'],
+ ['Can I request a custom or bespoke piece?', 'Yes, because we work by hand rather than from a fixed production line, we can often adjust a design, a size or an amber color, or make a bespoke piece to order. Ring sizes run US 5 to 9 as standard and chains from 40 to 60 cm, but if you need something outside those ranges or want to commission a one-off, contact us and our artisans will advise on what is possible and how long it will take. Custom work is quoted individually and, like every AMBERRA piece, is made in solid 925 sterling silver with natural Baltic amber and ships with a certificate of authenticity.'],
+ ['Is the silver real sterling?', 'Yes, every AMBERRA piece is made in solid 925 sterling silver — 92.5 percent pure silver, the international standard for fine jewelry — never plated base metal, with some pieces finished in 18k gold over sterling. Because our sterling is nickel-free it is hypoallergenic and gentle on sensitive skin. Each setting is hand-forged by our artisans to hold its amber cabochon securely, and every order includes a certificate of authenticity covering both the natural Baltic amber and the sterling silver. Worn regularly and wiped with a soft cloth, the silver keeps its bright lustre for decades.']
+ ]
+};
+
 // deep content sections (unique per page; distributed so nothing repeats) — H2 + paragraphs
 const SECTIONS = {
  silver: [
@@ -231,6 +251,20 @@ const SECTIONS = {
  ['Caring for Silver & Amber Together', [
  'Sterling silver darkens slowly as it reacts with air — a natural patina that wipes away with a soft silver cloth. But amber is a soft, organic stone, so never soak an AMBERRA piece in a silver-dip solution or clean it with ultrasonic machines: these can dull or crack the amber.',
  'To care for both at once, wipe gently with a dry, soft cloth, keep pieces away from perfume, heat and household chemicals, and store each item separately in a soft pouch. Worn often and kept dry, sterling silver actually tarnishes less — the oils of your skin help keep it bright.'
+ ]]
+ ],
+ handmade: [
+ ['What Makes Jewelry Truly Handmade', [
+ 'Handmade is a word that gets used loosely, so it is worth being precise. An AMBERRA piece is made by a person from raw silver and a single amber stone: the metal is drawn and forged, the setting is built up by hand, the stone is fitted and the surface is finished by eye. Nothing is cast in a mould by the hundred or clicked together from pre-stamped parts.',
+ 'The proof is in the object. Look closely and you see the tiny asymmetries of hand-work — a bezel that hugs the exact shape of one irregular amber cabochon, a solder seam placed by judgement, a polish that follows the form. These are not defects; they are the signature of a maker, and they are impossible to mass-produce.'
+ ]],
+ ['The Techniques Behind Each Piece', [
+ 'Our artisans work in the old silversmithing techniques: filigree, where fine silver threads are twisted and soldered into lace; granulation, where tiny beads of silver are fused to the surface; and hand-cut bezels shaped to each stone. Every join is soldered by hand and every surface is filed and burnished rather than machine-buffed.',
+ 'This is why a single ring or pendant can take hours of concentrated work. The reward is a piece with depth and texture — light catches the granules and filigree the way it never does on flat, cast metal.'
+ ]],
+ ['One of a Kind, By Design', [
+ 'Two things make every AMBERRA piece unique. First, natural Baltic amber: no two stones share the same color, clarity or inclusions, so each setting is built around its own stone. Second, the hand of the maker: even the same design, made twice, comes out with its own small differences.',
+ 'That is the quiet luxury of handmade jewelry. You are not wearing one of ten thousand identical units — you are wearing the only one exactly like it, backed by a certificate of authenticity for both the amber and the 925 sterling silver.'
  ]]
  ],
  hub: [
@@ -260,7 +294,7 @@ const SECTIONS = {
  'Store amber separately from harder stones and metals that could scratch it, ideally in a soft pouch. Worn regularly, amber stays lustrous; its warmth actually deepens gently with age.'
  ]],
  ['Why Choose AMBERRA', [
- 'AMBERRA is not a marketplace reseller. We are a single our studio, working directly with the silversmiths who make every piece. That means honest materials — real Baltic amber, real 925 sterling silver — a certificate with every order, and designs you will not find on mass-market sites. Each purchase supports our artisans keeping a centuries-old craft alive.'
+ 'AMBERRA is not a marketplace reseller. We are a single studio, working directly with the silversmiths who make every piece. That means honest materials — real Baltic amber, real 925 sterling silver — a certificate with every order, and designs you will not find on mass-market sites. Each purchase supports our artisans keeping a centuries-old craft alive.'
  ]],
  ['Baltic Amber vs Other World Ambers', [
  'Amber is found in several places — the Dominican Republic, Mexico, Myanmar and elsewhere — but Baltic amber is the most prized for jewelry. It is the oldest widely used amber and the only kind with a high content of succinic acid, which is why gemologists call it succinite. That composition gives Baltic amber its particular warmth, durability and depth of color.',
@@ -639,6 +673,8 @@ function footerHTML() {
  <div><span class="fc-t">Shop</span><ul class="fc-l">
  <li><a href="/rings">Rings</a></li><li><a href="/earrings">Earrings</a></li>
  <li><a href="/pendants">Pendants</a></li><li><a href="/bracelets">Bracelets</a></li>
+ <li><a href="/handmade-sterling-silver-jewelry">Handmade Silver</a></li>
+ <li><a href="/sterling-silver-amber-jewelry">Sterling Silver Amber</a></li>
  <li><a href="/shop">All Jewelry</a></li>
  </ul></div>
  <div><span class="fc-t">Collections</span><ul class="fc-l">
@@ -815,6 +851,21 @@ function metalPage(products) {
  return shell({ metaTitle:SILVER.metaTitle, metaDesc:SILVER.metaDesc, canonical:url, schema, activeSlug:'amber', ogImage: ogFor(SILVER.slug) }, main);
 }
 
+function pillarPage(products) {
+ const url = `${SITE}/${HANDMADE.slug}`;
+ const links = linksBlock('Shop by type',
+ Object.keys(TYPES).map(t => [`/${t}`, TYPES[t].label])
+ .concat([['/amber', 'All Amber Jewelry'], [`/${SILVER.slug}`, 'Sterling Silver Amber']]));
+ const schema = { '@context': 'https://schema.org', '@graph': [
+ { '@type': 'CollectionPage', '@id': `${url}#webpage`, url, isPartOf: { '@id': `${SITE}/#website` }, inLanguage: 'en', publisher: { '@id': `${SITE}/#organization` }, name: HANDMADE.metaTitle, description: HANDMADE.metaDesc,
+ breadcrumb: breadcrumb([{name:'Home',url:SITE},{name:'Shop',url:`${SITE}/shop`},{name:HANDMADE.label,url}]) },
+ itemListSchema(url, `AMBERRA ${HANDMADE.label} Jewelry`, url, products),
+ faqSchema(HANDMADE.faq) ].filter(Boolean) };
+ const main = catBody({ kicker:'Handmade · 925 Sterling Silver', h1:HANDMADE.h1, sub:HANDMADE.intro[0], count:products.length,
+ intro: introHTML(HANDMADE.intro), sections: sectionsHTML(SECTIONS.handmade), links, grid: products.map(cardHTML).join('\n'), faq: faqBlock(HANDMADE.faq) });
+ return shell({ metaTitle:HANDMADE.metaTitle, metaDesc:HANDMADE.metaDesc, canonical:url, schema, activeSlug:'shop', ogImage: ogFor(HANDMADE.slug) }, main);
+}
+
 // ── data sources ─────────────────────────────────────────────────────────────
 
 async function fetchFromAirtable() {
@@ -885,6 +936,10 @@ async function main() {
  fs.writeFileSync(path.join(ROOT, `${SILVER.slug}.html`), metalPage(products), 'utf8');
  written.push(`/${SILVER.slug}`); console.log(` ✓ ${SILVER.slug}.html (${products.length})`);
 
+ // 2c) /handmade-sterling-silver-jewelry — craft-angle pillar (ss handmade 4400 LOW)
+ fs.writeFileSync(path.join(ROOT, `${HANDMADE.slug}.html`), pillarPage(products), 'utf8');
+ written.push(`/${HANDMADE.slug}`); console.log(` ✓ ${HANDMADE.slug}.html (${products.length})`);
+
  // 3) color pages (guarded ≥ MIN_SKU)
  const amberDir = path.join(ROOT, 'amber');
  if (!fs.existsSync(amberDir)) fs.mkdirSync(amberDir);
@@ -900,7 +955,7 @@ async function main() {
  if (fs.existsSync(smPath)) {
  let sm = fs.readFileSync(smPath, 'utf8');
  // strip previous landing entries (types + /amber + /amber/*)
- sm = sm.replace(/<url>\s*<loc>[^<]*(\/rings|\/earrings|\/pendants|\/bracelets|\/chains|\/sterling-silver-amber-jewelry|\/amber(\/[a-z-]+)?)<\/loc>[\s\S]*?<\/url>\s*/g, '');
+ sm = sm.replace(/<url>\s*<loc>[^<]*(\/rings|\/earrings|\/pendants|\/bracelets|\/chains|\/handmade-sterling-silver-jewelry|\/sterling-silver-amber-jewelry|\/amber(\/[a-z-]+)?)<\/loc>[\s\S]*?<\/url>\s*/g, '');
  const entries = written.map(u => ` <url>\n <loc>${SITE}${u}</loc>\n <lastmod>${TODAY}</lastmod>\n <changefreq>weekly</changefreq>\n <priority>0.9</priority>\n </url>`).join('\n');
  sm = sm.replace('</urlset>', `${entries}\n</urlset>`);
  fs.writeFileSync(smPath, sm, 'utf8');
