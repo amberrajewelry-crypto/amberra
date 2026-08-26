@@ -62,8 +62,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "email": "hello@amberrajewelry.com",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Onyx Park Resort Ubud",
-        "addressLocality": "Ubud",
+        "streetAddress": "Onyx Park Resort Bali",
+        "addressLocality": "Bali",
         "addressRegion": "Bali",
         "addressCountry": "ID"
       },
@@ -149,7 +149,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/style.css?v=20260816k2">
+<link rel="stylesheet" href="/style.css?v=20260825a">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
 
 <style>
@@ -270,7 +270,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a class="mob-nav-link" href="/bracelets">Bracelets</a>
     <a class="mob-nav-link" href="/journal">Journal</a>
     <a class="mob-nav-link" href="/our-story">Our Story</a>
-    <a class="mob-nav-link amber" href="/our-story#wholesale">Wholesale</a>
+    <a class="mob-nav-link amber" href="/wholesale">Wholesale</a>
   </div>
   <div class="mob-nav-foot">
     <div class="mob-nav-utils">
@@ -310,8 +310,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a class="nl" href="/bracelets" data-i18n="nav_bracelets">Bracelets</a>
     <span class="nav-divider"></span>
     <a class="nl" href="/our-story" data-i18n="nav_about">Our Story</a>
-    <a class="nl" href="/our-story#wholesale" data-i18n="nav_wholesale">Wholesale</a>
+    <a class="nl" href="/wholesale" data-i18n="nav_wholesale">Wholesale</a>
     <a class="nl" href="/journal" data-i18n="nav_journal">Journal</a>
+  </div>
+</div>
+    </div>
+    <div class="nav-lb-r">
+      <button class="nav-ico-btn" aria-label="Wishlist" onclick="toggleWishView()">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        <span class="nav-badge" id="wish-badge">0</span>
+      </button>
+      <button class="nav-ico-btn" aria-label="Account" onclick="openAcc()">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </button>
+      <a class="nav-ico-btn act" aria-label="Store locations" href="/stores">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </a>
+      <button class="nav-ico-btn" aria-label="Cart" onclick="openCart()">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="nav-badge" id="cart-badge">0</span>
+      </button>
+    </div>
   </div>
 </div>
 
@@ -378,7 +397,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <img class="srv-card-img" src="images/services/srv-custom.svg" alt="Custom" loading="lazy">
       <span class="srv-card-link">Discover More</span>
     </div>
-    <div class="srv-card" onclick="closeSrv();location.href='/shop#tryon'">
+    <div class="srv-card" onclick="closeSrv();location.href='/tryon'">
       <div class="srv-card-title">Virtual Try On</div>
       <img class="srv-card-img" src="images/services/srv-tryon.svg" alt="Try On" loading="lazy">
       <span class="srv-card-link">Discover More</span>
@@ -418,26 +437,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span class="sg-method-num">02</span>
             <div class="sg-method-text"><b>Existing Ring</b>Place a ring you already own flat on a ruler and measure the inner diameter in millimetres. Match the measurement to the table below.</div>
           </div>
-    </div>
-    <div class="nav-lb-r">
-      <button class="nav-ico-btn" aria-label="Wishlist" onclick="toggleWishView()">
-        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-        <span class="nav-badge" id="wish-badge">0</span>
-      </button>
-      <button class="nav-ico-btn" aria-label="Account" onclick="openAcc()">
-        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-      </button>
-      <a class="nav-ico-btn act" href="/stores">
-        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      </a>
-      <button class="nav-ico-btn" aria-label="Cart" onclick="openCart()">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-        <span class="nav-badge" id="cart-badge">0</span>
-      </button>
-    </div>
-  </div>
-  </div>
-</div>
+        </div>
         <table class="sg-table">
           <thead><tr><th>Inner Ø (mm)</th><th>Circumference (mm)</th><th>US / Canada</th><th>EU / Russia</th><th>UK</th></tr></thead>
           <tbody>
@@ -487,7 +487,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <div class="sg-warranty-body">
             <h3>AMBERRA Limited Warranty — 12 Months</h3>
-            <p>Every piece of AMBERRA jewelry is covered by a <strong>one-year limited warranty</strong> from the date of purchase. We stand behind the craftsmanship of our Balinese artisans and the quality of every amber stone we select.</p>
+            <p>Every piece of AMBERRA jewelry is covered by a <strong>one-year limited warranty</strong> from the date of purchase. We stand behind the craftsmanship of our artisans and the quality of every amber stone we select.</p>
             <p>The warranty covers:</p>
             <ul>
               <li>Manufacturing defects in metal settings, clasps, and closures</li>
@@ -796,10 +796,10 @@ function accRegister(){ alert('Registration coming soon.'); }
 
 </main>
 <!-- Try-On FAB -->
-<button class="tryon-fab" onclick="location.href='/shop#tryon'" title="Virtual Try-On">
+<button class="tryon-fab" onclick="location.href='/tryon'" title="Virtual Try-On">
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
 </button>
 
-<script src="/app.js?v=20260811i"></script>
+<script src="/app.js?v=20260822a"></script>
 </body>
 </html>
