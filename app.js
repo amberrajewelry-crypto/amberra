@@ -407,7 +407,7 @@ giftwrap:{title:'Gift Wrapping',body:`
 size:{title:'Size Guide',body:`
 <div class="sg-section">
 <div class="sg-section-title">Ring Size Guide</div>
-<p class="sg-intro">Our rings are crafted in Bali to international sizing standards. If you are between sizes, we recommend sizing up. For wide-band rings, consider one half-size larger.</p>
+<p class="sg-intro">Our rings are crafted by hand to international sizing standards. If you are between sizes, we recommend sizing up. For wide-band rings, consider one half-size larger.</p>
 <div class="sg-method">
 <div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>String Method</b>Wrap a strip of paper or thin string around the base of your finger. Mark where it overlaps and measure the length in millimetres. Use the table below to find your size.</div></div>
 <div class="sg-method-step"><span class="sg-method-num">02</span><div class="sg-method-text"><b>Existing Ring Method</b>Place a ring you already wear flat on a ruler. Measure the inner diameter in millimetres (across the widest inner point). Match to the diameter column below.</div></div>

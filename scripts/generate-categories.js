@@ -856,6 +856,22 @@ function colorPage(colorKey, color, products) {
  return shell({ metaTitle:color.metaTitle, metaDesc:color.metaDesc, canonical:url, schema, activeSlug:'amber', ogImage: ogFor('amber') }, main);
 }
 
+// The four all-catalog landing pages (/amber, /sterling-silver-amber-jewelry,
+// /handmade-sterling-silver-jewelry, /artisan-jewelry) show the same 94 products.
+// Order each grid differently — leading with the categories most on-theme — so the
+// rendered HTML is not byte-identical across pages (reduces near-duplicate signal).
+// JS Array.sort is stable, so within a category the source order is preserved.
+const PILLAR_ORDER = {
+ amber:    ['bracelets', 'pendants', 'earrings', 'rings', 'chains'],
+ silver:   ['rings', 'earrings', 'bracelets', 'pendants', 'chains'],
+ handmade: ['pendants', 'rings', 'earrings', 'bracelets', 'chains'],
+ artisan:  ['earrings', 'rings', 'pendants', 'bracelets', 'chains'],
+};
+function orderBy(products, key) {
+ const r = Object.fromEntries((PILLAR_ORDER[key] || []).map((c, i) => [c, i]));
+ return [...products].sort((a, b) => (r[a.cat] ?? 9) - (r[b.cat] ?? 9));
+}
+
 function hubPage(products, colorCounts) {
  const url = `${SITE}/amber`;
  const typeLinks = linksBlock('Shop amber by type',
@@ -872,7 +888,7 @@ function hubPage(products, colorCounts) {
  itemListSchema(url, 'AMBERRA Baltic Amber Jewelry', url, products),
  faqSchema(HUB.faq) ].filter(Boolean) };
  const main = catBody({ kicker:'Baltic Amber', h1:HUB.h1, sub:HUB.intro[0], count:products.length,
- intro: introHTML(HUB.intro), sections: sectionsHTML(SECTIONS.hub), links: typeLinks + colorLinks, grid: products.map(cardHTML).join('\n'), faq: faqBlock(HUB.faq) });
+ intro: introHTML(HUB.intro), sections: sectionsHTML(SECTIONS.hub), links: typeLinks + colorLinks, grid: orderBy(products, 'amber').map(cardHTML).join('\n'), faq: faqBlock(HUB.faq) });
  return shell({ metaTitle:HUB.metaTitle, metaDesc:HUB.metaDesc, canonical:url, schema, activeSlug:'amber', ogImage: ogFor('amber') }, main);
 }
 
@@ -886,7 +902,7 @@ function metalPage(products) {
  itemListSchema(url, `AMBERRA ${SILVER.label} Jewelry`, url, products),
  faqSchema(SILVER.faq) ].filter(Boolean) };
  const main = catBody({ kicker:'925 Sterling Silver', h1:SILVER.h1, sub:SILVER.intro[0], count:products.length,
- intro: introHTML(SILVER.intro), sections: sectionsHTML(SECTIONS.silver), links, grid: products.map(cardHTML).join('\n'), faq: faqBlock(SILVER.faq) });
+ intro: introHTML(SILVER.intro), sections: sectionsHTML(SECTIONS.silver), links, grid: orderBy(products, 'silver').map(cardHTML).join('\n'), faq: faqBlock(SILVER.faq) });
  return shell({ metaTitle:SILVER.metaTitle, metaDesc:SILVER.metaDesc, canonical:url, schema, activeSlug:'amber', ogImage: ogFor(SILVER.slug) }, main);
 }
 
@@ -901,7 +917,7 @@ function pillarPage(products) {
  itemListSchema(url, `AMBERRA ${HANDMADE.label} Jewelry`, url, products),
  faqSchema(HANDMADE.faq) ].filter(Boolean) };
  const main = catBody({ kicker:'Handmade · 925 Sterling Silver', h1:HANDMADE.h1, sub:HANDMADE.intro[0], count:products.length,
- intro: introHTML(HANDMADE.intro), sections: sectionsHTML(SECTIONS.handmade), links, grid: products.map(cardHTML).join('\n'), faq: faqBlock(HANDMADE.faq) });
+ intro: introHTML(HANDMADE.intro), sections: sectionsHTML(SECTIONS.handmade), links, grid: orderBy(products, 'handmade').map(cardHTML).join('\n'), faq: faqBlock(HANDMADE.faq) });
  return shell({ metaTitle:HANDMADE.metaTitle, metaDesc:HANDMADE.metaDesc, canonical:url, schema, activeSlug:'shop', ogImage: ogFor(HANDMADE.slug) }, main);
 }
 
@@ -916,7 +932,7 @@ function artisanPage(products) {
  itemListSchema(url, `AMBERRA ${ARTISAN.label}`, url, products),
  faqSchema(ARTISAN.faq) ].filter(Boolean) };
  const main = catBody({ kicker:'Independent Studio · Handmade', h1:ARTISAN.h1, sub:ARTISAN.intro[0], count:products.length,
- intro: introHTML(ARTISAN.intro), sections: sectionsHTML(SECTIONS.artisan), links, grid: products.map(cardHTML).join('\n'), faq: faqBlock(ARTISAN.faq) });
+ intro: introHTML(ARTISAN.intro), sections: sectionsHTML(SECTIONS.artisan), links, grid: orderBy(products, 'artisan').map(cardHTML).join('\n'), faq: faqBlock(ARTISAN.faq) });
  return shell({ metaTitle:ARTISAN.metaTitle, metaDesc:ARTISAN.metaDesc, canonical:url, schema, activeSlug:'shop', ogImage: ogFor(ARTISAN.slug) }, main);
 }
 
@@ -1014,7 +1030,7 @@ async function main() {
  let sm = fs.readFileSync(smPath, 'utf8');
  // strip previous landing entries (types + /amber + /amber/*)
  sm = sm.replace(/<url>\s*<loc>[^<]*(\/rings|\/earrings|\/pendants|\/bracelets|\/chains|\/handmade-sterling-silver-jewelry|\/sterling-silver-amber-jewelry|\/artisan-jewelry|\/amber(\/[a-z-]+)?)<\/loc>[\s\S]*?<\/url>\s*/g, '');
- const entries = written.map(u => ` <url>\n <loc>${SITE}${u}</loc>\n <lastmod>${TODAY}</lastmod>\n <changefreq>weekly</changefreq>\n <priority>0.9</priority>\n </url>`).join('\n');
+ const entries = written.map(u => ` <url>\n <loc>${SITE}${u}</loc>\n <lastmod>${TODAY}</lastmod>\n </url>`).join('\n');
  sm = sm.replace('</urlset>', `${entries}\n</urlset>`);
  fs.writeFileSync(smPath, sm, 'utf8');
  console.log(` ✓ sitemap.xml (+${written.length} landing URLs)`);

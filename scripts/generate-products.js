@@ -450,8 +450,6 @@ function buildSitemap(slugs) {
   const productEntries = slugs.map(slug => `  <url>
     <loc>${SITE}/products/${slug}</loc>
     <lastmod>${TODAY}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>`).join('\n');
 
   return stripped.replace('</urlset>', `${productEntries}\n</urlset>`);
