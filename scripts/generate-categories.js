@@ -834,9 +834,9 @@ function shell({ metaTitle, metaDesc, canonical, schema, activeSlug, ogImage }, 
  <a class="mob-nav-link" href="/journal" data-i18n="nav_journal">Journal</a>
  </div>
  <div class="mob-nav-foot"><div class="mob-nav-utils">
- <button class="mob-nav-util" onclick="closeMobNav();openAcc()">My Account</button>
- <button class="mob-nav-util" onclick="closeMobNav();openSrv()">Services</button>
- <button class="mob-nav-util" onclick="closeMobNav();openReq()">Contact</button>
+ <a class="mob-nav-util" href="/shop">My Account</a>
+ <a class="mob-nav-util" href="/services">Services</a>
+ <a class="mob-nav-util" href="/contact">Contact</a>
  </div></div>
 </div>
 ${navHTML(activeSlug)}
