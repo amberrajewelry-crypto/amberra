@@ -149,7 +149,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/style.css?v=20260827k">
+<link rel="stylesheet" href="/style.css?v=20260827m">
 <footer>
   <div class="ft">
     <div>
@@ -239,13 +239,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 /* Left panel */
 .stores-panel{width:360px;flex-shrink:0;background:var(--white);border-right:1px solid var(--mist);display:flex;flex-direction:column;overflow:hidden}
 .stores-panel-head{padding:24px 24px 16px;border-bottom:1px solid var(--mist);flex-shrink:0}
-.stores-panel-head h1{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--charcoal);margin-bottom:14px}
+.stores-panel-head h1{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--black);margin-bottom:14px}
 .stores-search-row{display:flex;border:1px solid var(--mist);background:var(--white);transition:border-color .2s}
-.stores-search-row:focus-within{border-color:var(--charcoal)}
+.stores-search-row:focus-within{border-color:var(--black)}
 .stores-search-row svg{width:16px;height:16px;stroke:var(--stone);fill:none;stroke-width:1.5;flex-shrink:0;margin:11px 10px 11px 12px}
-.stores-search-inp{flex:1;border:none;outline:none;font-family:var(--sans);font-size:10px;letter-spacing:.08em;color:var(--charcoal);background:transparent;padding:11px 0}
-.stores-search-inp::placeholder{color:var(--charcoal)}
-.stores-loc-btn{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--charcoal);background:none;border:none;cursor:pointer;font-family:var(--sans);padding:0;transition:color .2s}
+.stores-search-inp{flex:1;border:none;outline:none;font-family:var(--sans);font-size:10px;letter-spacing:.08em;color:var(--black);background:transparent;padding:11px 0}
+.stores-search-inp::placeholder{color:var(--black)}
+.stores-loc-btn{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--black);background:none;border:none;cursor:pointer;font-family:var(--sans);padding:0;transition:color .2s}
 .stores-loc-btn:hover{color:var(--amber-ink)}
 .stores-loc-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.5}
 
@@ -257,15 +257,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .store-card:hover,.store-card.active{background:var(--cream)}
 .store-card.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--amber)}
 .store-card-type{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber-ink);margin-bottom:8px;display:block}
-.store-card h3{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--charcoal);margin-bottom:8px;line-height:1.2}
-.store-card-addr{font-size:14px;color:var(--charcoal);line-height:1.7;margin-bottom:8px}
-.store-card-hours{font-size:13px;color:var(--charcoal);margin-bottom:12px}
+.store-card h3{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--black);margin-bottom:8px;line-height:1.2}
+.store-card-addr{font-size:14px;color:var(--black);line-height:1.7;margin-bottom:8px}
+.store-card-hours{font-size:13px;color:var(--black);margin-bottom:12px}
 .store-card-footer{display:flex;align-items:center;gap:12px}
-.store-card-phone{font-size:13px;color:var(--charcoal);letter-spacing:.04em}
+.store-card-phone{font-size:13px;color:var(--black);letter-spacing:.04em}
 .store-card-dir{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--amber-ink);border-bottom:1px solid var(--amber);padding-bottom:1px;transition:color .2s,border-color .2s;text-decoration:none;margin-left:auto}
 .store-card-dir:hover{color:var(--amber2);border-color:var(--amber2)}
 
-.stores-empty{padding:48px 24px;text-align:center;color:var(--charcoal)}
+.stores-empty{padding:48px 24px;text-align:center;color:var(--black)}
 .stores-empty svg{width:36px;height:36px;stroke:var(--mist);fill:none;stroke-width:1;margin:0 auto 14px;display:block}
 .stores-empty p{font-size:10px;letter-spacing:.12em;text-transform:uppercase}
 
@@ -275,13 +275,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 /* Leaflet overrides for luxury feel */
 .leaflet-popup-content-wrapper{border-radius:0;box-shadow:0 8px 32px rgba(0,0,0,.12);border:none;font-family:'Montserrat',Arial,sans-serif}
-.leaflet-popup-content{margin:18px 22px;font-size:11px;line-height:1.7;color:#3C3830}
+.leaflet-popup-content{margin:18px 22px;font-size:11px;line-height:1.7;color:#000}
 .leaflet-popup-content strong{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:400;display:block;margin-bottom:4px;color:#2A2520}
 .leaflet-popup-tip-container{display:none}
-.leaflet-popup-close-button{font-size:16px;color:var(--charcoal);top:8px;right:10px}
+.leaflet-popup-close-button{font-size:16px;color:var(--black);top:8px;right:10px}
 .leaflet-attribution-flag{display:none!important}
-.leaflet-control-attribution{font-size:9px;color:var(--charcoal)}
-.leaflet-control-zoom a{font-size:14px;color:var(--charcoal);border-color:var(--charcoal)}
+.leaflet-control-attribution{font-size:9px;color:var(--black)}
+.leaflet-control-zoom a{font-size:14px;color:var(--black);border-color:var(--black)}
 .leaflet-control-zoom a:hover{color:var(--amber-ink)}
 
 /* Responsive */
@@ -747,7 +747,7 @@ document.addEventListener('DOMContentLoaded', function(){
     marker.bindPopup(
       '<strong>' + store.name + '</strong>' +
       store.address + '<br>' +
-      '<span style="color:var(--charcoal)">' + store.hours + '</span>'
+      '<span style="color:var(--black)">' + store.hours + '</span>'
     );
     marker.on('click', function(){ selectStore(i); });
     markers.push(marker);
