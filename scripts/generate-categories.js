@@ -52,7 +52,7 @@ const TYPES = {
  ['Is the amber natural?', 'Yes, every AMBERRA earring uses natural Baltic amber, the fossilised conifer resin known as succinite that formed around 40 million years ago in the Baltic region. Color and inclusions vary from pair to pair because the stone is genuine, never pressed, reconstituted or dyed. That natural variation means no two pairs are exactly alike, from deep cherry and cognac to golden honey, green and rare blue amber. To recognize real amber, note that it is warm to the touch, light in weight, and often carries tiny natural bubbles or inclusions. Each pair ships with a certificate of authenticity.']
  ] },
  pendants: { label: 'Pendants', h1: 'Handmade Sterling Silver Pendants with Baltic Amber',
- metaTitle: 'Sterling Silver Amber Pendants & Necklaces, Handmade | AMBERRA',
+ metaTitle: 'Sterling Silver Amber Pendants, Handmade | AMBERRA',
  metaDesc: 'Baltic amber pendants and necklaces handcrafted in 925 sterling silver. Cherry, cognac, green & blue amber. Pair with a silver chain. Free shipping over $200.',
  intro: [
  'Amber pendant necklaces from AMBERRA frame a single natural Baltic amber cabochon in hand-worked sterling silver. Wear one alone or layered; pair with any AMBERRA silver chain.',
@@ -160,7 +160,7 @@ const COLORS = {
  ['What is butterscotch amber?', 'Butterscotch amber, sometimes called butter amber, is natural Baltic amber that is creamy and opaque rather than clear and translucent. It is the same fossilised conifer resin known as succinite that formed around 40 million years ago in the Baltic region, and its soft, milky warmth comes from countless microscopic air bubbles trapped in the resin. Where clear honey amber transmits light, these bubbles scatter it, producing a gentle, buttery glow, and the denser the bubbles the deeper the butterscotch tone. The look is soft, antique and quietly luxurious, which is why AMBERRA sets it by hand in 925 sterling silver for elegant everyday pieces.']
  ] },
  mosaic: { label: 'Multi-Color Amber', h1: 'Multi-Color Amber Jewelry',
- metaTitle: 'Multi-Color (Mosaic) Amber Jewelry in Sterling Silver | AMBERRA',
+ metaTitle: 'Mosaic Amber Jewelry in Sterling Silver | AMBERRA',
  metaDesc: 'Handmade multi-color mosaic amber jewelry in 925 sterling silver — natural Baltic amber of many tones, handcrafted. Free shipping over $200.',
  intro: [
  'Mosaic amber combines natural Baltic amber of many tones — cherry, cognac, honey and green — in one striking piece, set in 925 sterling silver.',
@@ -203,7 +203,7 @@ const SILVER = {
  slug: 'sterling-silver-amber-jewelry',
  label: 'Sterling Silver Amber',
  h1: 'Sterling Silver Amber Jewelry',
- metaTitle: 'Sterling Silver Amber Jewelry — 925 Silver, Handcrafted | AMBERRA',
+ metaTitle: 'Sterling Silver Amber Jewelry, Handcrafted | AMBERRA',
  metaDesc: 'Baltic amber in solid 925 sterling silver — rings, earrings, pendants & bracelets, handcrafted. Hypoallergenic silver. Free shipping over $200.',
  intro: [
  'Every AMBERRA piece pairs natural Baltic amber with solid 925 sterling silver — never plated base metal. The warm glow of the stone and the cool shine of hand-worked metal are a classic combination, durable enough to wear every day.',
