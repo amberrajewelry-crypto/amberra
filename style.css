@@ -566,8 +566,8 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .ws-wa-link:hover{color:var(--charcoal);border-bottom-color:var(--stone)}
 
 /* ═══ FOOTER ════════════════════════════════════════════════════════════ */
-footer{background:#fff;padding:80px 56px 48px;border-top:1px solid var(--mist)}
-.ft{display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:56px;margin-bottom:32px}
+footer{background:#fff;padding:52px 56px 32px;border-top:1px solid var(--mist)}
+.ft{display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:56px;margin-bottom:22px}
 .ft.ft-5{grid-template-columns:2.2fr 1fr 1fr 1fr 1fr;gap:44px}
 .fb{font-family:var(--serif);font-size:28px;letter-spacing:.4em;color:#000;margin-bottom:16px}
 .fd{font-size:15px;color:#000;line-height:1.9;margin-bottom:26px}
@@ -579,7 +579,7 @@ footer{background:#fff;padding:80px 56px 48px;border-top:1px solid var(--mist)}
 .fc-l{list-style:none;display:flex;flex-direction:column;gap:12px}
 .fc-l li a,.fc-l li button{font-size:15px;color:#000;transition:color .3s,transform .3s,padding-left .3s;display:inline-block;cursor:pointer;background:none;border:none;font-family:var(--sans);text-align:left;padding:0}
 .fc-l li a:hover,.fc-l li button:hover{color:var(--amber);padding-left:6px}
-.fb-bot{display:flex;justify-content:space-between;padding-top:36px;border-top:1px solid #E8E4DC;flex-wrap:wrap;gap:16px}
+.fb-bot{display:flex;justify-content:space-between;padding-top:24px;border-top:1px solid #E8E4DC;flex-wrap:wrap;gap:16px}
 .fcp{font-size:14px;color:#8C8880}
 .fleg{display:flex;gap:24px}
 .fleg a{font-size:14px;color:#8C8880;text-decoration:none;transition:color .3s}
