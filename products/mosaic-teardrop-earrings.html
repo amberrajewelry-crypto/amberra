@@ -146,10 +146,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css?v=20260827k">
 <style>
-.pp-nav{display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:64px;border-bottom:1px solid var(--mist);position:sticky;top:0;background:var(--white);z-index:100}
-.pp-nav-back{font:400 11px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--charcoal);text-decoration:none;display:flex;align-items:center;gap:8px}
-.pp-nav-back:hover{color:var(--charcoal)}
-.pp-nav-logo{font:400 18px/1 var(--serif);letter-spacing:.1em;color:var(--charcoal);text-decoration:none}
+.pp-nav{display:flex;align-items:center;gap:26px;padding:0 32px;height:64px;border-bottom:1px solid var(--mist);position:sticky;top:0;background:var(--white);z-index:100}
+.pp-nav-logo{font:400 18px/1 var(--serif);letter-spacing:.1em;color:var(--charcoal);text-decoration:none;flex-shrink:0}
+.pp-nav-menu{display:flex;gap:22px;flex:1;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.pp-nav-menu::-webkit-scrollbar{display:none}
+.pp-nav-menu a{font:500 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--charcoal);text-decoration:none;white-space:nowrap;transition:color .2s}
+.pp-nav-menu a:hover,.pp-nav-menu a.on{color:var(--amber-ink)}
 .pp-wrap{max-width:1180px;margin:0 auto;padding:24px 32px 48px;display:grid;grid-template-columns:1.05fr 1fr;gap:52px;align-items:start}
 .pp-img-wrap{position:relative;background:#fff;overflow:hidden;aspect-ratio:4/5;max-height:calc(100vh - 92px)}
 .pp-img-wrap img{width:100%;height:100%;object-fit:contain;padding:18px;transition:transform .7s ease}
@@ -201,12 +203,18 @@
 </head>
 <body class="page-light">
 <nav class="pp-nav">
-  <a class="pp-nav-back" href="/shop">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg>
-    Shop All
-  </a>
   <a class="pp-nav-logo" href="/">AMBERRA</a>
-  <a class="pp-nav-cart" href="/shop" aria-label="Cart" style="display:flex;align-items:center;color:var(--charcoal);text-decoration:none">
+  <div class="pp-nav-menu">
+    <a href="/shop">Collections</a>
+    <a href="/rings">Rings</a>
+    <a href="/earrings" class="on">Earrings</a>
+    <a href="/pendants">Pendants</a>
+    <a href="/bracelets">Bracelets</a>
+    <a href="/our-story">Our Story</a>
+    <a href="/wholesale">Wholesale</a>
+    <a href="/journal">Journal</a>
+  </div>
+  <a class="pp-nav-cart" href="/shop" aria-label="Cart" style="display:flex;align-items:center;color:var(--charcoal);text-decoration:none;flex-shrink:0">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.4a1.5 1.5 0 0 0 1.5 1.2h8.2a1.5 1.5 0 0 0 1.5-1.2L21 7H6"/></svg>
   </a>
 </nav>
