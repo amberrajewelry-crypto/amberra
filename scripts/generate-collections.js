@@ -44,7 +44,7 @@ const COLLS = [
     s2: 'Set in warm 925 sterling silver, each Solar piece is made to catch and hold light. Wear it when you want to carry a little brightness with you.' },
   { slug: 'sacred', label: 'The Sacred Collection', lbl: 'Ritual & Protection',
     buckets: ['Sacred', 'Temple', 'Moon', 'Lotus', 'Eternal', 'Lucky', 'Wings', 'East', 'Cosmos'],
-    desc: 'The Sacred Collection by AMBERRA — amber pieces worn for protection and intention. Handcrafted.',
+    desc: 'The Sacred Collection by AMBERRA — natural Baltic amber pieces in 925 sterling silver, worn for protection and intention. Handmade by our artisans.',
     s1: 'Amber is believed to carry protective energy — a stone of grounding and quiet power. The Sacred Collection gathers our most symbolic pieces, each finished with care before it leaves the atelier.',
     s2: 'These are pieces to be worn with intention: for a threshold, a blessing, a beginning. Deep cherry and dark cognac amber set in hand-forged silver.' },
   { slug: 'botanica', label: 'The Botanica Collection', lbl: 'Nature & Growth',

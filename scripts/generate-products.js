@@ -168,9 +168,10 @@ function productHTML(p, slug) {
   let title = `${titleName} — AMBERRA Handcrafted Amber Jewelry`;
   if (title.length > 60) title = `${titleName} — AMBERRA`;
   if (title.length > 60) title = titleName.slice(0, 57).trim() + '…';
-  // Meta description ≤155 chars; drop shipping boilerplate that always overflowed.
-  let metaDesc = `${desc}${stone ? ' ' + stone + '.' : ''} Handcrafted.`;
-  if (metaDesc.length > 155) metaDesc = metaDesc.slice(0, 152).replace(/\s+\S*$/, '') + '…';
+  // Meta description target 120–160: richer tail lifts short descs into range, cap trims long.
+  let metaDesc = `${desc}${stone ? ' ' + stone + '.' : ''} Handmade in 925 sterling silver with natural Baltic amber.`;
+  if (metaDesc.length < 120) metaDesc += ' Ships worldwide.';
+  if (metaDesc.length > 160) metaDesc = metaDesc.slice(0, 157).replace(/\s+\S*$/, '') + '…';
 
   // Only EN pages exist — advertise en + x-default, not 14 languages that 404.
   const hreflangTags = `<link rel="alternate" hreflang="en" href="${canonical}">`;

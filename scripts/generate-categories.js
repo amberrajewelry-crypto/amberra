@@ -224,7 +224,7 @@ const HANDMADE = {
  label: 'Handmade Sterling Silver',
  h1: 'Handmade Sterling Silver Jewelry',
  metaTitle: 'Handmade Sterling Silver Jewelry — Artisan-Made | AMBERRA',
- metaDesc: 'Handmade sterling silver jewelry shaped one at a time by our artisans — rings, earrings, pendants & bracelets in 925 silver with natural Baltic amber. Free shipping over $200.',
+ metaDesc: 'Handmade sterling silver jewelry shaped one at a time by our artisans — rings, earrings, pendants & bracelets in 925 silver with natural Baltic amber.',
  intro: [
  'Every AMBERRA piece is handmade — forged, set and finished one at a time by our artisans rather than stamped out by machine. That is why no two are quite alike, and why each carries the small, human marks of the hand that made it.',
  'Our craft is solid 925 sterling silver paired with natural Baltic amber, across rings, earrings, pendants, bracelets and chains. Every piece ships with a certificate of authenticity.'
@@ -244,7 +244,7 @@ const ARTISAN = {
  label: 'Artisan Jewelry',
  h1: 'Artisan Jewelry, Made by Real Hands',
  metaTitle: 'Artisan Jewelry — Handmade by Our Makers | AMBERRA',
- metaDesc: 'Artisan jewelry from a small independent studio — natural Baltic amber and 925 sterling silver, designed in Bali and made by hand, one piece at a time. Free shipping over $200.',
+ metaDesc: 'Artisan jewelry from a small independent studio — natural Baltic amber and 925 sterling silver, designed in Bali and made by hand, one piece at a time.',
  intro: [
  'AMBERRA is artisan jewelry in the true sense: a small independent studio, not a factory brand. Every design is drawn by hand, and every piece is made by the same makers who have worked silver and amber for years — not stamped out on a production line.',
  'We work in two honest materials, natural Baltic amber and solid 925 sterling silver, designed in Bali and finished by hand. Because a person makes each piece, no two are identical, and every order arrives with a certificate of authenticity.'
@@ -265,7 +265,7 @@ const AMBER_RINGS = {
  label: 'Amber Rings',
  h1: 'Amber Rings in Sterling Silver',
  metaTitle: 'Amber Rings — Natural Baltic Amber in 925 Silver | AMBERRA',
- metaDesc: 'Natural Baltic amber rings, hand-set in 925 sterling silver by our artisans. Cherry, cognac, green & honey amber. US sizes 5–9. Free worldwide shipping over $200.',
+ metaDesc: 'Natural Baltic amber rings, hand-set in 925 sterling silver by our artisans. Cherry, cognac, green & honey amber. US sizes 5–9, free returns.',
  intro: [
  'An amber ring is the most personal way to wear Baltic amber — a single natural stone, warm against the skin, framed in hand-worked 925 sterling silver. Because the amber is genuine, no two AMBERRA rings are the same: the color runs from deep cherry and cognac to golden honey, green and rare blue.',
  'Choose a bold cocktail stone or a fine everyday band. Every ring is set by hand by our artisans, comes in US sizes 5–9, and ships with a certificate of authenticity.'
