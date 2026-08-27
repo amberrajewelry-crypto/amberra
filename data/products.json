@@ -1,1700 +1,1700 @@
 [
- {
-  "id": 1,
-  "name": "All-Seeing Eye",
-  "cat": "rings",
-  "price": 119,
-  "badge": null,
-  "img": "/images/products/48121833.webp",
-  "imgs": [
-   "/images/products/48121833.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "The ancient eye of wisdom — amber set within an intricate silver frame. Worn for protection and clarity.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Sacred"
+  {
+    "id": 1,
+    "name": "All-Seeing Eye",
+    "cat": "rings",
+    "price": 119,
+    "badge": null,
+    "img": "/images/products/48121833.webp",
+    "imgs": [
+      "/images/products/48121833.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "The ancient eye of wisdom — amber set within an intricate silver frame. Worn for protection and clarity.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Sacred"
+    }
+  },
+  {
+    "id": 2,
+    "name": "All-Seeing Eye",
+    "cat": "earrings",
+    "price": 125,
+    "badge": null,
+    "img": "/images/products/48121955.webp",
+    "imgs": [
+      "/images/products/48121955.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "The all-seeing eye in amber — a symbol of wisdom and protection, crafted for the modern woman.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Sacred",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Amber Blossom",
+    "cat": "earrings",
+    "price": 99,
+    "badge": null,
+    "img": "/images/products/48121827.webp",
+    "imgs": [
+      "/images/products/48121827.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Blossoming silver petals embrace a honey amber center. Nature's beauty, forever still.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Bloom",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Amber Blossom",
+    "cat": "rings",
+    "price": 69,
+    "badge": null,
+    "img": "/images/products/48121839.webp",
+    "imgs": [
+      "/images/products/48121839.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Petals of silver open to reveal a glowing amber center. A bloom frozen in time, warm as morning light.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Bloom"
+    }
+  },
+  {
+    "id": 5,
+    "name": "Amber Clover Ring",
+    "cat": "rings",
+    "price": 89,
+    "badge": null,
+    "img": "images/rings/clover_amber.png",
+    "imgs": [
+      "images/rings/clover_amber.png"
+    ],
+    "material": "Natural Honey Amber · 18k Gold",
+    "desc": "A lucky clover carved entirely from honey amber on a golden band.",
+    "props": {
+      "Stone": "Natural Honey Amber",
+      "Metal": "18k Gold-Plated Silver",
+      "Collection": "Lucky"
+    }
+  },
+  {
+    "id": 6,
+    "name": "Amber Cuff",
+    "cat": "bracelets",
+    "price": 215,
+    "badge": null,
+    "img": "images/bracelets/IMG_2056.JPG",
+    "imgs": [
+      "images/bracelets/IMG_2056.JPG"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "A bold silver cuff set with three graduated amber cabochons — power on your wrist.",
+    "props": {
+      "Stone": "Natural Amber ×3",
+      "Metal": "925 Sterling Silver"
+    }
+  },
+  {
+    "id": 7,
+    "name": "Amber Drop Cluster Earrings",
+    "cat": "earrings",
+    "price": 145,
+    "badge": null,
+    "img": "images/earrings/IMG_9623.JPG",
+    "imgs": [
+      "images/earrings/IMG_9623.JPG"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "A cluster of amber drops cascade from a silver hook — bold, organic, beautiful.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 8,
+    "name": "Amber Fringe Bracelet",
+    "cat": "bracelets",
+    "price": 192,
+    "badge": null,
+    "img": "images/bracelets/frp1ytb7dpogp0xwh3g7538gvp20dql6.JPG",
+    "imgs": [
+      "images/bracelets/frp1ytb7dpogp0xwh3g7538gvp20dql6.JPG"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Fringe of amber drops on a silver chain — movement and light with every gesture.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver"
+    }
+  },
+  {
+    "id": 9,
+    "name": "Amber Leaf Earrings",
+    "cat": "earrings",
+    "price": 139,
+    "badge": null,
+    "img": "images/earrings/IMG_9644.JPG",
+    "imgs": [
+      "images/earrings/IMG_9644.JPG"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Leaf-shaped silver frames each holding a glowing amber cabochon — botanical luxury.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Bloom",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 10,
+    "name": "Amber Path",
+    "cat": "bracelets",
+    "price": 139,
+    "badge": null,
+    "img": "/images/products/49479917.webp",
+    "imgs": [
+      "/images/products/49479917.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "A winding path of amber stations across a delicate silver chain — the journey made beautiful.",
+    "props": {
+      "Stone": "Natural Baltic Amber ×7",
+      "Metal": "925 Sterling Silver"
+    }
+  },
+  {
+    "id": 11,
+    "name": "Amber Strand Bracelet",
+    "cat": "bracelets",
+    "price": 185,
+    "badge": null,
+    "img": "images/bracelets/99j9gb8itoiexjp7ew768rcbhyhh6rjs.JPG",
+    "imgs": [
+      "images/bracelets/99j9gb8itoiexjp7ew768rcbhyhh6rjs.JPG"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "A fluid strand of graduating amber stations on a fine silver chain — nature's elegance.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver"
+    }
+  },
+  {
+    "id": 12,
+    "name": "Aurora Sphere",
+    "cat": "earrings",
+    "price": 89,
+    "badge": null,
+    "img": "/images/products/48121969.webp",
+    "imgs": [
+      "/images/products/48121969.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Spheres of glowing amber that capture the swirling colors of the Northern Lights.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Aurora",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 13,
+    "name": "Basket Weave Butter Earrings",
+    "cat": "earrings",
+    "price": 129,
+    "badge": null,
+    "img": "images/earrings/basket_butter_rg.jpg",
+    "imgs": [
+      "images/earrings/basket_butter_rg.jpg"
+    ],
+    "material": "Natural Butter Amber · 925 Sterling Silver",
+    "desc": "Woven silver baskets cradle luminous butter amber — light trapped in precious metal.",
+    "props": {
+      "Stone": "Natural Butter Amber",
+      "Metal": "925 Sterling Silver",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 14,
+    "name": "Basket Weave Cognac Earrings",
+    "cat": "earrings",
+    "price": 129,
+    "badge": null,
+    "img": "images/earrings/basket_cognac_rg.jpg",
+    "imgs": [
+      "images/earrings/basket_cognac_rg.jpg"
+    ],
+    "material": "Natural Cognac Amber · 925 Sterling Silver",
+    "desc": "Silver filigree baskets hold warm cognac amber drops — handwoven by our artisans.",
+    "props": {
+      "Stone": "Natural Cognac Amber",
+      "Metal": "925 Sterling Silver",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 15,
+    "name": "Basket Weave Green Earrings",
+    "cat": "earrings",
+    "price": 135,
+    "badge": null,
+    "img": "images/earrings/basket_green_rg.jpg",
+    "imgs": [
+      "images/earrings/basket_green_rg.jpg"
+    ],
+    "material": "Natural Green Amber · 925 Sterling Silver",
+    "desc": "Rare green Baltic amber cradled in woven silver baskets — precious as the forest itself.",
+    "props": {
+      "Stone": "Natural Green Amber",
+      "Metal": "925 Sterling Silver",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 16,
+    "name": "Blue Shell Ring",
+    "cat": "rings",
+    "price": 119,
+    "badge": null,
+    "img": "images/rings/IMG_1601.jpg",
+    "imgs": [
+      "images/rings/IMG_1601.jpg"
+    ],
+    "material": "Natural Blue Amber · 925 Sterling Silver",
+    "desc": "Blue Baltic amber in a sculptural silver bezel — rare ocean energy.",
+    "props": {
+      "Stone": "Natural Blue Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Ocean"
+    }
+  },
+  {
+    "id": 17,
+    "name": "Butterfly Filigree Earrings",
+    "cat": "earrings",
+    "price": 169,
+    "badge": null,
+    "img": "images/earrings/IMG_9632.JPG",
+    "imgs": [
+      "images/earrings/IMG_9632.JPG"
+    ],
+    "material": "Natural Butter Amber · 925 Sterling Silver & Gold Filigree",
+    "desc": "Spread filigree wings of silver and gold surround a marquise amber center.",
+    "props": {
+      "Stone": "Butter Baltic Amber",
+      "Metal": "925 Sterling Silver & 24k Gold",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 18,
+    "name": "Cherry Amber Bracelet",
+    "cat": "bracelets",
+    "price": 159,
+    "badge": null,
+    "img": "images/bracelets/IMG_1567.JPG",
+    "imgs": [
+      "images/bracelets/IMG_1567.JPG"
+    ],
+    "material": "Natural Cherry Amber · 925 Sterling Silver",
+    "desc": "Cherry amber stations on a fine silver chain — the warmth of Balinese sunsets captured.",
+    "props": {
+      "Stone": "Natural Cherry Amber",
+      "Metal": "925 Sterling Silver"
+    }
+  },
+  {
+    "id": 19,
+    "name": "Cognac Link Bracelet",
+    "cat": "bracelets",
+    "price": 175,
+    "badge": null,
+    "img": "images/bracelets/IMG_1566.JPG",
+    "imgs": [
+      "images/bracelets/IMG_1566.JPG"
+    ],
+    "material": "Natural Cognac Amber · 925 Sterling Silver",
+    "desc": "Rich cognac amber links set in sterling silver — deep and luminous.",
+    "props": {
+      "Stone": "Natural Cognac Amber",
+      "Metal": "925 Sterling Silver"
+    }
+  },
+  {
+    "id": 20,
+    "name": "Cognac Teardrop Drop Earrings",
+    "cat": "earrings",
+    "price": 119,
+    "badge": null,
+    "img": "images/earrings/IMG_9622.JPG",
+    "imgs": [
+      "images/earrings/IMG_9622.JPG"
+    ],
+    "material": "Natural Cognac Amber · 925 Sterling Silver",
+    "desc": "Smooth cognac amber teardrops on fine silver hooks — timeless, warm, wearable.",
+    "props": {
+      "Stone": "Natural Cognac Amber",
+      "Metal": "925 Sterling Silver",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 21,
+    "name": "Cosmic Swirl Ring",
+    "cat": "rings",
+    "price": 135,
+    "badge": null,
+    "img": "images/rings/IMG_9643.JPG",
+    "imgs": [
+      "images/rings/IMG_9643.JPG"
+    ],
+    "material": "Natural Green Amber · 925 Sterling Silver & Gold",
+    "desc": "Oxidized silver swirls orbit a green amber center like ancient galaxies.",
+    "props": {
+      "Stone": "Natural Green Amber",
+      "Metal": "Oxidized Silver + 18k Gold",
+      "Collection": "Cosmos"
+    }
+  },
+  {
+    "id": 22,
+    "name": "Crab Drop Earrings",
+    "cat": "earrings",
+    "price": 195,
+    "badge": null,
+    "img": "images/earrings/IMG_9625.JPG",
+    "imgs": [
+      "images/earrings/IMG_9625.JPG"
+    ],
+    "material": "Natural Cognac Amber · 925 Sterling Silver & Gold",
+    "desc": "A whimsical golden crab holds a cognac amber body — collectible artisan jewelry.",
+    "props": {
+      "Stone": "Cognac Baltic Amber",
+      "Metal": "925 Sterling Silver & Gold",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 23,
+    "name": "Divine Lotus",
+    "cat": "rings",
+    "price": 129,
+    "badge": null,
+    "img": "/images/products/48121947.webp",
+    "imgs": [
+      "/images/products/48121947.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "The sacred lotus rises from silver petals to cradle a luminous amber center. Handcrafted.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Lotus"
+    }
+  },
+  {
+    "id": 24,
+    "name": "Earth of Stars",
+    "cat": "pendants",
+    "price": 329,
+    "badge": null,
+    "img": "/images/products/48454667.webp",
+    "imgs": [
+      "/images/products/48454667.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "The night sky of the Baltic forest — a constellation of amber lights set in sterling silver.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Cosmos",
+      "Chain": "Not included"
+    }
+  },
+  {
+    "id": 25,
+    "name": "Eastern Night",
+    "cat": "earrings",
+    "price": 109,
+    "badge": null,
+    "img": "/images/products/48121967.webp",
+    "imgs": [
+      "/images/products/48121967.webp"
+    ],
+    "material": "Natural Dark Amber · 925 Sterling Silver",
+    "desc": "Deep dark amber in an ornate silver setting — the mysterious beauty of an Eastern night sky.",
+    "props": {
+      "Stone": "Dark Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "East",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 26,
+    "name": "Eastern Night",
+    "cat": "pendants",
+    "price": 59,
+    "badge": null,
+    "img": "/images/products/48454661.webp",
+    "imgs": [
+      "/images/products/48454661.webp"
+    ],
+    "material": "Natural Dark Amber · 925 Sterling Silver",
+    "desc": "The deep mystery of an Eastern night — dark amber in delicate silver filigree.",
+    "props": {
+      "Stone": "Dark Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "East",
+      "Chain": "Not included"
+    }
+  },
+  {
+    "id": 27,
+    "name": "Empire of the Sun",
+    "cat": "rings",
+    "price": 95,
+    "badge": null,
+    "img": "/images/products/48121963.webp",
+    "imgs": [
+      "/images/products/48121963.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "An imperial crown of silver rays radiates from a golden amber center — the sun's undying empire.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Solar"
+    }
+  },
+  {
+    "id": 28,
+    "name": "Empire of the Sun",
+    "cat": "bracelets",
+    "price": 169,
+    "badge": null,
+    "img": "/images/products/48121837.webp",
+    "imgs": [
+      "/images/products/48121837.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Imperial amber stations linked in sterling silver — wear the power of the sun on your wrist.",
+    "props": {
+      "Stone": "Natural Baltic Amber ×5",
+      "Metal": "925 Sterling Silver"
+    }
+  },
+  {
+    "id": 29,
+    "name": "Empire of the Sun",
+    "cat": "earrings",
+    "price": 119,
+    "badge": null,
+    "img": "/images/products/48121971.webp",
+    "imgs": [
+      "/images/products/48121971.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Sunburst earrings with amber centers — regal, golden, commanding. The sun's power at your ears.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Solar",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 30,
+    "name": "Eternal Circle",
+    "cat": "bracelets",
+    "price": 129,
+    "badge": null,
+    "img": "/images/products/48061013.webp",
+    "imgs": [
+      "/images/products/48061013.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "A chain of perfect amber circles on silver — the eternal path around your wrist.",
+    "props": {
+      "Stone": "Natural Honey Amber ×6",
+      "Metal": "925 Sterling Silver"
+    }
+  },
+  {
+    "id": 31,
+    "name": "Eternal Circle",
+    "cat": "earrings",
+    "price": 119,
+    "badge": null,
+    "img": "/images/products/48061101.webp",
+    "imgs": [
+      "/images/products/48061101.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Matching circles of amber in a fine silver bezel — timeless, effortless, eternal.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Eternal",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 32,
+    "name": "Eternal Circle",
+    "cat": "pendants",
+    "price": 329,
+    "badge": null,
+    "img": "/images/products/48061029.webp",
+    "imgs": [
+      "/images/products/48061029.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "A grand circle of amber suspended in sterling silver — the eternal cycle made into a statement pendant.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Eternal",
+      "Chain": "Not included"
+    }
+  },
+  {
+    "id": 33,
+    "name": "Eternal Circle",
+    "cat": "rings",
+    "price": 74,
+    "badge": null,
+    "img": "/images/products/48060949.webp",
+    "imgs": [
+      "/images/products/48060949.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "A perfect circle of amber on a delicate silver band — the eternal cycle, worn on your finger.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Eternal"
+    }
+  },
+  {
+    "id": 34,
+    "name": "Filigree Medallion Drop Earrings",
+    "cat": "earrings",
+    "price": 165,
+    "badge": null,
+    "img": "images/earrings/medallion_citrine_gold.jpg",
+    "imgs": [
+      "images/earrings/medallion_citrine_gold.jpg"
+    ],
+    "material": "Natural Citrine Amber · Gold or Silver",
+    "desc": "A filigree medallion charm suspends above a large amber cushion drop — in gold and silver.",
+    "props": {
+      "Stone": "Citrine Baltic Amber",
+      "Metal": "24k Gold-Plated Silver · 925 Sterling Silver",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 35,
+    "name": "Forest Walk Bracelet",
+    "cat": "bracelets",
+    "price": 125,
+    "badge": null,
+    "img": "images/bracelets/IMG_1598.JPG",
+    "imgs": [
+      "images/bracelets/IMG_1598.JPG"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Raw amber chips woven between silver links — nature at its most beautiful.",
+    "props": {
+      "Stone": "Natural Raw Amber",
+      "Metal": "925 Sterling Silver"
+    }
+  },
+  {
+    "id": 36,
+    "name": "Four Blessing",
+    "cat": "earrings",
+    "price": 74,
+    "badge": null,
+    "img": "/images/products/48121767.webp",
+    "imgs": [
+      "/images/products/48121767.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Four amber stones blessed at the four sacred directions in Bali — wear protection with grace.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Sacred",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 37,
+    "name": "Four Blessing",
+    "cat": "bracelets",
+    "price": 79,
+    "badge": null,
+    "img": "/images/products/48122213.webp",
+    "imgs": [
+      "/images/products/48122213.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Four amber stations blessed at the four cardinal points in Bali — protection on your wrist.",
+    "props": {
+      "Stone": "Natural Baltic Amber ×4",
+      "Metal": "925 Sterling Silver"
+    }
+  },
+  {
+    "id": 38,
+    "name": "Fruit of the Sun",
+    "cat": "pendants",
+    "price": 149,
+    "badge": null,
+    "img": "/images/products/48454663.webp",
+    "imgs": [
+      "/images/products/48454663.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "A fruit of light born from forty million years of solar energy — pure Baltic amber on silver.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Solar",
+      "Chain": "Not included"
+    }
+  },
+  {
+    "id": 39,
+    "name": "Full Moon",
+    "cat": "earrings",
+    "price": 59,
+    "badge": null,
+    "img": "/images/products/48061475.webp",
+    "imgs": [
+      "/images/products/48061475.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Round amber discs as luminous as the full moon over Bali. Wear the moonlight every day.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Moon",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 40,
+    "name": "Gold-Plated Cable Chain",
+    "cat": "chains",
+    "price": 99,
+    "badge": null,
+    "img": "images/chains/IMG_9801.JPG",
+    "imgs": [
+      "images/chains/IMG_9801.JPG"
+    ],
+    "material": "18k Gold-Plated Silver",
+    "desc": "The same elegant cable chain finished in warm 18k gold plating. Three lengths available — 40, 45 and 50 cm.",
+    "props": {
+      "Metal": "18k Gold-Plated 925 Sterling Silver"
+    }
+  },
+  {
+    "id": 41,
+    "name": "Golden Chain Bracelet",
+    "cat": "bracelets",
+    "price": 195,
+    "badge": null,
+    "img": "images/bracelets/IMG_1568.JPG",
+    "imgs": [
+      "images/bracelets/IMG_1568.JPG"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Five hand-selected amber stations on a sterling chain — pure Balinese elegance.",
+    "props": {
+      "Stone": "Natural Amber ×5",
+      "Metal": "925 Sterling Silver"
+    }
+  },
+  {
+    "id": 42,
+    "name": "Golden Teardrop Earrings",
+    "cat": "earrings",
+    "price": 135,
+    "badge": null,
+    "img": "images/earrings/IMG_9627.JPG",
+    "imgs": [
+      "images/earrings/IMG_9627.JPG"
+    ],
+    "material": "Natural Baltic Amber · 18k Gold",
+    "desc": "Warm amber teardrops in a gold bezel setting — the essence of Balinese luxury.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "24k Gold-Plated Silver",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 43,
+    "name": "Halo Blue Drop Earrings",
+    "cat": "earrings",
+    "price": 149,
+    "badge": null,
+    "img": "images/earrings/halo_blue_silver.jpg",
+    "imgs": [
+      "images/earrings/halo_blue_silver.jpg"
+    ],
+    "material": "Natural Blue Amber · 925 Sterling Silver",
+    "desc": "A halo of fine silver wire encircles rare blue Baltic amber — ocean light made wearable.",
+    "props": {
+      "Stone": "Natural Blue Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Halo",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 44,
+    "name": "Halo Butter Drop Earrings",
+    "cat": "earrings",
+    "price": 139,
+    "badge": null,
+    "img": "images/earrings/halo_butter_rg.jpg",
+    "imgs": [
+      "images/earrings/halo_butter_rg.jpg"
+    ],
+    "material": "Natural Butter Amber · Rose Gold",
+    "desc": "Luminous butter amber suspended in a rose gold halo — soft, eternal, radiant.",
+    "props": {
+      "Stone": "Natural Butter Amber",
+      "Metal": "18k Rose Gold-Plated Silver",
+      "Collection": "Halo",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 45,
+    "name": "Halo Cherry Drop Earrings",
+    "cat": "earrings",
+    "price": 145,
+    "badge": null,
+    "img": "images/earrings/halo_cherry_silver.jpg",
+    "imgs": [
+      "images/earrings/halo_cherry_silver.jpg"
+    ],
+    "material": "Natural Cherry Amber · 925 Sterling Silver",
+    "desc": "Deep cherry amber glows within its silver halo — the warmth of sunsets crystallized.",
+    "props": {
+      "Stone": "Natural Cherry Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Halo",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 46,
+    "name": "Halo Green Drop Earrings",
+    "cat": "earrings",
+    "price": 149,
+    "badge": null,
+    "img": "images/earrings/halo_green_rg.jpg",
+    "imgs": [
+      "images/earrings/halo_green_rg.jpg"
+    ],
+    "material": "Natural Green Amber · Rose Gold",
+    "desc": "Rare green amber in a rose gold halo — nature's rarest color, elevated.",
+    "props": {
+      "Stone": "Natural Green Amber",
+      "Metal": "18k Rose Gold-Plated Silver",
+      "Collection": "Halo",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 47,
+    "name": "Harvest Bracelet",
+    "cat": "bracelets",
+    "price": 159,
+    "badge": null,
+    "img": "images/bracelets/IMG_1595.JPG",
+    "imgs": [
+      "images/bracelets/IMG_1595.JPG"
+    ],
+    "material": "Natural Cherry Amber · 925 Sterling Silver",
+    "desc": "Rich cherry amber rounds linked with fine silver — the warmth of the Bali harvest.",
+    "props": {
+      "Stone": "Natural Cherry Amber",
+      "Metal": "925 Sterling Silver"
+    }
+  },
+  {
+    "id": 48,
+    "name": "Honey Bead Bracelet",
+    "cat": "bracelets",
+    "price": 149,
+    "badge": null,
+    "img": "images/bracelets/IMG_1539.JPG",
+    "imgs": [
+      "images/bracelets/IMG_1539.JPG"
+    ],
+    "material": "Natural Honey Amber · 925 Sterling Silver",
+    "desc": "Round honey amber beads alternating with silver spacers — warmth on your wrist.",
+    "props": {
+      "Stone": "Natural Honey Amber",
+      "Metal": "925 Sterling Silver"
+    }
+  },
+  {
+    "id": 49,
+    "name": "Iris Blue Gold Drop Earrings",
+    "cat": "earrings",
+    "price": 169,
+    "badge": null,
+    "img": "images/earrings/iris_blue_gold.jpg",
+    "imgs": [
+      "images/earrings/iris_blue_gold.jpg"
+    ],
+    "material": "Natural Blue Amber · 18k Gold",
+    "desc": "Iris petals of gold frame rare blue Baltic amber — a floral statement of rare beauty.",
+    "props": {
+      "Stone": "Natural Blue Amber",
+      "Metal": "24k Gold-Plated Silver",
+      "Collection": "Iris",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 50,
+    "name": "Iris Flower Ring",
+    "cat": "rings",
+    "price": 159,
+    "badge": null,
+    "img": "images/rings/iris_silver.jpg",
+    "imgs": [
+      "images/rings/iris_silver.jpg"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver & Gold",
+    "desc": "A blooming iris of filigree silver frames a central butter amber stone.",
+    "props": {
+      "Stone": "Natural Butter Amber",
+      "Metal": "925 Sterling Silver + 18k Gold",
+      "Collection": "Bloom"
+    }
+  },
+  {
+    "id": 51,
+    "name": "Iris Green Gold Drop Earrings",
+    "cat": "earrings",
+    "price": 169,
+    "badge": null,
+    "img": "images/earrings/iris_green_gold.jpg",
+    "imgs": [
+      "images/earrings/iris_green_gold.jpg"
+    ],
+    "material": "Natural Green Amber · 18k Gold",
+    "desc": "Gold iris petals embrace green Baltic amber — nature's rarest colors united.",
+    "props": {
+      "Stone": "Natural Green Amber",
+      "Metal": "24k Gold-Plated Silver",
+      "Collection": "Iris",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 52,
+    "name": "Leaf Eye Drop Earrings",
+    "cat": "earrings",
+    "price": 169,
+    "badge": null,
+    "img": "images/earrings/leaf_eye_butter_rg.jpg",
+    "imgs": [
+      "images/earrings/leaf_eye_butter_rg.jpg"
+    ],
+    "material": "Natural Baltic Amber · Enamel · Rose Gold",
+    "desc": "An enamelled eye-shaped clasp releases a glowing amber sphere — mystical and feminine.",
+    "props": {
+      "Stone": "Baltic Amber",
+      "Metal": "Rose Gold-Plated Silver",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 53,
+    "name": "Leaf Fan Stud Earrings",
+    "cat": "earrings",
+    "price": 125,
+    "badge": null,
+    "img": "images/earrings/IMG_1583.JPG",
+    "imgs": [
+      "images/earrings/IMG_1583.JPG"
+    ],
+    "material": "Natural Baltic Amber · Enamel · Gold",
+    "desc": "A fan of enamel leaves with an amber center — citrine or blue — in warm gold.",
+    "props": {
+      "Stone": "Baltic Amber",
+      "Metal": "24k Gold-Plated Silver",
+      "Closure": "Push backs"
+    }
+  },
+  {
+    "id": 54,
+    "name": "Long Cascade Earrings",
+    "cat": "earrings",
+    "price": 155,
+    "badge": null,
+    "img": "images/earrings/IMG_9628.JPG",
+    "imgs": [
+      "images/earrings/IMG_9628.JPG"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Elongated amber drops on fine silver chains — a cascade of ancient light.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 55,
+    "name": "Lotus Butterfly Ring",
+    "cat": "rings",
+    "price": 145,
+    "badge": null,
+    "img": "images/rings/IMG_9633.JPG",
+    "imgs": [
+      "images/rings/IMG_9633.JPG"
+    ],
+    "material": "Natural Butter Amber · 925 Sterling Silver & Gold",
+    "desc": "Wings of filigree silver, heart of butter amber — the sacred lotus butterfly.",
+    "props": {
+      "Stone": "Natural Butter Amber",
+      "Metal": "925 Sterling Silver + 18k Gold",
+      "Collection": "Wings"
+    }
+  },
+  {
+    "id": 56,
+    "name": "Marquise Eye Drop Earrings",
+    "cat": "earrings",
+    "price": 155,
+    "badge": null,
+    "img": "images/earrings/IMG_1579.JPG",
+    "imgs": [
+      "images/earrings/IMG_1579.JPG"
+    ],
+    "material": "Natural Cognac Amber · Oxidized Silver & Gold",
+    "desc": "Almond-shaped cognac amber drops in oxidized silver with gold accents.",
+    "props": {
+      "Stone": "Cognac Baltic Amber",
+      "Metal": "Oxidized 925 Sterling Silver & Gold",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 57,
+    "name": "Mosaic Flame",
+    "cat": "pendants",
+    "price": 49,
+    "badge": null,
+    "img": "/images/products/49479833.webp",
+    "imgs": [
+      "/images/products/49479833.webp"
+    ],
+    "material": "Natural Multi-Amber · 925 Sterling Silver",
+    "desc": "A flame of multicolor amber fragments — each piece a story, together a masterwork.",
+    "props": {
+      "Stone": "Multi-color Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Mosaic",
+      "Chain": "Not included"
+    }
+  },
+  {
+    "id": 58,
+    "name": "Mosaic Teardrop Earrings",
+    "cat": "earrings",
+    "price": 135,
+    "badge": null,
+    "img": "images/earrings/IMG_1585.JPG",
+    "imgs": [
+      "images/earrings/IMG_1585.JPG"
+    ],
+    "material": "Natural Baltic Amber · Enamel · Rose Gold",
+    "desc": "Folk-art mosaic enamel surrounds a glowing amber cabochon in a sweeping teardrop frame.",
+    "props": {
+      "Stone": "Baltic Amber",
+      "Metal": "Rose Gold-Plated Silver",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 59,
+    "name": "Multi-Stone Bar Hoop Earrings",
+    "cat": "earrings",
+    "price": 129,
+    "badge": null,
+    "img": "images/earrings/IMG_1600.JPG",
+    "imgs": [
+      "images/earrings/IMG_1600.JPG"
+    ],
+    "material": "Natural Multi-Amber · 925 Sterling Silver or Rose Gold",
+    "desc": "A bar of multicolor Baltic amber in a curved hoop — in silver and rose gold.",
+    "props": {
+      "Stone": "Multi-color Baltic Amber",
+      "Metal": "925 Sterling Silver · Rose Gold",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 60,
+    "name": "Multi-Stone Link Bracelet",
+    "cat": "bracelets",
+    "price": 195,
+    "badge": null,
+    "img": "images/bracelets/fkzrj42070kv18e2bnfleroej1rcy84w.JPG",
+    "imgs": [
+      "images/bracelets/fkzrj42070kv18e2bnfleroej1rcy84w.JPG"
+    ],
+    "material": "Natural Multi-Amber · 925 Sterling Silver",
+    "desc": "Multiple amber tones linked in sterling silver — a spectrum of Baltic light on your wrist.",
+    "props": {
+      "Stone": "Multi-color Baltic Amber",
+      "Metal": "925 Sterling Silver"
+    }
+  },
+  {
+    "id": 61,
+    "name": "Multicolor Code",
+    "cat": "bracelets",
+    "price": 179,
+    "badge": null,
+    "img": "/images/products/48121977.webp",
+    "imgs": [
+      "/images/products/48121977.webp"
+    ],
+    "material": "Natural Multi-Amber · 925 Sterling Silver",
+    "desc": "Rainbow amber beads on a sterling silver chain — a bracelet that speaks every language of light.",
+    "props": {
+      "Stone": "Multi-color Baltic Amber",
+      "Metal": "925 Sterling Silver"
+    }
+  },
+  {
+    "id": 62,
+    "name": "Multicolor Code",
+    "cat": "earrings",
+    "price": 119,
+    "badge": null,
+    "img": "/images/products/48121965.webp",
+    "imgs": [
+      "/images/products/48121965.webp"
+    ],
+    "material": "Natural Multi-Amber · 925 Sterling Silver",
+    "desc": "Cherry, citrine, and green amber arranged in a mosaic — a secret code only you can read.",
+    "props": {
+      "Stone": "Multi-color Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Mosaic",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 63,
+    "name": "Multicolor Code",
+    "cat": "rings",
+    "price": 89,
+    "badge": null,
+    "img": "/images/products/48121923.webp",
+    "imgs": [
+      "/images/products/48121923.webp"
+    ],
+    "material": "Natural Multi-Amber · 925 Sterling Silver",
+    "desc": "A mosaic of amber tones — cherry, citrine, green — encoded in sterling silver. Every color tells a story.",
+    "props": {
+      "Stone": "Multi-color Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Mosaic"
+    }
+  },
+  {
+    "id": 64,
+    "name": "Ocean's Soul",
+    "cat": "rings",
+    "price": 169,
+    "badge": null,
+    "img": "/images/products/48455169.webp",
+    "imgs": [
+      "/images/products/48455169.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Deep ocean blues meet warm amber in a sculptural silver setting. Rare and mesmerising.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Ocean"
+    }
+  },
+  {
+    "id": 65,
+    "name": "Orbit Hoop Earrings",
+    "cat": "earrings",
+    "price": 149,
+    "badge": null,
+    "img": "images/earrings/IMG_9630.JPG",
+    "imgs": [
+      "images/earrings/IMG_9630.JPG"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Amber stations orbiting a silver hoop — movement, light, and ancient earth energy.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Closure": "Click-lock"
+    }
+  },
+  {
+    "id": 66,
+    "name": "Oval Station Bracelet",
+    "cat": "bracelets",
+    "price": 165,
+    "badge": null,
+    "img": "images/bracelets/IMG_1531.JPG",
+    "imgs": [
+      "images/bracelets/IMG_1531.JPG"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Oval amber cabochons spaced along a delicate silver chain — understated luxury.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver"
+    }
+  },
+  {
+    "id": 67,
+    "name": "Petal Drop Earrings",
+    "cat": "earrings",
+    "price": 125,
+    "badge": null,
+    "img": "images/earrings/IMG_9629.JPG",
+    "imgs": [
+      "images/earrings/IMG_9629.JPG"
+    ],
+    "material": "Natural Butter Amber · 925 Sterling Silver",
+    "desc": "Silver petals fold around butter amber drops — nature's most delicate jewelry.",
+    "props": {
+      "Stone": "Natural Butter Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Bloom",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 68,
+    "name": "Rainbow Code",
+    "cat": "rings",
+    "price": 89,
+    "badge": null,
+    "img": "/images/products/48175549.webp",
+    "imgs": [
+      "/images/products/48175549.webp"
+    ],
+    "material": "Natural Multi-Amber · 925 Sterling Silver",
+    "desc": "A spectrum of amber tones arranged like a secret code in fine sterling silver. Playful and elegant.",
+    "props": {
+      "Stone": "Multi-color Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Mosaic"
+    }
+  },
+  {
+    "id": 69,
+    "name": "Raw Amber Cuff Bracelet",
+    "cat": "bracelets",
+    "price": 229,
+    "badge": null,
+    "img": "images/bracelets/IMG_9636.JPG",
+    "imgs": [
+      "images/bracelets/IMG_9636.JPG"
+    ],
+    "material": "Natural Raw Amber · 925 Sterling Silver",
+    "desc": "Unpolished raw amber set into a sculptural silver cuff — nature undisturbed.",
+    "props": {
+      "Stone": "Natural Raw Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Raw Nature"
+    }
+  },
+  {
+    "id": 70,
+    "name": "Raw Amber Oval Ring",
+    "cat": "rings",
+    "price": 189,
+    "badge": null,
+    "img": "images/rings/IMG_9645.JPG",
+    "imgs": [
+      "images/rings/IMG_9645.JPG"
+    ],
+    "material": "Raw Natural Amber · 925 Sterling Silver",
+    "desc": "Unpolished raw Baltic amber in a long oval frame — nature exactly as found.",
+    "props": {
+      "Stone": "Raw Natural Amber",
+      "Metal": "925 Sterling Silver or 18k Gold",
+      "Collection": "Raw Nature"
+    }
+  },
+  {
+    "id": 71,
+    "name": "Raw Triangle Ring",
+    "cat": "rings",
+    "price": 175,
+    "badge": null,
+    "img": "images/rings/IMG_1587.JPG",
+    "imgs": [
+      "images/rings/IMG_1587.JPG"
+    ],
+    "material": "Raw Natural Amber · 925 Sterling Silver",
+    "desc": "A bold triangle of raw amber revealing forty million years of Baltic forest.",
+    "props": {
+      "Stone": "Raw Natural Amber",
+      "Metal": "Sterling Silver or 18k Gold",
+      "Collection": "Raw Nature"
+    }
+  },
+  {
+    "id": 72,
+    "name": "Round Stud Blue Earrings",
+    "cat": "earrings",
+    "price": 89,
+    "badge": null,
+    "img": "images/earrings/round_stud_blue_rg.jpg",
+    "imgs": [
+      "images/earrings/round_stud_blue_rg.jpg"
+    ],
+    "material": "Natural Blue Amber · Rose Gold",
+    "desc": "Perfectly round blue amber studs in rose gold — rare, minimal, luminous.",
+    "props": {
+      "Stone": "Natural Blue Amber",
+      "Metal": "18k Rose Gold-Plated Silver",
+      "Closure": "Push backs"
+    }
+  },
+  {
+    "id": 73,
+    "name": "Round Stud Butter Earrings",
+    "cat": "earrings",
+    "price": 79,
+    "badge": null,
+    "img": "images/earrings/round_stud_butter_rg.jpg",
+    "imgs": [
+      "images/earrings/round_stud_butter_rg.jpg"
+    ],
+    "material": "Natural Butter Amber · Rose Gold",
+    "desc": "Classic round butter amber studs on rose gold — the perfect everyday amber earring.",
+    "props": {
+      "Stone": "Natural Butter Amber",
+      "Metal": "18k Rose Gold-Plated Silver",
+      "Closure": "Push backs"
+    }
+  },
+  {
+    "id": 74,
+    "name": "Sacred Yoni",
+    "cat": "earrings",
+    "price": 225,
+    "badge": null,
+    "img": "/images/products/48060929.webp",
+    "imgs": [
+      "/images/products/48060929.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Feminine sacred geometry in premium amber and sterling silver. A collector's statement piece.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Sacred",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 75,
+    "name": "Sacred Yoni",
+    "cat": "rings",
+    "price": 139,
+    "badge": null,
+    "img": "/images/products/48060935.webp",
+    "imgs": [
+      "/images/products/48060935.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "A sacred feminine symbol in amber and sterling silver. Carries the energy of creation and inner light.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Sacred"
+    }
+  },
+  {
+    "id": 76,
+    "name": "Sculptural Drop Earrings",
+    "cat": "earrings",
+    "price": 169,
+    "badge": null,
+    "img": "images/earrings/IMG_9631.JPG",
+    "imgs": [
+      "images/earrings/IMG_9631.JPG"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Abstract sculptural silver forms with amber accents — art and adornment as one.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 77,
+    "name": "Silver Medallion Drop Earrings",
+    "cat": "earrings",
+    "price": 155,
+    "badge": null,
+    "img": "images/earrings/medallion_citrine_silver.jpg",
+    "imgs": [
+      "images/earrings/medallion_citrine_silver.jpg"
+    ],
+    "material": "Natural Citrine Amber · 925 Sterling Silver",
+    "desc": "Filigree silver medallions suspending citrine amber teardrops — old world elegance reborn.",
+    "props": {
+      "Stone": "Citrine Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 78,
+    "name": "Solar Eclipse",
+    "cat": "rings",
+    "price": 129,
+    "badge": null,
+    "img": "/images/products/48121937.webp",
+    "imgs": [
+      "/images/products/48121937.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "A perfect circle of dark amber ringed by silver — the rare beauty of a solar eclipse captured in stone.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Solar"
+    }
+  },
+  {
+    "id": 79,
+    "name": "Solar Serpent",
+    "cat": "earrings",
+    "price": 129,
+    "badge": null,
+    "img": "/images/products/48121961.webp",
+    "imgs": [
+      "/images/products/48121961.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Twin serpents of silver descend from amber crowns — ancient guardians, modern statement.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Solar",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 80,
+    "name": "Solar Serpent",
+    "cat": "pendants",
+    "price": 99,
+    "badge": null,
+    "img": "/images/products/48121973.webp",
+    "imgs": [
+      "/images/products/48121973.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "A coiled serpent holds amber in its embrace — transformation, renewal, ancient wisdom.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Solar",
+      "Chain": "Not included"
+    }
+  },
+  {
+    "id": 81,
+    "name": "Solar Serpent",
+    "cat": "rings",
+    "price": 69,
+    "badge": null,
+    "img": "/images/products/48121829.webp",
+    "imgs": [
+      "/images/products/48121829.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "A serpent of silver coils gracefully around warm amber — a symbol of transformation and ancient power.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Solar"
+    }
+  },
+  {
+    "id": 82,
+    "name": "Solar Thread",
+    "cat": "rings",
+    "price": 99,
+    "badge": null,
+    "img": "/images/products/48121823.webp",
+    "imgs": [
+      "/images/products/48121823.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Fine threads of sterling silver weave around a central amber stone like rays of the Balinese sun.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Solar"
+    }
+  },
+  {
+    "id": 83,
+    "name": "Solar Thread",
+    "cat": "earrings",
+    "price": 159,
+    "badge": null,
+    "img": "/images/products/48121843.webp",
+    "imgs": [
+      "/images/products/48121843.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Delicate silver threads weave around amber drops — the sun's rays made wearable.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Solar",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 84,
+    "name": "Spiral Orbit Earrings",
+    "cat": "earrings",
+    "price": 159,
+    "badge": null,
+    "img": "images/earrings/IMG_9642.JPG",
+    "imgs": [
+      "images/earrings/IMG_9642.JPG"
+    ],
+    "material": "Natural Green Amber · Oxidized Silver & Gold",
+    "desc": "Concentric spirals of oxidized silver and gold orbit a glowing green amber center.",
+    "props": {
+      "Stone": "Green Baltic Amber",
+      "Metal": "Oxidized 925 Sterling Silver & Gold",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 85,
+    "name": "Sterling Silver Cable Chain",
+    "cat": "chains",
+    "price": 89,
+    "badge": null,
+    "img": "images/chains/IMG_9799.jpg",
+    "imgs": [
+      "images/chains/IMG_9799.jpg"
+    ],
+    "material": "925 Sterling Silver",
+    "desc": "A classic cable chain in polished sterling silver. Available in 40, 45 and 50 cm lengths. Perfect for any pendant.",
+    "props": {
+      "Metal": "925 Sterling Silver"
+    }
+  },
+  {
+    "id": 86,
+    "name": "Sunburst Tassel Earrings",
+    "cat": "earrings",
+    "price": 175,
+    "badge": null,
+    "img": "images/earrings/sunburst_tassel_e.jpg",
+    "imgs": [
+      "images/earrings/sunburst_tassel_e.jpg"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "A sunburst of silver rays crowns a cascade of amber tassels — bold Balinese artistry.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 87,
+    "name": "Sunrise Bracelet",
+    "cat": "bracelets",
+    "price": 148,
+    "badge": null,
+    "img": "images/bracelets/IMG_1570.JPG",
+    "imgs": [
+      "images/bracelets/IMG_1570.JPG"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Honey amber beads in graduating tones on a delicate silver chain.",
+    "props": {
+      "Stone": "Natural Honey Amber",
+      "Metal": "925 Sterling Silver"
+    }
+  },
+  {
+    "id": 88,
+    "name": "Teardrop Leaf Ring",
+    "cat": "rings",
+    "price": 95,
+    "badge": null,
+    "img": "images/rings/IMG_9647.JPG",
+    "imgs": [
+      "images/rings/IMG_9647.JPG"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver & Gold",
+    "desc": "A teardrop of hammered silver cradles cognac amber on a sculptural band.",
+    "props": {
+      "Stone": "Natural Cognac Amber",
+      "Metal": "925 Sterling Silver + 18k Gold",
+      "Collection": "Nature"
+    }
+  },
+  {
+    "id": 89,
+    "name": "Temple of Light",
+    "cat": "pendants",
+    "price": 129,
+    "badge": null,
+    "img": "/images/products/48121931.webp",
+    "imgs": [
+      "/images/products/48121931.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Inspired by the temples of Bali — ornate silver architecture surrounding a glowing amber core.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Temple",
+      "Chain": "Not included"
+    }
+  },
+  {
+    "id": 90,
+    "name": "The Guardian",
+    "cat": "pendants",
+    "price": 149,
+    "badge": null,
+    "img": "/images/products/48454709.webp",
+    "imgs": [
+      "/images/products/48454709.webp"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "An ancient guardian symbol in amber and silver — worn for protection on your journey.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Collection": "Sacred",
+      "Chain": "Not included"
+    }
+  },
+  {
+    "id": 91,
+    "name": "Three-Petal Amber Earrings",
+    "cat": "earrings",
+    "price": 109,
+    "badge": null,
+    "img": "images/earrings/three_petal_multi.jpg",
+    "imgs": [
+      "images/earrings/three_petal_multi.jpg"
+    ],
+    "material": "Natural Multi-Amber · 925 Sterling Silver",
+    "desc": "Three marquise petals of cherry, citrine and green amber fan from a silver stem.",
+    "props": {
+      "Stone": "Multi-color Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 92,
+    "name": "Triple Stone Drop Earrings",
+    "cat": "earrings",
+    "price": 149,
+    "badge": null,
+    "img": "images/earrings/IMG_8402.jpg",
+    "imgs": [
+      "images/earrings/IMG_8402.jpg"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Three polished amber boulders linked in a long, swaying silver drop — green or blue.",
+    "props": {
+      "Stone": "Baltic Amber",
+      "Metal": "925 Sterling Silver",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 93,
+    "name": "Wave Filigree Drop Earrings",
+    "cat": "earrings",
+    "price": 185,
+    "badge": null,
+    "img": "images/earrings/wave_filigree_drop.jpg",
+    "imgs": [
+      "images/earrings/wave_filigree_drop.jpg"
+    ],
+    "material": "Natural Baltic Amber · Oxidized Silver · Crystals",
+    "desc": "Oversized wave-shaped filigree drops with butter amber center and crystal accents.",
+    "props": {
+      "Stone": "Butter Baltic Amber",
+      "Metal": "Oxidized 925 Sterling Silver",
+      "Closure": "Lever backs"
+    }
+  },
+  {
+    "id": 94,
+    "name": "Woven Amber Bracelet",
+    "cat": "bracelets",
+    "price": 178,
+    "badge": null,
+    "img": "images/bracelets/flp1lcicfvlf0z84v172yma6zarswf3r.JPG",
+    "imgs": [
+      "images/bracelets/flp1lcicfvlf0z84v172yma6zarswf3r.JPG"
+    ],
+    "material": "Natural Baltic Amber · 925 Sterling Silver",
+    "desc": "Amber drops woven into a silver mesh band — texture, light, and ancient earth.",
+    "props": {
+      "Stone": "Natural Baltic Amber",
+      "Metal": "925 Sterling Silver"
+    }
   }
- },
- {
-  "id": 2,
-  "name": "All-Seeing Eye",
-  "cat": "earrings",
-  "price": 125,
-  "badge": null,
-  "img": "/images/products/48121955.webp",
-  "imgs": [
-   "/images/products/48121955.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "The all-seeing eye in amber — a symbol of wisdom and protection, crafted for the modern woman.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Sacred",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 3,
-  "name": "Amber Blossom",
-  "cat": "earrings",
-  "price": 99,
-  "badge": null,
-  "img": "/images/products/48121827.webp",
-  "imgs": [
-   "/images/products/48121827.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "Blossoming silver petals embrace a honey amber center. Nature's beauty, forever still.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Bloom",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 4,
-  "name": "Amber Blossom",
-  "cat": "rings",
-  "price": 69,
-  "badge": null,
-  "img": "/images/products/48121839.webp",
-  "imgs": [
-   "/images/products/48121839.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "Petals of silver open to reveal a glowing amber center. A bloom frozen in time, warm as morning light.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Bloom"
-  }
- },
- {
-  "id": 5,
-  "name": "Amber Clover Ring",
-  "cat": "rings",
-  "price": 89,
-  "badge": null,
-  "img": "images/rings/clover_amber.png",
-  "imgs": [
-   "images/rings/clover_amber.png"
-  ],
-  "material": "Natural Honey Amber · 18k Gold",
-  "desc": "A lucky clover carved entirely from honey amber on a golden band.",
-  "props": {
-   "Stone": "Natural Honey Amber",
-   "Metal": "18k Gold-Plated Silver",
-   "Collection": "Lucky"
-  }
- },
- {
-  "id": 6,
-  "name": "Amber Cuff",
-  "cat": "bracelets",
-  "price": 215,
-  "badge": null,
-  "img": "images/bracelets/IMG_2056.JPG",
-  "imgs": [
-   "images/bracelets/IMG_2056.JPG"
-  ],
-  "material": "Natural Amber · 925 Sterling Silver",
-  "desc": "A bold silver cuff set with three graduated amber cabochons — power on your wrist.",
-  "props": {
-   "Stone": "Natural Amber ×3",
-   "Metal": "925 Sterling Silver"
-  }
- },
- {
-  "id": 7,
-  "name": "Amber Drop Cluster Earrings",
-  "cat": "earrings",
-  "price": 145,
-  "badge": null,
-  "img": "images/earrings/IMG_9623.JPG",
-  "imgs": [
-   "images/earrings/IMG_9623.JPG"
-  ],
-  "material": "Natural Amber · 925 Silver",
-  "desc": "A cluster of amber drops cascade from a silver hook — bold, organic, beautiful.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 8,
-  "name": "Amber Fringe Bracelet",
-  "cat": "bracelets",
-  "price": 192,
-  "badge": null,
-  "img": "images/bracelets/frp1ytb7dpogp0xwh3g7538gvp20dql6.JPG",
-  "imgs": [
-   "images/bracelets/frp1ytb7dpogp0xwh3g7538gvp20dql6.JPG"
-  ],
-  "material": "Natural Amber · 925 Sterling Silver",
-  "desc": "Fringe of amber drops on a silver chain — movement and light with every gesture.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver"
-  }
- },
- {
-  "id": 9,
-  "name": "Amber Leaf Earrings",
-  "cat": "earrings",
-  "price": 139,
-  "badge": null,
-  "img": "images/earrings/IMG_9644.JPG",
-  "imgs": [
-   "images/earrings/IMG_9644.JPG"
-  ],
-  "material": "Natural Amber · 925 Silver",
-  "desc": "Leaf-shaped silver frames each holding a glowing amber cabochon — botanical luxury.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Bloom",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 10,
-  "name": "Amber Path",
-  "cat": "bracelets",
-  "price": 139,
-  "badge": null,
-  "img": "/images/products/49479917.webp",
-  "imgs": [
-   "/images/products/49479917.webp"
-  ],
-  "material": "Natural Amber · 925 Sterling Silver",
-  "desc": "A winding path of amber stations across a delicate silver chain — the journey made beautiful.",
-  "props": {
-   "Stone": "Natural Baltic Amber ×7",
-   "Metal": "925 Sterling Silver"
-  }
- },
- {
-  "id": 11,
-  "name": "Amber Strand Bracelet",
-  "cat": "bracelets",
-  "price": 185,
-  "badge": null,
-  "img": "images/bracelets/99j9gb8itoiexjp7ew768rcbhyhh6rjs.JPG",
-  "imgs": [
-   "images/bracelets/99j9gb8itoiexjp7ew768rcbhyhh6rjs.JPG"
-  ],
-  "material": "Natural Amber · 925 Sterling Silver",
-  "desc": "A fluid strand of graduating amber stations on a fine silver chain — nature's elegance.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver"
-  }
- },
- {
-  "id": 12,
-  "name": "Aurora Sphere",
-  "cat": "earrings",
-  "price": 89,
-  "badge": null,
-  "img": "/images/products/48121969.webp",
-  "imgs": [
-   "/images/products/48121969.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "Spheres of glowing amber that capture the swirling colors of the Northern Lights.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Aurora",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 13,
-  "name": "Basket Weave Butter Earrings",
-  "cat": "earrings",
-  "price": 129,
-  "badge": null,
-  "img": "images/earrings/basket_butter_rg.jpg",
-  "imgs": [
-   "images/earrings/basket_butter_rg.jpg"
-  ],
-  "material": "Natural Butter Amber · 925 Silver",
-  "desc": "Woven silver baskets cradle luminous butter amber — light trapped in precious metal.",
-  "props": {
-   "Stone": "Natural Butter Amber",
-   "Metal": "925 Sterling Silver",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 14,
-  "name": "Basket Weave Cognac Earrings",
-  "cat": "earrings",
-  "price": 129,
-  "badge": null,
-  "img": "images/earrings/basket_cognac_rg.jpg",
-  "imgs": [
-   "images/earrings/basket_cognac_rg.jpg"
-  ],
-  "material": "Natural Cognac Amber · 925 Silver",
-  "desc": "Silver filigree baskets hold warm cognac amber drops — handwoven by our artisans.",
-  "props": {
-   "Stone": "Natural Cognac Amber",
-   "Metal": "925 Sterling Silver",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 15,
-  "name": "Basket Weave Green Earrings",
-  "cat": "earrings",
-  "price": 135,
-  "badge": null,
-  "img": "images/earrings/basket_green_rg.jpg",
-  "imgs": [
-   "images/earrings/basket_green_rg.jpg"
-  ],
-  "material": "Natural Green Amber · 925 Silver",
-  "desc": "Rare green Baltic amber cradled in woven silver baskets — precious as the forest itself.",
-  "props": {
-   "Stone": "Natural Green Amber",
-   "Metal": "925 Sterling Silver",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 16,
-  "name": "Blue Shell Ring",
-  "cat": "rings",
-  "price": 119,
-  "badge": null,
-  "img": "images/rings/IMG_1601.jpg",
-  "imgs": [
-   "images/rings/IMG_1601.jpg"
-  ],
-  "material": "Natural Blue Amber · 925 Sterling Silver",
-  "desc": "Blue Baltic amber in a sculptural silver bezel — rare ocean energy.",
-  "props": {
-   "Stone": "Natural Blue Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Ocean"
-  }
- },
- {
-  "id": 17,
-  "name": "Butterfly Filigree Earrings",
-  "cat": "earrings",
-  "price": 169,
-  "badge": null,
-  "img": "images/earrings/IMG_9632.JPG",
-  "imgs": [
-   "images/earrings/IMG_9632.JPG"
-  ],
-  "material": "Natural Butter Amber · Silver &amp; Gold Filigree",
-  "desc": "Spread filigree wings of silver and gold surround a marquise amber center.",
-  "props": {
-   "Stone": "Butter Baltic Amber",
-   "Metal": "925 Silver &amp; 24k Gold",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 18,
-  "name": "Cherry Amber Bracelet",
-  "cat": "bracelets",
-  "price": 159,
-  "badge": null,
-  "img": "images/bracelets/IMG_1567.JPG",
-  "imgs": [
-   "images/bracelets/IMG_1567.JPG"
-  ],
-  "material": "Natural Cherry Amber · 925 Sterling Silver",
-  "desc": "Cherry amber stations on a fine silver chain — the warmth of Balinese sunsets captured.",
-  "props": {
-   "Stone": "Natural Cherry Amber",
-   "Metal": "925 Sterling Silver"
-  }
- },
- {
-  "id": 19,
-  "name": "Cognac Link Bracelet",
-  "cat": "bracelets",
-  "price": 175,
-  "badge": null,
-  "img": "images/bracelets/IMG_1566.JPG",
-  "imgs": [
-   "images/bracelets/IMG_1566.JPG"
-  ],
-  "material": "Natural Cognac Amber · 925 Sterling Silver",
-  "desc": "Rich cognac amber links set in sterling silver — deep and luminous.",
-  "props": {
-   "Stone": "Natural Cognac Amber",
-   "Metal": "925 Sterling Silver"
-  }
- },
- {
-  "id": 20,
-  "name": "Cognac Teardrop Drop Earrings",
-  "cat": "earrings",
-  "price": 119,
-  "badge": null,
-  "img": "images/earrings/IMG_9622.JPG",
-  "imgs": [
-   "images/earrings/IMG_9622.JPG"
-  ],
-  "material": "Natural Cognac Amber · 925 Silver",
-  "desc": "Smooth cognac amber teardrops on fine silver hooks — timeless, warm, wearable.",
-  "props": {
-   "Stone": "Natural Cognac Amber",
-   "Metal": "925 Sterling Silver",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 21,
-  "name": "Cosmic Swirl Ring",
-  "cat": "rings",
-  "price": 135,
-  "badge": null,
-  "img": "images/rings/IMG_9643.JPG",
-  "imgs": [
-   "images/rings/IMG_9643.JPG"
-  ],
-  "material": "Natural Green Amber · Silver &amp; Gold",
-  "desc": "Oxidized silver swirls orbit a green amber center like ancient galaxies.",
-  "props": {
-   "Stone": "Natural Green Amber",
-   "Metal": "Oxidized Silver + 18k Gold",
-   "Collection": "Cosmos"
-  }
- },
- {
-  "id": 22,
-  "name": "Crab Drop Earrings",
-  "cat": "earrings",
-  "price": 195,
-  "badge": null,
-  "img": "images/earrings/IMG_9625.JPG",
-  "imgs": [
-   "images/earrings/IMG_9625.JPG"
-  ],
-  "material": "Natural Cognac Amber · Sterling Silver &amp; Gold",
-  "desc": "A whimsical golden crab holds a cognac amber body — collectible artisan jewelry.",
-  "props": {
-   "Stone": "Cognac Baltic Amber",
-   "Metal": "925 Sterling Silver &amp; Gold",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 23,
-  "name": "Divine Lotus",
-  "cat": "rings",
-  "price": 129,
-  "badge": null,
-  "img": "/images/products/48121947.webp",
-  "imgs": [
-   "/images/products/48121947.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "The sacred lotus rises from silver petals to cradle a luminous amber center. Handcrafted.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Lotus"
-  }
- },
- {
-  "id": 24,
-  "name": "Earth of Stars",
-  "cat": "pendants",
-  "price": 329,
-  "badge": null,
-  "img": "/images/products/48454667.webp",
-  "imgs": [
-   "/images/products/48454667.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "The night sky of the Baltic forest — a constellation of amber lights set in sterling silver.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Cosmos",
-   "Chain": "Not included"
-  }
- },
- {
-  "id": 25,
-  "name": "Eastern Night",
-  "cat": "earrings",
-  "price": 109,
-  "badge": null,
-  "img": "/images/products/48121967.webp",
-  "imgs": [
-   "/images/products/48121967.webp"
-  ],
-  "material": "Natural Dark Amber · 925 Silver",
-  "desc": "Deep dark amber in an ornate silver setting — the mysterious beauty of an Eastern night sky.",
-  "props": {
-   "Stone": "Dark Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "East",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 26,
-  "name": "Eastern Night",
-  "cat": "pendants",
-  "price": 59,
-  "badge": null,
-  "img": "/images/products/48454661.webp",
-  "imgs": [
-   "/images/products/48454661.webp"
-  ],
-  "material": "Natural Dark Amber · 925 Silver",
-  "desc": "The deep mystery of an Eastern night — dark amber in delicate silver filigree.",
-  "props": {
-   "Stone": "Dark Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "East",
-   "Chain": "Not included"
-  }
- },
- {
-  "id": 27,
-  "name": "Empire of the Sun",
-  "cat": "rings",
-  "price": 95,
-  "badge": null,
-  "img": "/images/products/48121963.webp",
-  "imgs": [
-   "/images/products/48121963.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "An imperial crown of silver rays radiates from a golden amber center — the sun's undying empire.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Solar"
-  }
- },
- {
-  "id": 28,
-  "name": "Empire of the Sun",
-  "cat": "bracelets",
-  "price": 169,
-  "badge": null,
-  "img": "/images/products/48121837.webp",
-  "imgs": [
-   "/images/products/48121837.webp"
-  ],
-  "material": "Natural Amber · 925 Sterling Silver",
-  "desc": "Imperial amber stations linked in sterling silver — wear the power of the sun on your wrist.",
-  "props": {
-   "Stone": "Natural Baltic Amber ×5",
-   "Metal": "925 Sterling Silver"
-  }
- },
- {
-  "id": 29,
-  "name": "Empire of the Sun",
-  "cat": "earrings",
-  "price": 119,
-  "badge": null,
-  "img": "/images/products/48121971.webp",
-  "imgs": [
-   "/images/products/48121971.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "Sunburst earrings with amber centers — regal, golden, commanding. The sun's power at your ears.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Solar",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 30,
-  "name": "Eternal Circle",
-  "cat": "bracelets",
-  "price": 129,
-  "badge": null,
-  "img": "/images/products/48061013.webp",
-  "imgs": [
-   "/images/products/48061013.webp"
-  ],
-  "material": "Natural Amber · 925 Sterling Silver",
-  "desc": "A chain of perfect amber circles on silver — the eternal path around your wrist.",
-  "props": {
-   "Stone": "Natural Honey Amber ×6",
-   "Metal": "925 Sterling Silver"
-  }
- },
- {
-  "id": 31,
-  "name": "Eternal Circle",
-  "cat": "earrings",
-  "price": 119,
-  "badge": null,
-  "img": "/images/products/48061101.webp",
-  "imgs": [
-   "/images/products/48061101.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "Matching circles of amber in a fine silver bezel — timeless, effortless, eternal.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Eternal",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 32,
-  "name": "Eternal Circle",
-  "cat": "pendants",
-  "price": 329,
-  "badge": null,
-  "img": "/images/products/48061029.webp",
-  "imgs": [
-   "/images/products/48061029.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "A grand circle of amber suspended in sterling silver — the eternal cycle made into a statement pendant.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Eternal",
-   "Chain": "Not included"
-  }
- },
- {
-  "id": 33,
-  "name": "Eternal Circle",
-  "cat": "rings",
-  "price": 74,
-  "badge": null,
-  "img": "/images/products/48060949.webp",
-  "imgs": [
-   "/images/products/48060949.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "A perfect circle of amber on a delicate silver band — the eternal cycle, worn on your finger.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Eternal"
-  }
- },
- {
-  "id": 34,
-  "name": "Filigree Medallion Drop Earrings",
-  "cat": "earrings",
-  "price": 165,
-  "badge": null,
-  "img": "images/earrings/medallion_citrine_gold.jpg",
-  "imgs": [
-   "images/earrings/medallion_citrine_gold.jpg"
-  ],
-  "material": "Natural Citrine Amber · Gold or Silver",
-  "desc": "A filigree medallion charm suspends above a large amber cushion drop — in gold and silver.",
-  "props": {
-   "Stone": "Citrine Baltic Amber",
-   "Metal": "24k Gold-Plated Silver · 925 Silver",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 35,
-  "name": "Forest Walk Bracelet",
-  "cat": "bracelets",
-  "price": 125,
-  "badge": null,
-  "img": "images/bracelets/IMG_1598.JPG",
-  "imgs": [
-   "images/bracelets/IMG_1598.JPG"
-  ],
-  "material": "Natural Amber · 925 Sterling Silver",
-  "desc": "Raw amber chips woven between silver links — nature at its most beautiful.",
-  "props": {
-   "Stone": "Natural Raw Amber",
-   "Metal": "925 Sterling Silver"
-  }
- },
- {
-  "id": 36,
-  "name": "Four Blessing",
-  "cat": "earrings",
-  "price": 74,
-  "badge": null,
-  "img": "/images/products/48121767.webp",
-  "imgs": [
-   "/images/products/48121767.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "Four amber stones blessed at the four sacred directions in Bali — wear protection with grace.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Sacred",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 37,
-  "name": "Four Blessing",
-  "cat": "bracelets",
-  "price": 79,
-  "badge": null,
-  "img": "/images/products/48122213.webp",
-  "imgs": [
-   "/images/products/48122213.webp"
-  ],
-  "material": "Natural Amber · 925 Sterling Silver",
-  "desc": "Four amber stations blessed at the four cardinal points in Bali — protection on your wrist.",
-  "props": {
-   "Stone": "Natural Baltic Amber ×4",
-   "Metal": "925 Sterling Silver"
-  }
- },
- {
-  "id": 38,
-  "name": "Fruit of the Sun",
-  "cat": "pendants",
-  "price": 149,
-  "badge": null,
-  "img": "/images/products/48454663.webp",
-  "imgs": [
-   "/images/products/48454663.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "A fruit of light born from forty million years of solar energy — pure Baltic amber on silver.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Solar",
-   "Chain": "Not included"
-  }
- },
- {
-  "id": 39,
-  "name": "Full Moon",
-  "cat": "earrings",
-  "price": 59,
-  "badge": null,
-  "img": "/images/products/48061475.webp",
-  "imgs": [
-   "/images/products/48061475.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "Round amber discs as luminous as the full moon over Bali. Wear the moonlight every day.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Moon",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 40,
-  "name": "Gold-Plated Cable Chain",
-  "cat": "chains",
-  "price": 99,
-  "badge": null,
-  "img": "images/chains/IMG_9801.JPG",
-  "imgs": [
-   "images/chains/IMG_9801.JPG"
-  ],
-  "material": "18k Gold-Plated Silver",
-  "desc": "The same elegant cable chain finished in warm 18k gold plating. Three lengths available — 40, 45 and 50 cm.",
-  "props": {
-   "Metal": "18k Gold-Plated 925 Silver"
-  }
- },
- {
-  "id": 41,
-  "name": "Golden Chain Bracelet",
-  "cat": "bracelets",
-  "price": 195,
-  "badge": null,
-  "img": "images/bracelets/IMG_1568.JPG",
-  "imgs": [
-   "images/bracelets/IMG_1568.JPG"
-  ],
-  "material": "Natural Amber · 925 Sterling Silver",
-  "desc": "Five hand-selected amber stations on a sterling chain — pure Balinese elegance.",
-  "props": {
-   "Stone": "Natural Amber ×5",
-   "Metal": "925 Sterling Silver"
-  }
- },
- {
-  "id": 42,
-  "name": "Golden Teardrop Earrings",
-  "cat": "earrings",
-  "price": 135,
-  "badge": null,
-  "img": "images/earrings/IMG_9627.JPG",
-  "imgs": [
-   "images/earrings/IMG_9627.JPG"
-  ],
-  "material": "Natural Amber · 18k Gold",
-  "desc": "Warm amber teardrops in a gold bezel setting — the essence of Balinese luxury.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "24k Gold-Plated Silver",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 43,
-  "name": "Halo Blue Drop Earrings",
-  "cat": "earrings",
-  "price": 149,
-  "badge": null,
-  "img": "images/earrings/halo_blue_silver.jpg",
-  "imgs": [
-   "images/earrings/halo_blue_silver.jpg"
-  ],
-  "material": "Natural Blue Amber · 925 Sterling Silver",
-  "desc": "A halo of fine silver wire encircles rare blue Baltic amber — ocean light made wearable.",
-  "props": {
-   "Stone": "Natural Blue Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Halo",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 44,
-  "name": "Halo Butter Drop Earrings",
-  "cat": "earrings",
-  "price": 139,
-  "badge": null,
-  "img": "images/earrings/halo_butter_rg.jpg",
-  "imgs": [
-   "images/earrings/halo_butter_rg.jpg"
-  ],
-  "material": "Natural Butter Amber · Rose Gold",
-  "desc": "Luminous butter amber suspended in a rose gold halo — soft, eternal, radiant.",
-  "props": {
-   "Stone": "Natural Butter Amber",
-   "Metal": "18k Rose Gold-Plated Silver",
-   "Collection": "Halo",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 45,
-  "name": "Halo Cherry Drop Earrings",
-  "cat": "earrings",
-  "price": 145,
-  "badge": null,
-  "img": "images/earrings/halo_cherry_silver.jpg",
-  "imgs": [
-   "images/earrings/halo_cherry_silver.jpg"
-  ],
-  "material": "Natural Cherry Amber · 925 Silver",
-  "desc": "Deep cherry amber glows within its silver halo — the warmth of sunsets crystallized.",
-  "props": {
-   "Stone": "Natural Cherry Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Halo",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 46,
-  "name": "Halo Green Drop Earrings",
-  "cat": "earrings",
-  "price": 149,
-  "badge": null,
-  "img": "images/earrings/halo_green_rg.jpg",
-  "imgs": [
-   "images/earrings/halo_green_rg.jpg"
-  ],
-  "material": "Natural Green Amber · Rose Gold",
-  "desc": "Rare green amber in a rose gold halo — nature's rarest color, elevated.",
-  "props": {
-   "Stone": "Natural Green Amber",
-   "Metal": "18k Rose Gold-Plated Silver",
-   "Collection": "Halo",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 47,
-  "name": "Harvest Bracelet",
-  "cat": "bracelets",
-  "price": 159,
-  "badge": null,
-  "img": "images/bracelets/IMG_1595.JPG",
-  "imgs": [
-   "images/bracelets/IMG_1595.JPG"
-  ],
-  "material": "Natural Cherry Amber · 925 Sterling Silver",
-  "desc": "Rich cherry amber rounds linked with fine silver — the warmth of the Bali harvest.",
-  "props": {
-   "Stone": "Natural Cherry Amber",
-   "Metal": "925 Sterling Silver"
-  }
- },
- {
-  "id": 48,
-  "name": "Honey Bead Bracelet",
-  "cat": "bracelets",
-  "price": 149,
-  "badge": null,
-  "img": "images/bracelets/IMG_1539.JPG",
-  "imgs": [
-   "images/bracelets/IMG_1539.JPG"
-  ],
-  "material": "Natural Honey Amber · 925 Sterling Silver",
-  "desc": "Round honey amber beads alternating with silver spacers — warmth on your wrist.",
-  "props": {
-   "Stone": "Natural Honey Amber",
-   "Metal": "925 Sterling Silver"
-  }
- },
- {
-  "id": 49,
-  "name": "Iris Blue Gold Drop Earrings",
-  "cat": "earrings",
-  "price": 169,
-  "badge": null,
-  "img": "images/earrings/iris_blue_gold.jpg",
-  "imgs": [
-   "images/earrings/iris_blue_gold.jpg"
-  ],
-  "material": "Natural Blue Amber · 18k Gold",
-  "desc": "Iris petals of gold frame rare blue Baltic amber — a floral statement of rare beauty.",
-  "props": {
-   "Stone": "Natural Blue Amber",
-   "Metal": "24k Gold-Plated Silver",
-   "Collection": "Iris",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 50,
-  "name": "Iris Flower Ring",
-  "cat": "rings",
-  "price": 159,
-  "badge": null,
-  "img": "images/rings/iris_silver.jpg",
-  "imgs": [
-   "images/rings/iris_silver.jpg"
-  ],
-  "material": "Natural Amber · 925 Silver &amp; Gold",
-  "desc": "A blooming iris of filigree silver frames a central butter amber stone.",
-  "props": {
-   "Stone": "Natural Butter Amber",
-   "Metal": "925 Silver + 18k Gold",
-   "Collection": "Bloom"
-  }
- },
- {
-  "id": 51,
-  "name": "Iris Green Gold Drop Earrings",
-  "cat": "earrings",
-  "price": 169,
-  "badge": null,
-  "img": "images/earrings/iris_green_gold.jpg",
-  "imgs": [
-   "images/earrings/iris_green_gold.jpg"
-  ],
-  "material": "Natural Green Amber · 18k Gold",
-  "desc": "Gold iris petals embrace green Baltic amber — nature's rarest colors united.",
-  "props": {
-   "Stone": "Natural Green Amber",
-   "Metal": "24k Gold-Plated Silver",
-   "Collection": "Iris",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 52,
-  "name": "Leaf Eye Drop Earrings",
-  "cat": "earrings",
-  "price": 169,
-  "badge": null,
-  "img": "images/earrings/leaf_eye_butter_rg.jpg",
-  "imgs": [
-   "images/earrings/leaf_eye_butter_rg.jpg"
-  ],
-  "material": "Natural Amber · Enamel · Rose Gold",
-  "desc": "An enamelled eye-shaped clasp releases a glowing amber sphere — mystical and feminine.",
-  "props": {
-   "Stone": "Baltic Amber",
-   "Metal": "Rose Gold-Plated Silver",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 53,
-  "name": "Leaf Fan Stud Earrings",
-  "cat": "earrings",
-  "price": 125,
-  "badge": null,
-  "img": "images/earrings/IMG_1583.JPG",
-  "imgs": [
-   "images/earrings/IMG_1583.JPG"
-  ],
-  "material": "Natural Amber · Enamel · Gold",
-  "desc": "A fan of enamel leaves with an amber center — citrine or blue — in warm gold.",
-  "props": {
-   "Stone": "Baltic Amber",
-   "Metal": "24k Gold-Plated Silver",
-   "Closure": "Push backs"
-  }
- },
- {
-  "id": 54,
-  "name": "Long Cascade Earrings",
-  "cat": "earrings",
-  "price": 155,
-  "badge": null,
-  "img": "images/earrings/IMG_9628.JPG",
-  "imgs": [
-   "images/earrings/IMG_9628.JPG"
-  ],
-  "material": "Natural Amber · 925 Silver",
-  "desc": "Elongated amber drops on fine silver chains — a cascade of ancient light.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 55,
-  "name": "Lotus Butterfly Ring",
-  "cat": "rings",
-  "price": 145,
-  "badge": null,
-  "img": "images/rings/IMG_9633.JPG",
-  "imgs": [
-   "images/rings/IMG_9633.JPG"
-  ],
-  "material": "Natural Butter Amber · 925 Silver &amp; Gold",
-  "desc": "Wings of filigree silver, heart of butter amber — the sacred lotus butterfly.",
-  "props": {
-   "Stone": "Natural Butter Amber",
-   "Metal": "925 Silver + 18k Gold",
-   "Collection": "Wings"
-  }
- },
- {
-  "id": 56,
-  "name": "Marquise Eye Drop Earrings",
-  "cat": "earrings",
-  "price": 155,
-  "badge": null,
-  "img": "images/earrings/IMG_1579.JPG",
-  "imgs": [
-   "images/earrings/IMG_1579.JPG"
-  ],
-  "material": "Natural Cognac Amber · Oxidized Silver &amp; Gold",
-  "desc": "Almond-shaped cognac amber drops in oxidized silver with gold accents.",
-  "props": {
-   "Stone": "Cognac Baltic Amber",
-   "Metal": "Oxidized 925 Silver &amp; Gold",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 57,
-  "name": "Mosaic Flame",
-  "cat": "pendants",
-  "price": 49,
-  "badge": null,
-  "img": "/images/products/49479833.webp",
-  "imgs": [
-   "/images/products/49479833.webp"
-  ],
-  "material": "Natural Multi-Amber · 925 Silver",
-  "desc": "A flame of multicolor amber fragments — each piece a story, together a masterwork.",
-  "props": {
-   "Stone": "Multi-color Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Mosaic",
-   "Chain": "Not included"
-  }
- },
- {
-  "id": 58,
-  "name": "Mosaic Teardrop Earrings",
-  "cat": "earrings",
-  "price": 135,
-  "badge": null,
-  "img": "images/earrings/IMG_1585.JPG",
-  "imgs": [
-   "images/earrings/IMG_1585.JPG"
-  ],
-  "material": "Natural Amber · Enamel · Rose Gold",
-  "desc": "Folk-art mosaic enamel surrounds a glowing amber cabochon in a sweeping teardrop frame.",
-  "props": {
-   "Stone": "Baltic Amber",
-   "Metal": "Rose Gold-Plated Silver",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 59,
-  "name": "Multi-Stone Bar Hoop Earrings",
-  "cat": "earrings",
-  "price": 129,
-  "badge": null,
-  "img": "images/earrings/IMG_1600.JPG",
-  "imgs": [
-   "images/earrings/IMG_1600.JPG"
-  ],
-  "material": "Natural Multi-Amber · Silver or Rose Gold",
-  "desc": "A bar of multicolor Baltic amber in a curved hoop — in silver and rose gold.",
-  "props": {
-   "Stone": "Multi-color Baltic Amber",
-   "Metal": "925 Silver · Rose Gold",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 60,
-  "name": "Multi-Stone Link Bracelet",
-  "cat": "bracelets",
-  "price": 195,
-  "badge": null,
-  "img": "images/bracelets/fkzrj42070kv18e2bnfleroej1rcy84w.JPG",
-  "imgs": [
-   "images/bracelets/fkzrj42070kv18e2bnfleroej1rcy84w.JPG"
-  ],
-  "material": "Natural Multi-Amber · 925 Sterling Silver",
-  "desc": "Multiple amber tones linked in sterling silver — a spectrum of Baltic light on your wrist.",
-  "props": {
-   "Stone": "Multi-color Baltic Amber",
-   "Metal": "925 Sterling Silver"
-  }
- },
- {
-  "id": 61,
-  "name": "Multicolor Code",
-  "cat": "bracelets",
-  "price": 179,
-  "badge": null,
-  "img": "/images/products/48121977.webp",
-  "imgs": [
-   "/images/products/48121977.webp"
-  ],
-  "material": "Natural Multi-Amber · 925 Sterling Silver",
-  "desc": "Rainbow amber beads on a sterling silver chain — a bracelet that speaks every language of light.",
-  "props": {
-   "Stone": "Multi-color Baltic Amber",
-   "Metal": "925 Sterling Silver"
-  }
- },
- {
-  "id": 62,
-  "name": "Multicolor Code",
-  "cat": "earrings",
-  "price": 119,
-  "badge": null,
-  "img": "/images/products/48121965.webp",
-  "imgs": [
-   "/images/products/48121965.webp"
-  ],
-  "material": "Natural Multi-Amber · 925 Silver",
-  "desc": "Cherry, citrine, and green amber arranged in a mosaic — a secret code only you can read.",
-  "props": {
-   "Stone": "Multi-color Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Mosaic",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 63,
-  "name": "Multicolor Code",
-  "cat": "rings",
-  "price": 89,
-  "badge": null,
-  "img": "/images/products/48121923.webp",
-  "imgs": [
-   "/images/products/48121923.webp"
-  ],
-  "material": "Natural Multi-Amber · 925 Silver",
-  "desc": "A mosaic of amber tones — cherry, citrine, green — encoded in sterling silver. Every color tells a story.",
-  "props": {
-   "Stone": "Multi-color Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Mosaic"
-  }
- },
- {
-  "id": 64,
-  "name": "Ocean's Soul",
-  "cat": "rings",
-  "price": 169,
-  "badge": null,
-  "img": "/images/products/48455169.webp",
-  "imgs": [
-   "/images/products/48455169.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "Deep ocean blues meet warm amber in a sculptural silver setting. Rare and mesmerising.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Ocean"
-  }
- },
- {
-  "id": 65,
-  "name": "Orbit Hoop Earrings",
-  "cat": "earrings",
-  "price": 149,
-  "badge": null,
-  "img": "images/earrings/IMG_9630.JPG",
-  "imgs": [
-   "images/earrings/IMG_9630.JPG"
-  ],
-  "material": "Natural Amber · 925 Silver",
-  "desc": "Amber stations orbiting a silver hoop — movement, light, and ancient earth energy.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Closure": "Click-lock"
-  }
- },
- {
-  "id": 66,
-  "name": "Oval Station Bracelet",
-  "cat": "bracelets",
-  "price": 165,
-  "badge": null,
-  "img": "images/bracelets/IMG_1531.JPG",
-  "imgs": [
-   "images/bracelets/IMG_1531.JPG"
-  ],
-  "material": "Natural Amber · 925 Sterling Silver",
-  "desc": "Oval amber cabochons spaced along a delicate silver chain — understated luxury.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver"
-  }
- },
- {
-  "id": 67,
-  "name": "Petal Drop Earrings",
-  "cat": "earrings",
-  "price": 125,
-  "badge": null,
-  "img": "images/earrings/IMG_9629.JPG",
-  "imgs": [
-   "images/earrings/IMG_9629.JPG"
-  ],
-  "material": "Natural Butter Amber · 925 Silver",
-  "desc": "Silver petals fold around butter amber drops — nature's most delicate jewelry.",
-  "props": {
-   "Stone": "Natural Butter Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Bloom",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 68,
-  "name": "Rainbow Code",
-  "cat": "rings",
-  "price": 89,
-  "badge": null,
-  "img": "/images/products/48175549.webp",
-  "imgs": [
-   "/images/products/48175549.webp"
-  ],
-  "material": "Natural Multi-Amber · 925 Silver",
-  "desc": "A spectrum of amber tones arranged like a secret code in fine sterling silver. Playful and elegant.",
-  "props": {
-   "Stone": "Multi-color Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Mosaic"
-  }
- },
- {
-  "id": 69,
-  "name": "Raw Amber Cuff Bracelet",
-  "cat": "bracelets",
-  "price": 229,
-  "badge": null,
-  "img": "images/bracelets/IMG_9636.JPG",
-  "imgs": [
-   "images/bracelets/IMG_9636.JPG"
-  ],
-  "material": "Natural Raw Amber · 925 Sterling Silver",
-  "desc": "Unpolished raw amber set into a sculptural silver cuff — nature undisturbed.",
-  "props": {
-   "Stone": "Natural Raw Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Raw Nature"
-  }
- },
- {
-  "id": 70,
-  "name": "Raw Amber Oval Ring",
-  "cat": "rings",
-  "price": 189,
-  "badge": null,
-  "img": "images/rings/IMG_9645.JPG",
-  "imgs": [
-   "images/rings/IMG_9645.JPG"
-  ],
-  "material": "Raw Natural Amber · Sterling Silver",
-  "desc": "Unpolished raw Baltic amber in a long oval frame — nature exactly as found.",
-  "props": {
-   "Stone": "Raw Natural Amber",
-   "Metal": "925 Silver or 18k Gold",
-   "Collection": "Raw Nature"
-  }
- },
- {
-  "id": 71,
-  "name": "Raw Triangle Ring",
-  "cat": "rings",
-  "price": 175,
-  "badge": null,
-  "img": "images/rings/IMG_1587.JPG",
-  "imgs": [
-   "images/rings/IMG_1587.JPG"
-  ],
-  "material": "Raw Natural Amber · Sterling Silver",
-  "desc": "A bold triangle of raw amber revealing forty million years of Baltic forest.",
-  "props": {
-   "Stone": "Raw Natural Amber",
-   "Metal": "Sterling Silver or 18k Gold",
-   "Collection": "Raw Nature"
-  }
- },
- {
-  "id": 72,
-  "name": "Round Stud Blue Earrings",
-  "cat": "earrings",
-  "price": 89,
-  "badge": null,
-  "img": "images/earrings/round_stud_blue_rg.jpg",
-  "imgs": [
-   "images/earrings/round_stud_blue_rg.jpg"
-  ],
-  "material": "Natural Blue Amber · Rose Gold",
-  "desc": "Perfectly round blue amber studs in rose gold — rare, minimal, luminous.",
-  "props": {
-   "Stone": "Natural Blue Amber",
-   "Metal": "18k Rose Gold-Plated Silver",
-   "Closure": "Push backs"
-  }
- },
- {
-  "id": 73,
-  "name": "Round Stud Butter Earrings",
-  "cat": "earrings",
-  "price": 79,
-  "badge": null,
-  "img": "images/earrings/round_stud_butter_rg.jpg",
-  "imgs": [
-   "images/earrings/round_stud_butter_rg.jpg"
-  ],
-  "material": "Natural Butter Amber · Rose Gold",
-  "desc": "Classic round butter amber studs on rose gold — the perfect everyday amber earring.",
-  "props": {
-   "Stone": "Natural Butter Amber",
-   "Metal": "18k Rose Gold-Plated Silver",
-   "Closure": "Push backs"
-  }
- },
- {
-  "id": 74,
-  "name": "Sacred Yoni",
-  "cat": "earrings",
-  "price": 225,
-  "badge": null,
-  "img": "/images/products/48060929.webp",
-  "imgs": [
-   "/images/products/48060929.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "Feminine sacred geometry in premium amber and sterling silver. A collector's statement piece.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Sacred",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 75,
-  "name": "Sacred Yoni",
-  "cat": "rings",
-  "price": 139,
-  "badge": null,
-  "img": "/images/products/48060935.webp",
-  "imgs": [
-   "/images/products/48060935.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "A sacred feminine symbol in amber and sterling silver. Carries the energy of creation and inner light.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Sacred"
-  }
- },
- {
-  "id": 76,
-  "name": "Sculptural Drop Earrings",
-  "cat": "earrings",
-  "price": 169,
-  "badge": null,
-  "img": "images/earrings/IMG_9631.JPG",
-  "imgs": [
-   "images/earrings/IMG_9631.JPG"
-  ],
-  "material": "Natural Amber · 925 Silver",
-  "desc": "Abstract sculptural silver forms with amber accents — art and adornment as one.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 77,
-  "name": "Silver Medallion Drop Earrings",
-  "cat": "earrings",
-  "price": 155,
-  "badge": null,
-  "img": "images/earrings/medallion_citrine_silver.jpg",
-  "imgs": [
-   "images/earrings/medallion_citrine_silver.jpg"
-  ],
-  "material": "Natural Citrine Amber · 925 Silver",
-  "desc": "Filigree silver medallions suspending citrine amber teardrops — old world elegance reborn.",
-  "props": {
-   "Stone": "Citrine Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 78,
-  "name": "Solar Eclipse",
-  "cat": "rings",
-  "price": 129,
-  "badge": null,
-  "img": "/images/products/48121937.webp",
-  "imgs": [
-   "/images/products/48121937.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "A perfect circle of dark amber ringed by silver — the rare beauty of a solar eclipse captured in stone.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Solar"
-  }
- },
- {
-  "id": 79,
-  "name": "Solar Serpent",
-  "cat": "earrings",
-  "price": 129,
-  "badge": null,
-  "img": "/images/products/48121961.webp",
-  "imgs": [
-   "/images/products/48121961.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "Twin serpents of silver descend from amber crowns — ancient guardians, modern statement.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Solar",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 80,
-  "name": "Solar Serpent",
-  "cat": "pendants",
-  "price": 99,
-  "badge": null,
-  "img": "/images/products/48121973.webp",
-  "imgs": [
-   "/images/products/48121973.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "A coiled serpent holds amber in its embrace — transformation, renewal, ancient wisdom.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Solar",
-   "Chain": "Not included"
-  }
- },
- {
-  "id": 81,
-  "name": "Solar Serpent",
-  "cat": "rings",
-  "price": 69,
-  "badge": null,
-  "img": "/images/products/48121829.webp",
-  "imgs": [
-   "/images/products/48121829.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "A serpent of silver coils gracefully around warm amber — a symbol of transformation and ancient power.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Solar"
-  }
- },
- {
-  "id": 82,
-  "name": "Solar Thread",
-  "cat": "rings",
-  "price": 99,
-  "badge": null,
-  "img": "/images/products/48121823.webp",
-  "imgs": [
-   "/images/products/48121823.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "Fine threads of sterling silver weave around a central amber stone like rays of the Balinese sun.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Solar"
-  }
- },
- {
-  "id": 83,
-  "name": "Solar Thread",
-  "cat": "earrings",
-  "price": 159,
-  "badge": null,
-  "img": "/images/products/48121843.webp",
-  "imgs": [
-   "/images/products/48121843.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "Delicate silver threads weave around amber drops — the sun's rays made wearable.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Solar",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 84,
-  "name": "Spiral Orbit Earrings",
-  "cat": "earrings",
-  "price": 159,
-  "badge": null,
-  "img": "images/earrings/IMG_9642.JPG",
-  "imgs": [
-   "images/earrings/IMG_9642.JPG"
-  ],
-  "material": "Natural Green Amber · Oxidized Silver &amp; Gold",
-  "desc": "Concentric spirals of oxidized silver and gold orbit a glowing green amber center.",
-  "props": {
-   "Stone": "Green Baltic Amber",
-   "Metal": "Oxidized 925 Silver &amp; Gold",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 85,
-  "name": "Sterling Silver Cable Chain",
-  "cat": "chains",
-  "price": 89,
-  "badge": null,
-  "img": "images/chains/IMG_9799.jpg",
-  "imgs": [
-   "images/chains/IMG_9799.jpg"
-  ],
-  "material": "925 Sterling Silver",
-  "desc": "A classic cable chain in polished sterling silver. Available in 40, 45 and 50 cm lengths. Perfect for any pendant.",
-  "props": {
-   "Metal": "925 Sterling Silver"
-  }
- },
- {
-  "id": 86,
-  "name": "Sunburst Tassel Earrings",
-  "cat": "earrings",
-  "price": 175,
-  "badge": null,
-  "img": "images/earrings/sunburst_tassel_e.jpg",
-  "imgs": [
-   "images/earrings/sunburst_tassel_e.jpg"
-  ],
-  "material": "Natural Amber · 925 Silver",
-  "desc": "A sunburst of silver rays crowns a cascade of amber tassels — bold Balinese artistry.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 87,
-  "name": "Sunrise Bracelet",
-  "cat": "bracelets",
-  "price": 148,
-  "badge": null,
-  "img": "images/bracelets/IMG_1570.JPG",
-  "imgs": [
-   "images/bracelets/IMG_1570.JPG"
-  ],
-  "material": "Natural Amber · 925 Sterling Silver",
-  "desc": "Honey amber beads in graduating tones on a delicate silver chain.",
-  "props": {
-   "Stone": "Natural Honey Amber",
-   "Metal": "925 Sterling Silver"
-  }
- },
- {
-  "id": 88,
-  "name": "Teardrop Leaf Ring",
-  "cat": "rings",
-  "price": 95,
-  "badge": null,
-  "img": "images/rings/IMG_9647.JPG",
-  "imgs": [
-   "images/rings/IMG_9647.JPG"
-  ],
-  "material": "Natural Amber · Silver &amp; Gold",
-  "desc": "A teardrop of hammered silver cradles cognac amber on a sculptural band.",
-  "props": {
-   "Stone": "Natural Cognac Amber",
-   "Metal": "925 Silver + 18k Gold",
-   "Collection": "Nature"
-  }
- },
- {
-  "id": 89,
-  "name": "Temple of Light",
-  "cat": "pendants",
-  "price": 129,
-  "badge": null,
-  "img": "/images/products/48121931.webp",
-  "imgs": [
-   "/images/products/48121931.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "Inspired by the temples of Bali — ornate silver architecture surrounding a glowing amber core.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Temple",
-   "Chain": "Not included"
-  }
- },
- {
-  "id": 90,
-  "name": "The Guardian",
-  "cat": "pendants",
-  "price": 149,
-  "badge": null,
-  "img": "/images/products/48454709.webp",
-  "imgs": [
-   "/images/products/48454709.webp"
-  ],
-  "material": "Natural Baltic Amber · 925 Silver",
-  "desc": "An ancient guardian symbol in amber and silver — worn for protection on your journey.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Collection": "Sacred",
-   "Chain": "Not included"
-  }
- },
- {
-  "id": 91,
-  "name": "Three-Petal Amber Earrings",
-  "cat": "earrings",
-  "price": 109,
-  "badge": null,
-  "img": "images/earrings/three_petal_multi.jpg",
-  "imgs": [
-   "images/earrings/three_petal_multi.jpg"
-  ],
-  "material": "Natural Multi-Amber · Sterling Silver",
-  "desc": "Three marquise petals of cherry, citrine and green amber fan from a silver stem.",
-  "props": {
-   "Stone": "Multi-color Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 92,
-  "name": "Triple Stone Drop Earrings",
-  "cat": "earrings",
-  "price": 149,
-  "badge": null,
-  "img": "images/earrings/IMG_8402.jpg",
-  "imgs": [
-   "images/earrings/IMG_8402.jpg"
-  ],
-  "material": "Natural Amber · Sterling Silver",
-  "desc": "Three polished amber boulders linked in a long, swaying silver drop — green or blue.",
-  "props": {
-   "Stone": "Baltic Amber",
-   "Metal": "925 Sterling Silver",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 93,
-  "name": "Wave Filigree Drop Earrings",
-  "cat": "earrings",
-  "price": 185,
-  "badge": null,
-  "img": "images/earrings/wave_filigree_drop.jpg",
-  "imgs": [
-   "images/earrings/wave_filigree_drop.jpg"
-  ],
-  "material": "Natural Amber · Oxidized Silver · Crystals",
-  "desc": "Oversized wave-shaped filigree drops with butter amber center and crystal accents.",
-  "props": {
-   "Stone": "Butter Baltic Amber",
-   "Metal": "Oxidized 925 Silver",
-   "Closure": "Lever backs"
-  }
- },
- {
-  "id": 94,
-  "name": "Woven Amber Bracelet",
-  "cat": "bracelets",
-  "price": 178,
-  "badge": null,
-  "img": "images/bracelets/flp1lcicfvlf0z84v172yma6zarswf3r.JPG",
-  "imgs": [
-   "images/bracelets/flp1lcicfvlf0z84v172yma6zarswf3r.JPG"
-  ],
-  "material": "Natural Amber · 925 Sterling Silver",
-  "desc": "Amber drops woven into a silver mesh band — texture, light, and ancient earth.",
-  "props": {
-   "Stone": "Natural Baltic Amber",
-   "Metal": "925 Sterling Silver"
-  }
- }
 ]
