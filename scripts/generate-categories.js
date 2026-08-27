@@ -257,8 +257,43 @@ const ARTISAN = {
  ]
 };
 
+// Amber-first ring spoke (targets "amber rings" 1900). Same 20 rings as /rings,
+// but framed by the stone rather than the metal — /rings leads on "sterling silver
+// rings" (74000), this leads on "amber rings". Differentiated copy + self-canonical.
+const AMBER_RINGS = {
+ slug: 'amber-rings',
+ label: 'Amber Rings',
+ h1: 'Amber Rings in Sterling Silver',
+ metaTitle: 'Amber Rings — Natural Baltic Amber in 925 Silver | AMBERRA',
+ metaDesc: 'Natural Baltic amber rings, hand-set in 925 sterling silver by our artisans. Cherry, cognac, green & honey amber. US sizes 5–9. Free worldwide shipping over $200.',
+ intro: [
+ 'An amber ring is the most personal way to wear Baltic amber — a single natural stone, warm against the skin, framed in hand-worked 925 sterling silver. Because the amber is genuine, no two AMBERRA rings are the same: the color runs from deep cherry and cognac to golden honey, green and rare blue.',
+ 'Choose a bold cocktail stone or a fine everyday band. Every ring is set by hand by our artisans, comes in US sizes 5–9, and ships with a certificate of authenticity.'
+ ],
+ faq: [
+ ['Are AMBERRA amber rings genuine Baltic amber?', 'Yes, every AMBERRA amber ring is set with genuine natural Baltic amber — the fossilised conifer resin gemologists call succinite, formed around 40 million years ago in the Baltic region — hand-set in solid 925 sterling silver. Because the stone is natural rather than pressed or dyed, every ring is one of a kind, with its own color and inclusions, and each ships with a certificate of authenticity. To check amber yourself, note that it is warm to the touch, floats in salt water, and is far lighter than glass.'],
+ ['What amber colors do the rings come in?', 'AMBERRA amber rings are cut from the full natural spectrum of Baltic amber, from deep cherry and cognac through golden honey to green and rare blue amber, depending on the individual stone. Every tone is natural to the resin rather than dyed or heat-forced, which is why each ring is genuinely one of a kind. Cherry and cognac read rich and formal, honey is the timeless classic, and green and blue are the rarest and most collectible. Each ring is hand-set in 925 sterling silver.'],
+ ['What ring sizes are available?', 'AMBERRA amber rings come in US ring sizes 5 to 9, which covers most adult finger sizes, and every product page includes a size guide. Because natural Baltic amber is remarkably light, even a bold cocktail stone wears comfortably all day. If you need a size outside this range or custom sizing, contact us — because we work by hand, we can often accommodate it. Every ring is hand-set in 925 sterling silver and arrives with a certificate of authenticity.'],
+ ['How do I care for an amber ring?', 'Avoid perfume, heat and ultrasonic cleaners, since amber is a soft, organic stone that chemicals and vibration can damage. Wipe the ring gently with a soft cloth and store it apart from harder gemstones that could scratch it. Put the ring on last, after lotion and hairspray, and take it off before showering, swimming or sleeping. The 925 sterling silver setting darkens slowly with air; a soft silver cloth restores its shine. Cared for simply, an amber ring keeps its warm glow for decades.']
+ ]
+};
+
 // deep content sections (unique per page; distributed so nothing repeats) — H2 + paragraphs
 const SECTIONS = {
+ 'amber-rings': [
+ ['What Makes an Amber Ring Special', [
+ 'A gemstone ring is usually about the mineral — its cut, its clarity, its fire. An amber ring is different: amber is not a mined crystal but fossilised tree resin, warm and organic, that formed in ancient forests around 40 million years ago. Wearing one is closer to wearing a piece of deep time than a faceted stone, and it sits warm against the skin rather than cold like quartz or glass.',
+ 'That organic nature is exactly why an amber ring feels personal. Each stone carries its own color, its own faint inclusions, its own way of catching light — so your ring is not one of a production run but the only one shaped around that particular piece of amber.'
+ ]],
+ ['Choosing Your Amber Color', [
+ 'The single biggest choice in an amber ring is color, and it is entirely natural to the stone. Cherry and cognac are the deepest, most saturated tones — dramatic on the hand and flattering as a formal or statement ring. Honey is the classic warm gold most people picture when they think of amber: versatile, timeless and easy to wear every day. Green and blue amber are the rarest, prized by collectors for how they shift under different light.',
+ 'Because every stone is genuine, the exact shade of the ring you receive is unique to it. If you have a specific tone in mind, tell us — our artisans set each ring by hand and can often match a color preference to an available stone.'
+ ]],
+ ['Set by Hand in 925 Sterling Silver', [
+ 'Every AMBERRA amber ring is set in solid 925 sterling silver — 92.5% pure, nickel-free and hypoallergenic — never plated base metal. Our artisans cut each bezel to the exact outline of its irregular amber cabochon, so the stone is held securely and the silver frames rather than competes with the warm resin.',
+ 'Sterling silver has been the traditional partner for Baltic amber for centuries: its cool, bright lustre is the ideal foil for cherry, cognac and honey tones. Each setting is forged and finished by hand, which is why no two rings — even in the same design — are ever quite identical.'
+ ]]
+ ],
  silver: [
  ['Why 925 Sterling Silver?', [
  'Sterling silver is an alloy of 92.5% pure silver with 7.5% other metals — usually copper — added for strength. Pure silver alone is too soft to hold a stone; the “925” standard keeps the bright, white lustre of silver while making it durable enough for daily wear. It is the metal jewelers have paired with Baltic amber for centuries.',
@@ -936,6 +971,21 @@ function artisanPage(products) {
  return shell({ metaTitle:ARTISAN.metaTitle, metaDesc:ARTISAN.metaDesc, canonical:url, schema, activeSlug:'shop', ogImage: ogFor(ARTISAN.slug) }, main);
 }
 
+function amberRingsPage(products) {
+ const url = `${SITE}/${AMBER_RINGS.slug}`;
+ const links = linksBlock('Shop amber by color',
+ Object.keys(COLORS).map(c => [`/amber/${c}`, COLORS[c].label])
+ .concat([['/amber', 'All Amber Jewelry'], ['/rings', 'All Silver Rings'], [`/${SILVER.slug}`, 'Sterling Silver Amber']]));
+ const schema = { '@context': 'https://schema.org', '@graph': [
+ { '@type': 'CollectionPage', '@id': `${url}#webpage`, url, isPartOf: { '@id': `${SITE}/#website` }, inLanguage: 'en', publisher: { '@id': `${SITE}/#organization` }, name: AMBER_RINGS.metaTitle, description: AMBER_RINGS.metaDesc,
+ breadcrumb: breadcrumb([{name:'Home',url:SITE},{name:'Amber',url:`${SITE}/amber`},{name:AMBER_RINGS.label,url}]) },
+ itemListSchema(url, `AMBERRA ${AMBER_RINGS.label}`, url, products),
+ faqSchema(AMBER_RINGS.faq) ].filter(Boolean) };
+ const main = catBody({ kicker:'Baltic Amber · 925 Sterling Silver', h1:AMBER_RINGS.h1, sub:AMBER_RINGS.intro[0], count:products.length,
+ intro: introHTML(AMBER_RINGS.intro), sections: sectionsHTML(SECTIONS['amber-rings']), links, grid: products.map(cardHTML).join('\n'), faq: faqBlock(AMBER_RINGS.faq) });
+ return shell({ metaTitle:AMBER_RINGS.metaTitle, metaDesc:AMBER_RINGS.metaDesc, canonical:url, schema, activeSlug:'amber', ogImage: ogFor('rings') }, main);
+}
+
 // ── data sources ─────────────────────────────────────────────────────────────
 
 async function fetchFromAirtable() {
@@ -1014,6 +1064,13 @@ async function main() {
  fs.writeFileSync(path.join(ROOT, `${ARTISAN.slug}.html`), artisanPage(products), 'utf8');
  written.push(`/${ARTISAN.slug}`); console.log(` ✓ ${ARTISAN.slug}.html (${products.length})`);
 
+ // 2e) /amber-rings — amber-first ring spoke (amber rings 1900)
+ const ringItems = products.filter(p => p.cat === 'rings');
+ if (ringItems.length) {
+ fs.writeFileSync(path.join(ROOT, `${AMBER_RINGS.slug}.html`), amberRingsPage(ringItems), 'utf8');
+ written.push(`/${AMBER_RINGS.slug}`); console.log(` ✓ ${AMBER_RINGS.slug}.html (${ringItems.length})`);
+ }
+
  // 3) color pages (guarded ≥ MIN_SKU)
  const amberDir = path.join(ROOT, 'amber');
  if (!fs.existsSync(amberDir)) fs.mkdirSync(amberDir);
@@ -1029,7 +1086,7 @@ async function main() {
  if (fs.existsSync(smPath)) {
  let sm = fs.readFileSync(smPath, 'utf8');
  // strip previous landing entries (types + /amber + /amber/*)
- sm = sm.replace(/<url>\s*<loc>[^<]*(\/rings|\/earrings|\/pendants|\/bracelets|\/chains|\/handmade-sterling-silver-jewelry|\/sterling-silver-amber-jewelry|\/artisan-jewelry|\/amber(\/[a-z-]+)?)<\/loc>[\s\S]*?<\/url>\s*/g, '');
+ sm = sm.replace(/<url>\s*<loc>[^<]*(\/amber-rings|\/rings|\/earrings|\/pendants|\/bracelets|\/chains|\/handmade-sterling-silver-jewelry|\/sterling-silver-amber-jewelry|\/artisan-jewelry|\/amber(\/[a-z-]+)?)<\/loc>[\s\S]*?<\/url>\s*/g, '');
  const entries = written.map(u => ` <url>\n <loc>${SITE}${u}</loc>\n <lastmod>${TODAY}</lastmod>\n </url>`).join('\n');
  sm = sm.replace('</urlset>', `${entries}\n</urlset>`);
  fs.writeFileSync(smPath, sm, 'utf8');
