@@ -383,7 +383,7 @@ consultation:{title:'Book an Appointment',body:`
 <div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>Choose Your Format</b>WhatsApp consultation (instant) · Video call via Zoom or FaceTime · In-person visit to our Bali studio by appointment. All consultations are complimentary and carry no obligation.</div></div>
 <div class="sg-method-step"><span class="sg-method-num">02</span><div class="sg-method-text"><b>What to Expect</b>Share your occasion, style references, and budget. Our specialist will guide you through the collection, recommend pieces that suit your proportions and skin tone, and explain the story behind each amber stone.</div></div>
 <div class="sg-method-step"><span class="sg-method-num">03</span><div class="sg-method-text"><b>After Your Consultation</b>We will send you a curated selection with high-resolution images and pricing. Reserved pieces are held for 48 hours. Full bespoke proposals are available within 5–7 business days.</div></div>
-<div class="sg-method-step"><span class="sg-method-num">04</span><div class="sg-method-text"><b>Book Now</b>Contact us on WhatsApp at +62 878 5386 7120 or email <a href="mailto:hello@amberrajewelry.com" style="color:var(--amber)">hello@amberrajewelry.com</a>. We respond within 4 hours during Bali business hours (08:00–20:00 WITA).</div></div>
+<div class="sg-method-step"><span class="sg-method-num">04</span><div class="sg-method-text"><b>Book Now</b>Contact us on WhatsApp at +62 878 5386 7120 or email <a href="mailto:hello@amberrajewelry.com" style="color:var(--amber-ink)">hello@amberrajewelry.com</a>. We respond within 4 hours during Bali business hours (08:00–20:00 WITA).</div></div>
 </div>
 <div class="sg-warranty-box" style="margin-top:32px">
 <div class="sg-warranty-seal" style="background:var(--cream);border:1px solid var(--mist)"><svg viewBox="0 0 24 24" stroke="var(--amber)" fill="none" stroke-width="1.2"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2z"/><path d="M16 2v4M8 2v4M2 10h20"/></svg></div>
@@ -504,7 +504,7 @@ care:{title:'Care & Warranty',body:`
 <li>One complimentary professional inspection and clean within the warranty period</li>
 </ul>
 <p><strong>Not covered:</strong> normal wear and ageing, scratches, dents, accidental damage, loss or theft, chemical damage, or modifications made by third parties.</p>
-<p>To make a claim: email <a href="mailto:hello@amberrajewelry.com" style="color:var(--amber)">hello@amberrajewelry.com</a> with your order number and clear photographs of the item and defect. We will respond within 48 hours with a resolution — repair, replacement, or credit.</p>
+<p>To make a claim: email <a href="mailto:hello@amberrajewelry.com" style="color:var(--amber-ink)">hello@amberrajewelry.com</a> with your order number and clear photographs of the item and defect. We will respond within 48 hours with a resolution — repair, replacement, or credit.</p>
 </div>
 </div>
 </div>`},
@@ -567,7 +567,7 @@ certificate:{title:'Certificate of Authenticity',body:`
 </div>
 <div class="sg-warranty-box" style="margin-top:32px">
 <div class="sg-warranty-seal"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 4.8L20 8l-4 4 .9 5.5L12 15l-4.9 2.5L8 12 4 8l5.6-1.2L12 2z" stroke="#fff" stroke-width="1.2" fill="none"/></svg></div>
-<div class="sg-warranty-body"><h4>HOW TO IDENTIFY AUTHENTIC AMBERRA</h4><ul><li>Certificate reference number matches the QR code in the digital record</li><li>The amber passes the saltwater float test (genuine amber floats in saturated saltwater)</li><li>Under UV light, natural Baltic amber fluoresces blue-white or blue-green</li><li>Each piece has a unique amber grain — no two are identical. If yours looks mass-produced, contact us.</li></ul><p>Concerned about authenticity? Email us a photograph of your piece and certificate at <a href="mailto:hello@amberrajewelry.com" style="color:var(--amber)">hello@amberrajewelry.com</a>. Verification is always free.</p></div>
+<div class="sg-warranty-body"><h4>HOW TO IDENTIFY AUTHENTIC AMBERRA</h4><ul><li>Certificate reference number matches the QR code in the digital record</li><li>The amber passes the saltwater float test (genuine amber floats in saturated saltwater)</li><li>Under UV light, natural Baltic amber fluoresces blue-white or blue-green</li><li>Each piece has a unique amber grain — no two are identical. If yours looks mass-produced, contact us.</li></ul><p>Concerned about authenticity? Email us a photograph of your piece and certificate at <a href="mailto:hello@amberrajewelry.com" style="color:var(--amber-ink)">hello@amberrajewelry.com</a>. Verification is always free.</p></div>
 </div>
 </div>`}
 };
