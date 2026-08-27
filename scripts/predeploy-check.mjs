@@ -53,7 +53,9 @@ for (const f of html) {
     // отфильтровать Wikipedia-URL по контексту строки
     const lines = src.split('\n');
     for (let i = 0; i < lines.length; i++) {
-      if (re.test(lines[i]) && !/wiki\/Jewellery|wikipedia/i.test(lines[i]))
+      // AU/UK-лендинг и ссылки на него (анкор /amber-jewellery-australia, hreflang en-AU) — BE намеренно
+      const beOk = f === 'amber-jewellery-australia.html' || /amber-jewellery-australia|en-AU/i.test(lines[i]);
+      if (re.test(lines[i]) && !/wiki\/Jewellery|wikipedia/i.test(lines[i]) && !beOk)
         warn(`${f}:${i + 1}: BE-орфография "${lines[i].match(re)?.[0]}"`);
       re.lastIndex = 0;
     }
