@@ -539,19 +539,19 @@ tryon:{title:'Virtual Try On',body:`
 <p class="sg-note">Best results on desktop or tablet. Works on all modern browsers without installation. For the most accurate color rendering, use natural daylight when taking your source photo. Camera live mode coming soon.</p>
 </div>`},
 
-blessing:{title:'The Bali Blessing',body:`
+blessing:{title:'Designed in Bali',body:`
 <div class="sg-section">
-<div class="sg-section-title">A Sacred Ritual Before Every Piece Leaves Bali</div>
-<p class="sg-intro">In Balinese Hindu tradition, objects crafted with intention carry energy — and that energy can be consecrated. Every AMBERRA piece undergoes a blessing ceremony by hand before it is shipped to you.</p>
+<div class="sg-section-title">Designed in Bali, Handcrafted by Our Artisans</div>
+<p class="sg-intro">AMBERRA was founded in Bali, and every design begins here — shaped by the island's centuries-old silversmithing tradition. Each piece is then made by hand, one at a time, from 925 sterling silver and genuine Baltic amber.</p>
 <div class="sg-method">
-<div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>The Ceremony</b>Performed by a local Balinese priest (Pemangku) in our atelier courtyard, each piece is laid on a woven offering tray (gebogan) with fresh flowers, incense (dupa), and holy water from the Tirta Empul temple spring in Tampaksiring.</div></div>
-<div class="sg-method-step"><span class="sg-method-num">02</span><div class="sg-method-text"><b>The Intention</b>The ceremony calls for protection, clarity, and alignment for the wearer. In Balinese belief, amber — as a stone of ancient light — amplifies positive intention and shields against disharmony.</div></div>
-<div class="sg-method-step"><span class="sg-method-num">03</span><div class="sg-method-text"><b>What You Receive</b>Your piece arrives with a small card describing the blessing, the date it was performed, and the name of the priest. A dried frangipani petal from the ceremony is enclosed in a wax-sealed envelope.</div></div>
-<div class="sg-method-step"><span class="sg-method-num">04</span><div class="sg-method-text"><b>Wearing Your Blessed Piece</b>Balinese tradition suggests wearing a newly blessed piece for the first time on an auspicious day. We include a short guide with your order on Balinese calendar days most aligned with new beginnings.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>Designed in Bali</b>Our designs are created in Bali and drawn from the island's living tradition of silver craft. Balinese silverwork — with its fine granulation and organic motifs — inspires the character of every AMBERRA piece.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">02</span><div class="sg-method-text"><b>Handcrafted, One at a Time</b>Each piece is made by hand by our artisans in 925 sterling silver, set with genuine Baltic amber. No two stones are identical — every piece carries its own unique amber grain.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">03</span><div class="sg-method-text"><b>Finished &amp; Inspected by Hand</b>Every piece is polished, finished, and quality-checked by hand before it leaves us — the settings, the stone, and the silver reviewed individually to meet our standard.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">04</span><div class="sg-method-text"><b>Certificate of Authenticity</b>Your piece arrives with a Certificate of Authenticity recording its composition — 925 sterling silver and genuine Baltic amber — and the individual character of your stone.</div></div>
 </div>
 <div class="sg-warranty-box" style="margin-top:32px">
 <div class="sg-warranty-seal" style="background:var(--cream);border:1px solid var(--mist)"><svg viewBox="0 0 24 24" stroke="var(--amber)" fill="none" stroke-width="1.2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div>
-<div class="sg-warranty-body"><h4>INCLUDED WITH EVERY ORDER</h4><p>The Bali Blessing is not an optional add-on. It is part of what AMBERRA is. Every piece — from a $45 stud to a $2,400 bespoke commission — is blessed with the same care and the same ceremony. This is not marketing. It is our practice.</p></div>
+<div class="sg-warranty-body"><h4>INCLUDED WITH EVERY ORDER</h4><p>Handcraft is part of what AMBERRA is. Every piece — from a $45 stud to a $2,400 bespoke commission — is made and finished by hand with the same care, from 925 sterling silver and genuine Baltic amber.</p></div>
 </div>
 </div>`},
 
@@ -560,9 +560,9 @@ certificate:{title:'Certificate of Authenticity',body:`
 <div class="sg-section-title">Your Guarantee of Origin &amp; Authenticity</div>
 <p class="sg-intro">Every AMBERRA piece is accompanied by a Certificate of Authenticity — a document that records the origin, composition, and individual character of your amber stone and its setting.</p>
 <div class="sg-method">
-<div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>What Is Certified</b>Baltic amber origin (Bali, Indonesia) · Succinic acid content (2–8%) confirming genuine resinite amber · Metal purity (925 sterling silver or 18k gold vermeil) · Stone color classification and inclusion description.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>What Is Certified</b>Baltic amber origin (Baltic region) · Succinic acid content (2–8%) confirming genuine resinite amber · Metal purity (925 sterling silver or 18k gold vermeil) · Stone color classification and inclusion description.</div></div>
 <div class="sg-method-step"><span class="sg-method-num">02</span><div class="sg-method-text"><b>The Physical Certificate</b>Printed on heavyweight 300gsm cream cotton paper. Bears the AMBERRA embossed seal, the artisan's signature, the date of completion, and a unique piece reference number. Presented in a protective archival sleeve.</div></div>
-<div class="sg-method-step"><span class="sg-method-num">03</span><div class="sg-method-text"><b>Digital Verification</b>Each certificate includes a QR code linking to your piece's unique digital record — including high-resolution photography, stone provenance documentation, and the Bali Blessing date. Permanently hosted and accessible at any time.</div></div>
+<div class="sg-method-step"><span class="sg-method-num">03</span><div class="sg-method-text"><b>Digital Verification</b>Each certificate includes a QR code linking to your piece's unique digital record — including high-resolution photography, stone provenance documentation, and the completion date. Permanently hosted and accessible at any time.</div></div>
 <div class="sg-method-step"><span class="sg-method-num">04</span><div class="sg-method-text"><b>Resale &amp; Inheritance Value</b>AMBERRA certificates are transferable. Should your piece be gifted, inherited, or resold, the certificate travels with it. A re-authentication service is available for $35, updating the certificate with a new owner name and date.</div></div>
 </div>
 <div class="sg-warranty-box" style="margin-top:32px">

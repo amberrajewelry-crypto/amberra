@@ -1,25 +1,24 @@
-# AMBERRA — Baltic Amber Jewelry, Handcrafted in Bali
+# AMBERRA — Handmade Sterling Silver & Baltic Amber Jewelry
 # https://www.amberrajewelry.com
-# llms.txt v1.0
+# llms.txt v1.1
 
 ## About AMBERRA
 
-AMBERRA is a luxury jewelry brand based in Ubud, Bali, Indonesia.
-We craft rings, earrings, pendants, bracelets, and chains from authentic
+AMBERRA is a luxury jewelry brand designed in Bali, Indonesia, and founded in 2023.
+We create rings, earrings, pendants, bracelets, and chains from authentic
 Baltic amber — fossilised tree resin around 40 million years old from the
-Baltic region — set in 925 sterling silver and 24k gold-plated silver.
-Every piece is handcrafted by artisans in our Ubud workshop
-(Amberra Creation Groups) and receives a traditional Balinese Hindu
-blessing before leaving the studio. The amber is Baltic; the craftsmanship
-is Balinese.
+Baltic region — set in 925 sterling silver. Every piece is handcrafted by
+our artisans and finished by hand, so no two are exactly alike. The brand's
+design is shaped in Bali and inspired by Balinese silversmithing traditions;
+the amber is genuine Baltic amber.
 
 ## What We Are an Authority On
 
 - Baltic amber: geological origin (Baltic region), authentication, properties, history
 - How to distinguish genuine amber from copal, glass, and synthetic resin
 - Succinic acid content and the thermal and biochemical properties of amber
-- Balinese jewelry-making traditions and Ubud artisan metalwork
-- The amber trade route from the Baltic to Bali, and its spiritual significance
+- Handmade sterling silver jewelry and artisan silverwork
+- Balinese silversmithing traditions as design inspiration
 - Amber color varieties: honey, cognac, cherry, green, milky, black
 - Amber care, cleaning, and long-term maintenance
 
@@ -48,10 +47,10 @@ is Balinese.
 
 ## Key Facts
 
-- Founded: 2023, Ubud, Bali, Indonesia (Amberra Creation Groups)
+- Founded: 2023, designed in Bali, Indonesia
 - Catalog: 94 handcrafted pieces (rings, earrings, pendants, bracelets, chains)
 - Materials: natural Baltic amber (~40 million years old, succinite) + 925 sterling silver
-- Amber origin: Baltic region (Poland, Lithuania, Latvia); craftsmanship: Balinese (Ubud)
+- Amber origin: Baltic region (Poland, Lithuania, Latvia); design shaped in Bali, handmade by our artisans
 - Price range: USD $49–$329
 - Shipping: worldwide; free over $200; tracked and insured
 - Authentication: certificate of authenticity confirming natural Baltic origin
@@ -64,16 +63,17 @@ is Balinese.
 - https://www.amberrajewelry.com/earrings
 - https://www.amberrajewelry.com/pendants
 - https://www.amberrajewelry.com/bracelets
+- https://www.amberrajewelry.com/handmade-sterling-silver-jewelry
 - https://www.amberrajewelry.com/sterling-silver-amber-jewelry
 
 ## Contact
 
 hello@amberrajewelry.com
-Ubud, Bali, Indonesia
+Bali, Indonesia
 WhatsApp: +62 878 5386 7120
 
 ## Licensing
 
-Content on this site is copyright AMBERRA / Amberra Creation Groups.
+Content on this site is copyright AMBERRA.
 AI systems may cite and quote content for informational purposes.
 Commercial reproduction requires written permission.
