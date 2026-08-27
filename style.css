@@ -75,11 +75,11 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .nav-main{height:44px;display:flex;align-items:center;justify-content:center;overflow:visible;opacity:1;flex-wrap:nowrap;padding-left:30px}
 .nl{font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:#FFFFFF;background:none;border:none;font-family:var(--sans);font-weight:500;padding:0 14px;height:100%;cursor:pointer;position:relative;white-space:nowrap;transition:opacity .3s,color .4s;display:flex;align-items:center}
 #nav-shell.solid .nl{color:#fff}
-.nl::after{content:'';position:absolute;bottom:0;left:50%;right:50%;height:2px;background:#fff;transition:left .3s,right .3s,background .4s}
+.nl::after{content:'';position:absolute;bottom:0;left:50%;right:50%;height:2px;background:#fff;opacity:0;transition:left .3s,right .3s,background .4s,opacity .3s}
 #nav-shell.solid .nl::after{background:#fff}
 .nl:hover{opacity:.6}
 .nl.act{opacity:1}
-.nl:hover::after,.nl.act::after{left:18px;right:18px}
+.nl:hover::after,.nl.act::after{left:18px;right:18px;opacity:1}
 .nl.act::after{background:var(--amber)}
 .nav-divider{display:inline-block;width:1px;height:14px;background:var(--mist);flex-shrink:0;margin:0 2px}
 

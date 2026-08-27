@@ -512,7 +512,7 @@ care:{title:'Care & Warranty',body:`
 custom:{title:'Custom Orders',body:`
 <div class="sg-section">
 <div class="sg-section-title">Your Bespoke Piece</div>
-<p class="sg-intro">Every amber stone is unique — no two are alike. Our Bali atelier accepts fully bespoke commissions: from a ring made to your exact size and stone preference, to a multi-piece set designed for a special occasion.</p>
+<p class="sg-intro">Every amber stone is unique — no two are alike. Our Bali studio accepts fully bespoke commissions: from a ring made to your exact size and stone preference, to a multi-piece set designed for a special occasion.</p>
 <div class="sg-method">
 <div class="sg-method-step"><span class="sg-method-num">01</span><div class="sg-method-text"><b>Initial Consultation</b>Share your vision via WhatsApp or email. Reference images, stone colors, metal preferences (sterling silver, gold vermeil, solid 18k), occasion, and budget. No brief is too simple or too ambitious.</div></div>
 <div class="sg-method-step"><span class="sg-method-num">02</span><div class="sg-method-text"><b>Stone Selection</b>We will present 3–5 amber specimens matching your specifications — photographed on white and on skin. You select the stone you feel drawn to. This is your piece, beginning with your choice.</div></div>
