@@ -60,7 +60,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--white:#FFF;--cream:#FAF8F5;--silk:#F2EEE8;--mist:#E8E4DC;--stone:#C8C4BC;--gray:#8C8880;--charcoal:#3C3830;--black:#2A2520;--amber:#C9A832;--amber2:#B8941E;--serif:'Cormorant Garamond',serif;--sans:'Montserrat',Arial,sans-serif}
+:root{--white:#FFF;--cream:#FAF8F5;--silk:#F2EEE8;--mist:#E8E4DC;--stone:#C8C4BC;--gray:#6E6A62;--charcoal:#3C3830;--black:#2A2520;--amber:#C9A832;--amber-ink:#8A6D0F;--amber2:#B8941E;--serif:'Cormorant Garamond',serif;--sans:'Montserrat',Arial,sans-serif}
 body{font-family:var(--sans);background:var(--white);color:var(--charcoal)}
 a{color:inherit;text-decoration:none}
 .sp-nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--mist);padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between}
@@ -69,10 +69,10 @@ a{color:inherit;text-decoration:none}
 .sp-nav-links a{font-family:var(--sans);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);transition:color .2s}
 .sp-nav-links a:hover,.sp-nav-links a.act{color:var(--charcoal)}
 .sp-nav-shop{background:var(--charcoal)!important;color:var(--white)!important;padding:9px 22px}
-.sp-bread{padding:14px 40px;background:var(--silk);font:300 9px/1 var(--sans);letter-spacing:.15em;color:var(--stone)}
-.sp-bread a{color:var(--amber);transition:color .2s}.sp-bread a:hover{color:var(--charcoal)}
-.sp-hero{background:var(--charcoal);padding:72px 40px 60px;border-bottom:2px solid var(--amber)}
-.sp-hero-tag{font:600 8px/1 var(--sans);letter-spacing:.35em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:16px}
+.sp-bread{padding:14px 40px;background:var(--silk);font:300 9px/1 var(--sans);letter-spacing:.15em;color:var(--gray)}
+.sp-bread a{color:var(--amber-ink);transition:color .2s}.sp-bread a:hover{color:var(--charcoal)}
+.sp-hero{--amber-ink:var(--amber);background:var(--charcoal);padding:72px 40px 60px;border-bottom:2px solid var(--amber)}
+.sp-hero-tag{font:600 8px/1 var(--sans);letter-spacing:.35em;text-transform:uppercase;color:var(--amber-ink);display:block;margin-bottom:16px}
 .sp-hero h1{font:300 clamp(30px,4vw,56px)/1.08 var(--serif);color:var(--white);max-width:680px;margin-bottom:14px}
 .sp-hero-sub{font:300 11px/1.6 var(--sans);letter-spacing:.08em;color:rgba(255,255,255,.45);max-width:520px}
 .sp-intro{max-width:760px;margin:0 auto;padding:52px 40px 40px}
@@ -81,7 +81,7 @@ a{color:inherit;text-decoration:none}
 .sp-intro strong{font-weight:500}
 .sp-grid-head{padding:8px 40px 20px;display:flex;align-items:center;justify-content:space-between}
 .sp-grid-head h2{font:300 22px/1 var(--serif);color:var(--charcoal)}
-.sp-view-all{font:400 9px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--amber);border-bottom:1px solid var(--amber);padding-bottom:2px}
+.sp-view-all{font:400 9px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--amber-ink);border-bottom:1px solid var(--amber);padding-bottom:2px}
 .sp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;padding:0 40px 48px}
 .sp-item{background:var(--silk);overflow:hidden}
 .sp-item-img{aspect-ratio:3/4;overflow:hidden}
@@ -89,7 +89,7 @@ a{color:inherit;text-decoration:none}
 .sp-item:hover .sp-item-img img{transform:scale(1.06)}
 .sp-item-info{padding:16px 18px 20px}
 .sp-item-name{font:400 13px/1.3 var(--serif);color:var(--charcoal);margin-bottom:4px}
-.sp-item-price{font:500 9px/1 var(--sans);letter-spacing:.1em;color:var(--amber);margin-bottom:12px}
+.sp-item-price{font:500 9px/1 var(--sans);letter-spacing:.1em;color:var(--amber-ink);margin-bottom:12px}
 .sp-item-btn{display:block;text-align:center;font:400 8px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--white);background:var(--charcoal);padding:9px;transition:background .2s}
 .sp-item-btn:hover{background:var(--amber)}
 .sp-cta{background:var(--charcoal);padding:52px 40px;text-align:center;margin:0 40px 48px}
@@ -107,7 +107,7 @@ a{color:inherit;text-decoration:none}
 .sp-cat:hover{background:var(--mist)}
 .sp-cat h3{font:300 18px/1.2 var(--serif);color:var(--charcoal);margin-bottom:8px}
 .sp-cat p{font:300 11px/1.6 var(--sans);color:var(--gray);margin-bottom:16px}
-.sp-cat a{font:400 8.5px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--amber)}
+.sp-cat a{font:400 8.5px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--amber-ink)}
 .sp-footer{background:var(--black);padding:28px 40px;display:flex;align-items:center;justify-content:space-between}
 .sp-footer-logo{font:300 18px/1 var(--serif);letter-spacing:.35em;color:var(--white)}
 .sp-footer p{font:300 9px/1 var(--sans);letter-spacing:.1em;color:rgba(255,255,255,.3)}
@@ -196,7 +196,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><strong>30-day returns</strong> — full refund on unworn items</li>
   </ul>
   <p style="margin-top:24px">In the rice-field studios of Bali, our silversmiths spend years mastering the art of Bali jewelry. A single AMBERRA ring may take 4–8 hours to complete, passing through three or four pairs of artisan hands. The Balinese believe beauty is an offering to the gods — and every piece that leaves our studio carries that intention.</p>
-  <p><a href="/our-story" style="color:var(--amber);border-bottom:1px solid var(--amber);padding-bottom:1px">Learn more about our artisans and story →</a></p>
+  <p><a href="/our-story" style="color:var(--amber-ink);border-bottom:1px solid var(--amber);padding-bottom:1px">Learn more about our artisans and story →</a></p>
 </div>
 
 <div class="sp-cta" style="margin:0 40px 56px">
