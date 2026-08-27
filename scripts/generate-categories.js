@@ -329,7 +329,7 @@ const SECTIONS = {
  ]],
  ['A Small Studio, Not a Factory', [
  'AMBERRA is independent and deliberately small. We are not a marketplace storefront reselling anonymous factory stock under our name; the people who draw the designs work alongside the people who cut the silver and set the amber. That closeness is the whole point — nothing is briefed out to a line that never sees the finished piece.',
- 'Working small has a cost: we make in modest numbers and some pieces sell out. But it is the only way we know to keep quality honest and to keep the craft, and the makers, at the centre of the brand rather than at the end of a supply chain.'
+ 'Working small has a cost: we make in modest numbers and some pieces sell out. But it is the only way we know to keep quality honest and to keep the craft, and the makers, at the center of the brand rather than at the end of a supply chain.'
  ]],
  ['Designed in Bali', [
  'AMBERRA was founded in Bali, and that is where our designs still begin — sketched by hand before a single piece is made. Bali is a place with a deep, living relationship to craft and to the sea, and that sensibility runs through the work: warm, organic, unhurried.',
