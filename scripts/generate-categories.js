@@ -618,7 +618,11 @@ function assignSlugs(products) {
 }
 
 function introHTML(paras) {
- return `<div class="cat-intro">${paras.map(p => `<p>${esc(p)}</p>`).join('')}</div>`;
+ // paras[0] is already rendered large as .cat-sub in the hero — skip it here to
+ // avoid showing the lead paragraph twice. Render the remaining paragraphs only.
+ const rest = (paras || []).slice(1);
+ if (!rest.length) return '';
+ return `<div class="cat-intro">${rest.map(p => `<p>${esc(p)}</p>`).join('')}</div>`;
 }
 function faqBlock(faq) {
  if (!faq || !faq.length) return '';
@@ -811,7 +815,7 @@ function shell({ metaTitle, metaDesc, canonical, schema, activeSlug, ogImage }, 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/style.css?v=20260827b">
+<link rel="stylesheet" href="/style.css?v=20260827c">
 </head>
 <body class="page-light">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJ5682RJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
