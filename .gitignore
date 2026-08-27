@@ -12,3 +12,4 @@ node_modules/
 .indexnow-key
 *.bak
 graphify-out/
+service-account.json
