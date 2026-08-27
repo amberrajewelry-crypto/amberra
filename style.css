@@ -567,7 +567,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 
 /* ═══ FOOTER ════════════════════════════════════════════════════════════ */
 footer{background:#fff;padding:80px 56px 48px;border-top:1px solid var(--mist)}
-.ft{display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:56px;margin-bottom:60px}
+.ft{display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:56px;margin-bottom:32px}
 .ft.ft-5{grid-template-columns:2.2fr 1fr 1fr 1fr 1fr;gap:44px}
 .fb{font-family:var(--serif);font-size:28px;letter-spacing:.4em;color:#000;margin-bottom:16px}
 .fd{font-size:15px;color:#000;line-height:1.9;margin-bottom:26px}
