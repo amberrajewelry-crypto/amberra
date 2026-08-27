@@ -459,12 +459,51 @@ function buildSitemap(slugs) {
 // Must stay byte-for-byte aligned with generate-categories.js so product page
 // filenames match the /products/<slug> links emitted on category/hub pages.
 
+// Data-hygiene applied at the single Airtable→snapshot write point, so a future
+// SYNC_AIRTABLE=1 can never re-introduce the bugs cleaned up on 2026-08-27:
+// double-encoded &amp;, inconsistent metal wording, generic "Amber", duplicate names.
+// Both generators read the resulting clean snapshot, so slugs stay consistent.
+const CAT_NOUN = { rings: 'Ring', earrings: 'Earrings', pendants: 'Pendant', bracelets: 'Bracelet', chains: 'Chain' };
+function normMaterial(m) {
+  return String(m || '')
+    .replace(/&amp;/g, '&')
+    .replace(/·\s*925 Silver\b/g, '· 925 Sterling Silver')
+    .replace(/·\s*Sterling Silver\b/g, '· 925 Sterling Silver')
+    .replace(/·\s*Silver\b/g, '· 925 Sterling Silver')
+    .replace(/\bOxidized Silver\b/g, 'Oxidized 925 Sterling Silver')
+    .replace(/925 925/g, '925')
+    .replace(/^Natural Amber\b/, 'Natural Baltic Amber');
+}
+function normMetal(m) {
+  return String(m || '').replace(/&amp;/g, '&').replace(/\b925 Silver\b/g, '925 Sterling Silver');
+}
+// Duplicate display names (a themed "family" sold as ring + earrings + bracelet…)
+// get disambiguated by their category noun, then by amber color as a fallback.
+function uniquifyNames(products) {
+  const groups = {};
+  products.forEach(p => { const k = (p.name || '').toLowerCase().trim(); (groups[k] = groups[k] || []).push(p); });
+  Object.values(groups).forEach(g => {
+    if (g.length < 2) return;
+    const seen = new Set();
+    g.forEach(p => {
+      let nn = `${p.name} ${CAT_NOUN[p.cat] || ''}`.trim();
+      if (seen.has(nn.toLowerCase())) {
+        const col = ((p.props && p.props.Stone) || '').replace(/Natural |Baltic |Amber|·.*/g, '').trim();
+        nn = `${p.name} ${CAT_NOUN[p.cat] || ''} ${col}`.trim();
+      }
+      seen.add(nn.toLowerCase());
+      p.name = nn;
+    });
+  });
+  return products;
+}
+
 function normalizeAirtable(records) {
-  return records.map(rec => {
+  const mapped = records.map(rec => {
     const f = rec.fields;
     const props = {};
     if (f.Stone)      props.Stone      = f.Stone;
-    if (f.Metal)      props.Metal      = f.Metal;
+    if (f.Metal)      props.Metal      = normMetal(f.Metal);
     if (f.Collection) props.Collection = f.Collection;
     if (f.Closure)    props.Closure    = f.Closure;
     if (f.Chain)      props.Chain      = f.Chain;
@@ -474,11 +513,12 @@ function normalizeAirtable(records) {
       price:    f.Price || 0,
       badge:    f.Badge || null,
       img:      f.Image || '',
-      material: f.Material || '',
+      material: normMaterial(f.Material || ''),
       desc:     f.Description || '',
       props,
     };
   });
+  return uniquifyNames(mapped);
 }
 
 function loadLocalProducts() {
