@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 const ROOT = process.cwd();
 const SITE = 'https://www.amberrajewelry.com';
-const CSSVER   = '20260811i';
+const CSSVER   = '20260827k';
 
 function toSlug(name) {
   return name.toLowerCase()
