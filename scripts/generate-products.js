@@ -309,7 +309,7 @@ ${breadcrumbSchema}
 .pp-info{position:sticky;top:80px}
 .pp-breadcrumb{font:400 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--charcoal);margin-bottom:14px}
 .pp-breadcrumb a{color:var(--charcoal);text-decoration:none}
-.pp-breadcrumb a:hover{color:var(--amber)}
+.pp-breadcrumb a:hover{color:var(--amber-ink)}
 .pp-cat{font:400 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--amber-ink);margin-bottom:8px}
 .pp-name{font:400 30px/1.1 var(--serif);color:var(--charcoal);margin:0 0 10px}
 .pp-price{font:400 22px/1 var(--serif);color:var(--charcoal);margin:0 0 14px}
@@ -331,7 +331,7 @@ ${breadcrumbSchema}
 .pp-cta-ghost:hover{border-color:var(--charcoal);color:var(--charcoal)}
 .pp-footer{text-align:center;padding:32px 32px 48px;border-top:1px solid var(--mist);margin-top:32px}
 .pp-footer p{font:400 13px/1.7 var(--sans);color:var(--charcoal);max-width:480px;margin:0 auto 16px}
-.pp-footer a{color:var(--amber);text-decoration:none}
+.pp-footer a{color:var(--amber-ink);text-decoration:none}
 .pp-related{max-width:1180px;margin:0 auto;padding:0 32px 48px}
 .pp-related-head{font:400 13px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--charcoal);text-align:center;margin:0 0 24px}
 .pp-related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
@@ -380,7 +380,7 @@ ${breadcrumbSchema}
     <p class="pp-desc">${esc(desc)}</p>
     <p class="pp-material">${esc(material)}</p>
     ${aboutBlock(p)}
-    ${amberColor(p) ? `<p class="pp-colorhub"><a href="/amber/${amberColor(p)}" style="color:#B8941E;text-decoration:none;border-bottom:1px solid currentColor">Explore all ${amberColor(p)} amber →</a></p>` : ''}
+    ${amberColor(p) ? `<p class="pp-colorhub"><a href="/amber/${amberColor(p)}" style="color:#8A6D0F;text-decoration:none;border-bottom:1px solid currentColor">Explore all ${amberColor(p)} amber →</a></p>` : ''}
     ${propsHTML ? `<div class="pp-props">${propsHTML}</div>` : ''}
     ${buyBtn}
     <a class="pp-cta-ghost" href="/shop?cat=${esc(cat)}">View All ${esc(catLabel)}</a>
