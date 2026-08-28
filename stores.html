@@ -205,7 +205,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </footer>
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
 
 <style>
 /* ═══ STORES PAGE ════════════════════════════════════════════════════════ */
@@ -271,7 +270,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 /* Map */
 .stores-panel{display:none}
-#stores-map{width:100%;height:100%;background:var(--silk);z-index:1;display:block}
+#stores-map{width:100%;height:100%;background:var(--silk);z-index:1;display:block;border:0}
 
 /* Leaflet overrides for luxury feel */
 .leaflet-popup-content-wrapper{border-radius:0;box-shadow:0 8px 32px rgba(0,0,0,.12);border:none;font-family:'Montserrat',Arial,sans-serif}
@@ -410,7 +409,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <!-- Map -->
-  <div id="stores-map"></div>
+  <iframe id="stores-map" title="AMBERRA at Awakened Dreamers — Canggu, Bali" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=AMBERRA%20at%20Awakened%20Dreamers%2C%20Canggu%2C%20Bali%2C%20Indonesia&z=15&output=embed"></iframe>
 
 </div>
 
@@ -691,7 +690,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <!-- ══ STORES DATA & MAP INIT ════════════════════════════════════════════ -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script>
 // ── Store Data ─────────────────────────────────────────────────────────────
 const STORES = [
@@ -707,53 +705,11 @@ const STORES = [
   }
 ];
 
-let map, markers = [], activeIdx = null;
+let activeIdx = null;
 
-// ── Custom marker icon ─────────────────────────────────────────────────────
-function makeIcon(active){
-  const fill = active ? '#C49C54' : '#3C3830';
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 42" width="32" height="42">
-    <path d="M16 0C8.27 0 2 6.27 2 14c0 9.63 12 26 14 28 2-2 14-18.37 14-28C30 6.27 23.73 0 16 0z" fill="${fill}"/>
-    <circle cx="16" cy="14" r="6" fill="#fff" opacity=".9"/>
-  </svg>`;
-  return L.divIcon({
-    html: svg,
-    className: '',
-    iconSize: [32, 42],
-    iconAnchor: [16, 42],
-    popupAnchor: [0, -44]
-  });
-}
-
-// ── Init map ───────────────────────────────────────────────────────────────
+// ── Init ───────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function(){
-  map = L.map('stores-map', {
-    center: [-8.5069, 115.2625],
-    zoom: 12,
-    zoomControl: true
-  });
-
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: 'abcd',
-    maxZoom: 20
-  }).addTo(map);
-
-  setTimeout(function(){ map.invalidateSize(); }, 100);
   renderList(STORES);
-
-  STORES.forEach(function(store, i){
-    const marker = L.marker([store.lat, store.lng], { icon: makeIcon(false) }).addTo(map);
-    marker.bindPopup(
-      '<strong>' + store.name + '</strong>' +
-      store.address + '<br>' +
-      '<span style="color:var(--black)">' + store.hours + '</span>'
-    );
-    marker.on('click', function(){ selectStore(i); });
-    markers.push(marker);
-  });
-
-  // Auto-select first store
   if(STORES.length > 0) selectStore(0);
 });
 
@@ -782,24 +738,16 @@ function renderList(list){
 
 // ── Select a store ─────────────────────────────────────────────────────────
 function selectStore(idx){
-  // Deactivate previous
   if(activeIdx !== null){
     const prev = document.getElementById('sc-' + activeIdx);
     if(prev) prev.classList.remove('active');
-    if(markers[activeIdx]) markers[activeIdx].setIcon(makeIcon(false));
   }
   activeIdx = idx;
-  const store = STORES[idx];
   const card = document.getElementById('sc-' + idx);
   if(card){
     card.classList.add('active');
     card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
-  if(markers[idx]){
-    markers[idx].setIcon(makeIcon(true));
-    markers[idx].openPopup();
-  }
-  map.flyTo([store.lat, store.lng], 15, { duration: 1.2 });
 }
 
 // ── Filter stores ──────────────────────────────────────────────────────────
@@ -815,26 +763,8 @@ function filterStores(q){
 
 // ── Use my location ────────────────────────────────────────────────────────
 function useMyLocation(){
-  if(!navigator.geolocation){ alert('Geolocation is not supported by your browser.'); return; }
-  navigator.geolocation.getCurrentPosition(function(pos){
-    const lat = pos.coords.latitude;
-    const lng = pos.coords.longitude;
-    map.flyTo([lat, lng], 10, { duration: 1.5 });
-    L.circleMarker([lat, lng], {
-      radius: 8,
-      fillColor: '#C49C54',
-      color: '#fff',
-      weight: 2,
-      fillOpacity: 0.9
-    }).addTo(map).bindPopup('You are here').openPopup();
-
-    // Sort stores by distance
-    function dist(s){ return Math.sqrt(Math.pow(s.lat-lat,2)+Math.pow(s.lng-lng,2)); }
-    const sorted = STORES.slice().sort(function(a,b){ return dist(a)-dist(b); });
-    renderList(sorted);
-  }, function(){
-    alert('Unable to retrieve your location.');
-  });
+  const dest = STORES.length ? encodeURIComponent(STORES[0].address) : '';
+  window.open('https://www.google.com/maps/dir/?api=1&destination=' + dest, '_blank');
 }
 
 // ── Stub: accTab ───────────────────────────────────────────────────────────
