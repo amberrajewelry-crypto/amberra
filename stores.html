@@ -55,61 +55,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   "@graph": [
     {
       "@type": "JewelryStore",
-      "@id": "https://www.amberrajewelry.com/stores#store1",
-      "name": "AMBERRA at Onyx Park Resort",
+      "@id": "https://www.amberrajewelry.com/stores#studio",
+      "name": "AMBERRA Studio",
       "url": "https://www.amberrajewelry.com/stores",
-      "telephone": "+62-878-5386-7120",
       "email": "hello@amberrajewelry.com",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Onyx Park Resort Bali",
-        "addressLocality": "Bali",
-        "addressRegion": "Bali",
-        "addressCountry": "ID"
+        "addressLocality": "Tbilisi",
+        "addressRegion": "Tbilisi",
+        "addressCountry": "GE"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": -8.4838052,
-        "longitude": 115.2683399
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-        "opens": "10:00",
-        "closes": "19:00"
+        "latitude": 41.7151,
+        "longitude": 44.8271
       },
       "priceRange": "$$$",
-      "hasMap": "https://maps.google.com/?q=-8.4838052,115.2683399",
-      "image": "https://www.amberrajewelry.com/images/og-cover.webp",
-      "sameAs": ["https://www.instagram.com/amberrajewelry"]
-    },
-    {
-      "@type": "JewelryStore",
-      "@id": "https://www.amberrajewelry.com/stores#store2",
-      "name": "AMBERRA at Awakened Dreamers",
-      "url": "https://www.amberrajewelry.com/stores#canggu",
-      "telephone": "+62-878-5386-7120",
-      "email": "hello@amberrajewelry.com",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Awakened Dreamers Boutique",
-        "addressLocality": "Canggu",
-        "addressRegion": "Bali",
-        "addressCountry": "ID"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": -8.6513743,
-        "longitude": 115.134288
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-        "opens": "10:00",
-        "closes": "20:00"
-      },
-      "priceRange": "$$$",
-      "hasMap": "https://maps.google.com/?q=-8.6513743,115.134288",
+      "hasMap": "https://maps.google.com/?q=41.7151,44.8271",
       "image": "https://www.amberrajewelry.com/images/og-cover.webp",
       "sameAs": ["https://www.instagram.com/amberrajewelry"]
     }
@@ -409,7 +371,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <!-- Map -->
-  <iframe id="stores-map" title="AMBERRA at Awakened Dreamers — Canggu, Bali" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=-8.6513743,115.134288&z=16&output=embed"></iframe>
+  <iframe id="stores-map" title="AMBERRA Studio — Tbilisi, Georgia" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=41.7151,44.8271&z=12&output=embed"></iframe>
 
 </div>
 
@@ -695,13 +657,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 const STORES = [
   {
     id: 1,
-    name: "AMBERRA at Awakened Dreamers",
-    address: "Awakened Dreamers Boutique, Canggu, Bali, Indonesia",
-    phone: "+62 878 5386 7120",
-    hours: "Mon–Sun: 10:00 – 20:00",
-    lat: -8.6513743,
-    lng: 115.134288,
-    type: "partner"
+    name: "AMBERRA Studio",
+    address: "Tbilisi, Georgia",
+    phone: "",
+    hours: "By appointment · Online worldwide",
+    lat: 41.7151,
+    lng: 44.8271,
+    type: "studio"
   }
 ];
 
@@ -729,7 +691,7 @@ function renderList(list){
       '<p class="store-card-addr">' + store.address + '</p>' +
       '<p class="store-card-hours">' + store.hours + '</p>' +
       '<div class="store-card-footer">' +
-        '<span class="store-card-phone">' + store.phone + '</span>' +
+        (store.phone ? '<span class="store-card-phone">' + store.phone + '</span>' : '<span class="store-card-phone"></span>') +
         '<a class="store-card-dir" href="' + mapsUrl + '" target="_blank" onclick="event.stopPropagation()">Get Directions</a>' +
       '</div>' +
     '</div>';
