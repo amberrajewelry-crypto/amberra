@@ -55,23 +55,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   "@graph": [
     {
       "@type": "JewelryStore",
-      "@id": "https://www.amberrajewelry.com/stores#studio",
-      "name": "AMBERRA Studio",
+      "@id": "https://www.amberrajewelry.com/stores#store",
+      "name": "AMBERRA at Awakened Dreamers",
       "url": "https://www.amberrajewelry.com/stores",
+      "telephone": "+62-878-5386-7120",
       "email": "hello@amberrajewelry.com",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Tbilisi",
-        "addressRegion": "Tbilisi",
-        "addressCountry": "GE"
+        "streetAddress": "Awakened Dreamers Boutique",
+        "addressLocality": "Canggu",
+        "addressRegion": "Bali",
+        "addressCountry": "ID"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": 41.7151,
-        "longitude": 44.8271
+        "latitude": -8.6513743,
+        "longitude": 115.134288
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "10:00",
+        "closes": "20:00"
       },
       "priceRange": "$$$",
-      "hasMap": "https://maps.google.com/?q=41.7151,44.8271",
+      "hasMap": "https://maps.google.com/?q=-8.6513743,115.134288",
       "image": "https://www.amberrajewelry.com/images/og-cover.webp",
       "sameAs": ["https://www.instagram.com/amberrajewelry"]
     }
@@ -371,7 +379,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <!-- Map -->
-  <iframe id="stores-map" title="AMBERRA Studio — Tbilisi, Georgia" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=41.7151,44.8271&z=12&output=embed"></iframe>
+  <iframe id="stores-map" title="AMBERRA at Awakened Dreamers — Canggu, Bali" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=-8.6513743,115.134288&z=16&output=embed"></iframe>
 
 </div>
 
@@ -657,13 +665,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 const STORES = [
   {
     id: 1,
-    name: "AMBERRA Studio",
-    address: "Tbilisi, Georgia",
-    phone: "",
-    hours: "By appointment · Online worldwide",
-    lat: 41.7151,
-    lng: 44.8271,
-    type: "studio"
+    name: "AMBERRA at Awakened Dreamers",
+    address: "Awakened Dreamers Boutique, Canggu, Bali, Indonesia",
+    phone: "+62 878 5386 7120",
+    hours: "Mon–Sun: 10:00 – 20:00",
+    lat: -8.6513743,
+    lng: 115.134288,
+    type: "partner"
   }
 ];
 
