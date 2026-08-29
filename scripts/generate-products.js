@@ -45,7 +45,7 @@ function absImg(img) {
   if (m && _WEBP_NUMS.has(m[1])) u = u.replace(/\/img\/(\d+)\.(?:jpe?g|png)/i, `/images/products/${m[1]}.webp`);
   u = /^https?:/.test(u) ? u : `${SITE}/${u.replace(/^\//, '')}`;
   // Bust immutable CDN cache when product webp content changes (bg-removed → transparent). Bump on re-export.
-  if (/\/images\/products\/\d+\.webp$/.test(u)) u += '?v=4';
+  if (/\/images\/products\/\d+\.webp$/.test(u)) u += '?v=5';
   return u;
 }
 // Duplicate-name SKUs get their jewelry type appended so links/titles are distinct.
