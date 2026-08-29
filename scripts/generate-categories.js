@@ -107,7 +107,7 @@ function colorOf(stone) {
 
 const COLORS = {
  cherry: { label: 'Cherry Amber', h1: 'Cherry Amber Jewelry',
- metaTitle: 'Cherry Amber Jewelry in Sterling Silver — Bali | AMBERRA',
+ metaTitle: 'Cherry Amber Jewelry in Sterling Silver | AMBERRA',
  metaDesc: 'Handmade cherry amber jewelry in 925 sterling silver. Deep red natural Baltic amber rings, earrings & pendants, handcrafted. Free shipping over $200.',
  intro: [
  'Cherry amber is natural Baltic amber in its deepest red-to-cognac tones — warm, translucent and richly colored. AMBERRA sets it by hand in 925 sterling silver.',
@@ -118,7 +118,7 @@ const COLORS = {
  ['Is cherry amber dyed?', 'AMBERRA cherry amber is naturally dark Baltic amber, so its deep red color comes from the stone itself and from age rather than from dye. The rich, wine-like hue develops as amber is exposed to oxygen over decades and centuries, its surface slowly oxidising from gold toward cognac and finally cherry, which is why so much genuinely antique jewelry carries these tones. Some sellers deepen pale stones with heat treatment or pass off red glass as cherry, but our stones are naturally dark, genuine, and one of a kind, each set by hand in 925 sterling silver.']
  ] },
  honey: { label: 'Honey Amber', h1: 'Honey Amber Jewelry',
- metaTitle: 'Honey Amber Jewelry in Sterling Silver — Bali | AMBERRA',
+ metaTitle: 'Honey Amber Jewelry in Sterling Silver | AMBERRA',
  metaDesc: 'Handmade honey amber jewelry in 925 sterling silver — warm golden Baltic amber rings, earrings & pendants, handcrafted. Free shipping over $200.',
  intro: [
  'Honey amber is the classic warm-gold Baltic amber — clear, glowing and timeless. AMBERRA hand-sets it in 925 sterling silver.',
@@ -128,7 +128,7 @@ const COLORS = {
  ['What is honey amber?', 'Honey amber is natural Baltic amber in a warm golden, translucent tone, the most classic amber color and the shade most people picture when they think of amber. It is the same fossilised conifer resin known as succinite, formed around 40 million years ago in the Baltic region, and it owes its clarity to resin that hardened with few trapped bubbles, letting light pass straight through. Honey stones often preserve faint natural inclusions of ancient bark or plant fiber. Because it flatters every skin tone and reads as both classic and contemporary, honey is an ideal first amber, hand-set by AMBERRA in 925 sterling silver.']
  ] },
  cognac: { label: 'Cognac Amber', h1: 'Cognac Amber Jewelry',
- metaTitle: 'Cognac Amber Jewelry in Sterling Silver — Bali | AMBERRA',
+ metaTitle: 'Cognac Amber Jewelry in Sterling Silver | AMBERRA',
  metaDesc: 'Handmade cognac amber jewelry in 925 sterling silver — rich brown-gold natural Baltic amber, handcrafted. Free worldwide shipping over $200.',
  intro: [
  'Cognac amber is deep brown-gold natural Baltic amber, warmer and darker than honey. AMBERRA sets it by hand in 925 sterling silver.',
@@ -138,7 +138,7 @@ const COLORS = {
  ['How is cognac amber different from honey amber?', 'Cognac amber is a deeper brown-gold, warmer and darker than honey amber, which is lighter and more clearly golden. Both are genuine natural Baltic amber, the fossilised conifer resin known as succinite that formed around 40 million years ago in the Baltic region; the difference in tone comes from how each stone formed and oxidised over time. Cognac sits between honey and cherry, gradually deepening as its surface reacts with air, and each stone shows its own gradient of brown and gold. It is one of the most wearable amber tones, rich enough to feel luxurious yet neutral enough for everyday, set by hand in 925 sterling silver.']
  ] },
  green: { label: 'Green Amber', h1: 'Green Amber Jewelry',
- metaTitle: 'Green Amber Jewelry in Sterling Silver — Bali | AMBERRA',
+ metaTitle: 'Green Amber Jewelry in Sterling Silver | AMBERRA',
  metaDesc: 'Handmade green amber jewelry in 925 sterling silver — natural Baltic amber with green tones, handcrafted. Free worldwide shipping over $200.',
  intro: [
  'Green amber is natural Baltic amber with cool green depths — distinctive and eye-catching against sterling silver.',
@@ -148,7 +148,7 @@ const COLORS = {
  ['Is green amber natural?', 'Yes, AMBERRA green amber is genuine natural Baltic amber, the fossilised conifer resin known as succinite that formed around 40 million years ago in the Baltic region. Its cool green depth is not a dye: the effect appears when translucent amber is set over a darker backing that draws out its green undertones, or where fine plant and mineral inclusions scatter light toward the green end of the spectrum. Because genuine green tones are far rarer than honey or cognac, each green piece is produced in small numbers, authenticated and set individually by hand in 925 sterling silver, making every one a distinctive, one-of-a-kind piece.']
  ] },
  blue: { label: 'Blue Amber', h1: 'Blue Amber Jewelry',
- metaTitle: 'Blue Amber Jewelry in Sterling Silver — Bali | AMBERRA',
+ metaTitle: 'Blue Amber Jewelry in Sterling Silver | AMBERRA',
  metaDesc: 'Handmade blue amber jewelry in 925 sterling silver — rare natural blue amber, handcrafted. A collector favorite. Free worldwide shipping over $200.',
  intro: [
  'Blue amber is among the rarest natural amber, shifting blue under daylight. AMBERRA sets each rare stone by hand in 925 sterling silver.',
@@ -158,7 +158,7 @@ const COLORS = {
  ['Why is blue amber so rare?', 'Blue amber is among the rarest amber in the world because its blue is not pigment but a natural optical effect that forms only under specific conditions. The body of the stone stays golden, while trace compounds formed as the resin fossilised absorb ultraviolet light and re-emit it as a luminous blue, strongest in sunlight and daylight. Only a small fraction of mined Baltic amber shows this fluorescence, which is why untreated blue stones sit among the most sought-after fossil resins on earth. Because supply is so limited, AMBERRA blue pieces are made in small numbers, each genuine natural and unique.']
  ] },
  butterscotch: { label: 'Butterscotch Amber', h1: 'Butterscotch Amber Jewelry',
- metaTitle: 'Butterscotch Amber Jewelry in Sterling Silver — Bali | AMBERRA',
+ metaTitle: 'Butterscotch Amber Jewelry in Sterling Silver | AMBERRA',
  metaDesc: 'Handmade butterscotch amber jewelry in 925 sterling silver — creamy opaque natural Baltic amber, handcrafted. Free worldwide shipping over $200.',
  intro: [
  'Butterscotch amber is creamy, opaque natural Baltic amber — soft, buttery and warm. AMBERRA sets it by hand in 925 sterling silver.',
@@ -178,7 +178,7 @@ const COLORS = {
  ['Is mosaic amber dyed?', 'No, mosaic or multi-color amber uses genuine natural Baltic amber of different tones combined by hand, never dyed or artificially colored stone. Every fragment is authentic succinite, the fossilised conifer resin that formed around 40 million years ago, and its cherry, cognac, honey and green shades all come from how each piece aged and formed naturally over that long history. Because each mosaic is assembled by hand from individually chosen fragments, no two pieces can ever match exactly, so a mosaic bracelet or pendant is genuinely one of a kind. AMBERRA sets every mosaic in 925 sterling silver and includes a certificate of authenticity.']
  ] },
  raw: { label: 'Raw Amber', h1: 'Raw Amber Jewelry',
- metaTitle: 'Raw Amber Jewelry in Sterling Silver — Bali | AMBERRA',
+ metaTitle: 'Raw Amber Jewelry in Sterling Silver | AMBERRA',
  metaDesc: 'Handmade raw amber jewelry in 925 sterling silver — unpolished natural Baltic amber, handcrafted. Organic and one of a kind. Free shipping over $200.',
  intro: [
  'Raw amber keeps the natural, unpolished surface of Baltic amber — organic and earthy, set in 925 sterling silver.',
@@ -191,7 +191,7 @@ const COLORS = {
 
 const HUB = {
  h1: 'Handmade Baltic Amber Jewelry',
- metaTitle: 'Baltic Amber Jewelry in Sterling Silver — Bali | AMBERRA',
+ metaTitle: 'Baltic Amber Jewelry in Sterling Silver | AMBERRA',
  metaDesc: 'Handmade Baltic amber jewelry in 925 sterling silver — rings, earrings, pendants & bracelets in cherry, cognac, honey, green & blue amber. Handcrafted.',
  intro: [
  'AMBERRA is a handcrafted jewelry house, designed in Bali. Every piece pairs genuine Baltic amber — a 40-million-year-old fossil resin — with 925 sterling silver, shaped one at a time by our artisans.',
