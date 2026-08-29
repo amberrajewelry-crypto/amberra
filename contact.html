@@ -439,8 +439,10 @@ function showQuizResult(){
 // ── VIRTUAL TRY-ON ────────────────────────────────────────────────────────
 let selectedTryonProduct=null;
 function initTryonItems(){
+  const _ti=document.getElementById('tryon-items');
+  if(!_ti) return;
   const tryonProds=products.slice(0,8);
-  document.getElementById('tryon-items').innerHTML=tryonProds.map((p,i)=>`
+  _ti.innerHTML=tryonProds.map((p,i)=>`
     <div class="tryon-item${i===0?' sel':''}" onclick="selectTryonItem(${p.id},this)">
       <img src="${p.img}" alt="${p.name}" loading="lazy">
       <div class="tryon-item-name">${tp(p,"name")}</div>
