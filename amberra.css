@@ -343,8 +343,8 @@ body{padding-top:144px;background:var(--white);color:var(--black);font-family:va
 /* CONTACT */
 #contact{padding:112px 56px;background:var(--white);text-align:center}
 #contact .s-lbl{color:var(--gold2)}
-#contact .s-title{color:var(--slate);max-width:640px;margin:0 auto 16px}
-#contact .s-body{color:var(--black);max-width:480px;margin:0 auto 52px}
+#contact .s-title{color:var(--slate);max-width:1120px;margin:0 auto 16px}
+#contact .s-body{color:var(--black);max-width:1120px;margin:0 auto 52px}
 .c-btns{display:flex;gap:16px;justify-content:center}
 
 /* FOOTER */
