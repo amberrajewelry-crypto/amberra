@@ -39,7 +39,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="amberra.css?v=20260827m">
+<link rel="stylesheet" href="amberra.css?v=20260827n">
 <script src="amberra-nav.js?v=20260811h"></script>
 
 <meta property="og:type" content="website">
@@ -135,8 +135,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main>
 <!-- ABOUT HERO -->
 <section style="position:relative;height:65vh;min-height:480px;overflow:hidden;display:flex;align-items:center;justify-content:center">
-  <img src="https://res.cloudinary.com/dtfq3xq3t/image/upload/w_1600,h_800,c_fill,q_auto,f_auto/IMG_1586_s1vrbx.jpg" 
-       style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" alt="AMBERRA Bali">
+  <img src="/images/about-poster.webp"
+       style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" alt="AMBERRA handcrafted amber jewelry">
   <div style="position:absolute;inset:0;background:rgba(0,0,0,.45)"></div>
   <div style="position:relative;z-index:2;text-align:center;padding:0 32px;color:var(--white)">
     <div class="s-lbl reveal" data-i18n="about_lbl" style="color:var(--gold)">The Maison</div>
@@ -147,8 +147,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ABOUT SPLIT -->
 <div style="display:grid;grid-template-columns:1fr 1fr;min-height:600px">
   <div style="overflow:hidden">
-    <img src="https://res.cloudinary.com/dtfq3xq3t/image/upload/w_800,h_700,c_fill,q_auto,f_auto/IMG_1601_fzxdha.jpg"
-         style="width:100%;height:100%;object-fit:cover" alt="">
+    <img src="/images/craft-1.webp"
+         style="width:100%;height:100%;object-fit:cover" alt="Handcrafting AMBERRA amber jewelry">
   </div>
   <div style="display:flex;flex-direction:column;justify-content:center;padding:80px 72px;background:var(--off-white)">
     <span class="s-lbl reveal" data-i18n="about_phil_lbl">Our Philosophy</span>
@@ -356,6 +356,7 @@ let activeFilter='all';
 function renderProducts(){
   const t=TR[currentLang]||TR.en;
   const grid=document.getElementById('prod-grid');
+  if(!grid) return;
   const list=activeFilter==='all'?products:products.filter(p=>p.cat===activeFilter);
   grid.innerHTML=list.map((p,i)=>{
     const b=p.badge?`<div class="pbadge ${p.badge}">${p.badge==='bestseller'?'Best Seller':p.badge==='limited'?'Limited Edition':'New'}</div>`:'';
@@ -620,6 +621,7 @@ document.addEventListener('mouseleave', ()=>cg.style.opacity='0');
 // Particles
 (function(){
   const canvas = document.getElementById('particles-canvas');
+  if(!canvas) return;
   const ctx = canvas.getContext('2d');
   let W, H, particles = [];
 

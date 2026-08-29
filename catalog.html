@@ -39,7 +39,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="amberra.css?v=20260827m">
+<link rel="stylesheet" href="amberra.css?v=20260827n">
 <script src="amberra-nav.js?v=20260811h"></script>
 
 <meta property="og:type" content="website">
@@ -1384,6 +1384,7 @@ let activeFilter='all';
 function renderProducts(){
   const t=TR[currentLang]||TR.en;
   const grid=document.getElementById('prod-grid');
+  if(!grid) return;
   const list=activeFilter==='all'?products:products.filter(p=>p.cat===activeFilter);
   grid.innerHTML=list.map((p,i)=>{
     const b=p.badge?`<div class="pbadge ${p.badge}">${p.badge==='bestseller'?'Best Seller':p.badge==='limited'?'Limited Edition':'New'}</div>`:'';
@@ -1649,6 +1650,7 @@ document.addEventListener('mouseleave', ()=>cg.style.opacity='0');
 // Particles
 (function(){
   const canvas = document.getElementById('particles-canvas');
+  if(!canvas) return;
   const ctx = canvas.getContext('2d');
   let W, H, particles = [];
 
