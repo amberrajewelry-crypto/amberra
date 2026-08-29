@@ -33,7 +33,9 @@ const TYPES = {
  metaDesc: 'Handmade Baltic amber rings in 925 sterling silver, shaped by hand by our artisans. Cherry, cognac, green & honey amber. Free worldwide shipping over $200.',
  intro: [
  'Amber rings from AMBERRA are cut from genuine Baltic amber and set by hand in 925 sterling silver. Every stone is natural — no two are alike, from deep cherry and cognac to green, honey and rare blue amber.',
- 'Choose a bold cocktail silhouette or a fine everyday band. Each ring ships with a certificate of authenticity and is available in US ring sizes 5–9.'
+ 'Choose a bold cocktail silhouette or a fine everyday band. Each ring ships with a certificate of authenticity and is available in US ring sizes 5–9.',
+ 'An amber ring also makes a meaningful promise ring or anniversary gift. Baltic amber is resin that has kept its warmth for forty million years, an easy symbol of something made to last. A handmade sterling silver band set with a single warm stone reads as personal rather than mass-produced, and because every amber cabochon is unique, no one else wears exactly the same ring.',
+ 'Shop amber rings by color: cherry and cognac for depth, honey and butterscotch for everyday warmth, green and rare blue for something unusual. Unsure of a size? Measure a ring the wearer already owns and match it to the size guide on each product page, or contact us for guidance and custom sizing. Every ring is nickel-free 925 sterling silver, hypoallergenic and gentle on the skin.'
  ],
  faq: [
  ['Are AMBERRA amber rings real Baltic amber?', 'Yes, every AMBERRA amber ring is set with genuine natural Baltic amber, the fossilised conifer resin known to gemologists as succinite, formed around 40 million years ago in the Baltic region. Each ring is hand-set in solid 925 sterling silver by our silversmiths, and ships with a certificate of authenticity. Because the stone is natural rather than pressed or dyed, every ring is one of a kind, with its own color and inclusions. To verify amber yourself, note that real amber is warm to the touch, floats in salt water, and is far lighter than glass.'],
@@ -45,7 +47,9 @@ const TYPES = {
  metaDesc: 'Natural Baltic amber earrings handcrafted — drops, studs, hoops & filigree in 925 silver. Cherry, cognac & honey amber. Free shipping over $200.',
  intro: [
  'Our amber earrings pair natural Baltic amber with hand-forged 925 sterling silver — from light everyday studs to statement drops. Colors range across cherry, cognac, honey, green and blue amber.',
- 'Lightweight and comfortable, each pair is made one at a time by our artisans and arrives with a certificate of authenticity.'
+ 'Lightweight and comfortable, each pair is made one at a time by our artisans and arrives with a certificate of authenticity.',
+ 'Shop by style: amber stud earrings for a quiet everyday glow, drop and dangle earrings for evening, and hoops and filigree for something between the two. Because natural Baltic amber is remarkably light, even long drops stay comfortable through a full day or night.',
+ 'Amber earrings are a safe gift for sensitive ears — every post and hook is hypoallergenic nickel-free 925 sterling silver. A pair of handmade amber earrings makes a thoughtful birthday or anniversary present, and each pair is unique in its color and inclusions, so the gift is genuinely one of a kind.'
  ],
  faq: [
  ['Are the earrings sterling silver?', 'Yes, AMBERRA earrings are made from solid 925 sterling silver, with some pieces finished in 18k gold plating over sterling. The hooks and posts are hypoallergenic sterling silver, which makes them a gentle choice for sensitive ears that react to base-metal jewelry. Sterling silver is one of the traditional metals for Baltic amber, cool and neutral in tone so it frames the warm stone rather than competing with it. Every pair is hand-forged one at a time by our artisans and arrives with a certificate of authenticity covering both the amber and the metal.'],
@@ -56,7 +60,9 @@ const TYPES = {
  metaDesc: 'Baltic amber pendants and necklaces handcrafted in 925 sterling silver. Cherry, cognac, green & blue amber. Pair with a silver chain. Free shipping over $200.',
  intro: [
  'Amber pendant necklaces from AMBERRA frame a single natural Baltic amber cabochon in hand-worked sterling silver. Wear one alone or layered; pair with any AMBERRA silver chain.',
- 'Each pendant is one of a kind, cut from genuine Baltic amber and finished by hand.'
+ 'Each pendant is one of a kind, cut from genuine Baltic amber and finished by hand.',
+ 'Shop amber pendants by color and by scale: a fine honey cabochon for daily layering, a deep cherry or cognac drop for a single statement, green or rare blue amber for something unusual. A shorter chain keeps the stone high on the collarbone, while a longer one lets it fall for a layered look.',
+ 'An amber pendant is one of the easiest amber gifts to get right — it suits any neckline and needs no sizing. Set in nickel-free 925 sterling silver, it is hypoallergenic and made to be worn every day, and because the stone is natural, no two pendants are exactly alike.'
  ],
  faq: [
  ['Do pendants come with a chain?', 'Some AMBERRA pendants include a matching chain, while others are sold as the pendant alone so you can choose your own length and style. Where a chain is not included, pair the pendant with any AMBERRA sterling silver chain from our Chains collection to build your own necklace. Our chains come in cable and link styles and lengths from 40 to 60 cm: a shorter chain keeps the amber high on the collarbone, while a longer one lets it fall for a layered look. Match the chain metal tone to the pendant setting for a seamless finish.'],
@@ -67,7 +73,9 @@ const TYPES = {
  metaDesc: 'Natural Baltic amber bracelets handcrafted — beaded, link and cuff styles in 925 sterling silver. Cherry, cognac & multi-amber. Free shipping over $200.',
  intro: [
  'From delicate beaded strands to bold silver cuffs, our amber bracelets use natural Baltic amber set in 925 sterling silver. Multi-color (mosaic) amber is a signature.',
- 'Every bracelet is handmade and ships with a certificate of authenticity.'
+ 'Every bracelet is handmade and ships with a certificate of authenticity.',
+ 'Shop by style: beaded amber strands that catch the light with every movement, link bracelets that pair amber with sculpted 925 silver, and solid cuffs for a single bold statement. Most bracelets fit wrists of about 15 to 19 cm, and beaded styles flex for extra give.',
+ 'An amber bracelet layers well with a watch or other bangles, and stays comfortable all day because natural Baltic amber is so light. Set in nickel-free, hypoallergenic 925 sterling silver, a handmade amber bracelet makes a lasting gift — and mosaic (multi-color) amber means no two are ever the same.'
  ],
  faq: [
  ['What bracelet sizes are available?', 'Most AMBERRA bracelets fit wrists of about 15 to 19 cm, and beaded styles are adjustable for extra give. To find your size, wrap a soft tape measure snugly around your wrist and add a little room for comfort, then check the sizing note on each product page. Because natural Baltic amber is remarkably light, even bold cuff and link bracelets wear comfortably all day. Every bracelet is hand-set in 925 sterling silver by our artisans and ships with a certificate of authenticity. Contact us if you need guidance or a custom length for a wrist outside this range.'],
@@ -107,7 +115,7 @@ const COLORS = {
  ],
  faq: [
  ['Is cherry amber real amber?', 'Yes, cherry amber is genuine natural Baltic amber in its deepest red-to-mahogany tones, not glass, plastic or bakelite. It is the same fossilised conifer resin known as succinite, formed around 40 million years ago in the Baltic region, and its rich color develops as it oxidises and darkens over time. Held to strong light, real cherry stays translucent and glows red rather than looking flat and black. You can also recognize genuine amber because it is warm and light in the hand, floats in salt water, and carries faint natural inclusions. AMBERRA certifies every piece as authentic.'],
- ['Is cherry amber dyed?', 'AMBERRA cherry amber is naturally dark Baltic amber, so its deep red color comes from the stone itself and from age rather than from dye. The rich, wine-like hue develops as amber is exposed to oxygen over decades and centuries, its surface slowly oxidising from gold toward cognac and finally cherry, which is why so much genuinely antique jewelry carries these tones. Some sellers deepen pale stones with heat treatment or pass off red glass as cherry, but our stones are naturally dark, certified genuine, and one of a kind, each set by hand in 925 sterling silver.']
+ ['Is cherry amber dyed?', 'AMBERRA cherry amber is naturally dark Baltic amber, so its deep red color comes from the stone itself and from age rather than from dye. The rich, wine-like hue develops as amber is exposed to oxygen over decades and centuries, its surface slowly oxidising from gold toward cognac and finally cherry, which is why so much genuinely antique jewelry carries these tones. Some sellers deepen pale stones with heat treatment or pass off red glass as cherry, but our stones are naturally dark, genuine, and one of a kind, each set by hand in 925 sterling silver.']
  ] },
  honey: { label: 'Honey Amber', h1: 'Honey Amber Jewelry',
  metaTitle: 'Honey Amber Jewelry in Sterling Silver — Bali | AMBERRA',
@@ -137,7 +145,7 @@ const COLORS = {
  'AMBERRA green amber is genuine and hand-finished; each piece is unique.'
  ],
  faq: [
- ['Is green amber natural?', 'Yes, AMBERRA green amber is genuine natural Baltic amber, the fossilised conifer resin known as succinite that formed around 40 million years ago in the Baltic region. Its cool green depth is not a dye: the effect appears when translucent amber is set over a darker backing that draws out its green undertones, or where fine plant and mineral inclusions scatter light toward the green end of the spectrum. Because genuine green tones are far rarer than honey or cognac, each green piece is produced in small numbers, certified authentic and set individually by hand in 925 sterling silver, making every one a distinctive, one-of-a-kind piece.']
+ ['Is green amber natural?', 'Yes, AMBERRA green amber is genuine natural Baltic amber, the fossilised conifer resin known as succinite that formed around 40 million years ago in the Baltic region. Its cool green depth is not a dye: the effect appears when translucent amber is set over a darker backing that draws out its green undertones, or where fine plant and mineral inclusions scatter light toward the green end of the spectrum. Because genuine green tones are far rarer than honey or cognac, each green piece is produced in small numbers, authenticated and set individually by hand in 925 sterling silver, making every one a distinctive, one-of-a-kind piece.']
  ] },
  blue: { label: 'Blue Amber', h1: 'Blue Amber Jewelry',
  metaTitle: 'Blue Amber Jewelry in Sterling Silver — Bali | AMBERRA',
@@ -147,7 +155,7 @@ const COLORS = {
  'Because blue amber is scarce, pieces are limited and each is one of a kind with a certificate of authenticity.'
  ],
  faq: [
- ['Why is blue amber so rare?', 'Blue amber is among the rarest amber in the world because its blue is not pigment but a natural optical effect that forms only under specific conditions. The body of the stone stays golden, while trace compounds formed as the resin fossilised absorb ultraviolet light and re-emit it as a luminous blue, strongest in sunlight and daylight. Only a small fraction of mined Baltic amber shows this fluorescence, which is why untreated blue stones sit among the most sought-after fossil resins on earth. Because supply is so limited, AMBERRA blue pieces are made in small numbers, each certified natural and unique.']
+ ['Why is blue amber so rare?', 'Blue amber is among the rarest amber in the world because its blue is not pigment but a natural optical effect that forms only under specific conditions. The body of the stone stays golden, while trace compounds formed as the resin fossilised absorb ultraviolet light and re-emit it as a luminous blue, strongest in sunlight and daylight. Only a small fraction of mined Baltic amber shows this fluorescence, which is why untreated blue stones sit among the most sought-after fossil resins on earth. Because supply is so limited, AMBERRA blue pieces are made in small numbers, each genuine natural and unique.']
  ] },
  butterscotch: { label: 'Butterscotch Amber', h1: 'Butterscotch Amber Jewelry',
  metaTitle: 'Butterscotch Amber Jewelry in Sterling Silver — Bali | AMBERRA',
@@ -390,7 +398,7 @@ const SECTIONS = {
  'Cherry’s depth reads as elegant and dressy. Against 925 sterling silver it turns cool and modern; against gold-plated settings it warms into something vintage and rich. A cherry ring or pendant makes a natural statement piece, while studs keep the color subtle.'
  ]],
  ['Is Cherry Amber Real or Treated?', [
- 'Some sellers deepen pale amber with heat treatment; others sell red glass or bakelite as "cherry amber". AMBERRA cherry amber is naturally dark Baltic amber, certified genuine. Real cherry stones are warm and light in the hand, carries faint natural inclusions, and glows red under strong light — plastic does not.'
+ 'Some sellers deepen pale amber with heat treatment; others sell red glass or bakelite as "cherry amber". AMBERRA cherry amber is naturally dark Baltic amber, genuine. Real cherry stones are warm and light in the hand, carries faint natural inclusions, and glows red under strong light — plastic does not.'
  ]],
  ['Why Aged Amber Turns Cherry', [
  'The deep red of this shade is largely a story of time. As amber is exposed to oxygen over decades and centuries, its surface slowly oxidises and darkens from gold toward cognac and finally cherry. This is why so much genuinely antique amber carries these rich tones, and why cherry amber feels heirloom even when newly set.'
@@ -432,7 +440,7 @@ const SECTIONS = {
  'Green amber is natural Baltic amber showing cool green depths, usually seen when translucent amber is set over a dark backing that draws out its green undertones. The effect is striking and unusual against sterling silver.'
  ]],
  ['Is Green Amber Natural?', [
- 'AMBERRA green amber is genuine Baltic amber — the green comes from the stone and its setting, not from dye. As with all our amber, each green piece is certified and one of a kind.'
+ 'AMBERRA green amber is genuine Baltic amber — the green comes from the stone and its setting, not from dye. As with all our amber, each green piece is genuine and one of a kind.'
  ]],
  ['Styling Green Amber', [
  'Green amber’s cool, unexpected depth makes it a natural conversation piece. It stands out against 925 sterling silver and pairs well with green, teal and earth-toned outfits. Choose a bold green ring or pendant when you want something distinctive rather than expected.'
@@ -446,7 +454,7 @@ const SECTIONS = {
  'Blue amber is among the rarest amber in the world. In daylight its surface fluoresces a soft blue, while the body of the stone stays golden — a natural optical effect caused by the way the resin scatters light. True blue amber is scarce, which is why it is prized by collectors.'
  ]],
  ['A Collector’s Choice', [
- 'Because supply is so limited, AMBERRA blue amber pieces are made in small numbers and each is unique. Every one is certified natural Baltic amber and set by hand in 925 sterling silver.'
+ 'Because supply is so limited, AMBERRA blue amber pieces are made in small numbers and each is unique. Every one is genuine natural Baltic amber and set by hand in 925 sterling silver.'
  ]],
  ['How Blue Amber Gets Its Color', [
  'Blue amber is not blue like a sapphire. The body of the stone is golden; the blue appears only as light strikes its surface and is scattered back to the eye, glowing strongest under sunlight and UV. This rare fluorescence, combined with scarce supply, is why it commands a premium among collectors worldwide.'
@@ -876,7 +884,7 @@ function typePage(slug, cat, products) {
  Object.keys(COLORS).map(c => [`/amber/${c}`, COLORS[c].label]).concat([['/amber', 'All Amber Jewelry'], [`/${SILVER.slug}`, 'Sterling Silver Amber']]));
  const schema = { '@context': 'https://schema.org', '@graph': [
  { '@type': 'CollectionPage', '@id': `${url}#webpage`, url, isPartOf: { '@id': `${SITE}/#website` }, inLanguage: 'en', publisher: { '@id': `${SITE}/#organization` }, name: cat.metaTitle, description: cat.metaDesc,
- breadcrumb: breadcrumb([{name:'Home',url:SITE},{name:'Amber',url:`${SITE}/amber`},{name:cat.label,url}]) },
+ breadcrumb: breadcrumb([{name:'Home',url:SITE},{name:cat.label,url}]) },
  itemListSchema(url, `AMBERRA ${cat.label}`, url, products),
  faqSchema(cat.faq) ].filter(Boolean) };
  const main = catBody({ kicker:'The Collection', h1:cat.h1, sub:cat.intro[0], count:products.length,

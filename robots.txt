@@ -6,8 +6,9 @@ Disallow: /cart
 Disallow: /checkout
 Disallow: /account
 Disallow: /admin
-Disallow: /*.json$
+Disallow: /api/
 Disallow: /*?*lang=*
+Allow: /data/products.json
 
 # AI Search Crawlers — explicitly permitted
 User-agent: GPTBot
@@ -34,3 +35,6 @@ Disallow: /
 
 # Sitemap
 Sitemap: https://www.amberrajewelry.com/sitemap.xml
+
+# IndexNow
+IndexNow: https://www.amberrajewelry.com/accdb8ff5a2e86e0e84410e7e59911b4.txt

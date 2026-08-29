@@ -185,7 +185,8 @@ function productHTML(p, slug) {
     image:       imgAbs ? [imgAbs] : [],
     brand:       { '@type': 'Brand', name: 'AMBERRA' },
     material,
-    color:       amberColor(p) ? amberColor(p).charAt(0).toUpperCase() + amberColor(p).slice(1) + ' Amber' : 'Amber',
+    mpn:         sku,
+    color:       amberColor(p) ? amberColor(p).charAt(0).toUpperCase() + amberColor(p).slice(1) + ' Amber' : 'Natural Amber',
     additionalProperty: Object.entries(props || {}).map(([k, v]) => ({ '@type': 'PropertyValue', name: k, value: String(v) })),
     category:    catLabel,
     url:         canonical,
@@ -200,7 +201,13 @@ function productHTML(p, slug) {
       shippingDetails: {
         '@type': 'OfferShippingDetails',
         shippingRate: { '@type': 'MonetaryAmount', value: '0', currency: 'USD' },
-        shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'US' },
+        shippingDestination: [
+          { '@type': 'DefinedRegion', addressCountry: 'US' },
+          { '@type': 'DefinedRegion', addressCountry: 'GB' },
+          { '@type': 'DefinedRegion', addressCountry: 'AU' },
+          { '@type': 'DefinedRegion', addressCountry: 'CA' },
+          { '@type': 'DefinedRegion', addressCountry: 'DE' }
+        ],
         deliveryTime: {
           '@type': 'ShippingDeliveryTime',
           handlingTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 3, unitCode: 'DAY' },
@@ -224,9 +231,8 @@ function productHTML(p, slug) {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
-      { '@type': 'ListItem', position: 2, name: 'Amber Jewelry', item: `${SITE}/amber` },
-      { '@type': 'ListItem', position: 3, name: catLabel, item: `${SITE}/${cat}` },
-      { '@type': 'ListItem', position: 4, name, item: canonical }
+      { '@type': 'ListItem', position: 2, name: catLabel, item: `${SITE}/${cat}` },
+      { '@type': 'ListItem', position: 3, name, item: canonical }
     ]
   }, null, 2);
 
@@ -403,7 +409,7 @@ ${breadcrumbSchema}
 
   <div class="pp-info">
     <div class="pp-breadcrumb">
-      <a href="/">Home</a> &rsaquo; <a href="/amber">Amber Jewelry</a> &rsaquo; <a href="/shop?cat=${esc(cat)}">${esc(catLabel)}</a> &rsaquo; ${esc(name)}
+      <a href="/">Home</a> &rsaquo; <a href="/${esc(cat)}">${esc(catLabel)}</a> &rsaquo; ${esc(name)}
     </div>
     <div class="pp-cat">${esc(catLabel)}</div>
     ${badgeHTML ? `<div class="pp-badge-wrap">${badgeHTML}</div>` : ''}
