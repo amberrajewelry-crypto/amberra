@@ -75,22 +75,34 @@ const CAT_INTRO = {
   rings: [
     'Designed for everyday wear, this ring pairs the warmth of natural amber with a hand-finished band.',
     'This ring frames a single piece of natural amber, sized to sit comfortably and catch the light as you move.',
-    'A ring built around one warm cabochon of amber, finished by hand so no two pieces are exactly alike.'
+    'A ring built around one warm cabochon of amber, finished by hand so no two pieces are exactly alike.',
+    'A hand-forged silver band cradles a single amber stone — quiet enough for every day, warm enough to notice.',
+    'This ring makes an easy promise or anniversary piece: one warm stone, a hand-shaped band, nothing mass-produced.',
+    'Sculpted around a natural amber cabochon, the band is finished by hand so it sits close and comfortable.'
   ],
   earrings: [
     'These earrings carry the glow of natural amber close to the face, light enough for all-day wear.',
     'A pair of earrings that let natural amber catch the light with every turn of the head.',
-    'Lightweight earrings that pair the honeyed warmth of amber with a secure, comfortable fitting.'
+    'Lightweight earrings that pair the honeyed warmth of amber with a secure, comfortable fitting.',
+    'Hand-forged in sterling silver, these earrings frame natural amber for a warm, everyday glow.',
+    'Light on the ear and warm in tone, this pair brings natural Baltic amber into daily wear.',
+    'A pair made one at a time, letting the amber colour lead and the silver stay quietly in support.'
   ],
   pendants: [
     'This pendant centers a single piece of natural amber, ready to layer or wear on its own.',
     'A pendant that lets one warm piece of amber rest at the collarbone, hung on a fine chain.',
-    'Worn close to the heart, this pendant turns a fossil of ancient resin into an everyday piece.'
+    'Worn close to the heart, this pendant turns a fossil of ancient resin into an everyday piece.',
+    'One warm amber cabochon in hand-worked silver, easy to layer or wear alone.',
+    'A pendant sized to sit at the collarbone, framing natural amber in quiet sterling silver.',
+    'This pendant carries a single stone of Baltic amber, ready to pair with any AMBERRA chain.'
   ],
   bracelets: [
     'This bracelet wraps the wrist in the warm tones of natural amber, finished for comfortable daily wear.',
     'A bracelet that brings the glow of amber to the wrist, sized to move with you.',
-    'Natural amber set into a bracelet made to be worn and layered, from day to evening.'
+    'Natural amber set into a bracelet made to be worn and layered, from day to evening.',
+    'Warm amber and hand-worked silver wrap the wrist, light enough to forget you are wearing it.',
+    'A bracelet built to layer with a watch or bangles, centred on natural Baltic amber.',
+    'This piece sets natural amber along the wrist, hand-finished to sit and move comfortably.'
   ],
   chains: [
     'A finished chain made to carry your favorite amber pendant, or to be worn on its own.',
@@ -110,7 +122,11 @@ const COLOR_LINE = {
 const CRAFT_LINE = [
   'Each piece is handcrafted and shipped worldwide.',
   'Made by hand by our artisans, it arrives ready to gift.',
-  'Handcrafted from genuine Baltic amber, then finished by hand.'
+  'Handcrafted from genuine Baltic amber, then finished by hand.',
+  'Worked by hand from start to finish, it ships worldwide with a certificate of authenticity.',
+  'Finished by hand and boxed ready to gift, with free tracked shipping over $200.',
+  'One of a kind, hand-finished by our silversmiths and shipped worldwide.',
+  'Hand-set and polished by our artisans, it arrives gift-ready with tracked delivery.'
 ];
 function aboutBlock(p) {
   const seed = p.name + p.cat;
@@ -120,7 +136,11 @@ function aboutBlock(p) {
     'Every piece of natural amber carries its own inclusions and tone, so yours is one of a kind.',
     'No two pieces of natural amber are alike — the color and tiny inclusions make each one unique.',
     'Formed from resin millions of years old, each amber cabochon has a tone and pattern all its own.',
-    'The warm, translucent color comes from the amber itself, so every piece has its own character.'
+    'The warm, translucent color comes from the amber itself, so every piece has its own character.',
+    'Held to the light, the amber glows from within — a depth no dyed or pressed stone can imitate.',
+    'Tiny natural inclusions trapped in the resin are the fingerprint of genuine Baltic amber.',
+    'The stone shifts from gold to honey as the light moves, the way only natural amber does.',
+    'Each cabochon is cut from a single piece of raw Baltic amber, so its tone is entirely its own.'
   ];
   const colLine = COLOR_LINE[col] || pick(seed + (p.material || '') + 'f', COLOR_FALLBACK);
   const metal = String((p.props && p.props.Metal) || '').toLowerCase();

@@ -43,7 +43,7 @@ const TYPES = {
  ['How do I care for an amber ring?', 'To care for an amber ring, avoid perfume, heat and ultrasonic cleaners, since amber is a soft, organic stone that can be damaged by chemicals and vibration. Wipe it gently with a soft cloth and store it separately from harder gemstones and metals that could scratch its surface. Put your ring on last, after applying lotion and hairspray, and take it off before showering, swimming or sleeping. The 925 sterling silver setting can darken slowly with air; a soft cloth restores its shine. Cared for simply, an amber ring keeps its warm glow for decades.']
  ] },
  earrings: { label: 'Earrings', h1: 'Handmade Sterling Silver Earrings with Baltic Amber',
- metaTitle: 'Handmade Sterling Silver Earrings with Baltic Amber | AMBERRA',
+ metaTitle: 'Handmade Sterling Silver Earrings with Amber | AMBERRA',
  metaDesc: 'Natural Baltic amber earrings handcrafted — drops, studs, hoops & filigree in 925 silver. Cherry, cognac & honey amber. Free shipping over $200.',
  intro: [
  'Our amber earrings pair natural Baltic amber with hand-forged 925 sterling silver — from light everyday studs to statement drops. Colors range across cherry, cognac, honey, green and blue amber.',
