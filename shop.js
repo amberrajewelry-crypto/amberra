@@ -5,7 +5,7 @@
 const C='https://res.cloudinary.com/dtfq3xq3t/image/upload';
 const I='/images';
 // WebP delivery with fallback (mirrors app.js; safe if app.js loads first)
-if(typeof wsrc!=='function'){window.wsrc=function(p){if(typeof p!=='string')return p;var w=/^\/?images\/.*\.(jpe?g|png)$/i.test(p)?p.replace(/\.(jpe?g|png)$/i,'.webp'):p;return /\/images\/products\/\d+\.webp$/.test(w)?w+'?v=9':w;};}
+if(typeof wsrc!=='function'){window.wsrc=function(p){if(typeof p!=='string')return p;var w=/^\/?images\/.*\.(jpe?g|png)$/i.test(p)?p.replace(/\.(jpe?g|png)$/i,'.webp'):p;return /\/images\/products\/\d+\.webp$/.test(w)?w+'?v=10':w;};}
 if(typeof wimg!=='function'){window.wimg=function(el,src){if(!el)return;el.onerror=function(){this.onerror=null;this.src=src;};el.src=wsrc(src);};}
 
 // ── PRODUCTS ──────────────────────────────────────────────────────────────
