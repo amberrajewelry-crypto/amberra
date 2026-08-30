@@ -22,7 +22,7 @@ function absImg(img) {
  u = u.replace(/^https?:\/\/(www\.)?amberra-jewelry\.com\//i, 'https://www.amberrajewelry.com/');
  const m = u.match(/\/img\/(\d+)\.(?:jpe?g|png)/i);
  if (m && _WEBP_NUMS.has(m[1])) u = u.replace(/\/img\/(\d+)\.(?:jpe?g|png)/i, `/images/products/${m[1]}.webp`);
- if (/\/images\/products\/\d+\.webp$/.test(u)) u += '?v=8';
+ if (/\/images\/products\/\d+\.webp$/.test(u)) u += '?v=9';
  return /^https?:/.test(u) ? u : `${SITE}/${u.replace(/^\//, '')}`;
 }
 
