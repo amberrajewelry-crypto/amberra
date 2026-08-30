@@ -54,7 +54,7 @@ const COLLS = [
     s2: 'Each piece feels grown rather than made, alive with tiny inclusions. For those drawn to the natural world and its quiet, imperfect beauty.' },
 ];
 
-function absImg(img) { let u = img && img.startsWith('/') ? img : '/' + (img || ''); if (/\/images\/products\/\d+\.webp$/.test(u)) u += '?v=6'; return u; }
+function absImg(img) { let u = img && img.startsWith('/') ? img : '/' + (img || ''); if (/\/images\/products\/\d+\.webp$/.test(u)) u += '?v=7'; return u; }
 function card(p) {
   const price = '$' + p.price;
   return `      <a class="coll-card" href="/products/${esc(p.slug)}">

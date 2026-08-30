@@ -5,7 +5,7 @@
 
 // WebP delivery: rewrite local /images/*.jpg|png → .webp, fall back to original on 404.
 // Remote (Cloudinary) and non-image paths are left untouched.
-function wsrc(p){if(typeof p!=='string')return p;var w=/^\/?images\/.*\.(jpe?g|png)$/i.test(p)?p.replace(/\.(jpe?g|png)$/i,'.webp'):p;return /\/images\/products\/\d+\.webp$/.test(w)?w+'?v=6':w;}
+function wsrc(p){if(typeof p!=='string')return p;var w=/^\/?images\/.*\.(jpe?g|png)$/i.test(p)?p.replace(/\.(jpe?g|png)$/i,'.webp'):p;return /\/images\/products\/\d+\.webp$/.test(w)?w+'?v=7':w;}
 function wimg(el,src){if(!el)return;el.onerror=function(){this.onerror=null;this.src=src;};el.src=wsrc(src);}
 
 // ── ACCOUNT MODAL ─────────────────────────────────────────────────────────
