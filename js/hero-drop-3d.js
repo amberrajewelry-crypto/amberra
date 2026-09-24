@@ -224,5 +224,7 @@ function init() {
 }
 
 // start after first paint so the page (text, cookie bar, app.js) isn't blocked by WebGL setup
-if ('requestIdleCallback' in window) requestIdleCallback(boot, { timeout: 1200 });
+// intro screen covers the page → boot at once so the drop is ready when it lifts
+if (document.documentElement.classList.contains('intro-on')) boot();
+else if ('requestIdleCallback' in window) requestIdleCallback(boot, { timeout: 1200 });
 else setTimeout(boot, 200);

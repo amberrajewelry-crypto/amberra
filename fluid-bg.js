@@ -1,8 +1,9 @@
 import * as THREE from 'three'
-import { EffectComposer, RenderPass, BloomEffect, EffectPass } from 'https://esm.sh/postprocessing@6.37.3?external=three'
+import { EffectComposer, RenderPass, BloomEffect, EffectPass } from 'https://esm.sh/postprocessing@6.37.3/X-ZXRocmVl/es2022/postprocessing.mjs' // resolved build: skips esm.sh redirect hop
 
 // start on idle: sim setup + first-frame shader compile stay off the page's critical path
-await new Promise(r => 'requestIdleCallback' in window ? requestIdleCallback(r, { timeout: 1500 }) : setTimeout(r, 300))
+// intro screen covers the page → start at once; otherwise wait for idle
+if (!document.documentElement.classList.contains('intro-on')) await new Promise(r => 'requestIdleCallback' in window ? requestIdleCallback(r, { timeout: 1500 }) : setTimeout(r, 300))
 
 const canvas = document.getElementById('fluid-canvas')
 if (!canvas) throw new Error('fluid-canvas not found')
@@ -287,6 +288,7 @@ function animate(){
   composer.render()
 }
 animate()
+requestAnimationFrame(() => { window.__ambFluidReady = true; dispatchEvent(new Event('amberra:fluid-ready')) })
 
 window.addEventListener('resize',()=>{
   renderer.setSize(innerWidth,innerHeight)
