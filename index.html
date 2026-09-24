@@ -25,7 +25,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
 <link rel="preload" as="fetch" href="/models/amber-drop.glb?v=9" crossorigin>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.177.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.177.0/examples/jsm/"}}</script>
-<script type="module" async src="/js/hero-drop-3d.js?v=20260924b"></script>
+<script type="module" async src="/js/hero-drop-3d.js?v=20260924c"></script>
 <meta name="description" content="Handcrafted Baltic amber &amp; 925 sterling silver jewelry — rings, pendants &amp; earrings. Designed in Bali, shipped worldwide. Free gift wrapping.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="author" content="AMBERRA">
@@ -492,6 +492,96 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="/style.css?v=20260830">
 </head>
 <body class="page-home">
+<!-- ══ INTRO — amber drop fills with liquid light while the 3D scene loads (once per session) ══ -->
+<style>
+#amb-intro{position:fixed;inset:0;z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(22px,4vh,40px);
+  background:radial-gradient(130% 100% at 50% 42%,#6b5320 0%,#3a2a10 40%,#1c1308 72%,#0f0a04 100%);
+  transition:opacity .9s cubic-bezier(.4,0,.2,1),visibility 0s .9s;
+  animation:ambIntroFailsafe .6s 4s forwards} /* no-JS / stuck safety: never blocks the site */
+@keyframes ambIntroFailsafe{to{opacity:0;visibility:hidden}}
+#amb-intro.out{opacity:0;visibility:hidden}
+#amb-intro .ai-stage{position:relative;width:clamp(104px,10vw,170px);aspect-ratio:100/150;transition:transform .9s cubic-bezier(.4,0,.2,1),filter .9s}
+#amb-intro.out .ai-stage{transform:scale(1.18);filter:blur(6px)}
+#amb-intro .ai-glow{position:absolute;left:50%;top:62%;width:260%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle,rgba(232,208,128,.34) 0%,rgba(201,168,50,.12) 38%,transparent 68%);
+  opacity:0;animation:aiGlow 2.4s .5s ease-in-out forwards}
+@keyframes aiGlow{0%{opacity:0;transform:translate(-50%,-50%) scale(.7)}60%{opacity:1}100%{opacity:.85;transform:translate(-50%,-50%) scale(1)}}
+#amb-intro svg{position:relative;width:100%;height:100%;overflow:visible}
+#amb-intro .ai-outline{fill:none;stroke:url(#aiGold);stroke-width:1.4;stroke-dasharray:330;stroke-dashoffset:330;animation:aiDraw 1s .05s cubic-bezier(.6,.05,.3,1) forwards}
+@keyframes aiDraw{to{stroke-dashoffset:0}}
+#amb-intro .ai-rise{transform:translateY(150px);animation:aiRise 1.25s .35s cubic-bezier(.3,.1,.2,1) forwards}
+@keyframes aiRise{to{transform:translateY(-12px)}}
+#amb-intro .ai-wave{animation:aiWave 1.1s linear infinite}
+@keyframes aiWave{to{transform:translateX(-50px)}}
+#amb-intro .ai-glint{opacity:0;animation:aiGlint 1.4s 1.15s ease-out forwards}
+@keyframes aiGlint{30%{opacity:.75}100%{opacity:.45}}
+#amb-intro .ai-spark{opacity:0;transform-box:fill-box;transform-origin:center;animation:aiSpark 1.6s ease-in-out infinite}
+@keyframes aiSpark{0%,100%{opacity:0;transform:translateY(4px) scale(.6)}50%{opacity:1;transform:translateY(-3px) scale(1)}}
+#amb-intro .ai-word{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:clamp(30px,3.6vw,52px);letter-spacing:.34em;margin-right:-.34em;color:#F3E2A6;line-height:1;white-space:nowrap}
+#amb-intro .ai-word span{display:inline-block;opacity:.02;filter:blur(10px);transform:translateY(10px);animation:aiLetter .9s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes aiLetter{to{opacity:1;filter:blur(0);transform:none}}
+#amb-intro .ai-sub{font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;font-size:clamp(10px,.9vw,13px);letter-spacing:.55em;margin:-10px -.55em 0 0;text-transform:uppercase;color:rgba(255,246,220,.75);opacity:0;animation:aiSub .9s 1.15s ease forwards}
+@keyframes aiSub{to{opacity:1}}
+#amb-intro .ai-line{width:clamp(80px,12vw,160px);height:1px;background:linear-gradient(90deg,transparent,#E8D080,transparent);transform:scaleX(0);animation:aiLine 1.1s .9s cubic-bezier(.6,.05,.3,1) forwards;margin-top:-6px}
+@keyframes aiLine{to{transform:scaleX(1)}}
+html.intro-on{overflow:hidden}
+/* hero entrance replays after the intro instead of finishing unseen behind it */
+html.intro-on .hero-title,html.intro-on .hero-cta{animation:none;opacity:0}
+.hero-title{animation-fill-mode:both} /* hidden during its .45s delay — no flash before the rise */
+@media(prefers-reduced-motion:reduce){
+  #amb-intro *{animation-duration:.01s!important;animation-delay:0s!important}
+  #amb-intro .ai-wave,#amb-intro .ai-spark{animation:none}
+}
+</style>
+<noscript><style>#amb-intro{display:none}</style></noscript>
+<div id="amb-intro" aria-hidden="true">
+  <div class="ai-stage">
+    <div class="ai-glow"></div>
+    <svg viewBox="0 0 100 150">
+      <defs>
+        <linearGradient id="aiGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF3C4"/><stop offset=".5" stop-color="#E8D080"/><stop offset="1" stop-color="#C9A832"/></linearGradient>
+        <linearGradient id="aiHoney" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD27A"/><stop offset=".45" stop-color="#E8912A"/><stop offset="1" stop-color="#9A4E10"/></linearGradient>
+        <radialGradient id="aiCore" cx=".5" cy=".7" r=".5"><stop offset="0" stop-color="#FFE7A8" stop-opacity=".9"/><stop offset="1" stop-color="#FFE7A8" stop-opacity="0"/></radialGradient>
+        <clipPath id="aiClip"><path d="M50 4C58 30 90 62 90 104A40 40 0 0 1 10 104C10 62 42 30 50 4Z"/></clipPath>
+      </defs>
+      <g clip-path="url(#aiClip)">
+        <g class="ai-rise"><g class="ai-wave">
+          <path fill="url(#aiHoney)" opacity=".94" d="M0 8Q12.5 0 25 8T50 8T75 8T100 8T125 8T150 8T175 8T200 8V170H0Z"/>
+        </g></g>
+        <ellipse cx="50" cy="108" rx="30" ry="30" fill="url(#aiCore)" class="ai-glint"/>
+        <circle class="ai-spark" cx="38" cy="112" r="1.6" fill="#FFF4D8" style="animation-delay:1.1s"/>
+        <circle class="ai-spark" cx="60" cy="98" r="1.2" fill="#FFF4D8" style="animation-delay:1.35s"/>
+        <circle class="ai-spark" cx="52" cy="124" r="1.9" fill="#FFF4D8" style="animation-delay:1.55s"/>
+        <circle class="ai-spark" cx="44" cy="88" r="1" fill="#FFF4D8" style="animation-delay:1.25s"/>
+        <circle class="ai-spark" cx="66" cy="118" r="1.4" fill="#FFF4D8" style="animation-delay:1.7s"/>
+        <ellipse class="ai-glint" cx="35" cy="92" rx="4.5" ry="15" fill="#FFFBEA" transform="rotate(14 35 92)"/>
+      </g>
+      <path class="ai-outline" d="M50 4C58 30 90 62 90 104A40 40 0 0 1 10 104C10 62 42 30 50 4Z"/>
+    </svg>
+  </div>
+  <div class="ai-word"><span style="animation-delay:.45s">A</span><span style="animation-delay:.52s">M</span><span style="animation-delay:.59s">B</span><span style="animation-delay:.66s">E</span><span style="animation-delay:.73s">R</span><span style="animation-delay:.8s">R</span><span style="animation-delay:.87s">A</span></div>
+  <div class="ai-line"></div>
+  <div class="ai-sub">Jewelry</div>
+</div>
+<script>
+(function(){
+  var d=document.documentElement,el=document.getElementById('amb-intro'),seen;
+  try{seen=sessionStorage.getItem('amb_intro')}catch(e){}
+  if(seen){el.parentNode.removeChild(el);return}
+  try{sessionStorage.setItem('amb_intro','1')}catch(e){}
+  d.classList.add('intro-on');
+  var t0=Date.now(),MIN=1500,MAX=3000,done=false;
+  function end(){
+    if(done)return;done=true;
+    setTimeout(function(){
+      el.classList.add('out');d.classList.remove('intro-on');
+      setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el)},1000);
+    },Math.max(0,MIN-(Date.now()-t0)));
+  }
+  if(window.__ambDropReady)end();else addEventListener('amberra:drop-ready',end);
+  setTimeout(end,MAX);
+})();
+</script>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJ5682RJ"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

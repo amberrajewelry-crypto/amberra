@@ -127,7 +127,11 @@ function init() {
     const halfH = (size.y * scl) / 2, halfW = (size.x * scl) / 2;
     seedSparks(halfW, halfH, halfH * 0.02);
     ready = false;
-    renderer.compileAsync(scene, camera).catch(() => {}).finally(() => { ready = true; });
+    renderer.compileAsync(scene, camera).catch(() => {}).finally(() => {
+      ready = true;
+      // lets the homepage intro hand over to the live drop
+      requestAnimationFrame(() => { window.__ambDropReady = true; dispatchEvent(new Event('amberra:drop-ready')); });
+    });
   });
 
   const controls = new OrbitControls(camera, renderer.domElement);
