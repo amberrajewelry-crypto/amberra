@@ -4,7 +4,8 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
-const mount = document.getElementById('hero-drop-canvas');
+// resolved in boot(): as an async module this file may run before the hero markup is parsed
+let mount = null;
 
 // Guarantee real dimensions even if style.css is cached/stale.
 function ensureSize() {
@@ -20,7 +21,11 @@ function ensureSize() {
 }
 
 function boot() {
-  if (!mount) return;
+  mount = mount || document.getElementById('hero-drop-canvas');
+  if (!mount) {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });
+    return;
+  }
   ensureSize();
   if (mount.clientWidth === 0 || mount.clientHeight === 0) { requestAnimationFrame(boot); return; }
   init();
@@ -104,6 +109,8 @@ function init() {
     }
   }
 
+  // ready=false while heavy shaders compile off the main thread (KHR_parallel_shader_compile)
+  let ready = true;
   new GLTFLoader().load('/models/amber-drop.glb?v=9', (gltf) => {
     const root = gltf.scene;
     let maxV = 0, body = null;
@@ -119,6 +126,8 @@ function init() {
     // sparks live in group space; drop spans ~[-1.65..1.65] in tallest axis
     const halfH = (size.y * scl) / 2, halfW = (size.x * scl) / 2;
     seedSparks(halfW, halfH, halfH * 0.02);
+    ready = false;
+    renderer.compileAsync(scene, camera).catch(() => {}).finally(() => { ready = true; });
   });
 
   const controls = new OrbitControls(camera, renderer.domElement);
@@ -156,7 +165,7 @@ function init() {
   const clock = new THREE.Clock();
   (function animate() {
     requestAnimationFrame(animate);
-    if (!onScreen) return;
+    if (!onScreen || !ready) return;
     const t = clock.getElapsedTime();
 
     // glint sweep: orbiting light — magnetically drawn toward the cursor on hover
@@ -205,4 +214,6 @@ function init() {
   })();
 }
 
-boot();
+// start after first paint so the page (text, cookie bar, app.js) isn't blocked by WebGL setup
+if ('requestIdleCallback' in window) requestIdleCallback(boot, { timeout: 1200 });
+else setTimeout(boot, 200);

@@ -1076,11 +1076,10 @@ function legalTab(tab){
 
 // ── COOKIE BANNER ─────────────────────────────────────────────────────────
 (function(){
+  // shown right away (no delay): a late-appearing bar became the page's LCP element
   if(!localStorage.getItem('ck_choice')){
-    setTimeout(function(){
-      var o=document.getElementById('cookie-overlay');
-      if(o){o.style.display='flex';setTimeout(function(){o.classList.remove('hide')},10);}
-    },1500);
+    var o=document.getElementById('cookie-overlay');
+    if(o){o.style.display='flex';setTimeout(function(){o.classList.remove('hide')},10);}
   }
 })();
 function ckClose(){
@@ -1242,6 +1241,15 @@ document.addEventListener('DOMContentLoaded',()=>{
   // Ensure hero video plays
   const heroVid=document.getElementById('hero-video');
   if(heroVid) heroVid.addEventListener('canplay',()=>{heroVid.play().catch(()=>{});},{once:true});
+  // Below-the-fold video posters: set only when near the viewport, so they don't compete with the hero
+  const lazyPosters=document.querySelectorAll('video[data-poster]');
+  if(lazyPosters.length){
+    const pio=new IntersectionObserver(es=>es.forEach(e=>{
+      if(!e.isIntersecting)return;
+      e.target.poster=e.target.dataset.poster; pio.unobserve(e.target);
+    }),{rootMargin:'1200px 0px'});
+    lazyPosters.forEach(v=>pio.observe(v));
+  }
   // About video lazy loading (20.5MB - load only when in viewport)
   const abVid=document.querySelector('.ab-video');
   if(abVid&&abVid.dataset.src){
