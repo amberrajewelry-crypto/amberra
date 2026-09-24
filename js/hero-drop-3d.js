@@ -149,9 +149,14 @@ function init() {
   new ResizeObserver(resize).observe(mount);
   addEventListener('resize', resize);
 
+  // skip rendering while the hero is scrolled away — frees CPU/GPU for the rest of the page
+  let onScreen = true;
+  new IntersectionObserver(([e]) => { onScreen = e.isIntersecting; }).observe(mount);
+
   const clock = new THREE.Clock();
   (function animate() {
     requestAnimationFrame(animate);
+    if (!onScreen) return;
     const t = clock.getElapsedTime();
 
     // glint sweep: orbiting light — magnetically drawn toward the cursor on hover

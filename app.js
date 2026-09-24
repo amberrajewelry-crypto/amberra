@@ -1273,10 +1273,12 @@ document.addEventListener('DOMContentLoaded',()=>{
     },{threshold:.15});
     io.observe(edm);
   }
-  // Brand video — lazy load 2s after DOMContentLoaded (does not block initial paint)
+  // Brand video — load only when its section nears the viewport (1.7 MB, skipped on bounce)
   const brandVid=document.querySelector('.brand-vid');
   if(brandVid&&brandVid.dataset.src){
-    setTimeout(()=>{
+    const io=new IntersectionObserver(es=>{
+      if(!es[0].isIntersecting)return;
+      io.disconnect();
       const s=document.createElement('source');
       s.src=brandVid.dataset.src; s.type='video/mp4';
       brandVid.appendChild(s);
@@ -1285,7 +1287,8 @@ document.addEventListener('DOMContentLoaded',()=>{
       brandVid.addEventListener('loadeddata',tryPlay,{once:true});
       brandVid.addEventListener('playing',()=>brandVid.classList.add('is-playing'),{once:true});
       brandVid.load(); tryPlay();
-    },2000);
+    },{rootMargin:'800px 0px'});
+    io.observe(brandVid);
   }
   // Nav alignment handled by CSS only
 });
