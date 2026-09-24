@@ -81,9 +81,15 @@ function init() {
   );
   group.add(core);
 
+  // inner motes: one InstancedMesh (1 draw call instead of 60); glow = per-instance colour
   const sparks = [];
+  const SPARK_BASE = new THREE.Color(0xfff4d8).multiplyScalar(0.55); // approx. lit diffuse of the old standard material
+  const SPARK_GLOW = new THREE.Color(0xffe1a0);
+  const _m = new THREE.Matrix4(), _q = new THREE.Quaternion(), _s = new THREE.Vector3(), _c = new THREE.Color();
+  let sparkMesh = null;
   function seedSparks(halfW, halfH, cy) {
     const N = coarse ? 38 : 60;
+    sparkMesh = new THREE.InstancedMesh(new THREE.SphereGeometry(1, 8, 8), new THREE.MeshBasicMaterial(), N);
     for (let i = 0; i < N; i++) {
       // rejection-sample inside an ellipsoid (bulb-biased) so motes stay within the amber
       let x, y, z;
@@ -92,21 +98,18 @@ function init() {
         y = (Math.random() * 2 - 1);
         z = (Math.random() * 2 - 1);
       } while (x * x + y * y + z * z > 1);
-      const m = new THREE.MeshStandardMaterial({
-        color: 0xfff4d8, emissive: 0xffe1a0, emissiveIntensity: 1.4, roughness: 0.3, metalness: 0.0,
+      // tiny star-like specks of varied size; keep motes inside the bulb, biased up from the tip
+      const pos = new THREE.Vector3(x * halfW * 0.55, cy + y * halfH * 0.42, z * halfW * 0.55);
+      sparks.push({
+        pos, home: pos.clone(), // rest position for magnetic pull
+        r: (0.008 + Math.random() * 0.011) * halfH * 2,
+        phase: Math.random() * Math.PI * 2,
+        speed: 1.8 + Math.random() * 3.4,
+        peak: 2.0 + Math.random() * 2.4,
       });
-      // tiny star-like specks of varied size
-      const r = (0.008 + Math.random() * 0.011) * halfH * 2;
-      const s = new THREE.Mesh(new THREE.SphereGeometry(r, 8, 8), m);
-      // keep motes inside the bulb — tight radial spread, biased slightly up from the tapered tip
-      s.position.set(x * halfW * 0.55, cy + y * halfH * 0.42, z * halfW * 0.55);
-      s.userData.home = s.position.clone(); // rest position for magnetic pull
-      s.userData.phase = Math.random() * Math.PI * 2;
-      s.userData.speed = 1.8 + Math.random() * 3.4;
-      s.userData.peak = 2.0 + Math.random() * 2.4;
-      group.add(s);
-      sparks.push(s);
+      sparkMesh.setColorAt(i, SPARK_BASE);
     }
+    group.add(sparkMesh);
   }
 
   // ready=false while heavy shaders compile off the main thread (KHR_parallel_shader_compile)
@@ -194,15 +197,17 @@ function init() {
 
     // inner starfield: sharp twinkle + magnetic drift + motes glow when the soul passes near
     const mag = hoverAmt * 0.55;
-    for (const s of sparks) {
-      const sp = Math.sin(t * s.userData.speed + s.userData.phase);
+    sparks.forEach((s, i) => {
+      const sp = Math.sin(t * s.speed + s.phase);
       const flash = Math.pow(Math.max(0, sp), 5); // sharp on/off blink like a star
-      const near = Math.max(0, 1 - s.position.distanceTo(core.position) / 0.75);
-      s.material.emissiveIntensity = (0.12 + flash * s.userData.peak + near * near * 1.6) * (1 + hoverAmt * 0.9);
-      const h = s.userData.home;
-      s.position.x += (h.x + cx * mag - s.position.x) * 0.12;
-      s.position.y += (h.y + cy * mag - s.position.y) * 0.12;
-    }
+      const near = Math.max(0, 1 - s.pos.distanceTo(core.position) / 0.75);
+      const glow = (0.12 + flash * s.peak + near * near * 1.6) * (1 + hoverAmt * 0.9);
+      s.pos.x += (s.home.x + cx * mag - s.pos.x) * 0.12;
+      s.pos.y += (s.home.y + cy * mag - s.pos.y) * 0.12;
+      sparkMesh.setMatrixAt(i, _m.compose(s.pos, _q, _s.setScalar(s.r)));
+      sparkMesh.setColorAt(i, _c.copy(SPARK_GLOW).multiplyScalar(glow).add(SPARK_BASE));
+    });
+    if (sparkMesh) { sparkMesh.instanceMatrix.needsUpdate = true; sparkMesh.instanceColor.needsUpdate = true; }
 
     // hover flare: faster spin + brighter emission + halo (via CSS class)
     hoverAmt += ((hover ? 1 : 0) - hoverAmt) * 0.08;

@@ -1,6 +1,9 @@
 import * as THREE from 'three'
 import { EffectComposer, RenderPass, BloomEffect, EffectPass } from 'https://esm.sh/postprocessing@6.37.3?external=three'
 
+// start on idle: sim setup + first-frame shader compile stay off the page's critical path
+await new Promise(r => 'requestIdleCallback' in window ? requestIdleCallback(r, { timeout: 1500 }) : setTimeout(r, 300))
+
 const canvas = document.getElementById('fluid-canvas')
 if (!canvas) throw new Error('fluid-canvas not found')
 
