@@ -261,14 +261,14 @@ window.closeCryptoDisclaimer=function(){
 };
 async function payCrypto(btn){
   const c=JSON.parse(localStorage.getItem('amb_cart')||'[]');
-  const amount=c.reduce((s,p)=>s+(Number(p.price)*(p.qty||1)),0)||1;
-  const desc=c.length?c.map(p=>p.name+(p.size?(' (Size '+p.size+')'):'')).join(', '):'AMBERRA Jewelry';
+  if(!c.length){alert('Your cart is empty.');return;}
+  const items=c.map(p=>({id:p.id,qty:p.qty||1,size:p.size||''}));
   btn.disabled=true;
   btn.innerHTML='CREATING INVOICE…';
   const controller=new AbortController();
   const timer=setTimeout(()=>controller.abort(),12000);
   try{
-    const r=await fetch('/api/create-payment',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({amount,description:desc,orderId:'AMBERRA-'+Date.now()}),signal:controller.signal});
+    const r=await fetch('/api/create-payment',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items}),signal:controller.signal});
     clearTimeout(timer);
     const data=await r.json();
     if(data.invoiceUrl){window.location.href=data.invoiceUrl;}

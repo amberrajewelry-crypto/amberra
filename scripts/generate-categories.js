@@ -854,7 +854,7 @@ ${mainHTML}
 </main>
 ${footerHTML()}
 <script src="/currency.js?v=20260811h" defer></script>
-<script src="/app.js?v=20260830d" defer></script>
+<script src="/app.js?v=20260924a" defer></script>
 <script src="/shop.js?v=20260830d" defer></script>
 </body>
 </html>`;
