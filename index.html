@@ -23,9 +23,9 @@ if(d.readyState==='complete')go();else w.addEventListener('load',go);
 <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
 <link rel="preload" as="fetch" href="/models/amber-drop.glb?v=9" crossorigin>
-<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.177.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.177.0/examples/jsm/"}}</script>
-<!-- flatten the three.js import waterfall (module -> core -> utils) into one parallel fetch -->
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.177.0/build/three.core.js"><link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.177.0/build/three.module.js"><link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.177.0/examples/jsm/loaders/GLTFLoader.js"><link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.177.0/examples/jsm/utils/BufferGeometryUtils.js"><link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.177.0/examples/jsm/controls/OrbitControls.js"><link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.177.0/examples/jsm/environments/RoomEnvironment.js"><link rel="modulepreload" href="https://esm.sh/postprocessing@6.37.3/X-ZXRocmVl/es2022/postprocessing.mjs">
+<script type="importmap">{"imports":{"three":"/vendor/three-r177/build/three.module.min.js","three/addons/":"/vendor/three-r177/examples/jsm/"}}</script>
+<!-- flatten the three.js import waterfall into one parallel fetch; same origin so H2 serves scripts before images -->
+<link rel="modulepreload" href="/vendor/three-r177/build/three.core.min.js" fetchpriority="high"><link rel="modulepreload" href="/vendor/three-r177/build/three.module.min.js" fetchpriority="high"><link rel="modulepreload" href="/vendor/three-r177/examples/jsm/loaders/GLTFLoader.js"><link rel="modulepreload" href="/vendor/three-r177/examples/jsm/utils/BufferGeometryUtils.js"><link rel="modulepreload" href="/vendor/three-r177/examples/jsm/controls/OrbitControls.js"><link rel="modulepreload" href="/vendor/three-r177/examples/jsm/environments/RoomEnvironment.js"><link rel="modulepreload" href="/vendor/postprocessing-6.37.3.mjs">
 <script type="module" async src="/js/hero-drop-3d.js?v=20260924f"></script>
 <meta name="description" content="Handcrafted Baltic amber &amp; 925 sterling silver jewelry — rings, pendants &amp; earrings. Designed in Bali, shipped worldwide. Free gift wrapping.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -499,6 +499,7 @@ if(d.readyState==='complete')go();else w.addEventListener('load',go);
   transition:opacity 1s cubic-bezier(.4,0,.2,1),visibility 0s 1s;
   animation:ambIntroFailsafe .6s 5.4s forwards} /* no-JS / stuck safety: never blocks the site */
 @keyframes ambIntroFailsafe{to{opacity:0;visibility:hidden}}
+html.intro-on .brand-video{background-image:none!important} /* below-fold poster waits: bandwidth goes to the 3D */
 #amb-intro::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .9s ease;background:radial-gradient(ellipse 70% 60% at 50% 48%,#d59b4d 0%,#6b5226 22%,#4a3818 48%,#2e1e09 75%,#1a0d04 100%)}
 #amb-intro.out::before{opacity:1}
 #amb-intro.out{opacity:0;visibility:hidden;transition:opacity 1.1s cubic-bezier(.4,0,.2,1) .5s,visibility 0s 1.6s}
@@ -697,7 +698,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
   <a class="hero-cta" href="/shop" data-i18n="hero_cta">Shop the Collection</a>
 </section>
-<script type="module" async src="/fluid-bg.js?v=20260924b"></script>
+<script type="module" async src="/fluid-bg.js?v=20260924c"></script>
 
 <!-- ══ TRUST BAR (29.07, additive) ════════════════════════════════════════ -->
 <section class="trustbar" aria-label="Why Amberra">

@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import { EffectComposer, RenderPass, BloomEffect, EffectPass } from 'https://esm.sh/postprocessing@6.37.3/X-ZXRocmVl/es2022/postprocessing.mjs' // resolved build: skips esm.sh redirect hop
+import { EffectComposer, RenderPass, BloomEffect, EffectPass } from '/vendor/postprocessing-6.37.3.mjs' // self-hosted esm.sh build (external three)
 
 // start on idle: sim setup + first-frame shader compile stay off the page's critical path
 // intro screen covers the page → start at once; otherwise wait for idle
