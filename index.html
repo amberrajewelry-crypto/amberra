@@ -502,7 +502,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 #amb-intro .ai-mark{position:relative;display:flex;flex-direction:column;align-items:center;gap:clamp(12px,1.6vw,20px);transition:transform 1s cubic-bezier(.4,0,.2,1),filter 1s}
 #amb-intro.out .ai-mark{transform:scale(1.06);filter:blur(4px)}
 #amb-intro .ai-word{position:relative;font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:clamp(46px,7.2vw,104px);
-  letter-spacing:.3em;margin-right:-.3em;line-height:1;white-space:nowrap;--p:104}
+  letter-spacing:.3em;margin-right:-.3em;line-height:1;white-space:nowrap;--p:0} /* hidden until the spark reveals it (no-JS hides the whole intro) */
 #amb-intro .ai-word span{display:block}
 /* engraved gold, revealed up to the spark head */
 #amb-intro .ai-gold{background:linear-gradient(100deg,#9C7A2A 0%,#E8D080 30%,#FFF1C2 46%,#E8D080 60%,#B8941E 100%);background-size:220% 100%;background-position:100% 0;
@@ -542,7 +542,7 @@ html.intro-on .hero-title,html.intro-on .hero-cta{animation:none;opacity:0}
   var word=el.querySelector('.ai-word'),cv=el.querySelector('canvas'),ctx=cv.getContext('2d');
   var calm=matchMedia('(prefers-reduced-motion:reduce)').matches;
   var ENGRAVE=1250,MIN=2300,MAX=3600,t0=Date.now(),done=false,ready=false;
-  word.style.setProperty('--p',calm?104:0);
+  if(calm)word.style.setProperty('--p',104);
 
   function end(){
     if(done)return;done=true;
