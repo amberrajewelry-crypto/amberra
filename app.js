@@ -293,6 +293,17 @@ function closeWholesale(){
   document.body.style.overflow='';
   document.body.style.paddingRight='';
 }
+// Sends a form to /api/contact; on failure restores the button and tells the visitor.
+async function postContact(payload,btn,label){
+  try{
+    const r=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    if(r.ok)return true;
+    const d=await r.json().catch(()=>({}));
+    alert(r.status===429?'Too many requests. Please try again in a few minutes.':(d.error==='name and valid email are required'?'Please check your email address.':'Sending failed. Please try again or write to hello@amberrajewelry.com.'));
+  }catch(e){alert('Network error. Please try again or write to hello@amberrajewelry.com.');}
+  if(btn){btn.disabled=false;btn.textContent=label;}
+  return false;
+}
 async function submitWholesale(){
   const name=document.getElementById('ws-fname').value.trim();
   const email=document.getElementById('ws-email').value.trim();
@@ -305,14 +316,9 @@ async function submitWholesale(){
     alert('Please fill in all required fields.');return;
   }
   const btn=document.querySelector('#ws-form-wrap .btn-s');
+  const label=btn?btn.textContent:'';
   if(btn){btn.disabled=true;btn.textContent='Sending…';}
-  try{
-    await fetch('/api/contact',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({type:'wholesale',name,email,company,country,partnerType,volume,message})
-    });
-  }catch(e){}
+  if(!await postContact({type:'wholesale',name,email,company,country,partnerType,volume,message},btn,label))return;
   document.getElementById('ws-form-wrap').style.display='none';
   document.getElementById('ws-thanks').style.display='block';
 }
@@ -342,14 +348,9 @@ async function submitReq(){
   const message=document.getElementById('f-msg').value.trim();
   if(!name||!email){alert('Please fill in your name and email.');return}
   const btn=document.querySelector('#req-form .btn-s');
+  const label=btn?btn.textContent:'';
   if(btn){btn.disabled=true;btn.textContent='Sending…';}
-  try{
-    await fetch('/api/contact',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({type:'request',piece,name,email,phone,message})
-    });
-  }catch(e){}
+  if(!await postContact({type:'request',piece,name,email,phone,message},btn,label))return;
   document.getElementById('req-form').style.display='none';
   document.getElementById('req-ok').style.display='block';
   setTimeout(closeReq,4000);
