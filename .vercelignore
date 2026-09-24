@@ -7,3 +7,6 @@ demo-fluid.html
 # бэкапы рефакторингов — не деплоить (публичная утечка старых версий)
 *.bak
 *.bak_*
+index-raw.html
+index-mobile.html
+index-redirect.html
