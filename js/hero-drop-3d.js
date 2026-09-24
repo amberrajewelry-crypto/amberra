@@ -1,6 +1,7 @@
 // Interactive 3D amber drop — translucent amber with inner shimmer, surface glint sweep, cursor reaction
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js'; // GLB is meshopt-compressed (gltfpack -cc -noq)
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
@@ -114,7 +115,7 @@ function init() {
 
   // ready=false while heavy shaders compile off the main thread (KHR_parallel_shader_compile)
   let ready = true;
-  new GLTFLoader().load('/models/amber-drop.glb?v=9', (gltf) => {
+  new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).load('/models/amber-drop.glb?v=10', (gltf) => {
     const root = gltf.scene;
     let maxV = 0, body = null;
     root.traverse((o) => { if (o.isMesh) { const v = o.geometry.attributes.position.count; if (v > maxV) { maxV = v; body = o; } } });
