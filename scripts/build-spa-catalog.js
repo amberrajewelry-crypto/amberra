@@ -28,7 +28,7 @@ const spa = P.map(p => ({
 const productsLiteral = 'const products=' + JSON.stringify(spa) + ';';
 const prodI18nLiteral = 'const PROD_I18N={};';
 
-const TARGETS = ['catalog.html', 'about.html', 'contact.html', 'tryon.html', 'amberra.js'];
+const TARGETS = ['catalog.html', 'about.html', 'contact.html', 'tryon.html'];
 
 let report = [];
 for (const file of TARGETS) {
