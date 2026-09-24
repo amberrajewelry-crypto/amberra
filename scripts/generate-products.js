@@ -13,16 +13,7 @@ const LANGS    = ['en','ru','zh','ar','id','fr','de','es','pt','ja','ko','it','t
 
 // ── helpers ──────────────────────────────────────────────────────────────────
 
-function toSlug(name) {
-  return name.toLowerCase()
-    .replace(/[àáâãäå]/g, 'a').replace(/[èéêë]/g, 'e')
-    .replace(/[ìíîï]/g, 'i').replace(/[òóôõö]/g, 'o')
-    .replace(/[ùúûü]/g, 'u').replace(/ñ/g, 'n')
-    .replace(/[^a-z0-9\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '');
-}
+const { toSlug, assignSlugs } = require('./slug');
 
 function esc(str) {
   return String(str)
@@ -614,17 +605,7 @@ async function loadProducts() {
 }
 
 // Identical duplicate-name suffix rule to generate-categories.js::assignSlugs.
-function assignSlugs(products) {
-  const seen = [];
-  for (const p of products) {
-    if (!p.name) continue;
-    let slug = toSlug(p.name);
-    if (seen.includes(slug)) slug = slug + '-' + seen.length;
-    seen.push(slug);
-    p.slug = slug;
-  }
-  return products;
-}
+
 
 // ── /shop static grid (crawlable) ───────────────────────────────────────────
 // Googlebot sees a real product list with /products/<slug> links; shop.js

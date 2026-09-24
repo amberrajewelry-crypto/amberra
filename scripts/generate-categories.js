@@ -606,25 +606,8 @@ function esc(str) {
 }
 
 // MUST match generate-products.js so cards link to real product pages
-function toSlug(name) {
- return String(name || '').toLowerCase()
- .replace(/[àáâãäå]/g, 'a').replace(/[èéêë]/g, 'e')
- .replace(/[ìíîï]/g, 'i').replace(/[òóôõö]/g, 'o')
- .replace(/[ùúûü]/g, 'u').replace(/ñ/g, 'n')
- .replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-')
- .replace(/-+/g, '-').replace(/^-|-$/g, '');
-}
-function assignSlugs(products) {
- const seen = [];
- for (const p of products) {
- if (!p.name) continue;
- let slug = toSlug(p.name);
- if (seen.includes(slug)) slug = slug + '-' + seen.length;
- seen.push(slug);
- p.slug = slug;
- }
- return products;
-}
+const { toSlug, assignSlugs } = require('./slug');
+
 
 function introHTML(paras) {
  // paras[0] is already rendered large as .cat-sub in the hero — skip it here to

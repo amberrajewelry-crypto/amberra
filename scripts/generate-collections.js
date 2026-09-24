@@ -9,25 +9,9 @@ const ROOT = process.cwd();
 const SITE = 'https://www.amberrajewelry.com';
 const CSSVER   = '20260830';
 
-function toSlug(name) {
-  return name.toLowerCase()
-    .replace(/[àáâãäå]/g, 'a').replace(/[èéêë]/g, 'e')
-    .replace(/[ìíîï]/g, 'i').replace(/[òóôõö]/g, 'o')
-    .replace(/[ùúûü]/g, 'u').replace(/ñ/g, 'n')
-    .replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-')
-    .replace(/-+/g, '-').replace(/^-|-$/g, '');
-}
+const { toSlug, assignSlugs } = require('./slug');
 function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;'); }
-function assignSlugs(products) {
-  const seen = [];
-  for (const p of products) {
-    if (!p.name) continue;
-    let slug = toSlug(p.name);
-    if (seen.includes(slug)) slug = slug + '-' + seen.length;
-    seen.push(slug); p.slug = slug;
-  }
-  return products;
-}
+
 function loadProducts() {
   for (const f of ['/tmp/products.json', path.join(ROOT, 'data', 'products.json'), path.join(ROOT, 'products.json')]) {
     try { const raw = JSON.parse(fs.readFileSync(f, 'utf8')); const arr = Array.isArray(raw) ? raw : (raw.products || raw.records || []); if (arr.length) return arr; } catch {}

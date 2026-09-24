@@ -8,7 +8,8 @@
  *        node scripts/predeploy-check.js --strict    # exit 1 при любом WARN
  */
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, dirname } from 'node:path';
+import { createRequire } from 'node:module';
 
 const STRICT = process.argv.includes('--strict');
 const ROOT = process.cwd();
@@ -74,15 +75,33 @@ for (const p of SEO_PAGES) {
   if (!/application\/ld\+json/.test(src)) warn(`${f}: нет JSON-LD schema`);
 }
 
-// 5. Битые локальные ссылки на ассеты (css/js/images) внутри HTML
-for (const f of html) {
+// 5. Битые локальные ссылки на ассеты (css/js/images) — корень и подпапки.
+// Относительный путь резолвится от папки файла, как в браузере (/collections/x → /collections/images/...).
+const SUBDIRS = ['collections', 'amber', 'journal', 'products'];
+const allHtml = [...html, ...SUBDIRS.filter((d) => existsSync(d))
+  .flatMap((d) => readdirSync(d).filter((f) => f.endsWith('.html')).map((f) => `${d}/${f}`))];
+for (const f of allHtml) {
   const src = readFileSync(join(ROOT, f), 'utf8');
-  const re = /(?:src|href)="((?:\.?\/)?(?:images|js|css)\/[\w\-./]+\.(?:css|js|png|jpe?g|webp|svg|mp4))(?:\?[^"]*)?"/g;
+  const re = /(?:src|href|poster)="(\/?(?:\.\/)?(?:images|js|css|audio|models)\/[\w\-./]+\.(?:css|js|png|jpe?g|webp|svg|mp4|glb|mp3))(?:\?[^"]*)?"/g;
   let m;
   while ((m = re.exec(src))) {
-    const path = m[1].replace(/^\.?\//, '');
+    const path = m[1].startsWith('/') ? m[1].slice(1) : join(dirname(f), m[1]);
     if (!existsSync(join(ROOT, path))) err(`${f}: битая ссылка на ${path}`);
   }
+}
+
+// 6. Slug-логика: ESM-копия в api/products.js должна совпадать с scripts/slug.js
+{
+  const { assignSlugs } = createRequire(import.meta.url)('./slug.js');
+  const api = readFileSync(join(ROOT, 'api/products.js'), 'utf8');
+  const fn = (name) => { const i = api.indexOf(`function ${name}`); let d = 0, j = api.indexOf('{', i);
+    for (; j < api.length; j++) { if (api[j] === '{') d++; else if (api[j] === '}' && --d === 0) break; }
+    return api.slice(i, j + 1); };
+  const apiAssign = new Function(`${fn('toSlug')}\n${fn('assignSlugs')}\nreturn assignSlugs;`)();
+  const prods = JSON.parse(readFileSync(join(ROOT, 'data/products.json'), 'utf8'));
+  const a = assignSlugs(structuredClone(prods)).map((p) => p.slug).join('|');
+  const b = apiAssign(structuredClone(prods)).map((p) => p.slug).join('|');
+  if (a !== b) err('api/products.js: slug-логика разошлась с scripts/slug.js — карточки поведут на 404');
 }
 
 // вывод
