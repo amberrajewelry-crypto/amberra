@@ -37,7 +37,7 @@ function init() {
   const coarse = matchMedia('(pointer:coarse)').matches;
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, coarse ? 2 : 2.5));
+  renderer.setPixelRatio(Math.min(devicePixelRatio, coarse ? 1.5 : 2.5)); // phones: -44% pixels
   renderer.setSize(W(), H());
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.18;
