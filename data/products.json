@@ -9,11 +9,15 @@
     "imgs": [
       "/images/products/48121833.webp"
     ],
-    "material": "Natural Baltic Amber · 925 Sterling Silver",
-    "desc": "The ancient eye of wisdom — amber set within an intricate silver frame. Worn for protection and clarity.",
+    "material": "Baltic Amber · 925 Sterling Silver · Black Rhodium & 18K Gold Plating",
+    "desc": "A sacred symbol of awareness, intuition and inner vision. Cognac amber, ancient sunlight held in resin, framed in black rhodium and 18K gold-plated silver. Blessed in Bali — may it help you see the truth beneath the surface.",
     "props": {
-      "Stone": "Natural Baltic Amber",
+      "Stone": "Baltic Amber",
+      "Colors": "In stock: Cognac · Made to order: White (milky), Yellow, Green, Emerald, Red, Blue (delivery time on request)",
       "Metal": "925 Sterling Silver",
+      "Plating": "Black Rhodium & 18K Gold · made to order: Fine Silver 999 & 18K Gold",
+      "Size": "Adjustable",
+      "Width": "3.3 cm",
       "Collection": "Sacred"
     }
   },
@@ -23,15 +27,26 @@
     "cat": "earrings",
     "price": 125,
     "badge": null,
-    "img": "/images/products/48121955.webp",
+    "img": "/images/products/48121955-1.webp",
     "imgs": [
-      "/images/products/48121955.webp"
+      "/images/products/48121955-1.webp",
+      "/images/products/48121955-2.webp",
+      "/images/products/48121955-3.webp",
+      "/images/products/48121955-4.webp",
+      "/images/products/48121955-5.webp",
+      "/images/products/48121955-6.webp",
+      "/images/products/48121955-7.webp",
+      "/images/products/48121955-8.webp",
+      "/images/products/48121955-9.webp"
     ],
-    "material": "Natural Baltic Amber · 925 Sterling Silver",
-    "desc": "The all-seeing eye in amber — a symbol of wisdom and protection, crafted for the modern woman.",
+    "material": "Baltic Amber · 925 Sterling Silver · Black Rhodium & 18K Gold Plating",
+    "desc": "A sacred symbol of awareness, intuition and inner vision. Cognac amber, ancient sunlight held in resin, framed in black rhodium and 18K gold-plated silver. Blessed in Bali — may it help you see the truth beneath the surface.",
     "props": {
-      "Stone": "Natural Baltic Amber",
+      "Stone": "Baltic Amber",
+      "Colors": "In stock: Cognac · Made to order: White (milky), Yellow, Green, Emerald, Red, Blue (delivery time on request)",
       "Metal": "925 Sterling Silver",
+      "Plating": "Black Rhodium & 18K Gold",
+      "Length": "2.8 cm",
       "Collection": "Sacred",
       "Closure": "Lever backs"
     }
