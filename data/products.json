@@ -9,11 +9,15 @@
     "imgs": [
       "/images/products/48121833.webp"
     ],
-    "material": "Natural Baltic Amber · 925 Sterling Silver",
-    "desc": "The ancient eye of wisdom — amber set within an intricate silver frame. Worn for protection and clarity.",
+    "material": "Baltic Amber · 925 Sterling Silver · Black Rhodium & 18K Gold Plating",
+    "desc": "A sacred symbol of awareness, intuition and inner vision. Cognac amber, ancient sunlight held in resin, framed in black rhodium and 18K gold-plated silver. Blessed in Bali — may it help you see the truth beneath the surface.",
     "props": {
-      "Stone": "Natural Baltic Amber",
+      "Stone": "Baltic Amber",
+      "Colors": "In stock: Cognac · Made to order: White (milky), Yellow, Green, Emerald, Red, Blue (delivery time on request)",
       "Metal": "925 Sterling Silver",
+      "Plating": "Black Rhodium & 18K Gold · made to order: Fine Silver 999 & 18K Gold",
+      "Size": "Adjustable",
+      "Width": "3.3 cm",
       "Collection": "Sacred"
     }
   },
