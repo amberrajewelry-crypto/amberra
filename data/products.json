@@ -23,12 +23,19 @@
     "cat": "earrings",
     "price": 125,
     "badge": null,
-    "img": "/images/products/48121955.webp",
+    "img": "/images/products/48121955-1.webp",
     "imgs": [
-      "/images/products/48121955.webp"
+      "/images/products/48121955-1.webp",
+      "/images/products/48121955-2.webp",
+      "/images/products/48121955-3.webp",
+      "/images/products/48121955-4.webp",
+      "/images/products/48121955-5.webp",
+      "/images/products/48121955-6.webp",
+      "/images/products/48121955-7.webp",
+      "/images/products/48121955-8.webp"
     ],
     "material": "Natural Baltic Amber · 925 Sterling Silver",
-    "desc": "The all-seeing eye in amber — a symbol of wisdom and protection, crafted for the modern woman.",
+    "desc": "A sacred symbol of awareness, intuition and inner vision. Cognac amber, ancient sunlight held in resin, framed in gilded and oxidized silver. Blessed in Bali — may it help you see the truth beneath the surface.",
     "props": {
       "Stone": "Natural Baltic Amber",
       "Metal": "925 Sterling Silver",
