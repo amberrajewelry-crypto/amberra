@@ -34,11 +34,14 @@
       "/images/products/48121955-7.webp",
       "/images/products/48121955-8.webp"
     ],
-    "material": "Natural Baltic Amber · 925 Sterling Silver",
-    "desc": "A sacred symbol of awareness, intuition and inner vision. Cognac amber, ancient sunlight held in resin, framed in gilded and oxidized silver. Blessed in Bali — may it help you see the truth beneath the surface.",
+    "material": "Baltic Amber · 925 Sterling Silver · Black Rhodium & 18K Gold Plating",
+    "desc": "A sacred symbol of awareness, intuition and inner vision. Cognac amber, ancient sunlight held in resin, framed in black rhodium and 18K gold-plated silver. Blessed in Bali — may it help you see the truth beneath the surface.",
     "props": {
-      "Stone": "Natural Baltic Amber",
+      "Stone": "Baltic Amber",
+      "Colors": "Cognac, Green, Blue",
       "Metal": "925 Sterling Silver",
+      "Plating": "Black Rhodium & 18K Gold",
+      "Length": "2.8 cm",
       "Collection": "Sacred",
       "Closure": "Lever backs"
     }
