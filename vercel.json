@@ -13,6 +13,11 @@
       "source": "/about",
       "destination": "/our-story",
       "permanent": true
+    },
+    {
+      "source": "/products/leaf-fan-stud-earrings",
+      "destination": "/earrings",
+      "permanent": true
     }
   ],
   "headers": [
