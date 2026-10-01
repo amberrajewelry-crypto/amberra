@@ -940,24 +940,6 @@
     }
   },
   {
-    "id": 53,
-    "name": "Leaf Fan Stud Earrings",
-    "cat": "earrings",
-    "price": 125,
-    "badge": null,
-    "img": "/images/products/53.webp",
-    "imgs": [
-      "/images/products/53.webp"
-    ],
-    "material": "Natural Baltic Amber · Enamel · Gold",
-    "desc": "A fan of enamel leaves with an amber center — citrine or blue — in warm gold.",
-    "props": {
-      "Stone": "Baltic Amber",
-      "Metal": "24k Gold-Plated Silver",
-      "Closure": "Push backs"
-    }
-  },
-  {
     "id": 54,
     "name": "Long Cascade Earrings",
     "cat": "earrings",
