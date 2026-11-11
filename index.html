@@ -1,171 +1,458 @@
 <!DOCTYPE html>
-<html lang="en" translate="no">
+<html lang="en">
 <head>
+<!-- Google Tag Manager -->
+<!-- Google Tag Manager + gtag: events queue immediately, scripts load after window load -->
+<script>(function(w,d){w.dataLayer=w.dataLayer||[];w.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+function add(src){var j=d.createElement('script');j.async=true;j.src=src;d.head.appendChild(j)}
+function go(){add('https://www.googletagmanager.com/gtm.js?id=GTM-PJ5682RJ');add('https://www.googletagmanager.com/gtag/js?id=G-EDNK88SKWD')}
+if(d.readyState==='complete')go();else w.addEventListener('load',go);
+})(window,document);</script>
+<!-- End Google Tag Manager -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EDNK88SKWD');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="p:domain_verify" content="b093b56bab4d147f3aaf1e53e4cd5b2f"/>
-<title>AMBERRA — Handcrafted Balinese Amber Jewelry</title>
-<meta name="description" content="AMBERRA crafts luxury jewelry from authentic Balinese amber in the heart of Bali. Discover rings, earrings, pendants and bracelets handcrafted in Ubud. Free worldwide shipping on orders over $200.">
-<meta name="robots" content="index, follow">
+<title>Handmade Sterling Silver Jewelry &amp; Baltic Amber | AMBERRA</title>
+<meta name="google-site-verification" content="6BNuY9YmujhbaBLS9pTfPTG2N5vmY0y3DOEmL15ALj4">
+<link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+<link rel="preload" as="fetch" href="/models/amber-drop.glb?v=10" crossorigin>
+<script type="importmap">{"imports":{"three":"/vendor/three-r177/build/three.module.min.js","three/addons/":"/vendor/three-r177/examples/jsm/"}}</script>
+<!-- flatten the three.js import waterfall into one parallel fetch; same origin so H2 serves scripts before images -->
+<link rel="modulepreload" href="/vendor/three-r177/build/three.core.min.js" fetchpriority="high"><link rel="modulepreload" href="/vendor/three-r177/build/three.module.min.js" fetchpriority="high"><link rel="modulepreload" href="/vendor/three-r177/examples/jsm/loaders/GLTFLoader.js"><link rel="modulepreload" href="/vendor/three-r177/examples/jsm/utils/BufferGeometryUtils.js"><link rel="modulepreload" href="/vendor/three-r177/examples/jsm/controls/OrbitControls.js"><link rel="modulepreload" href="/vendor/three-r177/examples/jsm/environments/RoomEnvironment.js"><link rel="modulepreload" href="/vendor/postprocessing-6.37.3.min.mjs"><link rel="modulepreload" href="/vendor/three-r177/examples/jsm/libs/meshopt_decoder.module.js">
+<script type="module" async src="/js/hero-drop-3d.js?v=20260924g"></script>
+<meta name="description" content="Handcrafted Baltic amber &amp; 925 sterling silver jewelry — rings, pendants &amp; earrings. Designed in Bali, shipped worldwide. Free gift wrapping.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="author" content="AMBERRA">
 <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://www.amberrajewelry.com/">
 <link rel="alternate" hreflang="en" href="https://www.amberrajewelry.com/">
-<link rel="alternate" hreflang="ru" href="https://www.amberrajewelry.com/ru">
-<link rel="alternate" hreflang="zh" href="https://www.amberrajewelry.com/zh">
-<link rel="alternate" hreflang="ar" href="https://www.amberrajewelry.com/ar">
-<link rel="alternate" hreflang="id" href="https://www.amberrajewelry.com/id">
-<link rel="alternate" hreflang="fr" href="https://www.amberrajewelry.com/fr">
-<link rel="alternate" hreflang="de" href="https://www.amberrajewelry.com/de">
-<link rel="alternate" hreflang="es" href="https://www.amberrajewelry.com/es">
-<link rel="alternate" hreflang="pt" href="https://www.amberrajewelry.com/pt">
-<link rel="alternate" hreflang="ja" href="https://www.amberrajewelry.com/ja">
-<link rel="alternate" hreflang="ko" href="https://www.amberrajewelry.com/ko">
-<link rel="alternate" hreflang="it" href="https://www.amberrajewelry.com/it">
-<link rel="alternate" hreflang="tr" href="https://www.amberrajewelry.com/tr">
-<link rel="alternate" hreflang="hi" href="https://www.amberrajewelry.com/hi">
-<link rel="alternate" hreflang="ka" href="https://www.amberrajewelry.com/ka">
 <link rel="alternate" hreflang="x-default" href="https://www.amberrajewelry.com/">
 
 
 <!-- ══ OPEN GRAPH ══════════════════════════════════════════════════════════ -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="AMBERRA">
-<meta property="og:title" content="AMBERRA — Handcrafted Balinese Amber Jewelry">
-<meta property="og:description" content="Luxury jewelry crafted by hand in Bali using authentic Balinese amber. Rings, earrings, pendants and bracelets. Shop the collection.">
+<meta property="og:title" content="Baltic Amber Jewelry Designed in Bali — Rings, Earrings &amp; Pendants | AMBERRA">
+<meta property="og:description" content="Natural amber &amp; 925 sterling silver jewelry, handcrafted by our artisans. Each piece is unique and shipped worldwide.">
 <meta property="og:url" content="https://www.amberrajewelry.com/">
-<meta property="og:image" content="https://www.amberrajewelry.com/images/og-cover.jpg">
+<meta property="og:image" content="https://www.amberrajewelry.com/images/og-cover.webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="AMBERRA — Handcrafted Balinese Amber Jewelry crafted in Bali">
+<meta property="og:image:alt" content="AMBERRA — Handcrafted Baltic Amber Jewelry crafted">
 <meta property="og:locale" content="en_US">
 
 <!-- ══ TWITTER CARD ════════════════════════════════════════════════════════ -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@amberrajewelry">
-<meta name="twitter:title" content="AMBERRA — Handcrafted Balinese Amber Jewelry">
-<meta name="twitter:description" content="Luxury jewelry crafted by hand in Bali using authentic Balinese amber. Rings, earrings, pendants and bracelets.">
-<meta name="twitter:image" content="https://www.amberrajewelry.com/images/og-cover.jpg">
-<meta name="twitter:image:alt" content="AMBERRA — Handcrafted Balinese Amber Jewelry crafted in Bali">
+<meta name="twitter:title" content="Baltic Amber Jewelry, Designed in Bali | AMBERRA">
+<meta name="twitter:description" content="Natural amber &amp; 925 sterling silver jewelry, handcrafted by our artisans.">
+<meta name="twitter:image" content="https://www.amberrajewelry.com/images/og-cover.webp">
+<meta name="twitter:image:alt" content="AMBERRA — Handcrafted Baltic Amber Jewelry crafted">
 
 <!-- ══ SCHEMA.ORG ══════════════════════════════════════════════════════════ -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://www.amberrajewelry.com/#organization",
-      "name": "AMBERRA",
-      "url": "https://www.amberrajewelry.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://www.amberrajewelry.com/images/logo.png"
-      },
-      "description": "Luxury handcrafted Balinese amber jewelry — rings, earrings, pendants and bracelets. Crafted in Bali.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "ID",
-        "addressRegion": "Bali"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "hello@amberrajewelry.com",
-        "contactType": "customer service"
-      },
-      "sameAs": [
-        "https://www.instagram.com/amberrajewelry",
-        "https://www.pinterest.com/amberrajewelry"
-      ]
+  "@type": ["JewelryStore", "Store"],
+  "@id": "https://www.amberrajewelry.com/#organization",
+  "name": "AMBERRA",
+  "legalName": "Amberra Creation Groups",
+  "url": "https://www.amberrajewelry.com",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://www.amberrajewelry.com/images/favicon-180.png",
+    "width": 180,
+    "height": 180
+  },
+  "description": "Handcrafted jewelry with natural Baltic amber and 925 sterling silver, designed in Bali and finished by hand. Each piece is unique.",
+  "foundingDate": "2023",
+  "knowsAbout": [
+    { "@type": "Thing", "name": "Baltic amber", "sameAs": "https://en.wikipedia.org/wiki/Baltic_amber" },
+    { "@type": "Thing", "name": "Amber", "sameAs": "https://en.wikipedia.org/wiki/Amber" },
+    { "@type": "Thing", "name": "Sterling silver", "sameAs": "https://en.wikipedia.org/wiki/Sterling_silver" },
+    { "@type": "Thing", "name": "Balinese art", "sameAs": "https://en.wikipedia.org/wiki/Balinese_art" },
+    { "@type": "Thing", "name": "Handmade jewelry", "sameAs": "https://en.wikipedia.org/wiki/Jewelry" }
+  ],
+  "currenciesAccepted": "USD",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+
+  "foundingLocation": {
+    "@type": "Place",
+    "name": "Bali, Indonesia"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Bali",
+    "addressRegion": "Bali",
+    "addressCountry": "ID"
+  },
+  "image": "https://www.amberrajewelry.com/images/og-cover.webp",
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -8.50695,
+    "longitude": 115.26303
+  },
+  "telephone": "+62-878-5386-7120",
+  "priceRange": "$$$",
+  "areaServed": ["Worldwide", {"@type": "Country", "name": "Australia"}],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "email": "hello@amberrajewelry.com",
+    "telephone": "+62-878-5386-7120",
+    "availableLanguage": ["English", "Russian", "Indonesian"]
+  },
+  "sameAs": [
+    "https://www.instagram.com/amberra.jewelry",
+    "https://www.pinterest.com/amberra_jewelry/"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://www.amberrajewelry.com/#website",
+  "name": "AMBERRA — Handcrafted Baltic Amber Jewelry",
+  "url": "https://www.amberrajewelry.com",
+  "publisher": {
+    "@id": "https://www.amberrajewelry.com/#organization"
+  },
+  "inLanguage": "en",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://www.amberrajewelry.com/shop?q={search_term_string}"
     },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Baltic Amber Jewelry Collections",
+  "description": "Handcrafted Baltic amber jewelry collections by AMBERRA — rings, earrings, pendants and bracelets designed in Bali.",
+  "itemListElement": [
     {
-      "@type": "WebSite",
-      "@id": "https://www.amberrajewelry.com/#website",
-      "url": "https://www.amberrajewelry.com",
-      "name": "AMBERRA",
-      "publisher": {"@id": "https://www.amberrajewelry.com/#organization"},
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://www.amberrajewelry.com/?s={search_term_string}"
-        },
-        "query-input": "required name=search_term_string"
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "CollectionPage",
+        "name": "Amber Rings",
+        "url": "https://www.amberrajewelry.com/rings"
       }
     },
     {
-      "@type": "WebPage",
-      "@id": "https://www.amberrajewelry.com/#webpage",
-      "url": "https://www.amberrajewelry.com",
-      "name": "AMBERRA — Handcrafted Balinese Amber Jewelry",
-      "description": "Luxury amber jewelry crafted by hand in Bali. Rings, earrings, pendants and bracelets.",
-      "isPartOf": {"@id": "https://www.amberrajewelry.com/#website"},
-      "about": {"@id": "https://www.amberrajewelry.com/#organization"},
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [{"@type": "ListItem","position": 1,"name": "Home","item": "https://www.amberrajewelry.com"}]
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "CollectionPage",
+        "name": "Amber Earrings",
+        "url": "https://www.amberrajewelry.com/earrings"
       }
     },
     {
-      "@type": "ItemList",
-      "@id": "https://www.amberrajewelry.com/#featured-products",
-      "name": "AMBERRA Featured Jewelry Collection",
-      "description": "Handcrafted Balinese amber jewelry — rings, earrings, pendants and bracelets",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "item": {
-            "@type": "Product",
-            "name": "Balinese Sunrise Ring",
-            "description": "A radiant honey-amber cabochon set in hand-carved 925 sterling silver.",
-            "brand": {"@type": "Brand", "name": "AMBERRA"},
-            "material": "Natural Balinese Amber, 925 Sterling Silver",
-            "offers": {"@type": "Offer", "priceCurrency": "USD", "price": "185", "availability": "https://schema.org/InStock", "url": "https://www.amberrajewelry.com/shop"},
-            "image": "https://www.amberrajewelry.com/images/rings/IMG_1597.JPG"
-          }
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "CollectionPage",
+        "name": "Amber Pendants",
+        "url": "https://www.amberrajewelry.com/pendants"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "CollectionPage",
+        "name": "Amber Bracelets",
+        "url": "https://www.amberrajewelry.com/bracelets"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "CollectionPage",
+        "name": "Silver Chains",
+        "url": "https://www.amberrajewelry.com/chains"
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Featured Baltic Amber Jewelry — AMBERRA",
+  "itemListOrder": "https://schema.org/ItemListUnordered",
+  "numberOfItems": 8,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Product",
+        "name": "All-Seeing Eye",
+        "url": "https://www.amberrajewelry.com/products/all-seeing-eye",
+        "image": "https://www.amberrajewelry.com/images/products/48121833.webp",
+        "description": "The ancient eye of wisdom — amber set within an intricate silver frame. Worn for protection and clarity.",
+        "sku": "AMB-0001",
+        "brand": {
+          "@type": "Brand",
+          "name": "AMBERRA"
         },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "item": {
-            "@type": "Product",
-            "name": "Amber Collar Necklace",
-            "description": "A statement collar with seven matched amber cabochons. The crown jewel of the AMBERRA collection.",
-            "brand": {"@type": "Brand", "name": "AMBERRA"},
-            "material": "Natural Balinese Amber, 925 Sterling Silver",
-            "offers": {"@type": "Offer", "priceCurrency": "USD", "price": "485", "availability": "https://schema.org/InStock", "url": "https://www.amberrajewelry.com/shop"},
-            "image": "https://www.amberrajewelry.com/images/og-cover.jpg"
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "item": {
-            "@type": "Product",
-            "name": "Sacred Drop Pendant",
-            "description": "A teardrop of luminous Balinese amber suspended in a hand-forged silver setting. Includes 60cm chain.",
-            "brand": {"@type": "Brand", "name": "AMBERRA"},
-            "material": "Natural Balinese Amber, 925 Sterling Silver",
-            "offers": {"@type": "Offer", "priceCurrency": "USD", "price": "165", "availability": "https://schema.org/InStock", "url": "https://www.amberrajewelry.com/shop"},
-            "image": "https://www.amberrajewelry.com/images/pendants/IMG_4680.JPG"
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "item": {
-            "@type": "Product",
-            "name": "Bali Dusk Drop Earrings",
-            "description": "Graceful drop earrings with faceted honey amber in delicate sterling silver. Handcrafted in Ubud, Bali.",
-            "brand": {"@type": "Brand", "name": "AMBERRA"},
-            "material": "Natural Balinese Amber, 925 Sterling Silver",
-            "offers": {"@type": "Offer", "priceCurrency": "USD", "price": "148", "availability": "https://schema.org/InStock", "url": "https://www.amberrajewelry.com/shop"},
-            "image": "https://www.amberrajewelry.com/images/earrings/IMG_1603.JPG"
+        "material": "Natural Baltic Amber, 925 Sterling Silver",
+        "offers": {
+          "@type": "Offer",
+          "url": "https://www.amberrajewelry.com/products/all-seeing-eye",
+          "priceCurrency": "USD",
+          "price": "119",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "seller": {
+            "@type": "Organization",
+            "name": "AMBERRA"
           }
         }
-      ]
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Product",
+        "name": "Earth of Stars",
+        "url": "https://www.amberrajewelry.com/products/earth-of-stars",
+        "image": "https://www.amberrajewelry.com/images/products/48454667.webp",
+        "description": "The night sky of the Baltic forest — a constellation of amber lights set in sterling silver.",
+        "sku": "AMB-0024",
+        "brand": {
+          "@type": "Brand",
+          "name": "AMBERRA"
+        },
+        "material": "Natural Baltic Amber, 925 Sterling Silver",
+        "offers": {
+          "@type": "Offer",
+          "url": "https://www.amberrajewelry.com/products/earth-of-stars",
+          "priceCurrency": "USD",
+          "price": "329",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "seller": {
+            "@type": "Organization",
+            "name": "AMBERRA"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Product",
+        "name": "All-Seeing Eye",
+        "url": "https://www.amberrajewelry.com/products/all-seeing-eye-1",
+        "image": "https://www.amberrajewelry.com/images/products/48121955.webp",
+        "description": "The all-seeing eye in amber — a symbol of wisdom and protection, crafted for the modern woman.",
+        "sku": "AMB-0002",
+        "brand": {
+          "@type": "Brand",
+          "name": "AMBERRA"
+        },
+        "material": "Natural Baltic Amber, 925 Sterling Silver",
+        "offers": {
+          "@type": "Offer",
+          "url": "https://www.amberrajewelry.com/products/all-seeing-eye-1",
+          "priceCurrency": "USD",
+          "price": "125",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "seller": {
+            "@type": "Organization",
+            "name": "AMBERRA"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "Product",
+        "name": "Amber Cuff",
+        "url": "https://www.amberrajewelry.com/products/amber-cuff",
+        "image": "https://www.amberrajewelry.com/images/bracelets/IMG_2056.JPG",
+        "description": "A bold silver cuff set with three graduated amber cabochons — power on your wrist.",
+        "sku": "AMB-0006",
+        "brand": {
+          "@type": "Brand",
+          "name": "AMBERRA"
+        },
+        "material": "Natural Amber ×3, 925 Sterling Silver",
+        "offers": {
+          "@type": "Offer",
+          "url": "https://www.amberrajewelry.com/products/amber-cuff",
+          "priceCurrency": "USD",
+          "price": "215",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "seller": {
+            "@type": "Organization",
+            "name": "AMBERRA"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "Product",
+        "name": "Amber Blossom",
+        "url": "https://www.amberrajewelry.com/products/amber-blossom-3",
+        "image": "https://www.amberrajewelry.com/images/products/48121839.webp",
+        "description": "Petals of silver open to reveal a glowing amber center. A bloom frozen in time, warm as morning light.",
+        "sku": "AMB-0004",
+        "brand": {
+          "@type": "Brand",
+          "name": "AMBERRA"
+        },
+        "material": "Natural Baltic Amber, 925 Sterling Silver",
+        "offers": {
+          "@type": "Offer",
+          "url": "https://www.amberrajewelry.com/products/amber-blossom-3",
+          "priceCurrency": "USD",
+          "price": "69",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "seller": {
+            "@type": "Organization",
+            "name": "AMBERRA"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@type": "Product",
+        "name": "Amber Blossom",
+        "url": "https://www.amberrajewelry.com/products/amber-blossom",
+        "image": "https://www.amberrajewelry.com/images/products/48121827.webp",
+        "description": "Blossoming silver petals embrace a honey amber center. Nature's beauty, forever still.",
+        "sku": "AMB-0003",
+        "brand": {
+          "@type": "Brand",
+          "name": "AMBERRA"
+        },
+        "material": "Natural Baltic Amber, 925 Sterling Silver",
+        "offers": {
+          "@type": "Offer",
+          "url": "https://www.amberrajewelry.com/products/amber-blossom",
+          "priceCurrency": "USD",
+          "price": "99",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "seller": {
+            "@type": "Organization",
+            "name": "AMBERRA"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "item": {
+        "@type": "Product",
+        "name": "Eastern Night",
+        "url": "https://www.amberrajewelry.com/products/eastern-night-25",
+        "image": "https://www.amberrajewelry.com/images/products/48454661.webp",
+        "description": "The deep mystery of an Eastern night — dark amber in delicate silver filigree.",
+        "sku": "AMB-0026",
+        "brand": {
+          "@type": "Brand",
+          "name": "AMBERRA"
+        },
+        "material": "Dark Baltic Amber, 925 Sterling Silver",
+        "offers": {
+          "@type": "Offer",
+          "url": "https://www.amberrajewelry.com/products/eastern-night-25",
+          "priceCurrency": "USD",
+          "price": "59",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "seller": {
+            "@type": "Organization",
+            "name": "AMBERRA"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "item": {
+        "@type": "Product",
+        "name": "Amber Clover Ring",
+        "url": "https://www.amberrajewelry.com/products/amber-clover-ring",
+        "image": "https://www.amberrajewelry.com/images/rings/clover_amber.png",
+        "description": "A lucky clover carved entirely from honey amber on a golden band.",
+        "sku": "AMB-0005",
+        "brand": {
+          "@type": "Brand",
+          "name": "AMBERRA"
+        },
+        "material": "Natural Honey Amber, 18k Gold-Plated Silver",
+        "offers": {
+          "@type": "Offer",
+          "url": "https://www.amberrajewelry.com/products/amber-clover-ring",
+          "priceCurrency": "USD",
+          "price": "89",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "seller": {
+            "@type": "Organization",
+            "name": "AMBERRA"
+          }
+        }
+      }
     }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://www.amberrajewelry.com/#founder",
+  "name": "Jane Sakhvadze",
+  "jobTitle": "Founder & Creative Director",
+  "worksFor": {
+    "@id": "https://www.amberrajewelry.com/#organization"
+  },
+  "url": "https://www.amberrajewelry.com/our-story",
+  "image": "https://www.amberrajewelry.com/images/founder-jane.jpg",
+  "sameAs": [
+    "https://www.instagram.com/amberra.jewelry"
   ]
 }
 </script>
@@ -181,6 +468,7 @@
     Sentry.init({
       environment:'production',
       release:'amberra@1.0.0',
+      tracesSampleRate:0.2,
     });
   };
 </script>
@@ -188,47 +476,160 @@
 <!-- ══ POSTHOG ════════════════════════════════════════════════════════════ -->
 <script>
   !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]);t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"},o="capture identify alias people.set people.set_once set register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-  posthog.init('phc_JNdBrTa07sm1PjCwgG6CPpVG8Esz6ajlIS4znZVmbPv', {
-    api_host: 'https://us.i.posthog.com',
-    autocapture: true,
+  if(localStorage.getItem('ck_choice')==='accepted'){
+    posthog.init('phc_UqL7ychAdg6sU0vOBr2z8ACypL6NgvRUKQ9u9If99Il', {
+    api_host: 'https://app.posthog.com',
+    autocapture: false,
     capture_pageview: true,
-    session_recording: { maskAllInputs: true }
+    session_recording: false
   });
+  }
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="preload" href="/images/hero.mp4" as="video" type="video/mp4" fetchpriority="high">
-<link rel="stylesheet" href="/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="/style.css?v=20260830">
 </head>
-<body>
-<canvas id="particles-canvas"></canvas>
+<body class="page-home">
+<!-- ══ INTRO — sparks engrave AMBERRA on black while the 3D scene loads (once per session) ══ -->
+<style>
+#amb-intro{position:fixed;inset:0;z-index:10000;background:#050403;display:flex;align-items:center;justify-content:center;
+  transition:opacity 1s cubic-bezier(.4,0,.2,1),visibility 0s 1s;
+  animation:ambIntroFailsafe .6s 5.4s forwards} /* no-JS / stuck safety: never blocks the site */
+@keyframes ambIntroFailsafe{to{opacity:0;visibility:hidden}}
+html.intro-on .brand-video{background-image:none!important} /* below-fold poster waits: bandwidth goes to the 3D */
+#amb-intro::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .9s ease;background:radial-gradient(ellipse 70% 60% at 50% 48%,#d59b4d 0%,#6b5226 22%,#4a3818 48%,#2e1e09 75%,#1a0d04 100%)}
+#amb-intro.out::before{opacity:1}
+#amb-intro.out{opacity:0;visibility:hidden;transition:opacity 1.1s cubic-bezier(.4,0,.2,1) .5s,visibility 0s 1.6s}
+#amb-intro .ai-mark{position:relative;display:flex;flex-direction:column;align-items:center;gap:clamp(12px,1.6vw,20px);transition:transform 1s cubic-bezier(.4,0,.2,1),filter 1s}
+#amb-intro.out .ai-mark{transform:scale(1.06);filter:blur(4px)}
+#amb-intro .ai-word{position:relative;font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:clamp(46px,7.2vw,104px);
+  letter-spacing:.3em;margin-right:-.3em;line-height:1;white-space:nowrap;--p:0} /* hidden until the spark reveals it (no-JS hides the whole intro) */
+#amb-intro .ai-word span{display:block}
+/* engraved gold, revealed up to the spark head */
+#amb-intro .ai-gold{background:linear-gradient(100deg,#9C7A2A 0%,#E8D080 30%,#FFF1C2 46%,#E8D080 60%,#B8941E 100%);background-size:220% 100%;background-position:100% 0;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  -webkit-mask-image:linear-gradient(90deg,#000 calc(var(--p)*1% - 2%),transparent calc(var(--p)*1%));
+          mask-image:linear-gradient(90deg,#000 calc(var(--p)*1% - 2%),transparent calc(var(--p)*1%))}
+#amb-intro.shine .ai-gold{transition:background-position 1.6s cubic-bezier(.4,0,.2,1);background-position:0 0}
+/* white-hot trail just behind the head, cooling into the gold */
+#amb-intro .ai-hot{position:absolute;inset:0;color:#FFF6DC;text-shadow:0 0 12px rgba(255,190,90,.9),0 0 28px rgba(255,140,40,.55);
+  -webkit-mask-image:linear-gradient(90deg,transparent calc(var(--p)*1% - 22%),#000 calc(var(--p)*1% - 3%),transparent calc(var(--p)*1%));
+          mask-image:linear-gradient(90deg,transparent calc(var(--p)*1% - 22%),#000 calc(var(--p)*1% - 3%),transparent calc(var(--p)*1%))}
+#amb-intro.sub .ai-hot{opacity:0;transition:opacity 1s ease} /* last letters cool from white-hot to gold */
+#amb-intro .ai-sub{font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;font-weight:400;font-size:clamp(12px,1.3vw,18px);letter-spacing:.9em;margin-right:-.9em;
+  text-transform:uppercase;color:rgba(232,208,128,.85);opacity:0;transition:opacity 1.1s ease,letter-spacing 1.4s cubic-bezier(.2,.7,.2,1)}
+#amb-intro.sub .ai-sub{opacity:1;letter-spacing:.62em;margin-right:-.62em}
+#amb-intro canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+html.intro-on{overflow:hidden}
+/* hero entrance replays after the intro instead of finishing unseen behind it */
+html.intro-on .hero-title,html.intro-on .hero-cta{animation:none;opacity:0}
+.hero-title{animation-fill-mode:both} /* hidden during its .45s delay — no flash before the rise */
+</style>
+<noscript><style>#amb-intro{display:none}</style></noscript>
+<div id="amb-intro" aria-hidden="true">
+  <div class="ai-mark">
+    <div class="ai-word"><span class="ai-gold">AMBERRA</span><span class="ai-hot">AMBERRA</span></div>
+    <div class="ai-sub">Jewelry</div>
+  </div>
+  <canvas></canvas>
+</div>
+<script>
+(function(){
+  var d=document.documentElement,el=document.getElementById('amb-intro'),seen;
+  try{seen=sessionStorage.getItem('amb_intro')}catch(e){}
+  if(seen){el.parentNode.removeChild(el);return}
+  try{sessionStorage.setItem('amb_intro','1')}catch(e){}
+  d.classList.add('intro-on');
+  var word=el.querySelector('.ai-word'),cv=el.querySelector('canvas'),ctx=cv.getContext('2d');
+  var calm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var ENGRAVE=1250,MIN=2300,MAX=4800,t0=Date.now(),done=false,ready=false;
+  if(calm)word.style.setProperty('--p',104);
+
+  function end(){
+    if(done)return;done=true;
+    setTimeout(function(){
+      el.classList.add('out');d.classList.remove('intro-on');
+      setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el)},1700);
+    },Math.max(0,MIN-(Date.now()-t0)));
+  }
+  // reveal only when both 3D layers have drawn a frame (drop + fluid background)
+  var need=2;function got(){if(--need<=0)ready=true}
+  if(window.__ambDropReady)got();else addEventListener('amberra:drop-ready',got,{once:true});
+  if(window.__ambFluidReady)got();else addEventListener('amberra:fluid-ready',got,{once:true});
+  setTimeout(end,MAX);
+  function finish(){el.classList.add('sub');setTimeout(function(){el.classList.add('shine')},250);
+    (function wait(){if(ready)end();else if(!done)setTimeout(wait,100)})();}
+  if(calm){finish();return}
+
+  // spark engraving: a hot head sweeps the wordmark, trailing particles with gravity
+  var dpr=Math.min(devicePixelRatio||1,2),W,H,box,parts=[],start=0,last=0;
+  function size(){W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+    var r=word.getBoundingClientRect(),c=cv.getBoundingClientRect();
+    box={x:r.left-c.left,y:r.top-c.top,w:r.width+parseFloat(getComputedStyle(word).marginRight||0),h:r.height};}
+  function spawn(x,y,n){for(var i=0;i<n;i++){var a=-Math.PI/2+(Math.random()-.5)*2.6,s=80+Math.random()*420;
+    parts.push({x:x,y:y,px:x,py:y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:0,max:.35+Math.random()*.7,w:.6+Math.random()*1.4})}}
+  function frame(now){
+    if(!start){start=now;last=now}
+    var dt=Math.min((now-last)/1000,.05);last=now;
+    var k=Math.min((now-start)/ENGRAVE,1),e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;
+    word.style.setProperty('--p',(e*104).toFixed(2));
+    ctx.clearRect(0,0,W,H);ctx.globalCompositeOperation='lighter';
+    if(k<1){
+      var hx=box.x+box.w*e,hy=box.y+box.h*(.5+.34*Math.sin(e*Math.PI*14));
+      spawn(hx,hy,parts.length<700?9:2);
+      var g=ctx.createRadialGradient(hx,hy,0,hx,hy,26);
+      g.addColorStop(0,'rgba(255,255,240,1)');g.addColorStop(.25,'rgba(255,214,130,.85)');g.addColorStop(1,'rgba(255,140,40,0)');
+      ctx.fillStyle=g;ctx.beginPath();ctx.arc(hx,hy,26,0,6.283);ctx.fill();
+    }
+    for(var i=parts.length-1;i>=0;i--){var p=parts[i];p.life+=dt;
+      if(p.life>p.max){parts.splice(i,1);continue}
+      p.px=p.x;p.py=p.y;p.vy+=900*dt;p.vx*=.985;p.x+=p.vx*dt;p.y+=p.vy*dt;
+      var f=1-p.life/p.max,hot=f>.6;
+      ctx.strokeStyle=hot?'rgba(255,248,220,'+f+')':'rgba(255,'+Math.round(120+100*f)+',40,'+f+')';
+      ctx.lineWidth=p.w;ctx.beginPath();ctx.moveTo(p.px,p.py);ctx.lineTo(p.x,p.y);ctx.stroke();}
+    ctx.globalCompositeOperation='source-over';
+    if(k>=1&&!el._fin){el._fin=1;finish()}
+    if(parts.length||k<1)requestAnimationFrame(frame);else ctx.clearRect(0,0,W,H);
+  }
+  // wait (briefly) for the brand serif so letters don't swap mid-engraving
+  var go=function(){if(go.did)return;go.did=1;size();addEventListener('resize',size);requestAnimationFrame(frame)};
+  if(document.fonts&&document.fonts.load){document.fonts.load('500 64px "Cormorant Garamond"').then(go,go);setTimeout(go,700)}else go();
+})();
+</script>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJ5682RJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- ══ FLUID BG — fixed full page ══════════════════════════════════════ -->
+<canvas id="fluid-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;display:block;z-index:1;pointer-events:none"></canvas>
 
 <!-- ══ MOBILE NAV ════════════════════════════════════════════════════════ -->
 <div class="mob-nav-overlay" id="mob-nav-overlay" onclick="closeMobNav()"></div>
 <div class="mob-nav-drawer" id="mob-nav-drawer">
   <div class="mob-nav-head">
     <span class="mob-nav-logo">AMBERRA</span>
-    <button class="mob-nav-close" onclick="closeMobNav()" aria-label="Close menu">✕</button>
+    <button class="mob-nav-close" onclick="closeMobNav()">✕</button>
   </div>
   <div class="mob-nav-links">
-    <a class="mob-nav-link" href="/">Home</a>
-    <a class="mob-nav-link" href="/shop">Shop All</a>
-    <a class="mob-nav-link" href="/shop?cat=rings">Rings</a>
-    <a class="mob-nav-link" href="/shop?cat=earrings">Earrings</a>
-    <a class="mob-nav-link" href="/shop?cat=pendants">Pendants</a>
-    <a class="mob-nav-link" href="/shop?cat=bracelets">Bracelets</a>
-    <a class="mob-nav-link" href="/journal">Journal</a>
-    <a class="mob-nav-link" href="/our-story">Our Story</a>
-    <a class="mob-nav-link" href="/shop#tryon">Try On</a>
-    <a class="mob-nav-link amber" href="#wholesale">Wholesale</a>
+    <a class="mob-nav-link" href="/" data-i18n="nav_home">Home</a>
+    <a class="mob-nav-link" href="/shop" data-i18n="nav_collections">Collections</a>
+    <a class="mob-nav-link" href="/rings" data-i18n="nav_rings">Rings</a>
+    <a class="mob-nav-link" href="/earrings" data-i18n="nav_earrings">Earrings</a>
+    <a class="mob-nav-link" href="/pendants" data-i18n="nav_pendants">Pendants</a>
+    <a class="mob-nav-link" href="/bracelets" data-i18n="nav_bracelets">Bracelets</a>
+    <a class="mob-nav-link" href="/our-story" data-i18n="nav_about">Our Story</a>
+    <a class="mob-nav-link amber" href="/wholesale" data-i18n="nav_wholesale">Wholesale</a>
+    <a class="mob-nav-link" href="/journal" data-i18n="nav_journal">Journal</a>
   </div>
   <div class="mob-nav-foot">
     <div class="mob-nav-utils">
-      <button class="mob-nav-util" onclick="closeMobNav();openAcc()">My Account</button>
-      <button class="mob-nav-util" onclick="closeMobNav();openSrv()">Services</button>
-      <button class="mob-nav-util" onclick="closeMobNav();openReq()">Contact</button>
+      <button class="mob-nav-util" onclick="closeMobNav();openAcc()" data-i18n="util_account">My Account</button>
+      <button class="mob-nav-util" onclick="closeMobNav();openSrv()" data-i18n="util_services">Services</button>
+      <button class="mob-nav-util" onclick="closeMobNav();openReq()" data-i18n="util_contact">Contact Us</button>
     </div>
   </div>
 </div>
@@ -237,7 +638,7 @@
 <div id="nav-shell">
   <div class="nav-logo-bar">
     <div class="nav-lb-l">
-      <button class="mob-menu-btn" onclick="openMobNav()">
+      <button class="mob-menu-btn" aria-label="Open menu" onclick="openMobNav()">
         <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <button class="nav-util-link keep" onclick="openSrv()">
@@ -251,299 +652,557 @@
         <input class="nav-search-inp" type="text" placeholder="Search" data-i18n-ph="search_ph">
       </div>
     </div>
-    <a class="nav-logo" href="/">AMBERRA</a>
+    <div class="nav-center">
+      <a class="nav-logo" href="/"><span class="nav-logo-main">AMBERRA</span><span class="nav-logo-sub">Jewelry</span></a>
+      <div class="nav-main-wrap"><div class="nav-main">
+        <a class="nl" href="/shop" data-i18n="nav_collections">Collections</a>
+        <a class="nl" href="/rings" data-i18n="nav_rings">Rings</a>
+        <a class="nl" href="/earrings" data-i18n="nav_earrings">Earrings</a>
+        <a class="nl" href="/pendants" data-i18n="nav_pendants">Pendants</a>
+        <a class="nl" href="/bracelets" data-i18n="nav_bracelets">Bracelets</a>
+        <span class="nav-divider"></span>
+        <a class="nl" href="/our-story" data-i18n="nav_about">Our Story</a>
+        <a class="nl" href="/wholesale" data-i18n="nav_wholesale">Wholesale</a>
+        <a class="nl" href="/journal" data-i18n="nav_journal">Journal</a>
+      </div></div>
+    </div>
     <div class="nav-lb-r">
-      <button class="nav-ico-btn" onclick="toggleWishView()">
+      <button class="nav-ico-btn" aria-label="Wishlist" onclick="toggleWishView()">
         <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
         <span class="nav-badge" id="wish-badge">0</span>
       </button>
-      <button class="nav-ico-btn" onclick="openAcc()">
+      <button class="nav-ico-btn" aria-label="Account" onclick="openAcc()">
         <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
       </button>
-      <a class="nav-ico-btn" href="/stores">
+      <a class="nav-ico-btn" aria-label="Store locations" href="/stores">
         <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
       </a>
-      <button class="nav-ico-btn" onclick="openCart()">
+      <button class="nav-ico-btn" aria-label="Cart" onclick="openCart()">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
         <span class="nav-badge" id="cart-badge">0</span>
       </button>
-      <div id="lang-sw">
-        <button class="lang-cur" onclick="toggleLang()">
-          <span id="lang-cur-txt">EN</span>
-          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div id="lang-drop">
-          <button class="lb al" data-lang="en" onclick="setLang('en')">English</button>
-          <button class="lb" data-lang="ru" onclick="setLang('ru')">Русский</button>
-          <button class="lb" data-lang="id" onclick="setLang('id')">Bahasa Indonesia</button>
-          <button class="lb" data-lang="zh" onclick="setLang('zh')">中文</button>
-          <button class="lb" data-lang="fr" onclick="setLang('fr')">Français</button>
-          <button class="lb" data-lang="de" onclick="setLang('de')">Deutsch</button>
-          <button class="lb" data-lang="es" onclick="setLang('es')">Español</button>
-          <button class="lb" data-lang="pt" onclick="setLang('pt')">Português</button>
-          <button class="lb" data-lang="ar" onclick="setLang('ar')">العربية</button>
-          <button class="lb" data-lang="ja" onclick="setLang('ja')">日本語</button>
-          <button class="lb" data-lang="ko" onclick="setLang('ko')">한국어</button>
-          <button class="lb" data-lang="it" onclick="setLang('it')">Italiano</button>
-          <button class="lb" data-lang="tr" onclick="setLang('tr')">Türkçe</button>
-          <button class="lb" data-lang="hi" onclick="setLang('hi')">हिन्दी</button>
-          <button class="lb" data-lang="ka" onclick="setLang('ka')">ქართული</button>
+    </div>
+  </div>
+</div>
+
+
+<main>
+<!-- ══ HERO — 3D placeholder ═════════════════════════════════════════════ -->
+<section id="hero-3d" style="position:relative;min-height:100dvh;overflow:hidden;background:transparent;z-index:1">
+  <h1 class="visually-hidden">Handmade Sterling Silver &amp; Baltic Amber Jewelry — Rings, Earrings, Pendants &amp; Bracelets</h1>
+  <div class="hero-copy">
+    <p class="hero-title" data-i18n="hero_title">Light that remembers<br>forty million years</p>
+  </div>
+  <div class="hero-drop-wrap">
+    <div id="hero-drop-canvas" class="hero-drop-3d" role="img" aria-label="Interactive 3D Baltic amber drop — AMBERRA"></div>
+  </div>
+  <a class="hero-cta" href="/shop" data-i18n="hero_cta">Shop the Collection</a>
+</section>
+<script type="module" async src="/fluid-bg.js?v=20260924d"></script>
+
+<!-- ══ TRUST BAR (29.07, additive) ════════════════════════════════════════ -->
+<section class="trustbar" aria-label="Why Amberra">
+  <div class="trustbar-inner">
+    <div class="tb-item">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9S9.5 5.5 12 3z"/></svg>
+      <span class="tb-t" data-i18n="tb_ship_t">Free Insured Shipping</span>
+      <span class="tb-d" data-i18n="tb_ship_d">On orders over $200 — tracked and insured to your door.</span>
+    </div>
+    <div class="tb-item">
+      <svg viewBox="0 0 24 24"><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/><path d="M12 8.5l1.7 1.8L15.5 12l-1.8 1.7L12 15.5l-1.7-1.8L8.5 12l1.8-1.7z"/></svg>
+      <span class="tb-t" data-i18n="tb_blessed_t">Designed in Bali</span>
+      <span class="tb-d" data-i18n="tb_blessed_d">Each piece is hand-finished and inspected before it ships.</span>
+    </div>
+    <div class="tb-item">
+      <svg viewBox="0 0 24 24"><path d="M6 4h12l3 5-9 11L3 9z"/><path d="M3 9h18M9 4l-3 5 6 11 6-11-3-5"/></svg>
+      <span class="tb-t" data-i18n="tb_silver_t">925 Sterling Silver</span>
+      <span class="tb-d" data-i18n="tb_silver_d">Genuine Baltic amber, hand-set in solid sterling silver.</span>
+    </div>
+    <div class="tb-item">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="6"/><path d="M9 15l-2 6 5-3 5 3-2-6"/><path d="M9.5 10l1.7 1.7 3.3-3.4"/></svg>
+      <span class="tb-t" data-i18n="tb_cert_t">Certificate of Authenticity</span>
+      <span class="tb-d" data-i18n="tb_cert_d">Every order arrives with proof of genuine Baltic amber.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BESTSELLERS ════════════════════════════════════════════════════════ -->
+<section id="bestsellers">
+  <div class="bs-head">
+    <h2 class="s-title">Bestselling <em>Pieces</em></h2>
+    <a class="bs-all" href="/shop">View All Pieces &nbsp;→</a>
+  </div>
+  <div class="bs-grid">
+    <!-- BS_START -->
+      <a class="pc" data-cat="rings" href="/products/amber-clover-ring" style="text-decoration:none;color:inherit">
+      <div class="pc-inner">
+        <div class="pc-img" style="position:relative"><img src="https://www.amberrajewelry.com/images/products/5.webp?v=10" alt="Amber Clover Ring — AMBERRA amber jewelry" loading="lazy" width="400" height="400"></div>
+        <div class="pc-label">
+          <span class="pcat">RINGS</span>
+          <h3 class="pname">Amber Clover Ring</h3>
+          <p class="pmaterial">Natural Honey Amber · 18k Gold</p>
+          <div class="pfoot"><span class="pprice" data-usd="89">$89</span></div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="nav-main">
-    <a class="nl act" href="/" data-i18n="nav_collections">Collections</a>
-    <a class="nl" href="/shop?cat=rings" data-i18n="nav_rings">Rings</a>
-    <a class="nl" href="/shop?cat=earrings" data-i18n="nav_earrings">Earrings</a>
-    <a class="nl" href="/shop?cat=pendants" data-i18n="nav_pendants">Pendants</a>
-    <a class="nl" href="/shop?cat=bracelets" data-i18n="nav_bracelets">Bracelets</a>
-    <a class="nl" href="/shop?cat=chains" data-i18n="nav_chains">Chains</a>
-    <span class="nav-divider"></span>
-    <a class="nl" href="/journal" data-i18n="nav_journal">Journal</a>
-    <a class="nl" href="/our-story" data-i18n="nav_about">Our Story</a>
-    <span class="nav-divider"></span>
-    <a class="nl" href="/shop#tryon" data-i18n="nav_tryon">Try On</a>
-    <a class="nl" href="#wholesale" data-i18n="nav_wholesale">Wholesale</a>
-  </div>
-</div>
-
-<!-- ══ HERO ══════════════════════════════════════════════════════════════ -->
-<section id="hero">
-  <h1 class="visually-hidden">Handcrafted Balinese Amber Jewelry — Rings, Earrings, Pendants &amp; Bracelets</h1>
-  <div class="hfs-wrap">
-    <div class="hfs active" id="hero-vid-slide">
-      <video autoplay muted loop playsinline class="hero-vid" id="hero-video" preload="auto" fetchpriority="high">
-        <source src="images/hero.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="hfs" id="hero-model-slide">
-      <div class="hm-bg">
-        <img src="images/model.jpg" alt="" aria-hidden="true" class="hm-img" loading="eager">
-        <div class="hm-overlay"></div>
-      </div>
-      <div class="hm-content">
-        <span class="hm-tag" data-i18n="hero2_lbl">The Craft</span>
-        <h2 class="hm-title" data-i18n="hero2_title">Born from <em>Ancient Earth</em></h2>
-        <p class="hm-desc" data-i18n="hero2_desc">Amber is not merely stone — it is time crystallised. Forty million years of forests, insects, light and rain preserved in a single stone.</p>
-        <div class="hm-acts">
-          <a href="/shop" class="hm-btn-primary" data-i18n="hero_cta">Explore Collections</a>
-          <a href="/our-story" class="hm-btn-ghost" data-i18n="hero_cta2">Our Story</a>
+    </a>
+      <a class="pc" data-cat="rings" href="/products/all-seeing-eye-ring" style="text-decoration:none;color:inherit">
+      <div class="pc-inner">
+        <div class="pc-img" style="position:relative"><img src="https://www.amberrajewelry.com/images/products/48121833.webp?v=10" alt="All-Seeing Eye Ring — AMBERRA amber jewelry" loading="lazy" width="400" height="400"></div>
+        <div class="pc-label">
+          <span class="pcat">RINGS</span>
+          <h3 class="pname">All-Seeing Eye Ring</h3>
+          <p class="pmaterial">Natural Baltic Amber · 925 Sterling Silver</p>
+          <div class="pfoot"><span class="pprice" data-usd="119">$119</span></div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="hfs-dots">
-    <button class="hfs-dot act" aria-label="Slide 1"></button>
-    <button class="hfs-dot" aria-label="Slide 2"></button>
+    </a>
+      <a class="pc" data-cat="earrings" href="/products/all-seeing-eye-earrings" style="text-decoration:none;color:inherit">
+      <div class="pc-inner">
+        <div class="pc-img" style="position:relative"><img src="https://www.amberrajewelry.com/images/products/48121955.webp?v=10" alt="All-Seeing Eye Earrings — AMBERRA amber jewelry" loading="lazy" width="400" height="400"></div>
+        <div class="pc-label">
+          <span class="pcat">EARRINGS</span>
+          <h3 class="pname">All-Seeing Eye Earrings</h3>
+          <p class="pmaterial">Natural Baltic Amber · 925 Sterling Silver</p>
+          <div class="pfoot"><span class="pprice" data-usd="125">$125</span></div>
+        </div>
+      </div>
+    </a>
+      <a class="pc" data-cat="earrings" href="/products/amber-blossom-earrings" style="text-decoration:none;color:inherit">
+      <div class="pc-inner">
+        <div class="pc-img" style="position:relative"><img src="https://www.amberrajewelry.com/images/products/48121827.webp?v=10" alt="Amber Blossom Earrings — AMBERRA amber jewelry" loading="lazy" width="400" height="400"></div>
+        <div class="pc-label">
+          <span class="pcat">EARRINGS</span>
+          <h3 class="pname">Amber Blossom Earrings</h3>
+          <p class="pmaterial">Natural Baltic Amber · 925 Sterling Silver</p>
+          <div class="pfoot"><span class="pprice" data-usd="99">$99</span></div>
+        </div>
+      </div>
+    </a>
+      <a class="pc" data-cat="rings" href="/products/amber-blossom-ring" style="text-decoration:none;color:inherit">
+      <div class="pc-inner">
+        <div class="pc-img" style="position:relative"><img src="https://www.amberrajewelry.com/images/products/48121839.webp?v=10" alt="Amber Blossom Ring — AMBERRA amber jewelry" loading="lazy" width="400" height="400"></div>
+        <div class="pc-label">
+          <span class="pcat">RINGS</span>
+          <h3 class="pname">Amber Blossom Ring</h3>
+          <p class="pmaterial">Natural Baltic Amber · 925 Sterling Silver</p>
+          <div class="pfoot"><span class="pprice" data-usd="69">$69</span></div>
+        </div>
+      </div>
+    </a>
+      <a class="pc" data-cat="bracelets" href="/products/amber-cuff" style="text-decoration:none;color:inherit">
+      <div class="pc-inner">
+        <div class="pc-img" style="position:relative"><img src="https://www.amberrajewelry.com/images/products/6.webp?v=10" alt="Amber Cuff — AMBERRA amber jewelry" loading="lazy" width="400" height="400"></div>
+        <div class="pc-label">
+          <span class="pcat">BRACELETS</span>
+          <h3 class="pname">Amber Cuff</h3>
+          <p class="pmaterial">Natural Baltic Amber · 925 Sterling Silver</p>
+          <div class="pfoot"><span class="pprice" data-usd="215">$215</span></div>
+        </div>
+      </div>
+    </a>
+    <!-- BS_END -->
   </div>
 </section>
 
-<!-- ══ TICKER ════════════════════════════════════════════════════════════ -->
-<div class="ticker">
-  <div class="ticker-i">
-    <span class="t-item" data-i18n="tick1">Natural Balinese Amber</span><span class="t-dot">✦</span>
-    <span class="t-item" data-i18n="tick2">Handcrafted in Bali</span><span class="t-dot">✦</span>
-    <span class="t-item" data-i18n="tick3">925 Sterling Silver</span><span class="t-dot">✦</span>
-    <span class="t-item" data-i18n="tick4">Sacred Ritual Blessing</span><span class="t-dot">✦</span>
-    <span class="t-item" data-i18n="tick5">Free Gift Wrapping</span><span class="t-dot">✦</span>
-    <span class="t-item" data-i18n="tick1">Natural Balinese Amber</span><span class="t-dot">✦</span>
-    <span class="t-item" data-i18n="tick2">Handcrafted in Bali</span><span class="t-dot">✦</span>
-    <span class="t-item" data-i18n="tick3">925 Sterling Silver</span><span class="t-dot">✦</span>
-    <span class="t-item" data-i18n="tick4">Sacred Ritual Blessing</span><span class="t-dot">✦</span>
-    <span class="t-item" data-i18n="tick5">Free Gift Wrapping</span><span class="t-dot">✦</span>
-  </div>
-</div>
-
-<!-- ══ COLLECTIONS ════════════════════════════════════════════════════════ -->
-<div id="colls">
-  <div class="c-head rv">
-    <div>
-      <span class="s-lbl" data-i18n="coll_lbl">Our Universe</span>
-      <h2 class="s-title" data-i18n="coll_title">Collections</h2>
-    </div>
-    <a class="c-link rv d3" href="/shop" data-i18n="coll_all">View all pieces</a>
-  </div>
-  <div class="c-grid" data-stagger>
-    <a class="cc rv d1" data-rv="scale" href="/shop?cat=rings">
-      <div class="cc-img-wrap"><img src="images/rings/IMG_1542.JPG" alt="Handcrafted Balinese amber rings set in 925 sterling silver" loading="lazy" width="600" height="750"></div>
-      <div class="cc-info">
-        <span class="cc-cat" data-i18n="cat_rings">Collection</span>
-        <h3 class="cc-name" data-i18n="col_rings">Rings</h3>
-        <span class="cc-cta" data-i18n="discover">Discover</span>
-      </div>
-    </a>
-    <a class="cc rv d2" data-rv="scale" href="/shop?cat=earrings">
-      <div class="cc-img-wrap"><img src="images/earrings/IMG_1550.JPG" alt="Natural Balinese amber earrings handcrafted in Ubud, Bali" loading="lazy" width="600" height="750"></div>
-      <div class="cc-info">
-        <span class="cc-cat" data-i18n="cat_earrings">Collection</span>
-        <h3 class="cc-name" data-i18n="col_earrings">Earrings</h3>
-        <span class="cc-cta" data-i18n="discover">Discover</span>
-      </div>
-    </a>
-    <a class="cc rv d3" data-rv="scale" href="/shop?cat=pendants">
-      <div class="cc-img-wrap"><img src="images/pendants/IMG_1399.WEBP" alt="Balinese amber pendants and necklaces in sterling silver, handcrafted in Bali" loading="lazy" width="600" height="750"></div>
-      <div class="cc-info">
-        <span class="cc-cat" data-i18n="cat_pendants">Collection</span>
-        <h3 class="cc-name" data-i18n="col_pendants">Pendants</h3>
-        <span class="cc-cta" data-i18n="discover">Discover</span>
-      </div>
-    </a>
-    <a class="cc rv d4" data-rv="scale" href="/shop?cat=bracelets">
-      <div class="cc-img-wrap"><img src="images/bracelets/IMG_1531.JPG" alt="Handcrafted Balinese amber bracelets with sacred ritual blessing" loading="lazy" width="600" height="750"></div>
-      <div class="cc-info">
-        <span class="cc-cat" data-i18n="cat_bracelets">Collection</span>
-        <h3 class="cc-name" data-i18n="col_bracelets">Bracelets</h3>
-        <span class="cc-cta" data-i18n="discover">Discover</span>
-      </div>
-    </a>
-  </div>
-</div>
-
-<!-- ══ EDITORIAL ══════════════════════════════════════════════════════════ -->
-<section id="ed">
-  <div class="ed-wrap">
-    <div class="ed-model-wrap rv" data-rv="left">
-      <img src="images/model-opt.jpg" alt="Balinese amber jewelry worn by a woman — AMBERRA" loading="lazy" width="1600" height="1074">
-      <div class="ed-model-tag">✦ Sacred · Ancient · Eternal ✦</div>
-    </div>
-    <div class="ed-text">
-      <span class="s-lbl rv" data-i18n="ed_lbl">The Craft</span>
-      <div class="s-rule rv-line d1"></div>
-      <h2 class="s-title rv d2" data-i18n="ed_title">Born from <em>Ancient Earth</em></h2>
-      <p class="s-body rv d3" data-i18n="ed_body1">Amber is not merely stone — it is time crystallised. Forty million years of forests, insects, light and rain preserved in a single stone.</p>
-      <p class="s-body rv d4" style="margin-top:16px" data-i18n="ed_body2">Our artisans in Bali spend lifetimes learning to honour it. Every piece passes through water, fire and prayer before it reaches you.</p>
-      <div class="ed-stats rv d5">
-        <div class="ed-stat"><span class="ed-num">40M</span><span class="ed-lbl" data-i18n="stat1">Years of amber</span></div>
-        <div class="ed-stat"><span class="ed-num">94</span><span class="ed-lbl" data-i18n="stat2">Unique pieces</span></div>
-        <div class="ed-stat"><span class="ed-num">50+</span><span class="ed-lbl" data-i18n="stat3">Countries</span></div>
-      </div>
-    </div>
+<!-- ══ BRAND VIDEO — iconic piece, lazy after 2s (moved after bestsellers 31.07) ══ -->
+<section id="brand-video" class="brand-video" aria-label="The Amber Atelier">
+  <video class="brand-vid" muted loop playsinline preload="none" data-poster="/images/signature-video-poster.jpg" data-src="/images/signature-video.mp4?v=2" aria-hidden="true"></video>
+  <div class="brand-video-veil"></div>
+  <div class="brand-video-copy">
+    <span class="bv-eyebrow" data-i18n="bv_eyebrow">The Amber Atelier</span>
+    <p class="bv-title" data-i18n="bv_title">Light, frozen in resin</p>
+    <p class="bv-sub" data-i18n="bv_sub">Ancient sunlight, set by hand into one living piece.</p>
   </div>
 </section>
 
-<!-- ══ JOURNAL (first 3 articles) ════════════════════════════════════════ -->
-<section id="journal">
-  <div class="j-head rv">
-    <div>
-      <span class="s-lbl" data-i18n="j_lbl">Insights</span>
-      <h2 class="s-title" data-i18n="j_title">The Amber <em>Journal</em></h2>
-    </div>
-    <a class="c-link rv d3" href="/journal" data-i18n="j_all">View all articles</a>
-  </div>
-  <div class="j-grid" data-stagger>
-    <a class="jc rv d1" data-rv="scale" href="/journal/balinese-amber-healing-properties">
-      <div class="jc-img"><img src="images/earrings/IMG_1603.JPG" alt="Balinese Amber Earrings — Healing Properties of Succinic Acid" loading="lazy"></div>
-      <div class="jc-body">
-        <span class="jdate" data-i18n="j1_date">March 2026</span>
-        <h3 class="jtitle" data-i18n="j1_title">Balinese Amber Healing Properties: The Science of Succinic Acid</h3>
-        <p class="jex" data-i18n="j1_body">Balinese amber contains up to 8% succinic acid — a natural compound studied for its anti-inflammatory effects when worn against the skin.</p>
-      </div>
-    </a>
-    <a class="jc rv d2" data-rv="scale" href="/journal/how-to-clean-amber-jewelry">
-      <div class="jc-img"><img src="images/earrings/IMG_1588.JPG" alt="Amber Jewelry Care Guide — How to Clean Amber" loading="lazy"></div>
-      <div class="jc-body">
-        <span class="jdate" data-i18n="j2_date">February 2026</span>
-        <h3 class="jtitle" data-i18n="j2_title">How to Clean Amber Jewelry: The Complete Care Guide</h3>
-        <p class="jex" data-i18n="j2_body">Natural amber is softer than most gemstones. Warm water, mild soap, and a soft cloth are all you need to keep it radiant for generations.</p>
-      </div>
-    </a>
-    <a class="jc rv d3" data-rv="scale" href="/journal/journey-of-every-amberra-stone">
-      <div class="jc-img"><img src="images/bracelets/IMG_1595.JPG" alt="AMBERRA Amber Bracelet — From Ancient Forests to Bali" loading="lazy"></div>
-      <div class="jc-body">
-        <span class="jdate" data-i18n="j3_date">January 2026</span>
-        <h3 class="jtitle" data-i18n="j3_title">From Ancient Forests to Bali: The Journey of Every AMBERRA Stone</h3>
-        <p class="jex" data-i18n="j3_body">Forty million years beneath ancient forests, then in the sacred workshops of Ubud — the remarkable story of each Balinese amber stone.</p>
-      </div>
-    </a>
-  </div>
-</section>
+<!-- ══ DIVIDER ════════════════════════════════════════════════════════════ -->
+<div style="max-width:120px;height:1px;background:var(--amber);margin:0 auto 0;opacity:.5"></div>
 
 <!-- ══ ABOUT TEASER ═══════════════════════════════════════════════════════ -->
 <section id="about">
   <div class="ab-inner">
-    <div class="ab-text rv" data-rv="left">
-      <span class="s-lbl rv">Our Story</span>
-      <h2 class="s-title rv d1" style="font-size:clamp(22px,2.8vw,38px);white-space:nowrap">Born Where <em>Earth Meets Eternity</em></h2>
-      <div class="s-rule rv-line d2" style="background:rgba(201,168,50,.5);margin-bottom:28px"></div>
-      <p class="s-body">AMBERRA was born from a single belief: that true beauty is never manufactured — it is found. Our Balinese amber travelled forty million years through ancient forests before reaching the hands of our Balinese artisans.</p>
-      <p class="s-body" style="margin-top:16px">In the sacred workshops of Ubud, each piece is shaped, polished, and blessed under the Bali sky. Every AMBERRA jewel carries the energy of two worlds — the ancient amber and the spiritual heart of Bali.</p>
-      <p class="s-body" style="margin-top:16px">We are PT Amberra Group Creations, a Balinese luxury jewelry house dedicated to feminine empowerment through the timeless beauty of natural amber.</p>
+    <div class="ab-text">
+      <h2 class="ab-title rv d1">Amber Alive for <em>Forty Million Years</em></h2>
+      <div class="s-rule rv-line d2" style="background:rgba(201,168,50,.5);margin-bottom:32px"></div>
+      <p class="s-body">Jane Sakhvadze — designer and artist — founded AMBERRA with one conviction: to give ancient amber a form you can wear. Silver and gold, precious and semi-precious stones, and sun-warm amber, shaped by hand into pieces you keep for a lifetime.</p>
+      <p class="s-body" style="margin-top:16px">Working from Bali, Jane brings together ancestral craftsmanship and contemporary vision. Every AMBERRA piece carries the living spirit of the island where it was made.</p>
+      <blockquote class="ab-quote">
+        <span class="ab-quote-mark">"</span>
+        <p>Amber has been alive for forty million years.<br>My work is to let it be seen.</p>
+        <cite>— Jane Sakhvadze, Founder</cite>
+      </blockquote>
       <div class="ab-pillars">
-        <div class="ab-pillar">
-          <span class="ab-pillar-num">40M+</span>
-          <span class="ab-pillar-lbl">Years of amber</span>
-        </div>
         <div class="ab-pillar">
           <span class="ab-pillar-num">94</span>
           <span class="ab-pillar-lbl">Unique pieces</span>
         </div>
         <div class="ab-pillar">
           <span class="ab-pillar-num">50+</span>
-          <span class="ab-pillar-lbl">Countries</span>
+          <span class="ab-pillar-lbl">Countries shipped</span>
+        </div>
+        <div class="ab-pillar">
+          <span class="ab-pillar-num">2019</span>
+          <span class="ab-pillar-lbl">Founded in Bali</span>
         </div>
       </div>
     </div>
-    <div class="ab-img rv d3" data-rv="right">
+    <div class="ab-img">
       <div class="ab-video-wrap">
-        <video class="ab-video" autoplay muted loop playsinline>
-          <source src="images/about-video.mp4" type="video/mp4">
+        <video class="ab-video" muted loop playsinline preload="none" data-poster="/images/about-poster.jpg" data-src="/images/about-video-web.mp4">
         </video>
       </div>
     </div>
   </div>
 </section>
 
+
+
+
+
+
 <!-- ══ WHOLESALE TEASER ═══════════════════════════════════════════════════ -->
 <section id="wholesale">
+  <!-- Top gold rule -->
+  <div class="ws-rule"></div>
+
   <div class="ws-intro rv">
-    <span class="s-lbl">B2B Program</span>
-    <h2 class="s-title">Partner With <em>Amberra</em></h2>
-    <p class="s-body">We welcome boutiques, concept stores, and jewelry retailers worldwide. Our wholesale program offers exclusive pricing, full product range access, and dedicated account support from Bali.</p>
+    <span class="ws-eyebrow">Wholesale Partnership</span>
+    <h2 class="s-title" data-i18n="ws_title">Partner With <em>Amberra</em></h2>
+    <p class="s-body" data-i18n="ws_body">We welcome boutiques, concept stores, and jewelry retailers worldwide. Our wholesale program offers exclusive pricing, full product range access, and dedicated account support from Bali.</p>
   </div>
-  <div class="ws-tiers" data-stagger>
-    <div class="ws-tier rv d1">
-      <span class="ws-tier-min">Starter</span>
-      <span class="ws-tier-qty">10+</span>
-      <span class="ws-tier-disc">pieces per order</span>
-      <p class="ws-tier-note">Access to full catalog<br>Standard wholesale pricing<br>WhatsApp support</p>
+
+  <!-- Pillars row -->
+  <div class="ws-pillars rv d1" data-stagger>
+    <div class="ws-pillar">
+      <span class="ws-pillar-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg></span>
+      <span class="ws-pillar-num">94</span>
+      <span class="ws-pillar-lbl">Unique Pieces</span>
     </div>
-    <div class="ws-tier ws-feat rv d2">
-      <span class="ws-tier-min">Partner</span>
-      <span class="ws-tier-qty">30+</span>
-      <span class="ws-tier-disc">pieces per order</span>
-      <p class="ws-tier-note">Priority access to new drops<br>Enhanced pricing tiers<br>Dedicated account manager</p>
+    <div class="ws-pillar">
+      <span class="ws-pillar-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></span>
+      <span class="ws-pillar-num">40+</span>
+      <span class="ws-pillar-lbl">Countries Served</span>
     </div>
-    <div class="ws-tier rv d3">
-      <span class="ws-tier-min">Exclusive</span>
-      <span class="ws-tier-qty">100+</span>
-      <span class="ws-tier-disc">pieces per order</span>
-      <p class="ws-tier-note">Custom packaging options<br>Best pricing available<br>Co-branding opportunities</p>
+    <div class="ws-pillar">
+      <span class="ws-pillar-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
+      <span class="ws-pillar-num">Bali</span>
+      <span class="ws-pillar-lbl">Handcrafted Origin</span>
     </div>
   </div>
+
+  <!-- CTA — tiers moved to Wholesale Inquiry modal (home stays a teaser) -->
   <div class="c-btns rv d4">
-    <a class="btn-s" href="/our-story#wholesale">Learn More About Partnership</a>
-    <a class="btn-o" href="https://wa.me/6287853867120" target="_blank" rel="noopener noreferrer">Contact via WhatsApp</a>
+    <button class="btn-s" onclick="openReq('Wholesale Inquiry')">Apply for Wholesale</button>
+    <a class="ws-wa-link" href="https://wa.me/6287853867120" target="_blank" rel="noopener noreferrer">or contact via WhatsApp</a>
+  </div>
+
+  <!-- Bottom gold rule -->
+  <div class="ws-rule"></div>
+</section>
+
+
+<!-- ══ EXPLORE (SEO hub: internal links to landing pages + keyword body) ═══ -->
+<section id="explore">
+  <div class="ex-inner">
+    <span class="ex-eyebrow rv">Explore AMBERRA</span>
+    <h2 class="s-title rv d1">Handmade <em>Baltic Amber</em> Jewelry</h2>
+    <p class="ex-lede rv d2">Every AMBERRA piece pairs natural Baltic amber — a 40-million-year-old fossil resin — with hand-forged 925 sterling silver, made one at a time by our silversmiths. Browse our amber jewelry by type, by stone color, or explore the full collection.</p>
+
+    <div class="ex-group rv d3">
+      <h3 class="ex-h">Shop by Type</h3>
+      <ul class="ex-links">
+        <li><a href="/amber-rings">Amber Rings</a></li>
+        <li><a href="/earrings">Amber Earrings</a></li>
+        <li><a href="/pendants">Amber Pendants &amp; Necklaces</a></li>
+        <li><a href="/bracelets">Amber Bracelets</a></li>
+        <li><a href="/chains">Sterling Silver Chains</a></li>
+        <li><a href="/rings">Sterling Silver Rings</a></li>
+        <li><a href="/handmade-sterling-silver-jewelry">Handmade Sterling Silver</a></li>
+        <li><a href="/artisan-jewelry">Artisan Jewelry</a></li>
+      </ul>
+    </div>
+
+    <div class="ex-group rv d4">
+      <h3 class="ex-h">Shop by Amber Color</h3>
+      <ul class="ex-links">
+        <li><a href="/amber/cherry">Cherry Amber</a></li>
+        <li><a href="/amber/cognac">Cognac Amber</a></li>
+        <li><a href="/amber/honey">Honey Amber</a></li>
+        <li><a href="/amber/green">Green Amber</a></li>
+        <li><a href="/amber/blue">Blue Amber</a></li>
+        <li><a href="/amber/butterscotch">Butterscotch Amber</a></li>
+        <li><a href="/amber/mosaic">Multi-Color Amber</a></li>
+        <li><a href="/amber/raw">Raw Amber</a></li>
+      </ul>
+    </div>
+
+    <div class="ex-group rv d5">
+      <h3 class="ex-h">Guides &amp; Collections</h3>
+      <ul class="ex-links">
+        <li><a href="/amber">All Baltic Amber Jewelry</a></li>
+        <li><a href="/sterling-silver-amber-jewelry">Sterling Silver Amber</a></li>
+        <li><a href="/bali-jewelry">Bali Jewelry</a></li>
+        <li><a href="/amber-jewellery-australia">Amber Jewellery Australia</a></li>
+        <li><a href="/journal">The Amber Journal</a></li>
+      </ul>
+    </div>
   </div>
 </section>
 
+
+<!-- ══ JOURNAL SLIDER ══════════════════════════════════════════════════════ -->
+<section id="journal" class="js-page">
+  <div class="js-header">
+    <h2 class="s-title" style="margin:4px 0 0" data-i18n="j_title">The Amber <em>Journal</em></h2>
+    <a class="c-link" href="/journal" style="margin-top:8px;display:inline-block" data-i18n="j_all">View all articles</a>
+  </div>
+
+  <div class="js-wrap" id="js-wrap">
+    <div class="js-slides" id="js-slides">
+
+      <!-- Slide 1 — Healing / Succinic Acid -->
+      <article class="js-slide js-active">
+        <div class="js-art js-art-1"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Wellness · Science</span>
+          <span class="js-date">March 2026</span>
+          <h2 class="js-title">Baltic Amber Healing Properties:<br><em>The Science of Succinic Acid</em></h2>
+          <p class="js-body">Baltic amber contains up to 8% succinic acid — a natural compound studied for its anti-inflammatory and immune-supporting effects when worn against the skin.</p>
+          <a class="js-read" href="/journal/balinese-amber-rings">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 2 — Care Guide -->
+      <article class="js-slide">
+        <div class="js-art js-art-2"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Care · Ritual</span>
+          <span class="js-date">February 2026</span>
+          <h2 class="js-title">How to Clean Amber Jewelry:<br><em>The Complete Care Guide</em></h2>
+          <p class="js-body">Natural amber is softer than most gemstones. Warm water, mild soap, and a soft cloth are all you need to keep it radiant for generations. Avoid chemicals and ultrasound cleaners.</p>
+          <a class="js-read" href="/journal/amber-earrings">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 3 — Journey of Stone -->
+      <article class="js-slide">
+        <div class="js-art js-art-3"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Origin · Story</span>
+          <span class="js-date">January 2026</span>
+          <h2 class="js-title">From Ancient Forests to Bali:<br><em>The Journey of Every AMBERRA Stone</em></h2>
+          <p class="js-body">Forty million years beneath ancient forests, then in the workshops where it is set — the remarkable story of each Baltic amber stone and the hands that shape it.</p>
+          <a class="js-read" href="/journal/amber-pendant-necklace">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 4 — Real vs Fake -->
+      <article class="js-slide">
+        <div class="js-art js-art-4"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Authenticity · Knowledge</span>
+          <span class="js-date">December 2025</span>
+          <h2 class="js-title">How to Tell Real Baltic Amber<br>from Fake: <em>5 Simple Tests</em></h2>
+          <p class="js-body">With replicas flooding the market, knowing how to identify authentic Baltic amber is essential. Salt water, UV light, and the scent test reveal the truth instantly.</p>
+          <a class="js-read" href="/journal/amber-bracelets">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 5 — Style Tips -->
+      <article class="js-slide">
+        <div class="js-art js-art-5"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Style · Fashion</span>
+          <span class="js-date">November 2025</span>
+          <h2 class="js-title">5 Ways to Style<br><em>Amber Jewelry This Season</em></h2>
+          <p class="js-body">From layered gold chains to minimalist rings, discover how natural amber complements every aesthetic — from golden sunsets to city evenings.</p>
+          <a class="js-read" href="/journal/buy-balinese-amber-jewelry">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 6 — Amber Colors -->
+      <article class="js-slide">
+        <div class="js-art js-art-6"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Color · Meaning</span>
+          <span class="js-date">October 2025</span>
+          <h2 class="js-title">The Golden Spectrum:<br><em>Understanding Amber Colors</em></h2>
+          <p class="js-body">From cognac to cherry, green to milky white — every shade of Baltic amber tells a different geological story and carries its own energy signature.</p>
+          <a class="js-read" href="/journal/amber-jewelry-gift-guide">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 7 — Ancient Gemstone -->
+      <article class="js-slide">
+        <div class="js-art js-art-7"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">History · Earth</span>
+          <span class="js-date">September 2025</span>
+          <h2 class="js-title">Why Baltic Amber Is<br><em>the World's Most Ancient Gemstone</em></h2>
+          <p class="js-body">Unlike diamonds or sapphires, Baltic amber is organic — fossilized resin from forests that disappeared 40 million years ago. Its rarity lies not in hardness, but in time.</p>
+          <a class="js-read" href="/journal/balinese-amber-jewelry-price">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 8 — Bali Artisans -->
+      <article class="js-slide">
+        <div class="js-art js-art-8"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Craft · People</span>
+          <span class="js-date">August 2025</span>
+          <h2 class="js-title">The Bali Artisans:<br><em>Hands Behind Every AMBERRA Piece</em></h2>
+          <p class="js-body">Our silversmiths spend years perfecting the art of setting Baltic amber in sacred geometric forms passed down through generations.</p>
+          <a class="js-read" href="/journal/amber-rings-for-women">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 9 — Feminine Energy -->
+      <article class="js-slide">
+        <div class="js-art js-art-9"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Spirit · Feminine</span>
+          <span class="js-date">July 2025</span>
+          <h2 class="js-title">Amber and Feminine Energy:<br><em>The Ancient Spiritual Connection</em></h2>
+          <p class="js-body">In Bali, amber is worn for protection, warmth, and the awakening of feminine power. Ancient cultures across the world have long associated this resin stone with the divine feminine.</p>
+          <a class="js-read" href="/journal/genuine-balinese-amber">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 10 — The Sacred Ocean Route -->
+      <article class="js-slide">
+        <div class="js-art js-art-10"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Ocean · Sacred</span>
+          <span class="js-date">June 2025</span>
+          <h2 class="js-title">The Sacred Ocean Route:<br><em>How Amber Arrived on Bali's Shore</em></h2>
+          <p class="js-body">Long before gem traders, the ocean itself carried Baltic amber to these sacred shores. A story of tides, ancient volcanoes, and the Balinese belief that the sea delivers gifts from unseen worlds.</p>
+          <a class="js-read" href="/journal/amber-jewelry-collection">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 11 — Complete Guide to Balinese Jewelry -->
+      <article class="js-slide">
+        <div class="js-art js-art-11"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Bali Jewelry · Guide</span>
+          <span class="js-date">April 2026</span>
+          <h2 class="js-title">Complete Guide to<br><em>Balinese Jewelry</em></h2>
+          <p class="js-body">From temple offerings to luxury boutiques — everything you need to know about Balinese jewelry: materials, techniques, spiritual meaning, and how to buy authentic pieces.</p>
+          <a class="js-read" href="/journal/complete-guide-bali-jewelry">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 12 — Best Bali Silver Rings -->
+      <article class="js-slide">
+        <div class="js-art js-art-12"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Rings · Bali Silver</span>
+          <span class="js-date">May 2026</span>
+          <h2 class="js-title">Best Bali Silver Rings:<br><em>The Ultimate Buyer's Guide</em></h2>
+          <p class="js-body">Sterling silver meets sacred Baltic amber in the ring-making tradition of Bali's master smiths. Discover the finest styles, hallmarks of quality, and the stories behind each design.</p>
+          <a class="js-read" href="/journal/best-bali-silver-rings">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 13 — Bali Jewelry Wholesale Guide -->
+      <article class="js-slide">
+        <div class="js-art js-art-13"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Wholesale · B2B</span>
+          <span class="js-date">June 2026</span>
+          <h2 class="js-title">Bali Jewelry Wholesale:<br><em>A Complete B2B Guide</em></h2>
+          <p class="js-body">For boutique owners and buyers seeking authentic Balinese jewelry at wholesale prices — our complete guide to sourcing, minimum orders, certification, and building a lasting partnership.</p>
+          <a class="js-read" href="/journal/bali-jewelry-wholesale-guide">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 14 — Spiritual Jewelry from Bali -->
+      <article class="js-slide">
+        <div class="js-art js-art-14"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Spirit · Sacred</span>
+          <span class="js-date">July 2026</span>
+          <h2 class="js-title">Spiritual Jewelry from Bali:<br><em>Symbols, Meaning &amp; Energy</em></h2>
+          <p class="js-body">Every piece of Balinese jewelry carries a prayer. Discover the sacred symbols woven into amber and silver — from the Om to the lotus — and why spiritual jewelry from Bali resonates across the world.</p>
+          <a class="js-read" href="/journal/spiritual-jewelry-bali">Read Article</a>
+        </div>
+      </article>
+
+      <!-- Slide 15 — How to Style Bali Jewelry -->
+      <article class="js-slide">
+        <div class="js-art js-art-15"></div>
+        <div class="js-overlay"></div>
+        <div class="js-content">
+          <span class="js-tag">Style · Fashion</span>
+          <span class="js-date">August 2026</span>
+          <h2 class="js-title">How to Style<br><em>Bali Jewelry</em></h2>
+          <p class="js-body">Amber earrings with linen, silver rings stacked at sunset, pendant necklaces for the boardroom — learn how stylists and editors wear Balinese jewelry from morning coffee to evening glow.</p>
+          <a class="js-read" href="/journal/how-to-style-bali-jewelry">Read Article</a>
+        </div>
+      </article>
+
+    </div><!-- end .js-slides -->
+
+    <!-- Arrows -->
+    <button class="js-arrow js-prev" id="js-prev" aria-label="Previous article">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="js-arrow js-next" id="js-next" aria-label="Next article">
+      <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+    </button>
+
+    <!-- Bottom bar -->
+    <div class="js-bottom">
+      <div class="js-dots-row" id="js-dots"></div>
+      <span class="js-counter"><b id="js-cur">01</b> / 15</span>
+    </div>
+
+    <!-- Progress line -->
+    <div class="js-prog"><div class="js-prog-fill" id="js-prog-fill"></div></div>
+  </div><!-- end .js-wrap -->
+</section>
+
+
 <!-- ══ CONTACT ════════════════════════════════════════════════════════════ -->
 <section id="contact">
-  <span class="s-lbl rv" data-i18n="c_lbl">Private Appointments</span>
-  <h2 class="s-title rv d1" data-i18n="c_title">Request a Personal Consultation</h2>
-  <p class="s-body rv d2" style="max-width:480px;margin:0 auto" data-i18n="c_body">Our team in Bali will personally guide you to the perfect piece. Every stone is chosen with intention.</p>
+  <h2 class="s-title rv d1" data-i18n="c_title">Book an Appointment</h2>
+  <p class="s-body rv d2" style="max-width:820px;margin:0 auto" data-i18n="c_body">Our team in Bali will personally guide you to the perfect piece. Every stone is chosen with intention.</p>
   <div class="c-btns rv d3">
     <button class="btn-s" onclick="openReq()" data-i18n="req_btn">Request a Piece</button>
     <a class="btn-o" href="https://instagram.com/amberra.jewelry" target="_blank" rel="noopener noreferrer">Instagram</a>
   </div>
+  <div class="c-channels rv d4">
+    <a href="https://wa.me/6287853867120" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    <span>·</span>
+    <a href="mailto:amberrajewelry@gmail.com">amberrajewelry@gmail.com</a>
+    <span>·</span>
+    <a href="https://instagram.com/amberra.jewelry" target="_blank" rel="noopener noreferrer">@amberra.jewelry</a>
+    <span>·</span>
+    <span>Bali — worldwide shipping</span>
+  </div>
 </section>
 
+</main>
 <!-- ══ FOOTER ════════════════════════════════════════════════════════════ -->
 <footer>
   <div class="ft">
     <div>
       <div class="fb">AMBERRA</div>
-      <p class="fd">Natural Balinese amber jewelry,<br>handcrafted in Bali with sacred intention.<br>Each piece is unique — like its wearer.</p>
+      <p class="fd" data-i18n="fd">Natural Baltic amber jewelry,<br>designed in Bali by our artisans.<br>Each piece is unique — like its wearer.</p>
       <div class="fs">
         <a href="https://instagram.com/amberra.jewelry" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
@@ -559,21 +1218,24 @@
     <div>
       <span class="fc-t" data-i18n="fc_coll">Collections</span>
       <ul class="fc-l">
-        <li><a href="/shop?cat=rings" data-i18n="f_rings">Rings</a></li>
-        <li><a href="/shop?cat=earrings" data-i18n="f_earrings">Earrings</a></li>
-        <li><a href="/shop?cat=pendants" data-i18n="f_pendants">Pendants</a></li>
-        <li><a href="/shop?cat=bracelets" data-i18n="f_bracelets">Bracelets</a></li>
-        <li><a href="/shop?cat=chains" data-i18n="f_chains">Chains</a></li>
+        <li><a href="/shop" data-i18n="fc_all">All Jewelry</a></li>
+        <li><a href="/rings" data-i18n="f_rings">Rings</a></li>
+        <li><a href="/earrings" data-i18n="f_earrings">Earrings</a></li>
+        <li><a href="/pendants" data-i18n="f_pendants">Pendants</a></li>
+        <li><a href="/bracelets" data-i18n="f_bracelets">Bracelets</a></li>
+        <li><a href="/chains" data-i18n="f_chains">Chains</a></li>
       </ul>
     </div>
     <div>
       <span class="fc-t" data-i18n="fc_srv">Services</span>
       <ul class="fc-l">
-        <li><a href="https://wa.me/6287853867120" target="_blank" rel="noopener noreferrer">Consultation</a></li>
-        <li><a href="https://wa.me/6287853867120" target="_blank" rel="noopener noreferrer">Gift Wrapping</a></li>
-        <li><a href="https://wa.me/6287853867120" target="_blank" rel="noopener noreferrer">Custom Orders</a></li>
-        <li><a href="/shop#tryon" data-i18n="nav_tryon">Try On</a></li>
-        <li><a href="/our-story#wholesale">Wholesale</a></li>
+        <li><a href="/services">All Services</a></li>
+                <li><a href="/faq">FAQ &amp; Client Care</a></li>
+        <li><a href="/faq">Repairs &amp; Care</a></li>
+        <li><a href="https://wa.me/6287853867120" target="_blank" rel="noopener noreferrer" data-i18n="fc_consultation">>Consultation</a></li>
+        <li><a href="https://wa.me/6287853867120" target="_blank" rel="noopener noreferrer" data-i18n="fc_gift">Gift Wrapping</a></li>
+        <li><a href="https://wa.me/6287853867120" target="_blank" rel="noopener noreferrer" data-i18n="fc_custom">Custom Orders</a></li>
+        <li><a href="/wholesale" data-i18n="nav_wholesale">Wholesale</a></li>
       </ul>
     </div>
     <div>
@@ -585,9 +1247,24 @@
       </ul>
     </div>
   </div>
+  <nav class="ft-colors" aria-label="Shop amber by color" style="padding:16px 0 0;border-top:1px solid #E8E4DC">
+    <span class="fc-t" style="display:block;margin-bottom:12px">Amber by Color</span>
+    <div style="display:flex;flex-wrap:wrap;gap:12px 24px;font-size:14px;letter-spacing:.04em">
+      <a href="/amber/cherry">Cherry Amber</a>
+      <a href="/amber/honey">Honey Amber</a>
+      <a href="/amber/cognac">Cognac Amber</a>
+      <a href="/amber/green">Green Amber</a>
+      <a href="/amber/blue">Blue Amber</a>
+      <a href="/amber/butterscotch">Butterscotch Amber</a>
+      <a href="/amber/mosaic">Multi-Color Amber</a>
+      <a href="/amber/raw">Raw Amber</a>
+      <a href="/sterling-silver-amber-jewelry">Sterling Silver Amber</a>
+      <a href="/amber">All Amber Colors</a>
+    </div>
+  </nav>
   <div class="fb-bot">
     <span class="fcp">© 2026 AMBERRA. All rights reserved. Bali, Indonesia.</span>
-    <div class="fleg"><a href="#" onclick="openLegal('privacy');return false">Privacy</a><a href="#" onclick="openLegal('terms');return false">Terms</a><a href="#" onclick="openLegal('cookies');return false">Cookies</a></div>
+    <div class="fleg"><a href="/faq">FAQ</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/cookies">Cookies</a></div>
   </div>
 </footer>
 
@@ -595,54 +1272,49 @@
 
 <!-- Services Modal -->
 <div id="srv-modal">
+  <button class="srv-close" onclick="closeSrv()" aria-label="Close">
+    <svg viewBox="0 0 24 24" fill="none"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
+  </button>
+  <div class="srv-modal-scroll">
   <div class="srv-head">
     <span class="srv-head-logo">Amberra Jewelry</span>
     <span class="srv-head-title">Services</span>
     <span class="srv-head-rule"></span>
-    <button class="srv-close" onclick="closeSrv()" aria-label="Close">
-      <svg viewBox="0 0 24 24" fill="none"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
-    </button>
   </div>
-  <div class="srv-modal-scroll">
   <div class="srv-grid">
     <div class="srv-card" onclick="openService('consultation')">
-      <div class="srv-card-title">Book a Consultation</div>
-      <img class="srv-card-img" src="images/services/srv-consultation.svg" alt="Consultation" loading="lazy">
+      <div class="srv-card-title">Book an Appointment</div>
+      <img class="srv-card-img" src="/images/services/srv-consultation.svg" alt="Consultation" loading="lazy">
       <span class="srv-card-link">Discover More</span>
     </div>
     <div class="srv-card" onclick="openService('giftwrap')">
       <div class="srv-card-title">Gift Wrapping</div>
-      <img class="srv-card-img" src="images/services/srv-giftwrap.svg" alt="Gift Wrapping" loading="lazy">
+      <img class="srv-card-img" src="/images/services/srv-giftwrap.svg" alt="Gift Wrapping" loading="lazy">
       <span class="srv-card-link">Discover More</span>
     </div>
     <div class="srv-card" onclick="openService('size')">
       <div class="srv-card-title">Find Your Size</div>
-      <img class="srv-card-img" src="images/services/srv-size.svg" alt="Ring Size" loading="lazy">
+      <img class="srv-card-img" src="/images/services/srv-size.svg" alt="Ring Size" loading="lazy">
       <span class="srv-card-link">Discover More</span>
     </div>
     <div class="srv-card" onclick="openService('care')">
       <div class="srv-card-title">Care &amp; Warranty</div>
-      <img class="srv-card-img" src="images/services/srv-care.svg" alt="Care" loading="lazy">
+      <img class="srv-card-img" src="/images/services/srv-care.svg" alt="Care" loading="lazy">
       <span class="srv-card-link">Discover More</span>
     </div>
     <div class="srv-card" onclick="openService('custom')">
       <div class="srv-card-title">Custom Orders</div>
-      <img class="srv-card-img" src="images/services/srv-custom.svg" alt="Custom" loading="lazy">
-      <span class="srv-card-link">Discover More</span>
-    </div>
-    <div class="srv-card" onclick="closeSrv();location.href='/shop#tryon'">
-      <div class="srv-card-title">Virtual Try On</div>
-      <img class="srv-card-img" src="images/services/srv-tryon.svg" alt="Try On" loading="lazy">
+      <img class="srv-card-img" src="/images/services/srv-custom.svg" alt="Custom" loading="lazy">
       <span class="srv-card-link">Discover More</span>
     </div>
     <div class="srv-card" onclick="openService('blessing')">
-      <div class="srv-card-title">Bali Blessing</div>
-      <img class="srv-card-img" src="images/services/srv-blessing.svg" alt="Blessing" loading="lazy">
+      <div class="srv-card-title">Designed in Bali</div>
+      <img class="srv-card-img" src="/images/services/srv-blessing.svg" alt="Designed in Bali" loading="lazy">
       <span class="srv-card-link">Discover More</span>
     </div>
     <div class="srv-card" onclick="openService('certificate')">
       <div class="srv-card-title">Certificate of Authenticity</div>
-      <img class="srv-card-img" src="images/services/srv-certificate.svg" alt="Certificate" loading="lazy">
+      <img class="srv-card-img" src="/images/services/srv-certificate.svg" alt="Certificate" loading="lazy">
       <span class="srv-card-link">Discover More</span>
     </div>
   </div>
@@ -663,7 +1335,7 @@
       <!-- Ring Size -->
       <div class="sg-section">
         <div class="sg-section-title">Ring Size Guide</div>
-        <p class="sg-intro">Each AMBERRA ring is crafted in Bali and sized to international standards. Use the guide below to find your perfect fit. If you are between sizes, we recommend sizing up.</p>
+        <p class="sg-intro">Each AMBERRA ring is crafted and sized to international standards. Use the guide below to find your perfect fit. If you are between sizes, we recommend sizing up.</p>
         <div class="sg-method">
           <div class="sg-method-step">
             <span class="sg-method-num">01</span>
@@ -719,7 +1391,7 @@
       <!-- Care Instructions -->
       <div class="sg-section">
         <div class="sg-section-title">Care Instructions</div>
-        <p class="sg-intro">Balinese amber is an organic gemstone — warm, light, and alive. With the right care, your AMBERRA piece will remain luminous for generations.</p>
+        <p class="sg-intro">Baltic amber is an organic gemstone — warm, light, and alive. With the right care, your AMBERRA piece will remain luminous for generations.</p>
         <div class="sg-care-grid">
           <div class="sg-care-item">
             <span class="sg-care-icon">✦</span>
@@ -762,17 +1434,17 @@
             <svg viewBox="0 0 24 24"><path d="M12 2l2.4 4.8L20 8l-4 4 .9 5.5L12 15l-4.9 2.5L8 12 4 8l5.6-1.2L12 2z" stroke="#fff" stroke-width="1.2" fill="none"/></svg>
           </div>
           <div class="sg-warranty-body">
-            <h4>AMBERRA Limited Warranty — 12 Months</h4>
-            <p>Every piece of AMBERRA jewelry is covered by a <strong>one-year limited warranty</strong> from the date of purchase. We stand behind the craftsmanship of our Balinese artisans and the quality of every amber stone we select.</p>
+            <h3>AMBERRA Limited Warranty — 12 Months</h3>
+            <p>Every piece of AMBERRA jewelry is covered by a <strong>one-year limited warranty</strong> from the date of purchase. We stand behind the craftsmanship of our artisans and the quality of every amber stone we select.</p>
             <p>The warranty covers:</p>
             <ul>
               <li>Manufacturing defects in metal settings, clasps, and closures</li>
               <li>Stone loss due to a defective setting (not impact or misuse)</li>
-              <li>Premature discolouration of sterling silver components</li>
+              <li>Premature discoloration of sterling silver components</li>
               <li>One complimentary professional clean and inspection within the warranty period</li>
             </ul>
             <p>The warranty does not cover normal wear and tear, scratches, accidental damage, loss, theft, or damage caused by improper care, chemicals, or modification by a third party.</p>
-            <p>To make a warranty claim, contact us at <a href="mailto:hello@amberrajewelry.com" style="color:var(--amber)">hello@amberrajewelry.com</a> with your order number and photos of the item. We respond within 48 hours.</p>
+            <p>To make a warranty claim, contact us at <a href="mailto:hello@amberrajewelry.com" style="color:var(--amber-ink)">hello@amberrajewelry.com</a> with your order number and photos of the item. We respond within 48 hours.</p>
           </div>
         </div>
       </div>
@@ -786,8 +1458,8 @@
   <div class="d-bg" onclick="closeDrawer()"></div>
   <div class="d-panel">
     <div class="d-img" style="position:relative">
-      <button class="d-close" onclick="closeDrawer()" aria-label="Close product detail">✕</button>
-      <img id="d-img" src="" alt="">
+      <button class="d-close" onclick="closeDrawer()">✕</button>
+      <img id="d-img" alt="">
     </div>
     <div class="d-gallery" id="d-gallery" style="display:none"></div>
     <div class="d-body">
@@ -811,7 +1483,7 @@
 <div id="wish-panel">
   <div class="cart-head">
     <h3>Wishlist</h3>
-    <button class="cart-close" onclick="closeWishPanel()" aria-label="Close wishlist">✕</button>
+    <button class="cart-close" onclick="closeWishPanel()">✕</button>
   </div>
   <div class="cart-body" id="wish-body"></div>
 </div>
@@ -821,7 +1493,7 @@
 <div id="cart-panel">
   <div class="cart-head">
     <h3>Your Cart</h3>
-    <button class="cart-close" onclick="closeCart()" aria-label="Close cart">✕</button>
+    <button class="cart-close" onclick="closeCart()">✕</button>
   </div>
   <div class="cart-body" id="cart-body"></div>
   <div class="cart-foot" id="cart-foot" style="display:none">
@@ -830,15 +1502,46 @@
       <span class="cart-total-val" id="cart-total">$0</span>
     </div>
     <button class="cart-checkout" onclick="checkoutCart()">Proceed to Request</button>
+    <button class="cart-wise-btn" onclick="cartWiseClick()">Pay with Wise</button>
+    <button class="cart-checkout cart-crypto-btn" id="cart-crypto-btn" onclick="openCryptoDisclaimer()">&#8383; Pay with Crypto</button>
+  </div>
+</div>
+
+<!-- Wise Payment Modal -->
+<div id="wise-modal-drop" onclick="if(event.target===this)closeWiseModal()">
+  <div id="wise-modal">
+    <button class="crypto-disc-close" onclick="closeWiseModal()">✕</button>
+    <div class="crypto-disc-icon" style="color:#163300">⇄</div>
+    <h3 class="crypto-disc-title">Pay via Wise / Bank Transfer</h3>
+    <p class="crypto-disc-text">Transfer exactly this amount to our Wise account. Any currency accepted — Wise converts automatically with no hidden fees.</p>
+    <div id="wise-amount-display" style="font-family:var(--serif);font-size:36px;font-weight:300;color:var(--black);margin:0 0 6px;letter-spacing:.04em">$0</div>
+    <div style="font-family:var(--sans);font-size:12px;letter-spacing:.18em;color:var(--black);margin-bottom:24px">USD · exact amount</div>
+    <button class="wise-copy-btn" onclick="copyWiseAmount(this)" id="wise-copy-btn">Copy Amount</button>
+    <a id="wise-open-btn" class="cart-checkout cart-wise-btn" style="display:block;text-decoration:none;margin-top:8px" href="https://wise.com/pay/business/amberra" target="_blank" rel="noopener noreferrer" onclick="closeWiseModal()">Open Wise →</a>
+  </div>
+</div>
+
+<!-- Crypto Disclaimer Modal -->
+<div id="crypto-disclaimer-drop" onclick="if(event.target===this)closeCryptoDisclaimer()">
+  <div id="crypto-disclaimer">
+    <button class="crypto-disc-close" onclick="closeCryptoDisclaimer()">✕</button>
+    <div class="crypto-disc-icon">&#8383;</div>
+    <h3 class="crypto-disc-title">Before You Pay</h3>
+    <p class="crypto-disc-text">By proceeding, you acknowledge that all cryptocurrency payments are <strong>final and non-refundable</strong>. Once sent, transactions cannot be reversed. Please ensure your order is correct before continuing.</p>
+    <label class="crypto-disc-check">
+      <input type="checkbox" id="crypto-disc-cb" onchange="document.getElementById('crypto-disc-confirm').disabled=!this.checked">
+      <span>I understand that all sales are final and no refunds will be issued</span>
+    </label>
+    <button class="cart-checkout cart-crypto-btn crypto-disc-confirm" id="crypto-disc-confirm" disabled onclick="closeCryptoDisclaimer();payCrypto(document.getElementById('cart-crypto-btn'))">Confirm &amp; Pay with Crypto</button>
   </div>
 </div>
 
 <!-- Account Modal -->
 <div id="acc-modal" onclick="if(event.target===this)closeAcc()">
   <div class="acc-box" onclick="event.stopPropagation()">
-    <button class="req-close" onclick="closeAcc()" aria-label="Close account">✕</button>
+    <button class="req-close" onclick="closeAcc()">✕</button>
     <div style="text-align:center;margin-bottom:28px">
-      <div style="font-family:var(--serif);font-size:11px;letter-spacing:.25em;color:var(--amber)">AMBERRA</div>
+      <div style="font-family:var(--serif);font-size:12px;letter-spacing:.25em;color:var(--amber-ink)">AMBERRA</div>
     </div>
     <div class="acc-tabs">
       <button class="acc-tab act" onclick="switchTab('login')">Sign In</button>
@@ -848,7 +1551,7 @@
       <div class="fg"><label>Email Address</label><input type="email" id="acc-email" placeholder="your@email.com"></div>
       <div class="fg"><label>Password</label><input type="password" id="acc-pass" placeholder="••••••••"></div>
       <button class="btn-s" style="width:100%;margin-bottom:14px" onclick="submitAcc()">Sign In</button>
-      <p style="text-align:center;font-size:10px;color:var(--stone);cursor:pointer;letter-spacing:.08em">Forgot your password?</p>
+      <p style="text-align:center;font-size:12px;color:var(--black);cursor:pointer;letter-spacing:.08em">Forgot your password?</p>
     </div>
     <div id="acc-register" style="display:none">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
@@ -858,11 +1561,11 @@
       <div class="fg"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
       <div class="fg"><label>Password</label><input type="password" placeholder="Min. 8 characters"></div>
       <button class="btn-s" style="width:100%;margin-bottom:14px" onclick="submitAcc()">Create Account</button>
-      <p style="text-align:center;font-size:9px;color:var(--stone);line-height:1.7;letter-spacing:.06em">By creating an account you agree to our<br>Terms &amp; Privacy Policy.</p>
+      <p style="text-align:center;font-size:12px;color:var(--black);line-height:1.7;letter-spacing:.06em">By creating an account you agree to our<br>Terms &amp; Privacy Policy.</p>
     </div>
     <div id="acc-thanks" style="display:none;text-align:center;padding:32px 0">
-      <div style="font-family:var(--serif);font-size:22px;font-style:italic;color:var(--amber);margin-bottom:12px">Welcome ✦</div>
-      <p style="font-size:12px;color:var(--gray)">Thank you for joining AMBERRA.</p>
+      <div style="font-family:var(--serif);font-size:22px;font-style:italic;color:var(--amber-ink);margin-bottom:12px">Welcome ✦</div>
+      <p style="font-size:12px;color:var(--black)">Thank you for joining AMBERRA.</p>
     </div>
   </div>
 </div>
@@ -870,9 +1573,9 @@
 <!-- Wholesale Modal -->
 <div id="ws-modal-wrap" onclick="if(event.target===this)closeWholesale()">
   <div class="req-box" style="max-width:600px;max-height:90vh;overflow-y:auto" onclick="event.stopPropagation()">
-    <button class="req-close" onclick="closeWholesale()" aria-label="Close wholesale form">✕</button>
+    <button class="req-close" onclick="closeWholesale()">✕</button>
     <h2 style="font-family:var(--serif);font-size:26px;font-weight:400;margin-bottom:8px">Partner With Amberra</h2>
-    <p style="font-size:11px;color:var(--gray);margin-bottom:28px;line-height:1.7">Tell us about your business — we will be in touch within 48 hours.</p>
+    <p style="font-size:13px;color:var(--black);margin-bottom:28px;line-height:1.7">Tell us about your business — we will be in touch within 48 hours.</p>
     <div id="ws-form-wrap">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
         <div class="fg"><label>First Name *</label><input type="text" id="ws-fname"></div>
@@ -883,7 +1586,7 @@
       <div class="fg"><label>WhatsApp / Phone</label><input type="tel" id="ws-phone"></div>
       <div class="fg">
         <label>Country / Region *</label>
-        <select id="ws-country" style="width:100%;padding:10px 0;border:none;border-bottom:1px solid var(--mist);font-family:var(--sans);font-size:11px;background:transparent;outline:none">
+        <select id="ws-country" style="width:100%;padding:10px 0;border:none;border-bottom:1px solid var(--mist);font-family:var(--sans);font-size:14px;background:transparent;outline:none">
           <option value="">Select country</option>
           <option>United States</option><option>United Kingdom</option><option>France</option>
           <option>Germany</option><option>Italy</option><option>Spain</option>
@@ -895,7 +1598,7 @@
       </div>
       <div class="fg">
         <label>Type of Business *</label>
-        <select id="ws-type" style="width:100%;padding:10px 0;border:none;border-bottom:1px solid var(--mist);font-family:var(--sans);font-size:11px;background:transparent;outline:none">
+        <select id="ws-type" style="width:100%;padding:10px 0;border:none;border-bottom:1px solid var(--mist);font-family:var(--sans);font-size:14px;background:transparent;outline:none">
           <option value="">Select type</option>
           <option>Boutique / Jewelry Store</option>
           <option>Concept Store</option>
@@ -908,7 +1611,7 @@
       </div>
       <div class="fg">
         <label>Expected Monthly Volume</label>
-        <select id="ws-volume" style="width:100%;padding:10px 0;border:none;border-bottom:1px solid var(--mist);font-family:var(--sans);font-size:11px;background:transparent;outline:none">
+        <select id="ws-volume" style="width:100%;padding:10px 0;border:none;border-bottom:1px solid var(--mist);font-family:var(--sans);font-size:14px;background:transparent;outline:none">
           <option value="">Select volume</option>
           <option>10–30 pieces (Starter)</option>
           <option>30–100 pieces (Partner)</option>
@@ -916,13 +1619,12 @@
         </select>
       </div>
       <div class="fg"><label>Message (optional)</label><textarea id="ws-msg" style="resize:none;height:80px"></textarea></div>
-      <div class="cf-turnstile" data-sitekey="0x4AAAAACy7w3XD0QwB7rGi" data-callback="onTurnstileWs" data-theme="light" data-size="compact" id="ts-ws"></div>
       <button class="btn-s" style="width:100%;margin-top:16px" onclick="submitWholesale()">Send Partnership Request</button>
-      <p style="font-size:9px;color:var(--stone);text-align:center;margin-top:14px;letter-spacing:.08em">We reply within 48 hours · Bali, Indonesia</p>
+      <p style="font-size:12px;color:var(--black);text-align:center;margin-top:14px;letter-spacing:.08em">We reply within 48 hours · Bali, Indonesia</p>
     </div>
     <div id="ws-thanks" style="display:none;text-align:center;padding:40px 0">
-      <div style="font-family:var(--serif);font-size:24px;font-style:italic;color:var(--amber);margin-bottom:12px">Thank you ✦</div>
-      <p style="font-size:13px;color:var(--gray);line-height:1.7">Our wholesale team will be in touch within 48 hours.<br>Warm regards from Bali.</p>
+      <div style="font-family:var(--serif);font-size:24px;font-style:italic;color:var(--amber-ink);margin-bottom:12px">Thank you ✦</div>
+      <p style="font-size:13px;color:var(--black);line-height:1.7">Our wholesale team will be in touch within 48 hours.<br>Warm regards from Bali.</p>
     </div>
   </div>
 </div>
@@ -930,7 +1632,7 @@
 <!-- Request Modal -->
 <div id="req-modal">
   <div class="req-box">
-    <button class="req-close" onclick="closeReq()" aria-label="Close request form">✕</button>
+    <button class="req-close" onclick="closeReq()">✕</button>
     <h2 data-i18n="req_title">Request a Piece</h2>
     <p data-i18n="req_sub">Tell us which piece caught your eye and we'll be in touch from Bali within 24 hours.</p>
     <div id="req-form">
@@ -939,7 +1641,6 @@
       <div class="fg"><label data-i18n="f_email">Email</label><input type="email" id="f-email"></div>
       <div class="fg"><label data-i18n="f_phone">WhatsApp (optional)</label><input type="text" id="f-phone"></div>
       <div class="fg"><label data-i18n="f_msg">Message</label><textarea id="f-msg"></textarea></div>
-      <div class="cf-turnstile" data-sitekey="0x4AAAAACy7w3XD0QwB7rGi" data-callback="onTurnstileReq" data-theme="light" data-size="compact" id="ts-req"></div>
       <button class="btn-s" style="width:100%" onclick="submitReq()" data-i18n="req_send">Send Request</button>
     </div>
     <div class="req-ok" id="req-ok">
@@ -972,7 +1673,7 @@
 <!-- Email Popup -->
 <div class="epop" id="epop">
   <div class="epop-box">
-    <button class="epop-close" onclick="closeEpop()" aria-label="Close popup">✕</button>
+    <button class="epop-close" onclick="closeEpop()">✕</button>
     <div class="epop-top">
       <span class="epop-orn">✦</span>
       <h2 data-i18n="ep_title">A Gift from Amberra</h2>
@@ -984,7 +1685,6 @@
           <input type="email" id="epop-email" placeholder="Your email address" data-i18n-ph="ep_ph">
           <button onclick="submitEpop()" data-i18n="ep_btn">Claim Offer</button>
         </div>
-        <div class="cf-turnstile" data-sitekey="0x4AAAAACy7w3XD0QwB7rGi" data-callback="onTurnstileEpop" data-theme="light" data-size="compact" id="ts-epop" style="margin-top:8px"></div>
         <p class="epop-note" data-i18n="ep_note">No spam, ever. Unsubscribe anytime.</p>
       </div>
       <div class="epop-thanks" id="epop-thanks">
@@ -995,10 +1695,12 @@
   </div>
 </div>
 
-<!-- Try-On FAB & Chat -->
-<button class="tryon-fab" onclick="location.href='/shop#tryon'" title="Virtual Try-On">
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+<button class="sound-btn" id="sound-btn" onclick="toggleSound()" aria-label="Play calming Vivaldi">
+  <span class="sound-label">Vivaldi · Calm</span>
+  <svg class="sound-ico" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h3V3z"/><path d="M18.5 5c1.2 1.3 1.8 3 1.8 5s-.6 3.7-1.8 5" stroke="#1a0c02" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg>
+  <span class="sound-eq" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
 </button>
+<audio id="amb-music" src="/audio/vivaldi-winter-largo.mp3" loop preload="none"></audio>
 
 <button class="chat-btn" id="chat-btn" onclick="toggleChat()">
   <span class="chat-label" data-i18n="chat_lbl">Ask Us Anything</span>
@@ -1012,10 +1714,10 @@
       <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
     </div>
     <div class="chat-hi">
-      <h4>Amber Guide</h4>
+      <h3>Amber Guide</h3>
       <p data-i18n="chat_status">Online · Bali, Indonesia</p>
     </div>
-    <button class="chat-hc" onclick="toggleChat()" aria-label="Close chat">✕</button>
+    <button class="chat-hc" onclick="toggleChat()">✕</button>
   </div>
   <div class="chat-msgs" id="chat-msgs">
     <div class="chat-msg chat-bot" data-i18n="chat_welcome">Hello! I'm your personal Amberra guide. How can I help you find the perfect piece today?</div>
@@ -1029,7 +1731,7 @@
   </div>
   <div class="chat-ir">
     <input type="text" id="chat-input" placeholder="Ask anything..." data-i18n-ph="chat_ph" onkeydown="if(event.key==='Enter')chatSend()">
-    <button class="chat-send" onclick="chatSend()">
+    <button class="chat-send" aria-label="Send message" onclick="chatSend()">
       <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
     </button>
   </div>
@@ -1037,7 +1739,7 @@
 
 <!-- Hover Detail (hidden on mobile via CSS) -->
 <div id="hover-detail">
-  <div class="hd-img"><img id="hd-img" src="" alt=""></div>
+  <div class="hd-img"><img id="hd-img" alt=""></div>
   <div class="hd-body">
     <span class="hd-cat" id="hd-cat"></span>
     <h3 class="hd-name" id="hd-name"></h3>
@@ -1052,7 +1754,7 @@
 <!-- Legal Modal -->
 <div id="legal-modal" onclick="if(event.target===this)closeLegal()">
   <div class="legal-box">
-    <button class="legal-close" onclick="closeLegal()" aria-label="Close legal">✕</button>
+    <button class="legal-close" onclick="closeLegal()">✕</button>
     <div class="legal-head">
       <span class="legal-logo">AMBERRA</span>
       <div class="legal-tabs">
@@ -1067,17 +1769,10 @@
 
 <!-- Cookie Banner -->
 <div id="cookie-overlay" style="display:none">
-  <div id="cookie-box">
-    <span class="ck-logo">AMBERRA</span>
-    <div class="ck-rule"></div>
-    <h2 class="ck-title">Your privacy <em>matters</em> to us.</h2>
-    <p class="ck-body">Our website uses cookies, including third-party cookies, to measure performance and offer you a personalised experience in accordance with your preferences.</p>
-    <p class="ck-body">This allows us to show you jewellery that inspires you and to continually improve our service. You may change these settings at any time. By remaining on this site, you consent to the use of cookies.</p>
-    <p class="ck-body" style="margin-top:4px">For more information please see our <a class="ck-link" href="#" onclick="openLegal('cookies');return false">Cookie Policy</a>.</p>
-    <div class="ck-btns">
-      <button class="ck-btn-accept" onclick="ckAccept()">Accept All Cookies</button>
-      <button class="ck-btn-reject" onclick="ckReject()">Reject All Cookies</button>
-    </div>
+  <span class="ck-text">We use cookies to personalize your experience. <a class="ck-link" href="#" onclick="openLegal('cookies');return false">Cookie Policy</a></span>
+  <div class="ck-btns">
+    <button class="ck-btn-accept" onclick="ckAccept()">Accept</button>
+    <button class="ck-btn-reject" onclick="ckReject()">Decline</button>
   </div>
 </div>
 
@@ -1087,14 +1782,10 @@
     <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
     <span>Home</span>
   </button>
-  <button class="mob-bar-btn" onclick="location.href='/shop'">
-    <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 001.95-1.57l1.65-8.42H6"/></svg>
-    <span>Shop</span>
+  <button class="mob-bar-btn" onclick="openCart()">
+    <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    <span>Cart</span>
     <span class="mob-bar-badge" id="mob-cart-badge">0</span>
-  </button>
-  <button class="mob-bar-btn" onclick="location.href='/journal'">
-    <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
-    <span>Journal</span>
   </button>
   <button class="mob-bar-btn" onclick="toggleWishView()">
     <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
@@ -1107,8 +1798,9 @@
   </button>
 </div>
 
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-<script src="/currency.js"></script>
-<script src="/app.js"></script>
+<script defer src="/currency.js?v=20260811h"></script>
+<script defer src="/lang.js?v=20260822a"></script>
+<script defer src="/app.js?v=20260924a"></script>
+
 </body>
 </html>

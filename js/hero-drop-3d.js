@@ -1,0 +1,231 @@
+// Interactive 3D amber drop — translucent amber with inner shimmer, surface glint sweep, cursor reaction
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js'; // GLB is meshopt-compressed (gltfpack -cc -noq)
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+// resolved in boot(): as an async module this file may run before the hero markup is parsed
+let mount = null;
+
+// Guarantee real dimensions even if style.css is cached/stale.
+function ensureSize() {
+  if (!mount) return;
+  const vw = innerWidth || 1200;
+  const w = Math.max(240, Math.min(384, vw * 0.24));
+  const h = Math.max(336, Math.min(504, vw * 0.336));
+  mount.style.width = w + 'px';
+  mount.style.height = h + 'px';
+  mount.style.cursor = 'grab';
+  const wrap = mount.closest('.hero-drop-wrap');
+  if (wrap) { wrap.style.width = w + 'px'; wrap.style.height = h + 'px'; }
+}
+
+function boot() {
+  mount = mount || document.getElementById('hero-drop-canvas');
+  if (!mount) {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });
+    return;
+  }
+  ensureSize();
+  if (mount.clientWidth === 0 || mount.clientHeight === 0) { requestAnimationFrame(boot); return; }
+  init();
+}
+
+function init() {
+  const W = () => mount.clientWidth || 1, H = () => mount.clientHeight || 1;
+  // touch devices: no mouse → skip magnetic cursor, lighten the render
+  const coarse = matchMedia('(pointer:coarse)').matches;
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, coarse ? 1.5 : 2.5)); // phones: -44% pixels
+  renderer.setSize(W(), H());
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.18;
+  mount.appendChild(renderer.domElement);
+
+  const scene = new THREE.Scene();
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+  const camera = new THREE.PerspectiveCamera(30, W() / H(), 0.1, 100);
+  camera.position.set(0, 0.2, 9.0);
+
+  const key = new THREE.DirectionalLight(0xfff2d6, 2.7); key.position.set(-3, 4, 5); scene.add(key);
+  const rim = new THREE.DirectionalLight(0xffc27a, 2.9); rim.position.set(2, -1.5, -4); scene.add(rim);
+  scene.add(new THREE.AmbientLight(0xffe6c0, 0.34));
+  // orbiting glint light — sweeps a bright specular across the surface
+  const glint = new THREE.PointLight(0xfff0d0, 40, 14, 2); scene.add(glint);
+
+  // crystal-clear amber: glassy, high light transmission, bright honey — a gem, not dark resin
+  const amber = new THREE.MeshPhysicalMaterial({
+    // clear honey-amber crystal: light passes almost fully, crisp glass gloss, luminous core stays visible
+    color: 0xe8912a, transmission: 0.985, thickness: 0.85, ior: 1.55,
+    roughness: 0.035, metalness: 0.0,
+    attenuationColor: new THREE.Color(0xf6b24a), attenuationDistance: 3.6,
+    clearcoat: 1.0, clearcoatRoughness: 0.02, envMapIntensity: 1.9,
+    sheen: 0.35, sheenRoughness: 0.35, sheenColor: new THREE.Color(0xffe4a8),
+    iridescence: 0.1, iridescenceIOR: 1.28, iridescenceThicknessRange: [140, 420],
+    emissive: new THREE.Color(0xc26a12), emissiveIntensity: 0.09, transparent: true,
+  });
+
+  const group = new THREE.Group();
+  scene.add(group);
+
+  // glowing heart — soft pulsing core deep inside the drop (additive glow)
+  const core = new THREE.Mesh(
+    new THREE.SphereGeometry(0.34, 20, 20),
+    new THREE.MeshBasicMaterial({
+      color: 0xffc266, transparent: true, opacity: 0.14,
+      blending: THREE.AdditiveBlending, depthWrite: false,
+    })
+  );
+  group.add(core);
+
+  // inner motes: one InstancedMesh (1 draw call instead of 60); glow = per-instance colour
+  const sparks = [];
+  const SPARK_BASE = new THREE.Color(0xfff4d8).multiplyScalar(0.55); // approx. lit diffuse of the old standard material
+  const SPARK_GLOW = new THREE.Color(0xffe1a0);
+  const _m = new THREE.Matrix4(), _q = new THREE.Quaternion(), _s = new THREE.Vector3(), _c = new THREE.Color();
+  let sparkMesh = null;
+  function seedSparks(halfW, halfH, cy) {
+    const N = coarse ? 38 : 60;
+    sparkMesh = new THREE.InstancedMesh(new THREE.SphereGeometry(1, 8, 8), new THREE.MeshBasicMaterial(), N);
+    for (let i = 0; i < N; i++) {
+      // rejection-sample inside an ellipsoid (bulb-biased) so motes stay within the amber
+      let x, y, z;
+      do {
+        x = (Math.random() * 2 - 1);
+        y = (Math.random() * 2 - 1);
+        z = (Math.random() * 2 - 1);
+      } while (x * x + y * y + z * z > 1);
+      // tiny star-like specks of varied size; keep motes inside the bulb, biased up from the tip
+      const pos = new THREE.Vector3(x * halfW * 0.55, cy + y * halfH * 0.42, z * halfW * 0.55);
+      sparks.push({
+        pos, home: pos.clone(), // rest position for magnetic pull
+        r: (0.008 + Math.random() * 0.011) * halfH * 2,
+        phase: Math.random() * Math.PI * 2,
+        speed: 1.8 + Math.random() * 3.4,
+        peak: 2.0 + Math.random() * 2.4,
+      });
+      sparkMesh.setColorAt(i, SPARK_BASE);
+    }
+    group.add(sparkMesh);
+  }
+
+  // ready=false while heavy shaders compile off the main thread (KHR_parallel_shader_compile)
+  let ready = true;
+  new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).load('/models/amber-drop.glb?v=10', (gltf) => {
+    const root = gltf.scene;
+    let maxV = 0, body = null;
+    root.traverse((o) => { if (o.isMesh) { const v = o.geometry.attributes.position.count; if (v > maxV) { maxV = v; body = o; } } });
+    root.traverse((o) => { if (o.isMesh) o.material = amber; });
+    const box = new THREE.Box3().setFromObject(root);
+    const size = new THREE.Vector3(); box.getSize(size);
+    const center = new THREE.Vector3(); box.getCenter(center);
+    root.position.sub(center);
+    const scl = 3.3 / Math.max(size.x, size.y, size.z);
+    root.scale.setScalar(scl);
+    group.add(root);
+    // sparks live in group space; drop spans ~[-1.65..1.65] in tallest axis
+    const halfH = (size.y * scl) / 2, halfW = (size.x * scl) / 2;
+    seedSparks(halfW, halfH, halfH * 0.02);
+    ready = false;
+    renderer.compileAsync(scene, camera).catch(() => {}).finally(() => {
+      ready = true;
+      // lets the homepage intro hand over to the live drop
+      requestAnimationFrame(() => { window.__ambDropReady = true; dispatchEvent(new Event('amberra:drop-ready')); });
+    });
+  });
+
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableZoom = false; controls.enablePan = false;
+  controls.enableDamping = true; controls.dampingFactor = 0.08;
+  controls.autoRotate = true; controls.autoRotateSpeed = 2.0;
+  controls.minPolarAngle = Math.PI * 0.3; controls.maxPolarAngle = Math.PI * 0.72;
+  controls.target.set(0, 0, 0);
+
+  // cursor reaction — magnetic: light + particles pull toward the pointer, glow rises (no wobble)
+  let hover = false, hoverAmt = 0, cx = 0, cy = 0;
+  mount.addEventListener('pointerenter', () => { hover = true; });
+  mount.addEventListener('pointerleave', () => { hover = false; cx = 0; cy = 0; });
+  if (!coarse) {
+    mount.addEventListener('pointermove', (e) => {
+      const rect = mount.getBoundingClientRect();
+      cx = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      cy = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+    });
+  }
+
+  const resize = () => {
+    ensureSize();
+    const w = W(), h = H();
+    if (w < 2 || h < 2) return;
+    camera.aspect = w / h; camera.updateProjectionMatrix(); renderer.setSize(w, h);
+  };
+  new ResizeObserver(resize).observe(mount);
+  addEventListener('resize', resize);
+
+  // skip rendering while the hero is scrolled away — frees CPU/GPU for the rest of the page
+  let onScreen = true;
+  new IntersectionObserver(([e]) => { onScreen = e.isIntersecting; }).observe(mount);
+
+  const clock = new THREE.Clock();
+  (function animate() {
+    requestAnimationFrame(animate);
+    if (!onScreen || !ready) return;
+    const t = clock.getElapsedTime();
+
+    // glint sweep: orbiting light — magnetically drawn toward the cursor on hover
+    const a = t * 0.6;
+    const ox = Math.cos(a) * 4.6, oy = 1.6 + Math.sin(a * 0.7) * 1.6;
+    const pull = hoverAmt * 0.85;
+    glint.position.set(ox * (1 - pull) + cx * 4.2 * pull, oy * (1 - pull) + cy * 3.4 * pull, 4.2);
+    glint.intensity = 42 + Math.sin(t * 1.25) * 16 + hoverAmt * 60;
+
+    // gentle light play on the glossy surface
+    amber.iridescence = 0.16 + Math.sin(t * 0.9) * 0.09 + hoverAmt * 0.2;
+    amber.iridescenceIOR = 1.28 + Math.sin(t * 0.55) * 0.06;
+
+    // wandering luminous soul: the light drifts inside the amber on a slow Lissajous path
+    core.position.set(
+      Math.sin(t * 0.37) * 0.32,
+      Math.sin(t * 0.53 + 1.3) * 0.52,
+      Math.cos(t * 0.31) * 0.32
+    );
+    core.material.opacity = 0.12 + Math.abs(Math.sin(t * 1.6)) * 0.07 + hoverAmt * 0.26;
+    core.scale.setScalar(0.8 + Math.sin(t * 1.6) * 0.14 + hoverAmt * 0.5);
+
+    // inner starfield: sharp twinkle + magnetic drift + motes glow when the soul passes near
+    const mag = hoverAmt * 0.55;
+    sparks.forEach((s, i) => {
+      const sp = Math.sin(t * s.speed + s.phase);
+      const flash = Math.pow(Math.max(0, sp), 5); // sharp on/off blink like a star
+      const near = Math.max(0, 1 - s.pos.distanceTo(core.position) / 0.75);
+      const glow = (0.12 + flash * s.peak + near * near * 1.6) * (1 + hoverAmt * 0.9);
+      s.pos.x += (s.home.x + cx * mag - s.pos.x) * 0.12;
+      s.pos.y += (s.home.y + cy * mag - s.pos.y) * 0.12;
+      sparkMesh.setMatrixAt(i, _m.compose(s.pos, _q, _s.setScalar(s.r)));
+      sparkMesh.setColorAt(i, _c.copy(SPARK_GLOW).multiplyScalar(glow).add(SPARK_BASE));
+    });
+    if (sparkMesh) { sparkMesh.instanceMatrix.needsUpdate = true; sparkMesh.instanceColor.needsUpdate = true; }
+
+    // hover flare: faster spin + brighter emission + halo (via CSS class)
+    hoverAmt += ((hover ? 1 : 0) - hoverAmt) * 0.08;
+    controls.autoRotateSpeed = 2.0 + hoverAmt * 3.2;
+    amber.emissiveIntensity = 0.14 + hoverAmt * 0.4;
+    if (mount.classList.contains('hovered') !== hoverAmt > 0.5) mount.classList.toggle('hovered', hoverAmt > 0.5);
+
+    // living breath + hover grow (no wobble)
+    group.scale.setScalar((1 + hoverAmt * 0.07) * (1 + Math.sin(t * 0.85) * 0.02));
+
+    controls.update();
+    renderer.render(scene, camera);
+  })();
+}
+
+// start after first paint so the page (text, cookie bar, app.js) isn't blocked by WebGL setup
+// intro screen covers the page → boot at once so the drop is ready when it lifts
+if (document.documentElement.classList.contains('intro-on')) boot();
+else if ('requestIdleCallback' in window) requestIdleCallback(boot, { timeout: 1200 });
+else setTimeout(boot, 200);

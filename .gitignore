@@ -1,2 +1,15 @@
-.vercel
-.env*.local
+node_modules/
+.DS_Store
+.superpowers/
+*.log
+.vercel/
+
+/amber-drop-*.png
+/rodin-drop-*.png
+
+/dns-zone-backup-*.json
+.firecrawl/
+.indexnow-key
+*.bak
+graphify-out/
+service-account.json

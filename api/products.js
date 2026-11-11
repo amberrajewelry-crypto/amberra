@@ -1,3 +1,33 @@
+import fallbackProducts from '../data/products.json';
+
+const IMG_EXTRAS = {
+  'Morning Dew': ['/images/earrings/morning-dew-2.jpg'], // leaf_eye_butter_rg
+};
+
+// ponytail: mirror of generate-products.js assignSlugs/toSlug — keep in sync so
+// live cards link to the same /products/<slug> pages as the static HTML.
+function toSlug(name) {
+  return name.toLowerCase()
+    .replace(/[àáâãäå]/g, 'a').replace(/[èéêë]/g, 'e')
+    .replace(/[ìíîï]/g, 'i').replace(/[òóôõö]/g, 'o')
+    .replace(/[ùúûü]/g, 'u').replace(/ñ/g, 'n')
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+function assignSlugs(products) {
+  const seen = [];
+  for (const p of products) {
+    if (!p.name) continue;
+    let slug = toSlug(p.name);
+    if (seen.includes(slug)) slug = slug + '-' + seen.length;
+    seen.push(slug);
+    p.slug = slug;
+  }
+  return products;
+}
+
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=60');
@@ -19,10 +49,17 @@ export default async function handler(req, res) {
       const r = await fetch(url, {
         headers: { 'Authorization': `Bearer ${PAT}` }
       });
+      if (!r.ok) break; // Airtable error (e.g. 429 monthly limit) — fall back below
       const data = await r.json();
       records = records.concat(data.records || []);
       offset = data.offset || null;
     } while (offset);
+
+    // Never leave the catalog empty: if Airtable returned nothing, serve the bundled snapshot.
+    if (!records.length) {
+      res.setHeader('X-Data-Source', 'fallback');
+      return res.status(200).json(assignSlugs(fallbackProducts));
+    }
 
     const products = records.map((rec, i) => {
       const f = rec.fields;
@@ -40,14 +77,18 @@ export default async function handler(req, res) {
         price: f.Price || 0,
         badge: f.Badge || null,
         img: f.Image || '',
+        imgs: [f.Image, ...(IMG_EXTRAS[f.Name] || [])].filter(Boolean),
         material: f.Material || '',
         desc: f.Description || '',
         props
       };
     });
 
+    assignSlugs(products);
     res.status(200).json(products);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    // On any failure, still serve products from the bundled snapshot rather than an empty catalog.
+    res.setHeader('X-Data-Source', 'fallback-error');
+    res.status(200).json(assignSlugs(fallbackProducts));
   }
 }
