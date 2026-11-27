@@ -1844,3 +1844,7 @@ body.page-light #tryon-sec{padding-top:calc(var(--nav-h) + 40px)}
   .js-read,.bs-all,.c-link,.ws-cat-link,.ws-wa-link,.sg-back,.sp-bread a,.nav-logo,.os-ch,nav[aria-label="All journal articles"] a{display:inline-flex;align-items:center;min-height:44px}
   .cat-sort select{min-height:44px}
 }
+/* service cards are native buttons (keyboard + screen readers); zero-specificity reset keeps .srv-card styling */
+:where(button.srv-card){font:inherit;color:inherit;background:none;border:0;padding:0;text-align:inherit;width:100%}
+.srv-card-title{display:block}
+.srv-card:focus-visible{outline:2px solid #8A6B12;outline-offset:4px}

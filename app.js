@@ -929,11 +929,11 @@ async function submitEpop(){
 let chatOpen=false;
 const chatAnswers={
   'ring sizes':'We offer ring sizes XS (14mm) through XL (19mm). Measure your finger with a string for the best fit. Our team can also help.',
-  'shipping info':'We ship worldwide from Bali, Indonesia. Standard shipping 7–14 days. Express 3–5 days. Free shipping on orders over $200.',
+  'shipping info':'We ship worldwide from Bali, Indonesia. Standard shipping 7–14 days. Express 3–5 days. Shipping cost is agreed with our team; free on orders over $1,000.',
   'care guide':'Keep amber away from perfume and chemicals. Clean with a soft dry cloth. Store separately to avoid scratches. Amber loves to be worn.',
   'gift ideas':'Popular gifts: Sacred Drop Pendant ($165), Solar Thread Ring ($99), Bali Dusk Drops earrings ($145). Free gift wrapping with every order.',
   'размеры колец':'Предлагаем размеры от XS (14мм) до XL (19мм). Измерьте палец ниткой для точного размера.',
-  'доставка':'Отправляем по всему миру с Бали. Стандарт 7–14 дней. Экспресс 3–5 дней. Бесплатно при заказе от $200.',
+  'доставка':'Отправляем по всему миру с Бали. Стандарт 7–14 дней. Экспресс 3–5 дней. Стоимость согласуем с вами; бесплатно при заказе от $1000.',
   'уход':'Избегайте парфюма и химикатов. Протирайте мягкой тканью. Храните отдельно. Янтарь любит, когда его носят.',
   'подарочные идеи':'Популярные подарки: подвеска Sacred Drop ($165), кольцо Solar Thread ($99), серьги Bali Dusk Drops ($145).',
 };

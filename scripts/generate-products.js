@@ -118,7 +118,7 @@ const CRAFT_LINE = [
   'Made by hand by our artisans, it arrives ready to gift.',
   'Handcrafted from genuine Baltic amber, then finished by hand.',
   'Worked by hand from start to finish, it ships worldwide with a certificate of authenticity.',
-  'Finished by hand and boxed ready to gift, with free tracked shipping over $200.',
+  'Finished by hand and boxed ready to gift, with free tracked shipping over $1,000.',
   'One of a kind, hand-finished by our silversmiths and shipped worldwide.',
   'Hand-set and polished by our artisans, it arrives gift-ready with tracked delivery.'
 ];
@@ -147,15 +147,14 @@ function aboutBlock(p) {
 }
 
 // Policy copy taken verbatim from faq.html (care, returns) and services.html (certificate).
-// ponytail: duplicated text — if those pages change, update here. Shipping price terms omitted:
-// services.html ("complimentary") and faq.html ("free over $200") disagree.
+// ponytail: duplicated text — if those pages change, update here.
 function infoBlock(isSilver) {
   const cert = 'Each piece ships with a signed certificate verifying genuine natural Baltic amber'
     + (isSilver ? ', hand-set in 925 sterling silver.' : '.');
   return `<div class="pp-info"><h2 class="pp-about-h">Care, shipping &amp; authenticity</h2><ul class="pp-info-l">`
     + `<li><strong>Care.</strong> Amber is soft and organic. Keep it away from perfumes, cosmetics, household chemicals, and prolonged direct sunlight. Clean with a soft, slightly damp cloth — never ultrasonic or steam cleaners. Store pieces separately in a pouch to avoid scratching.</li>`
     + `<li><strong>Authenticity.</strong> ${cert}</li>`
-    + `<li><strong>Shipping.</strong> Worldwide tracked shipping from Bali. <a href="/shipping">Shipping &amp; Returns</a></li>`
+    + `<li><strong>Shipping.</strong> Worldwide tracked shipping from Bali — free on orders over $1,000; below that, the cost is agreed with our team. <a href="/shipping">Shipping &amp; Returns</a></li>`
     + `<li><strong>Returns.</strong> We accept returns within 14 days of delivery for items in original, unworn condition with all packaging. Custom-made and personalized pieces are not eligible for return.</li>`
     + `</ul></div>`;
 }
@@ -330,7 +329,7 @@ ${breadcrumbSchema}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css?v=20261127b">
+<link rel="stylesheet" href="/style.css?v=20261127c">
 <style>
 .pp-nav{position:sticky;top:0;background:var(--white);border-bottom:1px solid var(--mist);z-index:100}
 .pp-nav-bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:16px 32px 12px;gap:20px}
@@ -472,14 +471,14 @@ ${breadcrumbSchema}
       <a class="pp-trust-item" href="/shipping">
         <svg class="pp-trust-ic" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 1 5"/><path d="M1 7l3 3 3-3"/></svg>
         <span class="pp-trust-t">14-Day Returns</span>
-        <span class="pp-trust-s">Free shipping over $200</span>
+        <span class="pp-trust-s">Free shipping over $1,000</span>
       </a>
     </div>
   </div>
 </main>
 ${relatedHTML}
 <footer class="pp-footer">
-  <p>Each AMBERRA piece is handcrafted using natural amber. Free worldwide shipping on orders over $200.</p>
+  <p>Each AMBERRA piece is handcrafted using natural amber. Free worldwide shipping on orders over $1,000.</p>
   <p><a href="/shop">Browse the full collection</a> &nbsp;·&nbsp; <a href="/our-story">Our Story</a> &nbsp;·&nbsp; <a href="/faq">Client Care</a> &nbsp;·&nbsp; <a href="/contact">Contact</a></p>
 </footer>
 
