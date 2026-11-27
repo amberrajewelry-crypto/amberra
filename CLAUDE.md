@@ -5,10 +5,21 @@
 Всё что сделано — текущее состояние. Двигаемся только вперёд.
 
 ## Deploy
-```
-npx vercel deploy --prod
-```
-Папка: `/Users/vladimir/amberra/`. Сайт: https://www.amberrajewelry.com
+Прод = main на GitHub (amberrajewelry-crypto/amberra): Vercel сам собирает после merge.
+Путь: ветка → PR → дождаться зелёной сборки превью → `gh pr merge N --merge` → проверить живой сайт.
+`vercel deploy --prod` с машины НЕ использовать: 05.11 так разошлись копии Mac и GitHub, прод откатился.
+Сайт: https://www.amberrajewelry.com. Рабочие копии: Mac ~/amberra (+ worktree), VPS /home/claudebot/projects/amberra (топик Amberra).
+
+**Топик Amberra (бот на VPS, группа Workplace) — деплой без отдельного разрешения (Владимир, 27.11):**
+доводит правку до прода сам, если перед merge прошли: `node scripts/predeploy-check.mjs` чисто,
+`node --check` изменённых js, проверка в браузере (Playwright) 390 и 1440 — 0 битых картинок и 0 ошибок,
+сборка превью Vercel зелёная. После merge — проверка живого сайта и короткий отчёт с URL отката
+(предыдущий прод-деплой из `vercel ls amberra --prod`). Не прошло — не мержить, чинить.
+
+## Фото изделий
+Новое фото → `python3 scripts/photo-norm.py images/<кат>/<файл>.webp` (ISNet-вырез, 80% длинной стороны,
+плотные изделия меньше по весу, 1000 px, файл <имя>-m.webp + запись в data/img-norm.json).
+Масштаб в CSS не подгонять. Имена новые обязательно: /images/* кэшируются на год (immutable).
 
 ---
 
@@ -206,7 +217,7 @@ footer → логотип + соцсети (SVG иконки) + колонки �
     С AIRTABLE_PAT не прогнано: токен — секрет окружения, читать запрещено. Ждать на превью: «✓  N product pages written to /products/».
   - `for f in app.js shop.js amberra.js amberra-nav.js currency.js api/*.js; do node --check $f; done` → пустой вывод, exit 0.
 - Откат одной командой: `npx vercel promote <URL предыдущего прод-деплоя>` — только по команде Владимира.
-- Окружения: локально и Vercel-превью — свободно; прод (`vercel deploy --prod`, promote, rollback) — только по команде «деплой/выкатывай».
+- Окружения: локально и Vercel-превью — свободно; прод — merge PR в main (см. «Deploy»): с Mac по команде «деплой/вливай», из топика Amberra — сам после проверок. promote/rollback — только по команде Владимира.
 
 ### Что Claude делает неправильно
 - Вместо ручной правки сгенерированных страниц (products/, категорийные лендинги) — правь генератор: сборка Vercel перезатирает ручное.
@@ -216,3 +227,9 @@ footer → логотип + соцсети (SVG иконки) + колонки �
 - Вместо PNG-рендера на `<img>` для «3D» — реальная 3D-модель в браузере.
 - Вместо «Ubud/Bali workshop» и ритуалов в текстах — «designed in Bali, crafted by our artisans».
 - Вместо проверки, что CSS-эффект есть в коде, — проверь, что он виден на экране (тень с альфой .08 не видна).
+
+## Память и темы топика
+Темы и решения по проекту — в индексах памяти (VPS: ~/.claude-data/memory, Mac: ~/.claude/projects/-Users-vladimir/memory), читать нужный перед ответом:
+- index_amberra.md
+- index_amberra_3d_капля.md
+- PT Amberra Creations Group (Индонезия, бухгалтер Legal Indonesia): reference_legalindonesia_docs_1117.md, project_indonesia_annual_reports_self_1117.md; Obsidian «Индонезия — компании». Пароли — ~/.claude/secrets/indonesia_oss.txt, не выводить.
