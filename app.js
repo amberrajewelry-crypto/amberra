@@ -1304,3 +1304,13 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
   // Nav alignment handled by CSS only
 });
+
+// Active nav item from the URL (shells were copied between pages with hardcoded "act")
+(function(){
+  const path=location.pathname.replace(/\.html$/,'').replace(/\/$/,'')||'/';
+  document.querySelectorAll('.nav-main .nl, .mob-nav-link').forEach(a=>{
+    const h=(a.getAttribute('href')||'').replace(/\/$/,'')||'/';
+    const on=h==='/'?path==='/':(path===h||path.startsWith(h+'/'));
+    a.classList.toggle('act',on);
+  });
+})();
