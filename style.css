@@ -1848,3 +1848,12 @@ body.page-light #tryon-sec{padding-top:calc(var(--nav-h) + 40px)}
 :where(button.srv-card){font:inherit;color:inherit;background:none;border:0;padding:0;text-align:inherit;width:100%}
 .srv-card-title{display:block}
 .srv-card:focus-visible{outline:2px solid #8A6B12;outline-offset:4px}
+/* standalone landings/journal moved onto the shared fixed header */
+body.shell-std{padding-top:var(--nav-h)}
+/* WCAG AA contrast on journal/landing pages (their inline palette: #8C8880 gray, #C9A832 gold on light, faint white on dark) */
+body.shell-std .art-related-link,body.shell-std .faq-a,body.shell-std .sp-faq a,body.shell-std td{color:#5E5A53}
+body.shell-std .art-prod-price,body.shell-std .art-wrap > a{color:#8A6B12}
+body.shell-std .sp-view-all,body.shell-std .sp-item-price{color:#6E5410}
+body.shell-std .art-bread a,body.shell-std .sp-bread a,body.shell-std .sp-bread span{color:#6E5410}
+body.shell-std .art-nav-strip a,body.shell-std .art-cta p,body.shell-std .art-hero-sub,body.shell-std .sp-hero-sub,body.shell-std .sp-cta p{color:rgba(255,255,255,.85)}
+body.shell-std .art-prod-btn{color:#fff}
