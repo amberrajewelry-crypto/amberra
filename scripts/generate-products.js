@@ -45,6 +45,9 @@ function displayName(prod) { const n = TYPE_NOUN[prod.cat] || ''; return (prod.d
 // For a local /images/*.{jpg,png} URL, return its .webp sibling absolute URL — but
 // only if that .webp actually exists on disk. Lets the static grid ship webp (light)
 // instead of the heavy original, which the client-side render already loads on top.
+// Same-origin path for visible <img> (absolute URLs stay only in OG/schema): images keep loading on previews / host changes.
+function relImg(u) { return String(u || '').replace(SITE, ''); }
+
 function webpSibling(absUrl) {
   const rel = String(absUrl).replace(/^https?:\/\/[^/]+\//, '').split('?')[0];
   if (!/^images\/.+\.(jpe?g|png)$/i.test(rel)) return null;
@@ -272,7 +275,7 @@ function productHTML(p, slug) {
   <h2 class="pp-related-head">You May Also Like</h2>
   <div class="pp-related-grid">
     ${related.map(r => `<a class="pp-rel-card" href="/products/${esc(r.slug)}">
-      <div class="pp-rel-img"><img src="${esc(absImg(r.img))}" alt="${esc(displayName(r))} — AMBERRA amber jewelry" loading="lazy" width="300" height="400"></div>
+      <div class="pp-rel-img"><img src="${esc(relImg(absImg(r.img)))}" alt="${esc(displayName(r))} — AMBERRA amber jewelry" loading="lazy" width="300" height="400"></div>
       <div class="pp-rel-name">${esc(displayName(r))}</div>
       <div class="pp-rel-price" data-usd="${r.price}">$${r.price}</div>
     </a>`).join('')}
@@ -619,7 +622,8 @@ function staticShopCard(p) {
   return `<a class="pc" data-cat="${esc(p.cat)}" href="/products/${esc(p.slug)}" style="text-decoration:none;color:inherit">
       <div class="pc-inner">
         <div class="pc-img" style="position:relative">${badge}${(() => {
-          const orig = absImg(p.img), webp = webpSibling(orig);
+          const absO = absImg(p.img), w = webpSibling(absO);
+          const orig = relImg(absO), webp = w && relImg(w);
           const a = `alt="${esc(name)} — AMBERRA amber jewelry" loading="lazy" width="400" height="400"`;
           return webp
             ? `<img src="${esc(webp)}" onerror="this.onerror=null;this.src='${esc(orig)}'" ${a}>`
