@@ -18,6 +18,41 @@
       "source": "/about",
       "destination": "/our-story",
       "permanent": true
+    },
+    {
+      "source": "/cart",
+      "destination": "/shop",
+      "permanent": false
+    },
+    {
+      "source": "/checkout",
+      "destination": "/shop",
+      "permanent": false
+    },
+    {
+      "source": "/index-mobile",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/index-raw",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/index-redirect",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/demo-fluid",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/scroll-scrub",
+      "destination": "/",
+      "permanent": true
     }
   ],
   "headers": [

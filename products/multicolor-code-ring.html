@@ -184,6 +184,12 @@
 .pp-wrap{max-width:1180px;margin:0 auto;padding:24px 32px 48px;display:grid;grid-template-columns:1.05fr 1fr;gap:52px;align-items:start}
 .pp-img-wrap{position:relative;background:#fff;overflow:hidden;aspect-ratio:1/1;max-height:calc(100vh - 160px)}
 .pp-img-wrap img{width:100%;height:100%;object-fit:contain;padding:18px;transition:transform .7s ease}
+.pp-gallery{min-width:0}
+.pp-thumbs{display:flex;gap:8px;margin-top:10px;overflow-x:auto;scrollbar-width:thin;padding-bottom:4px}
+.pp-thumb{flex:0 0 72px;width:72px;height:72px;padding:0;border:1px solid var(--mist);background:#fff;cursor:pointer;transition:border-color .2s}
+.pp-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.pp-thumb.on,.pp-thumb:hover{border-color:var(--black)}
+@media(max-width:760px){.pp-thumb{flex-basis:64px;width:64px;height:64px}}
 .pp-img-wrap:hover img{transform:scale(1.04)}
 .pp-info{position:sticky;top:150px}
 .pp-breadcrumb{font:400 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--black);margin-bottom:14px}
@@ -201,7 +207,9 @@
 .pp-about p{font:400 15px/1.6 var(--sans);color:var(--black);margin:0 0 8px}
 .pp-about-care{font-size:13.5px !important;color:var(--black) !important;font-style:italic}
 .pp-props{display:flex;flex-direction:column;gap:0;margin-bottom:16px}
-.pp-prop{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--silk)}
+.pp-prop{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:7px 0;border-bottom:1px solid var(--silk)}
+.pp-prop .pp-pk{flex:0 0 auto}
+.pp-prop .pp-pv{flex:1 1 auto;text-align:right;line-height:1.45}
 .pp-pk{font:400 11.5px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--black)}
 .pp-pv{font:400 14.5px/1 var(--sans);color:var(--black)}
 .pp-badge-wrap{margin-bottom:10px}
@@ -260,8 +268,11 @@
 </nav>
 
 <main class="pp-wrap">
+  <div class="pp-gallery">
   <div class="pp-img-wrap">
-    <img src="https://www.amberrajewelry.com/images/products/48121923-m.webp" alt="Multicolor Code Ring — AMBERRA handcrafted amber jewelry" loading="eager" width="800" height="800">
+    <img id="pp-main" src="/images/products/48121923-m.webp" alt="Multicolor Code Ring — AMBERRA handcrafted amber jewelry" loading="eager" width="800" height="800">
+  </div>
+  
   </div>
 
   <div class="pp-info">
@@ -338,7 +349,10 @@
   <p><a href="/shop">Browse the full collection</a> &nbsp;·&nbsp; <a href="/our-story">Our Story</a> &nbsp;·&nbsp; <a href="/faq">Client Care</a> &nbsp;·&nbsp; <a href="/contact">Contact</a></p>
 </footer>
 
-<script defer src="/currency.js?v=20260811h"></script>
+<script defer src="/currency.js?v=20261127h"></script>
+<script>
+document.querySelectorAll('.pp-thumb').forEach(function(b){b.addEventListener('click',function(){var m=document.getElementById('pp-main');if(!m)return;m.src=b.dataset.src;document.querySelectorAll('.pp-thumb.on').forEach(function(x){x.classList.remove('on')});b.classList.add('on')})});
+</script>
 <script>
 // Add to cart from a product landing page into the same amb_cart store the
 // index/shop drawer reads, then hand off to /shop which opens the drawer.
