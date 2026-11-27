@@ -178,6 +178,27 @@ async function fetchProducts() {
 
 // ── HTML template ─────────────────────────────────────────────────────────────
 
+// imgs comes as an array or as a Python-style list string "['/a.webp', '/b.webp']".
+function imgList(raw) {
+  if (Array.isArray(raw)) return raw.map(String);
+  return (String(raw || '').match(/['"]([^'"]+)['"]/g) || []).map(s => s.slice(1, -1));
+}
+// Same-origin gallery: main image first, then extra photos that exist on disk, no duplicates.
+function galleryOf(p, mainAbs) {
+  const main = relImg(mainAbs);
+  const seen = new Set([main, relImg(absImg0(p.img)).split('?')[0]]);
+  const out = [main];
+  for (const raw of imgList(p.imgs)) {
+    const rel = relImg(absImg(raw));
+    const file = rel.split('?')[0];
+    if (seen.has(rel) || seen.has(file)) continue;
+    if (file.startsWith('/') && !fs.existsSync(path.join(__dirname, '..', file))) continue;
+    seen.add(rel); seen.add(file);
+    out.push(rel);
+  }
+  return out;
+}
+
 function productHTML(p, slug) {
   const { name, cat, price, img, material, props, badge } = p;
   // Strip marketing clichés from Airtable descriptions (no "modern woman" filler).
@@ -188,7 +209,8 @@ function productHTML(p, slug) {
   const catLabel  = cat ? cat.charAt(0).toUpperCase() + cat.slice(1) : 'Jewelry';
   const canonical = `${SITE}/products/${slug}`;
   const imgAbs    = absImg(img);
-  const sku       = 'AMB-' + String(p.id != null ? p.id : slug).padStart(4, '0');
+  const gallery   = galleryOf(p, imgAbs);
+  const sku      = 'AMB-' + String(p.id != null ? p.id : slug).padStart(4, '0');
   const stone     = (props && props.Stone) ? props.Stone : '';
   const dispName  = displayName(p);
   // Title includes the jewelry type (Ring/Earrings/…) for category CTR, ≤60 chars.
@@ -211,7 +233,7 @@ function productHTML(p, slug) {
     name,
     sku,
     description: desc,
-    image:       imgAbs ? [imgAbs] : [],
+    image:       imgAbs ? [imgAbs, ...gallery.slice(1).map(g => SITE + g.split('?')[0])] : [],
     brand:       { '@type': 'Brand', name: 'AMBERRA' },
     material,
     mpn:         sku,
@@ -358,6 +380,12 @@ ${breadcrumbSchema}
 .pp-wrap{max-width:1180px;margin:0 auto;padding:24px 32px 48px;display:grid;grid-template-columns:1.05fr 1fr;gap:52px;align-items:start}
 .pp-img-wrap{position:relative;background:#fff;overflow:hidden;aspect-ratio:1/1;max-height:calc(100vh - 160px)}
 .pp-img-wrap img{width:100%;height:100%;object-fit:contain;padding:18px;transition:transform .7s ease}
+.pp-gallery{min-width:0}
+.pp-thumbs{display:flex;gap:8px;margin-top:10px;overflow-x:auto;scrollbar-width:thin;padding-bottom:4px}
+.pp-thumb{flex:0 0 72px;width:72px;height:72px;padding:0;border:1px solid var(--mist);background:#fff;cursor:pointer;transition:border-color .2s}
+.pp-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.pp-thumb.on,.pp-thumb:hover{border-color:var(--black)}
+@media(max-width:760px){.pp-thumb{flex-basis:64px;width:64px;height:64px}}
 .pp-img-wrap:hover img{transform:scale(1.04)}
 .pp-info{position:sticky;top:150px}
 .pp-breadcrumb{font:400 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--black);margin-bottom:14px}
@@ -375,7 +403,9 @@ ${breadcrumbSchema}
 .pp-about p{font:400 15px/1.6 var(--sans);color:var(--black);margin:0 0 8px}
 .pp-about-care{font-size:13.5px !important;color:var(--black) !important;font-style:italic}
 .pp-props{display:flex;flex-direction:column;gap:0;margin-bottom:16px}
-.pp-prop{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--silk)}
+.pp-prop{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:7px 0;border-bottom:1px solid var(--silk)}
+.pp-prop .pp-pk{flex:0 0 auto}
+.pp-prop .pp-pv{flex:1 1 auto;text-align:right;line-height:1.45}
 .pp-pk{font:400 11.5px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--black)}
 .pp-pv{font:400 14.5px/1 var(--sans);color:var(--black)}
 .pp-badge-wrap{margin-bottom:10px}
@@ -434,8 +464,11 @@ ${breadcrumbSchema}
 </nav>
 
 <main class="pp-wrap">
+  <div class="pp-gallery">
   <div class="pp-img-wrap">
-    <img src="${esc(imgAbs)}" alt="${esc(dispName)} — AMBERRA handcrafted amber jewelry" loading="eager" width="800" height="800">
+    <img id="pp-main" src="${esc(relImg(imgAbs))}" alt="${esc(dispName)} — AMBERRA handcrafted amber jewelry" loading="eager" width="800" height="800">
+  </div>
+  ${gallery.length > 1 ? `<div class="pp-thumbs" role="list">${gallery.map((g, i) => `<button type="button" class="pp-thumb${i === 0 ? ' on' : ''}" data-src="${esc(g)}" aria-label="${esc(dispName)} — photo ${i + 1} of ${gallery.length}"><img src="${esc(g)}" alt="" loading="lazy" width="120" height="120"></button>`).join('')}</div>` : ''}
   </div>
 
   <div class="pp-info">
@@ -485,6 +518,9 @@ ${relatedHTML}
 </footer>
 
 <script defer src="/currency.js?v=20260811h"></script>
+<script>
+document.querySelectorAll('.pp-thumb').forEach(function(b){b.addEventListener('click',function(){var m=document.getElementById('pp-main');if(!m)return;m.src=b.dataset.src;document.querySelectorAll('.pp-thumb.on').forEach(function(x){x.classList.remove('on')});b.classList.add('on')})});
+</script>
 <script>
 // Add to cart from a product landing page into the same amb_cart store the
 // index/shop drawer reads, then hand off to /shop which opens the drawer.
