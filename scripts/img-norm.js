@@ -5,5 +5,5 @@ const RE = /^(.*?\/)?(images\/[^?#"]+?)\.(?:webp|jpe?g|png)(?:\?[^#"]*)?$/i;
 module.exports = function nimg(u) {
   const m = String(u || '').match(RE);
   if (!m || !NORM.has(m[2] + '.webp')) return u;
-  return (m[1] && m[1] !== '' ? m[1] : '/') + m[2] + '-n.webp';
+  return (m[1] && m[1] !== '' ? m[1] : '/') + m[2] + '-m.webp';
 };

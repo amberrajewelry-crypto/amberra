@@ -562,7 +562,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .ws-wa-link:hover{color:var(--black);border-bottom-color:var(--black)}
 
 /* ═══ FOOTER ════════════════════════════════════════════════════════════ */
-footer{background:linear-gradient(165deg,#241a0b 0%,#3b2b12 45%,#5a4219 100%);color:rgba(255,255,255,.9);padding:52px 56px 32px;border-top:1px solid rgba(232,208,128,.35)}
+footer{background:linear-gradient(180deg,#33250f 0%,#56401a 50%,#7a5c22 100%);color:rgba(255,255,255,.9);padding:52px 56px 32px;border-top:1px solid rgba(232,208,128,.35)}
 .ft{display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:56px;margin-bottom:22px}
 .ft.ft-5{grid-template-columns:2.2fr 1fr 1fr 1fr 1fr;gap:44px}
 .fb{font-family:var(--serif);font-size:28px;letter-spacing:.4em;color:#fff;margin-bottom:16px}
@@ -571,17 +571,17 @@ footer{background:linear-gradient(165deg,#241a0b 0%,#3b2b12 45%,#5a4219 100%);co
 .fs a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid rgba(232,208,128,.5);color:#fff;text-decoration:none;transition:color .35s,border-color .35s,background .35s,transform .35s}
 .fs a:hover{color:#241a0b;background:var(--gold);border-color:var(--gold);transform:translateY(-3px)}
 .fs a svg{display:block}
-.fc-t{font-size:14px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;display:block}
+.fc-t{font-size:14px;letter-spacing:.25em;text-transform:uppercase;color:#F2E3A8;margin-bottom:22px;display:block}
 .fc-l{list-style:none;display:flex;flex-direction:column;gap:12px}
 .fc-l li a,.fc-l li button{font-size:15px;color:rgba(255,255,255,.9);transition:color .3s,transform .3s,padding-left .3s;display:inline-block;cursor:pointer;background:none;border:none;font-family:var(--sans);text-align:left;padding:0}
 .fc-l li a:hover,.fc-l li button:hover{color:var(--gold);padding-left:6px}
 .fb-bot{display:flex;justify-content:space-between;padding-top:24px;border-top:1px solid rgba(232,208,128,.25);flex-wrap:wrap;gap:16px}
-.fcp{font-size:14px;color:rgba(255,255,255,.8)}
+.fcp{font-size:14px;color:rgba(255,255,255,.9)}
 .fleg{display:flex;gap:24px}
-.fleg a{font-size:14px;color:rgba(255,255,255,.85);text-decoration:none;transition:color .3s}
+.fleg a{font-size:14px;color:rgba(255,255,255,.92);text-decoration:none;transition:color .3s}
 .fleg a:hover{color:var(--gold)}
 /* amber-by-colour SEO nav — was missing hover feedback entirely */
-.ft-colors a{color:rgba(255,255,255,.85);text-decoration:none;position:relative;transition:color .3s}
+.ft-colors a{color:rgba(255,255,255,.92);text-decoration:none;position:relative;transition:color .3s}
 .ft-colors a::after{content:'';position:absolute;left:0;bottom:-3px;width:0;height:1px;background:var(--amber);transition:width .35s}
 .ft-colors a:hover{color:var(--gold)}
 .ft-colors a:hover::after{width:100%}
