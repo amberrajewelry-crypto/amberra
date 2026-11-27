@@ -5,6 +5,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/products/leaf-fan-stud-earrings",
+      "destination": "/earrings",
+      "permanent": true
+    },
+    {
       "source": "/catalog",
       "destination": "/shop",
       "permanent": true
