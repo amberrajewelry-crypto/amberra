@@ -13,3 +13,4 @@ node_modules/
 *.bak
 graphify-out/
 service-account.json
+.vercel

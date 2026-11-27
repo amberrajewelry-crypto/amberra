@@ -80,7 +80,7 @@ const CAT_INTRO = {
     'Lightweight earrings that pair the honeyed warmth of amber with a secure, comfortable fitting.',
     'Hand-forged in sterling silver, these earrings frame natural amber for a warm, everyday glow.',
     'Light on the ear and warm in tone, this pair brings natural Baltic amber into daily wear.',
-    'A pair made one at a time, letting the amber colour lead and the silver stay quietly in support.'
+    'A pair made one at a time, letting the amber color lead and the silver stay quietly in support.'
   ],
   pendants: [
     'This pendant centers a single piece of natural amber, ready to layer or wear on its own.',
@@ -95,7 +95,7 @@ const CAT_INTRO = {
     'A bracelet that brings the glow of amber to the wrist, sized to move with you.',
     'Natural amber set into a bracelet made to be worn and layered, from day to evening.',
     'Warm amber and hand-worked silver wrap the wrist, light enough to forget you are wearing it.',
-    'A bracelet built to layer with a watch or bangles, centred on natural Baltic amber.',
+    'A bracelet built to layer with a watch or bangles, centered on natural Baltic amber.',
     'This piece sets natural amber along the wrist, hand-finished to sit and move comfortably.'
   ],
   chains: [
@@ -118,7 +118,7 @@ const CRAFT_LINE = [
   'Made by hand by our artisans, it arrives ready to gift.',
   'Handcrafted from genuine Baltic amber, then finished by hand.',
   'Worked by hand from start to finish, it ships worldwide with a certificate of authenticity.',
-  'Finished by hand and boxed ready to gift, with free tracked shipping over $200.',
+  'Finished by hand and boxed ready to gift, with free tracked shipping over $1,000.',
   'One of a kind, hand-finished by our silversmiths and shipped worldwide.',
   'Hand-set and polished by our artisans, it arrives gift-ready with tracked delivery.'
 ];
@@ -143,7 +143,20 @@ function aboutBlock(p) {
   const craft = pick(seed + 'c', CRAFT_LINE);
   const body = `${intro} ${colLine}${metalLine} ${craft}`;
   return `<div class="pp-about"><h2 class="pp-about-h">About this piece</h2><p>${esc(body)}</p>`
-    + `<p class="pp-about-care">Genuine Baltic amber · keep away from perfume and direct heat, and wipe with a soft cloth to preserve its glow.</p></div>`;
+    + `</div>` + infoBlock(/silver|925/.test(metal));
+}
+
+// Policy copy taken verbatim from faq.html (care, returns) and services.html (certificate).
+// ponytail: duplicated text — if those pages change, update here.
+function infoBlock(isSilver) {
+  const cert = 'Each piece ships with a signed certificate verifying genuine natural Baltic amber'
+    + (isSilver ? ', hand-set in 925 sterling silver.' : '.');
+  return `<div class="pp-info"><h2 class="pp-about-h">Care, shipping &amp; authenticity</h2><ul class="pp-info-l">`
+    + `<li><strong>Care.</strong> Amber is soft and organic. Keep it away from perfumes, cosmetics, household chemicals, and prolonged direct sunlight. Clean with a soft, slightly damp cloth — never ultrasonic or steam cleaners. Store pieces separately in a pouch to avoid scratching.</li>`
+    + `<li><strong>Authenticity.</strong> ${cert}</li>`
+    + `<li><strong>Shipping.</strong> Worldwide tracked shipping from Bali — free on orders over $1,000; below that, the cost is agreed with our team. <a href="/shipping">Shipping &amp; Returns</a></li>`
+    + `<li><strong>Returns.</strong> We accept returns within 14 days of delivery for items in original, unworn condition with all packaging. Custom-made and personalized pieces are not eligible for return.</li>`
+    + `</ul></div>`;
 }
 
 // ── Airtable fetch ────────────────────────────────────────────────────────────
@@ -316,7 +329,7 @@ ${breadcrumbSchema}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css?v=20260830">
+<link rel="stylesheet" href="/style.css?v=20261127c">
 <style>
 .pp-nav{position:sticky;top:0;background:var(--white);border-bottom:1px solid var(--mist);z-index:100}
 .pp-nav-bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:16px 32px 12px;gap:20px}
@@ -335,9 +348,9 @@ ${breadcrumbSchema}
 @media(max-width:760px){
   .pp-nav-bar{grid-template-columns:1fr auto 1fr;padding:14px 16px 10px}
   .pp-nav-util{display:none}
-  .pp-nav-logo{justify-self:center}
+  .pp-nav-logo{justify-self:center;grid-column:2} /* util column is hidden on mobile: keep logo centered, cart right */
   .pp-nav-logo .lm{font-size:26px;letter-spacing:.12em}
-  .pp-nav-menu{gap:20px;overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;padding:0 16px 12px;scrollbar-width:none}
+  .pp-nav-menu{gap:20px;overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;padding:0 16px 12px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent)} /* fade = scrollable, not cut */
   .pp-nav-menu::-webkit-scrollbar{display:none}
 }
 .pp-wrap{max-width:1180px;margin:0 auto;padding:24px 32px 48px;display:grid;grid-template-columns:1.05fr 1fr;gap:52px;align-items:start}
@@ -354,6 +367,7 @@ ${breadcrumbSchema}
 .pp-divider{border:none;border-top:1px solid var(--mist);margin:14px 0}
 .pp-desc{font:400 16px/1.6 var(--sans);color:var(--black);margin:0 0 14px}
 .pp-material{font:400 15px/1.5 var(--sans);color:var(--black);font-style:italic;margin:0 0 14px}
+.pp-info{margin:0 0 20px}.pp-info-l{list-style:none;padding:0;margin:0}.pp-info-l li{font:400 14px/1.6 var(--sans);color:var(--charcoal);margin:0 0 8px}.pp-info-l a{color:#8A6B12}
 .pp-about{margin:0 0 16px}
 .pp-about-h{font:400 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--black);margin:0 0 8px}
 .pp-about p{font:400 15px/1.6 var(--sans);color:var(--black);margin:0 0 8px}
@@ -387,6 +401,7 @@ ${breadcrumbSchema}
 .pp-trust-s{font:400 12.5px/1.4 var(--sans);color:var(--black)}
 .pp-trust-item:hover .pp-trust-t{color:var(--amber-ink)}
 @media(max-width:760px){.pp-wrap{grid-template-columns:1fr;gap:28px;padding:24px 20px 60px}.pp-info{position:static}.pp-img-wrap{max-height:none;aspect-ratio:1/1}.pp-name{font-size:28px}.pp-related-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.pp-nav-menu a,.pp-nav-r a,.pp-breadcrumb a,.pp-footer a{display:inline-flex;align-items:center;min-height:44px}}
 </style>
 </head>
 <body class="page-light">
@@ -456,14 +471,14 @@ ${breadcrumbSchema}
       <a class="pp-trust-item" href="/shipping">
         <svg class="pp-trust-ic" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 1 5"/><path d="M1 7l3 3 3-3"/></svg>
         <span class="pp-trust-t">14-Day Returns</span>
-        <span class="pp-trust-s">Free shipping over $200</span>
+        <span class="pp-trust-s">Free shipping over $1,000</span>
       </a>
     </div>
   </div>
 </main>
 ${relatedHTML}
 <footer class="pp-footer">
-  <p>Each AMBERRA piece is handcrafted using natural amber. Free worldwide shipping on orders over $200.</p>
+  <p>Each AMBERRA piece is handcrafted using natural amber. Free worldwide shipping on orders over $1,000.</p>
   <p><a href="/shop">Browse the full collection</a> &nbsp;·&nbsp; <a href="/our-story">Our Story</a> &nbsp;·&nbsp; <a href="/faq">Client Care</a> &nbsp;·&nbsp; <a href="/contact">Contact</a></p>
 </footer>
 

@@ -30,7 +30,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="amberra.css?v=20260827n">
+<link rel="stylesheet" href="amberra.css?v=20261127">
 <script src="amberra-nav.js?v=20260811h"></script>
 
 <meta property="og:type" content="website">
@@ -209,7 +209,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div>
       <span class="fc-t" data-i18n="fc_contact">Contact</span>
       <ul class="fc-l">
-        <li><a href="mailto:hello@amberrajewelry.com">hello@amberrajewelry.com</a></li>
+        <li><a href="mailto:amberrajewelry@gmail.com">amberrajewelry@gmail.com</a></li>
         <li><a href="#">WhatsApp Bali</a></li><li><a href="#">Instagram DM</a></li>
       </ul>
     </div>
@@ -481,11 +481,11 @@ window.addEventListener('scroll',()=>{if(window.scrollY>window.innerHeight*.6)sh
 let chatOpen=false;
 const chatAnswers={
   'ring sizes':'We offer sizes XS (14mm) through XL (19mm). For best fit, measure your finger with a string. Our team can also help you find the right size.',
-  'shipping info':'We ship worldwide from Bali, Indonesia. Standard shipping takes 7–14 days. Express shipping (3–5 days) available. Free shipping on orders over $200.',
+  'shipping info':'We ship worldwide from Bali, Indonesia. Standard shipping takes 7–14 days. Express shipping (3–5 days) available. Free shipping on orders over $1,000.',
   'care guide':'Keep amber away from perfume, chemicals and prolonged sunlight. Clean with a soft dry cloth. Store separately to avoid scratches. Amber loves to be worn.',
   'gift ideas':'Popular gifts include our amber pendants, sterling silver rings, and drop earrings. We include free gift wrapping with every order.',
   'размеры колец':'Предлагаем размеры от XS (14мм) до XL (19мм). Измерьте палец ниткой для точного размера. Наша команда также поможет.',
-  'доставка':'Отправляем по всему миру с Бали. Стандарт 7–14 дней. Экспресс 3–5 дней. Бесплатно при заказе от $200.',
+  'доставка':'Отправляем по всему миру с Бали. Стандарт 7–14 дней. Экспресс 3–5 дней. Стоимость согласуем с вами; бесплатно при заказе от $1000.',
   'уход':'Избегайте парфюма и химикатов. Протирайте мягкой тканью. Храните отдельно. Янтарь любит, когда его носят.',
   'подарочные идеи':'Популярные подарки: янтарные подвески, серебряные кольца, серьги-капли. Бесплатная упаковка с каждым заказом.',
 };
@@ -508,7 +508,7 @@ function chatSend(text){
   setTimeout(()=>{
     typing.style.display='none';
     const key=Object.keys(chatAnswers).find(k=>msg.toLowerCase().includes(k));
-    const reply=key?chatAnswers[key]:`Thank you for your question! For personalized assistance, our team in Bali is happy to help. Please send us an email at hello@amberrajewelry.com or request a consultation above.`;
+    const reply=key?chatAnswers[key]:`Thank you for your question! For personalized assistance, our team in Bali is happy to help. Please send us an email at amberrajewelry@gmail.com or request a consultation above.`;
     addMsg(reply,'bot');
   },1200);
 }

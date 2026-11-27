@@ -18,7 +18,7 @@ export default async function handler(req, res) {
   if (guard(req, res, RATE)) return;
 
   const RESEND_KEY = process.env.RESEND_API_KEY;
-  const TO_EMAIL   = process.env.CONTACT_EMAIL || 'hello@amberrajewelry.com';
+  const TO_EMAIL   = process.env.CONTACT_EMAIL || 'amberrajewelry@gmail.com';
 
   if (!RESEND_KEY) {
     return res.status(500).json({ error: 'RESEND_API_KEY not configured' });

@@ -31,7 +31,7 @@ function absImg(img) {
 const TYPES = {
  rings: { label: 'Rings', h1: 'Handmade Sterling Silver Rings with Baltic Amber',
  metaTitle: 'Handmade Sterling Silver Rings with Baltic Amber | AMBERRA',
- metaDesc: 'Handmade Baltic amber rings in 925 sterling silver, shaped by hand by our artisans. Cherry, cognac, green & honey amber. Free worldwide shipping over $200.',
+ metaDesc: 'Handmade Baltic amber rings in 925 sterling silver, shaped by hand by our artisans. Cherry, cognac, green & honey amber. Free worldwide shipping over $1,000.',
  intro: [
  'Amber rings from AMBERRA are cut from genuine Baltic amber and set by hand in 925 sterling silver. Every stone is natural — no two are alike, from deep cherry and cognac to green, honey and rare blue amber.',
  'Choose a bold cocktail silhouette or a fine everyday band. Each ring ships with a certificate of authenticity and is available in US ring sizes 5–9.',
@@ -45,7 +45,7 @@ const TYPES = {
  ] },
  earrings: { label: 'Earrings', h1: 'Handmade Sterling Silver Earrings with Baltic Amber',
  metaTitle: 'Handmade Sterling Silver Earrings with Amber | AMBERRA',
- metaDesc: 'Natural Baltic amber earrings handcrafted — drops, studs, hoops & filigree in 925 silver. Cherry, cognac & honey amber. Free shipping over $200.',
+ metaDesc: 'Natural Baltic amber earrings handcrafted — drops, studs, hoops & filigree in 925 silver. Cherry, cognac & honey amber. Free shipping over $1,000.',
  intro: [
  'Our amber earrings pair natural Baltic amber with hand-forged 925 sterling silver — from light everyday studs to statement drops. Colors range across cherry, cognac, honey, green and blue amber.',
  'Lightweight and comfortable, each pair is made one at a time by our artisans and arrives with a certificate of authenticity.',
@@ -58,7 +58,7 @@ const TYPES = {
  ] },
  pendants: { label: 'Pendants', h1: 'Handmade Sterling Silver Pendants with Baltic Amber',
  metaTitle: 'Sterling Silver Amber Pendants, Handmade | AMBERRA',
- metaDesc: 'Baltic amber pendants and necklaces handcrafted in 925 sterling silver. Cherry, cognac, green & blue amber. Pair with a silver chain. Free shipping over $200.',
+ metaDesc: 'Baltic amber pendants and necklaces handcrafted in 925 sterling silver. Cherry, cognac, green & blue amber. Pair with a silver chain. Free shipping over $1,000.',
  intro: [
  'Amber pendant necklaces from AMBERRA frame a single natural Baltic amber cabochon in hand-worked sterling silver. Wear one alone or layered; pair with any AMBERRA silver chain.',
  'Each pendant is one of a kind, cut from genuine Baltic amber and finished by hand.',
@@ -71,7 +71,7 @@ const TYPES = {
  ] },
  bracelets: { label: 'Bracelets', h1: 'Handmade Sterling Silver Bracelets with Baltic Amber',
  metaTitle: 'Handmade Sterling Silver Bracelets with Amber | AMBERRA',
- metaDesc: 'Natural Baltic amber bracelets handcrafted — beaded, link and cuff styles in 925 sterling silver. Cherry, cognac & multi-amber. Free shipping over $200.',
+ metaDesc: 'Natural Baltic amber bracelets handcrafted — beaded, link and cuff styles in 925 sterling silver. Cherry, cognac & multi-amber. Free shipping over $1,000.',
  intro: [
  'From delicate beaded strands to bold silver cuffs, our amber bracelets use natural Baltic amber set in 925 sterling silver. Multi-color (mosaic) amber is a signature.',
  'Every bracelet is handmade and ships with a certificate of authenticity.',
@@ -84,7 +84,7 @@ const TYPES = {
  ] },
  chains: { label: 'Chains', h1: 'Sterling Silver Chains',
  metaTitle: 'Sterling Silver Chains — Handcrafted | AMBERRA',
- metaDesc: 'Handcrafted 925 sterling silver chains — cable and link styles, perfect with any AMBERRA amber pendant. Free worldwide shipping over $200.',
+ metaDesc: 'Handcrafted 925 sterling silver chains — cable and link styles, perfect with any AMBERRA amber pendant. Free worldwide shipping over $1,000.',
  intro: [
  'Handcrafted 925 sterling silver chains to wear alone or with any AMBERRA amber pendant. Cable and link styles in several lengths.',
  'Made by the same artisans behind our amber collections.'
@@ -109,7 +109,7 @@ function colorOf(stone) {
 const COLORS = {
  cherry: { label: 'Cherry Amber', h1: 'Cherry Amber Jewelry',
  metaTitle: 'Cherry Amber Jewelry in Sterling Silver | AMBERRA',
- metaDesc: 'Handmade cherry amber jewelry in 925 sterling silver. Deep red natural Baltic amber rings, earrings & pendants, handcrafted. Free shipping over $200.',
+ metaDesc: 'Handmade cherry amber jewelry in 925 sterling silver. Deep red natural Baltic amber rings, earrings & pendants, handcrafted. Free shipping over $1,000.',
  intro: [
  'Cherry amber is natural Baltic amber in its deepest red-to-cognac tones — warm, translucent and richly colored. AMBERRA sets it by hand in 925 sterling silver.',
  'Genuine cherry deepens with age; each piece is one of a kind and arrives with a certificate of authenticity.'
@@ -120,7 +120,7 @@ const COLORS = {
  ] },
  honey: { label: 'Honey Amber', h1: 'Honey Amber Jewelry',
  metaTitle: 'Honey Amber Jewelry in Sterling Silver | AMBERRA',
- metaDesc: 'Handmade honey amber jewelry in 925 sterling silver — warm golden Baltic amber rings, earrings & pendants, handcrafted. Free shipping over $200.',
+ metaDesc: 'Handmade honey amber jewelry in 925 sterling silver — warm golden Baltic amber rings, earrings & pendants, handcrafted. Free shipping over $1,000.',
  intro: [
  'Honey amber is the classic warm-gold Baltic amber — clear, glowing and timeless. AMBERRA hand-sets it in 925 sterling silver.',
  'Each honey piece is natural and unique, finished by our artisans.'
@@ -130,7 +130,7 @@ const COLORS = {
  ] },
  cognac: { label: 'Cognac Amber', h1: 'Cognac Amber Jewelry',
  metaTitle: 'Cognac Amber Jewelry in Sterling Silver | AMBERRA',
- metaDesc: 'Handmade cognac amber jewelry in 925 sterling silver — rich brown-gold natural Baltic amber, handcrafted. Free worldwide shipping over $200.',
+ metaDesc: 'Handmade cognac amber jewelry in 925 sterling silver — rich brown-gold natural Baltic amber, handcrafted. Free worldwide shipping over $1,000.',
  intro: [
  'Cognac amber is deep brown-gold natural Baltic amber, warmer and darker than honey. AMBERRA sets it by hand in 925 sterling silver.',
  'Every cognac amber piece is genuine and one of a kind, with a certificate of authenticity.'
@@ -140,7 +140,7 @@ const COLORS = {
  ] },
  green: { label: 'Green Amber', h1: 'Green Amber Jewelry',
  metaTitle: 'Green Amber Jewelry in Sterling Silver | AMBERRA',
- metaDesc: 'Handmade green amber jewelry in 925 sterling silver — natural Baltic amber with green tones, handcrafted. Free worldwide shipping over $200.',
+ metaDesc: 'Handmade green amber jewelry in 925 sterling silver — natural Baltic amber with green tones, handcrafted. Free worldwide shipping over $1,000.',
  intro: [
  'Green amber is natural Baltic amber with cool green depths — distinctive and eye-catching against sterling silver.',
  'AMBERRA green amber is genuine and hand-finished; each piece is unique.'
@@ -150,7 +150,7 @@ const COLORS = {
  ] },
  blue: { label: 'Blue Amber', h1: 'Blue Amber Jewelry',
  metaTitle: 'Blue Amber Jewelry in Sterling Silver | AMBERRA',
- metaDesc: 'Handmade blue amber jewelry in 925 sterling silver — rare natural blue amber, handcrafted. A collector favorite. Free worldwide shipping over $200.',
+ metaDesc: 'Handmade blue amber jewelry in 925 sterling silver — rare natural blue amber, handcrafted. A collector favorite. Free worldwide shipping over $1,000.',
  intro: [
  'Blue amber is among the rarest natural amber, shifting blue under daylight. AMBERRA sets each rare stone by hand in 925 sterling silver.',
  'Because blue amber is scarce, pieces are limited and each is one of a kind with a certificate of authenticity.'
@@ -160,7 +160,7 @@ const COLORS = {
  ] },
  butterscotch: { label: 'Butterscotch Amber', h1: 'Butterscotch Amber Jewelry',
  metaTitle: 'Butterscotch Amber Jewelry in Sterling Silver | AMBERRA',
- metaDesc: 'Handmade butterscotch amber jewelry in 925 sterling silver — creamy opaque natural Baltic amber, handcrafted. Free worldwide shipping over $200.',
+ metaDesc: 'Handmade butterscotch amber jewelry in 925 sterling silver — creamy opaque natural Baltic amber, handcrafted. Free worldwide shipping over $1,000.',
  intro: [
  'Butterscotch amber is creamy, opaque natural Baltic amber — soft, buttery and warm. AMBERRA sets it by hand in 925 sterling silver.',
  'Each butterscotch piece is genuine and unique, made by our artisans.'
@@ -170,7 +170,7 @@ const COLORS = {
  ] },
  mosaic: { label: 'Multi-Color Amber', h1: 'Multi-Color Amber Jewelry',
  metaTitle: 'Mosaic Amber Jewelry in Sterling Silver | AMBERRA',
- metaDesc: 'Handmade multi-color mosaic amber jewelry in 925 sterling silver — natural Baltic amber of many tones, handcrafted. Free shipping over $200.',
+ metaDesc: 'Handmade multi-color mosaic amber jewelry in 925 sterling silver — natural Baltic amber of many tones, handcrafted. Free shipping over $1,000.',
  intro: [
  'Mosaic amber combines natural Baltic amber of many tones — cherry, cognac, honey and green — in one striking piece, set in 925 sterling silver.',
  'Every mosaic piece is a one-off arrangement of genuine amber, handmade.'
@@ -180,7 +180,7 @@ const COLORS = {
  ] },
  raw: { label: 'Raw Amber', h1: 'Raw Amber Jewelry',
  metaTitle: 'Raw Amber Jewelry in Sterling Silver | AMBERRA',
- metaDesc: 'Handmade raw amber jewelry in 925 sterling silver — unpolished natural Baltic amber, handcrafted. Organic and one of a kind. Free shipping over $200.',
+ metaDesc: 'Handmade raw amber jewelry in 925 sterling silver — unpolished natural Baltic amber, handcrafted. Organic and one of a kind. Free shipping over $1,000.',
  intro: [
  'Raw amber keeps the natural, unpolished surface of Baltic amber — organic and earthy, set in 925 sterling silver.',
  'Each raw amber piece is genuine and unique, finished by hand.'
@@ -202,7 +202,7 @@ const HUB = {
  ['What is Baltic amber?', 'Baltic amber, known to gemologists as succinite, is fossilised tree resin roughly 40 million years old, formed from ancient conifer forests that grew around the Baltic Sea and the wider Baltic region including Poland, Lithuania and Latvia. Over millions of years the resin hardened and mineralised into the warm, glowing stone used in jewelry today. It is prized for its rich color, its light weight, and the tiny natural inclusions of air, plant matter or occasionally insects that prove its origin. AMBERRA works only with authentic natural Baltic amber, never pressed, reconstituted or dyed substitutes, setting each stone by hand in 925 sterling silver.'],
  ['How do I know AMBERRA amber is real?', 'Every AMBERRA piece uses genuine natural Baltic amber and ships with a certificate of authenticity, so authenticity is guaranteed with each order. You can also confirm real amber yourself using the simple tests jewelers rely on: genuine amber floats in salt water, feels warm to the touch rather than cold like glass, becomes electrostatic and attracts light objects when rubbed, and smells faintly of pine or resin when warmed. Real amber is also noticeably lighter than glass or plastic and usually contains natural bubbles or inclusions. Our journal explains these at-home tests in more detail if you would like to verify amber yourself.'],
  ['What metal do you use?', 'AMBERRA sets its Baltic amber primarily in solid 925 sterling silver, the international standard for fine jewelry at 92.5 percent pure silver, with selected pieces finished in 18k gold plating over sterling. We never use plated base metal. Sterling silver is durable, hypoallergenic and neutral in tone, so it protects the soft amber stone and lets its warm color lead. All settings, including the hooks and posts on earrings, are hand-forged by our artisans, which is why no two pieces are identical. Each order includes a certificate of authenticity covering both the amber and the metal.'],
- ['Do you ship to the US?', 'Yes, AMBERRA ships worldwide, including to the United States, and shipping is free on orders over $200. Every order is tracked from our studio, so you can follow your piece on its way. Because each item is handcrafted with natural Baltic amber and 925 sterling silver, orders are prepared individually and boxed with a certificate of authenticity, ready to wear or to give. Whether you are ordering a ring, earrings, a pendant or a bracelet, delivery is available internationally with tracking. If you have questions about your destination or delivery, our team is happy to help before you order.']
+ ['Do you ship to the US?', 'Yes, AMBERRA ships worldwide, including to the United States, and shipping is free on orders over $1,000. Every order is tracked from our studio, so you can follow your piece on its way. Because each item is handcrafted with natural Baltic amber and 925 sterling silver, orders are prepared individually and boxed with a certificate of authenticity, ready to wear or to give. Whether you are ordering a ring, earrings, a pendant or a bracelet, delivery is available internationally with tracking. If you have questions about your destination or delivery, our team is happy to help before you order.']
  ]
 };
 
@@ -213,7 +213,7 @@ const SILVER = {
  label: 'Sterling Silver Amber',
  h1: 'Sterling Silver Amber Jewelry',
  metaTitle: 'Sterling Silver Amber Jewelry, Handcrafted | AMBERRA',
- metaDesc: 'Baltic amber in solid 925 sterling silver — rings, earrings, pendants & bracelets, handcrafted. Hypoallergenic silver. Free shipping over $200.',
+ metaDesc: 'Baltic amber in solid 925 sterling silver — rings, earrings, pendants & bracelets, handcrafted. Hypoallergenic silver. Free shipping over $1,000.',
  intro: [
  'Every AMBERRA piece pairs natural Baltic amber with solid 925 sterling silver — never plated base metal. The warm glow of the stone and the cool shine of hand-worked metal are a classic combination, durable enough to wear every day.',
  'Our silver is 92.5% pure (the “925” hallmark), the international standard for fine jewelry. It is nickel-free and hypoallergenic, hand-forged by our artisans, and finished to hold each amber cabochon securely.'
@@ -222,7 +222,7 @@ const SILVER = {
  ['Is AMBERRA jewelry solid sterling silver?', 'Yes, all AMBERRA settings are solid 925 sterling silver, meaning 92.5 percent pure silver, the international standard for fine jewelry. Some pieces add 18k gold plating over sterling for a warmer look, but none use plated base metal beneath. Sterling silver alloys pure silver with a small amount of other metal for strength, since pure silver alone is too soft to hold a stone securely. Because our sterling is nickel-free, it is hypoallergenic and safe for sensitive skin. Every setting is hand-forged by our artisans, and each order includes a certificate of authenticity covering both the amber and the metal.'],
  ['Is sterling silver good for amber?', 'Yes, sterling silver is one of the best and most traditional metals for Baltic amber. It is strong, hypoallergenic and neutral in cool tone, so it protects the soft, organic amber stone while letting its warm color lead rather than competing with it. Jewelers have paired 925 sterling silver with Baltic amber for centuries, because its bright, white lustre frames the cherry, cognac and honey tones beautifully. It is also durable enough for daily wear and gentle on sensitive skin. AMBERRA hand-forges every setting to cradle each amber cabochon securely by hand.'],
  ['Will sterling silver tarnish?', 'Sterling silver can darken slowly over time as it naturally reacts with air and moisture, forming a patina. This is normal and easily reversed: simply wipe the metal with a soft cloth and store your jewelry dry, ideally in a soft pouch with an anti-tarnish strip. Worn regularly, sterling silver actually tarnishes less, because the oils of your skin and the friction of wear help keep it bright. Because amber is a soft, organic stone, avoid dipping AMBERRA pieces in silver-cleaning solutions or using ultrasonic machines, which can dull or crack the amber. Polish the silver separately with a proper silver cloth.'],
- ['Is the silver hallmarked?', 'AMBERRA silver meets the 925 sterling standard, which means it is 92.5 percent pure silver, the internationally recognized benchmark for fine jewelry. This is the same 925 mark used to identify genuine sterling silver worldwide. Rather than relying on a stamp alone, each order includes a certificate of authenticity covering both the natural Baltic amber and the sterling silver metal, so you have written assurance of what you are buying. Our silver is nickel-free and hypoallergenic, hand-forged by our artisans and finished to hold each amber cabochon securely. Every piece ships with free worldwide shipping over $200.']
+ ['Is the silver hallmarked?', 'AMBERRA silver meets the 925 sterling standard, which means it is 92.5 percent pure silver, the internationally recognized benchmark for fine jewelry. This is the same 925 mark used to identify genuine sterling silver worldwide. Rather than relying on a stamp alone, each order includes a certificate of authenticity covering both the natural Baltic amber and the sterling silver metal, so you have written assurance of what you are buying. Our silver is nickel-free and hypoallergenic, hand-forged by our artisans and finished to hold each amber cabochon securely. Every piece ships with free worldwide shipping over $1,000.']
  ]
 };
 
@@ -365,7 +365,7 @@ const SECTIONS = {
  'We set our amber in 925 sterling silver — 92.5% pure silver, the international standard for fine jewelry — with selected pieces finished in 18k or 24k gold plating. Sterling silver is durable, hypoallergenic and the perfect cool counterpoint to amber’s warmth.'
  ]],
  ['Guaranteed Authentic', [
- 'Every order ships with a certificate of authenticity confirming natural Baltic amber and 925 sterling silver, with free worldwide shipping over $200. If you would like to verify amber yourself, our journal explains the simple at-home tests jewelers use.'
+ 'Every order ships with a certificate of authenticity confirming natural Baltic amber and 925 sterling silver, with free worldwide shipping over $1,000. If you would like to verify amber yourself, our journal explains the simple at-home tests jewelers use.'
  ]],
  ['The Story of Baltic Amber', [
  'For thousands of years amber travelled the ancient "Amber Road" from the Baltic coast to the Mediterranean, prized by Greeks, Romans and Egyptians who believed it carried the warmth and light of the sun. The Greek word for amber, elektron, gave us the word electricity — rub amber and it draws light objects to it, an effect the ancients thought magical.',
@@ -808,7 +808,7 @@ function shell({ metaTitle, metaDesc, canonical, schema, activeSlug, ogImage }, 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/style.css?v=20260830">
+<link rel="stylesheet" href="/style.css?v=20261127c">
 </head>
 <body class="page-light">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJ5682RJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -837,7 +837,7 @@ ${mainHTML}
 </main>
 ${footerHTML()}
 <script src="/currency.js?v=20260811h" defer></script>
-<script src="/app.js?v=20260924a" defer></script>
+<script src="/app.js?v=20261127" defer></script>
 <script src="/shop.js?v=20260830d" defer></script>
 </body>
 </html>`;
