@@ -32,13 +32,13 @@ export function normImg(u) {
   return l ? `/${l[1]}.webp` : u;
 }
 
-// Normalized photos (transparent bg, centered, same fill) live at "<name>-n.webp" — see scripts/img-norm.js
+// Normalized photos (transparent bg, centered, same fill) live at "<name>-m.webp" — see scripts/img-norm.js
 const NORM = new Set(NORM_LIST);
 const NORM_RE = /^(.*?\/)?(images\/[^?#"]+?)\.(?:webp|jpe?g|png)(?:\?[^#"]*)?$/i;
 function nimg(u) {
   const m = String(u || '').match(NORM_RE);
   if (!m || !NORM.has(m[2] + '.webp')) return u;
-  return (m[1] || '/') + m[2] + '-n.webp';
+  return (m[1] || '/') + m[2] + '-m.webp';
 }
 
 function normImgs(products) {
