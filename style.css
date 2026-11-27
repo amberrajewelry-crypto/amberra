@@ -1830,3 +1830,11 @@ body.ck-open .chat-btn,body.ck-open .sound-btn{bottom:calc(var(--ck-h,0px) + 16p
 /* .ft.ft-5 (category pages) out-ranks the mobile .ft rules → 5 columns on phones, footer overflows */
 @media(max-width:900px){.ft.ft-5{grid-template-columns:1fr 1fr;gap:36px}.ft.ft-5>div:first-child{grid-column:1/-1}}
 @media(max-width:480px){.ft.ft-5{grid-template-columns:1fr}}
+/* Real header heights (desktop 133px, mobile 64px); --nav-h was 110/56 → page tops hid under the fixed header */
+:root{--nav-h:134px}
+@media(max-width:768px){:root{--nav-h:64px}}
+/* light pages whose first block had no header offset */
+#srv-hero,#contact-page{padding-top:calc(var(--nav-h) + 40px)!important}
+#journal.js-page{padding-top:var(--nav-h)}
+body.page-light #about{padding-top:calc(var(--nav-h) + 30px)}
+body.page-light #tryon-sec{padding-top:calc(var(--nav-h) + 40px)}
