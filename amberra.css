@@ -144,7 +144,7 @@ body{padding-top:144px;background:var(--white);color:var(--black);font-family:va
   .nav-util-l .nav-util-link:not(.keep){display:none}
   .nav-logo-bar{height:50px}
   .nav-logo{font-size:20px;letter-spacing:.5em}
-  .nav-main{overflow-x:auto;justify-content:flex-start;padding:0 12px;scrollbar-width:none}
+  .nav-main{overflow-x:auto;justify-content:flex-start;padding:0 12px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent)}
   .nav-main::-webkit-scrollbar{display:none}
   .nl{padding:0 10px;font-size:14px}
 }

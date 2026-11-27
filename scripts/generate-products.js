@@ -316,7 +316,7 @@ ${breadcrumbSchema}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css?v=20260830">
+<link rel="stylesheet" href="/style.css?v=20261127">
 <style>
 .pp-nav{position:sticky;top:0;background:var(--white);border-bottom:1px solid var(--mist);z-index:100}
 .pp-nav-bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:16px 32px 12px;gap:20px}
@@ -335,9 +335,9 @@ ${breadcrumbSchema}
 @media(max-width:760px){
   .pp-nav-bar{grid-template-columns:1fr auto 1fr;padding:14px 16px 10px}
   .pp-nav-util{display:none}
-  .pp-nav-logo{justify-self:center}
+  .pp-nav-logo{justify-self:center;grid-column:2} /* util column is hidden on mobile: keep logo centred, cart right */
   .pp-nav-logo .lm{font-size:26px;letter-spacing:.12em}
-  .pp-nav-menu{gap:20px;overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;padding:0 16px 12px;scrollbar-width:none}
+  .pp-nav-menu{gap:20px;overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;padding:0 16px 12px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent)} /* fade = scrollable, not cut */
   .pp-nav-menu::-webkit-scrollbar{display:none}
 }
 .pp-wrap{max-width:1180px;margin:0 auto;padding:24px 32px 48px;display:grid;grid-template-columns:1.05fr 1fr;gap:52px;align-items:start}
