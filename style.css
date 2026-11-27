@@ -1838,3 +1838,9 @@ body.ck-open .chat-btn,body.ck-open .sound-btn{bottom:calc(var(--ck-h,0px) + 16p
 #journal.js-page{padding-top:var(--nav-h)}
 body.page-light #about{padding-top:calc(var(--nav-h) + 30px)}
 body.page-light #tryon-sec{padding-top:calc(var(--nav-h) + 40px)}
+/* Mobile tap targets ≥44px (WCAG 2.5.5); inline links inside running text are exempt */
+@media(max-width:768px){
+  .ex-links a,.fc-l a,.ft-colors a,.fleg a,.ft-legal a,.c-channels a,.lgl-bc a,.cat-breadcrumb a,.care-hours a,
+  .js-read,.bs-all,.c-link,.ws-cat-link,.ws-wa-link,.sg-back,.sp-bread a,.nav-logo,.os-ch,nav[aria-label="All journal articles"] a{display:inline-flex;align-items:center;min-height:44px}
+  .cat-sort select{min-height:44px}
+}
