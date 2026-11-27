@@ -16,9 +16,20 @@ function toSlug(name) {
     .replace(/-+/g, '-')
     .replace(/^-|-$/g, '');
 }
+// Airtable still holds dead-host URLs (amberra-jewelry.com/img/NUM.jpg); every one has a local
+// /images/products/NUM.webp (same mapping as scripts/generate-products.js absImg).
+// ponytail: assumes the webp exists; add an existence list if new Airtable images skip the export.
+const OLD_IMG = /^https?:\/\/(?:www\.)?amberra-?jewelry\.com\/img\/(\d+)\.(?:jpe?g|png)$/i;
+export function normImg(u) {
+  const m = String(u || '').match(OLD_IMG);
+  return m ? `/images/products/${m[1]}.webp?v=10` : u;
+}
+
 function assignSlugs(products) {
   const seen = [];
   for (const p of products) {
+    p.img = normImg(p.img);
+    if (Array.isArray(p.imgs)) p.imgs = p.imgs.map(normImg);
     if (!p.name) continue;
     let slug = toSlug(p.name);
     if (seen.includes(slug)) slug = slug + '-' + seen.length;
