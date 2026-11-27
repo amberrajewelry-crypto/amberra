@@ -1822,3 +1822,6 @@ body{font-feature-settings:"kern" 1,"liga" 1,"calt" 1}
 /* Cookie bar open: lift FABs above it; on mobile shrink hero so its CTA stays visible */
 body.ck-open .chat-btn,body.ck-open .sound-btn{bottom:calc(var(--ck-h,0px) + 16px)!important;transition:bottom .4s}
 @media(max-width:768px){body.ck-open #hero{height:calc(100svh - var(--ck-h,0px))}}
+/* Mobile shop: SEO intro clamped to 3 lines so products show on first screen; tap expands (full text stays in DOM) */
+@media(max-width:768px){.cat-intro p{font-size:14px;line-height:1.7;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer}
+.cat-intro.open p{display:block;-webkit-line-clamp:unset}}
