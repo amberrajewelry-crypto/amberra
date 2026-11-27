@@ -3,6 +3,29 @@
 // Used on every page: nav, translations, cart, wishlist, modals, chat, cookie
 // ═══════════════════════════════════════════════════════════════════════════
 
+// Mobile: floating sound/chat buttons cover text while reading — hide them on
+// scroll down, show on scroll up, at the top and near the page end.
+(function fabAutoHide() {
+  const MOBILE_MAX = 768;
+  const DELTA = 8;
+  const END_GAP = 40;
+  let lastY = window.scrollY;
+  const onScroll = () => {
+    const y = window.scrollY;
+    if (window.innerWidth > MOBILE_MAX) {
+      document.body.classList.remove('fab-hide');
+      lastY = y;
+      return;
+    }
+    if (Math.abs(y - lastY) < DELTA) return;
+    const atEnd = y + window.innerHeight >= document.documentElement.scrollHeight - END_GAP;
+    const hide = y > lastY && y > window.innerHeight * 0.5 && !atEnd;
+    document.body.classList.toggle('fab-hide', hide);
+    lastY = y;
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+
 // WebP delivery: rewrite local /images/*.jpg|png → .webp, fall back to original on 404.
 // Remote (Cloudinary) and non-image paths are left untouched.
 function wsrc(p){if(typeof p!=='string')return p;var w=/^\/?images\/.*\.(jpe?g|png)$/i.test(p)?p.replace(/\.(jpe?g|png)$/i,'.webp'):p;return /\/images\/products\/\d+\.webp$/.test(w)?w+'?v=10':w;}
