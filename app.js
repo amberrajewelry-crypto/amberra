@@ -1079,13 +1079,17 @@ function legalTab(tab){
   // shown right away (no delay): a late-appearing bar became the page's LCP element
   if(!localStorage.getItem('ck_choice')){
     var o=document.getElementById('cookie-overlay');
-    if(o){o.style.display='flex';setTimeout(function(){o.classList.remove('hide')},10);}
+    if(o){o.style.display='flex';setTimeout(function(){o.classList.remove('hide')},10);
+      // reserve bar height so FABs and hero CTA are not hidden under it
+      document.documentElement.style.setProperty('--ck-h',o.offsetHeight+'px');
+      document.body.classList.add('ck-open');}
   }
 })();
 function ckClose(){
   var o=document.getElementById('cookie-overlay');
   if(!o)return;
   o.classList.add('hide');
+  document.body.classList.remove('ck-open');
   setTimeout(function(){o.style.display='none'},400);
 }
 function ckAccept(){
