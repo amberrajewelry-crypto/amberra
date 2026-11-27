@@ -20,9 +20,15 @@ function toSlug(name) {
 // /images/products/NUM.webp (same mapping as scripts/generate-products.js absImg).
 // ponytail: assumes the webp exists; add an existence list if new Airtable images skip the export.
 const OLD_IMG = /^https?:\/\/(?:www\.)?amberra-?jewelry\.com\/img\/(\d+)\.(?:jpe?g|png)$/i;
+// Airtable also holds relative local paths ("images/earrings/IMG_9622.JPG"): the jpg/png originals
+// are not deployed (404) and relative URLs break on nested pages; every one has a .webp sibling.
+const LOCAL_IMG = /^\/?(images\/.+)\.(?:jpe?g|png)$/i;
 export function normImg(u) {
-  const m = String(u || '').match(OLD_IMG);
-  return m ? `/images/products/${m[1]}.webp?v=10` : u;
+  const s = String(u || '');
+  const m = s.match(OLD_IMG);
+  if (m) return `/images/products/${m[1]}.webp?v=10`;
+  const l = s.match(LOCAL_IMG);
+  return l ? `/${l[1]}.webp` : u;
 }
 
 function normImgs(products) {
