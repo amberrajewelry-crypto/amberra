@@ -25,11 +25,17 @@ export function normImg(u) {
   return m ? `/images/products/${m[1]}.webp?v=10` : u;
 }
 
-function assignSlugs(products) {
-  const seen = [];
+function normImgs(products) {
   for (const p of products) {
     p.img = normImg(p.img);
     if (Array.isArray(p.imgs)) p.imgs = p.imgs.map(normImg);
+  }
+  return products;
+}
+
+function assignSlugs(products) {
+  const seen = [];
+  for (const p of products) {
     if (!p.name) continue;
     let slug = toSlug(p.name);
     if (seen.includes(slug)) slug = slug + '-' + seen.length;
@@ -69,7 +75,7 @@ export default async function handler(req, res) {
     // Never leave the catalog empty: if Airtable returned nothing, serve the bundled snapshot.
     if (!records.length) {
       res.setHeader('X-Data-Source', 'fallback');
-      return res.status(200).json(assignSlugs(fallbackProducts));
+      return res.status(200).json(assignSlugs(normImgs(fallbackProducts)));
     }
 
     const products = records.map((rec, i) => {
@@ -95,11 +101,11 @@ export default async function handler(req, res) {
       };
     });
 
-    assignSlugs(products);
+    assignSlugs(normImgs(products));
     res.status(200).json(products);
   } catch (err) {
     // On any failure, still serve products from the bundled snapshot rather than an empty catalog.
     res.setHeader('X-Data-Source', 'fallback-error');
-    res.status(200).json(assignSlugs(fallbackProducts));
+    res.status(200).json(assignSlugs(normImgs(fallbackProducts)));
   }
 }
