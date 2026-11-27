@@ -80,7 +80,7 @@ const CAT_INTRO = {
     'Lightweight earrings that pair the honeyed warmth of amber with a secure, comfortable fitting.',
     'Hand-forged in sterling silver, these earrings frame natural amber for a warm, everyday glow.',
     'Light on the ear and warm in tone, this pair brings natural Baltic amber into daily wear.',
-    'A pair made one at a time, letting the amber colour lead and the silver stay quietly in support.'
+    'A pair made one at a time, letting the amber color lead and the silver stay quietly in support.'
   ],
   pendants: [
     'This pendant centers a single piece of natural amber, ready to layer or wear on its own.',
