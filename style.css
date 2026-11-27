@@ -951,7 +951,8 @@ footer{background:#fff;padding:52px 56px 32px;border-top:1px solid var(--mist)}
 
 /* ═══ MOBILE NAV (hamburger) ════════════════════════════════════════════ */
 .mob-menu-btn{display:none;width:44px;height:44px;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;flex-shrink:0}
-.mob-menu-btn svg{width:20px;height:20px;stroke:var(--charcoal);fill:none;stroke-width:1.8}
+.mob-menu-btn svg{width:20px;height:20px;stroke:#FFFFFF;fill:none;stroke-width:1.8}
+body.page-light .mob-menu-btn svg{stroke:#000}
 .mob-nav-overlay{display:none;position:fixed;inset:0;background:rgba(12,12,12,.5);z-index:800;backdrop-filter:blur(4px)}
 .mob-nav-overlay.open{display:block}
 .mob-nav-drawer{position:fixed;top:0;left:0;height:100%;width:80%;max-width:320px;background:var(--white);z-index:810;transform:translateX(-100%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;padding:0}
@@ -1817,3 +1818,7 @@ body{font-feature-settings:"kern" 1,"liga" 1,"calt" 1}
 /* a11y: readable muted text (stone→gray) + amber text darkened on light, kept bright on dark home */
 :root{--amber-ink:#8A6D0F}
 .page-home{--amber-ink:var(--amber3)}
+
+/* Cookie bar open: lift FABs above it; on mobile shrink hero so its CTA stays visible */
+body.ck-open .chat-btn,body.ck-open .sound-btn{bottom:calc(var(--ck-h,0px) + 16px)!important;transition:bottom .4s}
+@media(max-width:768px){body.ck-open #hero{height:calc(100svh - var(--ck-h,0px))}}
