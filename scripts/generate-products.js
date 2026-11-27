@@ -95,7 +95,7 @@ const CAT_INTRO = {
     'A bracelet that brings the glow of amber to the wrist, sized to move with you.',
     'Natural amber set into a bracelet made to be worn and layered, from day to evening.',
     'Warm amber and hand-worked silver wrap the wrist, light enough to forget you are wearing it.',
-    'A bracelet built to layer with a watch or bangles, centred on natural Baltic amber.',
+    'A bracelet built to layer with a watch or bangles, centered on natural Baltic amber.',
     'This piece sets natural amber along the wrist, hand-finished to sit and move comfortably.'
   ],
   chains: [
@@ -143,7 +143,21 @@ function aboutBlock(p) {
   const craft = pick(seed + 'c', CRAFT_LINE);
   const body = `${intro} ${colLine}${metalLine} ${craft}`;
   return `<div class="pp-about"><h2 class="pp-about-h">About this piece</h2><p>${esc(body)}</p>`
-    + `<p class="pp-about-care">Genuine Baltic amber · keep away from perfume and direct heat, and wipe with a soft cloth to preserve its glow.</p></div>`;
+    + `</div>` + infoBlock(/silver|925/.test(metal));
+}
+
+// Policy copy taken verbatim from faq.html (care, returns) and services.html (certificate).
+// ponytail: duplicated text — if those pages change, update here. Shipping price terms omitted:
+// services.html ("complimentary") and faq.html ("free over $200") disagree.
+function infoBlock(isSilver) {
+  const cert = 'Each piece ships with a signed certificate verifying genuine natural Baltic amber'
+    + (isSilver ? ', hand-set in 925 sterling silver.' : '.');
+  return `<div class="pp-info"><h2 class="pp-about-h">Care, shipping &amp; authenticity</h2><ul class="pp-info-l">`
+    + `<li><strong>Care.</strong> Amber is soft and organic. Keep it away from perfumes, cosmetics, household chemicals, and prolonged direct sunlight. Clean with a soft, slightly damp cloth — never ultrasonic or steam cleaners. Store pieces separately in a pouch to avoid scratching.</li>`
+    + `<li><strong>Authenticity.</strong> ${cert}</li>`
+    + `<li><strong>Shipping.</strong> Worldwide tracked shipping from Bali. <a href="/shipping">Shipping &amp; Returns</a></li>`
+    + `<li><strong>Returns.</strong> We accept returns within 14 days of delivery for items in original, unworn condition with all packaging. Custom-made and personalized pieces are not eligible for return.</li>`
+    + `</ul></div>`;
 }
 
 // ── Airtable fetch ────────────────────────────────────────────────────────────
@@ -335,7 +349,7 @@ ${breadcrumbSchema}
 @media(max-width:760px){
   .pp-nav-bar{grid-template-columns:1fr auto 1fr;padding:14px 16px 10px}
   .pp-nav-util{display:none}
-  .pp-nav-logo{justify-self:center;grid-column:2} /* util column is hidden on mobile: keep logo centred, cart right */
+  .pp-nav-logo{justify-self:center;grid-column:2} /* util column is hidden on mobile: keep logo centered, cart right */
   .pp-nav-logo .lm{font-size:26px;letter-spacing:.12em}
   .pp-nav-menu{gap:20px;overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;padding:0 16px 12px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent)} /* fade = scrollable, not cut */
   .pp-nav-menu::-webkit-scrollbar{display:none}
@@ -354,6 +368,7 @@ ${breadcrumbSchema}
 .pp-divider{border:none;border-top:1px solid var(--mist);margin:14px 0}
 .pp-desc{font:400 16px/1.6 var(--sans);color:var(--black);margin:0 0 14px}
 .pp-material{font:400 15px/1.5 var(--sans);color:var(--black);font-style:italic;margin:0 0 14px}
+.pp-info{margin:0 0 20px}.pp-info-l{list-style:none;padding:0;margin:0}.pp-info-l li{font:400 14px/1.6 var(--sans);color:var(--charcoal);margin:0 0 8px}.pp-info-l a{color:#8A6B12}
 .pp-about{margin:0 0 16px}
 .pp-about-h{font:400 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--black);margin:0 0 8px}
 .pp-about p{font:400 15px/1.6 var(--sans);color:var(--black);margin:0 0 8px}
