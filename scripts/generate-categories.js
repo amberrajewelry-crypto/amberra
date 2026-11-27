@@ -5,6 +5,8 @@
 
 const fs = require('fs');
 const path = require('path');
+const nimg = require('./img-norm');
+const absImg = (i) => nimg(absImg0(i));
 
 const BASE_ID = 'apprPtQw98iLfe0rF';
 const TABLE_ID = 'tblg9KjmXRv9u0dzv';
@@ -16,7 +18,7 @@ const MIN_SKU = 3; // thin-content guard for color pages
 
 // Local webp product images — upgrade Airtable's /img/NUM.jpg → /images/products/NUM.webp (matches generate-products absImg).
 const _WEBP_NUMS = new Set((() => { try { return fs.readdirSync(path.join(__dirname, '..', 'images', 'products')).map(f => (f.match(/(\d+)\.webp/) || [])[1]).filter(Boolean); } catch { return []; } })());
-function absImg(img) {
+function absImg0(img) {
  if (!img) return '';
  let u = String(img);
  u = u.replace(/^https?:\/\/(www\.)?amberra-jewelry\.com\//i, 'https://www.amberrajewelry.com/');
@@ -808,7 +810,7 @@ function shell({ metaTitle, metaDesc, canonical, schema, activeSlug, ogImage }, 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/style.css?v=20261127e">
+<link rel="stylesheet" href="/style.css?v=20261127f">
 </head>
 <body class="page-light">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJ5682RJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

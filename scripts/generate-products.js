@@ -3,6 +3,8 @@
 
 const fs   = require('fs');
 const path = require('path');
+const nimg = require('./img-norm');
+const absImg = (i) => nimg(absImg0(i));
 
 const BASE_ID  = 'apprPtQw98iLfe0rF';
 const TABLE_ID = 'tblg9KjmXRv9u0dzv';
@@ -26,7 +28,7 @@ function esc(str) {
 const TYPE_NOUN = { rings: 'Ring', earrings: 'Earrings', pendants: 'Pendant', bracelets: 'Bracelet', chains: 'Chain' };
 // Local webp product images (NUM.webp) — used to upgrade Airtable's /img/NUM.jpg URLs.
 const _WEBP_NUMS = new Set((() => { try { return fs.readdirSync(path.join(__dirname, '..', 'images', 'products')).map(f => (f.match(/(\d+)\.webp/) || [])[1]).filter(Boolean); } catch { return []; } })());
-function absImg(img) {
+function absImg0(img) {
   if (!img) return '';
   let u = String(img);
   // Normalize bare/canonical host → www (matches canonical, kills host-mismatch for OG/schema).
@@ -329,7 +331,7 @@ ${breadcrumbSchema}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css?v=20261127e">
+<link rel="stylesheet" href="/style.css?v=20261127f">
 <style>
 .pp-nav{position:sticky;top:0;background:var(--white);border-bottom:1px solid var(--mist);z-index:100}
 .pp-nav-bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:16px 32px 12px;gap:20px}

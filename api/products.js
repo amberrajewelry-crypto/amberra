@@ -1,4 +1,5 @@
 import fallbackProducts from '../data/products.json';
+import NORM_LIST from '../data/img-norm.json';
 
 const IMG_EXTRAS = {
   'Morning Dew': ['/images/earrings/morning-dew-2.jpg'], // leaf_eye_butter_rg
@@ -31,10 +32,19 @@ export function normImg(u) {
   return l ? `/${l[1]}.webp` : u;
 }
 
+// Normalized photos (transparent bg, centered, same fill) live at "<name>-n.webp" — see scripts/img-norm.js
+const NORM = new Set(NORM_LIST);
+const NORM_RE = /^(.*?\/)?(images\/[^?#"]+?)\.(?:webp|jpe?g|png)(?:\?[^#"]*)?$/i;
+function nimg(u) {
+  const m = String(u || '').match(NORM_RE);
+  if (!m || !NORM.has(m[2] + '.webp')) return u;
+  return (m[1] || '/') + m[2] + '-n.webp';
+}
+
 function normImgs(products) {
   for (const p of products) {
-    p.img = normImg(p.img);
-    if (Array.isArray(p.imgs)) p.imgs = p.imgs.map(normImg);
+    p.img = nimg(normImg(p.img));
+    if (Array.isArray(p.imgs)) p.imgs = p.imgs.map((u) => nimg(normImg(u)));
   }
   return products;
 }
