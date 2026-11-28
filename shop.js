@@ -90,7 +90,7 @@ function renderProducts(){
     const imgHtml=hasMulti
       ? `<div class="pc-slides">${p.imgs.map((src,si)=>`<img src="${wsrc(src)}" onerror="this.onerror=null;this.src='${src}'" alt="${p.name}" class="pcs${si===0?' active':''}" loading="lazy" width="400" height="400">`).join('')}</div><div class="pc-sdots">${p.imgs.map((_,si)=>`<span class="pc-sdot${si===0?' on':''}"></span>`).join('')}</div>`
       : `<img src="${wsrc(p.img)}" onerror="this.onerror=null;this.src='${p.img}'" alt="${p.name}" loading="lazy" width="400" height="400">`;
-    return `<div class="pc reveal" style="transition-delay:${(i%4)*.06}s"
+    return `<div class="pc pc-${p.cat} reveal" style="transition-delay:${(i%4)*.06}s"
       onmouseenter="hxOn(this)"
       onmouseleave="hxOff(this)">
       <div class="pc-inner" onclick="${p.slug?`location.href='/products/${p.slug}'`:`openDrawer(${p.id})`}">

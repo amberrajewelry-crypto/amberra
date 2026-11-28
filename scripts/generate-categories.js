@@ -13,7 +13,7 @@ const TABLE_ID = 'tblg9KjmXRv9u0dzv';
 const PAT = process.env.AIRTABLE_PAT;
 const SITE = 'https://www.amberrajewelry.com';
 const TODAY = new Date().toISOString().slice(0, 10);
-const CSSVER = '20261128d';
+const CSSVER = '20261128e';
 const MIN_SKU = 3; // thin-content guard for color pages
 
 // Local webp product images — upgrade Airtable's /img/NUM.jpg → /images/products/NUM.webp (matches generate-products absImg).
@@ -649,7 +649,7 @@ function cardHTML(p) {
  ? `<img src="${esc(img)}" alt="${esc(p.name)} — AMBERRA ${esc(p.cat)}" loading="lazy" width="400" height="400">`
  : `<div style="width:100%;height:100%;background:var(--mist)"></div>`;
  return `
- <div class="pc"${p.slug ? ` onclick="location.href='/products/${esc(p.slug)}'"` : ` onclick="openDrawer(${p.id})"`}>
+ <div class="pc pc-${esc(p.cat)}"${p.slug ? ` onclick="location.href='/products/${esc(p.slug)}'"` : ` onclick="openDrawer(${p.id})"`}>
  <div class="pc-inner">
  <div class="pc-img">
  ${badgeHTML}
@@ -820,7 +820,7 @@ function shell({ metaTitle, metaDesc, canonical, schema, activeSlug, ogImage }, 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/style.css?v=20261128d">
+<link rel="stylesheet" href="/style.css?v=20261128e">
 </head>
 <body class="page-light">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJ5682RJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -849,9 +849,9 @@ ${mainHTML}
 </main>
 ${footerHTML()}
 ${sharedModals()}
-<script src="/currency.js?v=20261128d" defer></script>
-<script src="/app.js?v=20261128d" defer></script>
-<script src="/shop.js?v=20261128d" defer></script>
+<script src="/currency.js?v=20261128e" defer></script>
+<script src="/app.js?v=20261128e" defer></script>
+<script src="/shop.js?v=20261128e" defer></script>
 </body>
 </html>`;
 }
