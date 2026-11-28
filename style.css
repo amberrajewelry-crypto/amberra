@@ -1881,3 +1881,6 @@ body.page-cat .cat-intro-h{font-family:var(--serif);font-weight:400;font-size:cl
 body.page-cat .pc-label .pmaterial{white-space:nowrap!important;overflow:hidden;text-overflow:ellipsis;display:block}
 body.page-cat .cat-intro-h{text-align:center}
 body.page-cat .pc,body.page-cat .pc-inner,body.page-cat .pc-img{border-radius:0!important}
+/* Home footer: translucent so the cursor-driven fluid WebGL shows through (28.11) */
+body.page-home footer{background:linear-gradient(180deg,rgba(51,37,15,.15) 0%,rgba(86,64,26,.32) 55%,rgba(122,92,34,.5) 100%)}
+body.page-home footer a,body.page-home footer p,body.page-home footer span,body.page-home footer h4{text-shadow:0 1px 10px rgba(28,19,8,.55)}
