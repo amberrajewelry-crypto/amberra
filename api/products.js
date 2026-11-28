@@ -1,5 +1,6 @@
 import fallbackProducts from '../data/products.json';
 import NORM_LIST from '../data/img-norm.json';
+import ALIAS from '../data/img-alias.json';
 
 const IMG_EXTRAS = {
   'Morning Dew': ['/images/earrings/morning-dew-2.jpg'], // leaf_eye_butter_rg
@@ -36,7 +37,8 @@ export function normImg(u) {
 const NORM = new Set(NORM_LIST);
 const NORM_RE = /^(.*?\/)?(images\/[^?#"]+?)\.(?:webp|jpe?g|png)(?:\?[^#"]*)?$/i;
 function nimg(u) {
-  const m = String(u || '').match(NORM_RE);
+  let m = String(u || '').match(NORM_RE);
+  if (m && ALIAS[m[2] + '.webp']) m = [m[0], m[1], ALIAS[m[2] + '.webp'].replace(/\.webp$/, '')];
   if (!m || !NORM.has(m[2] + '.webp')) return u;
   return (m[1] || '/') + m[2] + '-m.webp';
 }
