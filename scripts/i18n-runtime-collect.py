@@ -10,7 +10,8 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parent.parent
-BASE = "http://127.0.0.1:8791"
+import os
+BASE = os.environ.get("BASE", "http://127.0.0.1:8791")
 PAGES = ["/index.html", "/shop.html", "/rings.html", "/products/amber-blossom-ring.html", "/journal.html",
          "/wholesale.html", "/contact.html", "/our-story.html", "/stores.html", "/tryon.html", "/services.html"]
 ACTIONS = ["typeof openDrawer==='function'&&openDrawer(1)", "typeof closeDrawer==='function'&&closeDrawer()",
@@ -46,7 +47,8 @@ def main() -> None:
             pg.close()
         b.close()
     src = json.loads((ROOT / "data/i18n/source.json").read_text("utf-8"))
-    new = sorted(k for k in found if k and k not in src)
+    old = set(json.loads((ROOT / "data/i18n/runtime-strings.json").read_text("utf-8"))) if (ROOT / "data/i18n/runtime-strings.json").exists() else set()
+    new = sorted(old | {k for k in found if k and k not in src})
     (ROOT / "data/i18n/runtime-strings.json").write_text(json.dumps(new, ensure_ascii=False, indent=1), "utf-8")
     print(f"runtime strings: {len(found)} seen, {len(new)} new")
 
