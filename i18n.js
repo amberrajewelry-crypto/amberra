@@ -36,13 +36,20 @@
     if (!dict || !root) return;
     if (root.nodeType === 3) root = root.parentElement;
     if (!root || root.nodeType !== 1 || root.closest('script,style,svg,[translate="no"]')) return;
-    core.walk(root, (el, s) => {
-      const v = core.lookup(dict, s.key);
-      if (v && v !== s.key) applySeg(el, s, v);
-    }, n => {
+    const textNode = n => {
       const raw = n.nodeValue, v = core.lookup(dict, core.norm(raw).trim());
       if (v) n.nodeValue = (/^\s/.test(raw) ? ' ' : '') + v + (/\s$/.test(raw) ? ' ' : '');
-    });
+    };
+    core.walk(root, (el, s) => {
+      const v = core.lookup(dict, s.key);
+      if (v) { if (v !== s.key) applySeg(el, s, v); return; }
+      // unknown combination (e.g. 'Stone' + a new stone name from Airtable):
+      // translate each inline part and text run on its own
+      const tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      const runs = [];
+      for (let n = tw.nextNode(); n; n = tw.nextNode()) runs.push(n);
+      runs.forEach(textNode);
+    }, textNode);
     const els = root.querySelectorAll ? [root, ...root.querySelectorAll('[title],[alt],[placeholder],[aria-label]')] : [];
     for (const el of els) for (const a of core.ATTRS) {
       const val = el.getAttribute && el.getAttribute(a);
