@@ -97,6 +97,10 @@ def valid(src: str, dst: object) -> bool:
     if sorted(PH.findall(src)) != sorted(PH.findall(dst)):
         return False
     have = numbers(dst)
+    # CJK myriads: 4000万 = 40 million, 1万 = 10,000 (zh 万/萬, ja 万, ko 만)
+    for m in re.finditer(r"(\d+(?:[.,]\d+)?)\s*(?:万|萬|만)", PH.sub(" ", dst)):
+        x = float(m.group(1).replace(",", "."))
+        have += [str(int(x * 10000)), str(int(x / 100)) if x % 100 == 0 else ""]
     return all(n in have for n in numbers(src))
 
 
