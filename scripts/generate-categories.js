@@ -702,6 +702,27 @@ function breadcrumb(trail) {
 
 // ── page shell (head + nav + footer shared) ──────────────────────────────────
 
+function mobNavHTML() {
+ return `<div class="mob-nav-overlay" id="mob-nav-overlay" onclick="closeMobNav()"></div>
+<div class="mob-nav-drawer" id="mob-nav-drawer">
+ <div class="mob-nav-head"><span class="mob-nav-logo">AMBERRA</span><button class="mob-nav-close" onclick="closeMobNav()">✕</button></div>
+ <div class="mob-nav-links">
+ <a class="mob-nav-link" href="/" data-i18n="nav_home">Home</a>
+ <a class="mob-nav-link" href="/shop" data-i18n="nav_collections">Collections</a>
+ <a class="mob-nav-link" href="/rings" data-i18n="nav_rings">Rings</a><a class="mob-nav-link" href="/earrings" data-i18n="nav_earrings">Earrings</a>
+ <a class="mob-nav-link" href="/pendants" data-i18n="nav_pendants">Pendants</a><a class="mob-nav-link" href="/bracelets" data-i18n="nav_bracelets">Bracelets</a>
+ <a class="mob-nav-link" href="/our-story" data-i18n="nav_about">Our Story</a>
+ <a class="mob-nav-link amber" href="/wholesale" data-i18n="nav_wholesale">Wholesale</a>
+ <a class="mob-nav-link" href="/journal" data-i18n="nav_journal">Journal</a>
+ </div>
+ <div class="mob-nav-foot"><div class="mob-nav-utils">
+ <a class="mob-nav-util" href="/shop">My Account</a>
+ <a class="mob-nav-util" href="/services">Services</a>
+ <a class="mob-nav-util" href="/contact">Contact</a>
+ </div></div>
+</div>`;
+}
+
 function navHTML(activeSlug) {
  const nl = (slug, label) => `<a class="nl${activeSlug === slug ? ' act' : ''}" href="/${slug}">${label}</a>`;
  return `<div id="nav-shell" class="solid">
@@ -819,38 +840,21 @@ function shell({ metaTitle, metaDesc, canonical, schema, activeSlug, ogImage }, 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/style.css?v=20261128h">
+<link rel="stylesheet" href="/style.css?v=20261128i">
 </head>
 <body class="page-light page-cat">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJ5682RJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <canvas id="particles-canvas"></canvas>
-<div class="mob-nav-overlay" id="mob-nav-overlay" onclick="closeMobNav()"></div>
-<div class="mob-nav-drawer" id="mob-nav-drawer">
- <div class="mob-nav-head"><span class="mob-nav-logo">AMBERRA</span><button class="mob-nav-close" onclick="closeMobNav()">✕</button></div>
- <div class="mob-nav-links">
- <a class="mob-nav-link" href="/" data-i18n="nav_home">Home</a>
- <a class="mob-nav-link" href="/shop" data-i18n="nav_collections">Collections</a>
- <a class="mob-nav-link" href="/rings" data-i18n="nav_rings">Rings</a><a class="mob-nav-link" href="/earrings" data-i18n="nav_earrings">Earrings</a>
- <a class="mob-nav-link" href="/pendants" data-i18n="nav_pendants">Pendants</a><a class="mob-nav-link" href="/bracelets" data-i18n="nav_bracelets">Bracelets</a>
- <a class="mob-nav-link" href="/our-story" data-i18n="nav_about">Our Story</a>
- <a class="mob-nav-link amber" href="/wholesale" data-i18n="nav_wholesale">Wholesale</a>
- <a class="mob-nav-link" href="/journal" data-i18n="nav_journal">Journal</a>
- </div>
- <div class="mob-nav-foot"><div class="mob-nav-utils">
- <a class="mob-nav-util" href="/shop">My Account</a>
- <a class="mob-nav-util" href="/services">Services</a>
- <a class="mob-nav-util" href="/contact">Contact</a>
- </div></div>
-</div>
+${mobNavHTML()}
 ${navHTML(activeSlug)}
 <main>
 ${mainHTML}
 </main>
 ${footerHTML()}
 ${sharedModals()}
-<script src="/currency.js?v=20261128h" defer></script>
-<script src="/app.js?v=20261128h" defer></script>
-<script src="/shop.js?v=20261128h" defer></script>
+<script src="/currency.js?v=20261128i" defer></script>
+<script src="/app.js?v=20261128i" defer></script>
+<script src="/shop.js?v=20261128i" defer></script>
 </body>
 </html>`;
 }
@@ -1104,4 +1108,5 @@ async function main() {
  console.log(`Done: ${written.length} landing pages.`);
 }
 
-main().catch(err => { console.error('Error:', err.message); process.exit(0); });
+module.exports = { navHTML, mobNavHTML, footerHTML, sharedModals };
+if (require.main === module) main().catch(err => { console.error('Error:', err.message); process.exit(0); });
