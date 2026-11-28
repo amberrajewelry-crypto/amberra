@@ -64,6 +64,8 @@ Hard rules:
 - Keep unchanged: the brand AMBERRA, names of specific pieces and collections (e.g. "Amber Blossom Ring",
   "Solar", "Botanica", "Sacred"), emails, URLs, @handles, prices, currency codes, size codes (US 7, EU 54),
   SKU-like codes, WhatsApp, Instagram.
+- Keep EVERY number from the source as digits (925, 18k, 92.5%, 30 seconds, 14th century -> digits, not words or
+  Roman numerals); never drop a number.
 - Keep capitalization style (ALL CAPS stays caps; Title Case navigation becomes the target language's normal
   menu casing).
 - Glossary (use consistently): {glossary}
@@ -81,8 +83,21 @@ def load(p: Path) -> dict:
     return json.loads(p.read_text("utf-8")) if p.exists() else {}
 
 
+NUM = re.compile(r"\d{1,3}(?:[ ,.\u00a0\u202f\u2009]\d{3})+(?!\d)|\d+(?:[.,]\d+)?")
+
+
+def numbers(s: str) -> list[str]:
+    """Digit runs with separators removed: '10,000' == '10 000', '92.5' -> '925'."""
+    return sorted(re.sub(r"\D", "", m) for m in NUM.findall(PH.sub(" ", s)))
+
+
 def valid(src: str, dst: object) -> bool:
-    return isinstance(dst, str) and bool(dst.strip()) and sorted(PH.findall(src)) == sorted(PH.findall(dst))
+    if not (isinstance(dst, str) and dst.strip()):
+        return False
+    if sorted(PH.findall(src)) != sorted(PH.findall(dst)):
+        return False
+    have = numbers(dst)
+    return all(n in have for n in numbers(src))
 
 
 def batches(keys: list[str]) -> list[list[str]]:

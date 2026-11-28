@@ -287,4 +287,46 @@ function check() {
 }
 
 const cmd = process.argv[2] || 'build';
-({ extract, build, check })[cmd]();
+if (cmd !== 'lint' && cmd !== 'numdiff') ({ extract, build, check })[cmd]();
+
+// node scripts/build-i18n.mjs lint [lang...] — automatic proofreading of the memory
+export function lint(langs) {
+  const SCRIPT = { ru: /\p{Script=Cyrillic}/u, zh: /\p{Script=Han}/u, ja: /[\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Han}]/u,
+    ko: /\p{Script=Hangul}/u, ar: /\p{Script=Arabic}/u, hi: /\p{Script=Devanagari}/u, ka: /\p{Script=Georgian}/u };
+  const src = JSON.parse(fs.readFileSync(path.join(I18N_DIR, 'source.json'), 'utf8'));
+  const nums = s => (s.replace(/<\/?\d+\/?>/g, ' ').match(/\d+(?:[.,]\d+)?/g) || []).map(x => x.replace(',', '.')).sort().join(' ');
+  const plain = s => s.replace(/<\/?\d+\/?>/g, ' ').replace(/\s+/g, ' ').trim();
+  const out = [];
+  for (const lang of langs) {
+    const f = path.join(I18N_DIR, `${lang}.json`);
+    if (!fs.existsSync(f)) continue;
+    const d = JSON.parse(fs.readFileSync(f, 'utf8'));
+    const issues = { script: [], numbers: [], same: [], brand: [], handle: [] };
+    for (const k of Object.keys(src)) {
+      const v = d[k];
+      if (typeof v !== 'string') continue;
+      const pk = plain(k), pv = plain(v), words = (pk.match(/\p{L}{3,}/gu) || []).length;
+      if (SCRIPT[lang] && words >= 2 && !SCRIPT[lang].test(pv)) issues.script.push(k);
+      if (nums(k) !== nums(v)) issues.numbers.push(k);
+      if (!SCRIPT[lang] && words >= 5 && pk === pv) issues.same.push(k);
+      if ((k.match(/AMBERRA/g) || []).length > (v.match(/AMBERRA/gi) || []).length) issues.brand.push(k);
+      for (const h of k.match(/@[\w.]+|[\w.+-]+@[\w-]+\.\w+|https?:\/\/\S+/g) || []) if (!v.includes(h)) { issues.handle.push(k); break; }
+    }
+    out.push({ lang, ...Object.fromEntries(Object.entries(issues).map(([n, a]) => [n, a.length])) });
+    fs.writeFileSync(path.join(ROOT, '.i18n-lint-' + lang + '.json'), JSON.stringify(issues, null, 1));
+  }
+  console.table(out);
+}
+if (process.argv[2] === 'lint') lint(process.argv.slice(3).length ? process.argv.slice(3) : LANGS);
+if (process.argv[2] === 'numdiff') {
+  const lang = process.argv[3];
+  const d = JSON.parse(fs.readFileSync(path.join(I18N_DIR, `${lang}.json`), 'utf8'));
+  const iss = JSON.parse(fs.readFileSync(path.join(ROOT, `.i18n-lint-${lang}.json`), 'utf8'));
+  const n = s => (s.replace(/<\/?\d+\/?>/g, ' ').match(/\d+(?:[.,]\d+)?/g) || []).map(x => x.replace(',', '.'));
+  for (const k of iss.numbers) {
+    const a = n(k), b = n(d[k]);
+    const miss = a.filter(x => !b.includes(x)), extra = b.filter(x => !a.includes(x));
+    if (process.argv[4] && !miss.includes(process.argv[4])) continue;
+    console.log(`${JSON.stringify(miss)} → ${JSON.stringify(extra)} | ${k.slice(0, 70)}` + (process.argv[4] ? `\n   EN: ${k}\n   ${lang}: ${d[k]}` : ""));
+  }
+}

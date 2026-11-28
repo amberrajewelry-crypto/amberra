@@ -21,3 +21,4 @@ service-account.json
 /es/
 /i18n/
 __pycache__/
+.i18n-lint-*.json
