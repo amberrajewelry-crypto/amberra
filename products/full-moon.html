@@ -202,11 +202,12 @@
 .pp-breadcrumb a:hover{color:var(--amber-ink)}
 .pp-cat{font:400 12px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--amber-ink);margin-bottom:8px}
 .pp-name{font:400 34px/1.1 var(--serif);color:var(--black);margin:0 0 10px}
-.pp-price{font:400 25px/1 var(--serif);color:var(--black);margin:0 0 14px}
+.pp-price{font:400 25px/1 var(--serif);color:var(--black);margin:0 0 12px}
+.pp-buy{margin:0 0 6px}
 .pp-divider{border:none;border-top:1px solid var(--mist);margin:14px 0}
 .pp-desc{font:400 16px/1.6 var(--sans);color:var(--black);margin:0 0 14px}
 .pp-material{font:400 15px/1.5 var(--sans);color:var(--black);font-style:italic;margin:0 0 14px}
-.pp-info{margin:0 0 20px}.pp-info-l{list-style:none;padding:0;margin:0}.pp-info-l li{font:400 14px/1.6 var(--sans);color:var(--charcoal);margin:0 0 8px}.pp-info-l a{color:#8A6B12}
+.pp-care{margin:0 0 20px;border-top:1px solid var(--silk);border-bottom:1px solid var(--silk)}.pp-care summary{cursor:pointer;list-style:none;padding:12px 0;margin:0;display:flex;justify-content:space-between;align-items:center}.pp-care summary::-webkit-details-marker{display:none}.pp-care summary::after{content:'+';font:300 18px/1 var(--sans);color:var(--black)}.pp-care[open] summary::after{content:'2'}.pp-care .pp-info-l{padding-bottom:10px}.pp-info-l{list-style:none;padding:0;margin:0}.pp-info-l li{font:400 14px/1.6 var(--sans);color:var(--charcoal);margin:0 0 8px}.pp-info-l a{color:#8A6B12}
 .pp-about{margin:0 0 16px}
 .pp-about-h{font:400 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--black);margin:0 0 8px}
 .pp-about p{font:400 15px/1.6 var(--sans);color:var(--black);margin:0 0 8px}
@@ -241,7 +242,7 @@
 .pp-trust-t{font:500 12.5px/1.3 var(--sans);letter-spacing:.03em;color:var(--black)}
 .pp-trust-s{font:400 12.5px/1.4 var(--sans);color:var(--black)}
 .pp-trust-item:hover .pp-trust-t{color:var(--amber-ink)}
-@media(max-width:760px){.pp-wrap{grid-template-columns:1fr;gap:28px;padding:24px 20px 60px}.pp-info{position:static}.pp-img-wrap{max-height:none;aspect-ratio:1/1}.pp-name{font-size:28px}.pp-related-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.pp-wrap{grid-template-columns:1fr;gap:16px;padding:12px 20px 60px}.pp-cat{display:none}.pp-info{position:static}.pp-img-wrap{max-height:none;aspect-ratio:1/1}.pp-name{font-size:28px}.pp-related-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:768px){.pp-nav-menu a,.pp-nav-r a,.pp-breadcrumb a,.pp-footer a{display:inline-flex;align-items:center;min-height:44px}}
 </style>
 </head>
@@ -288,20 +289,20 @@
     
     <h1 class="pp-name">Full Moon</h1>
     <div class="pp-price" data-usd="59">$59</div>
-    <hr class="pp-divider">
-    <p class="pp-desc">Round amber discs as luminous as a full moon. Wear the moonlight every day.</p>
     <p class="pp-material">Natural Baltic Amber · 925 Sterling Silver</p>
-    <div class="pp-about"><h2 class="pp-about-h">About this piece</h2><p>Hand-forged in sterling silver, these earrings frame natural amber for a warm, everyday glow. Every piece of natural amber carries its own inclusions and tone, so yours is one of a kind. It is set in 925 sterling silver, hallmarked for lasting wear. Handcrafted from genuine Baltic amber, then finished by hand.</p></div><div class="pp-info"><h2 class="pp-about-h">Care, shipping &amp; authenticity</h2><ul class="pp-info-l"><li><strong>Care.</strong> Amber is soft and organic. Keep it away from perfumes, cosmetics, household chemicals, and prolonged direct sunlight. Clean with a soft, slightly damp cloth — never ultrasonic or steam cleaners. Store pieces separately in a pouch to avoid scratching.</li><li><strong>Authenticity.</strong> Each piece ships with a signed certificate verifying genuine natural Baltic amber, hand-set in 925 sterling silver.</li><li><strong>Shipping.</strong> Worldwide tracked shipping from Bali — free on orders over $1,000; below that, the cost is agreed with our team. <a href="/shipping">Shipping &amp; Returns</a></li><li><strong>Returns.</strong> We accept returns within 14 days of delivery for items in original, unworn condition with all packaging. Custom-made and personalized pieces are not eligible for return.</li></ul></div>
-    
-    <div class="pp-props"><div class="pp-prop"><span class="pp-pk">Stone</span><span class="pp-pv">Natural Baltic Amber</span></div><div class="pp-prop"><span class="pp-pk">Metal</span><span class="pp-pv">925 Sterling Silver</span></div><div class="pp-prop"><span class="pp-pk">Collection</span><span class="pp-pv">Moon</span></div><div class="pp-prop"><span class="pp-pk">Closure</span><span class="pp-pv">Lever backs</span></div></div>
-    <button class="pp-cta" type="button"
+    <div class="pp-buy"><button class="pp-cta" type="button"
     onclick="ppAddCart(this)"
     data-id="full-moon"
     data-name="Full Moon"
     data-img="https://www.amberrajewelry.com/images/products/48061475-m.webp"
     data-material="Natural Baltic Amber · 925 Sterling Silver"
-    data-price="59">Add to Cart — <span class="pp-cta-price" data-usd="59">$59</span></button>
-    <a class="pp-cta-ghost" href="/shop?cat=earrings">View All Earrings</a>
+    data-price="59">Add to Cart — <span class="pp-cta-price" data-usd="59">$59</span></button></div>
+    <hr class="pp-divider">
+    <p class="pp-desc">Round amber discs as luminous as a full moon. Wear the moonlight every day.</p>
+    <div class="pp-about"><h2 class="pp-about-h">About this piece</h2><p>Hand-forged in sterling silver, these earrings frame natural amber for a warm, everyday glow. Every piece of natural amber carries its own inclusions and tone, so yours is one of a kind. It is set in 925 sterling silver, hallmarked for lasting wear. Handcrafted from genuine Baltic amber, then finished by hand.</p></div><details class="pp-care"><summary class="pp-about-h">Care, shipping &amp; authenticity</summary><ul class="pp-info-l"><li><strong>Care.</strong> Amber is soft and organic. Keep it away from perfumes, cosmetics, household chemicals, and prolonged direct sunlight. Clean with a soft, slightly damp cloth — never ultrasonic or steam cleaners. Store pieces separately in a pouch to avoid scratching.</li><li><strong>Authenticity.</strong> Each piece ships with a signed certificate verifying genuine natural Baltic amber, hand-set in 925 sterling silver.</li><li><strong>Shipping.</strong> Worldwide tracked shipping from Bali — free on orders over $1,000; below that, the cost is agreed with our team. <a href="/shipping">Shipping &amp; Returns</a></li><li><strong>Returns.</strong> We accept returns within 14 days of delivery for items in original, unworn condition with all packaging. Custom-made and personalized pieces are not eligible for return.</li></ul></details>
+    
+    <div class="pp-props"><div class="pp-prop"><span class="pp-pk">Stone</span><span class="pp-pv">Natural Baltic Amber</span></div><div class="pp-prop"><span class="pp-pk">Metal</span><span class="pp-pv">925 Sterling Silver</span></div><div class="pp-prop"><span class="pp-pk">Collection</span><span class="pp-pv">Moon</span></div><div class="pp-prop"><span class="pp-pk">Closure</span><span class="pp-pv">Lever backs</span></div></div>
+        <a class="pp-cta-ghost" href="/shop?cat=earrings">View All Earrings</a>
     <div class="pp-trust">
       <a class="pp-trust-item" href="/faq">
         <svg class="pp-trust-ic" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5.5"/><path d="M9 9l2 2 4-4"/><path d="M8.5 14L7 21l5-2.4L17 21l-1.5-7"/></svg>
