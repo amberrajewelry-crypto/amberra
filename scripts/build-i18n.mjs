@@ -125,6 +125,7 @@ function applySeg(el, s, v) {
 }
 
 const PAGE_SET = new Set();
+const DYN = new Set(); // keys inside [data-i18n]: app.js rewrites them after load
 const VER = (process.env.VERCEL_GIT_COMMIT_SHA || String(Date.now())).slice(0, 8);
 function localizeHref(href, lang) {
   if (!href) return href;
@@ -183,6 +184,7 @@ function build() {
         if (a === '#text') el.textContent = t; else el.setAttribute(a, t);
       }
       for (const [el, s] of segs) {
+        if (el.closest && el.closest('[data-i18n],[data-i18n-ph]')) DYN.add(s.key);
         const t = core.lookup(d, s.key);
         if (t && applySeg(el, s, t)) hit++; else miss++;
       }
@@ -211,10 +213,28 @@ function build() {
     const src = JSON.parse(fs.readFileSync(path.join(I18N_DIR, 'source.json'), 'utf8'));
     const rt = {};
     for (const [k, where] of Object.entries(src)) {
-      if (where.includes('data/products.json') || where.includes('runtime') || where.length >= 20) {
+      if (where.includes('data/products.json') || where.includes('runtime') || where.length >= 20 || DYN.has(k) || (k.length <= 60 && !/<\d/.test(k))) {
         const t = core.lookup(d, k);
         if (t) rt[k] = t;
       }
+    }
+    // inline parts of translated segments ('<0>Home</0> <1>Shop</1>' → Home, Shop):
+    // app.js rewrites single [data-i18n] links with its own partial tables, so the
+    // runtime layer must know each part on its own.
+    const leaf = s => (/<\/?\d+\/?>/.test(s) ? null : s.trim());
+    for (const [k, v] of Object.entries(d)) {
+      if (!/<\d+>/.test(k) || !core.lookup(d, k)) continue;
+      const a = core.parse(k), b = core.parse(v);
+      if (!a || !b) continue;
+      const map = new Map();
+      const grab = (n, into) => n.kids.forEach(c => { if (c.i !== undefined && !c.atom) { into.set(c.i, c.kids.map(x => (x.t !== undefined ? x.t : '<n>')).join('')); grab(c, into); } });
+      const ma = new Map(), mb = new Map();
+      grab(a, ma); grab(b, mb);
+      for (const [i, en] of ma) {
+        const e = leaf(en), t = leaf(mb.get(i) || '');
+        if (e && t && !e.includes('<n>') && !t.includes('<n>') && core.translatable(e) && !(e in rt)) map.set(e, t);
+      }
+      for (const [e, t] of map) rt[e] = t;
     }
     fs.mkdirSync(path.join(ROOT, 'i18n'), { recursive: true });
     fs.writeFileSync(path.join(ROOT, 'i18n', `${lang}.json`), JSON.stringify(rt));

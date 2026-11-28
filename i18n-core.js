@@ -53,7 +53,7 @@
       return out;
     }
     const raw = ser(el);
-    return { key: raw.trim(), lead: /^\s/.test(raw), trail: /\s$/.test(raw), parts };
+    return { key: raw.replace(/ {2,}/g, ' ').trim(), lead: /^\s/.test(raw), trail: /\s$/.test(raw), parts };
   }
 
   // Collapse wrappers: <p><a>View</a></p> → segment is the <a>.
