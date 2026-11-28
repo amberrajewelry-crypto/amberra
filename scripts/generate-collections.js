@@ -9,7 +9,7 @@ const nimg = require('./img-norm');
 const absImg = (i) => nimg(absImg0(i));
 const ROOT = process.cwd();
 const SITE = 'https://www.amberrajewelry.com';
-const CSSVER   = '20261128e';
+const CSSVER   = '20261128f';
 
 const { toSlug, assignSlugs } = require('./slug');
 function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;'); }

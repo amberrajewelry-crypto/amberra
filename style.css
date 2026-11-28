@@ -373,7 +373,7 @@ html:has(body.page-home),body.page-home{background:#1c1308}
 .pc-img img{width:85%;height:85%;object-fit:contain;display:block;transition:transform .8s cubic-bezier(.25,.46,.45,.94);filter:drop-shadow(0 10px 20px rgba(60,40,10,.16))}
 .pc.hx .pc-img img,.pc:hover .pc-img img{transform:scale(1.06)}
 /* rings read larger than other pieces at the same box: 35% smaller (85% -> 55%) */
-.pc-rings .pc-img img{width:55%;height:55%}.pc-rings .pc-img .pcs{margin:auto}
+.pc-rings .pc-img img,.pc[data-cat="rings"] .pc-img img{width:55%;height:55%}.pc-rings .pc-img .pcs{margin:auto}
 .pbadge{position:absolute;top:8px;left:8px;padding:3px 7px;font-size:12px;letter-spacing:.15em;text-transform:uppercase;z-index:2;border-radius:4px}
 .pbadge.bestseller{background:var(--charcoal);color:var(--white)}
 .pbadge.new{background:var(--white);color:var(--black);border:1px solid var(--mist)}
