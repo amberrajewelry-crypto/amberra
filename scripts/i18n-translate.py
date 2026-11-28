@@ -25,7 +25,9 @@ CALL_TIMEOUT_S = 900
 MAX_ROUNDS = 3
 PH = re.compile(r"</?\d+/?>")
 
-LANG_NAMES = {"ru": "Russian", "de": "German", "fr": "French", "es": "Spanish (neutral, international)"}
+LANG_NAMES = {"ru": "Russian", "de": "German", "fr": "French", "es": "Spanish (neutral, international)", "it": "Italian", "pt": "Portuguese (Brazilian)",
+              "tr": "Turkish", "ar": "Arabic (Modern Standard)", "zh": "Simplified Chinese", "ja": "Japanese",
+              "ko": "Korean", "id": "Indonesian", "hi": "Hindi", "ka": "Georgian"}
 GLOSSARY = {
     "ru": "Baltic amber=балтийский янтарь; 925 sterling silver=серебро 925 пробы; Rings=Кольца; "
           "Earrings=Серьги; Pendants=Подвески; Bracelets=Браслеты; Chains=Цепочки; Collections=Коллекции; "
@@ -47,6 +49,10 @@ GLOSSARY = {
           "designed in Bali, crafted by our artisans=diseñado en Bali, elaborado por nuestros artesanos. Use «tú».",
 }
 
+DEFAULT_GLOSSARY = ("Use the standard terms of luxury jewelry retail in this language for: Baltic amber, 925 sterling "
+                    "silver, Rings, Earrings, Pendants, Bracelets, Chains, Collections, Journal, Wholesale, Our Story, "
+                    "handmade; 'designed in Bali, crafted by our artisans' must keep both facts. Polite formal address.")
+
 PROMPT = """You are the senior localization editor of AMBERRA, a luxury handmade jewelry brand
 (natural Baltic amber set in 925 sterling silver; "designed in Bali, crafted by our artisans").
 Translate each English UI/marketing string into {lang_name}. Tone: refined, calm, luxury (like Bulgari/Cartier
@@ -58,6 +64,8 @@ Hard rules:
 - Keep unchanged: the brand AMBERRA, names of specific pieces and collections (e.g. "Amber Blossom Ring",
   "Solar", "Botanica", "Sacred"), emails, URLs, @handles, prices, currency codes, size codes (US 7, EU 54),
   SKU-like codes, WhatsApp, Instagram.
+- Keep EVERY number from the source as digits (925, 18k, 92.5%, 30 seconds, 14th century -> digits, not words or
+  Roman numerals); never drop a number.
 - Keep capitalization style (ALL CAPS stays caps; Title Case navigation becomes the target language's normal
   menu casing).
 - Glossary (use consistently): {glossary}
@@ -75,8 +83,21 @@ def load(p: Path) -> dict:
     return json.loads(p.read_text("utf-8")) if p.exists() else {}
 
 
+NUM = re.compile(r"\d{1,3}(?:[ ,.\u00a0\u202f\u2009]\d{3})+(?!\d)|\d+(?:[.,]\d+)?")
+
+
+def numbers(s: str) -> list[str]:
+    """Digit runs with separators removed: '10,000' == '10 000', '92.5' -> '925'."""
+    return sorted(re.sub(r"\D", "", m) for m in NUM.findall(PH.sub(" ", s)))
+
+
 def valid(src: str, dst: object) -> bool:
-    return isinstance(dst, str) and bool(dst.strip()) and sorted(PH.findall(src)) == sorted(PH.findall(dst))
+    if not (isinstance(dst, str) and dst.strip()):
+        return False
+    if sorted(PH.findall(src)) != sorted(PH.findall(dst)):
+        return False
+    have = numbers(dst)
+    return all(n in have for n in numbers(src))
 
 
 def batches(keys: list[str]) -> list[list[str]]:
@@ -116,7 +137,7 @@ def parse_json(text: str) -> dict:
 
 def run_batch(lang: str, keys: list[str], out_path: Path, idx: int, total: int) -> int:
     payload = json.dumps({str(i): k for i, k in enumerate(keys)}, ensure_ascii=False, indent=0)
-    prompt = PROMPT.format(lang_name=LANG_NAMES[lang], glossary=GLOSSARY[lang], payload=payload)
+    prompt = PROMPT.format(lang_name=LANG_NAMES[lang], glossary=GLOSSARY.get(lang, DEFAULT_GLOSSARY), payload=payload)
     try:
         res = parse_json(call_claude(prompt))
     except subprocess.TimeoutExpired:
