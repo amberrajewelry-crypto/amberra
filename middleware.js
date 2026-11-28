@@ -3,10 +3,10 @@
 // Accept-Language (device/browser language) → English. Crawlers are never
 // redirected (they get hreflang alternates instead).
 export const config = {
-  matcher: ['/', '/((?!api/|ru/|de/|fr/|es/|_vercel|images/|vendor/|js/|models/|audio/|i18n/|data/|fonts/).*)'],
+  matcher: ['/', '/((?!api/|(?:ru|de|fr|es|it|pt|tr|ar|zh|ja|ko|id|hi|ka)/|_vercel|images/|vendor/|js/|models/|audio/|i18n/|data/|fonts/).*)'],
 };
 
-const LANGS = ['ru', 'de', 'fr', 'es'];
+const LANGS = ['ru', 'de', 'fr', 'es', 'it', 'pt', 'tr', 'ar', 'zh', 'ja', 'ko', 'id', 'hi', 'ka'];
 const SUPPORTED = new Set(['en', ...LANGS]);
 const BOT = /bot|crawl|spider|slurp|bingpreview|lighthouse|pagespeed|facebookexternalhit|whatsapp|telegram|preview|headless/i;
 const ROOT_PAGES = new Set(['/', '/shop', '/rings', '/earrings', '/pendants', '/bracelets', '/chains', '/amber',

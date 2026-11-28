@@ -16,8 +16,8 @@ const core = require('../i18n-core.js');
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const SITE = 'https://www.amberrajewelry.com';
-export const LANGS = ['ru', 'de', 'fr', 'es'];
-const NAMES = { en: 'English', ru: 'Русский', de: 'Deutsch', fr: 'Français', es: 'Español' };
+export const LANGS = ['ru', 'de', 'fr', 'es', 'it', 'pt', 'tr', 'ar', 'zh', 'ja', 'ko', 'id', 'hi', 'ka'];
+const NAMES = { en: 'English', ru: 'Русский', de: 'Deutsch', fr: 'Français', es: 'Español', it: 'Italiano', pt: 'Português', tr: 'Türkçe', ar: 'العربية', zh: '中文', ja: '日本語', ko: '한국어', id: 'Bahasa Indonesia', hi: 'हिन्दी', ka: 'ქართული' };
 const DIRS = ['products', 'journal', 'collections', 'amber', 'shop'];
 const EXCLUDE = new Set(['about.html', 'catalog.html', 'demo-fluid.html', 'scroll-scrub.html',
   'index-mobile.html', 'index-raw.html', 'index-redirect.html']);
@@ -62,7 +62,39 @@ function visit(doc, { seg, text, attr }) {
   core.walk(body, seg, text);
 }
 
-function extract() {
+// --live: also read the English pages as Vercel built them (Airtable products can be
+// newer than the repo copies) and the live product feed.
+async function extractLive(add) {
+  const LIVE_CONCURRENCY = 8;
+  const sm = await (await fetch(`${SITE}/sitemap.xml`)).text();
+  const langRe = new RegExp(`^${SITE}/(${LANGS.join('|')})(/|$)`);
+  const urls = [...sm.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]).filter(u => !langRe.test(u));
+  let i = 0, n = 0;
+  const worker = async () => {
+    while (i < urls.length) {
+      const u = urls[i++];
+      try {
+        const html = await (await fetch(u, { headers: { 'user-agent': 'amberra-i18n-sync bot' } })).text();
+        const { document } = parseHTML(html);
+        const label = 'live:' + (u.slice(SITE.length) || '/');
+        visit(document, { seg: (el, s) => add(s.key, label), text: t => add(core.norm(core.textOf(t)).trim(), label), attr: (el, a, v) => add(v, label) });
+        n++;
+      } catch { /* skip unreachable page */ }
+    }
+  };
+  await Promise.all(Array.from({ length: LIVE_CONCURRENCY }, worker));
+  try {
+    const feed = await (await fetch(`${SITE}/api/products`)).json();
+    const list = Array.isArray(feed) ? feed : feed.products || feed.records || [];
+    const TEXT_FIELDS = /^(material|desc|description|stone|metal|closure|chain|collection|care|details|story)$/i;
+    for (const p of list) for (const [k, v] of Object.entries(p.fields || p)) {
+      if (TEXT_FIELDS.test(k) && typeof v === 'string' && core.translatable(v)) add(core.norm(v).trim(), 'runtime');
+    }
+  } catch { /* feed unavailable */ }
+  console.log(`  live: ${n}/${urls.length} EN pages + product feed`);
+}
+
+async function extract() {
   const src = {};
   const add = (k, file) => { if (!k) return; (src[k] ||= []).includes(file) || src[k].push(file); };
   for (const f of pages()) {
@@ -81,6 +113,7 @@ function extract() {
   }
   const extra = path.join(I18N_DIR, 'runtime-strings.json'); // collected from rendered pages
   if (fs.existsSync(extra)) for (const k of JSON.parse(fs.readFileSync(extra, 'utf8'))) add(k, 'runtime');
+  if (process.argv.includes('--live')) await extractLive(add);
   fs.mkdirSync(I18N_DIR, { recursive: true });
   fs.writeFileSync(path.join(I18N_DIR, 'source.json'), JSON.stringify(src, null, 1));
   const words = Object.keys(src).reduce((n, k) => n + k.split(/\s+/).length, 0);
@@ -150,15 +183,26 @@ function switcher(p, cur) {
   const a = ['en', ...LANGS].map(l => l === cur
     ? `<span aria-current="true">${NAMES[l]}</span>`
     : `<a href="${u(l)}" hreflang="${l}" lang="${l}" onclick="document.cookie='amb_lang=${l};path=/;max-age=31536000;samesite=lax'">${NAMES[l]}</a>`).join('');
-  return `<nav class="amb-langs" translate="no" aria-label="Language">${a}</nav>`;
+  return `<nav class="amb-langs" translate="no">${a}</nav>`;
 }
-const SWITCH_CSS = '<style>.amb-langs{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;padding:18px 16px 26px;font:400 12px/1.6 Montserrat,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}.amb-langs a,.amb-langs span{color:inherit;text-decoration:none;opacity:.7}.amb-langs a:hover{opacity:1;text-decoration:underline}.amb-langs span{opacity:1;border-bottom:1px solid currentColor}</style>';
+const SWITCH_CSS = '<style>.amb-langs{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;padding:18px 16px 26px;font-family:var(--serif,"Cormorant Garamond",serif);font-size:13px;line-height:1.6}.amb-langs a,.amb-langs span{color:inherit;text-decoration:none;opacity:.75}.amb-langs a:hover{opacity:1}.amb-langs span{opacity:1}</style>';
 
 function decorate(doc, p, lang) {
   const head = doc.head;
   for (const l of doc.querySelectorAll('link[rel="alternate"][hreflang]')) l.remove();
   doc.documentElement.setAttribute('lang', lang);
-  const pin = `<script>try{localStorage.setItem('amb_lang','${lang}')}catch(e){}</script>`;
+  if (lang === 'ar') doc.documentElement.setAttribute('dir', 'rtl');
+  // invisible SEO: og:locale (+ alternates) and JSON-LD inLanguage follow the page language
+  const LOC = { en: 'en_US', ru: 'ru_RU', de: 'de_DE', fr: 'fr_FR', es: 'es_ES', it: 'it_IT', pt: 'pt_BR', tr: 'tr_TR',
+    ar: 'ar_AE', zh: 'zh_CN', ja: 'ja_JP', ko: 'ko_KR', id: 'id_ID', hi: 'hi_IN', ka: 'ka_GE' };
+  for (const m of doc.querySelectorAll('meta[property="og:locale"],meta[property="og:locale:alternate"]')) m.remove();
+  head.insertAdjacentHTML('beforeend', `<meta property="og:locale" content="${LOC[lang]}">`
+    + ['en', ...LANGS].filter(l => l !== lang).map(l => `<meta property="og:locale:alternate" content="${LOC[l]}">`).join(''));
+  if (lang !== 'en') for (const s of doc.querySelectorAll('script[type="application/ld+json"]')) {
+    s.textContent = s.textContent.replace(/("inLanguage"\s*:\s*)"en(?:-[A-Z]{2})?"/g, `$1"${lang}"`);
+  }
+  // app.js always runs in English; translation comes only from data/i18n (one source, no flicker)
+  const pin = `<script>try{localStorage.setItem('amb_lang','en')}catch(e){}</script>`;
   head.insertAdjacentHTML('afterbegin', pin);
   head.insertAdjacentHTML('beforeend', hreflangBlock(p) + SWITCH_CSS);
   const foot = doc.querySelector('footer') || doc.body;
@@ -194,12 +238,23 @@ function build() {
         hit++;
         n.nodeValue = (/^\s/.test(raw) ? ' ' : '') + t + (/\s$/.test(raw) ? ' ' : '');
       }
+      // JSON-LD: translate string values that exist in the memory (descriptions, FAQ, breadcrumbs)
+      for (const sc of doc.querySelectorAll('script[type="application/ld+json"]')) {
+        try {
+          const tr = v => (typeof v === 'string' ? (core.lookup(d, core.norm(v).trim()) || v)
+            : Array.isArray(v) ? v.map(tr) : v && typeof v === 'object'
+              ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, (k === 'url' || k === '@id' || k === 'item') && typeof x === 'string' && !/#(organization|website|logo)$/.test(x) ? localizeHref(x, lang) : /^(@context|@type|@id|url|image|logo|sku|gtin|mpn|priceCurrency|price|email|telephone|sameAs|contentUrl)$/.test(k) ? x : tr(x)])) : v);
+          sc.textContent = JSON.stringify(tr(JSON.parse(sc.textContent)));
+        } catch (e) { if (process.env.I18N_DEBUG) console.error("ld+json", f, e.message); }
+      }
       for (const a of doc.querySelectorAll('a[href]')) a.setAttribute('href', localizeHref(a.getAttribute('href'), lang));
       const canon = `${SITE}/${lang}${p === '/' ? '' : p}`;
       const c = doc.querySelector('link[rel="canonical"]');
       if (c) c.setAttribute('href', canon);
       const og = doc.querySelector('meta[property="og:url"]');
       if (og) og.setAttribute('content', canon);
+      for (const el of doc.querySelectorAll('[data-i18n],[data-i18n-ph]')) { el.removeAttribute('data-i18n'); el.removeAttribute('data-i18n-ph'); }
+      doc.documentElement.setAttribute('data-i18n-lang', lang);
       decorate(doc, p, lang);
       const body = doc.body;
       doc.documentElement.setAttribute('data-i18nv', VER);
@@ -209,6 +264,7 @@ function build() {
       fs.writeFileSync(out, doc.toString());
     }
     report.push(`${lang}: ${hit}/${hit + miss} units (${(100 * hit / Math.max(hit + miss, 1)).toFixed(1)}%)`);
+    if (miss) console.warn(`⚠  i18n ${lang}: ${miss} untranslated units — run scripts/i18n-sync.sh`);
     // slim runtime dictionary: only what JS renders after load
     const src = JSON.parse(fs.readFileSync(path.join(I18N_DIR, 'source.json'), 'utf8'));
     const rt = {};
@@ -268,4 +324,46 @@ function check() {
 }
 
 const cmd = process.argv[2] || 'build';
-({ extract, build, check })[cmd]();
+if (cmd !== 'lint' && cmd !== 'numdiff') await ({ extract, build, check })[cmd]();
+
+// node scripts/build-i18n.mjs lint [lang...] — automatic proofreading of the memory
+export function lint(langs) {
+  const SCRIPT = { ru: /\p{Script=Cyrillic}/u, zh: /\p{Script=Han}/u, ja: /[\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Han}]/u,
+    ko: /\p{Script=Hangul}/u, ar: /\p{Script=Arabic}/u, hi: /\p{Script=Devanagari}/u, ka: /\p{Script=Georgian}/u };
+  const src = JSON.parse(fs.readFileSync(path.join(I18N_DIR, 'source.json'), 'utf8'));
+  const nums = s => (s.replace(/<\/?\d+\/?>/g, ' ').match(/\d+(?:[.,]\d+)?/g) || []).map(x => x.replace(',', '.')).sort().join(' ');
+  const plain = s => s.replace(/<\/?\d+\/?>/g, ' ').replace(/\s+/g, ' ').trim();
+  const out = [];
+  for (const lang of langs) {
+    const f = path.join(I18N_DIR, `${lang}.json`);
+    if (!fs.existsSync(f)) continue;
+    const d = JSON.parse(fs.readFileSync(f, 'utf8'));
+    const issues = { script: [], numbers: [], same: [], brand: [], handle: [] };
+    for (const k of Object.keys(src)) {
+      const v = d[k];
+      if (typeof v !== 'string') continue;
+      const pk = plain(k), pv = plain(v), words = (pk.match(/\p{L}{3,}/gu) || []).length;
+      if (SCRIPT[lang] && words >= 2 && !SCRIPT[lang].test(pv)) issues.script.push(k);
+      if (nums(k) !== nums(v)) issues.numbers.push(k);
+      if (!SCRIPT[lang] && words >= 5 && pk === pv) issues.same.push(k);
+      if ((k.match(/AMBERRA/g) || []).length > (v.match(/AMBERRA/gi) || []).length) issues.brand.push(k);
+      for (const h of k.match(/@[\w.]+|[\w.+-]+@[\w-]+\.\w+|https?:\/\/\S+/g) || []) if (!v.includes(h)) { issues.handle.push(k); break; }
+    }
+    out.push({ lang, ...Object.fromEntries(Object.entries(issues).map(([n, a]) => [n, a.length])) });
+    fs.writeFileSync(path.join(ROOT, '.i18n-lint-' + lang + '.json'), JSON.stringify(issues, null, 1));
+  }
+  console.table(out);
+}
+if (process.argv[2] === 'lint') lint(process.argv.slice(3).length ? process.argv.slice(3) : LANGS);
+if (process.argv[2] === 'numdiff') {
+  const lang = process.argv[3];
+  const d = JSON.parse(fs.readFileSync(path.join(I18N_DIR, `${lang}.json`), 'utf8'));
+  const iss = JSON.parse(fs.readFileSync(path.join(ROOT, `.i18n-lint-${lang}.json`), 'utf8'));
+  const n = s => (s.replace(/<\/?\d+\/?>/g, ' ').match(/\d+(?:[.,]\d+)?/g) || []).map(x => x.replace(',', '.'));
+  for (const k of iss.numbers) {
+    const a = n(k), b = n(d[k]);
+    const miss = a.filter(x => !b.includes(x)), extra = b.filter(x => !a.includes(x));
+    if (process.argv[4] && !miss.includes(process.argv[4])) continue;
+    console.log(`${JSON.stringify(miss)} → ${JSON.stringify(extra)} | ${k.slice(0, 70)}` + (process.argv[4] ? `\n   EN: ${k}\n   ${lang}: ${d[k]}` : ""));
+  }
+}
