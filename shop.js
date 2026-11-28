@@ -28,6 +28,12 @@ let activeCollection='all';
 // Curated collection pages (/collections/*) inject window.COLLECTION_IDS — an
 // ordered id list. When present, the grid renders exactly that set (see renderProducts).
 const collectionIds=Array.isArray(window.COLLECTION_IDS)?window.COLLECTION_IDS:null;
+// SEO landings (#cat-hero: /amber/<color>, /amber, /rings…) ship a server-rendered grid
+// with exactly their own pieces. Keep it instead of re-rendering the whole catalog.
+const keepStaticGrid=!!(document.getElementById('cat-hero')&&!collectionIds
+  &&!new URLSearchParams(location.search).get('cat')&&!new URLSearchParams(location.search).get('q')
+  &&document.querySelector('#prod-grid > .pc'));
+const staticGridHTML=keepStaticGrid?document.getElementById('prod-grid').innerHTML:'';
 
 // Handle URL category params on page load
 const urlParams=new URLSearchParams(window.location.search);
@@ -50,6 +56,7 @@ document.querySelectorAll('.nav-main .nl').forEach(a=>{
 function renderProducts(){
   const grid=document.getElementById('prod-grid');
   if(!grid)return;
+  if(keepStaticGrid&&!showingWishlist&&!searchQuery){if(grid.innerHTML!==staticGridHTML)grid.innerHTML=staticGridHTML;return;}
   let list=showingWishlist
     ? products.filter(p=>wishlist.includes(p.id))
     : collectionIds
@@ -353,7 +360,7 @@ function hideHD(){
 // ── SHOP PAGE INIT ─────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded',()=>{
   const grid=document.getElementById('prod-grid');
-  if(grid){
+  if(grid&&!keepStaticGrid){
     grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:60px;color:var(--gray);letter-spacing:.1em;font-size:12px">LOADING…</div>';
   }
 
