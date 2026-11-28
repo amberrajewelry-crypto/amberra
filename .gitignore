@@ -20,3 +20,4 @@ service-account.json
 /fr/
 /es/
 /i18n/
+__pycache__/
