@@ -611,12 +611,13 @@ function esc(str) {
 const { toSlug, assignSlugs } = require('./slug');
 
 
-function introHTML(paras) {
- // paras[0] is already rendered large as .cat-sub in the hero — skip it here to
- // avoid showing the lead paragraph twice. Render the remaining paragraphs only.
- const rest = (paras || []).slice(1);
- if (!rest.length) return '';
- return `<div class="cat-intro">${rest.map(p => `<p>${esc(p)}</p>`).join('')}</div>`;
+function introHTML(paras, heading) {
+ // Hero keeps only a short H1 (Bulgari-style); the full SEO heading and every
+ // intro paragraph live below the grid.
+ const all = paras || [];
+ if (!all.length) return '';
+ const h = heading ? `<h2 class="cat-intro-h">${esc(heading)}</h2>` : '';
+ return `<div class="cat-intro">${h}${all.map(p => `<p>${esc(p)}</p>`).join('')}</div>`;
 }
 function faqBlock(faq) {
  if (!faq || !faq.length) return '';
@@ -659,14 +660,12 @@ function cardHTML(p) {
  ${imgTag}
  </div>
  <div class="pc-label" style="opacity:1;max-height:none;overflow:visible">
- <span class="pcat">${esc(p.cat)}</span>
+ <span class="pmaterial">${esc(p.material || '')}</span>
  ${p.slug
  ? `<a class="pname" href="/products/${esc(p.slug)}" onclick="event.stopPropagation()">${esc(p.name)}</a>`
  : `<span class="pname">${esc(p.name)}</span>`}
- <span class="pmaterial">${esc(p.material || '')}</span>
  <div class="pfoot">
  <span class="pprice" data-usd="${p.price}">$${p.price}</span>
- ${p.slug ? `<a class="pc-view" href="/products/${esc(p.slug)}" onclick="event.stopPropagation()">View</a>` : ''}
  </div>
  </div>
  </div>
@@ -820,9 +819,9 @@ function shell({ metaTitle, metaDesc, canonical, schema, activeSlug, ogImage }, 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/style.css?v=20261128f">
+<link rel="stylesheet" href="/style.css?v=20261128g">
 </head>
-<body class="page-light">
+<body class="page-light page-cat">
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJ5682RJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <canvas id="particles-canvas"></canvas>
 <div class="mob-nav-overlay" id="mob-nav-overlay" onclick="closeMobNav()"></div>
@@ -849,24 +848,22 @@ ${mainHTML}
 </main>
 ${footerHTML()}
 ${sharedModals()}
-<script src="/currency.js?v=20261128f" defer></script>
-<script src="/app.js?v=20261128f" defer></script>
-<script src="/shop.js?v=20261128f" defer></script>
+<script src="/currency.js?v=20261128g" defer></script>
+<script src="/app.js?v=20261128g" defer></script>
+<script src="/shop.js?v=20261128g" defer></script>
 </body>
 </html>`;
 }
 
 // ── page builders ────────────────────────────────────────────────────────────
 
-function catBody({ kicker, h1, sub, count, intro, sections, links, grid, faq, bcName }) {
+function catBody({ kicker, h1, short, count, intro, sections, links, grid, faq, bcName }) {
  return `<nav class="cat-breadcrumb" aria-label="Breadcrumb">
- <a href="/">Home</a> <span>/</span> <a href="/shop">Shop</a> <span>/</span> <span>${esc(bcName || h1)}</span>
+ <a href="/">Home</a> <span>/</span> <a href="/shop">Shop</a> <span>/</span> <span>${esc(bcName || short || h1)}</span>
 </nav>
 <section id="cat-hero"><div class="cat-hero-inner">
  <span class="s-lbl">${esc(kicker)}</span>
- <h1 class="cat-h1">${esc(h1)}</h1>
- <p class="cat-sub">${esc(sub)}</p>
- <p class="cat-count">${count} pieces</p>
+ <h1 class="cat-h1">${esc(short || h1)}<span class="cat-count">${count}</span></h1>
 </div></section>
 <section id="catalog"><div class="prod-grid" id="prod-grid">${grid}</div></section>
 ${intro || ''}
@@ -884,8 +881,8 @@ function typePage(slug, cat, products) {
  breadcrumb: breadcrumb([{name:'Home',url:SITE},{name:cat.label,url}]) },
  itemListSchema(url, `AMBERRA ${cat.label}`, url, products),
  faqSchema(cat.faq) ].filter(Boolean) };
- const main = catBody({ kicker:'The Collection', h1:cat.h1, sub:cat.intro[0], count:products.length,
- intro: introHTML(cat.intro), sections: sectionsHTML(SECTIONS[slug]), links, grid: products.map(cardHTML).join('\n'), faq: faqBlock(cat.faq) });
+ const main = catBody({ kicker:'The Collection', h1:cat.h1, short:cat.label, count:products.length,
+ intro: introHTML(cat.intro, cat.h1), sections: sectionsHTML(SECTIONS[slug]), links, grid: products.map(cardHTML).join('\n'), faq: faqBlock(cat.faq) });
  return shell({ metaTitle:cat.metaTitle, metaDesc:cat.metaDesc, canonical:url, schema, activeSlug:slug, ogImage: ogFor(slug) }, main);
 }
 
@@ -898,8 +895,8 @@ function colorPage(colorKey, color, products) {
  breadcrumb: breadcrumb([{name:'Home',url:SITE},{name:'Amber',url:`${SITE}/amber`},{name:color.label,url}]) },
  itemListSchema(url, `AMBERRA ${color.label}`, url, products),
  faqSchema(color.faq) ].filter(Boolean) };
- const main = catBody({ kicker:'Amber by Color', h1:color.h1, sub:color.intro[0], count:products.length,
- intro: introHTML(color.intro), sections: sectionsHTML(SECTIONS[colorKey]), links, grid: products.map(cardHTML).join('\n'), faq: faqBlock(color.faq) });
+ const main = catBody({ kicker:'Amber by Color', h1:color.h1, short:color.label, count:products.length,
+ intro: introHTML(color.intro, color.h1), sections: sectionsHTML(SECTIONS[colorKey]), links, grid: products.map(cardHTML).join('\n'), faq: faqBlock(color.faq) });
  return shell({ metaTitle:color.metaTitle, metaDesc:color.metaDesc, canonical:url, schema, activeSlug:'amber', ogImage: ogFor('amber') }, main);
 }
 
@@ -934,8 +931,8 @@ function hubPage(products, colorCounts) {
  breadcrumb: breadcrumb([{name:'Home',url:SITE},{name:'Amber',url}]) },
  itemListSchema(url, 'AMBERRA Baltic Amber Jewelry', url, products),
  faqSchema(HUB.faq) ].filter(Boolean) };
- const main = catBody({ kicker:'Baltic Amber', h1:HUB.h1, sub:HUB.intro[0], count:products.length,
- intro: introHTML(HUB.intro), sections: sectionsHTML(SECTIONS.hub), links: typeLinks + colorLinks, grid: orderBy(products, 'amber').map(cardHTML).join('\n'), faq: faqBlock(HUB.faq) });
+ const main = catBody({ kicker:'Baltic Amber', h1:HUB.h1, short:'Baltic Amber', count:products.length,
+ intro: introHTML(HUB.intro, HUB.h1), sections: sectionsHTML(SECTIONS.hub), links: typeLinks + colorLinks, grid: orderBy(products, 'amber').map(cardHTML).join('\n'), faq: faqBlock(HUB.faq) });
  return shell({ metaTitle:HUB.metaTitle, metaDesc:HUB.metaDesc, canonical:url, schema, activeSlug:'amber', ogImage: ogFor('amber') }, main);
 }
 
@@ -948,8 +945,8 @@ function metalPage(products) {
  breadcrumb: breadcrumb([{name:'Home',url:SITE},{name:'Amber',url:`${SITE}/amber`},{name:SILVER.label,url}]) },
  itemListSchema(url, `AMBERRA ${SILVER.label} Jewelry`, url, products),
  faqSchema(SILVER.faq) ].filter(Boolean) };
- const main = catBody({ kicker:'925 Sterling Silver', h1:SILVER.h1, sub:SILVER.intro[0], count:products.length,
- intro: introHTML(SILVER.intro), sections: sectionsHTML(SECTIONS.silver), links, grid: orderBy(products, 'silver').map(cardHTML).join('\n'), faq: faqBlock(SILVER.faq) });
+ const main = catBody({ kicker:'925 Sterling Silver', h1:SILVER.h1, short:SILVER.label, count:products.length,
+ intro: introHTML(SILVER.intro, SILVER.h1), sections: sectionsHTML(SECTIONS.silver), links, grid: orderBy(products, 'silver').map(cardHTML).join('\n'), faq: faqBlock(SILVER.faq) });
  return shell({ metaTitle:SILVER.metaTitle, metaDesc:SILVER.metaDesc, canonical:url, schema, activeSlug:'amber', ogImage: ogFor(SILVER.slug) }, main);
 }
 
@@ -963,8 +960,8 @@ function pillarPage(products) {
  breadcrumb: breadcrumb([{name:'Home',url:SITE},{name:'Shop',url:`${SITE}/shop`},{name:HANDMADE.label,url}]) },
  itemListSchema(url, `AMBERRA ${HANDMADE.label} Jewelry`, url, products),
  faqSchema(HANDMADE.faq) ].filter(Boolean) };
- const main = catBody({ kicker:'Handmade · 925 Sterling Silver', h1:HANDMADE.h1, sub:HANDMADE.intro[0], count:products.length,
- intro: introHTML(HANDMADE.intro), sections: sectionsHTML(SECTIONS.handmade), links, grid: orderBy(products, 'handmade').map(cardHTML).join('\n'), faq: faqBlock(HANDMADE.faq) });
+ const main = catBody({ kicker:'Handmade · 925 Sterling Silver', h1:HANDMADE.h1, short:HANDMADE.label, count:products.length,
+ intro: introHTML(HANDMADE.intro, HANDMADE.h1), sections: sectionsHTML(SECTIONS.handmade), links, grid: orderBy(products, 'handmade').map(cardHTML).join('\n'), faq: faqBlock(HANDMADE.faq) });
  return shell({ metaTitle:HANDMADE.metaTitle, metaDesc:HANDMADE.metaDesc, canonical:url, schema, activeSlug:'shop', ogImage: ogFor(HANDMADE.slug) }, main);
 }
 
@@ -978,8 +975,8 @@ function artisanPage(products) {
  breadcrumb: breadcrumb([{name:'Home',url:SITE},{name:'Shop',url:`${SITE}/shop`},{name:ARTISAN.label,url}]) },
  itemListSchema(url, `AMBERRA ${ARTISAN.label}`, url, products),
  faqSchema(ARTISAN.faq) ].filter(Boolean) };
- const main = catBody({ kicker:'Independent Studio · Handmade', h1:ARTISAN.h1, sub:ARTISAN.intro[0], count:products.length,
- intro: introHTML(ARTISAN.intro), sections: sectionsHTML(SECTIONS.artisan), links, grid: orderBy(products, 'artisan').map(cardHTML).join('\n'), faq: faqBlock(ARTISAN.faq) });
+ const main = catBody({ kicker:'Independent Studio · Handmade', h1:ARTISAN.h1, short:ARTISAN.label, count:products.length,
+ intro: introHTML(ARTISAN.intro, ARTISAN.h1), sections: sectionsHTML(SECTIONS.artisan), links, grid: orderBy(products, 'artisan').map(cardHTML).join('\n'), faq: faqBlock(ARTISAN.faq) });
  return shell({ metaTitle:ARTISAN.metaTitle, metaDesc:ARTISAN.metaDesc, canonical:url, schema, activeSlug:'shop', ogImage: ogFor(ARTISAN.slug) }, main);
 }
 
@@ -993,8 +990,8 @@ function amberRingsPage(products) {
  breadcrumb: breadcrumb([{name:'Home',url:SITE},{name:'Amber',url:`${SITE}/amber`},{name:AMBER_RINGS.label,url}]) },
  itemListSchema(url, `AMBERRA ${AMBER_RINGS.label}`, url, products),
  faqSchema(AMBER_RINGS.faq) ].filter(Boolean) };
- const main = catBody({ kicker:'Baltic Amber · 925 Sterling Silver', h1:AMBER_RINGS.h1, sub:AMBER_RINGS.intro[0], count:products.length,
- intro: introHTML(AMBER_RINGS.intro), sections: sectionsHTML(SECTIONS['amber-rings']), links, grid: products.map(cardHTML).join('\n'), faq: faqBlock(AMBER_RINGS.faq) });
+ const main = catBody({ kicker:'Baltic Amber · 925 Sterling Silver', h1:AMBER_RINGS.h1, short:AMBER_RINGS.label, count:products.length,
+ intro: introHTML(AMBER_RINGS.intro, AMBER_RINGS.h1), sections: sectionsHTML(SECTIONS['amber-rings']), links, grid: products.map(cardHTML).join('\n'), faq: faqBlock(AMBER_RINGS.faq) });
  return shell({ metaTitle:AMBER_RINGS.metaTitle, metaDesc:AMBER_RINGS.metaDesc, canonical:url, schema, activeSlug:'amber', ogImage: ogFor('rings') }, main);
 }
 
