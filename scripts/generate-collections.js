@@ -9,7 +9,7 @@ const nimg = require('./img-norm');
 const absImg = (i) => nimg(absImg0(i));
 const ROOT = process.cwd();
 const SITE = 'https://www.amberrajewelry.com';
-const CSSVER   = '20261128d';
+const CSSVER   = '20261128e';
 
 const { toSlug, assignSlugs } = require('./slug');
 function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;'); }
@@ -43,7 +43,7 @@ const COLLS = [
 function absImg0(img) { let u = img && img.startsWith('/') ? img : '/' + (img || ''); if (/\/images\/products\/\d+\.webp$/.test(u)) u += '?v=10'; return u; }
 function card(p) {
   const price = '$' + p.price;
-  return `      <a class="coll-card" href="/products/${esc(p.slug)}">
+  return `      <a class="coll-card coll-card-${esc(p.cat)}" href="/products/${esc(p.slug)}">
         <span class="coll-card-img"><img src="${esc(absImg(p.img))}" alt="${esc(p.name)} — AMBERRA amber jewelry" loading="lazy" width="300" height="300"></span>
         <span class="coll-card-cat">${esc(p.cat)}</span>
         <span class="coll-card-name">${esc(p.name)}</span>
