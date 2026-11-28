@@ -3,8 +3,17 @@
 // cards, drawer, cart, modals) from the same translation memory /i18n/<lang>.json.
 (function () {
   const core = window.AmbI18nCore;
-  const lang = document.documentElement.lang;
-  if (!core || !document.documentElement.dataset.i18nv || !lang || lang === 'en') return;
+  const root = document.documentElement;
+  const lang = root.dataset.i18nLang;
+  if (!core || !lang || lang === 'en') return;
+  // app.js runs in English and resets <html lang/dir>; keep the page language
+  const fixRoot = () => {
+    if (root.lang !== lang) root.lang = lang;
+    const dir = lang === 'ar' ? 'rtl' : 'ltr';
+    if (root.dir !== dir) root.dir = dir;
+  };
+  new MutationObserver(fixRoot).observe(root, { attributes: true, attributeFilter: ['lang', 'dir'] });
+  fixRoot();
   let dict = null;
   const pending = new Set();
   let scheduled = false;

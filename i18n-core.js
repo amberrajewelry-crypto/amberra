@@ -21,7 +21,7 @@
   const textOf = n => (n.nodeValue !== undefined && n.nodeValue !== null ? n.nodeValue : (n.text !== undefined ? n.text : n.rawText || ''));
   const kids = n => Array.from(n.childNodes || []);
   const norm = s => String(s).replace(/\s+/g, ' ');
-  const translatable = s => LETTERS.test(s) && !NO_TRANSLATE.test(s.trim()) && !/^[\w.+-]+@[\w-]+\.[\w.]+$/.test(s.trim()) && !/^https?:\/\//.test(s.trim());
+  const translatable = s => LETTERS.test(s) && !NO_TRANSLATE.test(s.trim()) && !/^\/?[\w./-]+\.(webp|jpe?g|png|svg|gif|mp4|glb|json)$/i.test(s.trim()) && !/^(rec|fld|tbl|app)[A-Za-z0-9]{14}$/.test(s.trim()) && !/^[\w.+-]+@[\w-]+\.[\w.]+$/.test(s.trim()) && !/^https?:\/\//.test(s.trim());
   const noTr = n => isEl(n) && (n.getAttribute && (n.getAttribute('translate') === 'no' || n.getAttribute('data-no-i18n') !== null && n.getAttribute('data-no-i18n') !== undefined) || (n.classList && n.classList.contains && n.classList.contains('notranslate')));
 
   function hasBlock(el) {

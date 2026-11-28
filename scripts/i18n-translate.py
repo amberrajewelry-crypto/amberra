@@ -151,13 +151,62 @@ def run_batch(lang: str, keys: list[str], out_path: Path, idx: int, total: int) 
     return len(good)
 
 
+REVIEW_PROMPT = """You are a native {lang_name} copy editor proofreading the website of AMBERRA, a luxury handmade
+jewelry brand (natural Baltic amber in 925 sterling silver; "designed in Bali, crafted by our artisans").
+For each pair, compare the English source with the {lang_name} translation. Flag ONLY real problems:
+wrong meaning, omitted or added facts, grammar/spelling/agreement errors, wrong or inconsistent terminology
+(glossary: {glossary}), untranslated English words that should be translated, unnatural machine-like phrasing,
+wrong register. Product and collection names stay in English by design — not an error.
+Placeholders <0>, </0>, <3/> must stay exactly as in the source.
+Return ONLY a JSON object id → corrected full translation, containing ONLY the ids you changed
+(empty object {{}} if all are good). No commentary, no code fences.
+
+{payload}
+"""
+REVIEW_LOG = I18N / "review-log.jsonl"
+
+
+def review_batch(lang: str, keys: list[str], out_path: Path, idx: int, total: int) -> int:
+    d = load(out_path)
+    pairs = {str(i): {"en": k, "tr": d[k]} for i, k in enumerate(keys)}
+    prompt = REVIEW_PROMPT.format(lang_name=LANG_NAMES[lang], glossary=GLOSSARY.get(lang, DEFAULT_GLOSSARY),
+                                  payload=json.dumps(pairs, ensure_ascii=False, indent=0))
+    try:
+        res = parse_json(call_claude(prompt))
+    except subprocess.TimeoutExpired:
+        res = {}
+    fixed = {}
+    for i, k in enumerate(keys):
+        v = res.get(str(i))
+        if v and v != d[k] and valid(k, v):
+            fixed[k] = v
+    with lock:
+        cur = load(out_path)
+        cur.update(fixed)
+        out_path.write_text(json.dumps(cur, ensure_ascii=False, indent=1, sort_keys=True), "utf-8")
+        with REVIEW_LOG.open("a", encoding="utf-8") as log:
+            for k, v in fixed.items():
+                log.write(json.dumps({"lang": lang, "en": k, "old": d[k], "new": v}, ensure_ascii=False) + "\n")
+    print(f"[{lang}] review {idx}/{total}: fixed {len(fixed)}/{len(keys)}", flush=True)
+    return len(fixed)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("lang", choices=sorted(LANG_NAMES))
     ap.add_argument("--threads", type=int, default=2)
+    ap.add_argument("--review", action="store_true", help="second pass: native editor fixes real errors only")
     a = ap.parse_args()
     src = load(I18N / "source.json")
     out_path = I18N / f"{a.lang}.json"
+    if a.review:
+        d = load(out_path)
+        keys = [k for k in src if valid(k, d.get(k))]
+        bs = batches(keys)
+        with ThreadPoolExecutor(a.threads) as ex:
+            n = sum(ex.map(lambda t: review_batch(a.lang, t[1], out_path, t[0] + 1, len(bs)), enumerate(bs)))
+        print(f"[{a.lang}] review done: {n} fixes", flush=True)
+        return 0
     for rnd in range(1, MAX_ROUNDS + 1):
         d = load(out_path)
         todo = [k for k in src if not valid(k, d.get(k))]

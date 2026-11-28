@@ -62,7 +62,39 @@ function visit(doc, { seg, text, attr }) {
   core.walk(body, seg, text);
 }
 
-function extract() {
+// --live: also read the English pages as Vercel built them (Airtable products can be
+// newer than the repo copies) and the live product feed.
+async function extractLive(add) {
+  const LIVE_CONCURRENCY = 8;
+  const sm = await (await fetch(`${SITE}/sitemap.xml`)).text();
+  const langRe = new RegExp(`^${SITE}/(${LANGS.join('|')})(/|$)`);
+  const urls = [...sm.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]).filter(u => !langRe.test(u));
+  let i = 0, n = 0;
+  const worker = async () => {
+    while (i < urls.length) {
+      const u = urls[i++];
+      try {
+        const html = await (await fetch(u, { headers: { 'user-agent': 'amberra-i18n-sync bot' } })).text();
+        const { document } = parseHTML(html);
+        const label = 'live:' + (u.slice(SITE.length) || '/');
+        visit(document, { seg: (el, s) => add(s.key, label), text: t => add(core.norm(core.textOf(t)).trim(), label), attr: (el, a, v) => add(v, label) });
+        n++;
+      } catch { /* skip unreachable page */ }
+    }
+  };
+  await Promise.all(Array.from({ length: LIVE_CONCURRENCY }, worker));
+  try {
+    const feed = await (await fetch(`${SITE}/api/products`)).json();
+    const list = Array.isArray(feed) ? feed : feed.products || feed.records || [];
+    const TEXT_FIELDS = /^(material|desc|description|stone|metal|closure|chain|collection|care|details|story)$/i;
+    for (const p of list) for (const [k, v] of Object.entries(p.fields || p)) {
+      if (TEXT_FIELDS.test(k) && typeof v === 'string' && core.translatable(v)) add(core.norm(v).trim(), 'runtime');
+    }
+  } catch { /* feed unavailable */ }
+  console.log(`  live: ${n}/${urls.length} EN pages + product feed`);
+}
+
+async function extract() {
   const src = {};
   const add = (k, file) => { if (!k) return; (src[k] ||= []).includes(file) || src[k].push(file); };
   for (const f of pages()) {
@@ -81,6 +113,7 @@ function extract() {
   }
   const extra = path.join(I18N_DIR, 'runtime-strings.json'); // collected from rendered pages
   if (fs.existsSync(extra)) for (const k of JSON.parse(fs.readFileSync(extra, 'utf8'))) add(k, 'runtime');
+  if (process.argv.includes('--live')) await extractLive(add);
   fs.mkdirSync(I18N_DIR, { recursive: true });
   fs.writeFileSync(path.join(I18N_DIR, 'source.json'), JSON.stringify(src, null, 1));
   const words = Object.keys(src).reduce((n, k) => n + k.split(/\s+/).length, 0);
@@ -152,7 +185,7 @@ function switcher(p, cur) {
     : `<a href="${u(l)}" hreflang="${l}" lang="${l}" onclick="document.cookie='amb_lang=${l};path=/;max-age=31536000;samesite=lax'">${NAMES[l]}</a>`).join('');
   return `<nav class="amb-langs" translate="no" aria-label="Language">${a}</nav>`;
 }
-const SWITCH_CSS = '<style>.amb-langs{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;padding:18px 16px 26px;font:400 12px/1.6 Montserrat,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}.amb-langs a,.amb-langs span{color:inherit;text-decoration:none;opacity:.7}.amb-langs a:hover{opacity:1;text-decoration:underline}.amb-langs span{opacity:1;border-bottom:1px solid currentColor}</style>';
+const SWITCH_CSS = '<style>.amb-langs{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;padding:18px 16px 26px;font-family:var(--serif,"Cormorant Garamond",serif);font-size:13px;line-height:1.6}.amb-langs a,.amb-langs span{color:inherit;text-decoration:none;opacity:.75}.amb-langs a:hover{opacity:1}.amb-langs span{opacity:1}</style>';
 
 function decorate(doc, p, lang) {
   const head = doc.head;
@@ -168,7 +201,8 @@ function decorate(doc, p, lang) {
   if (lang !== 'en') for (const s of doc.querySelectorAll('script[type="application/ld+json"]')) {
     s.textContent = s.textContent.replace(/("inLanguage"\s*:\s*)"en(?:-[A-Z]{2})?"/g, `$1"${lang}"`);
   }
-  const pin = `<script>try{localStorage.setItem('amb_lang','${lang}')}catch(e){}</script>`;
+  // app.js always runs in English; translation comes only from data/i18n (one source, no flicker)
+  const pin = `<script>try{localStorage.setItem('amb_lang','en')}catch(e){}</script>`;
   head.insertAdjacentHTML('afterbegin', pin);
   head.insertAdjacentHTML('beforeend', hreflangBlock(p) + SWITCH_CSS);
   const foot = doc.querySelector('footer') || doc.body;
@@ -219,6 +253,8 @@ function build() {
       if (c) c.setAttribute('href', canon);
       const og = doc.querySelector('meta[property="og:url"]');
       if (og) og.setAttribute('content', canon);
+      for (const el of doc.querySelectorAll('[data-i18n],[data-i18n-ph]')) { el.removeAttribute('data-i18n'); el.removeAttribute('data-i18n-ph'); }
+      doc.documentElement.setAttribute('data-i18n-lang', lang);
       decorate(doc, p, lang);
       const body = doc.body;
       doc.documentElement.setAttribute('data-i18nv', VER);
@@ -228,6 +264,7 @@ function build() {
       fs.writeFileSync(out, doc.toString());
     }
     report.push(`${lang}: ${hit}/${hit + miss} units (${(100 * hit / Math.max(hit + miss, 1)).toFixed(1)}%)`);
+    if (miss) console.warn(`⚠  i18n ${lang}: ${miss} untranslated units — run scripts/i18n-sync.sh`);
     // slim runtime dictionary: only what JS renders after load
     const src = JSON.parse(fs.readFileSync(path.join(I18N_DIR, 'source.json'), 'utf8'));
     const rt = {};
@@ -287,7 +324,7 @@ function check() {
 }
 
 const cmd = process.argv[2] || 'build';
-if (cmd !== 'lint' && cmd !== 'numdiff') ({ extract, build, check })[cmd]();
+if (cmd !== 'lint' && cmd !== 'numdiff') await ({ extract, build, check })[cmd]();
 
 // node scripts/build-i18n.mjs lint [lang...] — automatic proofreading of the memory
 export function lint(langs) {
