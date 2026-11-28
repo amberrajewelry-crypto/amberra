@@ -4,5 +4,8 @@
   "private": true,
   "scripts": {
     "build": "node scripts/generate-products.js"
+  },
+  "dependencies": {
+    "linkedom": "^0.18.15"
   }
 }

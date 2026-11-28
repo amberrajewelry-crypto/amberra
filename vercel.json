@@ -1,5 +1,5 @@
 {
-  "buildCommand": "node scripts/generate-products.js && node scripts/generate-categories.js && node scripts/generate-collections.js && node scripts/sitemap-lastmod.mjs",
+  "buildCommand": "node scripts/generate-products.js && node scripts/generate-categories.js && node scripts/generate-collections.js && node scripts/sitemap-lastmod.mjs && node scripts/build-i18n.mjs build",
   "outputDirectory": ".",
   "cleanUrls": true,
   "trailingSlash": false,
