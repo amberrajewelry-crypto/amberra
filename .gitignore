@@ -14,3 +14,9 @@ node_modules/
 graphify-out/
 service-account.json
 .vercel
+
+/ru/
+/de/
+/fr/
+/es/
+/i18n/
