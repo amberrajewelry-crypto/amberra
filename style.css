@@ -1884,3 +1884,17 @@ body.page-cat .pc,body.page-cat .pc-inner,body.page-cat .pc-img{border-radius:0!
 /* Home footer: translucent so the cursor-driven fluid WebGL shows through (28.11) */
 body.page-home footer{background:linear-gradient(180deg,rgba(51,37,15,.15) 0%,rgba(86,64,26,.32) 55%,rgba(122,92,34,.5) 100%)}
 body.page-home footer a,body.page-home footer p,body.page-home footer span,body.page-home footer h4{text-shadow:0 1px 10px rgba(28,19,8,.55)}
+
+/* ── Unify 28.11: one card language across the site (same as category pages) ── */
+#bestsellers .pc-img img{filter:none}
+#bestsellers .pc-label{text-align:left;padding:16px 4px 0}
+#bestsellers .pc-label .pcat{display:none}
+#bestsellers .pc-label .pmaterial{order:-1;font-family:var(--sans);font-size:13px;font-weight:400;line-height:1.4;color:#B9AE98!important;margin:0 0 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+#bestsellers .pc-label .pname{font-family:var(--sans);font-size:16px;font-weight:400;line-height:1.4;letter-spacing:0;margin:0 0 8px}
+#bestsellers .pc-label .pprice{font-family:var(--sans);font-size:14px;font-weight:400;color:#F2EEE8!important}
+@media(max-width:560px){#bestsellers .pc-label .pname{font-size:15px}}
+/* legibility floor 12px */
+.js-tag,.js-date,.js-read,.js-counter{font-size:12px}
+/* mobile: one floating button (chat); music button off on phones */
+@media(max-width:768px){#sound-btn{display:none!important}}
+body.page-product{padding-top:var(--nav-h)!important}

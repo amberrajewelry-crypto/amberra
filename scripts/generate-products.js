@@ -2,6 +2,7 @@
 // Runs at Vercel build time — generates static product pages from Airtable
 
 const fs   = require('fs');
+const SHARED = require('./generate-categories.js'); // one header/footer for the whole site
 const path = require('path');
 const nimg = require('./img-norm');
 const absImg = (i) => nimg(absImg0(i));
@@ -353,7 +354,7 @@ ${breadcrumbSchema}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css?v=20261128h">
+<link rel="stylesheet" href="/style.css?v=20261128i">
 <style>
 .pp-nav{position:sticky;top:0;background:var(--white);border-bottom:1px solid var(--mist);z-index:100}
 .pp-nav-bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:16px 32px 12px;gap:20px}
@@ -444,34 +445,9 @@ ${breadcrumbSchema}
 @media(max-width:768px){.pp-nav-menu a,.pp-nav-r a,.pp-breadcrumb a,.pp-footer a{display:inline-flex;align-items:center;min-height:44px}}
 </style>
 </head>
-<body class="page-light">
-<nav class="pp-nav">
-  <div class="pp-nav-bar">
-    <div class="pp-nav-util">
-      <a href="/services">Services</a>
-      <a href="/contact">Contact Us</a>
-      <form class="pp-nav-search" action="/shop" method="get" role="search"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg><input type="search" name="q" placeholder="Search" aria-label="Search jewelry"></form>
-    </div>
-    <a class="pp-nav-logo" href="/"><span class="lm">AMBERRA</span><span class="ls">Jewelry</span></a>
-    <div class="pp-nav-r">
-      <a href="/stores" aria-label="Store locations"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></a>
-      <a href="/shop?added=1" aria-label="Cart" class="pp-cart">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.4a1.5 1.5 0 0 0 1.5 1.2h8.2a1.5 1.5 0 0 0 1.5-1.2L21 7H6"/></svg>
-      </a>
-    </div>
-  </div>
-  <div class="pp-nav-menu">
-    <a href="/shop">Collections</a>
-    <a href="/rings"${cat === 'rings' ? ' class="on"' : ''}>Rings</a>
-    <a href="/earrings"${cat === 'earrings' ? ' class="on"' : ''}>Earrings</a>
-    <a href="/pendants"${cat === 'pendants' ? ' class="on"' : ''}>Pendants</a>
-    <a href="/bracelets"${cat === 'bracelets' ? ' class="on"' : ''}>Bracelets</a>
-    <span class="pp-nav-div"></span>
-    <a href="/our-story">Our Story</a>
-    <a href="/wholesale">Wholesale</a>
-    <a href="/journal">Journal</a>
-  </div>
-</nav>
+<body class="page-light page-product">
+${SHARED.mobNavHTML()}
+${SHARED.navHTML(p.cat)}
 
 <main class="pp-wrap">
   <div class="pp-gallery">
@@ -522,12 +498,11 @@ ${breadcrumbSchema}
   </div>
 </main>
 ${relatedHTML}
-<footer class="pp-footer">
-  <p>Each AMBERRA piece is handcrafted using natural amber. Free worldwide shipping on orders over $1,000.</p>
-  <p><a href="/shop">Browse the full collection</a> &nbsp;·&nbsp; <a href="/our-story">Our Story</a> &nbsp;·&nbsp; <a href="/faq">Client Care</a> &nbsp;·&nbsp; <a href="/contact">Contact</a></p>
-</footer>
+${SHARED.footerHTML()}
+${SHARED.sharedModals()}
 
-<script defer src="/currency.js?v=20261128h"></script>
+<script defer src="/currency.js?v=20261128i"></script>
+<script defer src="/app.js?v=20261128i"></script>
 <script>
 document.querySelectorAll('.pp-thumb').forEach(function(b){b.addEventListener('click',function(){var m=document.getElementById('pp-main');if(!m)return;m.src=b.dataset.src;document.querySelectorAll('.pp-thumb.on').forEach(function(x){x.classList.remove('on')});b.classList.add('on')})});
 </script>
