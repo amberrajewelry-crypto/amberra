@@ -25,7 +25,9 @@ CALL_TIMEOUT_S = 900
 MAX_ROUNDS = 3
 PH = re.compile(r"</?\d+/?>")
 
-LANG_NAMES = {"ru": "Russian", "de": "German", "fr": "French", "es": "Spanish (neutral, international)"}
+LANG_NAMES = {"ru": "Russian", "de": "German", "fr": "French", "es": "Spanish (neutral, international)", "it": "Italian", "pt": "Portuguese (Brazilian)",
+              "tr": "Turkish", "ar": "Arabic (Modern Standard)", "zh": "Simplified Chinese", "ja": "Japanese",
+              "ko": "Korean", "id": "Indonesian", "hi": "Hindi", "ka": "Georgian"}
 GLOSSARY = {
     "ru": "Baltic amber=балтийский янтарь; 925 sterling silver=серебро 925 пробы; Rings=Кольца; "
           "Earrings=Серьги; Pendants=Подвески; Bracelets=Браслеты; Chains=Цепочки; Collections=Коллекции; "
@@ -46,6 +48,10 @@ GLOSSARY = {
           "Wholesale=Venta mayorista; Our Story=Nuestra historia; handmade=hecho a mano; "
           "designed in Bali, crafted by our artisans=diseñado en Bali, elaborado por nuestros artesanos. Use «tú».",
 }
+
+DEFAULT_GLOSSARY = ("Use the standard terms of luxury jewelry retail in this language for: Baltic amber, 925 sterling "
+                    "silver, Rings, Earrings, Pendants, Bracelets, Chains, Collections, Journal, Wholesale, Our Story, "
+                    "handmade; 'designed in Bali, crafted by our artisans' must keep both facts. Polite formal address.")
 
 PROMPT = """You are the senior localization editor of AMBERRA, a luxury handmade jewelry brand
 (natural Baltic amber set in 925 sterling silver; "designed in Bali, crafted by our artisans").
@@ -116,7 +122,7 @@ def parse_json(text: str) -> dict:
 
 def run_batch(lang: str, keys: list[str], out_path: Path, idx: int, total: int) -> int:
     payload = json.dumps({str(i): k for i, k in enumerate(keys)}, ensure_ascii=False, indent=0)
-    prompt = PROMPT.format(lang_name=LANG_NAMES[lang], glossary=GLOSSARY[lang], payload=payload)
+    prompt = PROMPT.format(lang_name=LANG_NAMES[lang], glossary=GLOSSARY.get(lang, DEFAULT_GLOSSARY), payload=payload)
     try:
         res = parse_json(call_claude(prompt))
     except subprocess.TimeoutExpired:

@@ -16,8 +16,8 @@ const core = require('../i18n-core.js');
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const SITE = 'https://www.amberrajewelry.com';
-export const LANGS = ['ru', 'de', 'fr', 'es'];
-const NAMES = { en: 'English', ru: 'Русский', de: 'Deutsch', fr: 'Français', es: 'Español' };
+export const LANGS = ['ru', 'de', 'fr', 'es', 'it', 'pt', 'tr', 'ar', 'zh', 'ja', 'ko', 'id', 'hi', 'ka'];
+const NAMES = { en: 'English', ru: 'Русский', de: 'Deutsch', fr: 'Français', es: 'Español', it: 'Italiano', pt: 'Português', tr: 'Türkçe', ar: 'العربية', zh: '中文', ja: '日本語', ko: '한국어', id: 'Bahasa Indonesia', hi: 'हिन्दी', ka: 'ქართული' };
 const DIRS = ['products', 'journal', 'collections', 'amber', 'shop'];
 const EXCLUDE = new Set(['about.html', 'catalog.html', 'demo-fluid.html', 'scroll-scrub.html',
   'index-mobile.html', 'index-raw.html', 'index-redirect.html']);
@@ -158,6 +158,16 @@ function decorate(doc, p, lang) {
   const head = doc.head;
   for (const l of doc.querySelectorAll('link[rel="alternate"][hreflang]')) l.remove();
   doc.documentElement.setAttribute('lang', lang);
+  if (lang === 'ar') doc.documentElement.setAttribute('dir', 'rtl');
+  // invisible SEO: og:locale (+ alternates) and JSON-LD inLanguage follow the page language
+  const LOC = { en: 'en_US', ru: 'ru_RU', de: 'de_DE', fr: 'fr_FR', es: 'es_ES', it: 'it_IT', pt: 'pt_BR', tr: 'tr_TR',
+    ar: 'ar_AE', zh: 'zh_CN', ja: 'ja_JP', ko: 'ko_KR', id: 'id_ID', hi: 'hi_IN', ka: 'ka_GE' };
+  for (const m of doc.querySelectorAll('meta[property="og:locale"],meta[property="og:locale:alternate"]')) m.remove();
+  head.insertAdjacentHTML('beforeend', `<meta property="og:locale" content="${LOC[lang]}">`
+    + ['en', ...LANGS].filter(l => l !== lang).map(l => `<meta property="og:locale:alternate" content="${LOC[l]}">`).join(''));
+  if (lang !== 'en') for (const s of doc.querySelectorAll('script[type="application/ld+json"]')) {
+    s.textContent = s.textContent.replace(/("inLanguage"\s*:\s*)"en(?:-[A-Z]{2})?"/g, `$1"${lang}"`);
+  }
   const pin = `<script>try{localStorage.setItem('amb_lang','${lang}')}catch(e){}</script>`;
   head.insertAdjacentHTML('afterbegin', pin);
   head.insertAdjacentHTML('beforeend', hreflangBlock(p) + SWITCH_CSS);
@@ -193,6 +203,15 @@ function build() {
         if (!t) { miss++; continue; }
         hit++;
         n.nodeValue = (/^\s/.test(raw) ? ' ' : '') + t + (/\s$/.test(raw) ? ' ' : '');
+      }
+      // JSON-LD: translate string values that exist in the memory (descriptions, FAQ, breadcrumbs)
+      for (const sc of doc.querySelectorAll('script[type="application/ld+json"]')) {
+        try {
+          const tr = v => (typeof v === 'string' ? (core.lookup(d, core.norm(v).trim()) || v)
+            : Array.isArray(v) ? v.map(tr) : v && typeof v === 'object'
+              ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, (k === 'url' || k === '@id' || k === 'item') && typeof x === 'string' && !/#(organization|website|logo)$/.test(x) ? localizeHref(x, lang) : /^(@context|@type|@id|url|image|logo|sku|gtin|mpn|priceCurrency|price|email|telephone|sameAs|contentUrl)$/.test(k) ? x : tr(x)])) : v);
+          sc.textContent = JSON.stringify(tr(JSON.parse(sc.textContent)));
+        } catch (e) { if (process.env.I18N_DEBUG) console.error("ld+json", f, e.message); }
       }
       for (const a of doc.querySelectorAll('a[href]')) a.setAttribute('href', localizeHref(a.getAttribute('href'), lang));
       const canon = `${SITE}/${lang}${p === '/' ? '' : p}`;

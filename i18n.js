@@ -4,7 +4,7 @@
 (function () {
   const core = window.AmbI18nCore;
   const lang = document.documentElement.lang;
-  if (!core || !/^(ru|de|fr|es)$/.test(lang)) return;
+  if (!core || !document.documentElement.dataset.i18nv || !lang || lang === 'en') return;
   let dict = null;
   const pending = new Set();
   let scheduled = false;
