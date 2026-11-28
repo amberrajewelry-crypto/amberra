@@ -281,6 +281,9 @@ html:has(body.page-home),body.page-home{background:#1c1308}
 .tryon-badge{position:absolute;top:14px;right:14px;background:var(--charcoal);color:var(--white);font-size:12px;letter-spacing:.18em;text-transform:uppercase;padding:5px 10px;z-index:10;pointer-events:none}
 .tryon-empty-state{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;pointer-events:none}
 .tryon-empty-state svg{width:48px;height:48px;stroke:var(--amber);fill:none;stroke-width:1;opacity:.3}
+.tryon-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-75%);pointer-events:none;line-height:0}
+.tryon-icon svg{width:56px;height:56px;stroke:var(--amber);fill:none;stroke-width:1;opacity:.6}
+#tryon-mock>.tryon-mock-lbl{position:absolute;left:0;right:0;top:calc(50% + 20px);text-align:center;pointer-events:none}
 .tryon-mock-lbl{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--black)}
 #tryon-canvas{position:absolute;inset:0;width:100%;height:100%;display:none}
 .tryon-jewel-wrap{position:absolute;cursor:grab;user-select:none;touch-action:none}
@@ -1820,6 +1823,7 @@ body{font-feature-settings:"kern" 1,"liga" 1,"calt" 1}
 
 /* Cookie bar open: lift FABs above it; on mobile shrink hero so its CTA stays visible */
 body.ck-open .chat-btn,body.ck-open .sound-btn{bottom:calc(var(--ck-h,0px) + 16px)!important;transition:bottom .4s}
+body.ck-open .tryon-fab{bottom:calc(var(--ck-h,0px) + 88px)!important;transition:bottom .4s}
 @media(max-width:768px){body.ck-open #hero{height:calc(100svh - var(--ck-h,0px))}body.ck-open #hero-3d{min-height:calc(100dvh - var(--ck-h,0px))!important}}
 /* Mobile shop: SEO intro clamped to 3 lines so products show on first screen; tap expands (full text stays in DOM) */
 @media(max-width:768px){.cat-intro p{font-size:14px;line-height:1.7;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer}
