@@ -183,7 +183,7 @@ function switcher(p, cur) {
   const a = ['en', ...LANGS].map(l => l === cur
     ? `<span aria-current="true">${NAMES[l]}</span>`
     : `<a href="${u(l)}" hreflang="${l}" lang="${l}" onclick="document.cookie='amb_lang=${l};path=/;max-age=31536000;samesite=lax'">${NAMES[l]}</a>`).join('');
-  return `<nav class="amb-langs" translate="no" aria-label="Language">${a}</nav>`;
+  return `<nav class="amb-langs" translate="no">${a}</nav>`;
 }
 const SWITCH_CSS = '<style>.amb-langs{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;padding:18px 16px 26px;font-family:var(--serif,"Cormorant Garamond",serif);font-size:13px;line-height:1.6}.amb-langs a,.amb-langs span{color:inherit;text-decoration:none;opacity:.75}.amb-langs a:hover{opacity:1}.amb-langs span{opacity:1}</style>';
 
